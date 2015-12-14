@@ -1,0 +1,454 @@
+- name: Index
+  path: /
+  contents:
+- name: Learn
+  path: /learn
+  contents:
+    - name: Use Cases
+      path: /learn/use-cases
+      hidden: 1
+      contents:
+    - name: Architecture
+      path: /learn/architecture
+      contents:
+    - name: Core Framework
+      path: /learn/core
+      contents:
+        - name: About Announcement
+          path: /learn/core/about-announcement
+          contents:
+            - name: Interface
+              path: /learn/core/about-announcement/interface
+              contents:
+            - name: Interface 14.02
+              path: /learn/core/about-announcement/interface-14-02
+              hidden: 1
+              contents:
+        - name: Events and Actions
+          path: /learn/core/events-and-actions
+          contents:
+        - name: Routing Node Configuration
+          path: /learn/core/rn_config
+          contents:
+        - name: Standard Core
+          path: /learn/core/standard-core
+          contents:
+        - name: Thin Core
+          path: /learn/core/thin-core
+          contents:
+        - name: System Description
+          path: /learn/core/system-description
+          contents:
+            - name: System Architecture
+              path: /learn/core/system-description/system-architecture
+              contents:
+            - name: Advertisement and Discovery
+              path: /learn/core/system-description/advertisement-discovery
+              contents:
+            - name: AllJoyn Transport
+              path: /learn/core/system-description/alljoyn-transport
+              contents:
+            - name: Data Exchange
+              path: /learn/core/system-description/data-exchange
+              contents:
+            - name: AllJoyn Session
+              path: /learn/core/system-description/alljoyn-session
+              contents:
+            - name: Sessionless Signal
+              path: /learn/core/system-description/sessionless-signal
+              contents:
+            - name: AllJoyn Security
+              path: /learn/core/system-description/alljoyn-security
+              contents:
+            - name: Thin Apps
+              path: /learn/core/system-description/thin-apps
+              contents:
+            - name: Events and Actions
+              path: /learn/core/system-description/events-actions
+              contents:
+        - name: Security 2.0
+          path: /learn/core/security2_0
+          contents:
+            - name: High-Level Design
+              path: /learn/core/security2_0/hld
+              contents:
+    - name: Base Services
+      path: /learn/base-services
+      contents:
+        - name: Onboarding
+          path: /learn/base-services/onboarding
+          contents:
+            - name: Interface
+              path: /learn/base-services/onboarding/interface
+              contents:
+            - name: Interface 14.02
+              path: /learn/base-services/onboarding/interface-14-02
+              hidden: 1
+              contents:
+        - name: Configuration
+          path: /learn/base-services/configuration
+          contents:
+            - name: Interface
+              path: /learn/base-services/configuration/interface
+              contents:
+            - name: Interface 14.02
+              path: /learn/base-services/configuration/interface-14-02
+              hidden: 1
+              contents:
+        - name: Notification
+          path: /learn/base-services/notification
+          contents:
+            - name: Interface
+              path: /learn/base-services/notification/interface
+              contents:
+            - name: Interface 14.02
+              path: /learn/base-services/notification/interface-14-02
+              hidden: 1
+              contents:
+        - name: ControlPanel
+          path: /learn/base-services/controlpanel
+          contents:
+            - name: Interface
+              path: /learn/base-services/controlpanel/interface
+              contents:
+            - name: Interface 14.02
+              path: /learn/base-services/controlpanel/interface-14-02
+              hidden: 1
+              contents:
+        - name: Audio Streaming
+          path: /learn/base-services/audiostreaming
+          contents:
+            - name: Interface
+              path: /learn/base-services/audiostreaming/interface
+              contents:
+    - name: Glossary
+      path: /learn/glossary
+      contents:
+- name: Develop
+  path: /develop
+  contents:
+    - name: Building
+      path: /develop/building
+      contents:
+        - name: Android
+          path: /develop/building/android
+          contents:
+            - name: Build Source
+              path: /develop/building/android/build-source
+              contents:
+        - name: Linux
+          path: /develop/building/linux
+          contents:
+            - name: OpenWRT
+              path: /develop/building/linux/openwrt
+              contents:
+            - name: Build Source
+              path: /develop/building/linux/build-source
+              contents:
+        - name: iOS/OS X
+          path: /develop/building/ios-osx
+          contents:
+            - name: Build Source
+              path: /develop/building/ios-osx/build-source
+              contents:
+        - name: Windows
+          path: /develop/building/windows
+          contents:
+            - name: Build Source
+              path: /develop/building/windows/build-source
+              contents:
+        - name: Thin - Linux
+          path: /develop/building/thin-linux
+          contents:
+        - name: Thin - Windows
+          path: /develop/building/thin-windows
+          contents:
+        - name: AllJoyn.js
+          path: /develop/building/alljoyn-js
+    - name: Running Samples
+      path: /develop/run-sample-apps
+      contents:
+        - name: Basic
+          path: /develop/run-sample-apps/basic
+          contents:
+            - name: Android
+              path: /develop/run-sample-apps/basic/android
+              contents:
+            - name: Linux
+              path: /develop/run-sample-apps/basic/linux
+              contents:
+            - name: iOS/OS X
+              path: /develop/run-sample-apps/basic/ios-osx
+              contents:
+            - name: Windows
+              path: /develop/run-sample-apps/basic/windows
+              contents:
+            - name: Thin - Linux
+              path: /develop/run-sample-apps/basic/thin-linux
+              contents:
+            - name: Thin - Windows
+              path: /develop/run-sample-apps/basic/thin-windows
+              contents:
+        - name: Chat
+          path: /develop/run-sample-apps/chat
+          contents:
+            - name: Android
+              path: /develop/run-sample-apps/chat/android
+              contents:
+            - name: Linux
+              path: /develop/run-sample-apps/chat/linux
+              contents:
+            - name: iOS/OS X
+              path: /develop/run-sample-apps/chat/ios-osx
+              contents:
+            - name: Windows
+              path: /develop/run-sample-apps/chat/windows
+              contents:
+            - name: Thin - Linux
+              path: /develop/run-sample-apps/chat/thin-linux
+              contents:
+        - name: About
+          path: /develop/run-sample-apps/about
+          contents:
+            - name: Linux
+              path: /develop/run-sample-apps/about/linux
+              contents:
+            - name: iOS/OS X
+              path: /develop/run-sample-apps/about/ios-osx
+              contents:
+            - name: Windows
+              path: /develop/run-sample-apps/about/windows
+              contents:
+        - name: Observer
+          path: /develop/run-sample-apps/observer
+          contents:
+        - name: Config
+          path: /develop/run-sample-apps/config
+          contents:
+            - name: Android
+              path: /develop/run-sample-apps/config/android
+              contents:
+            - name: Linux
+              path: /develop/run-sample-apps/config/linux
+              contents:
+            - name: iOS/OS X
+              path: /develop/run-sample-apps/config/ios-osx
+              contents:
+            - name: Thin - Linux
+              path: /develop/run-sample-apps/config/thin-linux
+              contents:
+        - name: Control Panel
+          path: /develop/run-sample-apps/controlpanel
+          contents:
+            - name: Android
+              path: /develop/run-sample-apps/controlpanel/android
+              contents:
+            - name: Linux
+              path: /develop/run-sample-apps/controlpanel/linux
+              contents:
+            - name: iOS/OS X
+              path: /develop/run-sample-apps/controlpanel/ios-osx
+              contents:
+            - name: Thin - Linux
+              path: /develop/run-sample-apps/controlpanel/thin-linux
+              contents:
+        - name: Notification
+          path: /develop/run-sample-apps/notification
+          contents:
+            - name: Android
+              path: /develop/run-sample-apps/notification/android
+              contents:
+            - name: Linux
+              path: /develop/run-sample-apps/notification/linux
+              contents:
+            - name: iOS/OS X
+              path: /develop/run-sample-apps/notification/ios-osx
+              contents:
+            - name: Thin - Linux
+              path: /develop/run-sample-apps/notification/thin-linux
+              contents:
+        - name: Onboarding
+          path: /develop/run-sample-apps/onboarding
+          contents:
+            - name: Android
+              path: /develop/run-sample-apps/onboarding/android
+              contents:
+            - name: Linux
+              path: /develop/run-sample-apps/onboarding/linux
+              contents:
+            - name: iOS/OS X
+              path: /develop/run-sample-apps/onboarding/ios-osx
+              contents:
+        - name: AC Server
+          path: /develop/run-sample-apps/acserver
+          contents:
+            - name: Linux
+              path: /develop/run-sample-apps/acserver/linux
+              contents:
+            - name: Thin - Linux
+              path: /develop/run-sample-apps/acserver/thin-linux
+              contents:
+        - name: Command Line Apps
+          path: /develop/run-sample-apps/test
+          contents:
+            - name: Sessions
+              path: /develop/run-sample-apps/test/sessions
+              contents:
+        - name: AllJoyn.js
+          path: /develop/run-sample-apps/alljoyn-js
+          contents:
+    - name: API Guide
+      path: /develop/api-guide
+      contents:
+        - name: Core
+          path: /develop/api-guide/core
+          contents:
+            - name: java
+              path: /develop/api-guide/core/java
+              contents:
+            - name: Objective-C
+              path: /develop/api-guide/core/objc
+              contents:
+            - name: Alljoyn Transports Best Practices
+              path: /develop/api-guide/core/alljoyn-transports-best-practices
+              contents:
+            - name: AutoPinger
+              path: /develop/api-guide/core/auto-ping
+              contents:
+            - name: Observer
+              path: /develop/api-guide/core/observer
+              contents:
+            - name: Property Cache
+              path: /develop/api-guide/core/propcache
+              contents:
+        - name: About
+          path: /develop/api-guide/about
+          contents:
+            - name: java
+              path: /develop/api-guide/about/java
+              contents:
+            - name: C++
+              path: /develop/api-guide/about/cpp
+              contents:
+            - name: Objective-C
+              path: /develop/api-guide/about/objc
+              contents:
+            - name: C (Thin Core)
+              path: /develop/api-guide/about/c-thin
+              contents:
+            - name: java Legacy
+              path: /develop/api-guide/about/java-legacy
+              contents:
+            - name: C++ Legacy
+              path: /develop/api-guide/about/cpp-legacy
+              contents:
+            - name: Objective-C Legacy
+              path: /develop/api-guide/about/objc-legacy
+              contents:
+        - name: Onboarding
+          path: /develop/api-guide/onboarding
+          contents:
+            - name: java
+              path: /develop/api-guide/onboarding/java
+              contents:
+            - name: Objective-C
+              path: /develop/api-guide/onboarding/objc
+              contents:
+        - name: Configuration
+          path: /develop/api-guide/config
+          contents:
+            - name: java
+              path: /develop/api-guide/config/java
+              contents:
+            - name: C++
+              path: /develop/api-guide/config/cpp
+              contents:
+            - name: Objective-C
+              path: /develop/api-guide/config/objc
+              contents:
+            - name: C (Thin Core)
+              path: /develop/api-guide/config/c-thin
+              contents:
+        - name: Notification
+          path: /develop/api-guide/notification
+          contents:
+            - name: java
+              path: /develop/api-guide/notification/java
+              contents:
+            - name: C++
+              path: /develop/api-guide/notification/cpp
+              contents:
+            - name: Objective-C
+              path: /develop/api-guide/notification/objc
+              contents:
+            - name: C (Thin Core)
+              path: /develop/api-guide/notification/c-thin
+              contents:
+        - name: Control Panel
+          path: /develop/api-guide/controlpanel
+          contents:
+            - name: java
+              path: /develop/api-guide/controlpanel/java
+              contents:
+            - name: C++
+              path: /develop/api-guide/controlpanel/cpp
+              contents:
+            - name: Objective-C
+              path: /develop/api-guide/controlpanel/objc
+              contents:
+            - name: C (Thin Core)
+              path: /develop/api-guide/controlpanel/c-thin
+              contents:
+        - name: Audio Streaming
+          path: /develop/api-guide/audio-streaming
+          contents:
+            - name: C++
+              path: /develop/api-guide/audio-streaming/cpp
+              contents:
+        - name: Events and Actions
+          path: /develop/api-guide/events-and-actions
+          contents:
+    - name: API Reference
+      path: /develop/api-reference
+      contents:
+    - name: Debug
+      path: /develop/debug
+      contents:
+        - name: Common Issues
+          path: /develop/debug/common-issues
+          contents:
+    - name: Tutorial
+      path: /develop/tutorial
+      contents:
+        - name: Core
+          path: /develop/tutorial/core
+          contents:
+        - name: iOS
+          path: /develop/tutorial/ios
+          contents:
+        - name: Thin App
+          path: /develop/tutorial/thin-app
+          contents:
+        - name: Arduino + GT202
+          path: /develop/tutorial/arduino-and-gt202
+          contents:
+        - name: Videos
+          path: /develop/tutorial/videos
+          contents:
+    - name: Ask Forum
+      path: /develop/ask
+      contents:
+        - name: Popular
+          path: /develop/ask/popular
+          hidden: 1
+          contents:
+- name: Platforms
+  path: /supported-platforms
+  contents:
+- name: LifeCycle
+  path: /project-lifecycle
+  contents:
+- name: Ambassadors
+  path: /ambassadors
+- name: User Groups
+  path: /user-groups
