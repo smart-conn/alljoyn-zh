@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>C thin - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "C thin";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
+  <script src="../../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Ambassadors</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../ambassadors/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Develop</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/cpp-legacy/">Cpp legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/java-legacy/">Java legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/objc-legacy/">Objc legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audio streaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../audio-streaming/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../audio-streaming/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">C thin</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#configuration-api-guide-c-thin-core">Configuration API Guide - C (Thin Core)</a></li>
+                
+                    <li><a class="toctree-l4" href="#obtain-the-configuration-service-framework">Obtain the Configuration service framework</a></li>
+                
+                    <li><a class="toctree-l4" href="#reference-code">Reference code</a></li>
+                
+                    <li><a class="toctree-l4" href="#build-a-config-server">Build a Config Server</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-the-config-server">Implementing the Config Server</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/objc/">Objc</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Auto ping</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/auto-ping/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Propcache</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/propcache/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Events and actions</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../events-and-actions/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../api-reference/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ask</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/popular/">Popular</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Building</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Android</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ios osx</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/openwrt/">Openwrt</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Windows</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Debug</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/common-issues/">Common issues</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Run sample apps</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Acserver</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Basic</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Chat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/linux/">Linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Test</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/sessions/">Sessions</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Tutorial</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/arduino-and-gt202/">Arduino and gt202</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/ios/">Ios</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/thin-app/">Thin app</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/videos/">Videos</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/core/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Learn</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/architecture/">Architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/glossary/">Glossary</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/use-cases/">Use cases</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Base services</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audiostreaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/events-and-actions/">Events and actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/standard-core/">Standard core</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/thin-core/">Thin core</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About announcement</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Rn config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/rn_config/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Security2 0</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/hld/">Hld</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>System description</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/advertisement-discovery/">Advertisement discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-security/">Alljoyn security</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/data-exchange/">Data exchange</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/events-actions/">Events actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/sessionless-signal/">Sessionless signal</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/system-architecture/">System architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/thin-apps/">Thin apps</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Project lifecycle</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../project-lifecycle/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Supported platforms</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../supported-platforms/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>User groups</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../user-groups/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Config &raquo;</li>
+        
+      
+    
+    <li>C thin</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="configuration-api-guide-c-thin-core">Configuration API Guide - C (Thin Core)</h1>
+<h2 id="obtain-the-configuration-service-framework">Obtain the Configuration service framework</h2>
+<p>The source code for this service framework can be found on
+the <a href="https://git.allseenalliance.org/cgit/">AllSeen Alliance gerrit page</a> as a
+git project. In addition, the <a href="https://git.allseenalliance.org/cgit/core/ajtcl.git/">ajtcl</a> project
+is needed to compile this service framework.</p>
+<p>If the target platform already supports the AllJoyn&trade;
+Thin Library framework, follow the target platform documentation
+for detailed setup and download instructions.</p>
+<p>If the target platform does not support the AllJoyn Thin
+Library framework, porting work is required to support this
+target. See the <a href="../../../../learn/core/thin-core">Introduction to AllJoyn Thin Library</a> for
+more information about the AllJoyn Thin Library framework.</p>
+<h2 id="reference-code">Reference code</h2>
+<p>The reference code consists of a module implementing the
+Config Server layer to provide remote access of ConfigData
+and device simple control. It also has a ConfigService-specific
+sample code for integrating with the ServerSample application code.</p>
+<h3 id="config-server-modules">Config Server modules</h3>
+<table>
+<thead>
+<tr>
+<th>Server module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ConfigSample</td>
+<td>This module is responsible for the general flow of the Config sample application including initialization, shutdown of the ConfigService module, and performing any ConfigService-related business logic when the application's message loop is idling.</td>
+</tr>
+<tr>
+<td>ConfigService</td>
+<td>Config service core code. Implements the BusObjects and exposes the developer's API.</td>
+</tr>
+<tr>
+<td>PropertyStore</td>
+<td>PropertyStore sample implementation code. This supports all core services. This module is part of the AppsCommon.</td>
+</tr>
+<tr>
+<td>ApplicationProvisioning</td>
+<td>Application provisioning code for all services. This module is part of the sample application ServerSample or ACServerSample.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="build-a-config-server">Build a Config Server</h2>
+<p>The following steps provide the high-level process to build a Config Server.</p>
+<ol>
+<li>Create the base for the AllJoyn application. See the <a href="../../../../develop/tutorial/thin-app">Build an
+Application using the Thin Library section</a>
+for instructions.</li>
+<li>Implement the PropertyStore and provision its values.</li>
+<li>Implement the remote callbacks.</li>
+<li>(Optional) Integrate with the AuthListener's PasswordCallback
+to provide a remotely modifiable passcode based ALLJOYN_ECDHE_PSK
+secure connection.</li>
+</ol>
+<h2 id="implementing-the-config-server">Implementing the Config Server</h2>
+<h3 id="create-the-base-for-the-alljoyn-application">Create the base for the AllJoyn application</h3>
+<p>See the <a href="../../../../develop/tutorial/thin-app">Build an Application using the Thin Library section</a>
+for instructions.</p>
+<h3 id="provision-the-propertystore-for-the-configuration-service-framework">Provision the PropertyStore for the Configuration service framework</h3>
+<p>A PropertyStore structure is required by the ConfigService
+to store the provisioned values for the Config interface data
+fields listed below. See the <a href="../../../../learn/base-services/configuration/interface">Configuration Interface Definition</a> for more information.</p>
+<h4 id="config-interface-data-fields">Config interface data fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Required</th>
+<th>Announced</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DefaultLanguage</code></td>
+<td>yes</td>
+<td>yes</td>
+<td><code>s</code></td>
+</tr>
+<tr>
+<td><code>DeviceName</code></td>
+<td>yes</td>
+<td>yes</td>
+<td><code>s</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="propertystore-implementation">PropertyStore implementation</h4>
+<p>The PropertyStore code is an example PropertyStore implementation
+that supports the requirements of ConfigService and is included
+in the AppsCommon code.</p>
+<p>The PropertyStore uses the provisioning structures that are
+defined in the PropertyStoreOEMProvisioning.h file in the AppsCommon.
+A provisioning example is provided in the ServerSample code and
+is explained in the <a href="../../../../develop/tutorial/thin-app">Build an Application using the Thin Library section</a>.</p>
+<h4 id="adding-custom-field-definition-and-values">Adding custom field definition and values</h4>
+<p>Complete the following steps to add your own custom fields.</p>
+<ol>
+<li>Decide to which subset the field belongs and add it to
+the enumeration <code>AJSVC_PropertyStoreFieldIndices</code> accordingly.</li>
+<li>Add a new field entry at the respective index to the
+propertyStoreProperties.</li>
+<li>Decide whether the field is publicly accessible from remote
+clients. If the field is public then set the <code>mode7Public</code> bit to 1.</li>
+<li>Decide whether the field is to be allowed to be configured
+remotely through the Configuration service framework. If the
+field is updateable, then set the <code>mode0Write</code> bit to 1.
+   <strong>NOTE:</strong> If you set this bit, the field's index must be
+   included in the Persisted or Config keys subsets.</li>
+<li>Decide whether the field is to be included in the Announcement.
+If the field is announced then set the <code>mode1Announce</code> bit to 1.
+   <strong>NOTE:</strong> It is recommended to limit the inclusion of a field
+   in the Announcement according to its immediate relevance to
+   the relevant service framework's discovery. Only the value
+   associated with the currentDefaultLanguage will be sent
+   in the Announcement.</li>
+<li>Decide whether the field is multi-language and add the
+relevant values for the provisioned languages. If the field
+is multi-language then set the <code>mode2MultiLng bit</code> to 1.</li>
+<li>Decide whether the field is to be provisioned dynamically
+in code and persisted during first-time (or post-factory reset)
+device startup. If the field is to be initialized once, then
+set the <code>mode3Init</code> bit to 1 and add the relevant code to initialize it.</li>
+</ol>
+<p>Refer to PropertyStore.c <code>PropertyStore_Init()</code> and
+   <code>InitMandatoryPropertiesInRAM()</code> for an example setup for the
+   DeviceId and AppId fields.</p>
+<p><strong>NOTE:</strong> If you set this bit, the field's index must be included
+   in the Persisted keys subsets.</p>
+<ol>
+<li>Add relevant validation of updated value for your custom key
+by modifying the default implementation of <code>IsValueValid()</code> in
+ConfigSample.c file.</li>
+</ol>
+<p><code>c
+   uint8_t IsValueValid(const char* key, const char* value) {return TRUE;}</code></p>
+<ol>
+<li>Add entry in corresponding index of propertyStoreDefaultValues
+to provision default value(s).</li>
+<li>Add entry in corresponding index of propertyStoreRuntimeValues
+to provision for runtime value(s) buffer(s).</li>
+</ol>
+<p><strong>NOTE:</strong> The example implementation of PropertyStore supports
+properties with value of type String ('s') only. If your property
+must be of a different type, you must provision the default value
+as a String and perform the relevant de/serialization on the client side.</p>
+<h3 id="implement-remote-callbacks">Implement remote callbacks</h3>
+<p>The Configuration service framework has the following callbacks
+that allow for the application writer to react to remote initiated
+events and updating of configurable values. The prototype of
+these are defined in ConfigService.h .</p>
+<ul>
+<li>Restart-Restart the device or at least its Wi-Fi driver.</li>
+<li>FactoryReset-Clear persistent values and restore any factory
+defaults. Optionally, the application developer can mandate a
+power cycle of the device as well.</li>
+<li>SetPasscode-Persist new device passcode and revoke encryption
+keys generated from the previous passcode. Optionally, restart
+the device as well to cause current sessions to be re-established.</li>
+<li>IsValueValid-Validate a given value for a key and a specific language.</li>
+</ul>
+<p>The ServerSample code provides the following in the ConfigSample module:</p>
+<ul>
+<li>Required callbacks defined in ConfigService.h and provided
+to the service framework in the call to <code>AJCFG_Start()</code>.</li>
+<li>Example implementation of these callbacks in the ConfigSample.c file.</li>
+</ul>
+<h3 id="start-the-config-server">Start the Config server</h3>
+<p>The Config server is required to be passed the provisioning
+by the application via a call to <code>AJCFG_Start()</code>.</p>
+<p>An example is in <code>Config_Init()</code> of ConfigSample.c:</p>
+<pre><code class="c">/**
+* Actions to perform when factory reset is requested.
+*/
+static AJ_Status FactoryReset() {...}
+/**
+* Actions to perform when a device restart is requested.
+*/
+static AJ_Status Restart() {...}
+/**
+* Actions to perform when a new device passcode is set.
+*/
+static AJ_Status SetPasscode(const char* daemonRealm, const uint8_t*
+newPasscode, uint8_t newPasscodeLen) {...}
+/**
+* Check whether the given value is valid for the given key.
+*/
+static uint8_t IsValueValid(const char* key, const char* value) {...}
+
+AJ_Status Config_Init()
+{
+AJ_Status status = AJCFG_Start(&amp;FactoryReset, &amp;Restart, &amp;SetPasscode,
+&amp;IsValueValid);
+return status;
+}
+</code></pre>
+
+<h3 id="integrate-the-configuration-service-framework-with-an-applications-authlistener">Integrate the Configuration service framework with an application's AuthListener</h3>
+<p>The Configuration service framework and other AllJoyn service
+framework interface methods and signals require a secure AllJoyn
+connection. The application writer may choose to use an ALLJOYN_ECDHE_PSK
+authentication mechanism in its AuthListener implementation.
+The Configuration service framework enables remote setting
+of a password that can be used as the secret for a key exchange
+authentication mechanism. An example implementation that uses
+this facility is included in the sample server application
+in the Services_Handlers.c file as shown below.</p>
+<pre><code class="c">uint32_t PasswordCallback(uint8_t* buffer, uint32_t bufLen)
+{
+   AJ_Status status = AJ_OK;
+   const char* hexPassword;
+   size_t hexPasswordLen;
+   uint32_t len = 0;
+
+   hexPassword = AJSVC_PropertyStore_GetValue(AJSVC_PROPERTY_STORE_PASSCODE);
+   if (hexPassword == NULL) { AJ_ErrPrintf((&quot;Password is NULL!\n&quot;)); return len;
+   }
+   AJ_InfoPrintf((&quot;Retrieved password=%s\n&quot;, hexPassword));
+   hexPasswordLen = strlen(hexPassword);
+   len = hexPasswordLen / 2;
+   status = AJ_HexToRaw(hexPassword, hexPasswordLen, buffer, bufLen);
+   if (status == AJ_ERR_RESOURCES) {
+   len = 0;
+   }
+</code></pre>
+
+<p>The above implementation calls AJSVC_PropertyStore_GetValue
+(<code>AJSVC_PROPERTY_STORE_PASSCODE</code>) to retrieve the current password.
+This implementation relies on an extension in the sample
+implementation of the PropertyStore which was extended with
+the Passcode field defined in the <code>AJSCV_PropertyStoreFieldIndices</code>
+enumeration. The field is remotely updateable via a Configuration
+service framework session using the dedicated <code>SetPasscode()</code> method.
+The stored Passcode is limited to the size of
+65 allowing for 64 characters long secret:</p>
+<pre><code class="c">#define PASSWORD_VALUE_LENGTH 65
+</code></pre>
+
+<p>This is achieved using the field definition that masks the
+field as writable yet private, as shown in the propertyStoreProperties
+initialization in PropertyStore.c:</p>
+<pre><code class="c">{ &quot;Passcode&quot;,   1, 0, 0, 0, 0, 0, 0, 0 }
+</code></pre>
+
+<p>The default value is provisioned in ServerSample.c as follows:</p>
+<pre><code class="c">static const char* DEFAULT_PASSCODES[] = { &quot;303030303030&quot; };
+// HEX encoded { '0', '0', '0', '0', '0', '0' }
+</code></pre>
+
+<p>and added to propertyStoreDefaultValues.</p>
+<pre><code class="c">DEFAULT_PASSCODES,  /*Passcode*/
+</code></pre>
+
+<p>Since the Passcode enumeration value is less than <code>AJSVC_PROPERTY_STORE_NUMBER_OF_RUNTIME_KEYS</code>,
+it is also considered part of the <code>propertyStoreRuntimeValues</code>;
+its modified value is persisted.</p>
+<p>Also, when <code>SetPasscode()</code> is called remotely, the <code>SetPasscode()</code>
+callback is invoked with the example implementation in ConfigSample.c file shown below:</p>
+<pre><code class="c">static AJ_Status SetPasscode(const char* daemonRealm,
+   const uint8_t* newPasscode, uint8_t newPasscodeLen)
+{
+   AJ_Status status = AJ_OK;
+
+   char newStringPasscode[PASSWORD_VALUE_LENGTH + 1];
+   status = AJ_RawToHex(newPasscode, newPasscodeLen, newStringPasscode,
+      sizeof(newStringPasscode), FALSE);
+   if (status != AJ_OK) {
+      return status;
+   }
+   if (AJSVC_PropertyStore_SetValue(AJSVC_PROPERTY_STORE_REALM_NAME,
+      daemonRealm) &amp;&amp; AJSVC_PropertyStore_SetValue(AJSVC_PROPERTY_STORE_PASSCODE,
+      newStringPasscode)) {
+
+      status = AJSVC_PropertyStore_SaveAll();
+      if (status != AJ_OK) {
+         return status;
+      }
+      AJ_ClearCredentials();
+      status = AJ_ERR_READ; //Force disconnect of AJ and services
+         to refresh current sessions
+   } else {
+
+      status = AJSVC_PropertyStore_LoadAll();
+      if (status != AJ_OK) {
+         return status;
+      }
+   }
+
+   return status;
+}
+</code></pre>
+
+<p>The above implementation stores the passcode as part of the
+PropertyStore persistence:</p>
+<ol>
+<li>It calls <code>AJSVC_ PropertyStore_SetValue(Passcode,
+newStringPasscode)</code> to set the value in RAM.</li>
+<li>If successful, it also calls <code>AJSVC_ PropertyStore_SaveAll()</code>
+to persist to NVRAM.</li>
+<li>Finally, <code>AJ_ClearCredentials()</code> is called to revoke all
+current keys based on the old passcode.</li>
+</ol>
+<p><strong>NOTES</strong></p>
+<ul>
+<li>The stored passcode is HEX and is limited to the size
+of 32, allowing for 16 bytes long secret:</li>
+</ul>
+<pre><code>#define PASSWORD_VALUE_LENGTH (AJ_ADHOC_LEN * 2)
+</code></pre>
+
+<ul>
+<li>The default value for the Passcode field is provisioned as
+'303030303030' (the HEX encoded string value for the byte array
+{ '0', '0', '0', '0', '0', '0'}) as per the requirement outlined
+in the [Configuration Interface Definition][config-interface-definition.</li>
+<li>The realm name is similarly persisted alongside the passcode
+by adding the RealmNamefield index to the <code>AJSVC_PropertyStoreFieldIndices</code>
+enumeration and provisioning for it in <code>propertyStoreDefaultValues</code>
+and <code>propertyStoreRuntimeValues</code> initialization.</li>
+</ul>
+<h3 id="compile-the-code">Compile the code</h3>
+<p>The process to compile varies depending on the host and
+target platform. Each host and platform needs may require
+a specific directory and file layout, build toolchains,
+procedures, and supported AllJoyn service frameworks. Refer
+to the target platform documentation that contains instructions
+on how to organize and set up the build process to incorporate
+the necessary files to compile your Thin Library application.</p>
+<p>For more details on how to combine this AllJoyn service
+framework with other AllJoyn service framework software,
+see the <a href="../../../../develop/tutorial/thin-app">Build an Application using the Thin Library section</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cpp/" class="btn btn-neutral float-right" title="Cpp"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../audio-streaming/" class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../audio-streaming/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../cpp/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

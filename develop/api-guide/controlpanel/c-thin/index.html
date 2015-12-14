@@ -1,0 +1,2857 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>C thin - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "C thin";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
+  <script src="../../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Ambassadors</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../ambassadors/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Develop</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/cpp-legacy/">Cpp legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/java-legacy/">Java legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/objc-legacy/">Objc legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audio streaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../audio-streaming/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../audio-streaming/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">C thin</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#control-panel-api-guide-c-thin-core">Control Panel API Guide - C (Thin Core)</a></li>
+                
+                    <li><a class="toctree-l4" href="#obtain-the-control-panel-service-framework">Obtain the Control Panel service framework</a></li>
+                
+                    <li><a class="toctree-l4" href="#reference-code">Reference code</a></li>
+                
+                    <li><a class="toctree-l4" href="#build-a-controllee">Build a Controllee</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-a-controllee">Implementing a Controllee</a></li>
+                
+                    <li><a class="toctree-l4" href="#xml-ui-element-descriptions">XML UI Element Descriptions</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/objc/">Objc</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Auto ping</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/auto-ping/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Propcache</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/propcache/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Events and actions</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../events-and-actions/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../api-reference/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ask</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/popular/">Popular</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Building</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Android</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ios osx</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/openwrt/">Openwrt</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Windows</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Debug</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/common-issues/">Common issues</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Run sample apps</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Acserver</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Basic</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Chat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/linux/">Linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Test</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/sessions/">Sessions</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Tutorial</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/arduino-and-gt202/">Arduino and gt202</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/ios/">Ios</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/thin-app/">Thin app</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/videos/">Videos</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/core/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Learn</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/architecture/">Architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/glossary/">Glossary</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/use-cases/">Use cases</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Base services</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audiostreaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/events-and-actions/">Events and actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/standard-core/">Standard core</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/thin-core/">Thin core</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About announcement</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Rn config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/rn_config/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Security2 0</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/hld/">Hld</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>System description</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/advertisement-discovery/">Advertisement discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-security/">Alljoyn security</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/data-exchange/">Data exchange</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/events-actions/">Events actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/sessionless-signal/">Sessionless signal</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/system-architecture/">System architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/thin-apps/">Thin apps</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Project lifecycle</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../project-lifecycle/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Supported platforms</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../supported-platforms/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>User groups</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../user-groups/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Controlpanel &raquo;</li>
+        
+      
+    
+    <li>C thin</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="control-panel-api-guide-c-thin-core">Control Panel API Guide - C (Thin Core)</h1>
+<h2 id="obtain-the-control-panel-service-framework">Obtain the Control Panel service framework</h2>
+<p>The source code for this service framework can be found on
+the <a href="https://git.allseenalliance.org/cgit/">AllSeen Alliance gerrit page</a> as a git project.
+In addition, the <a href="https://git.allseenalliance.org/cgit/core/ajtcl.git/">ajtcl</a> project is
+needed to compile this service framework.</p>
+<p>If the target platform already supports the AllJoyn&trade;
+Thin Library framework, follow the target platform documentation
+for detailed setup and download instructions.</p>
+<p>If the target platform does not support the AllJoyn Thin Library
+framework, porting work is required to support this target.
+See the <a href="../../../../learn/core/thin-core">Introduction to AllJoyn Thin Library</a> for more
+information about the AllJoyn Thin Library framework.</p>
+<h2 id="reference-code">Reference code</h2>
+<p>The reference code consists of several components each including
+one or more modules. Additionally, included in the sample component
+is a sample application that implements the Control Panel service
+framework and contains a simple control panel with one example for
+each kind of Widget.</p>
+<table>
+<thead>
+<tr>
+<th>Components</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control Panel Service</td>
+<td>This includes three parts: Widgets, Common, and Main, each with their own modules which together make up the service and allow for interaction between Controllees and Controllers.</td>
+</tr>
+<tr>
+<td>Control Panel Provided</td>
+<td>Code specific to the Controllee that will handle requests from Controllers to set property values, get property values, and/or execute actions. Additionally it can initiate a refresh on the Controller by calling the Control Panel service framework's appropriate functions. This is device-specific code created by the OEM.</td>
+</tr>
+<tr>
+<td>Control Panel Generator</td>
+<td>A Generator tool that accepts an XML UI definition file, containing the Widgets and their properties that describe the specific Controllee's control panel and generate code into a Control Panel Generated code.</td>
+</tr>
+<tr>
+<td>Control Panel Generated</td>
+<td>Code generated using the Control Panel Generator. This code ties together the Control Panel Service and the Control Panel Provided code.</td>
+</tr>
+<tr>
+<td>Control Panel Sample</td>
+<td>A template for an application. This component is responsible for the general flow of the Controllee application including initialization, shutdown, and passing on incoming message to the ControlPanelService module.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="control-panel-service-component">Control Panel Service component</h3>
+<h4 id="widget-modules">Widget modules</h4>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ContainerWidget</td>
+<td>Container UI element. Allows grouping of widgets together. Must contain at least one child element.</td>
+</tr>
+<tr>
+<td>LabelWidget</td>
+<td>UI element that functions as a read only label of text.</td>
+</tr>
+<tr>
+<td>ActionWidget</td>
+<td>UI element represented by a button that either executes code on the Controllee, or opens a Dialog Widget as a confirmation before executing.</td>
+</tr>
+<tr>
+<td>DialogWidget</td>
+<td>UI dialog element. Has a dialog message and up to 3 choices of buttons.</td>
+</tr>
+<tr>
+<td>PropertyWidget</td>
+<td>UI element used to display a value and possibly edit it.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="common-modules">Common modules</h4>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BaseWidget</td>
+<td>Base module used by all the Widget modules.</td>
+</tr>
+<tr>
+<td>ConstraintList</td>
+<td>Module used when defining a constraint list for a property value.</td>
+</tr>
+<tr>
+<td>ConstraintRange</td>
+<td>Module used when defining a constraint range for a property value.</td>
+</tr>
+<tr>
+<td>ControlMarshalUtil</td>
+<td>Utility functions used to marshal control panel properties.</td>
+</tr>
+<tr>
+<td>DateTimeUtil</td>
+<td>Module that enables properties that have a Date or Time value.</td>
+</tr>
+<tr>
+<td>HttpControl</td>
+<td>Module that allows publicizing of a URL to function as a control panel for the Controllee.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="general-modules">General modules</h4>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ControlPanelInterface</td>
+<td>The definitions of all ControlPanel Service interfaces.</td>
+</tr>
+<tr>
+<td>ControlPanelService</td>
+<td>Handler of all interactions between Controllers and Controllees. The application delegates incoming messages to this module for processing and handling. The actual handling is specific to the generated code.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="control-panel-provided-component">Control Panel Provided component</h3>
+<p>This component contains the code specific to the device that
+the Controllee application runs on. The Control Panel Generated
+code will interact with this component to do the following:</p>
+<ul>
+<li>Set property values</li>
+<li>Get property values</li>
+<li>Execute actions</li>
+</ul>
+<p>Additionally, it can initiate a refresh on the Controller by
+calling the Control Panel service framework's appropriate functions.
+The modules in this component are provided by a third party.</p>
+<p>For example, think of a washing machine. The Control Panel
+Provided component would be the code that communicates with
+the hardware to perform actions such as setting the water
+temperature or starting the wash cycle.</p>
+<h3 id="control-panel-generator-component">Control Panel Generator component</h3>
+<h4 id="control-panel-generator-modules">Control Panel Generator modules</h4>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PreGenFiles</td>
+<td>Files used as a template for the ultimately generated files.</td>
+</tr>
+<tr>
+<td>Cp.xsd and cpvalidate</td>
+<td><p>As part of the generation the XML undergoes two validation steps.</p><ol><li>Validate against an XSD to verify all tags and their content are correctly defined.</li><li>Validate to verify that all the required fields needed to display the widgets in the XML graphically are properly defined.</li></ol></td>
+</tr>
+<tr>
+<td>SampleXMLS</td>
+<td>Collection of XML files that can be viewed as samples.</td>
+</tr>
+<tr>
+<td>GeneratorScript</td>
+<td>Python scripts that generate the code. For steps on how to generate the code, see <a href="#start-the-controllee">Start the Controllee</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="control-panel-generated-component">Control Panel Generated component</h3>
+<h4 id="control-panel-generated-modules">Control Panel Generated modules</h4>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ControlPanelGenerated</td>
+<td>The Generated files, created by the generator using the given XML.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="control-panel-sample-component">Control Panel Sample component</h3>
+<h4 id="control-panel-sample-modules">Control Panel Sample modules</h4>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ControlPanelSample</td>
+<td>The module responsible for the generalflow of the Controllee application including initialization and shutdown of the ControlPanelService module, and related business logic when the application's message loop is idling.</td>
+</tr>
+<tr>
+<td>ControlPanelProvided</td>
+<td>The module responsible for the business logic of the actions and changes made to the generated code. It uses the generated model interfaces and implements its callbacks.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="build-a-controllee">Build a Controllee</h2>
+<p>The following steps provide the high-level process to build a Controllee.</p>
+<ol>
+<li>Create the base for the AllJoyn application. See the
+<a href="../../../../develop/tutorial/thin-app">Build an Application using the Thin Library</a>
+section for instructions.</li>
+<li>Create the code handlers necessary to control the device.
+This includes getters and setters for properties and functions
+to handle execution of actions.</li>
+<li>Create the XML definition of the UI. Include calls to the
+code handlers in the appropriate places.</li>
+<li>Use the code generation tool provided in the SDK to generate
+code from XML.</li>
+</ol>
+<h2 id="implementing-a-controllee">Implementing a Controllee</h2>
+<h3 id="create-the-base-for-the-alljoyn-application">Create the base for the AllJoyn application</h3>
+<p>See the <a href="../../../../develop/tutorial/thin-app">Build an Application using the Thin Library</a>
+section for instructions.</p>
+<h3 id="create-header-file-that-declares-device-specific-callbacks">Create header file that declares device-specific callbacks</h3>
+<h4 id="callback-signature-for-getcode-of-property">Callback signature for GetCode of property</h4>
+<pre><code class="c">void* getTemperature(PropertyWidget* thisWidget) - Returns address of the property of the
+provided widget casted to a void*
+</code></pre>
+
+<h4 id="callback-for-setcode-property">Callback for SetCode property</h4>
+<p>This signature is not determined by the Control Panel service
+framework and can be chosen based on the specific applications
+need. The assumption is that one of the parameters will be the
+new value the property should be set to.</p>
+<p>For example:</p>
+<pre><code class="c">void SetTemperature(uint16 newTemperature);
+</code></pre>
+
+<h4 id="callback-for-code-execution-of-action">Callback for code execution of action</h4>
+<p>This signature is not determined by the service and can be
+chosen based on the specific application's need.</p>
+<p>For example:</p>
+<pre><code class="c">void StartOven();
+</code></pre>
+
+<h3 id="create-xml-definition-of-ui">Create XML definition of UI</h3>
+<pre><code class="xml">&lt;controlPanelDevice xmlns=&quot;http://www.allseenalliance.org/controlpanel/gen&quot;&gt;
+   &lt;name&gt;MyDevice&lt;/name&gt;
+   &lt;headerCode&gt;#include &quot;ControlPanelProvided.h&quot;&lt;/headerCode&gt;
+   &lt;languageSet name=&quot;myLanguages&quot;&gt;
+      &lt;language&gt;en&lt;/language&gt;
+      &lt;language&gt;de&lt;/language&gt;
+      &lt;language&gt;fr&lt;/language&gt;
+   &lt;/languageSet&gt;
+   &lt;controlPanels&gt;
+      &lt;controlPanel languageSet=&quot;myLanguages&quot;&gt;
+         &lt;rootContainer&gt;
+         //rootContainer properties and child elements go here.
+         &lt;/rootContainer&gt;
+      &lt;/controlPanel&gt;
+   &lt;/controlPanels&gt;
+&lt;/controlPanelDevice&gt;
+</code></pre>
+
+<h4 id="naming-conventions">Naming conventions</h4>
+<p>The name of the unit (detailed in Add include statement(s)
+for header file that contains device specific callbacks) and
+the name of each individual Widget contained within a control
+panel must adhere to the following naming conventions (this
+is due to the fact that the unit name and widget name are used
+as part of the AllJoyn BusObject object paths that the Control
+Panel service framework utilizes).</p>
+<ul>
+<li>Must contain only the ASCII characters "[A-Z][a-z][0-9]_"</li>
+<li>Cannot be an empty string</li>
+</ul>
+<p>See <a href="#xml-ui-element-descriptions">XML UI Element Descriptions</a> for
+samples of names that follow these conventions.</p>
+<h4 id="create-a-controlpaneldevice-tag-with-the-xml-schema">Create a controlPanelDevice tag with the XML schema</h4>
+<pre><code class="xml">&lt;controlPanelDevice xmlns=&quot;http://www.allseenalliance.org/controlpanel/gen&quot;&gt;
+&lt;/controlPanelDevice&gt;
+</code></pre>
+
+<h4 id="define-the-name-of-the-unit-in-the-name-tag">Define the name of the unit in the name tag</h4>
+<p>Define the name of the unit between the controlPanelDevice tags.</p>
+<pre><code class="xml">&lt;name&gt;MyDevice&lt;/name&gt;
+</code></pre>
+
+<h4 id="add-include-statements-for-header-file-that-contains">Add include statement(s) for header file that contains</h4>
+<p>device specific callbacks</p>
+<p>Add the include statements after the name tag. More than one
+header file can be added. See <a href="#create-header-file-that-declares-device-specific-callbacks">Create header file that declares
+device-specific callbacks</a> for more information.</p>
+<pre><code class="xml">&lt;headerCode&gt;#include &quot;ControlPanelProvided.h&quot;&lt;/headerCode&gt;
+</code></pre>
+
+<h4 id="define-the-language-set-for-the-control-panel">Define the language set for the control panel</h4>
+<p>Add this after the headerCode tag. This must include a list of
+languages that the control panel can display labels and
+messages in. More than one language set can be defined.</p>
+<p>NOTE: For the sake of completeness and integrity of the device's
+overall user experience, it is recommended to have the textToSend
+array match the SupportedLanguages list published by the About
+feature and provisioned for the PropertyStore in the application.</p>
+<pre><code class="xml">&lt;languageSet name=&quot;myLanguages&quot;&gt;
+   &lt;language&gt;en&lt;/language&gt;
+   &lt;language&gt;de&lt;/language&gt;
+   &lt;language&gt;fr&lt;/language&gt;
+&lt;/languageSet&gt;
+</code></pre>
+
+<h4 id="set-up-the-control-panel-structure">Set up the control panel structure</h4>
+<p>Add this after the languageSets tag. Each control panel needs
+to define the preferred language set. More than one control
+panel can be defined.</p>
+<pre><code class="xml">&lt;controlPanels&gt;
+   &lt;controlPanel languageSet=&quot;myLanguages&quot;&gt;
+   &lt;/controlPanel&gt;
+   &lt;controlPanel languageSet=&quot;mySecondLanguageSet&quot;&gt;
+   &lt;/controlPanel&gt;
+&lt;/controlPanels&gt;
+</code></pre>
+
+<h4 id="define-a-root-container-and-its-child-elements">Define a root container and its child elements</h4>
+<p>Add the root container within the controlPanel tags. The
+rootContainer is the main ContainerWidget used to group together
+all the widgets that make up the control panel. For more information
+on Container Widgets and possible child widgets, see <a href="#widget-modules">Widget modules</a>
+and <a href="#xml-ui-element-descriptions">XML UI Element Descriptions</a>.</p>
+<pre><code class="xml">&lt;rootContainer&gt;
+   //rootContainer properties and child elements go here.
+&lt;/rootContainer&gt;
+</code></pre>
+
+<h3 id="run-the-code-generator-tool">Run the Code Generator tool</h3>
+<p>In the CPSAppGenerator directory, run the generator command
+to produce the Control Panel Generated Code from the XML.</p>
+<pre><code class="sh">python generateCPSApp.py [nameOfXML] [DirectoryOfApplication]
+</code></pre>
+
+<p>This Python script generates the following c and h files in
+the application directory:</p>
+<ul>
+<li>ControlPanelGenerated.c</li>
+<li>ControlPanelGenerated.h</li>
+</ul>
+<p>These files will be used to build the Controllee application.</p>
+<h3 id="start-the-controllee">Start the Controllee</h3>
+<p>The Controllee is required to be passed the provisioning by
+the application via a call to
+<code>AJCPS_Start()</code>.</p>
+<p>An example is in <code>Controlee_Init()</code> of ControlPanelSample.c.
+Both the bus object list and the callbacks are implemented
+in the ControlPanelGenerated.c and are linked to the business
+logic in ControlPanelProvided.c.</p>
+<pre><code class="c">/**
+* Message processor for the ControlPanel generated model.
+*/
+AJSVC_ServiceStatus GeneratedMessageProcessor(AJ_BusAttachment* bus,
+   AJ_Message* msg, AJ_Status* msgStatus) {...}
+/**
+* Returns the corresponding widget object attributes for the given identifier.
+*/
+void* IdentifyMsgOrPropId(uint32_t identifier, uint16_t* widgetType,
+   uint16_t* propType, uint16_t* language) {...}
+/**
+* Returns the corresponding property for the given identifier.
+*/
+void* IdentifyMsgOrPropIdForSignal(uint32_t identifier, uint8_t*
+isProperty) {...}
+/**
+* Returns the whether the given identifier is of the root object.
+*/
+uint8_t IdentifyRootMsgOrPropId(uint32_t identifier) {...}
+
+/**
+* The list of bus objects to be registered by the ControlPanel SF.
+*/
+AJ_Object controlleeObjectList[] = { AJCPS_CONTROLLEE_GENERATED_OBJECTS
+   { NULL }
+};
+
+AJ_Status Controlee_Init()
+{
+   AJ_Status status = AJCPS_Start(controlleeObjectList,
+&amp;GeneratedMessageProcessor,
+   &amp;IdentifyMsgOrPropId, &amp;IdentifyMsgOrPropIdForSignal,
+   &amp;IdentifyRootMsgOrPropId); WidgetsInit();
+   return status;
+}
+</code></pre>
+
+<h3 id="compile-the-code">Compile the code</h3>
+<p>The process to compile varies depending on the host and target
+platform. Each host and platform needs may require a specific
+directory and file layout, build tool chains, procedures,
+and supported AllJoyn service frameworks. Refer to the target
+platform documentation that contains instructions on how to
+organize and set up the build process to incorporate the
+necessary files to compile your Thin Library application.</p>
+<p>For more details on how to combine this AllJoyn service
+framework with other AllJoyn service framework software,
+see the <a href="../../../../develop/tutorial/thin-app">Build an Application using the Thin Library</a> section.</p>
+<h2 id="xml-ui-element-descriptions">XML UI Element Descriptions</h2>
+<p>This section provides XML UI element samples for each Control
+Panel interface. See the <a href="../../../../learn/base-services/controlpanel/interface">Control Panel Interface Definition</a>
+for a full description of each interface.</p>
+<h3 id="container">Container</h3>
+<h4 id="sample-xml-for-container">Sample XML for Container</h4>
+<pre><code class="xml">&lt;container&gt;
+   &lt;name&gt;rootContainer&lt;/name&gt;
+   &lt;secured&gt;false&lt;/secured&gt;
+   &lt;enabled&gt;true&lt;/enabled&gt;
+   &lt;bgcolor&gt;0x200&lt;/bgcolor&gt;
+   &lt;label&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;My Label of my container&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Container Etikett&lt;/value&gt;
+   &lt;/label&gt;
+   &lt;hints&gt;
+      &lt;hint&gt;vertical_linear&lt;/hint&gt;
+   &lt;/hints&gt;
+   &lt;elements&gt;
+      //Child elements (Action/Property/Label/Container, etc.) defined here
+   &lt;/elements&gt;
+&lt;container&gt;
+</code></pre>
+
+<h4 id="container-properties">Container properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Possible values</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>alphanumeric</td>
+<td>yes</td>
+<td>Name of widget.</td>
+</tr>
+<tr>
+<td>secured</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the interface of the Container will be secured or not.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the container will be visible or not.</td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>unsigned int</td>
+<td>no</td>
+<td>Background color expressed as RGB value.</td>
+</tr>
+<tr>
+<td>label</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><p>Label of the Container.</p><ul><li>If code, a function pointer to receive the label.</li><li>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+<tr>
+<td>hints</td>
+<td><ul><li>vertical_linear</li><li>horizontal_linear</li></ul></td>
+<td>no</td>
+<td>Container layout hint.</td>
+</tr>
+<tr>
+<td>elements</td>
+<td><ul><li>Action</li><li>Property</li><li>LabelProperty</li><li>Container</li></ul></td>
+<td>yes</td>
+<td>Child widgets. Can be one or more within a Container.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="actions">Actions</h3>
+<h4 id="sample-xml-for-action">Sample XML for Action</h4>
+<p>The onAction tag includes the execute code and dialog options.
+Both options cannot be included in the same tag.</p>
+<pre><code class="xml">&lt;action&gt;
+   &lt;name&gt;ovenAction&lt;/name&gt;
+   &lt;onAction&gt;
+      &lt;executeCode&gt;startOven();&lt;/executeCode&gt;
+         OR
+      &lt;dialog&gt;
+      //dialog properties here
+      &lt;/dialog&gt;
+   &lt;/onAction&gt;
+   &lt;secured&gt;true&lt;/secured&gt;
+   &lt;enabled&gt;true&lt;/enabled&gt;
+   &lt;label&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Start Oven&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Ofen started&lt;/value&gt;
+   &lt;/label&gt;
+   &lt;bgcolor&gt;0x400&lt;/bgcolor&gt;
+   &lt;hints&gt;
+      &lt;hint&gt;actionButton&lt;/hint&gt;
+   &lt;/hints&gt;
+&lt;/action&gt;
+</code></pre>
+
+<h4 id="action-properties">Action properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Possible values</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>alphanumeric</td>
+<td>yes</td>
+<td>Name of widget.</td>
+</tr>
+<tr>
+<td>onAction</td>
+<td><ul><li>executeCode</li><li>dialog</li></ul></td>
+<td>yes</td>
+<td><p>Determines what happens when the actionButton is pressed.</p><ul><li>If executeCode, that code will be executed.</li><li>If dialog, a dialog will be displayed.</li></ul></td>
+</tr>
+<tr>
+<td>secured</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the interface of the Action will be secured or not.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Action will be visible or not.</td>
+</tr>
+<tr>
+<td>label</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><ul><li>If code, a function pointer to receive the label.</li><li>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>unsigned int</td>
+<td>no</td>
+<td>Background color expressed as RGB value.</td>
+</tr>
+<tr>
+<td>hints</td>
+<td>Action hint</td>
+<td>no</td>
+<td>Can be actionButton.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="labelproperty">labelProperty</h3>
+<h4 id="sample-xml-for-labelproperty">Sample XML for labelProperty</h4>
+<pre><code class="xml">&lt;labelProperty&gt;
+   &lt;name&gt;CurrentTemp&lt;/name&gt;
+   &lt;enabled&gt;true&lt;/enabled&gt;
+   &lt;label&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Current Temperature:&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Aktuelle Temperatur:&lt;/value&gt;
+   &lt;/label&gt;
+   &lt;bgcolor&gt;0x98765&lt;/bgcolor&gt;
+   &lt;hints&gt;
+      &lt;hint&gt;textlabel&lt;/hint&gt;
+   &lt;/hints&gt;
+&lt;/labelProperty&gt;
+</code></pre>
+
+<h4 id="labelproperty-properties">labelProperty properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Possible values</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>alphanumeric</td>
+<td>yes</td>
+<td>Name of widget.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Label will be visible or not.</td>
+</tr>
+<tr>
+<td>label</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><ul><li>If code, a function pointer to receive the label.</li><li>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>unsigned int</td>
+<td>no</td>
+<td>Background color expressed as RGB value.</td>
+</tr>
+<tr>
+<td>hints</td>
+<td>Label hint</td>
+<td>no</td>
+<td>Can be textLabel.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="property">Property</h3>
+<p>Depending on the signature of the value, there are different
+ways to construct a property in the XML. Samples and property
+information for each supported signature are provided here.</p>
+<ul>
+<li>String</li>
+<li>Boolean</li>
+<li>Date</li>
+<li>Time</li>
+<li>Scalar</li>
+</ul>
+<h4 id="sample-xml-for-stringproperty">Sample XML for stringProperty</h4>
+<pre><code class="xml">&lt;stringProperty&gt;
+   &lt;name&gt;modeStringProperty&lt;/name&gt;
+   &lt;getCode&gt;getStringVar&lt;/getCode&gt;
+   &lt;setCode&gt;setStringVar(%s)&lt;/setCode&gt;
+   &lt;secured&gt;false&lt;/secured&gt;
+   &lt;enabled&gt;true&lt;/enabled&gt;
+   &lt;writable&gt;true&lt;/writable&gt;
+   &lt;label&gt;
+      &lt;value type=&quot;constant&quot; language=&quot;en&quot;&gt;HEATING_MODE_EN&lt;/value&gt;
+      &lt;value type=&quot;constant&quot; language=&quot;de&quot;&gt;HEATING_MODE_DE&lt;/value&gt;
+   &lt;/label&gt;
+   &lt;bgcolor&gt;0x500&lt;/bgcolor&gt;
+   &lt;hints&gt;
+      &lt;hint&gt;edittext&lt;/hint&gt;
+   &lt;/hints&gt;
+   &lt;constraintVals&gt;
+      &lt;constraint&gt;
+      &lt;display&gt;
+         &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Grill Mode&lt;/value&gt;
+         &lt;value type=&quot;literal&quot; language=&quot;de &quot;&gt;Grill Modus&lt;/value&gt;
+      &lt;/display&gt;
+         &lt;value&gt;Grill&lt;/value&gt;
+   &lt;/constraint&gt;
+   &lt;constraint&gt;
+      &lt;display&gt;
+         &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Regular Mode&lt;/value&gt;
+         &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Normal Modus&lt;/value&gt;
+      &lt;/display&gt;
+      &lt;value&gt;Normal&lt;/value&gt;
+      &lt;/constraint&gt;
+   &lt;/constraintVals&gt;
+&lt;/stringProperty&gt;
+</code></pre>
+
+<h4 id="stringproperty-properties">stringProperty properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Possible values</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>alphanumeric</td>
+<td>yes</td>
+<td>Name of widget.</td>
+</tr>
+<tr>
+<td>Property</td>
+<td>Function pointer</td>
+<td>yes</td>
+<td>Pointer to function that returns a property's value. The signature of the function pointer needs to be <code>void* (*functionptr)()</code>.</td>
+</tr>
+<tr>
+<td>setcode</td>
+<td>Code to execute on setProperty</td>
+<td>yes</td>
+<td>Code to execute when setProperty is called. Any %s in the setCode content will be replaced by the generator with the new value.</td>
+</tr>
+<tr>
+<td>secured</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the interface of the Property will be secured or not.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Property will be visible or not.</td>
+</tr>
+<tr>
+<td>writable</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Property will be writable or not.</td>
+</tr>
+<tr>
+<td>label</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><p>Text of the Property's label.</p><ul><li>If code, a function pointer to receive the text.</li><li>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>unsigned int</td>
+<td>no</td>
+<td>Background color expressed as RGB value.</td>
+</tr>
+<tr>
+<td>hints</td>
+<td><ul><li>switch</li><li>spinner</li><li>radiobutton</li><li>textview</li><li>edittext</li></ul></td>
+<td>no</td>
+<td>Label hint.</td>
+</tr>
+<tr>
+<td>constraintVals</td>
+<td>List of constraints</td>
+<td>no</td>
+<td>Constraint Property to a list of values. Each Constraint is made up of a value and its display.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sample-xml-for-boolean-property">Sample XML for Boolean property</h4>
+<pre><code class="xml">&lt;booleanProperty&gt;
+   &lt;name&gt;checkboxProperty&lt;/name&gt;
+   &lt;getCode&gt;getTurboModeVar&lt;/getCode&gt;
+   &lt;setCode&gt;setTurboModeVar(%s)&lt;/setCode&gt;
+   &lt;secured&gt;false&lt;/secured&gt;
+   &lt;enabled&gt;true&lt;/enabled&gt;
+   &lt;writable&gt;true&lt;/writable&gt;
+   &lt;label&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Turbo Mode:&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Turbo Modus:&lt;/value&gt;
+   &lt;/label&gt;
+   &lt;bgcolor&gt;0x500&lt;/bgcolor&gt;
+   &lt;hints&gt;
+      &lt;hint&gt;checkbox&lt;/hint&gt;
+   &lt;/hints&gt;
+&lt;/booleanProperty&gt;
+</code></pre>
+
+<h4 id="booleanproperty-properties">booleanProperty properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Possible values</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>alphanumeric</td>
+<td>yes</td>
+<td>Name of widget.</td>
+</tr>
+<tr>
+<td>getCode</td>
+<td>Function pointer</td>
+<td>yes</td>
+<td>Pointer to function that returns a property's value. The signature of the function pointer needs to be <code>void* (*functionptr)()</code>.</td>
+</tr>
+<tr>
+<td>setcode</td>
+<td>Code to execute on setProperty</td>
+<td>yes</td>
+<td>Code to execute when setProperty is called. Any %s in the setCode content will be replaced by the generator with the new value.</td>
+</tr>
+<tr>
+<td>secured</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the interface of the Property will be secured or not.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Property will be visible or not.</td>
+</tr>
+<tr>
+<td>writable</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Property will be writable or not.</td>
+</tr>
+<tr>
+<td>label</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><p>Text of the Property's label.</p><ul><li>If code, a function pointer to receive the text.</li><li>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>unsigned int</td>
+<td>no</td>
+<td>Background color expressed as RGB value.</td>
+</tr>
+<tr>
+<td>hints</td>
+<td>checkbox</td>
+<td>no</td>
+<td>Hint for how the UI should be rendered.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sample-xml-for-date-property">Sample XML for Date property</h4>
+<pre><code class="xml">&lt;dateProperty&gt;
+   &lt;name&gt;startDateProperty&lt;/name&gt;
+   &lt;getCode&gt;getStartDateVar&lt;/getCode&gt;
+   &lt;setCode&gt;setStartDateVar(%s)&lt;/setCode&gt;
+   &lt;secured&gt;false&lt;/secured&gt;
+   &lt;enabled&gt;true&lt;/enabled&gt;
+   &lt;writable&gt;true&lt;/writable&gt;
+   &lt;label&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Start Date:&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Starttermin:&lt;/value&gt;
+   &lt;/label&gt;
+   &lt;bgcolor&gt;0x500&lt;/bgcolor&gt;
+   &lt;hints&gt;
+      &lt;hint&gt;datepicker&lt;/hint&gt;
+   &lt;/hints&gt;
+&lt;/dateProperty&gt;
+</code></pre>
+
+<h4 id="dateproperty-properties">dateProperty properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Possible values</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>alphanumeric</td>
+<td>yes</td>
+<td>Name of widget.</td>
+</tr>
+<tr>
+<td>getCode</td>
+<td>Function pointer</td>
+<td>yes</td>
+<td>Pointer to function that returns a property's value. The signature of the function pointer needs to be <code>void* (*functionptr)()</code>.</td>
+</tr>
+<tr>
+<td>setcode</td>
+<td>Code to execute on setProperty</td>
+<td>yes</td>
+<td>Code to execute when setProperty is called. Any %s in the setCode content will be replaced by the generator with the new value.</td>
+</tr>
+<tr>
+<td>secured</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the interface of the Property will be secured or not.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Property will be visible or not.</td>
+</tr>
+<tr>
+<td>writable</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Property will be writable or not.</td>
+</tr>
+<tr>
+<td>label</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><p>Text of the Property's label.</p><ul><li>If code, a function pointer to receive the text.</li><li>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>unsigned int</td>
+<td>no</td>
+<td>Background color expressed as RGB value.</td>
+</tr>
+<tr>
+<td>hints</td>
+<td>datepicker</td>
+<td>no</td>
+<td>Hint for how the UI should be rendered.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sample-xml-for-time-property">Sample XML for Time property</h4>
+<pre><code class="xml">&lt;timeProperty&gt;
+   &lt;name&gt;startTimeProperty&lt;/name&gt;
+   &lt;getCode&gt;getStartTimeVar&lt;/getCode&gt;
+   &lt;setCode&gt;setStartTimeVar(%s)&lt;/setCode&gt;
+   &lt;secured&gt;false&lt;/secured&gt;
+   &lt;enabled&gt;true&lt;/enabled&gt;
+   &lt;writable&gt;true&lt;/writable&gt;
+   &lt;label&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Start Time:&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Startzeit:&lt;/value&gt;
+   &lt;/label&gt;
+   &lt;bgcolor&gt;0x500&lt;/bgcolor&gt;
+   &lt;hints&gt;
+      &lt;hint&gt;timepicker&lt;/hint&gt;
+   &lt;/hints&gt;
+&lt;/timeProperty&gt;
+</code></pre>
+
+<h4 id="timeproperty-properties">timeProperty properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Possible values</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>alphanumeric</td>
+<td>yes</td>
+<td>Name of widget.</td>
+</tr>
+<tr>
+<td>getCode</td>
+<td>Function pointer</td>
+<td>yes</td>
+<td>Pointer to function that returns a property's value. The signature of the function pointer needs to be <code>void* (*functionptr)()</code>.</td>
+</tr>
+<tr>
+<td>setcode</td>
+<td>Code to execute on setProperty</td>
+<td>yes</td>
+<td>Code to execute when setProperty is called. Any %s in the setCode content will be replaced by the generator with the new value.</td>
+</tr>
+<tr>
+<td>secured</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the interface of the Property will be secured or not.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Property will be visible or not.</td>
+</tr>
+<tr>
+<td>writable</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Property will be writable or not.</td>
+</tr>
+<tr>
+<td>label</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><p>Text of the Property's label.</p><ul><li>If code, a function pointer to receive the label.</li><li>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>unsigned int</td>
+<td>no</td>
+<td>Background color expressed as RGB value.</td>
+</tr>
+<tr>
+<td>hints</td>
+<td>timepicker</td>
+<td>no</td>
+<td>Hint for how the UI should be rendered.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sample-xml-for-scalar-property">Sample XML for Scalar property</h4>
+<p>The constraintDefs tag includes the value and range example.
+Both cannot be included in the same tag.</p>
+<pre><code class="xml">&lt;scalarProperty dataType=&quot;UINT16&quot;&gt;
+   &lt;name&gt;heatProperty&lt;/name&gt;
+   &lt;getCode&gt;getTemperatureVar&lt;/getCode&gt;
+   &lt;setCode&gt;setTemperatureVar(%s)&lt;/setCode&gt;
+   &lt;secured&gt;false&lt;/secured&gt;
+   &lt;enabled&gt;true&lt;/enabled&gt;
+   &lt;writable&gt;true&lt;/writable&gt;
+   &lt;label&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Oven Temperature&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Ofentemperatur&lt;/value&gt;
+   &lt;/label&gt;
+   &lt;bgcolor&gt;0x500&lt;/bgcolor&gt;
+   &lt;hints&gt;
+      &lt;hint&gt;spinner&lt;/hint&gt;
+   &lt;/hints&gt;
+   &lt;constraintDefs&gt;
+      &lt;constraintVals&gt;
+         &lt;constraint&gt;
+            &lt;display&gt;
+               &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Regular&lt;/value&gt;
+               &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Normal&lt;/value&gt;
+            &lt;/display&gt;
+            &lt;value&gt;175&lt;/value&gt;
+         &lt;/constraint&gt;
+         &lt;constraint&gt;
+            &lt;display&gt;
+               &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Hot&lt;/value&gt;
+               &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Heiss&lt;/value&gt;
+            &lt;/display&gt;
+            &lt;value&gt;200&lt;/value&gt;
+         &lt;/constraint&gt;
+      &lt;/constraintVals&gt;
+   OR
+      &lt;constraintRange&gt;
+         &lt;min&gt;0&lt;/min&gt;
+         &lt;max&gt;400&lt;/max&gt;
+         &lt;increment&gt;25&lt;/increment &gt;
+      &lt;/constraintRange&gt;
+   &lt;/constraintDefs&gt;
+   &lt;unitMeasure&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Degrees&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Grad&lt;/value&gt;
+   &lt;/unitMeasure&gt;
+&lt;/scalarProperty&gt;
+</code></pre>
+
+<h4 id="scalarproperty-properties">scalarProperty properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Possible values</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dataType</td>
+<td><ul><li>INT16</li><li>UINT16</li><li>INT32</li><li>UINT32</li><li>INT64</li><li>DOUBLE</li></ul></td>
+<td>yes</td>
+<td>Scalar data types</td>
+</tr>
+<tr>
+<td>name</td>
+<td>alphanumeric</td>
+<td>yes</td>
+<td>Name of widget.</td>
+</tr>
+<tr>
+<td>getCode</td>
+<td>Function pointer</td>
+<td>yes</td>
+<td>Pointer to function that returns a property's value. The signature of the function pointer needs to be <code>void* (*functionptr)()</code>.</td>
+</tr>
+<tr>
+<td>setcode</td>
+<td>Code to execute on setProperty</td>
+<td>yes</td>
+<td>Code to execute when setProperty is called. Any %s in the setCode content will be replaced by the generator with the new value.</td>
+</tr>
+<tr>
+<td>secured</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the interface of the Property will be secured or not.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Property will be visible or not.</td>
+</tr>
+<tr>
+<td>writable</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Property will be writable or not.</td>
+</tr>
+<tr>
+<td>label</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><p>Text of the Property's label.</p><ul><li>If code, a function pointer to receive the text.</li><li>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>unsigned int</td>
+<td>no</td>
+<td>Background color expressed as RGB value.</td>
+</tr>
+<tr>
+<td>hints</td>
+<td><ul><li>timepicker</li><li>radiobutton</li><li>slider</li><li>numberpicker</li><li>keypad</li><li>numericview</li></ul></td>
+<td>no</td>
+<td>Hint for how the UI should be rendered.</td>
+</tr>
+<tr>
+<td>constraintDefs</td>
+<td><ul><li>constraintList</li><li>constraintRange</li></ul></td>
+<td>no</td>
+<td><ul><li>If constraintList, each constraint is made up of a value and its display.</li><li>If constraintRange, each constraint is made up of a min, max and increment value.</li></ul></td>
+</tr>
+<tr>
+<td>unitMeasure</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><p>Unit of measure for the Property.</p><ul><li>If code, a function pointer to receive the unit measure text.<ul><li>code</li><li>value</li></ul>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dialog">Dialog</h3>
+<h4 id="sample-xml-for-a-dialog">Sample XML for a Dialog</h4>
+<pre><code class="xml">&lt;dialog&gt;
+   &lt;name&gt;LightConfirm&lt;/name&gt;
+   &lt;secured&gt;false&lt;/secured&gt;
+   &lt;enabled&gt;true&lt;/enabled&gt;
+   &lt;message&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Do you want to turn on the light&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Wollen sie das Licht andrehen&lt;/value&gt;
+   &lt;/message&gt;
+   &lt;label&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Turn on Light&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Licht andrehen&lt;/value&gt;
+   &lt;/label&gt;
+   &lt;bgcolor&gt;0x122&lt;/bgcolor&gt;
+   &lt;hints&gt;
+      &lt;hint&gt;alertdialog&lt;/hint&gt;
+   &lt;/hints&gt;
+   &lt;button&gt;
+      &lt;label&gt;
+         &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;Yes&lt;/value&gt;
+         &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Ja&lt;/value&gt;
+      &lt;/label&gt;
+
+      &lt;executeCode&gt;TurnOnLight(true);&lt;/executeCode&gt;
+   &lt;/button&gt;
+   &lt;button&gt;
+   &lt;label&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;en&quot;&gt;No&lt;/value&gt;
+      &lt;value type=&quot;literal&quot; language=&quot;de&quot;&gt;Nein&lt;/value&gt;
+   &lt;/label&gt;
+
+      &lt;executeCode&gt;TurnOnLight(false);&lt;/executeCode&gt;
+   &lt;/button&gt;
+&lt;/dialog&gt;
+</code></pre>
+
+<h4 id="dialog-properties">Dialog properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Possible values</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>alphanumeric</td>
+<td>yes</td>
+<td>Name of widget.</td>
+</tr>
+<tr>
+<td>secured</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the interface of the Dialog will be secured or not.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td><ul><li>true</li><li>false</li></ul></td>
+<td>yes</td>
+<td>Determines whether the Dialog will be visible or not.</td>
+</tr>
+<tr>
+<td>message</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><p>Message of the Dialog.</p><ul><li>If code, a function pointer to receive the text.</li><li>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+<tr>
+<td>label</td>
+<td><ul><li>code</li><li>value</li></ul></td>
+<td>no</td>
+<td><p>Text of the Dialog's label.</p><ul><li>If code, a function pointer to receive the text.</li><li>If value, can be a literal or a constant.</li></ul></td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>unsigned int</td>
+<td>no</td>
+<td>Background color expressed as RGB value.</td>
+</tr>
+<tr>
+<td>hints</td>
+<td>alertdialog</td>
+<td>no</td>
+<td>Hint for how the UI should be rendered.</td>
+</tr>
+<tr>
+<td>button</td>
+<td>Label and executeCode</td>
+<td>Yes - can have up to 3</td>
+<td><p>Each button must contain the following:</p><ul><li>A Label tag that contains the text that appears on the button.</li><li>An executeCode tag which contains the code to be executed on the Controllee when the button is pressed.</li></ul></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cpp/" class="btn btn-neutral float-right" title="Cpp"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../config/objc/" class="btn btn-neutral" title="Objc"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../config/objc/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../cpp/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

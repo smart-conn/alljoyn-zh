@@ -1,0 +1,2550 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cpp - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Cpp";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
+  <script src="../../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Ambassadors</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../ambassadors/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Develop</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/cpp-legacy/">Cpp legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/java-legacy/">Java legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/objc-legacy/">Objc legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audio streaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../audio-streaming/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../audio-streaming/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Cpp</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#configuration-api-guide-c">Configuration API Guide - C++</a></li>
+                
+                    <li><a class="toctree-l4" href="#reference-code">Reference code</a></li>
+                
+                    <li><a class="toctree-l4" href="#obtain-the-configuration-service-framework">Obtain the Configuration service framework</a></li>
+                
+                    <li><a class="toctree-l4" href="#build-an-application-that-uses-configserver">Build an application that uses ConfigServer</a></li>
+                
+                    <li><a class="toctree-l4" href="#setting-up-the-alljoyn-framework-and-about-feature">Setting up the AllJoyn framework and About feature</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-an-app-config-server">Implementing an App: Config Server</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-an-app-config-client">Implementing an App: Config Client</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/objc/">Objc</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Auto ping</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/auto-ping/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Propcache</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/propcache/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Events and actions</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../events-and-actions/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../api-reference/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ask</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/popular/">Popular</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Building</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Android</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ios osx</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/openwrt/">Openwrt</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Windows</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Debug</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/common-issues/">Common issues</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Run sample apps</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Acserver</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Basic</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Chat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/linux/">Linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Test</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/sessions/">Sessions</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Tutorial</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/arduino-and-gt202/">Arduino and gt202</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/ios/">Ios</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/thin-app/">Thin app</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/videos/">Videos</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/core/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Learn</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/architecture/">Architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/glossary/">Glossary</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/use-cases/">Use cases</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Base services</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audiostreaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/events-and-actions/">Events and actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/standard-core/">Standard core</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/thin-core/">Thin core</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About announcement</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Rn config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/rn_config/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Security2 0</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/hld/">Hld</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>System description</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/advertisement-discovery/">Advertisement discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-security/">Alljoyn security</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/data-exchange/">Data exchange</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/events-actions/">Events actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/sessionless-signal/">Sessionless signal</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/system-architecture/">System architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/thin-apps/">Thin apps</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Project lifecycle</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../project-lifecycle/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Supported platforms</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../supported-platforms/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>User groups</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../user-groups/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Config &raquo;</li>
+        
+      
+    
+    <li>Cpp</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="configuration-api-guide-c">Configuration API Guide - C++</h1>
+<h2 id="reference-code">Reference code</h2>
+<h3 id="classes-used-to-provide-configdata">Classes used to provide ConfigData</h3>
+<table>
+<thead>
+<tr>
+<th>Server class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ConfigService</td>
+<td>Class that implements the interface org.alljoyn.Config as a service framework.</td>
+</tr>
+<tr>
+<td>PropertyStore</td>
+<td>Interface that supplies the list of properties required for ReadAll() and enables user manipulation of their values via Update(), Delete() and Reset().</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classes-used-to-remotely-manipulate-configdata">Classes used to remotely manipulate ConfigData</h3>
+<table>
+<thead>
+<tr>
+<th>Client class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ConfigClient</td>
+<td>Class that implements the interface org.alljoyn.Config as a client.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="obtain-the-configuration-service-framework">Obtain the Configuration service framework</h2>
+<p>See the <a href="../../../../develop/building/linux">Building Linux section</a>
+for instructions on compiling the Configuration service framework.</p>
+<h2 id="build-an-application-that-uses-configserver">Build an application that uses ConfigServer</h2>
+<p>The following steps provide the high-level process to build an
+application that will maintain ConfigData.</p>
+<ol>
+<li>Create the base for the AllJoyn&trade; application.</li>
+<li>Implement the ProperyStore to produce a ConfigStore.</li>
+<li>Initialize the AboutService in service mode.</li>
+<li>Instantiate a ConfigStore.</li>
+<li>Implement the callbacks required by the Config Server.</li>
+<li>Initialize the ConfigService in server mode, providing
+it with the ConfigStore and callbacks.</li>
+</ol>
+<h2 id="setting-up-the-alljoyn-framework-and-about-feature">Setting up the AllJoyn framework and About feature</h2>
+<p>The steps required for this service framework are universal
+to all applications that use the AllJoyn framework and for
+any application using one or more AllJoyn service frameworks.
+Prior to use of the Configuration service framework as a Config
+Server or Config Client, the About feature must be implemented
+and the AllJoyn framework set up.</p>
+<p>Complete the procedures in the following documents to guide
+you in this process:</p>
+<ul>
+<li><a href="../../../../develop/building/linux">Building Linux section</a></li>
+<li><a href="../../../../develop/api-guide/about/cpp">About API Guide</a></li>
+</ul>
+<h2 id="implementing-an-app-config-server">Implementing an App: Config Server</h2>
+<p>Implementing a Config Server requires creating and registering
+an instance of the ConfigService class. Any application using
+Config Server also requires an About Server to facilitate the
+discovery via Announcements.</p>
+<p><strong>NOTE:</strong> Verify the BusAttachment has been created, started and
+connected before implementing the ConfigService. See the
+<a href="../../../../develop/api-guide/about/cpp">About API Guide</a> for the code snippets.
+Code in this chapter references a variable <code>mBus</code>
+(the BusAttachment variable name).</p>
+<h3 id="initialize-the-alljoyn-framework">Initialize the AllJoyn framework</h3>
+<p>See the <a href="../../../../develop/building/linux">Building Linux section</a> for instructions
+to set up the AllJoyn framework.</p>
+<h4 id="create-bus-attachment">Create bus attachment</h4>
+<pre><code class="cpp">bus-&gt;Start();
+bus-&gt;Connect();
+</code></pre>
+
+<h3 id="enable-peer-security">Enable peer security</h3>
+<p>Config Server uses peer security.</p>
+<p>Create a KeyListener class that inherits from ajn::AuthListener.
+It needs to implement two functions: RequestCredentials and
+AuthenticationComplete.</p>
+<pre><code class="cpp">class SrpKeyXListener : public ajn::AuthListener {
+   public:
+      bool RequestCredentials(const char* authMechanism,
+         const char* authPeer,
+         uint16_t authCount, const char* userId,
+         uint16_t credMask, Credentials&amp; creds);
+      void AuthenticationComplete(const char* authMechanism, const char* authPeer,
+
+   bool success);
+};
+</code></pre>
+
+<p><code>RequestCredentials()</code> needs to set the password using Creds
+and return true.</p>
+<pre><code class="cpp">creds.SetPassword(Password);
+return true;
+</code></pre>
+
+<p>Instantiate the keylistener class and enable peer security.</p>
+<pre><code class="cpp">SrpKeyXListener* keyListener = new SrpKeyXListener();
+bus-&gt;EnablePeerSecurity(&quot;ALLJOYN_PIN_KEYX ALLJOYN_SRP_KEYX ALLJOYN_ECDHE_PSK&quot;, keyListener);
+</code></pre>
+
+<h3 id="implement-propertystore-to-produce-a-configstore">Implement PropertyStore to produce a ConfigStore</h3>
+<p>The PropertyStore interface is required by the AboutService
+to store the provisioned values for the About interface data
+fields. See the <a href="../../../../learn/core/about-announcement/interface">About Interface Definition</a> for more information.</p>
+<p>The ProperyStore interface is also required by the ConfigService
+to store and facilitate manipulation of some updateable fields
+(listed in <a href="#config-interface-data-fields">Config interface data fields</a>).
+See the [Configuration Interface Definition] for more information.</p>
+<h4 id="config-interface-data-fields">Config interface data fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DefaultLanguage</code></td>
+<td>yes</td>
+<td><code>s</code></td>
+</tr>
+<tr>
+<td><code>DeviceName</code></td>
+<td>yes</td>
+<td><code>s</code></td>
+</tr>
+</tbody>
+</table>
+<p>An example PropertyStore implementation (ConfigStore) is
+provided below that specifies the following dictionary of
+metadata fields:</p>
+<ul>
+<li>Keys are the field names.</li>
+<li>Values are a Map of String to Object entries where the
+String is the language tag associated with the Object value.</li>
+</ul>
+<p>This implementation extends the example AboutStore implementation
+in the <a href="../../../../develop/api-guide/about/cpp">About API Guide</a> and is
+passed to the AboutService instead of AboutStore.</p>
+<pre><code class="cpp">PropertyStoreImpl::PropertyStoreImpl(const char* factoryConfigFile, const char*
+configFile) : m_IsInitialized(false)
+{
+   m_configFileName.assign(configFile);
+   m_factoryConfigFileName.assign(factoryConfigFile);
+}
+
+void PropertyStoreImpl::Initialize()
+{
+   m_IsInitialized = true; m_factoryProperties.clear();
+   m_factoryProperties.insert(m_Properties.begin(), m_Properties.end());
+
+   //m_factoryProperties - overwrite the values that are found in
+FactoryConfigService file
+   UpdateFactorySettings();
+}
+
+void PropertyStoreImpl::FactoryReset()
+{
+   std::ifstream factoryConfigFile(m_factoryConfigFileName.c_str(), std::ios::binary);
+   std::ofstream configFile(m_configFileName.c_str(), std::ios::binary);
+
+   if (factoryConfigFile &amp;&amp; configFile) {
+      configFile &lt;&lt; factoryConfigFile.rdbuf();
+
+      configFile.close();
+      factoryConfigFile.close();
+   } else {
+      std::cout &lt;&lt; &quot;Factory reset failed&quot; &lt;&lt; std::endl;
+   }
+
+   m_Properties.clear();
+   m_Properties.insert(m_factoryProperties.begin(), m_factoryProperties.end());
+}
+
+const qcc::String&amp; PropertyStoreImpl::GetConfigFileName()
+{
+   return m_configFileName;
+}
+
+PropertyStoreImpl::~PropertyStoreImpl()
+{
+}
+
+QStatus PropertyStoreImpl::ReadAll(const char* languageTag, Filter filter, ajn::MsgArg&amp; all)
+{
+   if (!m_IsInitialized) {
+      return ER_FAIL;
+   }
+
+   if (filter == ANNOUNCE || filter == READ) {
+      return AboutPropertyStoreImpl::ReadAll(languageTag, filter, all);
+   }
+
+   if (filter != WRITE) {
+      return ER_FAIL;
+   }
+
+   QStatus status = ER_OK;
+   if (languageTag != NULL &amp;&amp; languageTag[0] != 0) { // check that the language is in the supported languages;
+      CHECK_RETURN(isLanguageSupported(languageTag))
+   } else {
+      PropertyMap::iterator it = m_Properties.find(DEFAULT_LANG);
+      if (it == m_Properties.end()) {
+
+         return ER_LANGUAGE_NOT_SUPPORTED;
+      }
+      CHECK_RETURN(it-&gt;second.getPropertyValue().Get(&quot;s&quot;, &amp;languageTag))
+   }
+
+   MsgArg* argsWriteData = new MsgArg[m_Properties.size()];
+   uint32_t writeArgCount = 0;
+   do {
+      for (PropertyMap::const_iterator it = m_Properties.begin(); it !=
+m_Properties.end(); ++it) {
+         const PropertyStoreProperty&amp; property = it-&gt;second;
+
+         if (!property.getIsWritable()) {
+            continue;
+         }
+
+         // check that it is from the defaultLanguage or empty. if (!(property.getLanguage().empty() ||
+property.getLanguage().compare(languageTag) == 0)) {
+            continue;
+         }
+
+         CHECK(argsWriteData[writeArgCount].Set(&quot;{sv}&quot;, property.getPropertyName().c_str(),
+                                          new
+MsgArg(property.getPropertyValue())))
+
+         argsWriteData[writeArgCount].SetOwnershipFlags(MsgArg::OwnsArgs,true;
+
+         writeArgCount++;
+      }
+      CHECK(all.Set(&quot;a{sv}&quot;, writeArgCount, argsWriteData))
+      all.SetOwnershipFlags(MsgArg::OwnsArgs, true);
+   } while (0);
+
+   if (status != ER_OK) {
+      delete[] argsWriteData;
+   }
+
+   return status;
+}
+
+QStatus PropertyStoreImpl::Update(const char* name, const char* languageTag, const ajn::MsgArg* value)
+{
+   if (!m_IsInitialized) {
+   return ER_FAIL;
+}
+
+   PropertyStoreKey propertyKey = getPropertyStoreKeyFromName(name);
+   if (propertyKey &gt;= NUMBER_OF_KEYS) {
+      return ER_FEATURE_NOT_AVAILABLE;
+
+   }
+
+   // check the languageTag
+   // case languageTag == NULL: is not a valid value for the languageTag
+   // case languageTag == &quot;&quot;: use the default language
+   // case languageTag == string: check value, must be one of the supported languages
+   QStatus status = ER_OK;
+   if (languageTag == NULL) {
+      return ER_INVALID_VALUE;
+   } else if (languageTag[0] == 0) {
+      PropertyMap::iterator it = m_Properties.find(DEFAULT_LANG);
+      if (it == m_Properties.end()) {
+         return ER_LANGUAGE_NOT_SUPPORTED;
+      }
+      status = it-&gt;second.getPropertyValue().Get(&quot;s&quot;, &amp;languageTag);
+   } else {
+      status = isLanguageSupported(languageTag);
+      if (status != ER_OK) {
+         return status;
+      }
+   }
+
+   // Special case DEFAULT_LANG is not associated with a language in the PropertyMap and
+   // its only valid languageTag = NULL
+   // By setting it here, we to let the user follow the same language rules as any other property
+   if (propertyKey == DEFAULT_LANG) {
+      languageTag = NULL;
+   }
+
+   //validate that the value is acceptable
+   qcc::String languageString = languageTag ? languageTag : &quot;&quot;; status = validateValue(propertyKey, *value, languageString); if (status != ER_OK) {
+      std::cout &lt;&lt; &quot;New Value failed validation. Will not update&quot; &lt;&lt; std::endl;
+
+      return status;
+   }
+
+   PropertyStoreProperty* temp = NULL;
+   std::pair&lt;PropertyMap::iterator, PropertyMap::iterator&gt; propertiesIter =
+m_Properties.equal_range(propertyKey);
+
+   for (PropertyMap::iterator it = propertiesIter.first; it !=
+propertiesIter.second; it++) {
+      const PropertyStoreProperty&amp; property = it-&gt;second;
+      if (property.getIsWritable()) {
+         if ((languageTag == NULL &amp;&amp; property.getLanguage().empty()) || (languageTag != NULL &amp;&amp; property.getLanguage().compare(languageTag)
+
+== 0)) {
+
+            temp = new PropertyStoreProperty(property.getPropertyName(),
+
+*value, property.getIsPublic(),
+
+               property.getIsAnnouncable());
+            if (languageTag) {
+
+            property.getIsWritable(),
+
+               temp-&gt;setLanguage(languageTag);
+         }
+         m_Properties.erase(it);
+         break;
+      }
+   }
+}
+
+if (temp == NULL) {
+   return ER_INVALID_VALUE;
+}
+
+m_Properties.insert(PropertyPair(propertyKey, *temp));
+
+if (persistUpdate(temp-&gt;getPropertyName().c_str(), value-&gt;v_string.str, languageTag)) {
+   AboutService* aboutService = AboutServiceApi::getInstance();
+   if (aboutService) {
+      aboutService-&gt;Announce();
+   std::cout &lt;&lt; &quot;Calling Announce after UpdateConfiguration&quot; &lt;&lt; std::endl;
+
+   }
+   delete temp;
+   return ER_OK;
+} else {
+   delete temp;
+   return ER_INVALID_VALUE;
+   }
+}
+
+QStatus PropertyStoreImpl::Delete(const char* name, const char* languageTag)
+{
+   if (!m_IsInitialized) {
+      return ER_FAIL;
+   }
+
+   PropertyStoreKey propertyKey = getPropertyStoreKeyFromName(name);
+   if (propertyKey &gt;= NUMBER_OF_KEYS) {
+      return ER_FEATURE_NOT_AVAILABLE;
+   }
+
+   QStatus status = ER_OK;
+   if (languageTag == NULL) {
+      return ER_INVALID_VALUE;
+   } else if (languageTag[0] == 0) {
+
+
+      PropertyMap::iterator it = m_Properties.find(DEFAULT_LANG);
+      if (it == m_Properties.end()) {
+         return ER_LANGUAGE_NOT_SUPPORTED;
+      }
+      status = it-&gt;second.getPropertyValue().Get(&quot;s&quot;, &amp;languageTag);
+      } else {
+         status = isLanguageSupported(languageTag);
+         if (status != ER_OK) {
+            return status;
+         }
+      }
+
+      if (propertyKey == DEFAULT_LANG) {
+         languageTag = NULL;
+      }
+
+      bool deleted = false;
+      std::pair&lt;PropertyMap::iterator, PropertyMap::iterator&gt; propertiesIter =
+   m_Properties.equal_range(propertyKey);
+
+      for (PropertyMap::iterator it = propertiesIter.first; it !=
+   propertiesIter.second; it++) {
+         const PropertyStoreProperty&amp; property = it-&gt;second;
+         if (property.getIsWritable()) {
+            if ((languageTag == NULL &amp;&amp; property.getLanguage().empty()) || (languageTag != NULL &amp;&amp; property.getLanguage().compare(languageTag)
+
+   == 0)) {
+
+               m_Properties.erase(it);
+               // insert from backup. deleted = true;
+               break;
+            }
+         }
+      }
+
+      if (!deleted) {
+         if (languageTag != NULL) {
+            return ER_LANGUAGE_NOT_SUPPORTED;
+         } else {
+            return ER_INVALID_VALUE;
+         }
+      }
+
+      propertiesIter = m_factoryProperties.equal_range(propertyKey);
+
+      for (PropertyMap::iterator it = propertiesIter.first; it !=
+   propertiesIter.second; it++) {
+         const PropertyStoreProperty&amp; property = it-&gt;second;
+         if (property.getIsWritable()) {
+            if ((languageTag == NULL &amp;&amp; property.getLanguage().empty()) || (languageTag != NULL &amp;&amp; property.getLanguage().compare(languageTag)
+
+   == 0)) {
+
+               m_Properties.insert(PropertyPair(it-&gt;first, it-&gt;second));
+               char* value;
+               it-&gt;second.getPropertyValue().Get(&quot;s&quot;, &amp;value);
+               if (persistUpdate(it-&gt;second.getPropertyName().c_str(), value,
+
+   languageTag)) {
+
+                  AboutService* aboutService = AboutServiceApi::getInstance();
+                  if (aboutService) {
+                     aboutService-&gt;Announce();
+                     std::cout &lt;&lt; &quot;Calling Announce after ResetConfiguration&quot;
+
+   &lt;&lt; std::endl;
+
+                 }
+                 return ER_OK;
+              }
+           }
+        }
+      }
+      return ER_INVALID_VALUE;
+   }
+
+   bool PropertyStoreImpl::persistUpdate(const char* key, const char* value, const char* languageTag)
+   {
+      std::map&lt;std::string, std::string&gt; data;
+      std::string skey(key);
+      if (languageTag &amp;&amp; languageTag[0]) { skey.append(&quot;.&quot;); skey.append(languageTag);
+      }
+
+   data[skey] = value;
+   return IniParser::UpdateFile(m_configFileName.c_str(), data);
+}
+
+PropertyStoreKey PropertyStoreImpl::getPropertyStoreKeyFromName(qcc::String const&amp;
+   propertyStoreName)
+   {
+      for (int indx = 0; indx &lt; NUMBER_OF_KEYS; indx++) {
+         if (PropertyStoreName[indx].compare(propertyStoreName) == 0) {
+            return (PropertyStoreKey)indx;
+         }
+      }
+      return NUMBER_OF_KEYS;
+   }
+
+   bool PropertyStoreImpl::FillDeviceNames()
+   {
+      std::map&lt;std::string, std::string&gt; data;
+
+      if (!IniParser::ParseFile(m_factoryConfigFileName.c_str(), data)) {
+
+      std::cerr &lt;&lt; &quot;Could not parse configFile&quot; &lt;&lt; std::endl;
+      return false;
+   }
+
+   typedef std::map&lt;std::string, std::string&gt;::iterator it_data;
+   for (it_data iterator = data.begin(); iterator != data.end(); iterator++) {
+
+      if
+(iterator-&gt;first.find(AboutPropertyStoreImpl::getPropertyStoreName(DEVICE_NAME).c_str())
+== 0) {
+         size_t lastDotLocation = iterator-&gt;first.find(&quot;.&quot;);
+         if ((lastDotLocation ==    std::string::npos) || (lastDotLocation + 1
+&gt;= iterator-&gt;first.length())) {
+            continue;
+         }
+         std::string language = iterator-&gt;first.substr(lastDotLocation + 1);
+         std::string value = iterator-&gt;second;
+
+         UpdateFactoryProperty(DEVICE_NAME, language.c_str(), MsgArg(&quot;s&quot;, value.c_str()));
+      }
+   }
+
+   return true;
+}
+
+bool PropertyStoreImpl::UpdateFactorySettings()
+{
+   std::map&lt;std::string, std::string&gt; data;
+   if (!IniParser::ParseFile(m_factoryConfigFileName.c_str(), data)) {
+      std::cerr &lt;&lt; &quot;Could not parse configFile&quot; &lt;&lt; std::endl;
+      return false;
+   }
+
+   std::map&lt;std::string, std::string&gt;::iterator iter;
+
+   iter =
+data.find(AboutPropertyStoreImpl::getPropertyStoreName(DEVICE_ID).c_str());
+   if (iter != data.end()) {
+      qcc::String deviceId = iter-&gt;second.c_str(); UpdateFactoryProperty(DEVICE_ID, NULL, MsgArg(&quot;s&quot;, deviceId.c_str()));
+   }
+
+   if (!FillDeviceNames()) {
+      return false;
+   }
+
+   iter = data.find(AboutPropertyStoreImpl::getPropertyStoreName(APP_ID).c_str());
+
+   if (iter != data.end()) {
+      qcc::String appGUID = iter-&gt;second.c_str();
+
+      UpdateFactoryProperty(APP_ID, NULL, MsgArg(&quot;s&quot;, appGUID.c_str()));
+   }
+
+   iter =
+data.find(AboutPropertyStoreImpl::getPropertyStoreName(APP_NAME).c_str());
+   if (iter != data.end()) {
+      qcc::String appName = iter-&gt;second.c_str(); UpdateFactoryProperty(APP_NAME, NULL, MsgArg(&quot;s&quot;, appName.c_str()));
+   }
+
+   iter =
+data.find(AboutPropertyStoreImpl::getPropertyStoreName(DEFAULT_LANG).c_str());
+   if (iter != data.end()) {
+      qcc::String defaultLanguage = iter-&gt;second.c_str(); UpdateFactoryProperty(DEFAULT_LANG, NULL, MsgArg(&quot;s&quot;,
+defaultLanguage.c_str()));
+   }
+
+   return true;
+}
+
+
+void PropertyStoreImpl::UpdateFactoryProperty(PropertyStoreKey propertyKey, const char* languageTag,
+   const ajn::MsgArg&amp; value)
+{
+   PropertyStoreProperty* temp = NULL;
+   std::pair&lt;PropertyMap::iterator, PropertyMap::iterator&gt; propertiesIter =
+m_factoryProperties.equal_range(propertyKey);
+
+   for (PropertyMap::iterator it = propertiesIter.first; it !=
+propertiesIter.second; it++) {
+   const PropertyStoreProperty&amp; property = it-&gt;second;
+
+   if ((languageTag == NULL &amp;&amp; property.getLanguage().empty()) || (languageTag != NULL &amp;&amp; property.getLanguage().compare(languageTag)
+
+== 0)) {
+
+
+      temp = new PropertyStoreProperty(property.getPropertyName(), value,
+
+property.getIsPublic(),
+property.getIsWritable(),
+property.getIsAnnouncable());
+      if (languageTag) {
+
+         temp-&gt;setLanguage(languageTag);
+      }
+      m_factoryProperties.erase(it);
+      break;
+   }
+}
+
+
+   if (temp == NULL) {
+      return;
+   }
+
+   m_factoryProperties.insert(PropertyPair(propertyKey, *temp));
+   delete temp;
+}
+</code></pre>
+
+<h3 id="instantiate-a-configstore">Instantiate a ConfigStore</h3>
+<pre><code class="cpp">propertyStore = new PropertyStoreImpl(FACTORYCONFIGFILENAME, CONFIGFILENAME);
+propertyStore-&gt;setDeviceName(deviceName);
+propertyStore-&gt;setAppId(appIdHex);
+propertyStore-&gt;setAppName(appName);
+propertyStore-&gt;setDefaultLang(defaultLanguage);
+
+propertyStore-&gt;setModelNumber(&quot;Wxfy388i&quot;);
+propertyStore-&gt;setDateOfManufacture(&quot;10/1/2199&quot;);
+propertyStore-&gt;setSoftwareVersion(&quot;12.20.44 build 44454&quot;);
+propertyStore-&gt;setAjSoftwareVersion(ajn::GetVersion());
+propertyStore-&gt;setHardwareVersion(&quot;355.499. b&quot;);
+
+std::vector&lt;qcc::String&gt; languages(3);
+languages.push_back(&quot;en&quot;);
+languages.push_back(&quot;sp&quot;);
+languages.push_back(&quot;fr&quot;);
+propertyStore-&gt;setSupportedLangs(languages);
+
+DeviceNamesType::const_iterator iter = deviceNames.find(languages[0]);
+   if (iter != deviceNames.end()) {
+      CHECK_RETURN(propertyStore-&gt;setDeviceName(iter-&gt;second.c_str(), languages[0]));
+   } else {
+      CHECK_RETURN(propertyStore-&gt;setDeviceName(&quot;My device name&quot;, &quot;en&quot;));
+   }
+
+   iter = deviceNames.find(languages[1]);
+   if (iter != deviceNames.end()) {
+      CHECK_RETURN(propertyStore-&gt;setDeviceName(iter-&gt;second.c_str(), languages[1]));
+   } else {
+      CHECK_RETURN(propertyStore-&gt;setDeviceName(&quot;Mi nombre de dispositivo&quot;,
+&quot;sp&quot;));
+   }
+
+   iter = deviceNames.find(languages[2]);
+   if (iter != deviceNames.end()) {
+      CHECK_RETURN(propertyStore-&gt;setDeviceName(iter-&gt;second.c_str(), languages[2]));
+   } else {
+
+      CHECK_RETURN(propertyStore-&gt;setDeviceName(&quot;Mon nom de l'appareil&quot;, &quot;fr&quot;));
+
+   }
+propertyStore-&gt;setDescription(&quot;This is an AllJoyn application&quot;, &quot;en&quot;);
+propertyStore-&gt;setDescription(&quot;Esta es una AllJoyn aplicacion&quot;, &quot;sp&quot;);
+propertyStore-&gt;setDescription(&quot;C'est une Alljoyn application&quot;, &quot;fr&quot;);
+
+propertyStore-&gt;setManufacturer(&quot;Company&quot;, &quot;en&quot;);
+propertyStore-&gt;setManufacturer(&quot;Empresa&quot;, &quot;sp&quot;);
+propertyStore-&gt;setManufacturer(&quot;Entreprise&quot;, &quot;fr&quot;);
+
+propertyStore-&gt;setSupportUrl(&quot;http://www.allseenalliance.org&quot;);
+propertyStore-&gt;Initialize();
+</code></pre>
+
+<h3 id="implement-a-buslistener-and-sessionportlistener">Implement a BusListener and SessionPortListener</h3>
+<p>In order to bind a SessionPort and accept sessions, a new
+class must be created that inherits from the AllJoyn
+BusListener and SessionPortListener classes.</p>
+<p>The class must contain the following function:</p>
+<pre><code class="cpp">bool AcceptSessionJoiner(SessionPort sessionPort, const char* joiner, const
+SessionOpts&amp; opts)
+</code></pre>
+
+<p>The AcceptSessionJoiner function will be called any time a
+joinsession request is received; the Listener class needs
+to dictate whether the joinsession request should be accepted
+or rejected by returning true or false, respectively. These
+considerations are application-specific and can include any
+of the following:</p>
+<ul>
+<li>The SessionPort the request was made on</li>
+<li>Specific SessionOpts limitations</li>
+<li>The number of sessions already joined</li>
+</ul>
+<p>Here is an example of a full class declaration for the listener class.</p>
+<pre><code class="cpp">class CommonBusListener : public ajn::BusListener, public ajn::SessionPortListener {
+
+public:
+   CommonBusListener();
+   ~CommonBusListener();
+   bool AcceptSessionJoiner(ajn::SessionPort sessionPort,
+      const char* joiner, const ajn::SessionOpts&amp; opts);
+   void setSessionPort(ajn::SessionPort sessionPort);
+      ajn::SessionPort getSessionPort();
+   private:
+      ajn::SessionPort m_SessionPort;
+};
+</code></pre>
+
+<h3 id="initialize-the-aboutservice-in-server-mode">Initialize the AboutService in server mode</h3>
+<pre><code class="cpp">busListener = new CommonBusListener();
+AboutServiceApi::Init(*bus, *propertyStore);
+AboutServiceApi* aboutService = AboutServiceApi::getInstance();
+busListener-&gt;setSessionPort(port);
+bus-&gt;RegisterBusListener(*busListener);
+TransportMask transportMask = TRANSPORT_ANY;
+SessionPort sp = port;
+SessionOpts opts(SessionOpts::TRAFFIC_MESSAGES, false,
+SessionOpts::PROXIMITY_ANY, transportMask);
+bus-&gt;BindSessionPort(sp, opts, *busListener);
+aboutService-&gt;Register(port);
+bus-&gt;RegisterBusObject(*aboutService);
+</code></pre>
+
+<p>For more information about the About feature, see the
+<a href="../../../../develop/api-guide/about/cpp">About API Guide</a>.</p>
+<h3 id="implement-the-callbacks-required-by-the-config-server">Implement the callbacks required by the Config Server</h3>
+<pre><code class="cpp">ConfigServiceListenerImpl::ConfigServiceListenerImpl(PropertyStoreImpl&amp; store, BusAttachment&amp; bus) :
+   ConfigService::Listener(), m_PropertyStore(&amp;store), m_Bus(&amp;bus)
+{
+}
+
+QStatus ConfigServiceListenerImpl::Restart()
+{
+   printf(&quot;Restart has been called !!!\n&quot;);
+   return ER_OK;
+}
+
+QStatus ConfigServiceListenerImpl::FactoryReset()
+{
+   QStatus status = ER_OK;
+   printf(&quot;FactoryReset has been called!!!\n&quot;); m_PropertyStore-&gt;FactoryReset(); printf(&quot;Clearing Key Store\n&quot;);
+   m_Bus-&gt;ClearKeyStore();
+
+   AboutServiceApi* aboutService = AboutServiceApi::getInstance();
+   if (aboutService) {
+      status = aboutService-&gt;Announce();
+      printf(&quot;Announce for %s =%d\n&quot;, m_Bus-&gt;GetUniqueName().c_str(), status);
+   }
+
+   return status;
+}
+
+QStatus ConfigServiceListenerImpl::SetPassphrase(const char* daemonRealm, size_t passcodeSize, const char* passcode)
+{
+   qcc::String passCodeString(passcode, passcodeSize);
+   printf(&quot;SetPassphrase has been called daemonRealm=%s passcode=%s passcodeLength=%lu\n&quot;, daemonRealm,
+passCodeString.c_str(), passcodeSize); PersistPassword(daemonRealm, passCodeString.c_str());
+
+   printf(&quot;Clearing Key Store\n&quot;);
+   m_Bus-&gt;ClearKeyStore();
+
+   return ER_OK;
+}
+
+ConfigServiceListenerImpl::~ConfigServiceListenerImpl()
+{
+}
+
+void ConfigServiceListenerImpl::PersistPassword(const char* daemonRealm, const char* passcode)
+{
+   std::map&lt;std::string, std::string&gt; data;
+   data[&quot;daemonrealm&quot;] = daemonRealm;
+   data[&quot;passcode&quot;] = passcode;
+   IniParser::UpdateFile(m_PropertyStore-&gt;GetConfigFile().c_str(), data);
+}
+</code></pre>
+
+<h3 id="initialize-the-configservice-in-server-mode-providing-it-with-the-configstore-and-callbacks">Initialize the ConfigService in server mode, providing it with the ConfigStore and callbacks</h3>
+<pre><code class="cpp">configServiceListenerImpl = new ConfigServiceListenerImpl(*propertyStoreImpl,
+*msgBus);
+configService = new ConfigService(*msgBus, *propertyStoreImpl,
+*configServiceListenerImpl);
+
+std::vector&lt;qcc::String&gt; interfaces;
+interfaces.push_back(&quot;org.alljoyn.Config&quot;);
+aboutService-&gt;AddObjectDescription(&quot;/Config&quot;, interfaces);
+
+configService-&gt;Register();
+msgBus-&gt;RegisterBusObject(*configService);
+</code></pre>
+
+<h3 id="advertise-name-and-announce">Advertise name and announce</h3>
+<pre><code class="cpp">AdvertiseName(SERVICE_TRANSPORT_TYPE);
+aboutService-&gt;Announce();
+</code></pre>
+
+<h3 id="unregister-and-delete-configservice-and-busattachment">Unregister and delete ConfigService and BusAttachment</h3>
+<p>When your process is done with the ConfigService delete variables used:</p>
+<pre><code class="cpp">if (configService) {
+   delete configService;
+   configService = NULL;
+}
+
+if (configServiceListenerImpl) {
+   delete configServiceListenerImpl;
+   configServiceListenerImpl = NULL;
+}
+
+if (keyListener) {
+   delete keyListener;
+   keyListener = NULL;
+}
+
+if (propertyStoreImpl) {
+   delete propertyStoreImpl;
+   propertyStoreImpl = NULL;
+}
+
+delete msgBus;
+msgBus = NULL;
+</code></pre>
+
+<h2 id="implementing-an-app-config-client">Implementing an App: Config Client</h2>
+<p>To implement an application to receive and modify ConfigData,
+use the ConfigClient class. The AboutClient class must be used
+so that your application is notified when applications with
+About Server and possibly Config Server instances can send announcements.</p>
+<p><strong>NOTE:</strong> Verify the BusAttachment has been created, started and
+connected before implementing a Config Client. See the <a href="../../../../develop/api-guide/about/cpp">About
+API Guide</a> for the code snippets.
+Code in this chapter references a variable <code>mBus</code>
+(the BusAttachment variable name).</p>
+<h3 id="initialize-the-alljoyn-framework_1">Initialize the AllJoyn framework</h3>
+<p>See the <a href="../../../../develop/building/linux">Building Linux section</a> for
+instructions to set up the AllJoyn framework.</p>
+<h4 id="create-bus-attachment_1">Create bus attachment</h4>
+<pre><code class="cpp">busAttachment -&gt;Start();
+busAttachment -&gt;Connect();
+</code></pre>
+
+<h3 id="enable-peer-security_1">Enable peer security</h3>
+<p>Config Client uses peer security.</p>
+<p>Create a KeyListener class that inherits from ajn::AuthListener.
+It needs to implement two functions: RequestCredentials and
+AuthenticationComplete.</p>
+<pre><code class="cpp">class SrpKeyXListener : public ajn::AuthListener {
+   public:
+      bool RequestCredentials(const char* authMechanism, const char* authPeer, uint16_t authCount, const char* userId,
+            uint16_t credMask, Credentials&amp; creds);
+      void AuthenticationComplete(const char* authMechanism, const char*
+authPeer, bool success);
+};
+</code></pre>
+
+<p>RequestCredentials needs to set the password using Creds and return true.</p>
+<pre><code class="cpp">creds.SetPassword(Password);
+return true;
+</code></pre>
+
+<p>Instantiate the keylistener class and enable peer security.</p>
+<pre><code class="cpp">SrpKeyXListener* keyListener = new SrpKeyXListener();
+bus-&gt;EnablePeerSecurity(&quot;ALLJOYN_PIN_KEYX ALLJOYN_SRP_KEYX ALLJOYN_ECDHE_PSK&quot;, keyListener);
+</code></pre>
+
+<h3 id="initialize-the-aboutservice-in-client-mode">Initialize the AboutService in client mode</h3>
+<p>Complete the following steps.</p>
+<ol>
+<li>Implement the announce handler.</li>
+<li>Implement the announce method.</li>
+<li>Register the announce handler, if there is a Config interface.</li>
+<li>Join a session.</li>
+</ol>
+<p>For more information about the About feature, see the <a href="../../../../develop/api-guide/about/cpp">About
+API Guide</a>.</p>
+<h3 id="create-the-configservice-client-object">Create the ConfigService client object</h3>
+<pre><code class="cpp">configClient = new ConfigClient(*busAttachment);
+</code></pre>
+
+<h4 id="request-the-configdata">Request the ConfigData</h4>
+<p>The Configurations data structure is filled by the <code>GetConfigurations()</code>
+method call. Configurations can be iterated through to determine
+the contents. The content definition is found in the <a href="../../../../learn/base-services/configuration/interface">Configuration
+Interface Definition</a>.</p>
+<pre><code class="cpp">ConfigClient::Configurations configurations;
+if ((status = configClient-&gt;GetConfigurations(busname.c_str(),
+      &quot;en&quot;, configurations, id)) == ER_OK) {
+   for (ConfigClient::Configurations::iterator it = configurations.begin();
+      it != configurations.end(); ++it) { qcc::String key = it-&gt;first; ajn::MsgArg value = it-&gt;second;
+      if (value.typeId == ALLJOYN_STRING) {
+         printf(&quot;Key name=%s value=%s\n&quot;, key.c_str(), value.v_string.str);
+         } else if (value.typeId == ALLJOYN_ARRAY &amp;&amp;
+value.Signature().compare(&quot;as&quot;) == 0) {
+         printf(&quot;Key name=%s values: &quot;, key.c_str());
+         const MsgArg*stringArray;
+         size_t fieldListNumElements;
+         status = value.Get(&quot;as&quot;, &amp;fieldListNumElements, &amp;stringArray);
+         for (unsigned int i = 0; i &lt; fieldListNumElements; i++) {
+            char* tempString; stringArray[i].Get(&quot;s&quot;, &amp;tempString);
+            printf(&quot;%s &quot;, tempString);
+         }
+         printf(&quot;\n&quot;);
+      }
+   }
+</code></pre>
+
+<h4 id="update-the-configdata">Update the ConfigData</h4>
+<p>The received data can be updated through the ConfigClient
+using the <code>UpdateConfigurations()</code> method call.</p>
+<pre><code class="cpp">configurations.insert(std::pair&lt;qcc::String, ajn::MsgArg&gt;(&quot;DeviceName&quot;, MsgArg(&quot;s&quot;, &quot;New Device Name&quot;)));
+configClient-&gt;UpdateConfigurations(busname.c_str(), NULL, configurations, id);
+</code></pre>
+
+<h4 id="get-the-interface-version">Get the interface version</h4>
+<p>The peer device/application configuration can query for the
+interface version.</p>
+<pre><code class="cpp">int version;
+configClient-&gt;GetVersion(busname.c_str(), version, id);
+</code></pre>
+
+<h4 id="reset-the-configdata">Reset the ConfigData</h4>
+<p>The ConfigData can be reset to default through the ConfigClient
+using the <code>ResetConfigurations()</code> method call.</p>
+<pre><code class="cpp">std::vector&lt;qcc::String&gt; configNames;
+configNames.push_back(&quot;DeviceName&quot;);
+configClient-&gt;ResetConfigurations(busname.c_str(), &quot;en&quot;, configNames, id);
+</code></pre>
+
+<h4 id="reset-the-peer-device-application-to-factory-defaults">Reset the peer device application to factory defaults</h4>
+<p>The peer device/application configuration can be reset to
+factory defaults through the ConfigClient using the
+<code>FactoryReset()</code> method call.</p>
+<p><strong>NOTE:</strong> This is a no-reply call, so its success cannot be
+determined directly.</p>
+<pre><code class="cpp">configClient-&gt;FactoryReset(busname.c_str(), id);
+</code></pre>
+
+<h4 id="restart-the-peer">Restart the peer</h4>
+<p>The peer application can be restarted though the ConfigClient
+using the Restart() method call.</p>
+<p><strong>NOTE:</strong> This is a no-reply call, so its success cannot be
+determined directly.</p>
+<pre><code class="cpp">configClient-&gt;Restart(busname.c_str(), id);
+</code></pre>
+
+<h4 id="setting-a-passcode-on-the-peer">Setting a passcode on the peer</h4>
+<p>The peer application can be set to have a different passcode
+though the ConfigClient using the <code>SetPasscode()</code> method call.
+This revokes the current encryption keys and regenerates new
+ones based on the new shared secret, namely the passcode.</p>
+<p><strong>NOTE:</strong> The realm name is currently ignored.</p>
+<pre><code class="cpp">configClient-&gt;SetPasscode(busname.c_str(), &quot;MyDeamonRealm&quot;, 8, (const uint8_t*) NEW_PASSCODE, id);
+   srpKeyXListener-&gt;setPassCode(NEW_PASSCODE);
+   qcc::String guid;
+   busAttachment-&gt;GetPeerGUID(busname.c_str(), guid);
+   busAttachment-&gt;ClearKeys(guid);
+</code></pre>
+
+<h3 id="delete-variables-and-unregister-listeners">Delete variables and unregister listeners</h3>
+<p>Once you are done using the Config Service, Configuration
+service framework, and the AllJoyn framework, free the variables
+used in the application.</p>
+<pre><code class="cpp">if (configClient) {
+   delete configClient;
+   configClient = NULL;
+}
+busAttachment-&gt;Stop();
+delete busAttachment;
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../" class="btn btn-neutral float-right" title="Home"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../c-thin/" class="btn btn-neutral" title="C thin"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../c-thin/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

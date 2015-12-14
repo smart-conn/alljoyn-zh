@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cpp - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Cpp";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
+  <script src="../../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Ambassadors</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../ambassadors/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Develop</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/cpp-legacy/">Cpp legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/java-legacy/">Java legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/objc-legacy/">Objc legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audio streaming</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Cpp</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#audio-api-usage-guide-c">Audio API Usage Guide - C++</a></li>
+                
+                    <li><a class="toctree-l4" href="#reference-code">Reference code</a></li>
+                
+                    <li><a class="toctree-l4" href="#compile-the-audio-service-framework">Compile the Audio service framework</a></li>
+                
+                    <li><a class="toctree-l4" href="#build-a-sink">Build a Sink</a></li>
+                
+                    <li><a class="toctree-l4" href="#build-a-source">Build a Source</a></li>
+                
+                    <li><a class="toctree-l4" href="#setting-up-the-alljoyn-framework">Setting Up the AllJoyn Framework</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-a-sink">Implementing a Sink</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-a-source">Implementing a Source</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-an-audiodevice">Implementing an AudioDevice</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/objc/">Objc</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Auto ping</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/auto-ping/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Propcache</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/propcache/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Events and actions</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../events-and-actions/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../api-reference/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ask</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/popular/">Popular</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Building</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Android</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ios osx</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/openwrt/">Openwrt</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Windows</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Debug</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/common-issues/">Common issues</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Run sample apps</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Acserver</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Basic</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Chat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/linux/">Linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Test</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/sessions/">Sessions</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Tutorial</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/arduino-and-gt202/">Arduino and gt202</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/ios/">Ios</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/thin-app/">Thin app</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/videos/">Videos</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/core/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Learn</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/architecture/">Architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/glossary/">Glossary</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/use-cases/">Use cases</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Base services</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audiostreaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/events-and-actions/">Events and actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/standard-core/">Standard core</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/thin-core/">Thin core</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About announcement</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Rn config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/rn_config/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Security2 0</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/hld/">Hld</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>System description</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/advertisement-discovery/">Advertisement discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-security/">Alljoyn security</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/data-exchange/">Data exchange</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/events-actions/">Events actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/sessionless-signal/">Sessionless signal</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/system-architecture/">System architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/thin-apps/">Thin apps</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Project lifecycle</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../project-lifecycle/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Supported platforms</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../supported-platforms/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>User groups</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../user-groups/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Audio streaming &raquo;</li>
+        
+      
+    
+    <li>Cpp</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="audio-api-usage-guide-c">Audio API Usage Guide - C++</h1>
+<h2 id="reference-code">Reference code</h2>
+<p>The reference code consists of an application that implements
+an audio sink and audio source.</p>
+<p>Audio.h contains definitions that are common to both audio
+sinks and sources.</p>
+<h3 id="sink-classes">Sink classes</h3>
+<table>
+<thead>
+<tr>
+<th>Sink class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AudioSinkObject</td>
+<td><p>Class that implements the following AllJoyn&trade; interfaces:</p><ul><li>org.alljoyn.Stream.Port</li><li>org.alljoyn.Stream.Port.AudioSink</li><li>org.alljoyn.Control.Volume</li></ul></td>
+</tr>
+<tr>
+<td>StreamObject</td>
+<td><p>Class that implements the following AllJoyn interfaces:</p><ul><li>org.alljoyn.Stream</li><li>org.alljoyn.Stream.Clock</li></ul></td>
+</tr>
+<tr>
+<td>AudioDevice</td>
+<td>Abstract class for implementing access to an audio device/sound card.</td>
+</tr>
+<tr>
+<td>ALSADevice</td>
+<td>Subclass of AudioDevice that implements access to an audio device using the Audio Linux Sound Architecture (ALSA) API.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="source-classes">Source classes</h3>
+<table>
+<thead>
+<tr>
+<th>Source class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SinkSearcher</td>
+<td>Helper class for discovering AudioSinks.</td>
+</tr>
+<tr>
+<td>SinkPlayer</td>
+<td>Implements streaming of DataSources to an AudioSink.</td>
+</tr>
+<tr>
+<td>DataSource</td>
+<td>Abstract class for providing data to SinkPlayer for streaming.</td>
+</tr>
+<tr>
+<td>WavDataSource</td>
+<td>Subclass of DataSource that provides data from WAV files to SinkPlayer for streaming.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reference-c-application-code">Reference C++ application code</h3>
+<table>
+<thead>
+<tr>
+<th>Application class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SinkService</td>
+<td>Command line application that receives and plays streamed audio by registering an instance of StreamObject on the AllJoyn bus.</td>
+</tr>
+<tr>
+<td>SinkClient</td>
+<td>Command line application that uses SinkSearcher to discover audio sinks and uses SinkPlayer to stream a WAV file to the sink.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="compile-the-audio-service-framework">Compile the Audio service framework</h2>
+<ol>
+<li>Follow the steps in the <a href="../../../../develop/building/linux/build-source">Configuring the Build Environment (Linux Platform) section</a>.
+Stop prior to the Building AllJoyn section.</li>
+<li>Pull down the source code:</li>
+</ol>
+<p><code>sh
+   $ repo init -u git clone git://git.allseenalliance/core/alljoyn.git</code>
+3. Run SCons to compile the Audio service framework, test suite, and samples.
+   <code>sh
+   $ cd services/audio</code></p>
+<ul>
+<li>
+<p>For 64-bit:</p>
+<p><code>sh
+  $ scons CPU=x86_64 ABOUT_BASE=$ALLJOYN_BASE/about/cpp</code></p>
+</li>
+<li>
+<p>For 32-bit:</p>
+<p><code>sh
+  $ scons ABOUT_BASE=$ALLJOYN_BASE/about/cpp</code></p>
+</li>
+</ul>
+<p>The build completes, and a build folder contains the compiled files.</p>
+<h2 id="build-a-sink">Build a Sink</h2>
+<p>The following steps provide the high-level process to build a Sink.</p>
+<ol>
+<li>Create the base for the AllJoyn application.</li>
+<li>Implement the AboutStore and use this with the AboutService API.
+See the <a href="../../../../develop/api-guide/about">appropriate About API Guide</a> for the platform
+you are targeting for instructions.</li>
+<li>Implement the AudioDevice if the audio device/sound card
+used by your platform is not supported.</li>
+<li>Create and register a StreamObject.</li>
+</ol>
+<h2 id="build-a-source">Build a Source</h2>
+<p>The following steps provide the high-level process to build a Source.</p>
+<ol>
+<li>Create the base for the AllJoyn application.</li>
+<li>Create a class that extends SinkSearcher and SinkListener.</li>
+<li>Create a new SinkPlayer and register the SinkListener.</li>
+<li>Register the SinkSearcher.</li>
+</ol>
+<h2 id="setting-up-the-alljoyn-framework">Setting Up the AllJoyn Framework</h2>
+<p>Every AllJoyn application requires a base set to be in place
+before implementing specific features.</p>
+<ul>
+<li>Create BusAttachment</li>
+<li>Connect to the AllJoyn framework</li>
+</ul>
+<h3 id="create-busattachment">Create BusAttachment</h3>
+<p>To use the Audio service framework, an AllJoyn object called
+the BusAttachment is needed that is used internally by the
+service to leverage the AllJoyn API calls.</p>
+<pre><code class="cpp">BusAttachment* msgBus = new BusAttachment(&quot;SinkService&quot;, true);
+</code></pre>
+
+<h3 id="start-and-connect-the-busattachment">Start and connect the BusAttachment</h3>
+<p>Once created, the BusAttachment must be connected to the AllJoyn framework.</p>
+<pre><code class="cpp">QStatus status = msgBus-&gt;Start(); if( status == ER_OK ) {
+status = msgBus-&gt;Connect(NULL);
+}
+</code></pre>
+
+<h2 id="implementing-a-sink">Implementing a Sink</h2>
+<p>Implementing a Sink to receive streaming audio requires
+creating and registering an instance of the StreamObject class.</p>
+<p><strong>NOTE:</strong> Verify the BusAttachment has been created, started and
+connected before implementing the Sink. See <a href="#setting-up-the-alljoyn-framework">Setting up the
+AllJoyn Framework</a> for the code snippets.
+Code in this section references a variable <code>msgBus</code> (the
+BusAttachment variable name).</p>
+<h3 id="declare-listener-class">Declare listener class</h3>
+<p>Declare a listener class to receive the SessionPortListener callbacks.
+Typically, an AcceptSessionJoiner callback in SessionPortListener
+has a check to allow or disallow access. Since the Sink requires
+access to everyone, return true when this callback is triggered.
+Use the SessionJoined handler to set the session timeout to 20 seconds.</p>
+<pre><code class="cpp">class MyListener : public SessionPortListener {
+   private:
+      BusAttachment *mMsgBus;
+
+   public:
+      MyListener( BusAttachment *msgBus ) { mMsgBus = msgBus;
+      }
+
+      bool AcceptSessionJoiner( SessionPort sessionPort, const char* joiner,
+const SessionOpts&amp; opts ) {
+
+         printf(&quot;Accepting join session request from %s (opts.proximity=%x,
+opts.traffic=%x, opts.transports=%x)\n&quot;,
+            joiner, opts.proximity, opts.traffic, opts.transports);
+
+         return true;
+      }
+
+      void SessionJoined( SessionPort sessionPort, SessionId id,
+const char* joiner ) {
+         printf(&quot;SessionJoined with %s (id=%d)\n&quot;, joiner, id);
+         mMsgBus-&gt;EnableConcurrentCallbacks();
+         uint32_t timeout = 20;
+         QStatus status = mMsgBus-&gt;SetLinkTimeout(id, timeout);
+         if( status == ER_OK ) {
+            printf(&quot;Link timeout has been set to %ds\n&quot;, timeout);
+         } else {
+            printf(&quot;SetLinkTimeout(%d) failed\n&quot;, timeout);
+
+         }
+      }
+};
+</code></pre>
+
+<h3 id="use-the-aboutservice-api-to-announce-sink-details">Use the AboutService API to announce Sink details</h3>
+<ol>
+<li>Declare a PropertyStore class to advertise about properties.
+The properties advertised should be customized for the device
+the Sink is running on.</li>
+</ol>
+<p><strong>NOTE:</strong> See the <a href="../../../../develop/api-guide/about">About API Guide</a> for the
+  platform you are targeting for required and optional properties
+  that the About feature can assign. The AppId field and other
+  values below are examples and should not be reused in commercial
+  products. See the <a href="../../../../develop/api-guide/about">About Best Practices</a> for
+  details on generating the AppId and other values.</p>
+<p>```cpp
+   class AboutStore : public PropertyStore {
+     public:
+         AboutStore(const char<em> friendlyName)
+            { struct utsname utsname; uname(&amp;utsname);
+            mDeviceId = strdup(utsname.nodename);
+            mFriendlyName = strdup(friendlyName);
+         }
+         ~AboutStore() {
+            if (mDeviceId != NULL)
+               free((void</em>)mDeviceId);
+            if (mFriendlyName != NULL)
+               free((void<em>)mFriendlyName);
+         }
+         QStatus ReadAll(const char</em> languageTag, PropertyStore::Filter
+            filter, MsgArg&amp; all) {
+            if (languageTag &amp;&amp; strcmp(languageTag, "en") != 0) { return ER_FAIL;
+            }
+            if (PropertyStore::WRITE == filter) {
+               return ER_NOT_IMPLEMENTED;
+            }</p>
+<pre><code>        size_t numProps = (PropertyStore::READ == filter) ? 11 : 7;
+        MsgArg* props = new MsgArg[numProps];
+        static const uint8_t appId[] = { 0x5a, 0x1e, 0xff, 0xf1, 0xf7,
+           0x99, 0x4d, 0x22, 0x82, 0xc0, 0x93, 0x4d, 0x3c, 0x86, 0x16, 0xa6 };
+           props[0].Set("{sv}", "AppId", new MsgArg("ay", 16, appId));
+           props[1].Set("{sv}", "DefaultLanguage", new MsgArg("s", "en"));
+           props[2].Set("{sv}", "DeviceName", new MsgArg("s", mFriendlyName));
+           props[3].Set("{sv}", "DeviceId", new MsgArg("s", mDeviceId));
+           props[4].Set("{sv}", "AppName", new MsgArg("s", "SinkService"));
+           props[5].Set("{sv}", "Manufacturer", new MsgArg("s", "AllJoyn"));
+           props[6].Set("{sv}", "ModelNumber", new MsgArg("s", "1"));
+           if (PropertyStore::READ == filter) {
+              static const char* supportedLanguages[] = { "en" };
+              props[7].Set("{sv}", "SupportedLanguages", new MsgArg("as",
+</code></pre>
+<p>1, supportedLanguages));
+                  props[8].Set("{sv}", "Description", new MsgArg("s", "AllJoyn Audio Sink"));
+                  props[9].Set("{sv}", "SoftwareVersion", new MsgArg("s", "v0.0.1"));
+                  props[10].Set("{sv}", "AJSoftwareVersion", new MsgArg("s", ajn::GetVersion()));
+               }</p>
+<pre><code>           all.Set("a{sv}", numProps, props);
+           all.SetOwnershipFlags(MsgArg::OwnsArgs, true);
+           return ER_OK;
+     }
+  private:
+     const char* mDeviceId;
+     const char* mFriendlyName;
+  };
+</code></pre>
+<p>```</p>
+<ol>
+<li>Create an instance of the new AboutStore class to provide
+to the StreamObject (see <a href="#create-and-register-streamobject">Create and register StreamObject</a>.)</li>
+</ol>
+<p><code>cpp
+      const char *friendlyName = "Living Room";
+      AboutStore* aboutProps = new AboutStore(friendlyName);</code></p>
+<h3 id="bind-session-port">Bind session port</h3>
+<p>To allow incoming connections, the formation of a session is needed.
+The AllJoyn framework needs to be told that connections are allowed.</p>
+<pre><code class="cpp">MyListener* myListener = new MyListener(msgBus);
+SessionOpts opts(SessionOpts::TRAFFIC_MESSAGES, false,
+SessionOpts::PROXIMITY_ANY, TRANSPORT_ANY);
+SessionPort sessionPort = SESSION_PORT_ANY;
+
+if( status == ER_OK )
+   status = msgBus-&gt;BindSessionPort(sessionPort, opts, *myListener);
+</code></pre>
+
+<h3 id="create-an-audiodevice-object">Create an AudioDevice object</h3>
+<p>Some platforms use different audio drivers. As such, there is an
+abstraction layer called AudioDevice that must be implemented
+for the platform driver. The current release supports the following platforms:</p>
+<ul>
+<li>Linux:</li>
+</ul>
+<p><code>cpp
+  AudioDevice* audioDevice = new ALSADevice();</code></p>
+<ul>
+<li>Android:</li>
+</ul>
+<p><code>java
+  AudioDevice* audioDevice = new AndroidDevice();</code></p>
+<h3 id="create-and-register-streamobject">Create and register StreamObject</h3>
+<p>StreamObject is an implementation wrapper around AllJoyn
+native calls that handle the interactions between Sink and Source.</p>
+<pre><code class="cpp">StreamObject *streamObj = NULL; if( status == ER_OK ) {
+   streamObj = new StreamObject(msgBus, &quot;/Speaker/In&quot;, audioDevice,
+      sessionPort, aboutProps);
+   status = streamObj-&gt;Register();
+   if (status != ER_OK)
+      printf(&quot;Failed to register stream object (%s)\n&quot;,
+         QCC_StatusText(status));
+}
+</code></pre>
+
+<h3 id="advertise">Advertise</h3>
+<p>To accept connections, we need to advertise over the AllJoyn framework.
+The unique name the AllJoyn framework provides is acceptable
+for this purpose because the Audio service framework relies
+on the AboutService API to distribute information about the device.</p>
+<p><strong>NOTE:</strong> In most applications that use the AllJoyn framework and
+do not use the About feature, a descriptive well-known name
+is chosen to advertise.</p>
+<pre><code class="cpp">String name = msgBus-&gt;GetUniqueName();
+if( status == ER_OK ) {
+   status = msgBus-&gt;AdvertiseName(name.c_str(), opts.transports);
+   if (status != ER_OK)
+      printf(&quot;Failed to advertise name %s (%s)\n&quot;, name.c_str(),
+         QCC_StatusText(status));
+}
+</code></pre>
+
+<h3 id="unregister-and-delete-streamobject">Unregister and delete StreamObject</h3>
+<p>When your process is done with the Sink and no longer wishes
+to receive audio input, unregister the process from the AllJoyn
+bus and then delete the StreamObject instance.</p>
+<pre><code class="cpp">if( streamObj != NULL ) {
+   streamObj-&gt;Unregister();
+   delete streamObj;
+   streamObj = NULL;
+}
+delete aboutProps;
+aboutProps = NULL;
+delete msgBus;
+
+
+msgBus = NULL;
+delete myListener;
+myListener = NULL;
+</code></pre>
+
+<h2 id="implementing-a-source">Implementing a Source</h2>
+<p>To implement a Source to stream to a Sink, use the SinkSearcher
+and SinkPlayer classes. By declaring a SinkSearcher subclass,
+your application is notified when Sinks are found and lost.
+When a Sink is found, you can add it to a SinkPlayer instance.
+Verify the BusAttachment has been created, started and connected
+before implementing an AudioSource. See <a href="#setting-up-the-alljoyn-framework">Setting up the AllJoyn Framework</a> for the code snippets. Code in this
+section references a variable msgBus (the BusAttachment variable name).</p>
+<h3 id="declare-sinksearcher-subclass">Declare SinkSearcher subclass</h3>
+<p>To interact with different Sinks, the SinkPlayer subclass
+provides an API containing AddSink and RemoveSink methods,
+as well as check if they have already been added.
+The following code snippet adds any new Sink that has not
+already been added.</p>
+<p><strong>NOTE:</strong> AddSink allows for audio to be played back on that device
+once <code>SinkAdded</code> (from the SinkListener below) has been called.
+After <code>SinkAdded</code> is called, call <code>OpenSink</code> on each Sink that
+should receive audio. Play and Pause commands will affect all
+opened Sinks. Refer to the API documentation for more details.</p>
+<pre><code class="cpp">static SinkPlayer *g_sinkPlayer = NULL;
+class MySinkSearcher : public SinkSearcher {
+   virtual void SinkFound( Service *sink ) {
+      const char *name = sink-&gt;name.c_str();
+      const char *path = sink-&gt;path.c_str();
+      printf(&quot;Found %s objectPath=%s, sessionPort=%d\n&quot;, name, path,
+         sink-&gt;port);
+      if( !g_sinkPlayer-&gt;HasSink(name) )
+         g_sinkPlayer-&gt;AddSink(name, sink-&gt;port, path);
+   }
+
+   virtual void SinkLost( Service *sink ) {
+   const char *name = sink-&gt;name.c_str();
+   printf(&quot;Lost %s\n&quot;, name);
+   }
+};
+</code></pre>
+
+<h3 id="declare-sinklistener-subclass">Declare SinkListener subclass</h3>
+<p>SinkPlayer methods such as AddSink and RemoveSink are asynchronous.
+You can create and register a SinkListener to be notified when
+these calls have completed. The SinkRemoved handler is also called
+when a sink's session is lost.</p>
+<pre><code class="cpp">class MySinkListener : public SinkListener {
+   void SinkAdded( const char *name ) {
+      printf(&quot;SinkAdded: %s\n&quot;, name);
+
+      g_sinkPlayer-&gt;OpenSink(name);
+   }
+
+   void SinkAddFailed( const char *name ) {
+      printf(&quot;SinkAddFailed: %s\n&quot;, name);
+   }
+
+   void SinkRemoved( const char *name, bool lost ) {
+      printf(&quot;SinkRemoved: %s lost=%d\n&quot;, name, lost);
+   }
+
+   void MuteChanged(const char* name, bool mute) {
+      printf(&quot;MuteChanged: %s mute=%s\n&quot;, name, mute ? &quot;on&quot; : &quot;off&quot;);
+   }
+
+   void VolumeChanged(const char* name, int16_t volume) {
+      printf(&quot;VolumeChanged: %s volume=%d\n&quot;, name, volume);
+   }
+};
+</code></pre>
+
+<h3 id="create-and-configure-sinkplayer">Create and configure SinkPlayer</h3>
+<p>The SinkPlayer object is responsible for sending a supplied
+DataSource over the AllJoyn framework to any open sinks.
+The DataSource can be set any time prior to calling the
+<code>OpenSink()</code> method.</p>
+<pre><code class="cpp">MySinkListener listener;
+g_sinkPlayer = new SinkPlayer(msgBus);
+g_sinkPlayer-&gt;AddListener(&amp;listener);
+</code></pre>
+
+<h3 id="set-the-preferred-audio-data-format">Set the preferred audio data format</h3>
+<p><code>SinkPlayer</code> lets you specify which format to use for streaming.
+However, there is no guarantee that the format you specify
+will be used. If a Sink does not support your preferred format,
+<code>SinkPlayer</code> automatically defaults to raw audio.</p>
+<p><strong>NOTE:</strong> This must be called prior to adding a Sink using <code>AddSink()</code>.</p>
+<p>To support ALAC (Apple Lossless):</p>
+<pre><code class="cpp">g_sinkPlayer-&gt;SetPreferredFormat(MIMETYPE_AUDIO_ALAC);
+</code></pre>
+
+<p>To support RAW audio support:</p>
+<pre><code class="cpp">g_sinkPlayer-&gt;SetPreferredFormat(MIMETYPE_AUDIO_RAW);
+</code></pre>
+
+<h3 id="set-the-data-source">Set the data source</h3>
+<p>To best support multiple audio file formats, a DataSource
+class is created that represents how the audio file will be
+decoded and read. Currently, support for WAV files is provided.
+Adding support for other audio formats will require implementing
+a new class derived from DataSource.
+A .WAV file example follows.</p>
+<pre><code class="cpp">WavDataSource dataSource;
+dataSource.Open(&quot;/path/to/file.wav&quot;); // the WAV file to stream to the sink(s)
+g_sinkPlayer-&gt;SetDataSource(&amp;dataSource);
+</code></pre>
+
+<h3 id="create-and-register-sinksearcher">Create and register SinkSearcher</h3>
+<p>Create an object of the class that is derived from SinkSearcher
+from <a href="#declare-sinksearcher-subclass">Declare SinkSearcher subclass</a>
+and register it with the BusAttachment.</p>
+<pre><code class="cpp">MySinkSearcher searcher;
+status = searcher.Register(msgBus);
+</code></pre>
+
+<h3 id="start-playback-once-a-sink-has-been-found">Start playback once a Sink has been found</h3>
+<p>It is recommended that developers verify the number of connected
+Sinks = 1 prior to calling the Play method to ensure audio will
+be played remotely. The Play method will start audio on every
+sink that OpenSink() has been called on.</p>
+<pre><code class="cpp">// Sleep until sink is found and then play. An alternative approach would be to
+// call Play() in the SinkListener on the SinkAdded event.
+while( g_sinkPlayer-&gt;GetSinkCount() &lt; 1 )
+   usleep(100 * 1000);
+g_sinkPlayer-&gt;Play();
+</code></pre>
+
+<h3 id="unregister-sinksearcher-and-delete-sinkplayer">Unregister SinkSearcher and delete SinkPlayer</h3>
+<p>Once you are done streaming, unregister the SinkSearcher,
+remove any sinks that are still part of the SinkPlayer,
+and then delete the SinkPlayer.</p>
+<p><strong>NOTE:</strong> The SinkPlayer object must be deleted before the BusAttachment object.</p>
+<pre><code class="cpp">searcher.Unregister();
+g_sinkPlayer-&gt;RemoveAllSinks();
+// Wait for sinks to be removed
+while( g_sinkPlayer-&gt;GetSinkCount() &gt; 0 )
+   usleep(100 * 1000);
+delete g_sinkPlayer;
+</code></pre>
+
+<h2 id="implementing-an-audiodevice">Implementing an AudioDevice</h2>
+<p>The reference code includes an AudioDevice subclass that uses
+the ALSA API. If your target environment uses a different sound
+card API, you must do the following:</p>
+<ul>
+<li>Implement a new AudioDevice subclass.</li>
+<li>When creating a StreamObject create a new instance of the AudioDevice
+and pass it into the StreamObject constructor. For example:</li>
+</ul>
+<p><code>cpp
+  audioDevice = new MyAudioDevice();
+  streamObj = new StreamObject(msgBus, "/Speaker/In", audioDevice,
+  sessionPort, aboutProps);</code></p>
+<p>The following defines the AudioDevice methods your subclass must implement.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Open()</code></td>
+<td>Open and prepare the audio device for playback, and start playing as soon as it receives data.</td>
+</tr>
+<tr>
+<td><code>Close()</code></td>
+<td>Close audio device and free any resources.</td>
+</tr>
+<tr>
+<td><code>Play()</code></td>
+<td>Start audio device playback.</td>
+</tr>
+<tr>
+<td><code>Pause()</code></td>
+<td>Pause audio device playback.</td>
+</tr>
+<tr>
+<td><code>Play()</code></td>
+<td>Resume after a pause.</td>
+</tr>
+<tr>
+<td><code>Recover()</code></td>
+<td>Recover from underrun if one has occurred.</td>
+</tr>
+<tr>
+<td><code>GetDelay()</code></td>
+<td>Get audio device delay (time until new samples will be audible).</td>
+</tr>
+<tr>
+<td><code>GetFramesWanted()</code></td>
+<td>Get the number of frames the audio device wants.</td>
+</tr>
+<tr>
+<td><code>Write()</code></td>
+<td>Write samples to audio device.</td>
+</tr>
+<tr>
+<td><code>GetMute()</code></td>
+<td>Gets the audio device mute state.</td>
+</tr>
+<tr>
+<td><code>SetMute()</code></td>
+<td>Sets the audio device mute state.</td>
+</tr>
+<tr>
+<td><code>GetVolumeRange()</code></td>
+<td>Gets the audio device volume range.</td>
+</tr>
+<tr>
+<td><code>GetVolume()</code></td>
+<td>Gets the audio device volume.</td>
+</tr>
+<tr>
+<td><code>SetVolume()</code></td>
+<td>Set audio device volume and mute state.</td>
+</tr>
+<tr>
+<td><code>AddListener()</code></td>
+<td>Adds a listener for volume and mute events.</td>
+</tr>
+<tr>
+<td><code>RemoveListener()</code></td>
+<td>Removes a listener for volume and mute events.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-open-implementation">Example <code>Open()</code> implementation</h3>
+<pre><code class="cpp">bool ALSADevice::Open( const char *format, uint32_t sampleRate,
+uint32_t numChannels, uint32_t &amp;bufferSize ) {
+   int err;
+   if( mAudioDeviceHandle != NULL ) { fprintf(stderr, &quot;Open: already open\n&quot;); return false;
+   }
+
+   uint32_t bitsPerChannel;
+   snd_pcm_format_t pcmFormat;
+
+   if( strcmp(format, &quot;s16le&quot;) == 0 ) {
+      pcmFormat = SND_PCM_FORMAT_S16_LE; bitsPerChannel = 16;
+   } else {
+      fprintf(stderr, &quot;Unsupported audio format: %s\n&quot;, format);
+      return false;
+   }
+
+   if( (err = snd_pcm_open(&amp;mAudioDeviceHandle, &quot;plughw:0,0&quot;,
+SND_PCM_STREAM_PLAYBACK, 0)) &lt; 0 ) {
+      fprintf(stderr, &quot;cannot open audio device (%s)\n&quot;, snd_strerror(err));
+      return false;
+   }
+
+   snd_pcm_hw_params_t *hw_params = NULL;
+      if( (err = snd_pcm_hw_params_malloc(&amp;hw_params)) &lt; 0 ) {
+         fprintf (stderr, &quot;cannot allocate hardware parameter structure (%s)\n&quot;,
+snd_strerror(err));
+            snd_pcm_close(mAudioDeviceHandle);
+            return false;
+      }
+
+#define AUDIO_CLEANUP() \
+if( mAudioDeviceHandle != NULL ) { \
+   snd_pcm_close(mAudioDeviceHandle); \
+   mAudioDeviceHandle = NULL; \
+} \
+if( hw_params != NULL ) { \
+   snd_pcm_hw_params_free(hw_params); \
+   hw_params = NULL; \
+}
+
+   if( (err = snd_pcm_hw_params_any(mAudioDeviceHandle, hw_params)) &lt; 0 ) {
+      fprintf(stderr, &quot;cannot initialize hardware parameter structure (%s)\n&quot;,
+snd_strerror(err));
+      AUDIO_CLEANUP();
+      return false;
+   }
+
+   if( (err = snd_pcm_hw_params_set_access(mAudioDeviceHandle, hw_params,
+SND_PCM_ACCESS_RW_INTERLEAVED)) &lt; 0 ) {
+   fprintf(stderr, &quot;cannot set access type (%s)\n&quot;, snd_strerror(err));
+
+   AUDIO_CLEANUP();
+   return false;
+}
+
+if( (err = snd_pcm_hw_params_set_format(mAudioDeviceHandle, hw_params,
+pcmFormat)) &lt; 0 ) {
+   fprintf(stderr, &quot;cannot set sample format (%s)\n&quot;, snd_strerror(err));
+   AUDIO_CLEANUP();
+   return false;
+}
+
+if( (err = snd_pcm_hw_params_set_rate_near(mAudioDeviceHandle, hw_params,
+&amp;sampleRate, 0)) &lt; 0 ) {
+   fprintf(stderr, &quot;cannot set sample rate (%s)\n&quot;, snd_strerror(err));
+   AUDIO_CLEANUP();
+   return false;
+}
+
+if( (err = snd_pcm_hw_params_set_channels(mAudioDeviceHandle, hw_params,
+numChannels)) &lt; 0 ) {
+   fprintf(stderr, &quot;cannot set channel count (%s)\n&quot;, snd_strerror(err));
+   AUDIO_CLEANUP();
+   return false;
+}
+
+uint32_t bytesPerFrame = (bitsPerChannel &gt;&gt; 3) * numChannels;
+snd_pcm_uframes_t bs = 4096 * bytesPerFrame;
+if( (err = snd_pcm_hw_params_set_buffer_size(mAudioDeviceHandle, hw_params,
+bs)) &lt; 0 ) {
+   fprintf(stderr, &quot;snd_pcm_hw_params_set_buffer_size failed: %s\n&quot;,
+   snd_strerror(err));
+}
+
+if( (err = snd_pcm_hw_params(mAudioDeviceHandle, hw_params)) &lt; 0 ) {
+   fprintf(stderr, &quot;cannot set parameters (%s)\n&quot;, snd_strerror(err));
+   AUDIO_CLEANUP();
+   return false;
+}
+
+snd_pcm_hw_params_get_buffer_size(hw_params, &amp;bs);
+bufferSize = (uint32_t)bs;
+
+mHardwareCanPause = snd_pcm_hw_params_can_pause(hw_params) == 1;
+snd_pcm_hw_params_free(hw_params);
+
+return true;
+}
+</code></pre>
+
+<h3 id="example-write-implementation">Example <code>Write()</code> implementation</h3>
+<p>An important part of the write implementation is that the
+call should be blocking until the write is complete.</p>
+<p>The implementation of the audio driver presents the following options:</p>
+<ul>
+<li>If it's buffer-based, this method should block while waiting
+for a buffer to free up.</li>
+<li>In the case of ALSA, the snd_pcm_writei method is blocking.</li>
+</ul>
+<pre><code class="cpp">bool ALSADevice::Write( const uint8_t *buffer, uint32_t bufferSizeInFrames ) {
+   snd_pcm_sframes_t err = snd_pcm_writei(mAudioDeviceHandle, buffer,
+bufferSizeInFrames);
+   if( err &lt; 0 )
+      err = snd_pcm_recover(mAudioDeviceHandle, err, 0);
+   if( err &lt; 0 )
+      fprintf(stderr, &quot;write to audio interface failed (%s)\n&quot;,
+snd_strerror(err));
+   if( err &gt; 0 &amp;&amp; err != (snd_pcm_sframes_t)bufferSizeInFrames )
+      fprintf(stderr, &quot;short write (expected %u, wrote %li)\n&quot;,
+bufferSizeInFrames, err);
+   return err &gt; 0;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../" class="btn btn-neutral float-right" title="Home"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../about/objc/" class="btn btn-neutral" title="Objc"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../about/objc/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

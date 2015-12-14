@@ -1,0 +1,2921 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Alljoyn session - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Alljoyn session";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
+  <script src="../../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Ambassadors</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../ambassadors/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Develop</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/cpp-legacy/">Cpp legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/java-legacy/">Java legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/objc-legacy/">Objc legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audio streaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/audio-streaming/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/audio-streaming/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/objc/">Objc</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Auto ping</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/auto-ping/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Propcache</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/propcache/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Events and actions</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/events-and-actions/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/onboarding/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/onboarding/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-reference/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ask</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/ask/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/ask/popular/">Popular</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Building</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Android</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/android/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/android/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ios osx</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/ios-osx/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/ios-osx/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/linux/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/linux/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/linux/openwrt/">Openwrt</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Windows</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/windows/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/windows/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Debug</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/debug/common-issues/">Common issues</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/debug/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Run sample apps</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Acserver</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/acserver/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/acserver/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/acserver/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Basic</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Chat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/linux/">Linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Test</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/test/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/test/sessions/">Sessions</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Tutorial</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/arduino-and-gt202/">Arduino and gt202</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/ios/">Ios</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/thin-app/">Thin app</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/videos/">Videos</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/core/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Learn</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../architecture/">Architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../glossary/">Glossary</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../use-cases/">Use cases</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Base services</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audiostreaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/audiostreaming/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/audiostreaming/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/configuration/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/configuration/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/configuration/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/controlpanel/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/notification/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/notification/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/onboarding/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/onboarding/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../events-and-actions/">Events and actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../standard-core/">Standard core</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../thin-core/">Thin core</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About announcement</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about-announcement/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about-announcement/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about-announcement/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Rn config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../rn_config/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Security2 0</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../security2_0/hld/">Hld</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../security2_0/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>System description</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../advertisement-discovery/">Advertisement discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../alljoyn-security/">Alljoyn security</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Alljoyn session</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#alljoyn-session">AllJoyn&trade; Session</a></li>
+                
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
+                
+                    <li><a class="toctree-l4" href="#types-of-sessions">Types of sessions</a></li>
+                
+                    <li><a class="toctree-l4" href="#point-to-point-session-establishment">Point to Point Session establishment</a></li>
+                
+                    <li><a class="toctree-l4" href="#multipoint-session-establishment">Multipoint Session Establishment</a></li>
+                
+                    <li><a class="toctree-l4" href="#session-options">Session options</a></li>
+                
+                    <li><a class="toctree-l4" href="#detecting-missing-or-slow-endpoints">Detecting missing or slow endpoints</a></li>
+                
+                    <li><a class="toctree-l4" href="#methodssignals-used-for-an-alljoyn-session">Methods/signals used for an AllJoyn session</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../alljoyn-transport/">Alljoyn transport</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data-exchange/">Data exchange</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../events-actions/">Events actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sessionless-signal/">Sessionless signal</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../system-architecture/">System architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../thin-apps/">Thin apps</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Project lifecycle</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../project-lifecycle/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Supported platforms</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../supported-platforms/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>User groups</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../user-groups/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>System description &raquo;</li>
+        
+      
+    
+    <li>Alljoyn session</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="alljoyn-session">AllJoyn&trade; Session</h1>
+<h2 id="overview">Overview</h2>
+<p>After an AllJoyn consumer has discovered some desired services
+offered by provider devices, the next step is to establish an
+AllJoyn session with the provider to consume those services.
+An AllJoyn session is a logical connection between consumer
+and provider applications that allows these applications to
+communicate with each other and exchange data. A provider
+application creates an AllJoyn session and waits for consumer
+applications to join the session. The application that creates
+the session is the owner of the session (session host), and
+other applications are termed as joiners in that session.</p>
+<p>On the provider side, the app binds a session port with the
+AllJoyn core library, specifying a list of session options
+(e.g., transports, session type, etc.) and then listens for
+consumers to join the session. The session port is typically
+known ahead of time to both the consumer and the provider app.
+Alternately, the session port can be discovered via the Announcement
+message received from that provider.</p>
+<p>On the consumer side, the app requests the AllJoyn bus to join
+the session with a given provider app by specifying the session
+port, well-known name/unique name for the service, and session
+options (transport, session type, etc.). After this, the AllJoyn
+router initiates a session establishment flow between the consumer
+and the provider apps. A unique session ID gets assigned by the
+provider to the AllJoyn session after the first client joins
+the session. The session ID is sent back to the consumer app
+and should be used for subsequent communication with the provider.</p>
+<p>The following figure shows the high-level architecture for the
+AllJoyn session establishment.</p>
+<p><img alt="alljoyn-session-establishment-arch" src="../../../../files/learn/system-desc/alljoyn-session-establishment-arch.png" /></p>
+<p><strong>Figure:</strong> AllJoyn session establishment architecture</p>
+<p>The provider app binds a session port with the AllJoyn router
+for a given service. The combination of (well-known name/unique
+name and session port) uniquely identifies the endpoint.
+The consumer app starts a join session with the (well-known name/unique name +
+session port number) of the provider app. The AllJoyn router
+on the consumer side establishes a physical connection with
+the provider AllJoyn router based on already discovered information
+as part of the discovery step. Currently, this involves establishing
+a TCP connection or if a UDP Transport is used
+between the two routers for session setup, no physical channel
+needs to be established.</p>
+<p>After physical connection is established, the consumer AllJoyn router
+starts the session establishment with the provider side. The provider
+AllJoyn router assigns a unique session ID for the session and also
+creates a session map storing the relevant session information.
+Once the session is established, a Session Joined callback is
+sent to the provider app with generated session ID. The consumer
+app receives a Status OK response for the join session call that
+includes the session ID. A session map also gets created on the
+consumer AllJoyn router side, storing session details.</p>
+<h2 id="types-of-sessions">Types of sessions</h2>
+<p>An AllJoyn session can be categorized into different types based
+on the allowed number of participants in the session or the data
+encapsulation option used over the session.</p>
+<p>The AllJoyn system supports the following types of session
+based on allowed number of participants:</p>
+<ul>
+<li>Point-to-point session: An AllJoyn session with a single
+consumer (joiner) and single provider (session host) endpoints
+participates in the session. When either participant leaves
+the session, the point-to-point session ends. A SessionLost
+indication is sent to the remaining participant.</li>
+<li>Multi-Point Session: An AllJoyn session allows more than
+two participants. Such a session involves a provider app
+(session host app) and one or more consumer apps (joiner apps)
+participating in the same session. A multi-point session can
+be joined multiple times to form a single session with multiple
+(greater than 2) endpoints. New consumers can join a multi-point
+session after the session has been created, and existing consumers
+can leave a multi-point session. All participants in a multi-point
+session can communicate to each other.</li>
+</ul>
+<p>In a multi-point session, all communications go through session host.
+Similar to a point-to-point session, a multi-point session ends when two
+participants are left and one of them leaves the session.
+A SessionLost indication is sent to the remaining participant.</p>
+<p>The following figure depicts point-to-point and multi-point
+AllJoyn sessions with the multi-point session showing four participants.</p>
+<p><img alt="p2p-multipoint-session-examples" src="../../../../files/learn/system-desc/p2p-multipoint-session-examples.png" /></p>
+<p><strong>Figure:</strong> AllJoyn point-to-point and multi-point session examples</p>
+<h3 id="raw-session">Raw session</h3>
+<p>In the AllJoyn system, typical data exchange between peer nodes
+occurs in the form of enhanced D-Bus messages. However in some
+scenarios, the overhead associated with D-Bus messages may not
+be desirable. In such cases, raw data can be exchanged between
+nodes using what is called an AllJoyn raw session.</p>
+<p>An AllJoyn raw session is used to exchange raw data between
+endpoints using an underlying physical connection (e.g., TCP/UDP
+socket-based communication). A raw session does not carry D-Bus
+encapsulated messages like a regular AllJoyn session.
+Instead, a raw session carries unencapsulated raw data directly
+sent over TCP/UDP sockets. A raw session can only be a
+point-to-point session.</p>
+<p><strong>NOTE:</strong> The raw session feature is only supported on the AllJoyn
+standard client and is not supported on thin app. This feature
+is being deprecated and it is recommended that developers not
+to use the raw session feature.</p>
+<h2 id="point-to-point-session-establishment">Point to Point Session establishment</h2>
+<p>The AllJoyn protocol version obtained from the BusHello message is used to
+determine which call flow is used.</p>
+<h3 id="pre-1504-point-to-point-session-establishment">Pre-15.04 Point to Point Session establishment</h3>
+<p>The following figure captures the AllJoyn session establishment
+message flow for a point-to-point session when either the producer or consumer
+is version 14.12 or earlier.</p>
+<p><img alt="establishing-p2p-session" src="../../../../files/learn/system-desc/establishing-p2p-session.png" /></p>
+<p><strong>Figure:</strong> AllJoyn point-to-point session establishment - 14.12 or earlier</p>
+<p>This is the message flow when either the producer or consumer is version 14.12
+or earlier.</p>
+<ol>
+<li>Both the provider and consumer apps connect with their
+respective AllJoyn routers via the AllJoyn core library
+and get a unique name assigned.</li>
+<li>The provider app registers service Bus Objects with the
+AllJoyn core library.</li>
+<li>The provider app requests a well-known name with the
+AllJoyn router via the AllJoyn core library.</li>
+<li>The provider app binds a session port with the AllJoyn router via the AllJoyn
+library's <code>BindSessionPort</code> API. This call specifies a session port, session
+options, and a SessionPortListener for the session.</li>
+<li>The consumer app discovers the provider app using the AllJoyn Advertisement and Discovery mechanism.</li>
+<li>The consumer app initiates joining the session with the
+provider via the <code>JoinSession</code> API. This call specifies the unique name
+of session host, session port, desired session options, and a SessionListener.</li>
+<li>The consumer side AllJoyn router establishes a physical
+channel with the provider side AllJoyn router (as applicable). For
+TCP Transport, this involves setting up a TCP connection
+between the two AllJoyn routers. If a UDP Transport is used
+between the two routers for session setup, no physical channel
+needs to be established.</li>
+<li>Once a connection is set up between the two AllJoyn buses,
+the consumer AllJoyn router initiates a <code>BusHello</code> message to
+send its bus GUID and AllJoyn protocol version. The provider
+AllJoyn router responds with its GUID, AllJoyn protocol
+version, and unique name. The protocol version received from the routing nodes
+during the <code>BusHello</code> stage is used to determine if the pre-15.04 or post-15.04
+call flow is used.</li>
+<li>The consumer and provider AllJoyn routers send out <code>ExchangeNames</code>
+signals to exchange the set of known unique names and well-known names.</li>
+<li>The consumer AllJoyn router invokes the <code>AttachSession</code>
+method call at the provider AllJoyn router to join the session.
+This call specifies the session port, session options, and unique
+name/well-known name of the session host among other parameters.</li>
+<li>If the session opts are compatible, the provider AllJoyn router invokes an
+<code>AcceptSession</code> method call with the provider app which returns 'true' if the
+session gets accepted.
+Refer to section <a href="#session-options-negotiation">Session options negotiation</a> for
+details of session opts compatibility.</li>
+<li>In case of incompatible session opts or if the session is not accepted by
+the provider app, an appropriate error code is sent back. If the session gets
+accepted, the provider AllJoyn router generates a unique sessionId for this
+session and sends a successful response. It sends back an <code>AttachSession</code> response
+ message to the consumer AllJoyn router providing the result and sessionId if
+ applicable.</li>
+<li>The provider AllJoyn router sends a SessionJoined signal
+to the provider app specifying the sessionId.</li>
+<li>After receiving the <code>AttachSession</code> response, the consumer
+AllJoyn router sends a JoinSession response message to the
+app with an OK status and provides the session Id.</li>
+</ol>
+<h3 id="post-1504-point-to-point-session-establishment">Post-15.04 Point to Point Session establishment</h3>
+<p>The following figure captures the AllJoyn session establishment
+message flow for a point-to-point session when both the producer and consumer
+are version 15.04 or later.</p>
+<p><img alt="establishing-p2p-session-1504" src="../../../../files/learn/system-desc/establishing-p2p-session-post-1504.png" /></p>
+<p><strong>Figure:</strong> AllJoyn point-to-point session establishment - 15.04 or later</p>
+<p>This is the message flow when both the producer and consumer are version 15.04
+or later.</p>
+<ol>
+<li>The call flow until the <code>BusHello</code> stage is the same as described in <a href="#pre-15-04-point-to-point-session-establishment">Pre-15.04 Point to Point Session establishment</a>.
+The protocol version received from the routing nodes during the <code>BusHello</code> stage
+is used to determine if the pre-15.04 or post-15.04 call flow is used.</li>
+<li>The consumer AllJoyn router invokes the <code>AttachSessionWithNames</code>
+method call at the provider AllJoyn router to join the session. This call
+specifies the session port, session options, and unique name/well-known name of
+the session host among other parameters. As a part of this method call, the
+ consumer AllJoyn router also sends out the names required for establishing the
+ session. It may send out all names if it has been requested by the consumer or
+ provider app.
+ Refer to <a href="#names-sent-as-a-part-of-attachsessionwithnames">Names sent as a part of AttachSessionWithNames</a> for more details.</li>
+<li>If the session opts are compatible, the provider AllJoyn router invokes an
+<code>AcceptSession</code> method
+call with the provider app which returns 'true' if the session gets accepted.
+Refer to section <a href="#session-options-negotiation">Session options negotiation</a> for
+details of session opts compatibility.</li>
+<li>In case of incompatible session opts or if the session is not accepted by
+the provider app, an appropriate error code is sent back. If the session gets
+accepted, the provider AllJoyn router generates a unique sessionId for this
+session. It sends back an <code>AttachSessionWithNames</code> response message to the
+consumer AllJoyn router providing the result and sessionId if applicable.
+The provider AllJoyn router also sends out the names required for establishing
+the session as a part of the response. It may send out all names if it has been
+requested by the consumer or provider app.
+ Refer to <a href="#names-sent-as-a-part-of-attachsessionwithnames">Names sent as a part of AttachSessionWithNames</a> for more details.</li>
+<li>The provider AllJoyn router sends a SessionJoined signal
+to the provider app specifying the sessionId.</li>
+<li>After receiving the <code>AttachSessionWithNames</code> response, the consumer
+AllJoyn router sends a JoinSession response message to the
+app with an OK status and provides the session Id.</li>
+</ol>
+<h2 id="multipoint-session-establishment">Multipoint Session Establishment</h2>
+<p>The following use cases illustrate various AllJoyn session scenarios:</p>
+<ul>
+<li>Establish a multi-point session</li>
+<li>Consumer joins an existing multi-point session</li>
+<li>Consumer leaves a point-to-point Session</li>
+<li>Consumer leaves a multi-point session with more than 2 participants</li>
+<li>Provider unbinds a session port</li>
+</ul>
+<h3 id="establish-a-multi-point-session">Establish a multi-point session</h3>
+<p>The following figure captures the session establishment
+message flow for a multi-point session between two participants.</p>
+<p><img alt="establishing-multipoint-session" src="../../../../files/learn/system-desc/establishing-multipoint-session.png" /></p>
+<p><strong>Figure:</strong> AllJoyn session - establishing a multi-point session</p>
+<p>A multi-point session follows same message flow as the
+point-to-point session with the additional step of sending
+out the <code>MPSessionChanged</code> signal from the AllJoyn router
+to the application indicating new participant. This signal
+specifies the sessionId, the unique name/well-known name
+of the participant, and a flag to indicate whether the
+participant was added.</p>
+<h3 id="consumer-joins-an-existing-multi-point-session">Consumer joins an existing multi-point session</h3>
+<p>The following figure captures the message flow for the
+scenario where a new consumer joins an existing multi-point session.</p>
+<p>In a multi-point session, the new joiner is responsible
+for notifying existing participants (other than session host)
+of the newly added member to the session. This is so that
+existing members can update their session routing information
+to include the new joiner, and future session messages can be
+routed appropriately. To achieve this, the new member invokes
+an <code>AttachSession</code> with all existing members. This results in
+existing members adding the new joiner to their session-related tables.</p>
+<h4 id="consumer-joins-an-existing-multi-point-session-pre-1504-call-flow">Consumer joins an existing multi-point session - Pre-15.04 call flow</h4>
+<p><img alt="consumer-joins-multipoint-session" src="../../../../files/learn/system-desc/consumer-joins-multipoint-session.png" /></p>
+<p><strong>Figure:</strong> AllJoyn session - consumer joins a multi-point session - 14.12 or earlier</p>
+<p>The message flow steps are described below.</p>
+<ol>
+<li>The provider and consumer app are set up and the consumer discovers the producer app
+by using the AllJoyn Advertisement and Discovery mechanism.</li>
+<li>The AllJoyn session establishment steps occur between
+joiner 1 (consumer 1) and the session host (provider) to
+establish a multi-point session as captured in <a href="#establish-a-multi-point-session">Establish a
+multi-point session</a>.</li>
+<li>Consumer 2 (joiner 2) wants to join the existing multi-point
+session, and initiates a JoinSession call with its AllJoyn router.</li>
+<li>The joiner 2 AllJoyn router establishes a physical
+channel with the provider side AllJoyn router (as applicable). For
+TCP Transport, this involves setting up a TCP connection
+between the two AllJoyn routers. If a UDP Transport is used
+between the two routers for session setup, no physical channel
+needs to be established.</li>
+<li>Once a connection is set up between the two AllJoyn buses,
+the consumer AllJoyn router initiates a <code>BusHello</code> message to
+send its bus GUID and AllJoyn protocol version. The provider
+AllJoyn router responds with its GUID, AllJoyn protocol
+version, and unique name.</li>
+<li>The joiner 2 and provider AllJoyn routers send out <code>ExchangeNames</code>
+signals to exchange the set of known unique names and well-known names. The provider AllJoyn router forwards this <code>ExchangeNames</code> to all other connected routers including the joiner 2 AllJoyn router.</li>
+<li>The AllJoyn session establishment steps occur between
+joiner 2 and the session host to add this joiner to the
+existing multi-point session.</li>
+<li>An <code>MPSessionChanged</code> signal is sent out to the session
+host app informing it of new joiner in the session.</li>
+<li>Joiner 2 receives the set of existing members for the
+multi-point session from the session host as part of the
+<code>AttachSession</code> response.</li>
+<li>Joiner 2 initiates an <code>AttachSession</code> with every received
+member of the session (except the session host, which it
+just did using the <code>AttachSession</code>) and sends it to the session host.</li>
+<li>The session host forwards this <code>AttachSession</code> to the existing session member.</li>
+<li>Joiner 1 receives <code>AttachSession</code> from joiner 2 and updates
+its session-related tables to add joiner 2.</li>
+<li>The AllJoyn router on joiner 1 sends out an <code>MPSessionChanged</code>
+signal to the app, indicating a newly added member to the
+multi-point session.</li>
+<li>Joiner 2 also sends out separate <code>MPSessionChanged</code> signal
+to the app for each existing member of the session.</li>
+</ol>
+<h4 id="consumer-joins-an-existing-multi-point-session-post-1504-call-flow">Consumer joins an existing multi-point session - Post-15.04 call flow</h4>
+<p><img alt="consumer-joins-multipoint-session-post-1504" src="../../../../files/learn/system-desc/consumer-joins-multipoint-session-post-1504.png" /></p>
+<p><strong>Figure:</strong> AllJoyn session - consumer joins a multi-point session - 15.04 or later</p>
+<p>The message flow steps are described below.</p>
+<ol>
+<li>The provider and consumer app are set up and the consumer discovers the producer app
+by using the AllJoyn Advertisement and Discovery mechanism.</li>
+<li>The AllJoyn session establishment steps occur between
+joiner 1 (consumer 1) and the session host (provider) to
+establish a multi-point session as captured in <a href="#establish-a-multi-point-session">Establish a
+multi-point session</a>.</li>
+<li>Consumer 2 (joiner 2) wants to join the existing multi-point
+session, and initiates a JoinSession call with its AllJoyn router.</li>
+<li>The AllJoyn session establishment steps occur between
+joiner 2 and the session host to add this joiner to the
+existing multi-point session and exchanges the necessary names.
+Refer to <a href="#names-sent-as-a-part-of-attachsessionwithnames">Names sent as a part of AttachSessionWithNames</a> for more details.</li>
+<li>An <code>MPSessionChanged</code> signal is sent out to the session
+host app informing it of new joiner in the session.</li>
+<li>Joiner 2 receives the set of existing members for the
+multi-point session from the session host as part of the
+<code>AttachSessionWithNames</code> response.</li>
+<li>Joiner 2 initiates an <code>AttachSessionWithNames</code> with every received
+member of the session (except the session host, which it
+just did using the <code>AttachSessionWithNames</code>) to the session host.</li>
+<li>The session host forwards this <code>AttachSessionWithNames</code> to the existing
+session member and sends the unique name and aliases of the joiner app and its
+routing node.  Refer to <a href="#names-sent-as-a-part-of-attachsessionwithnames">Names sent as a part of AttachSessionWithNames</a> for more details.</li>
+<li>Joiner 1 receives <code>AttachSessionWithNames</code> from joiner 2 and updates
+its session-related tables to add joiner 2 and sends a response back to the
+session host AllJoyn Router.</li>
+<li>The session  host AllJoyn Router forwards this response back to the
+Joiner 2 routing node.</li>
+<li>The AllJoyn router on joiner 1 sends out an <code>MPSessionChanged</code>
+signal to the app, indicating a newly added member to the
+multi-point session.</li>
+<li>Joiner 2 also sends out separate <code>MPSessionChanged</code> signal
+to the app for each existing member of the session.</li>
+</ol>
+<h3 id="consumer-leaves-a-point-to-point-session">Consumer leaves a point-to-point session</h3>
+<p>The following figure captures the message flow for the scenario
+where a consumer leaves an existing point-to-point session.
+The same message flow is also applicable for the scenario when
+a consumer leaves a multi-point session with only two participants.</p>
+<p>When a participant leaves a point-to-point session or a multi-point
+session with only two participants, the session ends and is removed
+from session tables of both the participants. A participant can
+leave a session by initiating a LeaveSession call with the AllJoyn
+router. This results in a DetachSession signal being delivered
+to the other member of the session. Receipt of this signal triggers
+clearing of sessionId and other session-related information
+from the session tables of that member. Whenever a session ends,
+a SessionLost signal is sent to the application.  </p>
+<p><strong>NOTE:</strong> Either the joiner or the host of the session can leave
+a session. A similar message flow is applicable when a session
+host leaves the session.</p>
+<p><img alt="consumer-leaves-p2p-session" src="../../../../files/learn/system-desc/consumer-leaves-p2p-session.png" /></p>
+<p><strong>Figure:</strong> AllJoyn session - consumer leaves a point-to-point session</p>
+<p>The message flow steps are described below.</p>
+<ol>
+<li>The consumer app establishes a session with the session host.</li>
+<li>The consumer app decides to leave the session. It invokes
+a LeaveSession API with the AllJoyn router via the AllJoyn
+core library. This call takes in the sessionId as input parameter.</li>
+<li>The AllJoyn router generates a DetachSession signal specifying
+the sessionId and the member that is leaving the session.
+This signal is sent to the other member in the session.</li>
+<li>After receiving the DetachSession signal, the AllJoyn router
+on the session host determines that it is the only member
+left in the session. As a result, it concludes that the session
+has ended and clears sessionId details from its session tables.</li>
+<li>The AllJoyn router on the consumer side clears sessionId
+details from its session tables and sends a successful
+LeaveSession response to the application.</li>
+<li>The AllJoyn router on the session host sends a SessionLost
+signal to the application indicating that the session has ended.</li>
+</ol>
+<h3 id="consumer-leaves-a-multi-point-session">Consumer leaves a multi-point session</h3>
+<p>The following figure captures the message flow for the scenario
+where a consumer leaves a multi-point session with more
+than two participants.
+In this scenario, the session continues with remaining
+participants even after a member leaves the session.
+The remaining participants update their session tables to
+remove the member that left the session.</p>
+<p><img alt="consumer-leaves-multipoint-session" src="../../../../files/learn/system-desc/consumer-leaves-multipoint-session.png" /></p>
+<p><strong>Figure:</strong> AllJoyn session - consumer leaves a multi-point session</p>
+<p>The message flow steps are described below.</p>
+<ol>
+<li>Two consumer apps (joiner 1 and joiner 2) have joined in
+a single multi-point session with the provider.</li>
+<li>Joiner 2 decides to leave the session. It invokes a
+LeaveSession API with the AllJoyn router, specifying the sessionId.</li>
+<li>The AllJoyn router on joiner 2 generates a DetachSession
+signal, specifying the sessionId and the member that is
+leaving the session. This signal is sent as a session broadcast
+signal to all the other members in the session.</li>
+<li>Upon receiving the DetachSession signal, the AllJoyn router
+involved in the multi-point session determines that there
+are two or more remaining participants in the session,
+meaning the session will continue to exist. As a result,
+it updates its session tables to remove the member received
+in the DetachSession signal for that sessionId. The AllJoyn
+router then sends an <code>MPSessionChanged</code> signal to the app
+indicating member deletion for that session. This logic is
+executed by the AllJoyn router for every remaining participant
+in the session.</li>
+<li>The AllJoyn router on the member leaving the session clears
+sessionId details from its session tables and sends a successful
+LeaveSession response to the application.</li>
+</ol>
+<h3 id="provider-leaves-a-multi-point-session">Provider leaves a multi-point session</h3>
+<p>The following figure captures the message flow for the scenario
+where a provider (session host) leaves a multi-point session
+with more than two participants. In this case, the session
+continues to exist and the remaining participants can continue
+to communicate; however, no new participants can join the multi-point session.</p>
+<p><img alt="provider-leaves-multipoint-session" src="../../../../files/learn/system-desc/provider-leaves-multipoint-session.png" /></p>
+<p><strong>Figure:</strong> AllJoyn session - provider leaves a multi-point session</p>
+<h3 id="provider-unbinds-a-session-port">Provider unbinds a session port</h3>
+<p>The provider app can unbind a previously bound session port
+at any time. As a result, no new sessions can be established
+on that session port. Any existing sessions on that session
+port will continue and are not impacted. If there was any multi-point
+session on that session port, no new members can be added to
+that multi-point session.</p>
+<h2 id="session-options">Session options</h2>
+<p>The following tables capture the session options and values supported
+for the AllJoyn session. Traffic, proximity, and transports
+fields in the session option are specified as bit masks with values.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th>Data type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>traffic</td>
+<td>Specifies type of traffic sent over the session</td>
+<td>byte</td>
+</tr>
+<tr>
+<td>isMultipoint</td>
+<td>Specifies whether the session is multi-point or point-to-point.</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>proximity</td>
+<td>Specifies the proximity scope for this session</td>
+<td>byte</td>
+</tr>
+<tr>
+<td>transports</td>
+<td>Specifies the allowed transports for this Session</td>
+<td>short</td>
+</tr>
+<tr>
+<td>nameTransfer</td>
+<td>Name transfer type of session - Internal use only</td>
+<td>byte</td>
+</tr>
+</tbody>
+</table>
+<h3 id="traffic-session-allowed-values">Traffic session allowed values</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th align="center">Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRAFFIC_MESSAGES</td>
+<td align="center">0x01</td>
+<td>Use reliable message-based communication to move data between session endpoints.</td>
+</tr>
+<tr>
+<td>TRAFFIC_RAW_UNRELIABLE</td>
+<td align="center">0x02</td>
+<td>Use unreliable (e.g., UDP) socket-based communication to move data between session endpoints. This creates a raw session where MESSAGE encapsulation is not used.</td>
+</tr>
+<tr>
+<td>TRAFFIC_RAW_RELIABLE</td>
+<td align="center">0x04</td>
+<td>Use reliable (e.g., TCP) socket-based communication to move data between session endpoints. RAW. This creates a raw session where MESSAGE encapsulation is not used.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ismultipoint-session-allowed-values">IsMultipoint session allowed values</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th align="center">Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N/A</td>
+<td align="center">true</td>
+<td>A multi-point capable session. A multi-point session can be joined multiple times to form a single session with multiple (&gt; 2) endpoints.</td>
+</tr>
+<tr>
+<td>N/A</td>
+<td align="center">false</td>
+<td>Session is not multi-point capable. Each join attempt will create a new point-to-point session.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="proximity-session-allowed-values">Proximity session allowed values</h3>
+<p><strong>NOTE:</strong> The PROXIMITY_PHYSICAL and PROXIMITY_NETWORK options are
+not supported semantically today, meaning no enforcement is
+done for spatial scope. Only bit matching is done for these
+options when looking to find a set of compatible set of
+session options. AllJoyn system provides flexibility to
+support specific semantics for these options in future if needed.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th align="center">Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PROXIMITY_ANY</td>
+<td align="center">0xFF</td>
+<td>Spatial scope of the session is not limited. Session can be joined by joiners located anywhere.</td>
+</tr>
+<tr>
+<td>PROXIMITY_PHYSICAL</td>
+<td align="center">0x01</td>
+<td>Spatial scope of session is limited to the local host. Interpreted as "the same physical machine." Session can be joined by joiners located only on the same physical machine as the one hosting the session.</td>
+</tr>
+<tr>
+<td>PROXIMITY_NETWORK</td>
+<td align="center">0x02</td>
+<td>Spatial scope of session is limited to anywhere on the local logical network segment. Session can be joined by joiners located anywhere on the network.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transports-session-allowed-values">Transports session allowed values</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th align="center">Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRANSPORT_NONE</td>
+<td align="center"><code>0x0000</code></td>
+<td>Use no transport to communicate with a given session.</td>
+</tr>
+<tr>
+<td>TRANSPORT_LOCAL</td>
+<td align="center"><code>0x0001</code></td>
+<td>Use only the local transport to communicate with a given session.</td>
+</tr>
+<tr>
+<td>TRANSPORT_TCP</td>
+<td align="center"><code>0x0004</code></td>
+<td>Use only the TCP transport to communicate with a given session.</td>
+</tr>
+<tr>
+<td>TRANSPORT_UDP</td>
+<td align="center"><code>0x0100</code></td>
+<td>Use only the UDP/ARDP transport to communicate with a given session.</td>
+</tr>
+<tr>
+<td>TRANSPORT_EXPERIMENTAL</td>
+<td align="center"><code>0x8000</code></td>
+<td>Use only the experimental transport that has not yet reached the performance, stability or testing requirements of a commercialized transport to communicate with a given session.</td>
+</tr>
+<tr>
+<td>TRANSPORT_IP</td>
+<td align="center"><code>TRANSPORT_TCP</code> &#124; <code>TRANSPORT_UDP</code></td>
+<td>Use any IP based transport to communicate with a given session</td>
+</tr>
+<tr>
+<td>TRANSPORT_ANY</td>
+<td align="center"><code>TRANSPORT_LOCAL</code> &#124; <code>TRANSPORT_IP</code></td>
+<td>Use any commercialized transport.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="names-sent-as-a-part-of-attachsessionwithnames">Names sent as a part of AttachSessionWithNames</h3>
+<p>AllJoyn routers only exchange names required for establishing a session unless
+specifically requested by the consumer and/or producer app. The app can request
+for the routers to exchange all names by invoking the <code>SetAllNames</code> API on the
+sessionOpts or by passing <code>exchangeAllNames=true</code> in the <code>SessionOpts</code> constructor.
+The app may invoke the <code>SetSessionNames</code> API on the sessionOpts to reset to the
+default behavior of exchanging only the required names.</p>
+<h4 id="behavior-when-session-names-option-is-used">Behavior when Session Names option is used</h4>
+<p>Point to point session: The Consumer and Provider AllJoyn routing nodes exchange
+unique name and aliases of the routing node and session host/joiner app only as
+a part of the <code>AttachSessionWithNames</code> method call/response.</p>
+<p>Multipoint session: The Consumer AllJoyn routing node sends the unique name and
+aliases of the routing node and session joiner app only. The Provider routing
+node sends the unique names and aliases of the routing node, host and existing
+members and their routing nodes. When the provider forwards an
+<code>AttachSessionWithNames</code> to an existing session member, it sends out the unique
+name and aliases of the joiner app and routing node.</p>
+<h4 id="behavior-when-all-names-option-is-used">Behavior when All Names option is used</h4>
+<p>Unique names of all locally and remotely connected router and leaf nodes are
+exchanged as a part of the <code>AttachSessionWithNames</code> and its response.
+In this case the names exchanged are identical to the ones exchanged between pre-15.04 routing nodes except that the names are exchanged as a part of <code>AttachSessionWithNames</code> instead of a separate <code>ExchangeNames</code> signal.</p>
+<h3 id="session-options-negotiation">Session options negotiation</h3>
+<p>A compatible set of session options must be agreed upon
+between two endpoints to establish a session. If a compatible
+set of session options cannot be established between two
+endpoints, session establishment fails.
+Session options negotiation occurs between session options
+provided by the provider app at the time of invoking
+<code>BindSessionPort(...)</code> and the session options requested
+by the consumer app when invoking the <code>JoinSession(...)</code>.</p>
+<ul>
+<li>For certain session options, e.g., traffic, an
+exact match must occur between the provider and consumer
+session options for negotiation to be successful.</li>
+<li>For certain session options, e.g. isMultipoint, the option provided by
+the producer is used.</li>
+<li>For other session options, the negotiation happens to the
+lowest common session option level. Exact details of session
+options negotiation is outside the scope of this document.</li>
+</ul>
+<h2 id="detecting-missing-or-slow-endpoints">Detecting missing or slow endpoints</h2>
+<p>The AllJoyn Router supports a probing mechanism to detect
+other missing routers and missing applications so that
+resources can be cleaned up for missing endpoints. Separate
+logic is supported for detecting other missing routers and
+applications as described in <a href="#probing-mechanism-for-detecting-missing-routers">Probing mechanism for detecting missing routers</a>
+and <a href="#probing-mechanism-for-detecting-missing-applications">Probing mechanism for detecting missing applications</a>.</p>
+<p>The AllJoyn router also supports logic to detect and disconnect
+any AllJoyn applications or other AllJoyn routers that are
+slower to read data than the minimum desired performance level.
+This logic is captured in <a href="#detecting-a-slow-reader">Detecting a slow reader</a>.</p>
+<p>Once a remote endpoint (an application or anther router) is
+disconnected based on probing mechanism or slow reader detection
+logic, the AllJoyn router will clean up any connection slots,
+active advertisements and sessions associated with the remote
+endpoint. The AllJoyn router will also send SessionLost,
+<code>MPSessionChanged</code> and <code>DetachSession</code> signals to participants
+that are in a session with the disconnected remote application
+or in a session with applications connected to the disconnected
+remote router.</p>
+<h3 id="probing-mechanism-for-detecting-missing-routers">Probing mechanism for detecting missing routers</h3>
+<p>The AllJoyn router provides a <code>SetLinkTimeout()</code> API which
+can be invoked by the application to detect missing routers.
+The application provides an idle timeout value as part of the
+API, which should be greater than or equal to the minimum value
+(40 sec) defined at the router. A single probe is sent to the
+other router after inactivity is detected for idle timeout period.
+If no response is received in probe timeout period (10 sec), that
+router is disconnected and all associated connection slots,
+active advertisements and sessions are cleaned up.</p>
+<p>This functionality to detect missing routers is not enabled
+by default. An app needs to call the <code>SetLinkTimeout()</code> API
+to enable it.</p>
+<h3 id="probing-mechanism-for-detecting-missing-applications">Probing mechanism for detecting missing applications</h3>
+<p>The AllJoyn router provides a probing mechanism using DBus
+pings to detect missing AllJoyn applications. The following
+parameters determine the transmission schedule of the DBus pings:
+<em> Number of probes(N): Total number of DBus pings sent.
+</em> Idle timeout(I): Time after which the first DBus ping will be sent.
+* Probe timeout(P): Time after which subsequent DBus ping
+will be sent if a reply to the previous ping has not yet been received.</p>
+<p>The values of the above parameters are specific to the AllJoyn TCP versus
+UDP Transport over which the AllJoyn application is connected
+to the AllJoyn router.</p>
+<p>The following figure shows the transmission schedule of the DBus pings.</p>
+<p><img alt="probe-transmission-schedule-for-detecting-missing-apps" src="../../../../files/learn/system-desc/probe-transmission-schedule-for-detecting-missing-apps.png" /></p>
+<p><strong>Figure:</strong> Probe transmission schedule for detecting missing apps</p>
+<p>Connected AllJoyn applications will be able to select values
+for idle and probe timeouts within a transport specific range
+by invoking the <code>SetIdleTimeouts()</code> API. The call specifies
+the requested idle and probe timeouts and returns the actual
+values for the idle and probe timeouts.</p>
+<h3 id="detecting-a-slow-reader">Detecting a slow reader</h3>
+<p>In order to maintain quality of service, the AllJoyn router
+will disconnect any AllJoyn applications or AllJoyn routers
+that are slower than the minimum desired performance level.</p>
+<p>The AllJoyn router will disconnect a remote AllJoyn application/router
+in either of the following scenarios:
+<em> Once the network send buffer on the router and network
+receive buffer on remote application/router are both full,
+the remote application/router does not read data fast enough
+to be able to fit the pending AllJoyn message within the
+Send Timeout period.
+</em> More than (10 * Send timeout) control messages originating
+from the router are currently queued for the remote application/router.</p>
+<p>The value of the Send timeout is specific to the TCP or UDP
+transport over which the remote AllJoyn application/router is
+connected to this AllJoyn router.</p>
+<h2 id="methodssignals-used-for-an-alljoyn-session">Methods/signals used for an AllJoyn session</h2>
+<p>The AllJoyn framework supports session-related functionality
+as part of the following AllJoyn interfaces:</p>
+<ul>
+<li>org.alljoyn.Daemon</li>
+<li>org.alljoyn.Bus</li>
+<li>org.alljony.Bus.Peer.Session</li>
+</ul>
+<p>This section provides a summary of methods and signals from
+these interfaces used for AllJoyn session-related functionality.</p>
+<h3 id="orgalljoyndaemon">org.alljoyn.Daemon</h3>
+<p>The org.alljoyn.Daemon interface is the main over-the-wire
+interface used for communication between two AllJoyn router
+components. The following tables summarize the org.alljoyn.Daemon
+interface methods and signals used for session-related functions.</p>
+<h4 id="orgalljoyndaemon-interface-methods">org.alljoyn.Daemon interface methods</h4>
+<table>
+<thead>
+<tr>
+<th>Method name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AttachSession</td>
+<td>Method for a remote AllJoyn router to attach a session with this AllJoyn router.</td>
+</tr>
+<tr>
+<td>GetSessionInfo</td>
+<td>Method for a remote AllJoyn router to get session information from this AllJoyn router.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoyndaemonattachsession-method-parameters">org.alljoyn.Daemon.AttachSession method parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session port</td>
+<td>in</td>
+<td>AllJoyn session port</td>
+</tr>
+<tr>
+<td>Joiner</td>
+<td>in</td>
+<td>Unique name of the joiner</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>in</td>
+<td>Unique name or well-known name of the session host</td>
+</tr>
+<tr>
+<td>dest</td>
+<td>in</td>
+<td><p>Unique name of the destination for the AttachSession.</p><ul><li>For point-to-point session, this is same as creator.</li><li>For multi-point session, this field can be different than the creator.</li></ul></td>
+</tr>
+<tr>
+<td>b2b</td>
+<td>in</td>
+<td>Unique name of the bus-to-bus end point on the joiner side. This is used to set up the message routing path for the session.</td>
+</tr>
+<tr>
+<td>busAddr</td>
+<td>in</td>
+<td>A string indicating how to connect to the bus endpoint, for example, "tcp:192.23.5.6, port=2345"</td>
+</tr>
+<tr>
+<td>optsIn</td>
+<td>in</td>
+<td>Session options requested by the joiner.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>out</td>
+<td>Session join status</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>out</td>
+<td>Assigned session ID</td>
+</tr>
+<tr>
+<td>optsOut</td>
+<td>out</td>
+<td>Final selected session options</td>
+</tr>
+<tr>
+<td>members</td>
+<td>out</td>
+<td>List of session members</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoyndaemonattachsessionwithnames-method-parameters">org.alljoyn.Daemon.AttachSessionWithNames method parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session port</td>
+<td>in</td>
+<td>AllJoyn session port</td>
+</tr>
+<tr>
+<td>Joiner</td>
+<td>in</td>
+<td>Unique name of the joiner</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>in</td>
+<td>Unique name or well-known name of the session host</td>
+</tr>
+<tr>
+<td>dest</td>
+<td>in</td>
+<td><p>Unique name of the destination for the AttachSession.</p><ul><li>For point-to-point session, this is same as creator.</li><li>For multi-point session, this field can be different than the creator.</li></ul></td>
+</tr>
+<tr>
+<td>b2b</td>
+<td>in</td>
+<td>Unique name of the bus-to-bus end point on the joiner side. This is used to set up the message routing path for the session.</td>
+</tr>
+<tr>
+<td>busAddr</td>
+<td>in</td>
+<td>A string indicating how to connect to the bus endpoint, for example, "tcp:192.23.5.6, port=2345"</td>
+</tr>
+<tr>
+<td>optsIn</td>
+<td>in</td>
+<td>Session options requested by the joiner.</td>
+</tr>
+<tr>
+<td>names</td>
+<td>in</td>
+<td>List of unique and well known names</td>
+</tr>
+<tr>
+<td>status</td>
+<td>out</td>
+<td>Session join status</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>out</td>
+<td>Assigned session ID</td>
+</tr>
+<tr>
+<td>optsOut</td>
+<td>out</td>
+<td>Final selected session options</td>
+</tr>
+<tr>
+<td>members</td>
+<td>out</td>
+<td>List of session members</td>
+</tr>
+<tr>
+<td>names</td>
+<td>out</td>
+<td>List of unique and well known names</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoyndaemongetsessioninfo-method-parameters">org.alljoyn.Daemon.GetSessionInfo method parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>creator</td>
+<td>in</td>
+<td>Unique name for the app that bound the session port.</td>
+</tr>
+<tr>
+<td>session port</td>
+<td>in</td>
+<td>Session port.</td>
+</tr>
+<tr>
+<td>optsIn</td>
+<td>in</td>
+<td>Session options requested by the joiner.</td>
+</tr>
+<tr>
+<td>busAddr</td>
+<td>out</td>
+<td>Returned bus address for the session to use when attempting to create a connection for joining the session, for example, "tcp:192.23.5.6, port=2345"</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoyndaemon-interface-signals">org.alljoyn.Daemon interface signals</h4>
+<table>
+<thead>
+<tr>
+<th>Signal name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ExchangeNames</td>
+<td>A signal that informs remote AllJoyn router of names available on the local AllJoyn router.</td>
+</tr>
+<tr>
+<td>DetachSession</td>
+<td>A signal sent out to detach a joiner from an existing session</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoyndaemonexchangenames-signal-parameters">org.alljoyn.Daemon.ExchangeNames signal parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uniqueName</td>
+<td>List of one or more unique names available on the local AllJoyn router.</td>
+</tr>
+<tr>
+<td>WKNs</td>
+<td>List of one or more well-known names registered with each of the known unique name on the local AllJoyn router.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoyndaemondetachsession-signal-parameters">org.alljoyn.Daemon.DetachSession signal parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionId</td>
+<td>AllJoyn session ID</td>
+</tr>
+<tr>
+<td>Joiner</td>
+<td>Unique name of the joiner</td>
+</tr>
+</tbody>
+</table>
+<h3 id="orgalljoynbus">org.alljoyn.Bus</h3>
+<p>The org.alljoyn.Bus interface is the main AllJoyn interface
+between the application and the AllJoyn router. The following
+tables summarize the org.alljoyn.Bus interface methods and
+signals used for session-related functions.</p>
+<h4 id="orgalljoynbus-interface-methods">org.alljoyn.Bus interface methods</h4>
+<table>
+<thead>
+<tr>
+<th>Method name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BusHello</td>
+<td>Method used to exchange identifiers. This can be used between app and AllJoyn router, as well as between two AllJoyn router components.</td>
+</tr>
+<tr>
+<td>BindSessionPort</td>
+<td>Method for an application to initiate binding a session port with the AllJoyn bus.</td>
+</tr>
+<tr>
+<td>UnbindSessionPort</td>
+<td>Method for an application to unbind a session port with the AllJoyn bus.</td>
+</tr>
+<tr>
+<td>JoinSession</td>
+<td>Method for an application to initiate joining a session.</td>
+</tr>
+<tr>
+<td>LeaveSession</td>
+<td>Method for an application to initiate leaving an existing session.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbusbushello-method-parameters">org.alljoyn.Bus.BusHello method parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GUIDC</td>
+<td>in</td>
+<td>GUID of the client AllJoyn router.</td>
+</tr>
+<tr>
+<td>protoVerC</td>
+<td>in</td>
+<td>AllJoyn protocol version of client AllJoyn router.</td>
+</tr>
+<tr>
+<td>GUIDS</td>
+<td>out</td>
+<td>GUID of the service side AllJoyn router.</td>
+</tr>
+<tr>
+<td>uniqueName</td>
+<td>out</td>
+<td>Unique name assigned to the bus-to-bus endpoint between two AllJoyn router components.</td>
+</tr>
+<tr>
+<td>protoVerS</td>
+<td>out</td>
+<td>AllJoyn protocol version of service side of AllJoyn router.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbusbindsessionport-method-parameters">org.alljoyn.Bus.BindSessionPort method parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionPort</td>
+<td>in</td>
+<td>Specified session port. Set to SESSION_PORT_ANY if app is asking AllJoyn router to assign a session port.</td>
+</tr>
+<tr>
+<td>opts</td>
+<td>in</td>
+<td>Specified session options.</td>
+</tr>
+<tr>
+<td>resultCode</td>
+<td>out</td>
+<td>Result status</td>
+</tr>
+<tr>
+<td>sessionPort</td>
+<td>out</td>
+<td>Same as input sessionPort unless SESSION_PORT_ANY was specified. In the latter case, set to an AllJoyn router-assigned session port.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbusunbindsessionport-method-parameters">org.alljoyn.Bus.UnbindSessionPort method parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionPort</td>
+<td>in</td>
+<td>Specified session port.</td>
+</tr>
+<tr>
+<td>resultCode</td>
+<td>out</td>
+<td>Result status</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbusjoinsession-method-parameters">org.alljoyn.Bus.JoinSession method parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionHost</td>
+<td>in</td>
+<td>Well-known name/unique name of the session creator.</td>
+</tr>
+<tr>
+<td>sessionPort</td>
+<td>in</td>
+<td>Specified session port.</td>
+</tr>
+<tr>
+<td>optsIn</td>
+<td>in</td>
+<td>Session options requested by the joiner.</td>
+</tr>
+<tr>
+<td>resultCode</td>
+<td>out</td>
+<td>Result status</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>out</td>
+<td>Assigned session ID.</td>
+</tr>
+<tr>
+<td>opts</td>
+<td>out</td>
+<td>Final selected session options.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbusleavesession-method-parameters">org.alljoyn.Bus.LeaveSession method parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionId</td>
+<td>in</td>
+<td>Session ID of the session.</td>
+</tr>
+<tr>
+<td>resultCode</td>
+<td>out</td>
+<td>Result status</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbus-interface-signals">org.alljoyn.Bus interface signals</h4>
+<table>
+<thead>
+<tr>
+<th>Signal name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SessionLost</td>
+<td>A signal that informs application when a session ends.</td>
+</tr>
+<tr>
+<td>MPSessionChanged</td>
+<td>A signal that informs application on changes to an existing session.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbussessionlost-signal-parameters">org.alljoyn.Bus.SessionLost signal parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionId</td>
+<td>Session ID of the session that was just lost.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbusmpsessionchanged-signal-parameters">org.alljoyn.Bus.MPSessionChanged signal parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionId</td>
+<td>Session ID that changed.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Unique name of the session member that changed.</td>
+</tr>
+<tr>
+<td>isAdd</td>
+<td>Flag indicating whether member was added. Set to true if the member has been added.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="orgalljoynbuspeersession">org.alljoyn.Bus.Peer.Session</h3>
+<p>The org.alljoyn.Bus.Peer.Session interface is an AllJoyn
+interface between application and the AllJoyn router. The
+following tables summarize the org.alljoyn.Bus.Peer.Session
+interface methods and signals used for session-related functions.</p>
+<h4 id="orgalljoynbuspeersession-interface-methods">org.alljoyn.Bus.Peer.Session interface methods</h4>
+<table>
+<thead>
+<tr>
+<th>Method name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AcceptSession</td>
+<td>Method for invoking accepting a session locally on the session host.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbuspeersessionacceptsession-parameters">org.alljoyn.Bus.Peer.Session.AcceptSession parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionPort</td>
+<td>in</td>
+<td>Session port that received the join request.</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>in</td>
+<td>ID for the new session (if accepted).</td>
+</tr>
+<tr>
+<td>creatorName</td>
+<td>in</td>
+<td>Session creator unique name.</td>
+</tr>
+<tr>
+<td>joinerName</td>
+<td>in</td>
+<td>Session joiner unique name.</td>
+</tr>
+<tr>
+<td>opts</td>
+<td>in</td>
+<td>Session options requested by the joiner.</td>
+</tr>
+<tr>
+<td>isAccepted</td>
+<td>out</td>
+<td>Set to true if the creator accepts the session.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbuspeersession-interface-signals">org.alljoyn.Bus.Peer.Session interface signals</h4>
+<table>
+<thead>
+<tr>
+<th>Signal name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SessionJoined</td>
+<td>A signal sent locally on the session host to inform it that a session was successfully joined.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orgalljoynbuspeersessionjoined-signal-parameters">org.alljoyn.Bus.Peer.SessionJoined signal parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionPort</td>
+<td>Session port of the session which was just lost.</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>ID for the new session.</td>
+</tr>
+<tr>
+<td>creatorName</td>
+<td>Session creator unique name.</td>
+</tr>
+<tr>
+<td>joinerName</td>
+<td>Session joiner unique name.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../alljoyn-transport/" class="btn btn-neutral float-right" title="Alljoyn transport"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../alljoyn-security/" class="btn btn-neutral" title="Alljoyn security"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../alljoyn-security/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../alljoyn-transport/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

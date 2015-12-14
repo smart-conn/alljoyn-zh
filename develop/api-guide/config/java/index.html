@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Java - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Java";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
+  <script src="../../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Ambassadors</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../ambassadors/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Develop</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/cpp-legacy/">Cpp legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/java-legacy/">Java legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/objc-legacy/">Objc legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audio streaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../audio-streaming/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../audio-streaming/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Java</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#configuration-api-guide-java">Configuration API Guide - Java</a></li>
+                
+                    <li><a class="toctree-l4" href="#reference-code">Reference code</a></li>
+                
+                    <li><a class="toctree-l4" href="#obtain-the-configuration-service-framework">Obtain the Configuration service framework</a></li>
+                
+                    <li><a class="toctree-l4" href="#build-an-application-that-uses-config-server">Build an application that uses Config Server</a></li>
+                
+                    <li><a class="toctree-l4" href="#setting-up-the-alljoyn-framework-and-about-feature">Setting up the AllJoyn framework and About feature</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-an-application-that-uses-config-server">Implementing an Application that Uses Config Server</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-an-application-that-uses-config-client">Implementing an Application that Uses Config Client</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/objc/">Objc</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Auto ping</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/auto-ping/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Propcache</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/propcache/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Events and actions</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../events-and-actions/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../api-reference/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ask</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/popular/">Popular</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Building</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Android</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ios osx</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/openwrt/">Openwrt</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Windows</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Debug</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/common-issues/">Common issues</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Run sample apps</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Acserver</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Basic</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Chat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/linux/">Linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Test</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/sessions/">Sessions</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Tutorial</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/arduino-and-gt202/">Arduino and gt202</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/ios/">Ios</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/thin-app/">Thin app</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/videos/">Videos</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/core/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Learn</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/architecture/">Architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/glossary/">Glossary</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/use-cases/">Use cases</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Base services</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audiostreaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/events-and-actions/">Events and actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/standard-core/">Standard core</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/thin-core/">Thin core</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About announcement</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Rn config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/rn_config/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Security2 0</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/hld/">Hld</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>System description</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/advertisement-discovery/">Advertisement discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-security/">Alljoyn security</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/data-exchange/">Data exchange</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/events-actions/">Events actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/sessionless-signal/">Sessionless signal</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/system-architecture/">System architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/thin-apps/">Thin apps</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Project lifecycle</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../project-lifecycle/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Supported platforms</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../supported-platforms/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>User groups</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../user-groups/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Config &raquo;</li>
+        
+      
+    
+    <li>Java</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="configuration-api-guide-java">Configuration API Guide - Java</h1>
+<h2 id="reference-code">Reference code</h2>
+<h3 id="classes-used-to-maintainprovide-configdata">Classes used to maintain/provide ConfigData</h3>
+<table>
+<thead>
+<tr>
+<th>Server class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ConfigService</td>
+<td>Class that implements the org.alljoyn.Config interface.</td>
+</tr>
+<tr>
+<td>PropertyStore</td>
+<td>Interface that supplies the list of properties required for <code>GetConfigurations()</code> and enables user manipulation of their values via <code>UpdateConfigurations()</code> and <code>ResetConfigurations()</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classes-used-to-remotely-manipulate-configdata">Classes used to remotely manipulate ConfigData</h3>
+<table>
+<thead>
+<tr>
+<th>Client class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ConfigClient</td>
+<td>Helper class for discovering About Server that provides access to the Announcements and to the AboutService. It listens for Announcements sent using the org.alljoyn.About interface.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="obtain-the-configuration-service-framework">Obtain the Configuration service framework</h2>
+<p>See the <a href="../../../../develop/building/android">Building Android section</a> for
+instructions on compiling the Configuration service framework.</p>
+<h2 id="build-an-application-that-uses-config-server">Build an application that uses Config Server</h2>
+<p>The following steps provide the high-level process to build an
+application that will maintain ConfigData.</p>
+<ol>
+<li>Create the base for the AllJoyn&trade; application.</li>
+<li>Implement PropertyStore to produce a ConfigStore.
+(See <a href="#create-a-propertystore-implementation">Create a PropertyStore implementation</a>.)</li>
+<li>Instantiate a ConfigStore.</li>
+<li>Initialize the AboutService in server mode.</li>
+<li>Implement the callbacks required by the Config Server.</li>
+<li>Initialize the ConfigService in server mode, providing
+it with the ConfigStore and callbacks.</li>
+</ol>
+<h3 id="build-an-application-that-uses-config-client">Build an application that uses Config Client</h3>
+<p>The following steps provide the high-level process to build an application
+that will remotely manipulate ConfigData.</p>
+<ol>
+<li>Create the base for the AllJoyn application.</li>
+<li>Initialize the AboutService in client mode.</li>
+<li>Initialize the ConfigService in client mode.</li>
+<li>Create a ConfigClient to interact with an announced Config Server.</li>
+</ol>
+<h2 id="setting-up-the-alljoyn-framework-and-about-feature">Setting up the AllJoyn framework and About feature</h2>
+<p>The steps required for this service framework are universal to
+all applications that use the AllJoyn framework and for any application
+using one or more AllJoyn service framework. Prior to use of the
+Configuration service framework as a Config Server or Config Client,
+the About feature must be implemented and the AllJoyn framework set up.</p>
+<p>Complete the procedures in the following sections to guide you in this process:</p>
+<ul>
+<li><a href="../../../../develop/building/android">Building Android</a></li>
+<li><a href="../../../../develop/api-guide/about/java">About API Guide</a></li>
+</ul>
+<h2 id="implementing-an-application-that-uses-config-server">Implementing an Application that Uses Config Server</h2>
+<p>Implementing a Config Server requires creating and registering
+an instance of the ConfigService class. Any application using
+Config Server also requires an About Server to facilitate the
+discovery via Announcements.</p>
+<p><strong>NOTE:</strong> Verify the BusAttachment has been created, started and
+connected before implementing the ConfigService. See the
+<a href="../../../../develop/api-guide/about/java">About API Guide</a> for the code snippets.
+Code in this section references a variable <code>mBus</code> (the BusAttachment
+variable name).</p>
+<h3 id="declare-listener-class">Declare listener class</h3>
+<p>Declare a listener class to receive the <code>SessionPortListener</code> callback.</p>
+<p>Typically, an <code>AcceptSessionJoiner</code> callback in <code>SessionPortListener</code>
+has a check to allow or disallow access. Since the AboutService
+requires access to any application using AboutClient, return
+true when this callback is triggered. Use the SessionJoined
+handler to set the session timeout to 20 seconds.</p>
+<pre><code class="java">class MyListener implements SessionPortListener {
+   boolean acceptSessionJoiner( short sessionPort, String joiner, SessionOpts opts ) {
+      return true;
+}
+
+   void sessionJoined( short sessionPort, int id, String joiner ) {
+mBus.enableConcurrentCallbacks();
+      uint32_t timeout = 20;
+      Status status = mBus.SetLinkTimeout(id, timeout);
+   }
+};
+</code></pre>
+
+<h3 id="bind-session-port">Bind session port</h3>
+<p><strong>NOTE:</strong> This step is not mandatory if you are only sending an announcement.</p>
+<p>To allow incoming connections, the formation of a session is needed.
+The AllJoyn framework must be told that connections are allowed.</p>
+<pre><code class="java">final Mutable.ShortValue sPort = new Mutable.ShortValue((short)0);
+
+SessionOpts sessionOpts = new SessionOpts();
+sessionOpts.traffic = SessionOpts.TRAFFIC_MESSAGES;
+sessionOpts.isMultipoint = true;
+sessionOpts.proximity = SessionOpts.PROXIMITY_ANY;
+sessionOpts.transports = SessionOpts.TRANSPORT_ANY;
+
+Status status = m_bus.bindSessionPort(sPort, sessionOpts, new SessionPortListener()
+   {
+      @Override
+      public boolean acceptSessionJoiner(short sessionPort, String joiner, SessionOpts sessionOpts) {
+         if (sessionPort == sPort.value) {
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+         public void sessionJoined(short sessionPort, int id, String joiner){
+
+            Log.i(TAG,
+String.format(&quot;SessionPortListener.sessionJoined(%d, %d, %s)&quot;, sessionPort, id, joiner));
+         }
+      });
+
+String logMessage = String.format(&quot;BusAttachment.bindSessionPort(%d, %s): %s&quot;,
+sPort.value, sessionOpts.toString(), status);
+Log.d(TAG, logMessage);
+</code></pre>
+
+<h3 id="create-a-propertystore-implementation">Create a PropertyStore implementation</h3>
+<p>The PropertyStore interface is required by the AboutService to
+store the provisioned values for the About interface data fields.
+See the <a href="../../../../learn/core/about-announcement/interface">About Interface Definition</a> for more information.</p>
+<p>The ProperyStore interface is also required by the ConfigService
+to store and facilitate manipulation of some updateable fields
+(listed in [Config interface data fields][config-interface-data-fields.
+See the [Configuration Interface Definition]<a href="../../../../learn/base-services/configuration/interface">config-interface-definition</a>
+for more information.</p>
+<h4 id="config-interface-data-fields">Config interface data fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Required</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DefaultLanguage</code></td>
+<td>yes</td>
+<td><code>s</code></td>
+</tr>
+<tr>
+<td><code>DeviceName</code></td>
+<td>yes</td>
+<td><code>s</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE:</strong> Any changes made to these fields should be written to
+a shared provisioning file. See the <a href="../../../../develop/api-guide/about/java">About API Guide</a>
+for more information.</p>
+<h4 id="sample-configstore-implementation">Sample ConfigStore implementation</h4>
+<p>An example PropertyStore implementation (ConfigStore)
+is provided below that specifies the following dictionary
+of metadata fields:</p>
+<ul>
+<li>Keys are the field names</li>
+<li>Values are a Map of String to Object entries where the
+String is the language tag associated with the Object value</li>
+</ul>
+<p>This implementation extends the example AboutStore implementation
+in the <a href="../../../../develop/api-guide/about/java">About API Guide</a> and is passed to the
+AboutService instead of AboutStore.</p>
+<pre><code class="java">public class ConfigStore implements PropertyStore
+{
+   private Map &lt; String, Map &lt; String, Object &gt; &gt; m_DefaultMap = new HashMap
+&lt; String, Map &lt; String, Object &gt; &gt;();
+   private Set &lt; String &gt; m_AnnounceKeys = new HashSet &lt; String &gt;();
+   private Set &lt; String &gt;   m_WriteableKeys = new HashSet &lt; String &gt;();
+   private Map &lt; String, Map &lt; String, Object &gt; &gt; m_DataMap = new HashMap &lt;
+String, Map &lt; String, Object &gt; &gt;();
+
+   public ConfigStore(Map &lt; String, Map &lt; String, Object &gt; &gt; defaultMap)
+   {
+      m_DefaultMap = defaultMap;
+
+      // Initialize set of Announce keys m_AnnounceKeys.add(&quot;AppId&quot;);
+      m_AnnounceKeys.add(&quot;DefaultLanguage&quot;);
+      m_AnnounceKeys.add(&quot;DeviceName&quot;);
+      m_AnnounceKeys.add(&quot;DeviceId&quot;);
+      m_AnnounceKeys.add(&quot;AppName&quot;);
+      m_AnnounceKeys.add(&quot;Manufacturer&quot;);
+      m_AnnounceKeys.add(&quot;ModelNumber&quot;);
+
+      // Initialize set of Writable keys m_WriteableKeys.add(&quot;DefaultLanguage&quot;);
+      m_WriteableKeys.add(&quot;DeviceName&quot;);
+
+      // Load default values loadDefaults();
+
+      // Load override values loadConfigurations();
+   }
+
+   @Override
+   public void readAll(String languageTag, Filter filter, Map&lt;String, Object&gt; dataMap)
+         throws PropertyStoreException {
+if (dataMap == null) {
+         throw new
+PropertyStroreException(PropertyStoreException.INVALID_VALUE);
+      }
+      languageTag = checkLanguage(languageTag);
+      for (Entry&lt;String, Map&lt;String, Object&gt;&gt; entry :
+m_DataMap.entrySet()) {
+         if (entry.getValue().containsKey(languageTag))
+         {
+            String lang = &quot;&quot;;
+            if (entry.getValue().containsKey(languageTag)) {
+               lang = languageTag;
+         }
+         switch (filter)
+         {
+         case READ:
+            {
+               dataMap.put(entry.getKey(),
+entry.getValue().get(lang));
+            }
+            break;
+         case ANNOUNCE:
+            if (m_AnnounceKeys.contains(entry.getKey()))
+            {
+               dataMap.put(entry.getKey(),
+entry.getValue().get(lang));
+            }
+            break;
+         case WRITE:
+            if (m_WriteableKeys.contains(entry.getKey()))
+            {
+               dataMap.put(entry.getKey(),
+entry.getValue().get(lang));
+            }
+            break;
+         }
+      }
+   }
+}
+
+@Override
+public void reset(String key, String languageTag) throws
+PropertyStoreException {
+   languageTag = checkLanguage(languageTag);
+   if (!m_DataMap.containsKey(key)) {
+      throw new PropertyStoreException();
+   }
+   m_DataMap.get(key).remove(languageTag);
+saveConfigurations();
+   }
+
+@Override
+
+public void resetAll() throws PropertyStoreException {
+   m_DataMap.clear();
+   loadDefaults();
+}
+
+@Override
+public void update(String key, String languageTag, Object newValue)
+   throws PropertyStoreException { languageTag = checkLanguage(languageTag);
+   if (!m_DataMap.containsKey(key))
+   {
+      throw new
+PropertyStoreException(PropertyStoreException.INVALID_VALUE);
+   }
+   m_DataMap.get(key).put(languageTag, newValue);
+   saveConfigurations();
+}
+
+   private String checkLanguage(String languageTag) throws
+PropertyStoreException
+   {
+      if (languageTag == null) {
+         throw new
+PropertyStoreException(PropertyStoreException.INVALID_VALUE);
+   }
+      if (languageTag.isEmpty()) {
+         return (String) m_DataMap.get(&quot;DefaultLanguage&quot;).get(&quot;&quot;);
+   }
+   if
+(((Set&lt;String&gt;)m_DataMap.get(&quot;SupportedLanguages&quot;).get(&quot;&quot;)).contains(languageTa g)) {
+         throw new
+PropertyStoreException(PropertyStoreException.UNSUPPORTED_LANGUAGE);
+   }
+   return languageTag;
+}
+
+private void loadDefaults()
+{
+   m_DataMap.putAll(m_DefaultMap);
+}
+
+private void loadConfigurations()
+{
+   // Implement your persistence of Config fields here
+}
+
+private void saveConfigurations()
+{
+   // Implement your persistence of Config fields here
+
+   }
+}
+</code></pre>
+
+<h3 id="provision-configstore-instance-with-default-values">Provision ConfigStore instance with default values</h3>
+<p>In the application, the ConfigStore instance which you
+created will be loaded with the default values. In the
+sample implementation above, the ConfigStore instance will
+be provided with a default values map.</p>
+<pre><code class="java">Map &lt; String, Map &lt; String, Object &gt; defaultMap = new HashMap &lt; String, Map &lt; String, Object &gt; &gt;();
+// Populate map with fields' names and values.
+Map &lt; String, Object &gt; defaultDeviceName = new HashMap &lt;String, Object&gt;();
+defaultValue.put(&quot;&quot;, &quot;MyDevice&quot;);// An empty string means non-language specific field.
+defaultMap.put(&quot;DeviceName&quot;, defaultDeviceName);
+Map &lt; String, Object &gt; defaultLanguage = new HashMap &lt;String, Object&gt;();
+defaultValue.put(&quot;&quot;, &quot;en&quot;);// An empty string means non-language specific field.
+defaultMap.put(&quot;DefaultLanguage&quot;, defaultLanguage);
+Map &lt; String, Object &gt; deviceId = new HashMap &lt;String, Object&gt;();
+deviceId.put(mBus. getGlobalGUIDString(), &quot;en&quot;);
+// An empty string means non- language specific field.
+defaultMap.put(&quot;DeviceId&quot;, deviceId);
+PropertyStore aboutStore = new AboutStore(defaultMap);
+</code></pre>
+
+<p>The following subsections highlight provisioning fields
+according to their data type.</p>
+<h4 id="appid-field">AppId field</h4>
+<p>The AppId field is an array of bytes. It is a globally
+unique identifier (GUID) encoded as an array of 16 bytes.</p>
+<pre><code class="java">UUID uuid = UUID.randomUUID();
+Map &lt; String, Object &gt; defaultAppId = new HashMap &lt;String, Object&gt;();
+defaultAppId.put(&quot;&quot;, TransportUtil.uuidToByteArray(uuid));
+defaultMap.put(&quot;AppId&quot;, defaultAppId);
+</code></pre>
+
+<h4 id="supportedlanguages-field">SupportedLanguages field</h4>
+<p>The SupportedLanguages field is a list of text strings.
+Some fields can have language-dependent value that must
+be provided for each of the supported languages.</p>
+<pre><code class="java">String [] supportedLanguages = { &quot;en&quot;, &quot;fr&quot; };
+Map &lt; String, Object &gt; defaultSupportedLanguages = new HashMap &lt;String, Object&gt;();
+defaultSupportedLanguages.put(&quot;&quot;, supportedLanguages);
+</code></pre>
+
+<h4 id="non-language-specific-fields">Non-language-specific fields</h4>
+<p>Non-language-specific fields support a single supplied
+text string. Below is an example for the ModelNumber field
+on how to insert into the ConfigStore. The code below can be
+used with the field name being replaced by other field names
+listed in <a href="#config-interface-data-fields">Config interface data fields</a>.</p>
+<pre><code class="java">Map &lt; String, Object &gt; defaultModelNumber = new HashMap &lt;String, Object&gt;();
+defaultModelNumber.put(&quot;&quot;, &quot;MN-123&quot;);&quot;);// An empty string means non-language specific field.
+defaultMap.put(&quot;ModelNumber&quot;, defaultModelNumber);
+</code></pre>
+
+<h4 id="language-dependent-fields">Language-dependent fields</h4>
+<p>Language-dependent fields support a single supplied text string.
+Below is an example for the Description field on how to insert
+into the PropertyStore. The code below can be used with the field
+name being replaced by other field names listed in
+<a href="#config-interface-data-fields">Config interface data fields</a>.</p>
+<pre><code class="java">Map &lt; String, Object &gt; defaultDescription = new HashMap &lt;String, Object&gt;();
+defaultDescription.put(&quot;en&quot;, &quot;The description in English&quot;);
+defaultDescription.put(&quot;fr&quot;, &quot;La description en francais&quot;);
+defaultMap.put(&quot;AppId&quot;, defaultDescription);
+</code></pre>
+
+<h3 id="establish-the-aboutservice-in-server-mode">Establish the AboutService in Server mode</h3>
+<p>For an application to provide Config Server, it requires to
+Announce its interface via an About Server. AboutServiceImpl
+is an implementation wrapper around AllJoyn native calls that
+handle the interactions between About Server and About Client.
+For more details, see the content in <a href="../../../../develop/api-guide/about/java#provision-propertystore-instance-with-default-values">Provision PropertyStore instance
+with default values</a> through <a href="../../../../develop/api-guide/about/java#send-the-announcement">Send the Announcement</a>
+in the <a href="../../../../develop/api-guide/about/java">About API Guide</a>.</p>
+<pre><code class="java">AboutService aboutService = AboutServiceImpl.getInstance();
+aboutService.startAboutServer(sPort.value, configStore, mBus);
+</code></pre>
+
+<h3 id="create-the-configservice-object">Create the ConfigService object</h3>
+<p>For an application to receive and modify ConfigData, it requires
+an instance of the ConfigService class. ConfigServiceImpl is an
+implementation wrapper around AllJoyn native calls that handle
+the interactions with the Config Server.</p>
+<pre><code class="java">ConfigService configService = ConfigServiceImpl.getInstance();
+</code></pre>
+
+<h3 id="start-server-mode">Start Server mode</h3>
+<p>Perform the following tasks to start Server mode.</p>
+<h4 id="implement-application-callbacks">Implement application callbacks</h4>
+<p>Before starting in server mode, a few application callbacks
+must be implemented that allow reaction to changes in various
+field values.</p>
+<pre><code class="java">ConfigChangeListener configChangeListener = new ConfigChangeListener()
+{
+   @Override
+   public void onConfigChanged(Map&lt;String, Variant&gt; newConfiguration, String languageTag)
+   {
+      // Perform any action that depends on configuration value changes. E.g. propagate a changed DeviceName to other services that may consume it.
+   }
+   @Override
+   public void onResetConfiguration(String language, String[] fieldNames)
+   {
+      // Perform any action that depends on configuration value changes. E.g. propagate a reset DeviceName to other services that may consume it.
+   }
+};
+RestartHandler restartHandler = new RestartHandler()
+{
+   @Override
+   public void restart()
+   {
+      // Restart application disconnecting and reconnecting to the
+AllJoyn network.
+   }
+};
+FactoryResetHandler factoryResetHandler = new FactoryResetHandler()
+{
+   public void doFactoryReset()
+   {
+      configStore.resetAll(); // Reset the ConfigStore restoring default factory values.
+         // Perform any other reset logic related to the AllJoyn services
+platform.
+   }
+}
+PassphraseChangedListener passphraseChangeListener = new
+PassphraseChangedListener()
+{
+   public void onPassphraseChanged(byte[] passphrase)
+   {
+      // Perform any other passphrase change logic related to the application.
+   }
+}
+</code></pre>
+
+<h4 id="start-the-configservice-in-server-mode">Start the ConfigService in Server mode</h4>
+<p>Once the callbacks are initialized, the Configuration service
+framework can be started. Register the relevant BusObjects,
+add the relevant interfaces to the Announcement's ObjectDescription
+and register the callbacks.</p>
+<pre><code class="java">configService.startConfigServer(aboutStore, configChangeListener,
+restartHandler, factoryResetHandler, passphraseChangeListener, mBus);
+</code></pre>
+
+<h4 id="register-setpasswordhandler">Register SetPasswordHandler</h4>
+<p>A SetPasswordHandler is required to be registered with the
+ConfigService in order to handler remote calls to set a new
+password as the secret for the key exchange encryption mechanism.</p>
+<pre><code class="java">SetPasswordHandler setPasswordHandler = new SetPasswordHandler() {
+   @Override
+   public void setPassword(String peerName, char[] password)
+   {
+      // Store new credentials
+      // Clear all current encryption keys that were generated from the current passphrase.
+      mBus.clearKeyStore();
+   }
+};
+configService.setSetPasswordHandler(setPasswordHandler);
+</code></pre>
+
+<h3 id="advertise-to-allow-connections">Advertise to allow connections</h3>
+<pre><code class="java">mBus.advertiseName(mBus.getUniqueName());
+</code></pre>
+
+<h3 id="send-the-announcement">Send the Announcement</h3>
+<pre><code class="java">aboutService.announce();
+</code></pre>
+
+<h3 id="unregister-and-delete-configservice-and-busattachment">Unregister and delete ConfigService and BusAttachment</h3>
+<p>When your process is done with the ConfigService and no
+longer wishes to send announcements, unregister the process
+from the AllJoyn bus and then delete variables used.</p>
+<pre><code class="java">if( configService != null ) {
+   configService.stopServer();
+}
+if( aboutService != null ) {
+   aboutService.stopServer();
+}
+if( mBus != null) {
+   mBus.disconnect();
+   mBus.release();
+   mBus = null;
+}
+</code></pre>
+
+<h2 id="implementing-an-application-that-uses-config-client">Implementing an Application that Uses Config Client</h2>
+<p>To implement an application to receive and modify ConfigData,
+use the ConfigClient class. The AboutClient class must be used
+so that your application is notified when applications with
+About Server and possibly Config Server instances can send announcements.</p>
+<p>Verify the BusAttachment has been created, started and connected
+before implementing a Config Client. See the <a href="../../../../develop/api-guide/about/java">About API Guide</a>
+for the code snippets. Code in this chapter references a
+variable <code>mBus</code> (the BusAttachment variable name).</p>
+<h3 id="establish-the-aboutservice-object">Establish the AboutService object</h3>
+<p>For an application to discover peer applications that
+are ConfigService providers, it requires an instance of
+the AboutService class running in Client mode. AboutServiceImpl
+is an implementation wrapper around AllJoyn native calls that
+handle the interactions with the About Server. The following
+is an aggregation of the content in <a href="../../../../develop/api-guide/about/java#create-the-aboutservice-object">Create the AboutService object</a> through <a href="../../../../develop/api-guide/about/java#set-up-ability-to-receive-the-announce-signal">Set up ability to receive the
+Announce signal</a> of the <a href="../../../../develop/api-guide/about/java">About API Guide</a>.</p>
+<pre><code class="java">AboutService aboutService = AboutServiceImpl.getInstance();
+aboutService.startClient(mBus);
+MyAnnouncementHandler announceHandler = new MyAnnouncementHandler();
+aboutService.addAnnouncementHandler(announceHandler, new String[]
+   { &quot;org.alljoyn.Config&quot; });
+</code></pre>
+
+<h3 id="create-the-configservice-object_1">Create the ConfigService object</h3>
+<p>For an application to receive and modify ConfigData, it requires an
+instance of the ConfigService class. ConfigServiceImpl is an implementation
+wrapper around AllJoyn native calls that handle the interactions with the
+Config Server.</p>
+<pre><code class="java">ConfigService configService = ConfigServiceImpl.getInstance();
+</code></pre>
+
+<h3 id="start-client-mode">Start Client mode</h3>
+<pre><code class="java">configService.startConfigClient(mBus);
+</code></pre>
+
+<h3 id="engage-with-a-peer-configservice">Engage with a peer ConfigService</h3>
+<p>Perform the following tasks to engage with a peer ConfigService
+whose Announcement was received.</p>
+<h4 id="create-configclient">Create ConfigClient</h4>
+<p>Generate an instance of ConfigClient to receive and send
+ConfigData to and from a peer Config Server whose Announcement
+was received in the <code>onAnnouncement()</code> implementation of your
+MyAnnouncementHandler instance. The following is an example
+implementation of the call shown in <a href="../../../../develop/api-guide/about/java#implement-announcehandler-class">Implement AnnounceHandler class</a> of the <a href="../../../../develop/api-guide/about/java">About API Guide</a>.</p>
+<pre><code class="java">private void engageWithPeer(Short port, String peerName, BusObjectDescription[]
+interfaces, Map&lt;String, Object&gt; announceMap) {
+   MyAvailabilityListener availabilityListener = new
+MyAvailabilityListener();
+   ConfigClient configClient = configService.createFeatureConfigClient
+(peerName, availabilityListener, port);
+</code></pre>
+
+<h4 id="request-the-configdata">Request the ConfigData</h4>
+<p>The updateable ConfigData is requested through the ConfigClient
+via the GetConfigurations() method call. The structure that is
+returned can be iterated through to determine the contents.
+The content definition is found in the <a href="../../../../learn/base-services/configuration/interface">Configuration Interface Definition</a>.</p>
+<pre><code class="java">Map &lt;String, Variant&gt; configMap =
+configClient.GetConfigurations((String)announceMap.get(&quot;DefaultLanguage&quot;));
+</code></pre>
+
+<h4 id="update-the-configdata">Update the ConfigData</h4>
+<p>The received data can be updated through the ConfigClient via the
+<code>UpdateConfigurations()</code> method call. The structure that was
+returned by <code>GetConfigurations()</code> can be iterated through to
+determine the contents. The content definition is found in the
+<a href="../../../../learn/base-services/configuration/interface">Configuration Interface Definition</a>.</p>
+<pre><code class="java">configMap.put(&quot;DefaultLanaguge&quot;, new Variant(&quot;fr&quot;, &quot;s&quot;);
+configClient.UpdateConfigurations((String)announceMap.get(&quot;DefaultLanguage&quot;), configMap);
+</code></pre>
+
+<h4 id="reset-the-configdata">Reset the ConfigData</h4>
+<p>The ConfigData can be reset to default through the ConfigClient
+via the <code>ResetConfigurations()</code> method call. The structure
+that was returned by <code>GetConfigurations()</code> can be iterated
+through to determine the list of reset fields. The content
+definition is found in the <a href="../../../../learn/base-services/configuration/interface">Configuration Interface Definition</a>.</p>
+<pre><code class="java">String [] fieldsToReset = new String [] { &quot;DeviceName&quot; };
+configClient.ResetConfigurations((String)announceMap.get(&quot;DefaultLanguage&quot;), fieldsToReset);
+</code></pre>
+
+<h4 id="reset-the-peer-device-application-to-factory-defaults">Reset the peer device application to factory defaults</h4>
+<p>The peer device/application configuration can be reset to
+factory defaults through the ConfigClient via the <code>FactoryReset()</code> method call.</p>
+<p><strong>NOTE:</strong> This is a no-reply call, so its success cannot be determined directly.</p>
+<pre><code class="java">configClient.FactoryReset();
+</code></pre>
+
+<h4 id="restart-the-peer">Restart the peer</h4>
+<p>The peer application can be restarted though the ConfigClient
+via the <code>Restart()</code> method call.</p>
+<p><strong>NOTE:</strong> This is a no-reply call, so its success cannot be determined directly.</p>
+<pre><code class="java">configClient.Restart();
+</code></pre>
+
+<h4 id="setting-a-passcode-on-the-peer">Setting a passcode on the peer</h4>
+<p>The peer application can be set to have a different passcode
+through the ConfigClient via the <code>SetPasscode()</code> method call.
+This revokes the current encryption keys and regenerates new
+ones based on the new shared secret, namely the passcode.</p>
+<p><strong>NOTE:</strong> The realm name is currently ignored.</p>
+<pre><code class="java">byte [] passcode = new byte [] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06 };
+configClient.SetPasscode(&quot;&quot;, passcode);
+// Revoke current encryption key that was based on the previous passcode. StringValue peerGuid = new StringValue();
+Status status = m_Bus.getPeerGUID(m_currentPeer.deviceName, peerGuid);
+if(status.equals(Status.OK)){
+   mBus.clearKeys(peerGuid.value);
+}
+</code></pre>
+
+<h3 id="delete-variables-and-unregister-listeners">Delete variables and unregister listeners</h3>
+<p>Once you are done using the About feature, Configuration service
+framework, and the AllJoyn framework, free the variables used
+in the application.</p>
+<pre><code class="java">if(configClient != null) {
+   configClient.disconnect();
+}
+if(configService != null) {
+   configService.stopClient();
+}
+if(aboutService != null) {
+   aboutService.unregisterAnnounceListener(announceListener);
+   aboutService.stopClient();
+}
+if(mBus != null) {
+   mBus.disconnect();
+   mBus.release();
+   mBus = null;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../objc/" class="btn btn-neutral float-right" title="Objc"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../" class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../objc/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

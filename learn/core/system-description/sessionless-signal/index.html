@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sessionless signal - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Sessionless signal";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
+  <script src="../../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Ambassadors</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../ambassadors/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Develop</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/cpp-legacy/">Cpp legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/java-legacy/">Java legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/objc-legacy/">Objc legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audio streaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/audio-streaming/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/audio-streaming/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/objc/">Objc</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Auto ping</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/auto-ping/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Propcache</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/propcache/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Events and actions</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/events-and-actions/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/onboarding/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/onboarding/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-reference/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ask</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/ask/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/ask/popular/">Popular</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Building</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Android</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/android/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/android/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ios osx</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/ios-osx/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/ios-osx/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/linux/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/linux/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/linux/openwrt/">Openwrt</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Windows</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/windows/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/windows/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Debug</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/debug/common-issues/">Common issues</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/debug/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Run sample apps</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Acserver</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/acserver/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/acserver/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/acserver/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Basic</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Chat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/linux/">Linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Test</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/test/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/test/sessions/">Sessions</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Tutorial</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/arduino-and-gt202/">Arduino and gt202</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/ios/">Ios</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/thin-app/">Thin app</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/videos/">Videos</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/core/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Learn</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../architecture/">Architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../glossary/">Glossary</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../use-cases/">Use cases</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Base services</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audiostreaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/audiostreaming/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/audiostreaming/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/configuration/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/configuration/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/configuration/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/controlpanel/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/notification/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/notification/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/onboarding/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/onboarding/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../events-and-actions/">Events and actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../standard-core/">Standard core</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../thin-core/">Thin core</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About announcement</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about-announcement/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about-announcement/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about-announcement/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Rn config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../rn_config/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Security2 0</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../security2_0/hld/">Hld</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../security2_0/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>System description</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../advertisement-discovery/">Advertisement discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../alljoyn-security/">Alljoyn security</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../alljoyn-session/">Alljoyn session</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../alljoyn-transport/">Alljoyn transport</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data-exchange/">Data exchange</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../events-actions/">Events actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Sessionless signal</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#sessionless-signal">Sessionless Signal</a></li>
+                
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
+                
+                    <li><a class="toctree-l4" href="#sessionless-signal-end-to-end-logic">Sessionless signal end-to-end logic</a></li>
+                
+                    <li><a class="toctree-l4" href="#sessionless-signal-message-sequences-prior-to-the-1406-release">Sessionless signal message sequences (prior to the 14.06 release)</a></li>
+                
+                    <li><a class="toctree-l4" href="#sessionless-signal-message-sequences-1406-release">Sessionless signal message sequences (14.06 release)</a></li>
+                
+                    <li><a class="toctree-l4" href="#orgalljoynsl-interface">org.alljoyn.sl interface</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../system-architecture/">System architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../thin-apps/">Thin apps</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Project lifecycle</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../project-lifecycle/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Supported platforms</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../supported-platforms/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>User groups</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../user-groups/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>System description &raquo;</li>
+        
+      
+    
+    <li>Sessionless signal</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="sessionless-signal">Sessionless Signal</h1>
+<h2 id="overview">Overview</h2>
+<p>The sessionless signal is an AllJoyn&trade; feature that enables 
+broadcasting of signals to all reachable nodes in the AllJoyn 
+proximal network. This is different than the session-based signals 
+described in <a href="../../../../learn/core/system-description/data-exchange">Data Exchange</a>, where signals are sent 
+only to participants connected over a given session or 
+multiple sessions (for session broadcast signals) based on 
+sessionId/destination based routing. </p>
+<p>Sessionless signals are logically broadcast signals and any 
+app on the AllJoyn proximal network interested in receiving 
+sessionless signals will receive all sessionless signals sent 
+by any other app on that network. The AllJoyn system design 
+refers to sessionless signals as logically broadcast because 
+signals themselves are not broadcast/multicast, only an indication 
+for signals is sent over multicast to all the nodes on the network. 
+Applications do not have to be connected over sessions to receive 
+sessionless signals, however, the AllJoyn router underneath 
+must establish a session to fetch these signals based on the 
+indication received. Applications can specify match rules 
+(via AddMatch) to receive a specific set of sessionless 
+signals and the AllJoyn router filters out signals based 
+on those match rules. </p>
+<p>The following figure captures the high-level architecture 
+for the sessionless signal on the provider and consumer sides. 
+The AllJoyn router supports a logical SLS module that implements 
+sessionless signal logic. The SLS module makes use of the 
+Name Service to advertise and discover sessionless signals 
+using a sessionless signal-specific well-known name.</p>
+<p><img alt="sls-arch" src="../../../../files/learn/system-desc/sls-arch.png" /></p>
+<p><strong>Figure:</strong> Sessionless signal architecture</p>
+<p>After AllJoyn router startup, the SLS module executes the 
+following steps to prepare itself for sending and/or receiving 
+sessionless signals. </p>
+<ol>
+<li>Create an object implementing "org.alljoyn.sl" interface 
+which is the interface used between two AllJoyn routers to 
+exchange sessionless signals.</li>
+<li>Register signal handlers to receive signals from "org.alljoyn.sl" interface.</li>
+<li>Bind a well-known sessionless signal session port 100 
+to support incoming requests to fetch sessionless signals. </li>
+</ol>
+<p>The consumer app interested in receiving sessionless signals 
+registers a match rule with the AllJoyn router to receive 
+sessionless signals. As a result, the SLS module initiates 
+discovery for sessionless providers via the Name Service 
+(either the legacy Name Service or NGNS based on the router version). </p>
+<p>On the provider side, the app sends a sessionless signal to 
+the AllJoyn router. The SLS module stores the signal in a 
+local message cache. The provider side sessionless signal 
+generates a sessionless signal-specific well-known name 
+and advertises that over AllJoyn network. </p>
+<p>Upon discovering the sessionless signal provider, the consumer 
+AllJoyn router establishes a session with the provider side 
+AllJoyn router over the well-known session port for sessionless 
+signals. Once the session is established, the consumer SLS module 
+fetches sessionless signals via the org.alljoyn.sl interface. </p>
+<p>The following sections detail the provider and consumer 
+sessionless signal-related behavior.</p>
+<h3 id="sessionless-signal-enhancement-in-the-1406-release">Sessionless signal enhancement in the 14.06 release</h3>
+<p>Prior to the 14.06 release, the consumer side SLS module 
+provides the functionality of requesting sessionless signals 
+by matching certain filtering criteria specified by the AddMatch 
+rule. The consumer fetches sessionless signals from all the 
+providers and applies the AddMatch rules to filter received 
+sessionless signals before passing these to interested applications.</p>
+<p>The sessionless signal design in the 14.06 release was 
+enhanced to enable a consumer application to request sessionless 
+signals from provider applications supporting certain AllJoyn 
+interfaces. For example, a Lighting Controller app can request 
+Announcement sessionless signals only from those provider apps 
+that implement the org.alljoyn.LightBulb interface. </p>
+<p>The following key sessionless signal enhancements made to 
+achieve this functionality:</p>
+<ul>
+<li>The sessionless signal advertised name was enhanced to add 
+<INTERFACE> information from the header of the sessionless signal. 
+Consumers use this to fetch sessionless signals only from those 
+providers that are emitting signals from <INTERFACE> specified 
+in the consumer side match rules. Multiple sessionless signal 
+names are advertised, one for each unique interface in the 
+sessionless signal cache.</li>
+<li>The match rule definition for AddMatch has been extended to 
+add a new 'implements' key that can be used to indicate the 
+desire to receive the Announcement sessionless signal only 
+from applications implementing certain AllJoyn interfaces as 
+specified in the application's Announcement signal.</li>
+</ul>
+<p>Sessionless signals are only fetched from those providers 
+that support interface details specified in the match rules. 
+The AddMatch match rules are passed to the providers to 
+filter signals based on those match rules. </p>
+<h2 id="sessionless-signal-end-to-end-logic">Sessionless signal end-to-end logic</h2>
+<p>The sessionless signal end-to-end logic consists of the 
+following aspects, which are detailed in the sections below.</p>
+<ul>
+<li>The provider caches signals and advertises the availability of signals.</li>
+<li>The consumer discovers sessionless signal providers.</li>
+<li>The consumer fetches sessionless signals from a provider.</li>
+</ul>
+<h3 id="provider-caches-signals-and-advertises-availability">Provider caches signals and advertises availability</h3>
+<p>On the provider side, the app sends a signal to the AllJoyn 
+router with the SESSIONLESS flag set. The SLS module in the 
+provider inserts the signal into its sessionless signal cache. 
+The cache entry uses the combination of (SENDER, INTERFACE, MEMBER, 
+and PATH) header fields of the signal as the key.  </p>
+<p>Subsequent sessionless signals sent to the AllJoyn router 
+with the same (SENDER, INTERFACE, MEMBER, and PATH) header 
+fields overwrite the already cached sessionless signal.</p>
+<p>The provider AllJoyn router assigns a change_id for sessionless 
+signals. The change_id is used to indicate updates to sessionless 
+signals to consumers on the AllJoyn network. Each sessionless 
+signal cache entry includes (SLS signal, change_id) tuple. 
+The change_id is incremented by the provider only after a new 
+signal is inserted into its cache and a consumer has requested 
+signals from the provider since the last time the change_id was incremented.</p>
+<p>The app may remove an entry from the provider's cache by calling 
+the CancelSessionlessMessage method of the org.alljoyn.Bus 
+interface of the /org/alljoyn/Bus object. The entry being 
+removed is specified by the serial number of the signal. 
+The change_id is not incremented when the provider removes 
+a signal from its cache. The contents of the cache, including 
+the associated change_ids, determine what the provider will advertise.  </p>
+<p>Prior to the AllJoyn 14.06 release, the SLS module requests 
+and advertises the following sessionless signal well-known name: </p>
+<ul>
+<li>"org.alljoyn.sl.x<GUID>.x<change_id>"</li>
+</ul>
+<p>where:</p>
+<ul>
+<li>GUID is the GUID of the AllJoyn router</li>
+<li>change_id is the maximum change_id in the sessionless signal cache.</li>
+</ul>
+<p>Starting with the AllJoyn 14.06 release, the SLS module 
+requests and advertises the following sessionless signal well-known names:</p>
+<ul>
+<li>"org.alljoyn.sl.y<GUID>.x<change_id>"</li>
+</ul>
+<p>where:</p>
+<ul>
+<li>GUID is the GUID of the AllJoyn router</li>
+<li>
+<p>change_id is the maximum change_id in the SLS cache.</p>
+</li>
+<li>
+<p>"<INTERFACE>.sl.y<GUID>.x<change_id>"</p>
+</li>
+</ul>
+<p>where:</p>
+<ul>
+<li>INTERFACE is the value of the INTERFACE header field of the signal</li>
+<li>GUID is the GUID of the AllJoyn router</li>
+<li>change_id is the maximum change_id for signals in the 
+    sessionless signal cache having the same value of the 
+    INTERFACE header field.  </li>
+</ul>
+<p>At most, one well-known name is requested and advertised 
+  for each unique INTERFACE header field value in the sessionless signal cache.</p>
+<p>The following figure shows the provider side SLS module logic 
+prior to the AllJoyn 14.06 release.</p>
+<p><img alt="provider-sls-module-logic-pre-1406" src="../../../../files/learn/system-desc/provider-sls-module-logic-pre-1406.png" /></p>
+<p><strong>Figure:</strong> Provider SLS module logic (prior to the AllJoyn 14.06 release)</p>
+<p>The following figure shows the provider side SLS module logic 
+introduced in the AllJoyn 14.06 release.</p>
+<p><img alt="provider-sls-module-logic-1406" src="../../../../files/learn/system-desc/provider-sls-module-logic-1406.png" /></p>
+<p><strong>Figure:</strong> Provider SLS module logic (introduced in the AllJoyn 14.06 release)</p>
+<h3 id="consumer-discovers-sessionless-signal-providers">Consumer discovers sessionless signal providers</h3>
+<p>On the consumer side, the app registers an interest in a 
+sessionless signal by calling the D-Bus AddMatch method.</p>
+<p><strong>NOTE:</strong> The D-Bus AddMatch method is part of the org.freedesktop. 
+The D-Bus interface and is implemented by the /org/freedesktop/DBus object.</p>
+<p>The match rule includes "sessionless='t'" to indicate registration 
+for a sessionless signal, along with any other key/value pairs for 
+filtering signals.  </p>
+<p>Prior to the AllJoyn 14.06 release, the SLS module starts the 
+name-based discovery process to discover the SLS WKN prefix 
+"org.alljoyn.sl." after receiving the first sessionless 
+match rule. When the last match rule is removed by an app 
+connected to the AllJoyn router, the SLS module cancels 
+discovering the SLS WKN prefix.</p>
+<p>Starting with the AllJoyn 14.06 release, the sessionless 
+signal logic on the consumer side was enhanced to enable 
+an application requesting sessionless signals from providers 
+implementing certain AllJoyn interfaces. A new 'implements' 
+key was added to the AddMatch method to achieve this. 
+The 'implements' key specifies an AllJoyn interface that 
+should be implemented by the sessionless signal provider. 
+Multiple 'implements' key/value pairs may be specified in 
+a single match rule. These are treated as a logical AND 
+when discovering sessionless signal providers. In the current 
+implementation, the 'implements' key is only applicable for 
+receiving the Announcement sessionless signal. An AddMatch 
+that includes the 'implements' key should always include 
+"interface= org.alljoyn.About".</p>
+<p>The following figure shows the consumer logic for discovering 
+sessionless signal providers implemented in the 14.06 release.</p>
+<p><img alt="consumer-logic-sessionless-providers-1406" src="../../../../files/learn/system-desc/consumer-logic-sessionless-providers-1406.png" /></p>
+<p><strong>Figure:</strong> Consumer logic for discovering sessionless providers (introduced in the AllJoyn 14.06 release)</p>
+<p>If the AddMatch includes the 'interface' key but no 'implements' 
+key, the SLS module performs name-based discovery to discover 
+the name prefix "<interface>.sl." for the specified interface 
+in the match rule.</p>
+<p>If the AddMatch includes one or more 'implements' keys, the 
+SLS module performs interface name discovery via the NGNS 
+to discover providers implementing interfaces specified by 
+the 'implements' key. The SLS module also performs a name-based 
+discovery for name prefix "org.alljoyn.sl." both via mDNS 
+and using the WHO-HAS message. The latter is intended to 
+discover any sessionless signal providers prior to the 14.06 
+release. Name-based discovery over mDNS is performed to catch 
+unsolicited mDNS responses from providers for new/updated 
+sessionless signals.</p>
+<p>The app unregisters interest in a sessionless signal by 
+calling the RemoveMatch method with a previously added 
+match rule. When the last sessionless signal match rule is 
+removed, the SLS module stops sessionless signal-related 
+discovery, including both name-based and interface name discovery. </p>
+<h3 id="consumer-fetches-sessionless-signals-from-a-provider">Consumer fetches sessionless signals from a provider</h3>
+<p>After discovering a provider, the consumer SLS module 
+determines if it needs to fetch sessionless signals from 
+the provider based on the consumer's match rules and the 
+change_id of the provider in the advertisement. The consumer 
+SLS module keeps track of last acquired change_id for every 
+provider GUID it has discovered via the sessionless signal 
+advertised name. The sessionless signal fetch logic and the 
+state maintained by the consumer for each provider was modified 
+in the 14.06 release. The fetch logic functionality differences 
+are described below.</p>
+<ul>
+<li>Prior to the 14.06 release, the consumer SLS module maintains 
+the List<Provider GUID, last acquired change_id> information 
+for discovered providers. The consumer SLS module fetch sessionless 
+signals if an updated change_id is received from the provider 
+as part of the sessionless signal advertised name.</li>
+<li>Starting with the 14.06 release, multiple sessionless signal 
+advertised names can be received from a given provider. 
+In addition, the associated change_id can be different for 
+each of those sessionless signal advertised names. The consumer 
+SLS module maintains the List<Provider GUID, SLS name, change_id> 
+for discovered providers. It also keeps track of the match rules 
+that have been applied for a given provider. </li>
+</ul>
+<p>The following figure captures the consumer sessionless signal 
+fetch logic implemented in the 14.06 release.</p>
+<p><img alt="consumer-logic-sls-fetch-1406" src="../../../../files/learn/system-desc/consumer-logic-sls-fetch-1406.png" /></p>
+<p><strong>Figure:</strong> Consumer logic to determine sessionless signal fetch (introduced in the 14.06 release)</p>
+<p>The consumer SLS module receives the sessionless signal 
+advertised name from a provider. The sessionless signal 
+name can be received via multiple means:</p>
+<ul>
+<li>Solicited mDNS response over unicast as a result of an mDNS query</li>
+<li>Unsolicited mDNS response over multicast</li>
+<li>IS-AT multicast message (solicited or unsolicited). </li>
+</ul>
+<p>The consumer checks if any new match rules have been added 
+after the last fetch from the provider or the received change_id 
+in the sessionless signal name is greater than what was fetched 
+previously from that provider.  </p>
+<p>If either condition is true, the consumer initiates a sessionless 
+signal fetch from a legacy provider (prior to the 14.06 release) 
+without further checks. This is determined by examining the GUID 
+segment of the sessionless signal advertised name received from the provider: </p>
+<ul>
+<li>Prior to the 14.06 release, the GUID is prefixed with an "x".</li>
+<li>Starting with the 14.06 release, GUID is prefixed with a "y". </li>
+</ul>
+<p>If the sessionless signal name is from a 14.06 release or 
+later provider, the consumer performs further checks to determine 
+if the sessionless signal fetch should be done with the provider. </p>
+<p>Starting with the 14.06 release, the sessionless signal name 
+also includes the interface value from the sessionless signal 
+header. In this case, the consumer SLS module checks whether 
+the interface specified (if any) in the match rule is the same 
+as the interface received in the sessionless signal name. </p>
+<ul>
+<li>If yes, the consumer initiates a sessionless signal fetch 
+with the provider. </li>
+<li>If no interface was specified in the match rule, the consumer 
+initiates a sessionless signal fetch anyway because this 
+constitutes a wildcard match. </li>
+</ul>
+<p>In the 14.06 release, a new RequestRangeMatch() signal is 
+defined as part of the org.alljoyn.sl interface. This signal 
+is used to fetch a set of sessionless signals that matches 
+any of the match rules specified in the RequestRangeMatch()
+signal. The consumer SLS module uses this signal to fetch 
+sessionless signals from the 14.06 providers. </p>
+<p><strong>NOTE:</strong> The current implementation does a catchup fetch for 
+new match rules before fetching new signals for updated 
+change_id. This results in two fetches upon receiving the 
+sessionless signal advertised name, however, this would be 
+a rare occurrence because adding a new match rule and 
+receiving a sessionless signal advertised name typically 
+does not occur at the same time.</p>
+<p>Whenever a new AddMatch rule is added for sessionless signals, 
+the consumer SLS module triggers a catchup fetch with already 
+known providers for the new match rule per the logic captured 
+in <a href="#consumer-fetches-sessionless-signals-from-a-provider">Consumer fetches sessionless signals from a provider</a>. For a catchup fetch, the 
+RequestRangeMatch signal only includes the new match rule. 
+If the new AddMatch includes an 'implements' key, the consumer 
+SLS module performs discovery for providers implementing those interfaces.</p>
+<p>The consumer schedules a sessionless signal fetch immediately 
+for sessionless signal advertised names received in the 
+solicited mDNS or IS-AT response messages. For sessionless signal 
+advertised names received as part of the unsolicited mDNS or IS-AT 
+response messages, the sessionless signal fetch is scheduled 
+following a backoff algorithm as described in 
+<a href="#sessionless-signal-fetch-backoff-algorithm">Sessionless signal fetch backoff algorithm</a>. </p>
+<p>The steps to fetch sessionless signals follow.</p>
+<ol>
+<li>The consumer SLS module joins a session with the sessionless 
+signal advertised name and known SLS port (port=100). </li>
+<li>The consumer sends one of the signals defined in the 
+org.alljoyn.sl (<code>RequestSignals()</code>, <code>RequestRange()</code>, or <code>RequestRangeMatch()</code>)<br />
+to the provider over established session to fetch sessionless signals. </li>
+<li>The provider receives the request signal, sends the requested 
+sessionless signals and leaves the session.  </li>
+</ol>
+<p>For details of which signals the provider sends from its cache 
+to the consumer, see the definition of these signals in 
+<a href="#org-alljoyn-sl-interface">org.alljoyn.sl interface</a>. </p>
+<p>The consumer receives the sessionless signals, and filters and 
+routes them according to its match rules. The consumer SLS module 
+maintains the information about the match rules applied and change_id 
+fetched from the provider for future sessionless signal fetches.</p>
+<h4 id="sessionless-signal-fetch-backoff-algorithm">Sessionless signal fetch backoff algorithm</h4>
+<p>After determining that it needs to fetch sessionless signals 
+from a given provider as per the logic described above, the 
+consumer SLS module attempts a join session with the producer 
+to fetch sessionless signals. If the consumer's first join session 
+attempt fails, it follows a backoff based retry logic to do 
+the join session for the sessionless signal fetch from the 
+provider. The SLS fetch logic adds random delays at different 
+consumers to ensure that consumer requests for sessionless 
+signals fetch are distributed over time for a given provider. </p>
+<p>The Consumer SLS module follows a mix of linear plus exponential 
+backoff retries for sessionless signals fetch. It supports a 
+hybrid of first few linear backoff retries followed by some 
+exponential backoff retries. The transition point between the
+linear and exponential backoff is configurable. The backoff 
+interval is capped off to a maximum configurable value. 
+Retries are performed for a total retry period R. Once the 
+max backoff interval is reached, retries continue with the 
+constant retry period (set to max backoff interval) until the
+total retry period R is elapsed.</p>
+<p>The following configuration parameters have been added in 
+the router config file:
+<em> Linear to Exponential Transition Point (k) - Specifies the 
+retry attempt after which backoff should become exponential.
+</em> Max Backoff Interval Factor (c) - Specifies the multiplication 
+factor for T (initial backoff time) to generate the max backoff interval.
+* Total Retry Period (R) - Specifies the total time period (in seconds) 
+for which SLS fetch retry must be attempted.</p>
+<p>The following figure shows an example SLS retry schedule with 
+SLS retries happening at T, 2T, 3T, 4T, 8T, 16T, 32T, 32T, 32T,....</p>
+<p><img alt="sls-fetch-backoff-schedule-example" src="../../../../files/learn/system-desc/sls-fetch-backoff-schedule-example.png" /></p>
+<p><strong>Figure:</strong> SLS fetch backoff schedule example</p>
+<p>For every SLS retry attempt, the join session with the producer 
+is delayed randomly between [0, retry interval] to make sure 
+Consumer requests are distributed over time. For example in 
+the figure above:
+<em> The Consumer join session for 4th SLS fetch retry 
+will be randomly delayed between [0, 4T] interval. 
+</em> The Consumer join session for nth SLS fetch retry will 
+be randomly delayed between [0,16T] interval.</p>
+<p>For the SLS fetch triggered as a result of solicited mDNS 
+discovery responses, the join session request is not delayed 
+randomly. In this case, the join session for SLS fetch is 
+done immediately. The AllJoyn router will serialize such an SLS 
+fetch if the max connections limit on the Consumer is reached.</p>
+<h2 id="sessionless-signal-message-sequences-prior-to-the-1406-release">Sessionless signal message sequences (prior to the 14.06 release)</h2>
+<p>Since the sessionless logic has changed quite a bit in the 
+14.06 release, separate SLS message sequences are captured 
+prior to the 14.06 release and starting from the 14.06 release.  </p>
+<p>The following use cases detail sessionless signal logic 
+scenarios prior to the 14.06 release:</p>
+<ul>
+<li>First sessionless signal delivery</li>
+<li>Another AddMatch done by the same app</li>
+<li>Another app requests sessionless signals</li>
+</ul>
+<h3 id="first-sessionless-signal-delivery">First sessionless signal delivery</h3>
+<p>The following figure shows the message flow for the use 
+case for sending and receiving the first sessionless signal 
+on the provider and consumer, respectively.</p>
+<p><strong>NOTE:</strong> The sessionless signal change_id is not carried in any 
+of the sessionless signal messages. However, the provider 
+AllJoyn router logic ensures that it only sends sessionless 
+signal messages up to the change_id that was discovered by 
+the consumer. When the JoinSession is done by the consumer, 
+it uses the sessionless signal well-known name discovered 
+from the IS-AT message. The change_id included in that well-known 
+name provides the upper limit for the change_id for sending 
+sessionless signals to the consumer. </p>
+<p>A similar message flow is applicable for the use case when a 
+subsequent sessionless signal is delivered. The main difference 
+is that the provider updates the change_id, if applicable, as
+per the change_id update logic described above.</p>
+<p><img alt="first-sls-delivery" src="../../../../files/learn/system-desc/first-sls-delivery.png" /></p>
+<p><strong>Figure:</strong> First sessionless signal delivery</p>
+<p>The message flow steps are described below.</p>
+<ol>
+<li>Both provider and consumer apps connect to the AllJoyn 
+router, and a unique name is assigned to the app endpoint 
+by the AllJoyn router.</li>
+<li>The provider app registers its service object implementing 
+an interface containing signal member with the AllJoyn core library. </li>
+<li>The consumer app registers a signal handler for the 
+sessionless signal by invoking the AllJoyn core library's 
+<code>RegisterSignalHandler</code> API.</li>
+<li>The consumer app invokes AllJoyn core library's <code>AddMatch</code> 
+API to add a rule for receiving sessionless signals. The API 
+specifies a signal match rule with type='signal', sessionless='t' 
+and other applicable parameters. </li>
+<li>The AllJoyn core library invokes the AllJoyn router's AddMatch 
+method to add the sessionless signal filtering rule at the AllJoyn router.</li>
+<li>The consumer AllJoyn router invokes <code>FindAdvertisedName()</code> 
+with the sessionless SLS WKN prefix "org.alljoyn.sl" to discover 
+providers offering sessionless signals.</li>
+<li>The consumer AllJoyn router sends a WHO-HAS message for 
+"org.alljoyn.sl" prefix.</li>
+<li>The provider app has a sessionless signal to send. 
+It invokes the BusObject Signal(...) call which generates an 
+AllJoyn SIGNAL message with the sessionless flag set to true.</li>
+<li>The SIGNAL message is sent from the app to the AllJoyn router. </li>
+<li>The provider AllJoyn router stores the signal in the sessionless 
+signal cache and assigns a new sessionless signal change_id number.</li>
+<li>The provider AllJoyn router generates a well-known name 
+for the sessionless signal with the latest change_id using 
+the format org.alljoyn.sl.x<GUID>.x<change_id>.</li>
+<li>The provider AllJoyn router does a RequestName for this 
+well-known name to reserve this name. It then calls the 
+<code>AdvertiseName</code> method to advertise this name on the AllJoyn network. </li>
+<li>The provider AllJoyn router sends out an IS-AT message 
+with the generated sessionless signal well-known name.</li>
+<li>The consumer AllJoyn router receives the IS-AT message 
+that passes the prefix matching for "org.alljoyn.sl". 
+A FoundAdvertisedName signal gets generated for the the 
+sessionless signal prefix.</li>
+<li>The consumer AllJoyn router compares its current change_id 
+for the AllJoyn router GUID in the IS-AT message with the 
+change_id received in the IS-AT message. It determines that 
+the received change_id is different than the current change_id 
+and it needs to get the new set of sessionless signals from 
+the provider AllJoyn router.</li>
+<li>The consumer AllJoyn router invokes the <code>JoinSessionAsync</code> 
+method to start a session with the provider AllJoyn router. 
+It specifies the sessionless signal wel-known name and the 
+sessionless session port among other parameters.
+  This initiates a session attachment flow at the AllJoyn router 
+  level between the consumer and provider. </li>
+<li>Once the session is established, the consumer AllJoyn router 
+sends a RequestSignals signal to request the latest set of 
+sessionless signals from the provider app. This signal includes 
+the last acquired change_id for the GUID of provider AllJoyn router.</li>
+<li>The provider AllJoyn router sends SIGNAL messages for all 
+sessionless signals added after the change_id provided in the 
+RequestSignals message. The SIGNAL messages have destination 
+as local endpoint of the consumer AllJoyn router. </li>
+<li>Once all SIGNAL messages have been sent, the provider 
+AllJoyn router initiates a LeaveSession method for the connected 
+session. This triggers sending a DetachSession SIGNAL message 
+to the consumer AllJoyn router. </li>
+<li>After receiving the DetachSession signal, the consumer 
+AllJoyn router knows that it has received all new sessionless 
+signals from the provider AllJoyn router. It then updates 
+its change_id for that GUID to the latest received change_id 
+from the IS_AT message. </li>
+<li>The consumer AllJoyn router filters the received sessionless 
+signal messages based on the registered AddMatch rules for 
+the sessionless signals.</li>
+<li>The consumer AllJoyn router sends SIGNAL messages to the 
+AllJoyn core library via callback. The AllJoyn core library 
+in turn calls the registered signal handler for the sessionless signal. </li>
+</ol>
+<h3 id="another-addmatch-done-by-the-app">Another AddMatch done by the app</h3>
+<p>A consumer app might invoke a subsequent AddMatch call for 
+sessionless signals. Prior to the 14.06 release, this is 
+interpreted as adding another rule for filtering future received 
+sessionless signals. </p>
+<ul>
+<li>At the AllJoyn router, any future received SLS messages 
+will be filtered based on the combined set of match rules. </li>
+<li>If there is a more restrictive rule which matches a small 
+set of sessionless signals and there is another less restrictive 
+rule which matches a larger superset of signals, AllJoyn router 
+will always send larger superset of signals to the app. </li>
+</ul>
+<p><strong>NOTE:</strong> The AllJoyn router does not re-fetch sessionless signal 
+messages associated with the existing change_id when a new match 
+rule is added. The new match rule is applied to any future 
+received messages. Starting with the 14.06 release, this behavior 
+was modified and the SLS module initiates the sessionless signal 
+fetch whenever any new match rule is added.</p>
+<p>The following figure shows the message flow for the scenario 
+where another AddMatch is done by the same app. Most of the steps 
+are same as the first sessionless signal delivery. The main difference 
+is that no FindAdvertisedName needs to be done for "org.alljoyn.sl" 
+because discovery for the SLS WKN prefix was already initiated 
+at the time of receiving first AddMatch for the sessionless 
+signal and is already in progress.</p>
+<p><img alt="another-add-match-done-by-app" src="../../../../files/learn/system-desc/another-add-match-done-by-app.png" /></p>
+<p><strong>Figure:</strong> Another add match done by the app</p>
+<h3 id="another-app-requesting-for-sessionless-signal">Another app requesting for sessionless signal</h3>
+<p>For the use case where multiple apps are connected to a 
+given AllJoyn router, each application can invoke the <code>AddMatch</code> 
+call to add match rules for sessionless signals with the AllJoyn 
+router. These AddMatch calls can be received at different times. 
+When the first AddMatch call is received from an app, the AllJoyn 
+router re-fetches the currently valid sessionless signals 
+from the already discovered providers for sending to that app. 
+The AllJoyn router uses the RequestRange signal to fetch the 
+current set of sessionless signals.</p>
+<p>The following figure shows the message flow for the scenario 
+when a subsequent app performs the first AddMatch for sessionless signals.</p>
+<p><img alt="another-app-requesting-sls" src="../../../../files/learn/system-desc/another-app-requesting-sls.png" /></p>
+<p><strong>Figure:</strong> Another app requesting for sessionless signals</p>
+<h2 id="sessionless-signal-message-sequences-1406-release">Sessionless signal message sequences (14.06 release)</h2>
+<p>In the 14.06 release, the sessionless signal logic was enhanced 
+as described earlier. This section captures the sessionless 
+signal message sequences with the enhanced logic. The following 
+use cases are detailed:</p>
+<ul>
+<li>First sessionless signal delivery</li>
+<li>Sessionless signal delivery between a new consumer and a legacy provider </li>
+<li>Sessionless signal delivery between a legacy consumer and a new provider </li>
+<li>Subsequent AddMatch done by an app</li>
+</ul>
+<h3 id="first-sessionless-signal-delivery_1">First sessionless signal delivery</h3>
+<p>This use case defines when the first AddMatch is done by a 
+consumer app to receive sessionless signals. The match rules 
+specified in the AddMatch may or may not include the new 'implements' 
+key. Both use cases are captured accordingly:</p>
+<ul>
+<li>AddMatch does not include 'implements' key</li>
+<li>AddMatch includes 'implements' key</li>
+</ul>
+<h4 id="addmatch-does-not-include-implements-key">AddMatch does not include 'implements' key</h4>
+<p>The following figure shows the message flow for sending and 
+receiving the first sessionless signal for the use case when 
+AddMatch does not include an 'implements' key/value pair.</p>
+<p><img alt="first-sls-delivery-no-implements-addmatch" src="../../../../files/learn/system-desc/first-sls-delivery-no-implements-addmatch.png" /></p>
+<p><strong>Figure:</strong> First sessionless signal delivery (no 'implements' key in AddMatch)</p>
+<p>The message flow steps are described below.
+1. Both the provider and consumer apps connect to the AllJoyn router.
+2. The provider app registers its service object implementing 
+an interface containing signal member with the AllJoyn core library. 
+3. The consumer app registers a signal handler for the sessionless 
+signal by invoking the AllJoyn core library's RegisterSignalHandler API.
+4. The consumer app invokes the AllJoyn core library's 
+AddMatch API to add a rule for receiving sessionless signals. 
+The API specifies a signal match rule with type='signal', 
+interface='<INTERFACE>', sessionless='t' and other applicable parameters. 
+5. The AllJoyn core library invokes the AllJoyn router's 
+AddMatch method to add the sessionless signal filtering 
+rule at the AllJoyn router.
+6. The consumer AllJoyn router invokes the <code>FindAdvertisedName</code> 
+method with the SLS WKN prefix "org.alljoyn.sl." to discover 
+providers prior to the 14.06 release and SLS WKN "<INTERFACE>sl." 
+to discover new providers starting in the 14.06 release. 
+7. The consumer AllJoyn router sends out name-based 
+query messages using the NGNS.
+8. The provider app has a sessionless signal to send. 
+It invokes the <code>BusObject Signal(...)</code> call which generates 
+an AllJoyn SIGNAL message with SESSIONLESS flag set to true.
+9. The SIGNAL message is sent from app to the AllJoyn router. 
+10. The provider AllJoyn router stores the signal in the sessionless signal cache.
+11. The provider AllJoyn router generates the following:
+   * A well-known name for the sessionless signal of the format 
+   "org.alljoyn.sl.y<GUID>.x<change_id>" with the latest change_id. 
+   * A second well-known name for the sessionless signal of 
+   the format "<INTERFACE>.y<GUID>.x<change_id>" with the 
+   latest change_id associated with signals generated 
+   by the given <INTERFACE>.
+12. The provider AllJoyn router invokes the RequestName 
+and AdvertiseName method calls to request and advertise these names. 
+13. The provider AllJoyn router sends out a Name Service 
+response messages to advertise these sessionless signal 
+well-known names using NGNS.
+14. The consumer AllJoyn router receives the Name Service 
+response messages which pass the prefix matching for "org.alljoyn.sl." 
+or "<INTERFACE>.y<GUID>.x<change_id>". A FoundAdvertisedName 
+signal gets generated for the advertisements.
+15. The consumer determines that it needs to fetch sessionless 
+signals from the provider, based on the received sessionless 
+signal advertised name, change_id comparison, and current 
+set of match rules as per logic described in <a href="#consumer-fetches-sessionless-signals-from-a-provider">Consumer fetches 
+sessionless signals from a provider</a>. 
+16. The consumer AllJoyn router invokes JoinSessionAsync 
+method call to start a session with the provider AllJoyn router. 
+It specifies the sessionless signal well-known name and 
+sessionless session port among other parameters.
+   This initiates a session attachment flow at the AllJoyn 
+   router level between the consumer and provider. 
+17. Once the session is established, the consumer AllJoyn 
+router sends the RequestRangeMatch signal to request the 
+latest set of sessionless signals from the provider device. 
+This signal includes last acquired change_id for the GUID 
+of provider AllJoyn router, and the match rules that have 
+not yet been applied to the provider GUID.
+18. The provider AllJoyn router sends the AllJoyn SIGNAL 
+messages for all sessionless signals added that pass the 
+match rules in the range provided in the RequestRangeMatch signal.
+19. Once all SIGNAL messages have been sent, the provider 
+AllJoyn router initiates LeaveSession for the connected session. 
+This triggers sending a DetachSession SIGNAL message to the 
+consumer AllJoyn router. 
+20. After receiving the DetachSession signal, the consumer 
+AllJoyn router knows that it has received all new sessionless 
+signals from the provider AllJoyn router. It then updates its 
+change_id for that GUID to the latest received change_id 
+from the advertisement and also updates status for match 
+rules which have been applied to that provider. 
+21. The consumer AllJoyn router sends SIGNAL messages to the 
+AllJoyn core library via callback. The AllJoyn core library 
+in turn calls the registered signal handler for the sessionless signal. </p>
+<h4 id="addmatch-includes-the-implements-key">AddMatch includes the 'implements' key</h4>
+<p>The following figure shows the message flow for sending and 
+receiving of the first sessionless signal for the use case 
+when AddMatch includes one or more 'implements' key/value pair. </p>
+<p><strong>NOTE:</strong> Currently, the 'implements' key only applies to the 
+Announcement sessionless signal. As a result, the AddMatch 
+in this case must include "interface=org.alljoyn.About", 
+which is the interface that emits the Announcement signal.</p>
+<p>The AllJoyn router initiates interface name discovery via 
+NGNS to find providers which implements the specified interfaces. 
+Once those providers are discovered, the consumer AllJoyn router 
+fetches the Announcement signals from those providers.</p>
+<p><img alt="first-sls-delivery-implements-addmatch" src="../../../../files/learn/system-desc/first-sls-delivery-implements-addmatch.png" /></p>
+<p><strong>Figure:</strong> First sessionless signal delivery (with implements' key in AddMatch)</p>
+<h3 id="sessionless-signal-delivery-between-a-new-consumer-and-a-legacy-provider">Sessionless signal delivery between a new consumer and a legacy provider</h3>
+<p>The following figure shows the message flow when a new consumer 
+(14.06 release or later) received sessionless signals from a 
+legacy provider (prior to the 14.06 release).</p>
+<p><img alt="sls-logic-new-consumer-legacy-provider" src="../../../../files/learn/system-desc/sls-logic-new-consumer-legacy-provider.png" /></p>
+<p><strong>Figure:</strong> Sessionless signal logic between new consumer and legacy provider</p>
+<h3 id="sessionless-signal-delivery-between-a-legacy-consumer-and-a-new-provider">Sessionless signal delivery between a legacy consumer and a new provider</h3>
+<p>The following figure shows the message flow when a legacy consumer 
+(prior to the 14.06 release) is receiving sessionless signals 
+from a new provider (14.06 release or later).</p>
+<p><img alt="sls-logic-legacy-consumer-new-provider" src="../../../../files/learn/system-desc/sls-logic-legacy-consumer-new-provider.png" /></p>
+<p><strong>Figure:</strong> Sessionless signal logic between legacy consumer and new provider</p>
+<h3 id="subsequent-addmatch-done-by-an-app">Subsequent AddMatch done by an app</h3>
+<p>After the first AddMatch call to the AllJoyn router, applications 
+can subsequently invoke other AddMatch calls to add more 
+match rules for sessionless signals. </p>
+<p>Starting from the 14.06 release, whenever an AddMatch call 
+is invoked by any app, the SLS module takes steps to trigger 
+fetch for sessionless signal messages. The logic is quite 
+similar to the first sessionless signal delivery use case 
+in <a href="#first-sessionless-signal-delivery">First sessionless signal delivery</a>. 
+The additional step is to fetch sessionless signal messages 
+from existing providers that match the specified filtering 
+criteria for sessionless signals.</p>
+<p>The consumer SLS module remembers the sessionless signal 
+advertised name it has received from each provider. For the 
+new AddMatch rule that doesn't include implements key, the 
+consumer uses the match rule to find matching providers among 
+existing providers and fetches sessionless signals from those providers.</p>
+<p>The consumer SLS module performs the following steps.</p>
+<ol>
+<li>Perform interface name discovery for providers for 
+any new 'implements' key/value pair specified in AddMatch. 
+Fetch the sessionless signals from the discovered providers.</li>
+<li>Perform name-based discovery for "<INTERFACE>.sl" for any 
+new interface value specified in AddMatch, for which discovery 
+was not already done. Fetch the sessionless signals from 
+the discovered providers.</li>
+<li>Fetch the sessionless signals from the already known providers 
+if the sessionless signal name received from these providers 
+match the filtering criteria specified in match rule.</li>
+</ol>
+<h2 id="orgalljoynsl-interface">org.alljoyn.sl interface</h2>
+<p>The org.alljoyn.sl interface is the AllJoyn interface between 
+two AllJoyn routers used to enable the exchange of sessionless 
+signals. <a href="#org-alljoyn-sl-interface-signals">org.alljoyn.sl interface signals</a> 
+lists the org.alljoyn.sl interface signals.</p>
+<h3 id="orgalljoynsl-interface-signals">org.alljoyn.sl interface signals</h3>
+<table>
+<thead>
+<tr>
+<th>Signal name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RequestSignals</td>
+<td>Requests sessionless signals associated with change_ids in the range [fromId, currentChangeId], where currentChangeId is the most recently advertised change_id of the provider.</td>
+</tr>
+<tr>
+<td>RequestRange</td>
+<td><p>A signal for requesting sessionless signals associated with change_ids in the range [fromId, toId).</p><p><strong>NOTE:</strong> The "toId" is exclusive so a consumer should set toId=<change_id_value>+1 if it wants to get SLS up to the change_id_value.</p><p>This signal appeared in version 6 of the AllJoyn protocol.</p></td>
+</tr>
+<tr>
+<td>RequestRangeMatch</td>
+<td><p>A signal for requesting sessionless signals associated with change_ids in the range [fromId, toId) that match any of the provided match rules.</p><p>The "toId" is exclusive in this signal too.</p><p>This signal appeared in version 10 of the AllJoyn protocol (associated with the 14.06 release).</p></td>
+</tr>
+</tbody>
+</table>
+<h3 id="orgalljoynslrequestsignals-parameters">org.alljoyn.sl.RequestSignals parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UINT32 fromId</td>
+<td>Start of change_id range.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="orgalljoynslrequestrange-parameters">org.alljoyn.sl.RequestRange parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UINT32 fromId</td>
+<td>Start of change_id range.</td>
+</tr>
+<tr>
+<td>UINT32 toId</td>
+<td>End of change_id range.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="orgalljoynslrequestrangematch-parameters">org.alljoyn.sl.RequestRangeMatch parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UINT32 fromId</td>
+<td>Start of change_id range</td>
+</tr>
+<tr>
+<td>UINT32 toId</td>
+<td>End of change_id range</td>
+</tr>
+<tr>
+<td>ARRAY of STRING matchRules</td>
+<td>Match rules to apply to the range.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../system-architecture/" class="btn btn-neutral float-right" title="System architecture"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../" class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../system-architecture/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

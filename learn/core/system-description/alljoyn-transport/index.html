@@ -1,0 +1,2381 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Alljoyn transport - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Alljoyn transport";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
+  <script src="../../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Ambassadors</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../ambassadors/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Develop</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/cpp-legacy/">Cpp legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/java-legacy/">Java legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/objc-legacy/">Objc legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/about/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audio streaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/audio-streaming/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/audio-streaming/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/config/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/controlpanel/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/objc/">Objc</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Auto ping</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/auto-ping/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Propcache</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/core/propcache/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Events and actions</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/events-and-actions/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/notification/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/onboarding/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-guide/onboarding/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/api-reference/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ask</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/ask/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/ask/popular/">Popular</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Building</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Android</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/android/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/android/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ios osx</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/ios-osx/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/ios-osx/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/linux/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/linux/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/linux/openwrt/">Openwrt</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Windows</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/windows/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/building/windows/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Debug</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/debug/common-issues/">Common issues</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/debug/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Run sample apps</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/about/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Acserver</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/acserver/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/acserver/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/acserver/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Basic</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/basic/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Chat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/chat/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/config/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/notification/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/onboarding/linux/">Linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Test</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/test/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/run-sample-apps/test/sessions/">Sessions</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Tutorial</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/arduino-and-gt202/">Arduino and gt202</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/ios/">Ios</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/thin-app/">Thin app</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/videos/">Videos</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../develop/tutorial/core/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Learn</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../architecture/">Architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../glossary/">Glossary</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../use-cases/">Use cases</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Base services</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audiostreaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/audiostreaming/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/audiostreaming/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/configuration/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/configuration/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/configuration/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/controlpanel/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/notification/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/notification/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/onboarding/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../base-services/onboarding/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../events-and-actions/">Events and actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../standard-core/">Standard core</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../thin-core/">Thin core</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About announcement</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about-announcement/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about-announcement/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../about-announcement/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Rn config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../rn_config/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Security2 0</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../security2_0/hld/">Hld</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../security2_0/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>System description</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../advertisement-discovery/">Advertisement discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../alljoyn-security/">Alljoyn security</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../alljoyn-session/">Alljoyn session</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Alljoyn transport</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#alljoyn-transport">AllJoyn&trade; Transport</a></li>
+                
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
+                
+                    <li><a class="toctree-l4" href="#endpoints-usage-in-alljoyn-transports">Endpoints usage in AllJoyn Transports</a></li>
+                
+                    <li><a class="toctree-l4" href="#alljoyn-transport-in-networking-model">AllJoyn Transport in Networking Model</a></li>
+                
+                    <li><a class="toctree-l4" href="#local-alljoyn-transports">Local AllJoyn Transports</a></li>
+                
+                    <li><a class="toctree-l4" href="#bus-to-bus-alljoyn-transports">Bus-to-Bus AllJoyn Transports</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data-exchange/">Data exchange</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../events-actions/">Events actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../sessionless-signal/">Sessionless signal</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../system-architecture/">System architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../thin-apps/">Thin apps</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Project lifecycle</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../project-lifecycle/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Supported platforms</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../supported-platforms/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>User groups</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../user-groups/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>System description &raquo;</li>
+        
+      
+    
+    <li>Alljoyn transport</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="alljoyn-transport">AllJoyn&trade; Transport</h1>
+<h2 id="overview">Overview</h2>
+<p>AllJoyn Transport is an abstraction for a concrete mechanism 
+that is used to move AllJoyn Messages (corresponding to a 
+method call, method reply, a property get/set or a signal) 
+between AllJoyn applications.</p>
+<p>The AllJoyn Transport provides the following fundamental 
+pieces of functionality:
+<em> The ability to create and destroy connections between 
+AllJoyn applications (through AllJoyn routers) and between 
+AllJoyn applications and routers.
+</em> The ability to reliably send and receive AllJoyn Messages 
+between AllJoyn applications and routers.<br />
+* Optionally, to provide advertisement and discovery services 
+appropriate to the underlying network technology.</p>
+<p>The AllJoyn Transport supports connections establishment and 
+delivering messages over multiple underlying physical transport 
+layers including TCP, UDP and local UNIX transport. A complete 
+list of underlying transports supported by the AllJoyn Transport 
+is captured in <a href="#alljoyn-transportmask-definition">AllJoyn TransportMask definition</a>.
+An application can specify which underlying transport to be 
+used for connection establishment and message delivery.</p>
+<p>Based on the type of connection endpoints, AllJoyn Transport functionality can be 
+divided into the following categories:
+<em> <strong>Local AllJoyn Transports</strong>: Local AllJoyn Transports are designed 
+to essentially provide communication between Core Library 
+and associated AllJoyn Router. This supports connection establishment 
+and message routing between Application and the Router. Details 
+on Local Transports are captured in <a href="#local-alljoyn-transports">Local AllJoyn Transports</a>.
+</em> <strong>Bus-to-Bus AllJoyn Transports</strong>: These AllJoyn Transports enable 
+connection establishment and message routing between AllJoyn 
+routers. Details on Bus-to-Bus Transports are captured in 
+<a href="#bus-to-bus-alljoyn-transports">Bus-to-Bus AllJoyn Transports</a>.</p>
+<h2 id="endpoints-usage-in-alljoyn-transports">Endpoints usage in AllJoyn Transports</h2>
+<p>As mentioned in <a href="../../../../learn/core/system-description#alljoyn-endpoints">AllJoyn endpoints</a>, the 
+AllJoyn Transport uses endpoints to establish connections 
+and route messages across applications and routers. An AllJoyn 
+Endpoint is analogous to a socket endpoint as used in socket 
+programming. An AllJoyn Endpoint is one side of an AllJoyn communication 
+link. The AllJoyn communication link could be between an Application 
+and an AllJoyn router, or it could be between two AllJoyn routers. </p>
+<p>The broad classification of endpoints in the AllJoyn system are listed below:
+<em> <strong>Local Endpoint</strong>: A local endpoint represents a connection 
+to self. It is used in the Core Library to provide a connection 
+to the application itself and used in the AllJoyn Router to 
+provide connection to the router itself. A local endpoint 
+represents a connection within the same process.
+</em> <strong>Remote Endpoint</strong>: A remote endpoint represents a connection 
+between the application and the AllJoyn router. Messages destined 
+to an applications get routed to its remote endpoint. A specialized 
+type of remote endpoint called "Bus-to-Bus" endpoint represents 
+connection between two AllJoyn Routers. A remote endpoint represents 
+a connection between two processes.</p>
+<p>The following figure shows the concepts of local and remote endpoints. </p>
+<p><img alt="local-remote-endpoints" src="../../../../files/learn/system-desc/local-remote-endpoints.png" /></p>
+<p><strong>Figure:</strong> Local and remote endpoints</p>
+<p>The figure illustrates a hypothetical connection between an AllJoyn application 
+and a preinstalled Router. The AllJoyn application talks to a Core Library 
+that provides the gateway to the larger AllJoyn distributed bus.<br />
+The Core Library has two main connections: the connection to the 
+application, which is provided through what is called the Local Endpoint, 
+and the connection to the Router, which is represented by a Remote Endpoint.</p>
+<p>The AllJoyn Router also has a corresponding Remote Endpoint to represent 
+the endpoint of the communication link with the Core Library for routing 
+messages. The Local endpoint within the AllJoyn Router represents a 
+connection to the router for routing control messages destined for the router. </p>
+<p>Multiple applications can connect to a single AllJoyn Router in a 
+distributed bus architecture. An AllJoyn router maintains a remote 
+endpoint to each connected application as shown in the following
+figure (AllJoyn router wiht multiple remote endpoints). </p>
+<p><img alt="alljoyn-router-multiple-remote-endpoints" src="../../../../files/learn/system-desc/alljoyn-router-multiple-remote-endpoints.png" /></p>
+<p><strong>Figure:</strong> AllJoyn router with multiple remote endpoints</p>
+<p>Both the Core Library and the router maintain remote endpoints, 
+however they differ in terms of message routing functionality - 
+an AllJoyn Router can move (route) messages between Remote Endpoints, 
+whereas a Core Library only moves messages between exactly 
+one Local and exactly one Remote Endpoint. </p>
+<p>The AllJoyn system supports a fully distributed bus configuration, 
+where a router communicates with other routers to join bus segments 
+into a single distributed AllJoyn bus as shown in the following figure. </p>
+<p><img alt="alljoyn-distributed-bus-b2b-endpoints" src="../../../../files/learn/system-desc/alljoyn-distributed-bus-b2b-endpoints.png" /></p>
+<p><strong>Figure:</strong> AllJoyn distributed bus with bus-to-bus endpoints</p>
+<p>In this figure, one bus segment comprising an AllJoyn Router and 
+two Applications is shown in the top half. Another bus segment, 
+also with an AllJoyn Router and two Applications, is shown in the 
+bottom half of the figure. </p>
+<p>The two bus segments are connected together via remote endpoints 
+called Bus-to-Bus Endpoints. Each router maintains a Bus-to-Bus Endpoint 
+for every other router it is connected to. In the figure, 
+One Bus-to-Bus Endpoint represents the connection to the upper 
+Routing Node and another Bus-to-Bus Endpoint represents the 
+connection to the lower Routing Node. </p>
+<p>The Remote Endpoints are paired with an underlying communication 
+mechanism as part of the associated AllJoyn Transport. For example, 
+the Bus-to-Bus Endpoints in the Routing Nodes may be managed by 
+the TCP Transport or the UDP Transport, which also handles the 
+details of moving Messages from one end (Endpoint) of the implied 
+connection to another.</p>
+<p>In the case of the Remote Endpoints that connect the Core Library 
+to the AllJoyn Router, the underlying communication mechanism 
+could be different based on host environments. For example, a 
+UNIX domain sockets implementation is used on Linux systems, 
+while a TCP implementation is used on Windows systems.</p>
+<h3 id="thin-core-library-endpoints">Thin Core Library Endpoints</h3>
+<p>The Thin Core Library (TCL) makes use of the TCP Transport, 
+however its implementation is quite different than the regular 
+TCP Transport connection between a Core Library and AllJoyn Router.  </p>
+<p>On the TCL, there is no explicit breaking out of a Remote Endpoint 
+and a Local Endpoint. The TCL provides minimal implementation of the 
+functionality required to connect and communicate with the 
+TCP Remote Endpoint at the Alljoyn Router hosted on another 
+AllJoyn device. </p>
+<p>On the Routing Node side, a Thin Library device connects as 
+if it was any local Core Library connecting using a local 
+TCP loopback connection. </p>
+<p><strong>NOTE:</strong> This is how Bus Attachments connect to Routing Nodes in 
+the Windows environment. The TCP transport is used for the 
+connection, but the data does not actually travel across the 
+network; but rather is "looped back" and sent back up the 
+networking stack before being sent out on a connected IP network.</p>
+<p>The Thin Library Endpoint usage is captured in the following figure.</p>
+<p><img alt="thin-core-library-endpoint" src="../../../../files/learn/system-desc/thin-core-library-endpoint.png" /></p>
+<p><strong>Figure:</strong> Thin Core Library Endpoint</p>
+<h2 id="alljoyn-transport-in-networking-model">AllJoyn Transport in Networking Model</h2>
+<p>Although the primary task of an AllJoyn transport is to 
+transport, or move, AllJoyn Messages from one endpoint to another, 
+it is important to distinguish the AllJoyn Transport from the 
+concept of transport layer (layer 4) in the International 
+Standards Organization Open Systems Interconnection (ISO/OSI) 
+7-layer model.</p>
+<p>The following figure shows where AllJoyn Transports fit in the 
+7-layer ISO/OSI model. </p>
+<p><img alt="alljoyn-osi-seven-layer-arch" src="../../../../files/learn/system-desc/alljoyn-osi-seven-layer-arch.png" /></p>
+<p><strong>Figure:</strong> AllJoyn transport in the ISO/OSI 7-layer model</p>
+<p>Underneath the Application Logic, there exists an AllJoyn Message 
+layer which is responsible for marshaling and unmarshaling of 
+AllJoyn messages (Signals and Method Calls). This layer can be 
+thought of as residing in the presentation layer (layer 6) 
+of the ISO/OSI model. </p>
+<p>These AllJoyn messages are routed to their intended destination 
+by the AllJoyn Transport layer. Since the AllJoyn Transport layer 
+manages connections across applications and AllJoyn routers in 
+the network, it can be thought of corresponding to the session 
+layer (layer 5) of the ISO/OSI model. AllJoyn Transports make 
+use of layer 4 transports like TCP or UDP in order to manage 
+the actual movement of AllJoyn messages between various network entities.</p>
+<p>Since an AllJoyn Transport encapsulates the functions of moving 
+data sequences, establishing connections, advertisement and discovery, 
+there are separate AllJoyn Transports for separate underlying 
+transport mechanisms.<br />
+<em> The AllJoyn TCP Transport uses TCP/IP as the mechanism for moving data.
+</em> The AllJoyn UDP Transport uses UDP/IP as the mechanism for moving data. 
+<em> The AllJoyn Bluetooth (BT) Transport does the same for Bluetooth 
+connections.
+</em> The AllJoyn Local Transport uses UNIX domain sockets. </p>
+<p>The name given to an AllJoyn transport typically echoes the method 
+used in the underlying OSI layer 4 mechanism.  </p>
+<p>An AllJoyn applications may select the AllJoyn Transport that 
+is actually used by choosing one or more TransportMask bits 
+in the appropriate AllJoyn APIs. The currently available 
+TransportMask bits are shown in the following table. </p>
+<h4 id="alljoyn-transportmask-definition">AllJoyn TransportMask definition</h4>
+<table>
+<thead>
+<tr>
+<th>Transport name</th>
+<th align="center">Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRANSPORT_NONE</td>
+<td align="center">0x0000</td>
+<td>No transport.</td>
+</tr>
+<tr>
+<td>TRANSPORT_LOCAL</td>
+<td align="center">0x0001</td>
+<td>The local transport.</td>
+</tr>
+<tr>
+<td>TRANSPORT_TCP</td>
+<td align="center">0x0004</td>
+<td>Transport using TCP as the underlying mechanism.</td>
+</tr>
+<tr>
+<td>TRANSPORT_UDP</td>
+<td align="center">0x0100</td>
+<td>Transport using UDP as the underlying mechanism.</td>
+</tr>
+<tr>
+<td>TRANSPORT_EXPERIMENTAL</td>
+<td align="center">0x8000</td>
+<td>Select a release-specific experimental transport.</td>
+</tr>
+<tr>
+<td>TRANSPORT_IP</td>
+<td align="center">0x0104</td>
+<td>Allow the system to decide between TCP or UDP.</td>
+</tr>
+<tr>
+<td>TRANSPORT_ANY</td>
+<td align="center">0x0105</td>
+<td>Allow the system to choose any appropriate transport.</td>
+</tr>
+</tbody>
+</table>
+<p>If an AllJoyn application desires to only use TCP as the 
+underlying layer 4 mechanism, it can do so by specifying 
+TRANSPORT_TCP in advertisement, discovery and Session join 
+and bind options. If an application desires only that an 
+IP-based transport be used, it can specify TRANSPORT_IP and 
+allow the AllJoyn system to select between TCP and UDP, for example.  </p>
+<p>Each transport establishes and maintains connectivity based 
+on the underlying physical transport it supports. Based on the 
+type of underlying physical transport, the actual connectivity 
+between two nodes in an AllJoyn network can be either single-hop 
+or multi-hop. An AllJoyn distributed bus is basically an overlay 
+network whose topology does not necessarily map directly to the 
+topology of the underlying network. If an application has no 
+preference, it can provide TRANSPORT_ANY and allow the AllJoyn system 
+to determine which transport to use.</p>
+<h2 id="local-alljoyn-transports">Local AllJoyn Transports</h2>
+<p>AllJoyn Local Transports is a broad grouping of AllJoyn Transports 
+that are designed to essentially provide communication between the
+Core Library and their associated AllJoyn Routers. The following 
+Local Transports are used in the AllJoyn system:
+<em> Null Transport
+</em> UNIX Domain Socket Transport
+* TCP Transport</p>
+<h3 id="null-transport">Null Transport</h3>
+<p>The simplest of the local transports is the Null Transport. 
+This transport is designed to provide a connection between a 
+Core Library and a Bundled Router, both of which reside in 
+a common process. One endpoint of the Null Transport is directly 
+tied to the other side via function calls. There is really 
+no Transport in the communication path between the Core Library 
+and router in this case, the link is "jumpered" together 
+using a direct function call interface.</p>
+<h3 id="unix-domain-sockets-transport">UNIX Domain Sockets Transport</h3>
+<p>The UNIX Domain Sockets Transport is used in Posix systems 
+to provide an inter-process connection (IPC) between a Core Library 
+and a preinstalled AllJoyn Router. Since this is a local transport, 
+there is no requirement to support multiple endpoints, or to 
+advertise and discover. The implementation of this local transport 
+is split across the Core Library and the AllJoyn Router.</p>
+<h3 id="tcp-transport">TCP Transport</h3>
+<p>The TCP Transport is used in Windows systems to provide an 
+inter-process connection between a Core Library and a 
+preinstalled AllJoyn Router. Since there is no requirement 
+to support multiple endpoints, nor to advertise and discover, 
+the implementation of the TCP Transport for the Core Library 
+is considerably simplified when compared to the Bus-to-Bus 
+version of the TCP Transport. For a discussion on the details 
+of the TCP Transport, see <a href="#tcp-transport-mechanism">TCP Transport mechanism</a>.</p>
+<h2 id="bus-to-bus-alljoyn-transports">Bus-to-Bus AllJoyn Transports</h2>
+<p>The Bus-to-Bus AllJoyn Transports enable connection establishment 
+and message routing between AllJoyn routers. The most commonly used 
+Bus-to-Bus transports in the AllJoyn system are based on the 
+underlying IP-based transport mechanisms. These include TCP Transport 
+and UDP Transport.  </p>
+<p>As mentioned earlier, an application can specify which 
+AllJoyn Transport should be used for connection setup and 
+message delivery. If not specified by the App, AllJoyn router 
+makes a selection for the transport to be used. Both TCP Transport 
+and UDP Transport are effective AllJoyn Transports. There are many
+trade-offs which can be considered when making a selection between 
+the two. In general the times at which one would prefer to use the 
+AllJoyn TCP Transport or the AllJoyn UDP Transport can be loosely 
+modeled on when one might prefer TCP/IP over UDP/IP. </p>
+<p>The following table summarizes the performance of AllJoyn TCP Transport 
+and AllJoyn UDP Transport by comparing certain system criteria.</p>
+<h4 id="performance-of-alljoyn-tcp-transport-versus-udp-transport">Performance of AllJoyn TCP Transport versus UDP Transport</h4>
+<table>
+<thead>
+<tr>
+<th>System Criteria</th>
+<th>TCP Transport</th>
+<th>UDP Transport</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number of Connections Supported</td>
+<td>Low to medium</td>
+<td>High</td>
+<td>Due to high file descriptor usage, TCP Transport cannot support a very large number of simultaneous connections. UDP Transport uses only a single file descriptor for multiple connections, so it can support large number of simultaneous connections without reaching file descriptors system limit.</td>
+</tr>
+<tr>
+<td>Memory Usage</td>
+<td>Moderate</td>
+<td>High</td>
+<td>Since UDP Transport has to provide the reliability support, it requires much higher memory usage.</td>
+</tr>
+<tr>
+<td>TTL-based Message Expiration</td>
+<td>Not possible</td>
+<td>Supported</td>
+<td>UDP Transport uses the AllJoyn Reliable Datagram Protocol (ARDP), which supports TTL-based message expiration.</td>
+</tr>
+<tr>
+<td>Types of Data Transfer</td>
+<td>Performs best for bulk data transfer</td>
+<td>Performs best for intermittent short data transfer</td>
+<td>Default socket buffers for Layer 4 TCP connections are typically much larger than those for UDP connections. As a result, TCP performs much better for bulk data transfer.</td>
+</tr>
+</tbody>
+</table>
+<p>The following table captures some of the use case scenarios with the 
+preferred transport selection between TCP Transport and UDP Transport, 
+based on trade-offs outlined in <a href="#performance-of-alljoyn-tcp-transport-versus-udp-transport">Performance of AllJoyn TCP Transport versus UDP Transport</a>. </p>
+<h4 id="alljoyn-use-cases-showing-tcp-vs-udp-transport-selection">AllJoyn use cases showing TCP vs UDP Transport selection</h4>
+<table>
+<thead>
+<tr>
+<th>Use Cases</th>
+<th align="center">TCP Transport</th>
+<th align="center">UDP Transport</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dominant traffic is method calls</td>
+<td align="center">X</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>Dominant traffic is bulk data transfer</td>
+<td align="center">X</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>AllJoyn messages have TTL associated</td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Large number of simultaneous sessions with intermittent RPC calls</td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Very dirty RF conditions</td>
+<td align="center">X</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Details on AllJoyn TCP Transport and UDP Transport are 
+captured in the following sections.</p>
+<h3 id="tcp-transport-mechanism">TCP Transport mechanism</h3>
+<p>As mentioned previously, the AllJoyn TCP Transport takes its name 
+from the TCP/IP layer 4 transport mechanism it uses. Since TCP 
+provides a reliable data stream guarantee, the TCP Transport 
+must only provide enough mechanism to translate AllJoyn messages 
+to and from byte streams.  </p>
+<h4 id="tcp-transport-data-plane-architecture">TCP Transport data plane architecture</h4>
+<p>Each connection that uses the TCP Transport has an associated TCP Endpoint, 
+TCP Stream, and TCP socket as shown in the following figure. </p>
+<p><img alt="tcp-transport-data-plane-internal-architecture" src="../../../../files/learn/system-desc/tcp-transport-data-plane-internal-architecture.png" /></p>
+<p><strong>Figure:</strong> TCP transport data plane internal architecture</p>
+<p>The routing functionality of a Routing Node connects to a TCP Endpoint, 
+which represents a Remote Endpoint for a TCP Transport connection. 
+The TCP Endpoint translates AllJoyn messages to and from the 
+byte-stream representation using a TCP Stream component. 
+TCP Stream delivers and received data over a TCP socket.</p>
+<h4 id="tcp-endpoint-lifecycle">TCP endpoint lifecycle</h4>
+<p>A TCP Endpoint goes through multiple states in the overall 
+lifecycle of the Endpoint. The states and transitions for the
+TCP Endpoint are shown in the following figure. </p>
+<p><img alt="tcp-endpoint-lifecycle-states" src="../../../../files/learn/system-desc/tcp-endpoint-lifecycle-states.png" /></p>
+<p><strong>Figure:</strong> TCP endpoint lifecycle states</p>
+<p>TCP Endpoints are created either as a result of an active 
+connection request or an incoming call for a passive connection. 
+The TCP Endpoint maintains information about whether the 
+precipitating event was an active or passive connection. </p>
+<p>A TCP Endpoint follows the basic lifetime of an AllJoyn Thread.
+It is first created in the INITIALIZED state. Prior to being used 
+in the AllJoyn system, a TCP Endpoint must be authenticated.<br />
+This is a done as a separate step and is discussed in
+<a href="#tcp-endpoint-authentication-phase">TCP Endpoint authentication phase</a>. 
+If the authentication succeeds, the TCP Endpoint thread is asked 
+to start running, at which point it enters the STARTING state. 
+If the authentication fails, the TCP Endpoint transitions into the 
+FAILED state and is then ready for cleanup.</p>
+<p>As soon as the Thread(s) required to support a newly created 
+and authenticated TCP Endpoint is actually running, the Endpoint 
+enters the STARTED state. In this state, the TCP Endpoint is 
+registered with the Router and therefore data can be transferred 
+through the Endpoint. Once the connection is no longer needed, 
+the Endpoint method <code>Stop()</code> is called, and the Endpoint enters 
+the STOPPING state. Once all threads which may be running in 
+the Endpoint have exited, the Endpoint enters into a JOINING state, 
+where any threads associated with the Endpoint are joined (in the
+sense of a Posix thread join operation). The Endpoint is then 
+unregistered from the AllJoyn Router. When the threading-related 
+resources in an endpoint are cleaned up, the endpoint enters the 
+DONE state at which time it can be removed from the system and deleted.</p>
+<h5 id="tcp-endpoint-authentication-phase">TCP Endpoint authentication phase</h5>
+<p>As mentioned above, TCP Endpoints must transition through an 
+authentication phase that is required to complete before Messages 
+are allowed to be transferred though the endpoint.This 
+authentication phase is handled by a separate thread, and is shown
+in the following figure. The authentication process is begun when 
+the TCP Endpoint enters the INTIALIZED state.</p>
+<p><img alt="tcp-endpoint-auth-states" src="../../../../files/learn/system-desc/tcp-endpoint-auth-states.png" /></p>
+<p><strong>Figure:</strong> TCP endpoint authentication states</p>
+<p>TCP Endpoint authentication uses the Simple Authentication and 
+Security Layer (SASL) framework "ANONYMOUS" mechanism. 
+While in the actual AUTHENTICATING state, the TCP Stream 
+runs in a string-transfer mode in order to transfer the 
+SASL challenges and responses. If the SASL exchange fails, 
+authentication transitions to the FAILED state which, in turn, 
+drives the TCP Endpoint state to change to FAILED.</p>
+<p>If the SASL exchange succeeds, authentication transitions to 
+the SUCCEEDED state and this, in turn, drives the TCP Endpoint 
+to transition to the STARTING state. When the TCP Endpoint 
+transitions to STARTED state the associated TCP Stream will 
+make a mode switch and begin sending and receiving AllJoyn Messages 
+instead of text strings. </p>
+<p>As soon as the FAILED or SUCCEEDED determination is made, 
+and the appropriate Endpoint lifetime actions are taken, 
+the endpoint authentication thread exits and causes the 
+authentication machine transition to DONE.</p>
+<h3 id="udp-transport-mechanism">UDP Transport mechanism</h3>
+<p>The AllJoyn UDP Transport, as its name implies, uses the 
+UDP/IP protocol to move AllJoyn Messages from one host to 
+another. Since UDP does not provide a reliability guarantee, 
+the UDP Transport must provide some mechanism to provide a 
+reliable Message delivery guarantee.  The UDP Transport uses 
+the AllJoyn Reliable Datagram Protocol (ARDP) to provide 
+reliable delivery of messages. ARDP is based loosely on 
+the Reliable Data Protocol (RDP) as appears in RFC 908 (version 1) 
+and RFC 1151 (version 2).</p>
+<h4 id="udp-transport-data-plane-architecture">UDP Transport data plane architecture</h4>
+<p>Architecturally, the UDP Transport can be split into two 
+large components: the routing functionality of a Router Node 
+connects to a so-called UDP Endpoint, and the networking functionality 
+of the UDP Transport that is accessed through ARDP.</p>
+<p>The UDP Endpoint is the primary data plane interface between 
+the Routing Node and the UDP Transport. From the Routing Node 
+point of view, each UDP Transport connection is represented by 
+a UDP Endpoint. Each UDP Endpoint has an associated ARDP stream 
+that converts AllJoyn messages to ARDP datagrams. The UDP Transport 
+data plane architecture is captured in the following figure.</p>
+<p><img alt="udp-transport-data-plane-internal-architecture" src="../../../../files/learn/system-desc/udp-transport-data-plane-internal-architecture.png" /></p>
+<p><strong>Figure:</strong> UDP transport data plane internal architecture</p>
+<p>The ARDP Stream component converts from the notion of a 
+Message stream to a stream of datagrams and, in turn, talks 
+to an ARDP Connection. The ARDP Connection provides the 
+end-to-end state information required to establish the reliability 
+guarantees, and talks to a single UDP socket that is shared 
+among the various ARDP connections managed by the UDP Transport.</p>
+<h4 id="udp-endpoint-lifecycle">UDP Endpoint lifecycle</h4>
+<p>UDP Endpoints go through a well-defined lifecycle as shown in the following figure.</p>
+<p><img alt="udp-endpoint-lifecycle" src="../../../../files/learn/system-desc/udp-endpoint-lifecycle.png" /></p>
+<p><strong>Figure:</strong> UDP endpoint lifecycle</p>
+<p>Endpoints are constructed because of either an Active or a 
+Passive connection request. Similar to the TCP concept, 
+an Active connection is an outgoing connection that is actively 
+started on the local side. A Passive connection is an incoming 
+connection that was actively started on the remote side. 
+The ARDP protocol has a three-way handshake similar to that
+provided by RDP and TCP. The entity that issues the SYN request 
+enters into ACTIVE state and the entity which responds with a 
+SYN+ACK enters into PASSIVE state.</p>
+<p>Unlike TCP and RDP, ARDP provides additional information as 
+data in the SYN and SYN+ACK packets. During the SYN, SYN+ACK, 
+ACK exchange (happening in ACTIVE and PASSIVE states), the involved 
+endpoints are authenticating and identifying themselves to their 
+remote counterparts. Once this phase has completed, the endpoints 
+enter the STARTED state when the endpoint is registered with the 
+Routing Node as being ready. The STARTED state is one in which 
+AllJoyn Messages may be sent and received.</p>
+<p>Eventually, a connection may be stopped either as a result of a local 
+or remote disconnect event. A disconnect is initiated by the Routing 
+function making a <code>Stop()</code> call into the UDP Endpoint. This causes 
+a state transition from STARTED to STOPPING. For a local disconnect 
+event, an immediate transition is made to the WAITING state. 
+This allows all queued and in-flight Messages to be sent to the 
+remote side before an ARDP Disconnect is executed. </p>
+<p><strong>NOTE:</strong> Unlike TCP, there is no four-way ending handshake in ARDP - 
+this is handled at the Session level in the UDP Transport state machine.  </p>
+<p>Once all data is transferred and acknowledged, a transition is 
+made back to the STOPPING state. In STOPPING state, the various 
+threads are notified that the endpoint is closing down. Once the 
+threads are verified as having left, the endpoint transitions 
+into the JOINING state. This is where resources are freed and 
+any threads that may have been associated to the endpoint are 
+joined (in the sense of a Posix thread join operation). The last 
+part of the resource management is to unregister the endpoint 
+from the Routing Node. When this is complete, the endpoint enters the 
+DONE state and becomes ready for deletion by the endpoint management function.</p>
+<h4 id="ardp-state-machine">ARDP state machine</h4>
+<p>The ARDP is a close relative of RDP which is documented in RFC-908 (version 1)
+and RFC-1151 (version 2). At the heart of the ARDP is the ARDP 
+connection state machine. Although similar to the TCP state machine, 
+the ARDP machine is simpler, requiring only six states as shown 
+in the following figure.</p>
+<p><img alt="ardp-state-machine" src="../../../../files/learn/system-desc/ardp-state-machine.png" /></p>
+<p><strong>Figure:</strong> ARDP state machine</p>
+<p>As in TCP, connections may be started actively or passively.<br />
+An active, or outgoing connection begins by creating a UDP Endpoint 
+and transitioning it to the ACTIVE state. The endpoint provides 
+an "introduction" Message and passes it to ARDP, which responds 
+by creating a connection, adding the "introduction" to a SYN 
+packet and sending it. After sending the SYN packet, the local 
+ARDP connection enters the SYN-SENT state. The remote ARDP which 
+is in the LISTEN state, receives the SYN and calls back into the 
+UDP Transport, providing the "introduction" and notifying 
+that a connection request has been received. If the UDP Transport 
+determines that a connection should not be undertaken, ARDP 
+is notified and sends an RST pack to abort the connection.  </p>
+<p>If the UDP Transport determines that the connection should be 
+brought up, it creates a new UDP Endpoint in PASSIVE state and 
+responds to the ARDP callback with its own "introduction response".
+The passive side then enters the UDP Endpoint PASSIVE state 
+and the ARDP sends the "introduction response" back to the 
+active side in a SYN+ACK packet. When the active side receives 
+the SYN-ACK packet, the ARDP state machine sends the final 
+ACK packet, transitions to OPEN state and notifies the UDP Endpoint 
+which, in turn, transitions to STARTED state. The active side 
+is then ready to send and receive data. When the passive side 
+receives the final ACK packet, its three-way handshake is complete.  </p>
+<p>It transitions into the OPEN state and notifies the UDP Endpoint 
+which transitions into the STARTED state. At this point, 
+both sides are ready to send and receive data.</p>
+<p>Since it is possible that a failure happens somewhere in the 
+exchange between the local UDP Endpoint, the local ARDP, the 
+remote ARDP and the remote UDP Endpoint, both sides have 
+watchdog timers that abort the process if it does not complete 
+in a timely manner.</p>
+<p>As described above, there is no orderly shutdown of connections 
+in the ARDP. This is accomplished in the UDP Endpoint state machine.
+Transitions out of ARDP OPEN state are done by receiving or sending 
+RST packets. To avoid problems with reuse of ARDP ports, a 
+CLOSE_WAIT state is implemented similar to that of TCP.</p>
+<h4 id="ardp-packet-format">ARDP packet format</h4>
+<p>Details of the ARDP packet formats are available in RFC 908 and RFC 1151.
+Extensions to support granularity of AllJoyn Message instead of 
+UDP Datagrams and also dropping of in-flight Messages based on 
+TTL expiration required changing SYN and DATA packet formats.</p>
+<p>The following table shows the ARDP SYN packet format. 
+A delayed ACK timeout was added to support functionality 
+similar to delayed ACK as used in TCP. A variable length data 
+and an associated Data Length field was also added. The 
+SYN+ACK packet is returned in this format, but with the ACK bit set.</p>
+<h4 id="ardp-syn-packet-format">ARDP SYN Packet Format</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">FLAGS (8 bits) / Header Length (8 bits)</td>
+</tr>
+<tr>
+<td align="center">Source Port (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Destination Port (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Data Length (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Initial Sequence (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Acknowledgement (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Local Receive Window Size (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Maximum Size of Receivable Datagram (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Delayed ACK Timeout (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Data (variable length)</td>
+</tr>
+</tbody>
+</table>
+<p>The following table shows the ARDP DATA packet format. 
+The format is substantially similar to that described by 
+RFC 908 and RFC 1151, but several fields were added to 
+support new features. Since ARDP is designed to support 
+sending and receiving AllJoyn Messages, which can span 
+three 65535-byte UDP datagrams, the concept of a Message 
+fragment was added. This necessitated adding a fragment count 
+field and a start-of-message sequence number to identify 
+the sequence number corresponding to the first UDP datagram 
+in an AllJoyn Message. A Time-to-Live field was also added 
+to support expiring AllJoyn Messages with a finite time to live; 
+and in order to coordinate expiration of Messages, which 
+may be in the process of being retransmitted, the Acknowledge-Next 
+field was added.</p>
+<h4 id="ardp-data-packet-format">ARDP data packet format</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">FLAGS (8 bits) / Header Length (8 bits)</td>
+</tr>
+<tr>
+<td align="center">Source Port (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Destination Port (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Data Length (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Sequence Number of Current Segment (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Acknowledge Number of Last In-Sequence Segment (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Time to Live (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Last Consumed Sequence Number (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Acknowledge-Next (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Start-of-Message Sequence (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Fragment Count (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Extended ACK Bitmask (variable length)</td>
+</tr>
+<tr>
+<td align="center">Data (variable length)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="udp-transport-configuration">UDP transport configuration</h4>
+<p>ARDP is a flexible protocol, and so there are a number of 
+configurable parameters used. These parameters are settable via 
+the AllJoyn Router configuration file.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Description</th>
+<th align="center">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>udp_connect_timeout</td>
+<td>When an initial ARDP connection is attempted, the precipitating SYN packet may be lost. If, after some time, the foreign host does not respond, the connection must be attempted again. This value is the time period that ARDP waits before attempting to resend the SYN packet.</td>
+<td align="center">1000 msec</td>
+</tr>
+<tr>
+<td>udp_connect_retries</td>
+<td>When an initial ARDP connection is attempted, the precipitating SYN packet may be lost. If, after some time, the foreign host does not respond, the connection must be attempted again. This value is the number of times that ARDP will try to resent SYN packet before giving up.</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td>udp_initial_data_timeout</td>
+<td>When a data ARDP segment is sent, an RTO timer is started that determines when to resend the segment if an acknowledgment is not received. ARDP performs adaptive SRTT and RTO estimation using the TCP algorithm from RFC 6298. This parameter defines an initial RTO value which is used for a data segment only when no RTT estimates are available.</td>
+<td align="center">1000 msec</td>
+</tr>
+<tr>
+<td>udp_total_data_retry_timeout</td>
+<td>The overall time period for which a data segment should be retried before giving up and disconnecting the associated ARDP connection.</td>
+<td align="center">10000 msec</td>
+</tr>
+<tr>
+<td>udp_min_data_retries</td>
+<td>The minimum number of times a given ARDP data segment will be retransmitted. A data segment might be transmitted for more number of times than this value over the udp_total_data_retry_period.</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td>udp_persist_interval</td>
+<td>When the advertised window size on the foreign host goes to zero, it stops the (local) sender from transmitting data until the window becomes nonzero. Since ARDP does not reliably send ACK packets, it is possible to lose an ACK packet that reopens the window. In that case, the local and foreign sides could deadlock: the foreign side to receive data and the sender waiting for an ACK with a new window size. ARDP supports sending zero window probes (NUL packet) if it does not get update to the window after receiving a zero window ACK. The zero window probes are sent following an exponential backoff schedule. This parameter defines initial persist interval used as first timeout for the zero window schedule.</td>
+<td align="center">1000 msec</td>
+</tr>
+<tr>
+<td>udp_total_app_timeout</td>
+<td>The overall time period for which zero window probes should be sent before the associated ARDP connection is declared broken.</td>
+<td align="center">30000 msec</td>
+</tr>
+<tr>
+<td>udp_link_timeout</td>
+<td>ARDP is very interested in quickly determining when a link has gone down, idle or not. The idea is to guarantee that some data is present on the link at least once over a given interval. This may be data, ACK for that data, or a special NUL keep-alive packet.This parameter provides the default overall timeout period during which a broken link for a connection must be detected. A link timeout is used to compute the keep-alive interval for sending periodic keep-alive probes. This value is used only if the link timeout was not set by the app, otherwise the link timeout from the app is used.</td>
+<td align="center">30000 msec</td>
+</tr>
+<tr>
+<td>udp_keepalive_retries</td>
+<td>Provides the total number of times keep-alive probes will be sent before declaring the link as broken and terminating the ARDP connection.</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td>udp_fast_retransmit_ack_counter</td>
+<td>Similar to TCP, ARDP supports fast retransmission of segments based on the out-or-order EACKs (Enhanced ACKs) received. This value defines how many out-of-order EACKs should be received before ARDP performs the retransmission. A segment is fast retransmitted only once.</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td>udp_timewait_timer</td>
+<td>Amount of time that a connection should remain in the RDP Close_Wait state, to ensure that all outstanding packets that might be wandering around the network have died out for that connection. This behavior ensures that the port pair defining the ARDP connection cannot be reused for twice the expected lifetime of a datagram and therefore datagrams from an earlier incarnation of a connection cannot interfere with a current connection.</td>
+<td align="center">1000 msec</td>
+</tr>
+<tr>
+<td>udp_segbmax</td>
+<td>Maximum size of an ARDP segment as negotiated during connection setup. Since ARDP runs on top of UDP, this is determined based on the max UDP packet size. Since the maximum datagram size in UDP is 65535 bytes, the most efficient / maximum ARDP message size is the maximum size of UDP packet. Larger-sized AllJoyn messages are fragmented into the multiple segments required to carry those messages.</td>
+<td align="center">65507</td>
+</tr>
+<tr>
+<td>udp_segmax</td>
+<td>Maximum number of outstanding ARDP segments the receiver is willing to accept as negotiated during connection setup. This value governs how many segments can be in the flight and hence impacts the overall achieved throughput. The SEGMAX unit is ARDP segments. ARDP supports flow control through dynamic windowing in the message header. When data is received by ARDP and "checked in" to the ARDP receive queue, it is immediately acknowledged, but the receive window is decremented by 1. It is only when a datagram is delivered to the app, that the datagram is removed from the receive buffer and the receive window is incremented by 1.</td>
+<td align="center">50</td>
+</tr>
+</tbody>
+</table>
+<h3 id="name-service-usage-by-the-alljoyn-transport">Name Service usage by the AllJoyn Transport</h3>
+<p>Both the TCP Transport and the UDP Transport provide the same 
+advertisement and discovery capabilities. Both of these transports 
+use the IP multicast-based Name Service as their advertisement 
+and discovery mechanism. The Name Service uses the underlying 
+IP (UDP) multicast to accomplish advertisement and discovery 
+functions. The Name Service is implemented in the Routing Node 
+as a singleton and is accessed by both the TCP Transport and 
+the UDP Transport through their respective control planes. 
+[Advertisement and Discovery][advertisement-discovery] captures
+the details on the legacy Name Service and Next-Generation Name Service
+(NGNS) used for adverisement and discovery in the AllJoyn system,</p>
+<h3 id="transport-selection-at-the-alljoyn-router">Transport selection at the AllJoyn Router</h3>
+<p>For discovery, if an application selects a specific transport 
+(TCP Transport or UDP Transport), then the <code>FoundAdvertisedName()</code> 
+callback is only sent for that transport. Also, as mentioned earlier, 
+an app can indicate which specific transport to be used to 
+establish a session, and the AllJoyn router will attempt to 
+perform session setup only over the specified AllJoyn transport.</p>
+<p>If an app does not indicate a specific AllJoyn transport for 
+discovery or session setup, the AllJoyn router behavior is to 
+give preference to UDP Transport. This behavior is mainly motivated 
+by the fact that UDP Transport requires much smaller file descriptor 
+resources which becomes an issue with TCP Transport as the number 
+of connections grows. </p>
+<p>For discovery, if an app does not indicate a specific AllJoyn transport 
+(that is, TRANSPORT_ANY is specified), the <code>FoundAdvertisedName()</code> 
+callback is sent for both UDP Transport and TCP Transport, with the 
+callback for UDP Transport sent first. Similarly for session setup, 
+if TRANSPORT_ANY was indicated by the app, the AllJoyn router 
+will establish session over UDP Transport if it is available 
+at both endpoints of the connection. If the UDP Transport is not 
+available, then session setup will be done over TCP Transport. </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../data-exchange/" class="btn btn-neutral float-right" title="Data exchange"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../alljoyn-session/" class="btn btn-neutral" title="Alljoyn session"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../alljoyn-session/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../data-exchange/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

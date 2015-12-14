@@ -1,0 +1,2122 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cpp legacy - My Docs</title>
+  
+
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Cpp legacy";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
+  <script src="../../../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Ambassadors</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../ambassadors/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Develop</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Cpp legacy</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#about-api-guide-c">About API Guide - C++</a></li>
+                
+                    <li><a class="toctree-l4" href="#reference-code">Reference code</a></li>
+                
+                    <li><a class="toctree-l4" href="#build-an-application-that-uses-aboutservice">Build an application that uses AboutService</a></li>
+                
+                    <li><a class="toctree-l4" href="#build-an-application-that-uses-aboutclient">Build an application that uses AboutClient</a></li>
+                
+                    <li><a class="toctree-l4" href="#setting-up-the-alljoyn-framework">Setting Up the AllJoyn Framework</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-an-application-that-uses-aboutservice">Implementing an Application that Uses AboutService</a></li>
+                
+                    <li><a class="toctree-l4" href="#implementing-an-application-that-uses-aboutclient">Implementing an Application that Uses AboutClient</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../java-legacy/">Java legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../objc-legacy/">Objc legacy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audio streaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../audio-streaming/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../audio-streaming/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../controlpanel/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/objc/">Objc</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Auto ping</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/auto-ping/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Propcache</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../core/propcache/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Events and actions</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../events-and-actions/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/c-thin/">C thin</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/cpp/">Cpp</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../notification/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/java/">Java</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../onboarding/objc/">Objc</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Api reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../api-reference/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ask</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../ask/popular/">Popular</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Building</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Android</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/android/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Ios osx</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/ios-osx/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Linux</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/linux/openwrt/">Openwrt</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Windows</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/build-source/">Build source</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../building/windows/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Debug</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/common-issues/">Common issues</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../debug/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Run sample apps</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/about/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Acserver</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/acserver/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Alljoyn js</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/alljoyn-js/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Basic</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/thin-windows/">Thin windows</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/basic/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Chat</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/chat/windows/">Windows</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/config/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/linux/">Linux</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/notification/thin-linux/">Thin linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Observer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/observer/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/android/">Android</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/onboarding/linux/">Linux</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Test</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../run-sample-apps/test/sessions/">Sessions</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Tutorial</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/arduino-and-gt202/">Arduino and gt202</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/ios/">Ios</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/thin-app/">Thin app</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/videos/">Videos</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../tutorial/core/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Learn</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/architecture/">Architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/glossary/">Glossary</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/use-cases/">Use cases</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Base services</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/">Home</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Audiostreaming</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/audiostreaming/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Configuration</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/configuration/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Controlpanel</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/controlpanel/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Notification</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/notification/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Onboarding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/base-services/onboarding/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Core</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/events-and-actions/">Events and actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/standard-core/">Standard core</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/thin-core/">Thin core</a>
+        
+    </li>
+
+        
+            
+    <ul class="subnav">
+    <li><span>About announcement</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface-14-02/">Interface 14 02</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/about-announcement/interface/">Interface</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Rn config</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/rn_config/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>Security2 0</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/hld/">Hld</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/security2_0/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+            
+    <ul class="subnav">
+    <li><span>System description</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/advertisement-discovery/">Advertisement discovery</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-security/">Alljoyn security</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/data-exchange/">Data exchange</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/events-actions/">Events actions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/">Home</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/sessionless-signal/">Sessionless signal</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/system-architecture/">System architecture</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../learn/core/system-description/thin-apps/">Thin apps</a>
+        
+    </li>
+
+        
+    </ul>
+
+        
+    </ul>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Project lifecycle</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../project-lifecycle/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Supported platforms</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../supported-platforms/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>User groups</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../../../user-groups/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>About &raquo;</li>
+        
+      
+    
+    <li>Cpp legacy</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="about-api-guide-c">About API Guide - C++</h1>
+<p>The About Feature was integrated with the core library with the
+AllJoyn&trade; 14.12 release.  The reference code found in this document refers
+to the About Feature code developed before the the About Feature integration.</p>
+<p>As a developer you are encouraged to discontinue use of these APIs and move to
+the newer About Feature API.</p>
+<p><a href="../../../../develop/api-guide/about/cpp">Current About API C++ Guide</a></p>
+<h2 id="reference-code">Reference code</h2>
+<h3 id="classes-used-to-send-aboutdata">Classes used to send AboutData</h3>
+<table>
+<thead>
+<tr>
+<th>Server class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AboutService</td>
+<td>Class that implements the org.alljoynAbout interface.</td>
+</tr>
+<tr>
+<td>AboutIconService</td>
+<td>Class that implements the org.alljoynIcon interface.</td>
+</tr>
+<tr>
+<td>PropertyStore</td>
+<td>Interface that supplies the list of properties required for Announce signal payload and GetAboutData().</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classes-used-to-receive-aboutdata">Classes used to receive AboutData</h3>
+<table>
+<thead>
+<tr>
+<th>Client class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AboutClient</td>
+<td>Helper class for discovering AboutServer that provides access to the Announcements and to the AboutService. It listens for Announcements sent using the org.alljoyn.About interface.</td>
+</tr>
+<tr>
+<td>AboutIconClient</td>
+<td>Helper class that provides access to the AboutIconService.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reference-c-application-code">Reference C++ application code</h3>
+<table>
+<thead>
+<tr>
+<th>Application class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AboutServerMain</td>
+<td>Command line application that announces the About and DeviceIcon AllJoyn&trade; interfaces and handles remote access to these interfaces by registering an instance of AboutService and AboutIconService the AllJoyn bus.</td>
+</tr>
+<tr>
+<td>AboutClientMain</td>
+<td>Command line application that uses AboutClient to discover About servers and exercise their interfaces.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="build-an-application-that-uses-aboutservice">Build an application that uses AboutService</h2>
+<p>The following steps provide the high-level process to build an
+application that will broadcast AboutData.</p>
+<ol>
+<li>Implement PropertyStore to produce an AboutStore.
+(See <a href="#create-a-propertystore-implementation">Create a PropertyStore implementation</a>.)</li>
+<li>Instantiate an AboutStore.</li>
+<li>Create and register the AboutService, providing it with the AboutStore.</li>
+</ol>
+<h2 id="build-an-application-that-uses-aboutclient">Build an application that uses AboutClient</h2>
+<p>The following steps provide the high-level process to build an
+application that will receive AboutData.</p>
+<ol>
+<li>Create the base for the AllJoyn application.</li>
+<li>Create a new AboutClient.</li>
+<li>Register the AnnounceListener.</li>
+<li>Register the AboutClient.</li>
+</ol>
+<h2 id="setting-up-the-alljoyn-framework">Setting Up the AllJoyn Framework</h2>
+<h3 id="create-instance-of-busattachment">Create instance of BusAttachment</h3>
+<p>To use the About feature, an AllJoyn object call the BusAttachment
+is needed that is used internally by the service to leverage
+the AllJoyn API calls.</p>
+<pre><code class="cpp">BusAttachment* msgBus = new BusAttachment(&quot;AboutService&quot;, true);
+</code></pre>
+
+<h3 id="create-password-for-the-bundled-router">Create password for the bundled router</h3>
+<p>NOTE: Thin libraries at AllSeen Alliance version 14.06 or
+higher do not require this step.</p>
+<p>To allow thin libraries to connect to the bundled router,
+the router requires a password.</p>
+<pre><code class="cpp">PasswordManager::SetCredentials(&quot;ALLJOYN_PIN_KEYX&quot;, PassCode);
+}
+</code></pre>
+
+<h3 id="start-and-connect-the-busattachment">Start and connect the BusAttachment</h3>
+<p>Once created, the BusAttachment must be connected to the
+AllJoyn framework.</p>
+<pre><code class="cpp">QStatus status = msgBus-&gt;Start();
+if( status == ER_OK ) {
+   status = msgBus-&gt;Connect(NULL);
+}
+</code></pre>
+
+<h2 id="implementing-an-application-that-uses-aboutservice">Implementing an Application that Uses AboutService</h2>
+<p>Implementing an AboutServer requires creating and registering
+an instance of the AboutService class.</p>
+<p>NOTE: Verify the BusAttachment has been created, started and
+connected before implementing the AboutService. See <a href="#setting-up-the-alljoyn-framework">Setting
+Up the AllJoyn Framework</a> for the
+code snippets. Code in this section references a variable
+<code>msgBus</code> (the BusAttachment variable name).</p>
+<h3 id="declare-listener-class">Declare listener class</h3>
+<p>Declare a listener class to receive the SessionPortListener callback.</p>
+<p>Typically, an AcceptSessionJoiner callback in SessionPortListener
+has a check to allow or disallow access. Since the AboutService
+requires access to any application using AboutClient, return
+true when this callback is triggered. Use the SessionJoined
+handler to set the session timeout to 20 seconds.</p>
+<pre><code class="cpp">class MyListener : public SessionPortListener {
+   private:
+      BusAttachment *mMsgBus;
+
+   public:
+      MyListener( BusAttachment *msgBus ) {
+         mMsgBus = msgBus;
+   }
+
+      bool AcceptSessionJoiner( SessionPort sessionPort, const
+         char* joiner, const SessionOpts&amp; opts ) {
+
+         printf(&quot;Accepting join session request from %s (opts.proximity=%x,
+            opts.traffic=%x, opts.transports=%x)\n&quot;,
+               joiner, opts.proximity, opts.traffic, opts.transports);
+
+         return true;
+      }
+
+      void SessionJoined( SessionPort sessionPort, SessionId id, const char*
+joiner ) {
+         printf(&quot;SessionJoined with %s (id=%d)\n&quot;, joiner, id);
+         mMsgBus-&gt;EnableConcurrentCallbacks();
+         uint32_t timeout = 20;
+         QStatus status = mMsgBus-&gt;SetLinkTimeout(id, timeout);
+         if( status == ER_OK ) {
+            printf(&quot;Link timeout has been set to %ds\n&quot;, timeout);
+
+         } else {
+            printf(&quot;SetLinkTimeout(%d) failed\n&quot;, timeout);
+         }
+      }
+};
+</code></pre>
+
+<h3 id="bind-session-port">Bind session port</h3>
+<p>To allow incoming connections, the formation of a session is
+needed. The AllJoyn framework must be told that connections
+are allowed.</p>
+<pre><code class="cpp">SessionOpts opts(SessionOpts::TRAFFIC_MESSAGES, false,
+    SessionOpts::PROXIMITY_ANY, TRANSPORT_ANY);
+SessionPort sPort = SERVICES_PORT;
+if( status == ER_OK )
+    status = msgBus-&gt;BindSessionPort(sPort, opts, *busListener);
+</code></pre>
+
+<h3 id="create-a-propertystore-implementation">Create a PropertyStore implementation</h3>
+<p>The PropertyStore interface is required by the AboutService to
+store the provisioned values for the About interface data fields.
+See the <a href="../../../../learn/core/about-announcement/interface">About Interface Definition</a> for more information.</p>
+<h4 id="about-interface-data-fields">About interface data fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Required</th>
+<th>Announced</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AppId</td>
+<td>yes</td>
+<td>yes</td>
+<td>ay</td>
+</tr>
+<tr>
+<td>DefaultLanguage</td>
+<td>yes</td>
+<td>yes</td>
+<td>s</td>
+</tr>
+<tr>
+<td>DeviceName</td>
+<td>yes</td>
+<td>yes</td>
+<td>s</td>
+</tr>
+<tr>
+<td>DeviceId</td>
+<td>yes</td>
+<td>yes</td>
+<td>s</td>
+</tr>
+<tr>
+<td>AppName</td>
+<td>yes</td>
+<td>yes</td>
+<td>s</td>
+</tr>
+<tr>
+<td>Manufacturer</td>
+<td>yes</td>
+<td>yes</td>
+<td>s</td>
+</tr>
+<tr>
+<td>ModelNumber</td>
+<td>yes</td>
+<td>yes</td>
+<td>s</td>
+</tr>
+<tr>
+<td>SupportedLanguages</td>
+<td>yes</td>
+<td>no</td>
+<td>as</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>yes</td>
+<td>no</td>
+<td>s</td>
+</tr>
+<tr>
+<td>DateofManufacture</td>
+<td>no</td>
+<td>no</td>
+<td>s</td>
+</tr>
+<tr>
+<td>SoftwareVersion</td>
+<td>yes</td>
+<td>no</td>
+<td>s</td>
+</tr>
+<tr>
+<td>AJSoftwareVersion</td>
+<td>yes</td>
+<td>no</td>
+<td>s</td>
+</tr>
+<tr>
+<td>HardwareVersion</td>
+<td>no</td>
+<td>no</td>
+<td>s</td>
+</tr>
+<tr>
+<td>SupportUrl</td>
+<td>no</td>
+<td>no</td>
+<td>s</td>
+</tr>
+</tbody>
+</table>
+<p>An example PropertyStore implementation (AboutPropertyStoreImp)
+is provided. All fields above can easily be set by calling the
+appropriate setter function.</p>
+<pre><code class="cpp">aboutStore = new AboutPropertyStoreImpl();
+aboutStore -&gt;setDeviceId(&quot;1231232145667745675477&quot;);
+aboutStore -&gt;setDeviceName(&quot;MyDeviceName&quot;, &quot;en&quot;);
+aboutStore -&gt;setDeviceName(&quot;NombreDeMiDispositivo&quot;, &quot;es&quot;);
+aboutStore -&gt;setDeviceName(&quot;NomDispositif&quot;, &quot;fr&quot;);
+aboutStore -&gt;setAppId(&quot;000102030405060708090A0B0C0D0E0C&quot;);
+aboutStore -&gt;setDefaultLang(&quot;en&quot;);
+
+aboutStore -&gt;setAppName(&quot;AboutConfig&quot;, &quot;en&quot;);
+aboutStore -&gt;setAppName(&quot;AboutConfig&quot;, &quot;es&quot;);
+aboutStore -&gt;setAppName(&quot;AboutConfig&quot;, &quot;fr&quot;);
+aboutStore -&gt;setModelNumber(&quot;Wxfy388i&quot;);
+aboutStore -&gt;setDateOfManufacture(&quot;10/1/2199&quot;);
+aboutStore -&gt;setSoftwareVersion(&quot;12.20.44 build 44454&quot;);
+aboutStore -&gt;setAjSoftwareVersion(ajn::GetVersion());
+aboutStore -&gt;setHardwareVersion(&quot;355.499. b&quot;);
+
+std::vector&lt;qcc::String&gt; languages(3);
+languages[0] = &quot;en&quot;;
+languages[1] = &quot;es&quot;;
+languages[2] = &quot;fr&quot;;
+aboutStore -&gt;setSupportedLangs(languages);
+
+aboutStore -&gt;setDescription(&quot;This is an AllJoyn application&quot;, &quot;en&quot;);
+aboutStore -&gt;setDescription(&quot;Esta es una AllJoyn aplicacion&quot;, &quot;es&quot;);
+aboutStore -&gt;setDescription(&quot;C'est une AllJoyn application&quot;, &quot;fr&quot;);
+
+aboutStore -&gt;setManufacturer(&quot;Company&quot;, &quot;en&quot;);
+aboutStore -&gt;setManufacturer(&quot;Empresa&quot;, &quot;es&quot;);
+aboutStore -&gt;setManufacturer(&quot;Entreprise&quot;, &quot;fr&quot;);
+
+aboutStore -&gt;setSupportUrl(&quot;http://www.allseenalliance.org&quot;);
+</code></pre>
+
+<h3 id="create-the-aboutservice-object">Create the AboutService object</h3>
+<p>For an application to send AboutData, it requires an instance
+of the AboutService class. AboutService is an implementation
+wrapper around AllJoyn native calls that handle the interactions
+between AboutServer and AboutClient.</p>
+<pre><code class="cpp">AboutService* aboutService = NULL;
+aboutService = aboutService = new AboutService(msgBus,aboutStore);
+aboutService-&gt;Register(SERVICES_PORT);
+msgBus-&gt;RegisterBusObject(*aboutService);
+</code></pre>
+
+<h3 id="add-interfaces-to-announcement">Add interfaces to Announcement</h3>
+<pre><code class="cpp">std::vector&lt;qcc::String&gt; interfaces;
+interfaces.push_back(&quot;org.alljoyn.About&quot;);
+aboutService-&gt;AddObjectDescription(&quot;/About&quot;, interfaces);
+</code></pre>
+
+<h3 id="register-aboutservice-object-with-busattachment">Register AboutService object with BusAttachment</h3>
+<p>Register the AboutService with the obtained session port.</p>
+<pre><code class="cpp">aboutService-&gt;Register(sPort);
+msgBus-&gt;RegisterBusObject(*aboutService);
+</code></pre>
+
+<h3 id="add-an-abouticonservice-optional">Add an AboutIconService (optional)</h3>
+<p>An applicaton that sends AboutData can be extended to
+broadcast a device icon using an instance of the AboutIconService
+class. AboutIconService is an implementation wrapper around
+AllJoyn native calls that handle the interactions between
+applications that use the AboutIconClient class.</p>
+<h4 id="provision-for-the-icon-content-and-url">Provision for the Icon content and URL</h4>
+<p>An Icon is published directly as a byte array or a reference
+URL, and must be provisioned as follows:</p>
+<pre><code class="cpp">uint8_t aboutIconContent[] = { 0x89, 0x50, 0x4E, 0x47, 0x0D /* Add relevant data here */ };
+qcc::String mimeType(&quot;image/png&quot;); /* This should correspond to the content */
+qcc::String url(&quot;http://myurl&quot;); /* An alternate access to the Icon */
+</code></pre>
+
+<h4 id="adddeviceicon-object-and-interfaces-to-announcement">AddDeviceIcon object and interfaces to Announcement</h4>
+<pre><code class="cpp">std::vector&lt;qcc::String&gt; interfaces;
+interfaces.push_back(&quot;org.alljoyn.Icon&quot;);
+aboutService-&gt;AddObjectDescription(&quot;/About/DeviceIcon&quot;, interfaces);
+</code></pre>
+
+<h4 id="create-and-register-deviceicon-object">Create and register DeviceIcon object</h4>
+<pre><code class="cpp">AboutIconService* aboutIconService = NULL;
+aboutIconService = new AboutIconService(msgBus, mimeType, url,
+   aboutIconContent, sizeof(aboutIconContent) / sizeof (*aboutIconContent));
+aboutIconService-&gt;Register();
+msgBus-&gt;RegisterBusObject(*aboutIconService);
+</code></pre>
+
+<h3 id="advertise-name">Advertise name</h3>
+<pre><code class="cpp">if( status == ER_OK )
+   status = msgBus-&gt;AdvertiseName(msgBus-&gt;GetUniqueName().c_str(),
+      opts.transports);
+</code></pre>
+
+<h3 id="announce-name">Announce name</h3>
+<pre><code class="cpp">if( status == ER_OK )
+status = aboutService-&gt;Announce();
+</code></pre>
+
+<h3 id="unregister-and-delete-aboutservice-aboutstore-and-abouticonservice">Unregister and delete AboutService, AboutStore, and AboutIconService</h3>
+<p>When your process is done with the AboutService and no
+longer wishes to send announcements, unregister the process
+from the AllJoyn bus and then delete variables used.</p>
+<pre><code class="cpp">if( aboutService != NULL ) {
+   msgBus-&gt;UnregisterBusObject(*aboutService);
+   delete aboutService;
+}
+if( aboutStore != NULL ) {
+   delete aboutStore;
+}
+if( aboutIconService != NULL ) {
+   msgBus-&gt;UnregisterBusObject(*aboutIconService);
+   delete aboutIconService;
+}
+</code></pre>
+
+<h2 id="implementing-an-application-that-uses-aboutclient">Implementing an Application that Uses AboutClient</h2>
+<p>To implement an application to receive AboutData, use the
+AboutClient class. By using the AboutClient class, your
+application is notified when AboutServer instances send
+announcements.</p>
+<p>NOTE: Verify the BusAttachment has been created, started
+and connected before using an AboutClient. See <a href="#setting-up-the-alljoyn-framework">Setting Up
+the AllJoyn Framework</a> for the code
+snippets. Code in this section references a variable msgBus
+(the BusAttachment variable name).</p>
+<h3 id="setup-to-receive-the-announce-signal">Setup to receive the Announce signal</h3>
+<p>In order to receive the Announce signal, implement a class
+that inherits from the
+AnnounceHandler base class.</p>
+<h4 id="create-class-to-implement-announcehandler">Create class to implement AnnounceHandler</h4>
+<p>This declaration of a class will allow for the signals to be
+received. It needs to implement pure virtual function Announce.</p>
+<pre><code class="cpp">class AnnounceHandlerImpl : public ajn::services::AnnounceHandler (){
+   void Announce(unsigned short version, unsigned short port,
+      const char* busName, const ObjectDescriptions&amp; objectDescs,
+         const AboutData&amp; aboutData);
+}
+</code></pre>
+
+<h4 id="implement-the-announce-method-that-handles-the-announce-signal">Implement the Announce method that handles the Announce signal</h4>
+<p>With everything linked up using the AllJoyn framework, the
+method registered with the AllJoyn framework will be executed
+upon receipt of an Announce signal.</p>
+<p>Because every application is different, as a developer you
+will need to process the
+AboutData and determine the following:</p>
+<ul>
+<li>How in the UI it should be rendered</li>
+<li>When to request the data that is not contained in the Announce signal</li>
+<li>Any logic that is needed</li>
+</ul>
+<h4 id="register-the-announcehandler-using-the-announcementregistrar-class">Register the announceHandler using the AnnouncementRegistrar class</h4>
+<p>When registering an announcement listener, specify which
+interfaces the application is interested in. The code below
+shows a listener registered to receive Announce signals that
+include an object implementing the INTERFACE_NAME interface.</p>
+<pre><code class="cpp">AnnounceHandlerImpl* announceHandlerImpl = new AnnounceHandlerImpl();
+const char* interfaces[] = { INTERFACE_NAME };
+AnnouncementRegistrar::RegisterAnnounceHandler(*busAttachment,
+   *announceHandlerImpl, interfaces, 1);
+</code></pre>
+
+<h3 id="using-ping-to-determine-presence">Using Ping to determine presence</h3>
+<p>The BusAttachment Ping member function can be used to determine
+if a device is responsive. Contents of an Announce signal can
+be stale so it is recommended to ping the device to see if it
+is still present and responsive before attempting to form a connection.</p>
+<p>NOTE: The BusAttachment.Ping method makes a bus call. If <code>Ping</code>
+is called inside an AllJoyn callback, <code>BusAttachment.EnableConcurrentCallbacks</code>
+must be called first.</p>
+<pre><code class="cpp">// when pinging a remote bus wait a max of 5 seconds
+#define PING_WAIT_TIME  5000
+msgBus-&gt;EnableConcurrentCallbacks();
+   QStatus status = msgBus-&gt;Ping(busName.c_str(), PING_WAIT_TIME);
+   if( ER_OK == status) {
+   ...
+}
+</code></pre>
+
+<h3 id="request-non-announced-data">Request non-announced data</h3>
+<p>If there is a need to request information that is not contained
+in the announcement, perform the following steps.</p>
+<ol>
+<li>Join the session</li>
+</ol>
+<p>Create a session with the application by using the
+   BusAttachment JoinSession API.</p>
+<p>NOTE: The variables name and port are set from the AboutData
+   from the Announce method.</p>
+<p><code>cpp
+   SessionId sessionId;
+      SessionOpts opts(SessionOpts::TRAFFIC_MESSAGES, false,
+         SessionOpts::PROXIMITY_ANY, TRANSPORT_ANY);
+      QStatus status = msgBus-&gt;JoinSession(name, port, NULL, sessionId, opts);
+      if (status == ER_OK) {
+         QCC_DbgTrace(("JoinSession SUCCESS (Session id=%d)", sessionId));
+      } else {
+         QCC_LogError(status, ("JoinSession failed"));
+      }</code></p>
+<ol>
+<li>Create AboutClient</li>
+</ol>
+<p>Generate an AboutProxyBusObject from the org.alljoyn.About
+   Introspection XML and create an instance passing ButAttachment
+   and sessionId.</p>
+<p><code>cpp
+   AboutProxyBusObject * aboutClient = new AboutProxyBusObject
+      (msgBus, sender_name,"\About", sessionId);
+   aboutClient-&gt;GetAboutData("");</code></p>
+<ol>
+<li>Create AboutIconClient</li>
+</ol>
+<p>Generate an IconProxyBusObject from the org.alljoyn.Icon
+   Introspection XML and create an instance passing
+   ButAttachment, port, and sessionId.</p>
+<p><code>cpp
+   IconProxyBusObject * aboutIconClient = new IconProxyBusObject
+      (msgBus, sender_name, "About\DeviceIcon", sessionId);
+   aboutIconClient-&gt;GetUrl();</code></p>
+<h3 id="shutdown">Shutdown</h3>
+<p>Once you are done using the About feature and the AllJoyn
+framework, free the variables used in the application.</p>
+<p>NOTE: The AboutClient object must be deleted before the
+BusAttachment object.</p>
+<pre><code class="cpp">delete aboutClient;
+delete aboutIconClient;
+delete msgBus;
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cpp/" class="btn btn-neutral float-right" title="Cpp"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../c-thin/" class="btn btn-neutral" title="C thin"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../c-thin/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../cpp/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
