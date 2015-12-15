@@ -1,0 +1,80 @@
+learn:
+
+https://allseenalliance.org/framework/documentation/learn >> 1
+https://allseenalliance.org/framework/documentation/learn/architecture >> 1
+
+https://allseenalliance.org/framework/documentation/learn/core  >> 1
+
+  https://allseenalliance.org/framework/documentation/learn/core/about-announcement >> 1
+  https://allseenalliance.org/framework/documentation/learn/core/about-announcement/interface >> 2
+  https://allseenalliance.org/framework/documentation/learn/core/events-and-actions >> 2
+  https://allseenalliance.org/framework/documentation/learn/core/rn_config >> 3
+  https://allseenalliance.org/framework/documentation/learn/core/standard-core >> 1
+  https://allseenalliance.org/framework/documentation/learn/core/thin-core >> 1
+  https://allseenalliance.org/framework/documentation/learn/core/system-description >> 1
+    
+    https://allseenalliance.org/framework/documentation/learn/core/system-description/system-architecture >> 1
+    https://allseenalliance.org/framework/documentation/learn/core/system-description/advertisement-discovery >> 2
+    https://allseenalliance.org/framework/documentation/learn/core/system-description/alljoyn-transport >> 2
+    https://allseenalliance.org/framework/documentation/learn/core/system-description/data-exchange >> 2
+    https://allseenalliance.org/framework/documentation/learn/core/system-description/alljoyn-session >> 1
+    https://allseenalliance.org/framework/documentation/learn/core/system-description/sessionless-signal >> 2
+    https://allseenalliance.org/framework/documentation/learn/core/system-description/alljoyn-security >> 2
+    https://allseenalliance.org/framework/documentation/learn/core/system-description/thin-apps >> 1
+    https://allseenalliance.org/framework/documentation/learn/core/system-description/events-actions >> 1
+    https://allseenalliance.org/framework/documentation/learn/core/security2_0 >> 2
+
+https://allseenalliance.org/framework/documentation/learn/base-services >> 1
+
+  https://allseenalliance.org/framework/documentation/learn/base-services/onboarding >> 1
+    https://allseenalliance.org/framework/documentation/learn/base-services/onboarding/interface >> 2
+
+  https://allseenalliance.org/framework/documentation/learn/base-services/configuration >> 2
+    https://allseenalliance.org/framework/documentation/learn/base-services/configuration/interface >> 2
+   
+  https://allseenalliance.org/framework/documentation/learn/base-services/notification >> 1
+    https://allseenalliance.org/framework/documentation/learn/base-services/notification/interface >> 1
+
+  https://allseenalliance.org/framework/documentation/learn/base-services/controlpanel >> 1
+    https://allseenalliance.org/framework/documentation/learn/base-services/controlpanel/interface >> 1
+
+  https://allseenalliance.org/framework/documentation/learn/base-services/audiostreaming >> 2
+    https://allseenalliance.org/framework/documentation/learn/base-services/audiostreaming/interface >> 2
+
+  
+https://allseenalliance.org/framework/documentation/learn/glossary >> 1
+
+
+
+develop:
+
+https://allseenalliance.org/framework/documentation/develop >> 1
+
+  https://allseenalliance.org/framework/documentation/develop/building >> 1
+    https://allseenalliance.org/framework/documentation/develop/building/android >> 1
+      https://allseenalliance.org/framework/documentation/develop/building/android/build-source >> 1
+
+    https://allseenalliance.org/framework/documentation/develop/building/linux >> 1
+      https://allseenalliance.org/framework/documentation/develop/building/linux/openwrt >> 1
+      https://allseenalliance.org/framework/documentation/develop/building/linux/build-source >> 1
+
+    https://allseenalliance.org/framework/documentation/develop/building/ios-osx >> 1
+      https://allseenalliance.org/framework/documentation/develop/building/ios-osx/build-source >> 1
+
+    https://allseenalliance.org/framework/documentation/develop/building/windows >> 1
+      https://allseenalliance.org/framework/documentation/develop/building/windows/build-source >> 1
+
+    https://allseenalliance.org/framework/documentation/develop/building/thin-linux >> 1
+
+    https://allseenalliance.org/framework/documentation/develop/building/thin-windows >> 1
+
+    https://allseenalliance.org/framework/documentation/develop/building/alljoyn-js >> 2
+
+    
+  https://allseenalliance.org/framework/documentation/develop/run-sample-apps >> 1 （所有之下的文档全部翻译）
+
+    
+
+
+
+
