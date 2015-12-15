@@ -1,27 +1,32 @@
-# Architecture
+# 结构
 
-## Network Architecture
+## 网络结构
 
 The AllJoyn&trade; framework runs on the local network. 
 It enables devices and apps to advertise and discover 
 each other. This section explains the network architecture 
 and the relationship between various AllJoyn components.
 
-### Apps and Routers
+AllJoyn&trade;架构在本地网络上运行，使设备和应用程序能够发送通知并且发现彼此。本章解释了 Alljoyn 的网络结构和不同 AllJoyn 组件之间的关系。
+
+
+### Apps and Routers 应用和路由
 
 The AllJoyn framework comprises AllJoyn Apps and AllJoyn 
 Routers, or Apps and Routers for short. Apps communicate 
 with Routers and Routers communicate with Apps. Apps can 
 only communicate with other Apps by going through a Router.
+AllJoyn 架构包含了 Alljoyn 应用和 AllJoyn 路由，简称应用和路由。应用和路由之间可以相互通信。应用只能通过路由来与另一个应用进行通行。
 
 Apps and Routers can live on the same physical device, or 
 on different devices. From an AllJoyn perspective, it doesn't 
 matter.  In reality, three common topologies exist:
-
+应用和路由可以属于同一个物理设备，也可以分布在不同的设备上。从Alljoyn 的角度来看，这没有很大区别。在现实中，存在三个常见的拓扑:
 1. An App uses its own Router. In this case, the Router is
 called a "Bundled Router" as it is bundled with the App. AllJoyn
 Apps on mobile OSes like Android and iOS and desktop OSes like
 Mac OS X and Windows generally fall in this group.
+1. 单一应用程序使用自己的路由。在这种情况下，根据路由与应用之间的绑定关系，路由被称之为“绑定路由”。在如 Android 和 IOS 的手机操作系统，以及如 Mac OS X 和 Windows 的桌面操作系统上运行的 Alljoyn 应用通常都属于“绑定路由”的情况。
 
 2. Multiple Apps on the same device use one Router.  In this 
 case, the Router is called a "Standalone Router" and it 
@@ -30,63 +35,74 @@ common on Linux systems where the AllJoyn Router runs as a
 daemon process and other AllJoyn apps connect to the Standalone 
 Router. By having multiple apps on the same device use the 
 common AllJoyn Router, the device consumes less overall resources.
-
+2. 在同一设备上的多个应用程序使用一个路由。在这种情况下，这个路由被称之为”独立路由器“，它通常在后台/服务进程中运行。这样的情况多发生在 Linux 系统中。在 Linux 系统中，AllJoyn 路由作为守护进程运行，Alljoyn 应用被连接到独立路由器。通过把同一设备上的多个应用连接到一个通用路由上，设备减少了总体资源的消耗。
 3. An App uses a Router on a different device. Embedded 
 devices (which use the Thin variant of the AllJoyn framework, 
 more on this later) typically fall in this camp as the embedded 
 device typically does not have enough CPU and memory to run 
 the AllJoyn router.
+3. 某个应用使用不同设备上的路由。嵌入式设备（通常使用精简 AllJoyn 架构，之后会具体说明）通常属于这个类型。因为嵌入式设备通常没有足够强大的 CPU 和 内存来运行 AllJoyn 路由。
 
 ![apps-and-routers][apps-and-routers]
 
-### Transports
+### Transports 传输 
 
 The AllJoyn framework runs on the local network.  It currently 
 supports Wi-Fi, Ethernet, serial, and Power Line (PLC), but since
 the AllJoyn software was written to be transport-agnostic and
 since the AllJoyn system is an evolving open-source project,
 support for more transports can be added in the future.
+AllJoyn 架构在本地网络上运行。目前它支持 Wi-Fi, Ethernet, serial, 和 Power Line (PLC)。不过由于 AllJoyn 软件是协议不相关的，并且 AllJoyn 系统是在不断完善的开源工程。在未来，更多的传输方式将被加入其中。
+
 
 Additionally, bridge software can be created to bridge the 
 AllJoyn framework to other systems like Zigbee, Z-wave, or 
 the cloud. In fact, a Working Group is working on adding a 
 [Gateway Agent][gateway-agent] as a standard AllJoyn service.
-
-## Software Architecture
+除此之外，使用桥程序，可以将 AllJoyn 架构与其他类型的系统互联，如 Zigbee, Z-wave 和云。实际上，有一个工作组正在负责向标准 AllJoyn 服务中加入一个[网关代理][gateway-agent]。
+##  Software Architecture 软件结构
 
 The AllJoyn network comprises AllJoyn Applications and AllJoyn Routers.
+AllJoyn 架构包含了 Alljoyn 应用和 AllJoyn 路由。
 
 An AllJoyn Application comprises the following components:
+一个 AllJoyn 应用程序包含了以下组件：
 * [AllJoyn App Code][app-code]
 * [AllJoyn Service Frameworks Libraries][services]
 * [AllJoyn Core Library][core]
 
-An [AllJoyn Router][router] can either run as standalone or is 
+[AllJoyn Router][router] can either run as standalone or is 
 sometimes bundled with the AllJoyn Core Library.
+[AllJoyn 路由][router] 既可以是独立的，也可以绑定到 AllJoyn 内核资源库。
 
 ![alljoyn-software-architecture][alljoyn-software-architecture]
 
-### AllJoyn Router
+### AllJoyn Router AllJoyn 路由
 
 The AllJoyn router routes AllJoyn messages between AllJoyn Routers 
 and Applications, including between different transports.
+AllJoyn 路由负责转发其与应用之间的 AllJoyn 信息，包括不同传输方式之间的信息。
 
-### AllJoyn Core Library
+### AllJoyn Core Library AllJoyn 核心资源库
 
 The AllJoyn Core Library provides the lowest level set of APIs 
 to interact with the AllJoyn network.  It provides direct access to:
+AllJoyn 核心资源库提供了与 AllJoyn 网络互联的最低级别的 API。它为以下内容提供了直接访问方式：
 
 * Advertisements and discovery
 * Session creation
 * Interface defintion of methods, properties, and signals
 * Object creation and handling
-
-Developers use these APIs to implement AllJoyn service frameworks, 
-or to implement private interfaces.
-
+* 通知和发现
+* 建立会话
+* 接口定义的方法、 属性和信号
+* 对象的创建和处理
+Developers use these APIs to implement AllJoyn service frameworks, or to implement private interfaces.
+开发人员使用这些 API 来实现 AllJoyn 服务架构，或建立专用接口。
 [Learn more about AllJoyn Core Frameworks][learn-core].
+[了解更多关于 AllJoyn 核心架构][learn-core].
 
-### AllJoyn Service Framework Libraries
+### AllJoyn Service Framework Libraries AllJoyn 服务框架资源库
 
 The AllJoyn Service Frameworks implement a set of common services, 
 like onboarding, notification, or control panel. By using the 
