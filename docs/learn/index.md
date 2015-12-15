@@ -1,82 +1,40 @@
 # Learn
 
-AllJoyn&trade; is a collaborative open-source software framework that makes 
-it easy for developers to write applications that can discover nearby 
-devices, and communicate with each other directly regardless of brands, 
-categories, transports, and OSes without the need of the cloud. The AllJoyn 
-framework is extremely flexible with many features to help  make the 
-vision of the Internet of Things come to life.
+AllJoyn&trade;是一个开源的协作软件框架，他允许开发者开发可以发现附近设备并建立沟通的应用程序，并不受设备品牌，种类以及操作系统的限制，也不需用到云端。AllJoyn 框架的灵活性和多功能性可以将物联网概念带入现实。
 
-## Proximal Network
+## 近端网络
 
-The AllJoyn framework handles the complexities of discovering nearby devices, 
-creating sessions between devices, and communicating securely between those 
-devices.  It abstracts out the details of the physical transports and provides 
-a simple-to-use API. Multiple connection session topologies are supported, 
-including point-to-point and group sessions. The security framework is flexible, 
-supporting many mechanisms and trust models. And the types of data transferred 
-are also flexible, supporting raw sockets or abstracted objects with well-defined 
-interfaces, methods, properties, and signals.
+AllJoyn 框架可以处理发现附近设备，建立会话，建立安全通信机制等一系列复杂问题。他提取物理通信的细节信息并提供简单易用的应用程序编程接口，并支持多方接入会话结构，包括端对端以及群组会话。安全架构灵活，支持多种会话机制和信任模式。数据传输形式灵活，支持原始套接字或带有已定义接口，方法，权限以及信号的虚拟对象。
 
-## Flexible
+## 灵活性
 
-One of the defining traits of the AllJoyn framework is its inherent flexibility.  
-It was designed to run on multiple platforms, ranging from small embedded RTOS 
-platforms to full-featured OSes. It supports multiple language bindings and
-transports. And since the AllJoyn framework is open-source, this flexibility
-can be extended further in the future to support even more transports, bindings,
-and features.
+AllJoyn 固有的灵活性是其最具识别度的特性。 AllJoyn 被设计应用于多种平台：从小型嵌入式实时操作系统到全功能操作系统， 并支持多种语言绑定和传输。由于 AllJoyn 框架的开源特性，其灵活性可在未来被继续扩展以支持更多传输，绑定和其他功能。
 
-* Transports: Wi-Fi, Ethernet, Serial, Power Line (PLC)
-* Bindings: C, C++, Obj-C, Java
-* Platforms: RTOS, Arduino, Linux, Android, iOS, Windows, Mac
-* Security: peer-to-peer encryption (AES128) and authentication (PSK, ECDSA)
+* 传输层: Wi-Fi, Ethernet, Serial, Power Line (PLC)
+* 语言绑定: C, C++, Obj-C, Java
+* 操作平台: RTOS, Arduino, Linux, Android, iOS, Windows, Mac
+* 安全机制: peer-to-peer encryption (AES128) and authentication (PSK, ECDSA)
 
-## Common language for Internet of Things
+## 物联网通用语言
 
-In order to fully realize the vision of the Internet of Things, devices and apps
-need a common way to interact and speak to each other.  We believe that common
-language is the AllJoyn framework: it serves as the glue to allow devices from
-different companies, running on different operating systems, written with different
-language bindings to all speak together, and just work.
+为了圆满实现物联网构想，设备和应用程序之间需要一种常用方式来实现互动和交流。 我们相信这种常用方式会是 AllJoyn 框架：一个将各种设备与众多公司黏合到一起，并且可以运行在多种操作系统，用不同编程语言实现的框架。总的来说，他解决问题。 
 
-The AllSeen Alliance, working with the open-source community, is defining and 
-implementing common services and [interfaces][interfaces] that solves a specific
-use case, such as [onboarding a new device for the first time][onboarding], 
-[sending notifications][notifs], and [controlling a device][controlpanel]. 
-Developers can then take these services, integrate them into their products, 
-and know that they are compatible with other devices and apps in the AllJoyn 
-ecosystem.
+The AllSeen Alliance 与开源社区协同作用，正在定义并且实现常规服务的以及对应特定用途的[接口][interfaces]服务，例如[首次接入新设备][onboarding], [发送提醒][notifs], 和[设备控制][controlpanel]. 开发者可选择将以上功能集成到他们的产品中，且不用担心与其他 AllJoyn 生态圈设备与应用程序的兼容问题。
 
-Beyond common services and interfaces, an app or device can also implement 
-private interfaces. So, the app can both use common services and interfaces
-to participate in the larger AllJoyn ecosystem, while at the same time, use
-the AllJoyn framework to communicate with apps and devices in a private fashion. 
-The AllJoyn framework enables this flexibility.
+除常规服务与接口外，私密接口也可被应用程序或设备实现。如此，应用程序既可调用常规服务与接口参与 AllJoyn 大生态圈， 也可通过 AllJoyn 架构与其他应用程序和设备进行私密会话。这种灵活性因 AllJoyn 架构才得以实现。
 
-## Optional Cloud
+## 可选云
 
-The AllJoyn framework runs on the local network and does not require the cloud 
-to function. Apps and devices talk to each other directly -- fast, efficient, and
-secure. No need to go out and wait for the cloud when the device is right
-next to you. And in cases where the cloud is needed, the AllJoyn framework 
-supports that as well through a [Gateway Agent][gateway-agent]. One main
-advantage of this architecture is security: only the Gateway Agent is
-directly connected to the Internet, reducing the number of devices
-connected to the Internet, and thus reducing the attack surface.
+AllJoyn 架构运行在本地网络，并不需要云功能介入。应用程序以及设备可进行快捷，安全的直接通话。这意味着当设备就在眼前时，无需跳出并等待云就位。如果一定需要云介入，AllJoyn 架构也提供支持，这需要通过一个[网关代理][gateway-agent]. 安全性是此架构的一大优势：只有网管代理被直连到互联网，这减少了连接到互联网的设备数量，从而减少了攻击面。
 
-## Momentum
+## 生长性
 
-As a collaborative open source project, the AllSeen ecosystem continues
-to grow and evolve. More common services are being added with each release,
-including implementation for multiple platforms. There is strong momentum,
-and with your help, the AllJoyn framework can very well be the common
-language for the Internet of Things.
+作为一个协作开源项目， AllSeen 生态系统在不断生长进化。伴随每一次版本更新越来越多的公共服务被添加进来，包括对多种平台的实现。AllSean 的势头强大，伴随着你们的帮助 AllJoyn 架构会成为非常流行的物联网语言。
 
-## Next steps
+## 下一步
 
-Learn more about [use cases][use-cases]. Then head over to learn about the
-overall [Architecture][arch], [Core Framework][core], and [Base Services][services].
+了解更多关于[用例][use-cases] 的知识。 然后跳转到关于总体[结构][arch], [核心框架][core], 以及 [基础服务][services].
+Learn more about [use cases][use-cases].
 
 [interfaces]: /learn/core#busobject
 [onboarding]: /learn/base-services/onboarding
