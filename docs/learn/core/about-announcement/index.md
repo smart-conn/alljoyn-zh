@@ -60,7 +60,7 @@ Here's roughly what happens behind the scenes:幕后大致发生了什么：
 * [了解更多关于 About Interface Definition][about-interface]
 * [下载 SDK][download], [build][build] 和
   [运行示例应用][sample-apps]
-* [了解更多关于 About APIs][api-guide]
+* [了解更多关于 About API][api-guide]
 
 [about-interface]: /learn/core/about-announcement/interface
 [download]: https://allseenalliance.org/framework/download
