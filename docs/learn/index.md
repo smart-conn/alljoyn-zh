@@ -34,7 +34,6 @@ AllJoyn 架构运行在本地网络，并不需要云功能介入。应用程序
 ## 下一步
 
 了解更多关于[用例][use-cases] 的知识。 然后跳转到关于总体[结构][arch], [核心框架][core], 以及 [基础服务][services].
-Learn more about [use cases][use-cases].
 
 [interfaces]: /learn/core#busobject
 [onboarding]: /learn/base-services/onboarding
