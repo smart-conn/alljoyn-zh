@@ -1,15 +1,16 @@
-# About Feature Interface Definitions
+# About Feature Interface Definitions About功能接口定于
 
-## Release History
+## Release History 发布历史
 
 To access a previous version of this document, click the release version link below.
+点击下方发行版本连接来获取该文档的历史版本。
 
 |Release version | Date | What changed |
 |---|---|---|
-|[14.02][about-14.02] | 2/28/2014 | About interface version 1 was added. |
-|14.06 | 6/30/2014 | No updates. |
-|14.06 Update 1 | 9/29/2014 | <ul><li>Updated the document title and Overview chapter title (changed from Specification to Definition)</li><li>Added the release version number to the document title for version tracking.</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.</li></ul> |
-|14.12 | 12/17/2014 | <ul><li>Changed DeviceName from required to not required</li><li>Additional clarification specifying the AppId must be 128-bit UUID as specified in RFC 4122</li><li>Cleanup to make requirements for methods and signals more clear</li><li>Icon interface was added. The icon interface has been part of AllJoyn&trade; and the About Feature since 14.02; however, the interface definition documentation was not added until 14.12.</li></ul> |
+|[14.02][about-14.02] | 2/28/2014 | 首个 About 接口被加入|
+|14.06 | 6/30/2014 | 无更新。 |
+|14.06 Update 1 | 9/29/2014 | <ul><li>更新了文档标题和 Overview 的章节标题。(从规范改成定义)</li><li为了方便版本追踪，在文档标题中加入版本号。</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.在Definition Overview中加入一个说明来提出 AllSeen Alliance Compliance Certification。</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.添加一个强制列，用来存放支持AllSeen Alliance Compliance and Certification 程序的方法和信号参数</li></ul> |
+|14.12 | 12/17/2014 | <ul><li>把 DeviceName 从要求改成了不要求</li><li>加入了一个指定 AppID 必须为 RFC 4122 中指定的 128－bit UUID 的验证</li><li>使对于方法和信号的要求更加明确</li><li>Icon interface was added. The icon interface has been part of AllJoyn&trade; and the About Feature since 14.02; however, the interface definition documentation was not added until 14.12.引入图标接口。图标接口已经是 AllJoyn&trade; 和 14.02 版本之后的 About 功能的一部分。然而，直到 14.12版本，它的接口定义文档才被加入。</li></ul> |
 
 ## Definition Overview
 
@@ -17,15 +18,16 @@ The About interface is to be implemented by an application
 on a target device. This interface allows the app to advertise 
 itself so other apps can discover it. The following figure 
 illustrates the relationship between a client app and a service app.
+About 接口是由应用在目标设备上执行。此接口允许应用程序发出广播，使其他应用程序可以发现它。下图说明了客户端应用和服务应用之间的关系。
 
 ![about-arch][about-arch]
 
-**Figure:** About feature architecture within the AllJoyn&trade; framework
+**Figure:** 在AllJoyn&trade; 架构内的 About 功能结构。
 
 **NOTE:** All methods and signals are considered mandatory to 
 support the AllSeen Alliance Compliance and Certification program. 
-
-## Discovery
+**注意:** 所有方法和信号都被认为强制支持AllSeen Alliance Compliance and Certification program. 
+## Discovery 发现
 
 A client can discover the app via an announcement which is a 
 sessionless signal containing the basic app information like 
