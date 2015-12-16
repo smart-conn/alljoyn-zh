@@ -220,7 +220,7 @@ AllJoyn 系统是作为一个整体进行设计的，不会有 ad-hoc 系统中�
 
 ## 获取更多信息
 
-如想获取更多关于如何将 AllJoyn 架构集成到你的开发项目中的信息，请访问 [AllSeen Alliance web site](https://allseenalliance.org)以获得相关文档或下载内容。
+如想获取更多关于如何将 AllJoyn 架构集成到你的开发项目中的信息，请访问 [AllSeen Alliance web site](https://allseenalliance.org) 以获得相关文档或下载内容。
 
 * Introductory guides（介绍导读） - 描述 AllJoyn 技术与概念
 * Development guides（开发导读） - 提供建立编译环境的步骤并提供特定编程问题的解决方案包括源代码片段与详细解释。
