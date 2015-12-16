@@ -9,13 +9,14 @@ deployment scenario. This section captures the following deployment scenarios:
 * Standalone AllJoyn network: A proximal network with a set 
 of peer devices which could be connected over the same or 
 different access mediums.
-* 独立 AllJoyn 网络：
+* 独立 AllJoyn 网络：一个拥有一系列对等设备的区域网络。设备之间可以通过相同或不同的介质相互连接。
 
 * Remote accessible AllJoyn network: A proximal network 
 where services provided by devices are accessible and controllable 
 from outside the proximal network.
+* 远程访问的 AllJoyn 网络：一些设备为区域网络提供了被区域网络之外的的网络访问和控制的功能。
 
-### Standalone AllJoyn network
+### Standalone AllJoyn network 独立 AllJoyn 网络
 
 A standalone AllJoyn network architecture is fairly simple 
 with two or more peer nodes coming together to dynamically 
@@ -24,16 +25,19 @@ access networks such as Wi-Fi. The AllJoyn advertisement and
 discovery mechanism takes care of seamlessly discovering 
 these peers independent of the underlying transport being used. 
 
+独立 AllJoyn 网络结构是相当简单的。它由两个或以上的节点动态形成。节点之间可通过不同的网络（如 WI-FI）进行连接。Alljoyn 的 advertisement 和 discovery 机制可以无视基础网络传输方式，无缝地发现这些节点。
 The following figure captures the network architecture for a 
 typical standalone AllJoyn network.
+下图展示了一个典型的独立 ALlJoyn 网络的结构。
 
 ![standalone-network-arch][standalone-network-arch]
 
-**Figure:** Standalone AllJoyn network architecture
+**图:** Standalone 独立 AllJoyn 网络结构
 
 **NOTE:** In a Wi-Fi deployment, the AllJoyn framework requires 
 wireless isolation to be turned off at the access points to 
 enable peer-to-peer communication.
+**注意:** 在 Wi-Fi 部署中，
 
 #### Bridging multiple transports
 
