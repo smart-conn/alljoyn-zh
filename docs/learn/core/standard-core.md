@@ -1,161 +1,68 @@
 # AllJoyn&trade; Standard Core
 
-## Overview
+## 概览
+AllJoyn 框架是一个开源操作系统，为强调移动性，安全性以及动态配置的分布式应用程序提供运行环境。AllJoyn 系统可处理异构分布式 系统所固有的复杂问题，包括可移动性介入后所带来的特殊问题。借此帮助，程序开发者可以专注于解决核心问题。
 
-The AllJoyn framework is an open-source software system that
-provides an environment for distributed applications running
-across different device classes with an emphasis on mobility,
-security, and dynamic configuration. The AllJoyn system handles
-the hard problems inherent in heterogeneous distributed systems
-and addresses the unique issues that arise when mobility enters
-the equation. This leaves application developers free to concentrate
-on the core problems of the application they are building.
+AllJoyn 框架是“平台无关”的，其设计初衷为尽最大可能独立于运行设备的操作系统，硬件及软件特性。AllJoyn 框架被设计应用于 Microsoft Windows, Linux, Android, iOS, OS X, 以及 OpenWRT 平台。
 
-The AllJoyn framework is "platform-neutral", meaning it was designed
-to be as independent as possible of the specifics of the operating
-system, hardware, and software of the device on which it is running.
-fact, the AllJoyn framework was developed to run on Microsoft Windows,
-Linux, Android, iOS, OS X, and OpenWRT.
+亲近性与移动性一值保留在 AllJoyn 框架的设计理念当中。在移动环境中，设备会不停地进入，离开其他设备的邻域，与此同时，基础网络 容量也会发生变化。
 
-The AllJoyn framework is designed with the concept of proximity and
-mobility always in mind. In a mobile environment, devices will constantly
-be entering and leaving the proximity of other devices, and underlying
-network capacities can be changing as well.
+AllJoyn SDKs 可在以下网址获得 (http://www.allseenalliance.org).
 
-The AllJoyn SDKs are available at (http://www.allseenalliance.org).
+可用 AllJoyn 框架开发的应用程序类别仅仅受限于开发者的想像力。例如社交网络的拓展。用户可以建立个人简介并定义喜好和兴趣。在进入一个位置时， 支持 AllJoyn 的设备将会立即发现周边有着共同兴趣的同好，并与其建立通信网络以实现通信及信息交换。
 
-The types of applications that will use the AllJoyn framework are limited
-only by the imagination of developers. Extending social networking is one
-example. A user could define a profile with likes and interests.
-Upon entering a location, the AllJoyn-enabled handset would immediately
-discover other nearby peers with similar interests, create a communication
-network between the peer devices, allow them to communicate, and exchange information.
+现如今大多数设备都已集成 Wi-Fi，如此，当两名用户步入带有 Wi-Fi 热点的住宅或办公室时，他们的设备可连接到接触网络接入点，并公 开利用附加的网络容量。此外，这些设备还可以在其可见域内（取决于Wi-Fi的覆盖面积）对其他设备进行定位，同时可选择发现并使用其他 设备提供的各种服务。进一步，借助混合拓补结构，可以将一个应用了 AllJoyn Thin库的设备定义为应用蓝牙的传输机，由此便可与其他连 接到 Wi-Fi 的设备的应用程序进行交互。
 
-The majority of handsets today have Wi-Fi integrated, so if two
-users walk into a home or office that has a Wi-Fi hotspot, their
-devices can connect to the underlying access point and transparently
-take advantage of the additional network capacity. Additionally,
-their devices can locate other devices in the proximity (defined
-by the Wi-Fi coverage footprint), can discover additional services
-on the other devices, and use those services, if desired. Further,
-it is possible to leverage a mixed topology connection such that a
-device taking advantage of the AllJoyn Thin LIbrary can be designated
-to use Bluetooth as a transport. As such, once connected to a device
-that runs the AllJoyn framework, the device can interact with the
-applications on the Wi-Fi devices.
+另外一个例子是在实时多玩家游戏上的应用。例如，一款多玩家游戏可以运行在诸如笔记本电脑，平板电脑以及手持设备上，基础网络技术（例如 Wi-Fi）也不尽相同。这些所有的基础设施细节管理都可以经由 AllJoyn 架构处理，这使得游戏作者可以将全部精力投入游戏设计与 与实现上，而不必考虑点对点网络的复杂度。
 
-Enabling real-time multi-player gaming is another example of how the
-AllJoyn framework might be used. For example, a multi-user game
-can be accomplished using different device classes such as laptops,
-tablets, and handsets; and different underlying network technologies
-such as Wi-Fi. The details of the infrastructure management are all
-handled by the AllJoyn framework, allowing the game author to focus
-on the design and implementation of the game, rather than dealing
-with the complexities of the peer-to-peer networking.
+作为 AllJoyn 生态系统的延伸， 还有很多应用程序创意。例如：
 
-As the AllJoyn ecosystem expands, one can imagine any number of
-applications. For example:
+* 创建一个音乐播放列表，将歌曲共享到支持 AllJoyn 的车载音响系统中，或者将歌曲储存到家庭音响中 （受到数字版权保护）。
+* 在活动或旅程结束后的的返程路上，将照片或其他媒体文件同步至支持 AllJoyn 的电视中
+* 远程控制家用电器，例如电视机，数字监控系统，游戏机等。
+* 在局域网内与笔记本电脑和台式机互动并分享内容。
+* 在企业或教育场景中，完成同事或学生之间项目合作。
+* 提供适地性服务，例如发放优惠券或 vcards. 
 
-* Create a playlist consisting of music, and stream the songs
-to an AllJoyn-enabled car stereo system, or store them on a
-home stereo (subject to digital rights management)
-* Sync recent photos or other media to an AllJoyn-enabled
-digital picture frame or television upon returning home from
-an event or trip
-* Control home appliances such as televisions, DVRs, or game consoles
-* Interact and share content with laptops and desktop
-computers in the area
-* Engage in project collaboration between colleagues and students
-in enterprise and educational settings
-* Provide proximity-based services like distributing coupons or vcards
 
-## Benefits of the AllJoyn Framework
+## AllJoyn 架构的优势
 
-As mentioned, the AllJoyn framework is a platform-neutral system
-that is designed to simplify proximity networking across heterogeneous
-distributed mobile systems.
+之前已提及，AllJoyn 架构是一个平台无关的系统，旨在简化分布在异构分布式系统上的邻近网络。
 
-Heterogeneous in this case means not only different devices, but
-different kinds of devices (e.g., PCs, handsets, tablets, consumer
-electronics devices) running on different operating  systems,
-using different communication technologies.
+异构在这里不仅指代不同设备，还指运行在不同操作系统上，应用不同通信机制的不同种类的设备（例如，个人电脑，手持设备，平板电脑，消费类电子产品）。
 
-### Open source
+### 开源
+AllJoyn 架构一贯是开源开发。所有的 AllJoyn 代码库都开放检视并欢迎开发者进行补充和完善。如果 AllJoyn 架构缺失某一功能，你可 以添加。如果你在应用 AllJoyn 框架时遇到了困难或者技术问题，开源社区中的其他参与者会及时提供善意的帮助和指导。AllJoyn 的代码 库可以在以下网址获得 (http://www.allseenalliance.org).
 
-The AllJoyn framework is being developed as an open source project.
-This means that all of the AllJoyn codebase is available for
-inspection, and developers are encouraged to contribute
-additions and enhancements. If the AllJoyn framework is
-missing a feature, you can contribute. If you run into a snag
-using the AllJoyn framework, or have a technical question,
-other participants in the open source community are ready
-and willing to provide help and guidance. The AllJoyn codebase
-is available at (http://www.allseenalliance.org).
+### 操作系统无关性
 
-### Operating system independence
+AllJoyn 框架所提供的抽象层使其代码和应用程序可以在多种操作系统上运行。截止到本协议编写时，AllJoyn 框架已支持大多数 Linux 发行版包括 Ubuntu，并可以运行在 Android 2.3 （姜饼） 以及后续智能手机和平板电脑上。AllJoyn 框架代码也可运行在众多流行的微软 操作系统版本上，包括 Windows XP, Windows 7, Windows RT, 和 Windows 8. 此外，AllJoyn 框架代码可运行在 Apple 操作系统 iOS 以及 OS X上，以及诸如 OpenWRT 的嵌入式操作系统。
 
-The AllJoyn framework provides an abstraction layer allowing
-AllJoyn framework code and its applications to run on multiple
-OS platforms. As of this writing, the AllJoyn framework supports
-most standard Linux distributions including Ubuntu, and runs on
-Android 2.3 (Gingerbread) and later smartphones and tablets. The
-AllJoyn framework code also runs and is tested and validated on
-commonly available versions of the Microsoft Windows operating
-system including Windows XP, Windows 7, Windows RT, and Windows 8.
-Additionally, the AllJoyn framework code runs on Apple operating
-systems iOS and OS X, and on embedded operating systems such as OpenWRT.
+### 语言无关性
 
-### Language independence
+开发者目前使用 C++,Java, C#, JavaScript 以及 Objective-C 语言来创建应用程序。
 
-Currently, developers may create applications using C++,Java, C#,
-JavaScript, and Objective-C.
+### 物理网络及协议无关性
 
-### Physical network and protocol independence
+目前有许多可供联网设备使用的技术。AllJoyn 框架提供的抽象层定义了接入到基础网络站的清晰接口，使得主管软件工程师添加新的网络 实现工具变得相对容易。
 
-There are many technologies available to networked devices.
-The AllJoyn framework provides an abstraction layer that
-defines clean interfaces to the underlying network stacks
-and makes it relatively easy for a competent software engineer
-to add new networking implementations.
+例如，截止本协议编写时，Wi-Fi 联盟已经发布了支持点对点连接的 Wi-Fi Direct 技术的参数明细。Wi-Fi Direct 的网络模块正在密集的 被开发，很明显他会将 Wi-Fi Direct 以及预先关联的发现机制加入到可选网络选项中，供 AllJoyn 的开发者选择。
 
-For example, as of this writing, the Wi-Fi Alliance has recently
-released a specification for Wi-Fi Direct, which will allow
-for point-to-point Wi-Fi connectivity. A networking module for
-Wi-Fi Direct is actively being developed that will transparently
-add Wi-Fi Direct and its pre-association discovery mechanisms
-to the available networking options for AllJoyn developers.
+### 动态配置
 
-### Dynamic configuration
+移动设备在其寿命中常会经过多重地点，网络关联建立后又断开。这意味着 IP（Internet Protocal）地址会发生变化，网络接口会失效 ，服务也会不稳定。
 
-Often, as a mobile device makes its way through the various
-locations it encounters during its lifetime, associations with
-networks may come and go. This means that IP (Internet Protocol)
-addresses may change, network interfaces may become unusable,
-and services may be transitory.
+当旧服务失效以及新服务出现时，AllJoyn 框架会发出提醒，如有必要也将建立新的关联。AllJoyn 框架已做好成为Wi-Fi Hotspot 2.0 （使移动电话，移动基站与 Wi-Fi 热点透明连接的技术）应用层的准备。
 
-The AllJoyn framework notices when old services are lost and
-new services appear, and forms new associations when required.
-The AllJoyn framework is primed and ready as an application
-layer for Wi-Fi Hotspot 2.0 - a technology that aims to bring
-the roaming transparency of cell phones and cell towers to Wi-Fi hotspots.
+### 广告服务及发现
+无论何时，设备的通信一定伴随着服务的推广与发现。在过去的静态网时代，设备间的通信由人工管理员做出明确的分配实现。现今时代，零配置网络的概念已十分流行，特别是借助于 Apple Bonjour 以及 Microsoft Universal Plug and Play 的帮助。
 
-### Service advertisement and discovery
+同时，我们也见到了如 Bluetooth Service Discovery Protocol 的已经存在的发现机制，以及正在发展的如 Wi-Fi Direct P2P 的发现机
+制。AllJoyn 架构提供服务推广及发现的虚拟化，以简化定位及使用服务的过程。
 
-Whenever devices need to communicate, there must be some form
-of service advertisement and discovery. In the old days of
-static networks, human administrators made explicit arrangements
-to enable devices to communicate. More recently, the concepts of
-zero configuration networks have been popularized, especially
-with Apple Bonjour, and Microsoft Universal Plug and Play.
-We also see existing technology-specific discovery mechanisms
-available such the Bluetooth Service Discovery Protocol and
-emerging mechanisms such as the Wi-Fi Direct P2P Discovery
-specification. The AllJoyn framework provides a service
-advertisement and discovery abstraction that simplifies the
-process of locating and consuming services.
+### 安全性
 
-### Security
-
+在分布式应用程序中，安全性的自然模型是应用程序对应用程序的。
 The natural model for security in distributed applications is
 application-to-application. Unfortunately, in many cases, the
 network security model does not match this natural arrangement.
@@ -201,84 +108,32 @@ publish standard interfaces and support the sharing of implementations.
 
 ## Conceptual Overview
 
-The AllJoyn framework contains a number of abstractions
-used to help understand and relate the various pieces.
-There is only a small number of key abstractions that one
-must know in order to understand AllJoyn-based systems.
+AllJoyn 架构包含一系列可供使用的抽象层以便于理解并将子模块关联起来。其中只有很小部分的抽象层是理解基于 AllJoyn 的系统所必须的。
 
-This section provides a high-level view of the AllJoyn framework
-to provide a foundation for follow-on documents such as the
-detailed API documentation.
+这一章提供了一个 AllJoyn 架构高层次的视角为之后的文档如 API 详解提供必要的基础。
 
-### Remote Method Invocation
+### 远程方法调用
 
-Distributed systems are groups of autonomous computers
-communicating over some form of network in order to achieve
-a common goal. Consider the ability of a program running in
-one address space on one machine to call a procedure located
-in another address space on a physically separate machine as
-if it were local. This is usually accomplished through
-Remote Procedure Call (RPC) or, if object-oriented concepts
-are in play, RMI or Remote Invocation (RI).
+分布式系统是以完成同一目标为目的的使用一定形式的网络连接起来的独立计算机群，因此需要有一台机器上的一定地址空间下的某个程序以类似于本地调用的方式使用位于另一台物理分离的机器上的一个地址空间下的进程的能力。这通常是通过远程函数调用（RPC）或者以面向对象的方式来说称作远程方法调用（RMI）或远程调用（RI）的方式来完成。
 
-The basic model in an RPC exchange involves a *client*, which
-is the caller of the RPC, and a server (called a service in
-the AllJoyn model), which actually executes the desired remote
-procedure. The caller executes a client stub that looks just
-like a local procedure on the local system. The client stub
-packages up the parameters of its procedure (called marshaling
-or serializing the parameters) into some form of message and
-then calls in to the RPC system to arrange delivery of the
-message over some standard transport mechanism such as the
-Transmission Control Protocol (TCP). At the remote machine,
-there is a corresponding RPC system running, which unmarshals
-(deserializes) the parameters and delivers the message to a
-server stub that arranges to execute the desired procedure.
-If the called procedure needs to return any information, a
-similar process is used to convey the return values back to
-the client stub, which in turn returns them to the original caller.
+RPC 的模型通常需要一个客户端也就是 RPC 的调用者和一个服务器端（AllJoyn模型中称为服务器）也就是实际上执行所期望的远程函数的 程序。调用者执行一个看上去和本地系统上的函数一样的客户端的存根，它会将函数的参数进行打包（称为对参数的编组或串行化）为某个格式的消息然后发送给 RPC 系统将其通过如传输控制协议（TCP）一类的标准机 制送达服务端。在远端机器上会有相应的 RPC 系统在运行 ，参数将会被反编组（反序列化）并将消息发送给服务端存根，它会安排执行期望的函数。如果被调用的函数需要返回任何信息，会使用相似的过程将返回值转运给客户端存根并将其发送给原始的调用者。
 
-Note that it is not required that a given process only implement
-a client personality or a service personality. If two or more
-processes implement the same client and service aspects,
-they are considered peers. In many cases, AllJoyn applications
-will implement similar functionality and be considered peers.
-The AllJoyn framework supports both classic client and service
-functions and also peer-to-peer networking.
+
+注意这里并没有要求一个客户端或服务端功能只能在一个进程中实现。如果两个或更多线程实现同一个客户端或服务端功能的某个方面，这些线程被看成端点。在很多情况下 AllJoyn 应用会实现类似的功能，这时它们也会被作为端点来看待。AllJoyn 架构能够支持经典的客户端 和服务器端的功能，同时也能支持端到端的网络功能。
 
 ### AllJoyn bus
-
-The most basic abstraction of the AllJoyn system is the
-AllJoyn bus. It provides a fast, lightweight way to move marshaled
-messages around the distributed system. One can view the AllJoyn bus
-as a kind of "freeway" over which those messages flow.
-The following figure shows what an instance of an AllJoyn bus
-on a single device might look like, conceptually.
+AllJoyn 系统中最基本的抽象概念就是 AllJoyn 总线。它提供了一中快速轻量的方法在分布式系统中传输编组过的消息。可以将 AllJoyn 总线看成是一种消息流的“高速公路”。下图从概念上展示了一个 AllJoyn 总线在同一个设备上的实例。
 
 ![prototypical-alljoyn-bus][prototypical-alljoyn-bus]
 
 **Figure:** Prototypical AllJoyn bus
 
-Points about the prototypical AllJoyn bus are detailed below.
+AllJoyn 总线原理上讲包含一下几点：
+	•	图中较粗的黑色横线表示总线自身，竖线可以被理解为流经总线的消息流的源头和/或目的地“出口”。
+	•	与总线的连接用六边形表示。和高速公路上的出口通常会被编号类似，每一个连接会被赋予一个唯一的名字。图中使用了简化的形式来命名连接用以说明。
+	•	在很多情况下到总线的连接可以被认为是和线程共驻内存的。因此，唯一连接名:1.1可能被赋予给了一个运行着某个应用实例的线程所在的连接，而唯一连接名:1.4可能被赋予给了另一个运行着某个应用实例的线程所在的连接。AllJoyn 总线的目标就是使两个应用可以在不 需要处理底层具体的交换机制的情况下进行通信。一端的连接可以被认为是客户端存根而另一端则完成所有服务端存根所要求的所有任务。
 
-* The bus itself is shown as the thick horizontal dark line.
-The vertical lines can be thought of as "exits" and are the
-sources and/or destinations of messages that are flowing over the bus.
-* The connections to the bus are depicted as hexagons. Just as
-the exits on a freeway are typically assigned numbers, each
-connection is assigned a unique connection name. A simplified
-form of the connection name is used here for clarity.
-* In many cases, the connections to the bus can be thought of
-as co-resident with processes. Therefore, the unique connection name
-`:1.1` may be assigned to a connection in a process running some
-instance of an application, and the unique connection name
-`:1.4` may be assigned to a connection in a process running an
-instance of some other application. The goal of the AllJoyn
-bus is to allow the two applications to communicate without
-having to deal with the details of the underlying mechanisms.
-One of the connections can be thought of as the client stub,
-and the other side can fulfill the duties of the service stub.
-
+原始的 AllJoyn 总线图表达了一个 AllJoyz的案例
 The prototypical AllJoyn bus figure shows an instance of an AllJoyn bus and
 illustrates how a software bus can provide interprocess communication
 between components attached to the bus. The AllJoyn bus is
@@ -286,6 +141,8 @@ typically extended across devices as shown in the following figure.
 A communication link between the segment of the logical bus
 residing on the Smartphone and the components residing on the
 Linux host is formed when required by the components.
+
+
 
 ![device-device-comm][device-device-comm]
 
