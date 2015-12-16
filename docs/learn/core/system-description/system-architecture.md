@@ -1,13 +1,16 @@
-# System Architecture
+# System Architecture 系统结构
 
-## Network architecture
+## Network architecture 网络结构
 
 The AllJoyn&trade; network architecture is dependent upon the network 
 deployment scenario. This section captures the following deployment scenarios:
+ AllJoyn&trade; 网络结构由网络的部署方案决定。这部分包含了以下几种部署方案：
 
 * Standalone AllJoyn network: A proximal network with a set 
 of peer devices which could be connected over the same or 
-different access mediums. 
+different access mediums.
+* 独立 AllJoyn 网络：
+
 * Remote accessible AllJoyn network: A proximal network 
 where services provided by devices are accessible and controllable 
 from outside the proximal network.
