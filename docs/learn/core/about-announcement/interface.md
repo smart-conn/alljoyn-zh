@@ -35,99 +35,108 @@ app name, device name, manufacturer, and model number. The
 announcement also contains the list of object paths and service 
 framework interfaces to allow the client to determine whether 
 the app provides functionality of interest.
+客户端可以通过 annoucement 发现应用程序。annoucement 是一种包含了如应用名称，设备名称，制造商和型号的一种 sessionless signal。annoucement 也包含了对象路径和服务架构接口的列表，这些内容使得客户端能够确定应用程序是否提供了感兴趣的功能。
 
 In addition to the sessionless announcement, the About interface 
 also provides the
 on-demand method calls to retrieve all the available metadata 
-about the app that are not published in the announcement.
+about the app that are not sessionless announcement  published in the announcement.
+除了 sessionless announcement 之外，About 接口也提供了基于需求的方法调用，以检索程序的可用元数据。这些元数据不是在 annoucement 中公开发布的 sessionless annoucement。
 
-## Discovery Call Flows
+## Discovery Call Flows 
 
-### Typical discovery flow
+### Typical discovery flow 典型 discovery flow
 
 The following figure illustrates a typical call flow for a client 
 to discover a service app. The client merely relies on the 
 sessionless announcement to decide whether to connect to the 
 service app to use its service framework offering.
+下图展示了客户端发现服务应用程序的典型 call flow。客户端仅仅依靠 sessionless announcemnt 就可以判断出是否连接某一服务应用程序并使用它所以提供的服务架构。
 
 ![about-typical-discovery][about-typical-discovery]
 
-**Figure:** Typical discovery flow (client discovers a service app)
+**图:** 典型 discovery flow (客户端发现服务应用程序)
 
-### Nontypical discovery flow
+### Nontypical discovery flow 非典型 discovery flow
 
 The following figure illustrates a call flow for a client to 
 discover a service app and make a request for more detailed information.
+下图展示了客户端发现一个服务应用程序并且要求更多详细信息的 call flow。
 
 ![about-nontypical-discovery][about-nontypical-discovery]
 
-**Figure:** Nontypical discovery call flow
+**图:** Nontypical discovery call flow 非典型 discovery call flow
 
-## Error Handling
+## Error Handling 错误处理
 
 The method calls in the About interface will use the AllJoyn 
 error message handling feature (ER_BUS_REPLY_IS_ERROR_MESSAGE) 
 to set the error name and error message.
+About 接口中的方法调用需要用到 AllJoyn 错误处理功能来设置错误名称和错误信息。
 
-| Error name | Error message |
+| 错误名称 | 错误信息 |
 |---|---|
-| org.alljoyn.Error.LanguageNotSupported | The language specified is not supported |
+| org.alljoyn.Error.LanguageNotSupported | 指定的语言不受支持 |
 
-## About Interface
+## About Interface About 接口
 
-| Interface name | Version | Secured | Object path |
+| 接口名称 | 版本 | 是否受保护 | 对象路径 |
 |---|:---:|:---:|---|
 | `org.alljoyn.About` | 1 | no | `/About` |
 
-### Properties
+### Properties 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名称 | 签名 | 有效值 | 读写权限 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read Only | Interface version number |
+| Version | `q` | Positive integers | Read Only | 接口版本号 |
 
-### Methods
+### Methods 方法
 
 The following methods are exposed by a BusObject that implements 
 the `org.alljoyn.About` interface.
+以下方法由提供 `org.alljoyn.About` 接口的 BusObject 发布。
+
 
 #### `a{sv} GetAboutData('s')`
 
-**Message arguments**
+**Message arguments** **消息参数** 
 
-|Argument | Parameter name| Signature | List of values | Description |
+|参数 | 参数名称 | 签名 | 有效值 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `languageTag` | `s` | IETF language tags specified by [RFC 5646](http://tools.ietf.org/html/rfc5646). | The desired language. |
+| 0 | `languageTag` | `s` | IETF language tags specified by [RFC 5646](http://tools.ietf.org/html/rfc5646). | 所需语言 |
 
-**Reply arguments**
+**Reply arguments** **回复参数**
 
 |Argument | Parameter name | Return signature | Description |
 |:---:|---|:---:|---|
-| 0 | `AboutData` | `a{sv}` | A dictionary of the available metadata fields. If language tag is not specified (i.e., ""), metadata fields based on default language are returned. |
+| 0 | `AboutData` | `a{sv}` | 可用的元数据字段的字典。如果不指定语言标签， (如, ""), 将返回基于默认语言的元数据字段。|
 
-**Error reply**
+**Error reply** **错误回复**
 
-|Error | Description |
+|错误 | 描述 |
 |---|---|
-| `org.alljoyn.Error.LanguageNotSupported` | Returned if a language tag is not supported |
+| `org.alljoyn.Error.LanguageNotSupported` | 在语言标签不被支持时返回 |
 
-**Description**
+**Description** **描述**
 
 Retrieve the list of available AboutData fields based on the language tag. see [About data interface fields][about-data-interface-fields]
+检索可用的基于语言标签的 AboutData 字段列表。
 
-##### About data interface fields
+##### About data interface fields About 数据接口字段
 
 The following table lists the names of the metadata fields. 
 The fields with a yes value in the Announced column will also 
 be published via the Announce signal. See [Signals][signals] 
 for more information.
+下表列出了元数据字段的名称。在 Annouced 栏值为 yes 的字段，也会被 Announce 信号公开发布。
 
-| Field name| Mandatory | Announced | Localized | Signature | Description |
+| 字段名称| 是否强制 | 是否本地化 | 签名 | 描述 |
 |---|:---:|:---:|:---:|:---:|---|
-| `AppId` | yes | yes | no | `ay` | A 128-bit globally unique identifier for the application. The AppId shall be a universally unique identifier as specified in [RFC 4122](http://tools.ietf.org/html/rfc4122).|
-| `DefaultLanguage` | yes | yes | no | `s` | The default language supported by the device. Specified as an IETF language tag listed in [RFC 5646](http://tools.ietf.org/html/rfc5646). |
-| `DeviceName` | no | yes | yes | `s` | Name of the device set by platform-specific means (such as Linux and Android). |
-| `DeviceId` | yes | yes | no | `s` | Device identifier set by platform-specific means. |
-| `AppName` | yes | yes | yes | `s` | Application name assigned by the app manufacturer (developer or the OEM). |
+| `AppId` | yes | yes | no | `ay` |应用程序的一种 128 位全局唯一标识符。AppId 是一个符合[RFC 4122](http://tools.ietf.org/html/rfc4122)规范的通用唯一标识符。|
+| `DefaultLanguage` | yes | yes | no | `s` | 设备支持的默认语言。 指定为[RFC 5646](http://tools.ietf.org/html/rfc5646)列出的一种 IETF 语言标签|
+| `DeviceName` | no | yes | yes | `s` | 特定平台设置的设备名称(例如 Linux 和 Android). |
+| `DeviceId` | yes | yes | no | `s` | 特定平台设置的设备标识符|
+| `AppName` | yes | yes | yes | `s` | 由应用程序制造商(开发者或 OEM)指定的应用程序名称|
 | `Manufacturer` | yes | yes | yes | `s` | The manufacturer's name of the app. |
 | `ModelNumber` | yes | yes | no | `s` | The app model number. |
 | `SupportedLanguages` | yes | no | no | `as` | List of supported languages. |
