@@ -1345,23 +1345,23 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#about-feature-interface-definitions">About Feature Interface Definitions</a></li>
+                <li class="toctree-l3"><a href="#about-feature-interface-definitions-about">About Feature Interface Definitions About功能接口定于</a></li>
                 
-                    <li><a class="toctree-l4" href="#release-history">Release History</a></li>
+                    <li><a class="toctree-l4" href="#release-history">Release History 发布历史</a></li>
                 
                     <li><a class="toctree-l4" href="#definition-overview">Definition Overview</a></li>
                 
-                    <li><a class="toctree-l4" href="#discovery">Discovery</a></li>
+                    <li><a class="toctree-l4" href="#discovery">Discovery 发现</a></li>
                 
                     <li><a class="toctree-l4" href="#discovery-call-flows">Discovery Call Flows</a></li>
                 
-                    <li><a class="toctree-l4" href="#error-handling">Error Handling</a></li>
+                    <li><a class="toctree-l4" href="#error-handling">Error Handling 错误处理</a></li>
                 
-                    <li><a class="toctree-l4" href="#about-interface">About Interface</a></li>
+                    <li><a class="toctree-l4" href="#about-interface-about">About Interface About 接口</a></li>
                 
                     <li><a class="toctree-l4" href="#alljoyn-introspection-xml">AllJoyn Introspection XML</a></li>
                 
-                    <li><a class="toctree-l4" href="#icon-interface">Icon Interface</a></li>
+                    <li><a class="toctree-l4" href="#icon">Icon 接口</a></li>
                 
                     <li><a class="toctree-l4" href="#alljoyn-introspection-xml_1">AllJoyn Introspection XML</a></li>
                 
@@ -1576,9 +1576,10 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="about-feature-interface-definitions">About Feature Interface Definitions</h1>
-<h2 id="release-history">Release History</h2>
-<p>To access a previous version of this document, click the release version link below.</p>
+                <h1 id="about-feature-interface-definitions-about">About Feature Interface Definitions About功能接口定于</h1>
+<h2 id="release-history">Release History 发布历史</h2>
+<p>To access a previous version of this document, click the release version link below.
+点击下方发行版本连接来获取该文档的历史版本。</p>
 <table>
 <thead>
 <tr>
@@ -1591,22 +1592,22 @@
 <tr>
 <td><a href="../../../../learn/core/about-announcement/interface-14-02">14.02</a></td>
 <td>2/28/2014</td>
-<td>About interface version 1 was added.</td>
+<td>首个 About 接口被加入</td>
 </tr>
 <tr>
 <td>14.06</td>
 <td>6/30/2014</td>
-<td>No updates.</td>
+<td>无更新。</td>
 </tr>
 <tr>
 <td>14.06 Update 1</td>
 <td>9/29/2014</td>
-<td><ul><li>Updated the document title and Overview chapter title (changed from Specification to Definition)</li><li>Added the release version number to the document title for version tracking.</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.</li></ul></td>
+<td><ul><li>更新了文档标题和 Overview 的章节标题。(从规范改成定义)</li><li为了方便版本追踪，在文档标题中加入版本号。</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.在Definition Overview中加入一个说明来提出 AllSeen Alliance Compliance Certification。</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.添加一个强制列，用来存放支持AllSeen Alliance Compliance and Certification 程序的方法和信号参数</li></ul></td>
 </tr>
 <tr>
 <td>14.12</td>
 <td>12/17/2014</td>
-<td><ul><li>Changed DeviceName from required to not required</li><li>Additional clarification specifying the AppId must be 128-bit UUID as specified in RFC 4122</li><li>Cleanup to make requirements for methods and signals more clear</li><li>Icon interface was added. The icon interface has been part of AllJoyn&trade; and the About Feature since 14.02; however, the interface definition documentation was not added until 14.12.</li></ul></td>
+<td><ul><li>把 DeviceName 从要求改成了不要求</li><li>加入了一个指定 AppID 必须为 RFC 4122 中指定的 128－bit UUID 的验证</li><li>使对于方法和信号的要求更加明确</li><li>Icon interface was added. The icon interface has been part of AllJoyn&trade; and the About Feature since 14.02; however, the interface definition documentation was not added until 14.12.引入图标接口。图标接口已经是 AllJoyn&trade; 和 14.02 版本之后的 About 功能的一部分。然而，直到 14.12版本，它的接口定义文档才被加入。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1614,61 +1615,68 @@
 <p>The About interface is to be implemented by an application 
 on a target device. This interface allows the app to advertise 
 itself so other apps can discover it. The following figure 
-illustrates the relationship between a client app and a service app.</p>
+illustrates the relationship between a client app and a service app.
+About 接口是由应用在目标设备上执行。此接口允许应用程序发出广播，使其他应用程序可以发现它。下图说明了客户端应用和服务应用之间的关系。</p>
 <p><img alt="about-arch" src="../../../../files/learn/about-arch.png" /></p>
-<p><strong>Figure:</strong> About feature architecture within the AllJoyn&trade; framework</p>
+<p><strong>Figure:</strong> 在AllJoyn&trade; 架构内的 About 功能结构。</p>
 <p><strong>NOTE:</strong> All methods and signals are considered mandatory to 
-support the AllSeen Alliance Compliance and Certification program. </p>
-<h2 id="discovery">Discovery</h2>
+support the AllSeen Alliance Compliance and Certification program. 
+<strong>注意:</strong> 所有方法和信号都被认为强制支持AllSeen Alliance Compliance and Certification program. </p>
+<h2 id="discovery">Discovery 发现</h2>
 <p>A client can discover the app via an announcement which is a 
 sessionless signal containing the basic app information like 
 app name, device name, manufacturer, and model number. The 
 announcement also contains the list of object paths and service 
 framework interfaces to allow the client to determine whether 
-the app provides functionality of interest.</p>
+the app provides functionality of interest.
+客户端可以通过 annoucement 发现应用程序。annoucement 是一种包含了如应用名称，设备名称，制造商和型号的一种 sessionless signal。annoucement 也包含了对象路径和服务架构接口的列表，这些内容使得客户端能够确定应用程序是否提供了感兴趣的功能。</p>
 <p>In addition to the sessionless announcement, the About interface 
 also provides the
 on-demand method calls to retrieve all the available metadata 
-about the app that are not published in the announcement.</p>
+about the app that are not sessionless announcement  published in the announcement.
+除了 sessionless announcement 之外，About 接口也提供了基于需求的方法调用，以检索程序的可用元数据。这些元数据不是在 annoucement 中公开发布的 sessionless annoucement。</p>
 <h2 id="discovery-call-flows">Discovery Call Flows</h2>
-<h3 id="typical-discovery-flow">Typical discovery flow</h3>
+<h3 id="typical-discovery-flow-discovery-flow">Typical discovery flow 典型 discovery flow</h3>
 <p>The following figure illustrates a typical call flow for a client 
 to discover a service app. The client merely relies on the 
 sessionless announcement to decide whether to connect to the 
-service app to use its service framework offering.</p>
+service app to use its service framework offering.
+下图展示了客户端发现服务应用程序的典型 call flow。客户端仅仅依靠 sessionless announcemnt 就可以判断出是否连接某一服务应用程序并使用它所以提供的服务架构。</p>
 <p><img alt="about-typical-discovery" src="../../../../files/learn/about-typical-discovery.png" /></p>
-<p><strong>Figure:</strong> Typical discovery flow (client discovers a service app)</p>
-<h3 id="nontypical-discovery-flow">Nontypical discovery flow</h3>
+<p><strong>图:</strong> 典型 discovery flow (客户端发现服务应用程序)</p>
+<h3 id="nontypical-discovery-flow-discovery-flow">Nontypical discovery flow 非典型 discovery flow</h3>
 <p>The following figure illustrates a call flow for a client to 
-discover a service app and make a request for more detailed information.</p>
+discover a service app and make a request for more detailed information.
+下图展示了客户端发现一个服务应用程序并且要求更多详细信息的 call flow。</p>
 <p><img alt="about-nontypical-discovery" src="../../../../files/learn/about-nontypical-discovery.png" /></p>
-<p><strong>Figure:</strong> Nontypical discovery call flow</p>
-<h2 id="error-handling">Error Handling</h2>
+<p><strong>图:</strong> Nontypical discovery call flow 非典型 discovery call flow</p>
+<h2 id="error-handling">Error Handling 错误处理</h2>
 <p>The method calls in the About interface will use the AllJoyn 
 error message handling feature (ER_BUS_REPLY_IS_ERROR_MESSAGE) 
-to set the error name and error message.</p>
+to set the error name and error message.
+About 接口中的方法调用需要用到 AllJoyn 错误处理功能来设置错误名称和错误信息。</p>
 <table>
 <thead>
 <tr>
-<th>Error name</th>
-<th>Error message</th>
+<th>错误名称</th>
+<th>错误信息</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>org.alljoyn.Error.LanguageNotSupported</td>
-<td>The language specified is not supported</td>
+<td>指定的语言不受支持</td>
 </tr>
 </tbody>
 </table>
-<h2 id="about-interface">About Interface</h2>
+<h2 id="about-interface-about">About Interface About 接口</h2>
 <table>
 <thead>
 <tr>
-<th>Interface name</th>
-<th align="center">Version</th>
-<th align="center">Secured</th>
-<th>Object path</th>
+<th>接口名称</th>
+<th align="center">版本</th>
+<th align="center">是否受保护</th>
+<th>对象路径</th>
 </tr>
 </thead>
 <tbody>
@@ -1680,15 +1688,15 @@ to set the error name and error message.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="properties">Properties</h3>
+<h3 id="properties">Properties 属性</h3>
 <table>
 <thead>
 <tr>
-<th>Property name</th>
-<th align="center">Signature</th>
-<th>List of values</th>
-<th>Read/Write</th>
-<th>Description</th>
+<th>属性名称</th>
+<th align="center">签名</th>
+<th>有效值</th>
+<th>读写权限</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
@@ -1697,23 +1705,24 @@ to set the error name and error message.</p>
 <td align="center"><code>q</code></td>
 <td>Positive integers</td>
 <td>Read Only</td>
-<td>Interface version number</td>
+<td>接口版本号</td>
 </tr>
 </tbody>
 </table>
-<h3 id="methods">Methods</h3>
+<h3 id="methods">Methods 方法</h3>
 <p>The following methods are exposed by a BusObject that implements 
-the <code>org.alljoyn.About</code> interface.</p>
+the <code>org.alljoyn.About</code> interface.
+以下 methods 由提供 <code>org.alljoyn.About</code> 接口的 BusObject 发布。</p>
 <h4 id="asv-getaboutdatas"><code>a{sv} GetAboutData('s')</code></h4>
-<p><strong>Message arguments</strong></p>
+<p><strong>Message arguments</strong> <strong>Message 参数</strong> </p>
 <table>
 <thead>
 <tr>
 <th align="center">Argument</th>
-<th>Parameter name</th>
-<th align="center">Signature</th>
-<th>List of values</th>
-<th>Description</th>
+<th>参数名称</th>
+<th align="center">签名</th>
+<th>有效值</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
@@ -1722,11 +1731,11 @@ the <code>org.alljoyn.About</code> interface.</p>
 <td><code>languageTag</code></td>
 <td align="center"><code>s</code></td>
 <td>IETF language tags specified by <a href="http://tools.ietf.org/html/rfc5646">RFC 5646</a>.</td>
-<td>The desired language.</td>
+<td>所需语言</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Reply arguments</strong></p>
+<p><strong>Reply arguments</strong> <strong>Reply 参数</strong></p>
 <table>
 <thead>
 <tr>
@@ -1741,41 +1750,43 @@ the <code>org.alljoyn.About</code> interface.</p>
 <td align="center">0</td>
 <td><code>AboutData</code></td>
 <td align="center"><code>a{sv}</code></td>
-<td>A dictionary of the available metadata fields. If language tag is not specified (i.e., ""), metadata fields based on default language are returned.</td>
+<td>可用的元数据字段的字典。如果不指定语言标签， (如, ""), 将返回基于默认语言的元数据字段。</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Error reply</strong></p>
+<p><strong>Error reply</strong> <strong>Error 回复</strong></p>
 <table>
 <thead>
 <tr>
 <th>Error</th>
-<th>Description</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>org.alljoyn.Error.LanguageNotSupported</code></td>
-<td>Returned if a language tag is not supported</td>
+<td>在语言标签不被支持时返回</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Description</strong></p>
-<p>Retrieve the list of available AboutData fields based on the language tag. see <a href="#about-data-interface-fields">About data interface fields</a></p>
-<h5 id="about-data-interface-fields">About data interface fields</h5>
+<p><strong>Description</strong> <strong>描述</strong></p>
+<p>Retrieve the list of available AboutData fields based on the language tag. see <a href="#about-data-interface-fields">About data interface fields</a>
+检索可用的基于语言标签的 AboutData 字段列表。</p>
+<h5 id="about-data-interface-fields-about">About data interface fields About 数据接口字段</h5>
 <p>The following table lists the names of the metadata fields. 
 The fields with a yes value in the Announced column will also 
 be published via the Announce signal. See <a href="#signals">Signals</a> 
-for more information.</p>
+for more information.
+下表列出了元数据字段的名称。在 Annouced 栏值为 yes 的字段，也会被 Announce 信号公开发布。</p>
 <table>
 <thead>
 <tr>
-<th>Field name</th>
-<th align="center">Mandatory</th>
-<th align="center">Announced</th>
-<th align="center">Localized</th>
-<th align="center">Signature</th>
-<th>Description</th>
+<th>字段名称</th>
+<th align="center">是否强制</th>
+<th align="center">是否本地化</th>
+<th align="center">签名</th>
+<th align="center">描述</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
@@ -1785,7 +1796,7 @@ for more information.</p>
 <td align="center">yes</td>
 <td align="center">no</td>
 <td align="center"><code>ay</code></td>
-<td>A 128-bit globally unique identifier for the application. The AppId shall be a universally unique identifier as specified in <a href="http://tools.ietf.org/html/rfc4122">RFC 4122</a>.</td>
+<td>应用程序的一种 128 位全局唯一标识符。AppId 是一个符合<a href="http://tools.ietf.org/html/rfc4122">RFC 4122</a>规范的通用唯一标识符。</td>
 </tr>
 <tr>
 <td><code>DefaultLanguage</code></td>
@@ -1793,7 +1804,7 @@ for more information.</p>
 <td align="center">yes</td>
 <td align="center">no</td>
 <td align="center"><code>s</code></td>
-<td>The default language supported by the device. Specified as an IETF language tag listed in <a href="http://tools.ietf.org/html/rfc5646">RFC 5646</a>.</td>
+<td>设备支持的默认语言。 指定为<a href="http://tools.ietf.org/html/rfc5646">RFC 5646</a>列出的一种 IETF 语言标签</td>
 </tr>
 <tr>
 <td><code>DeviceName</code></td>
@@ -1801,7 +1812,7 @@ for more information.</p>
 <td align="center">yes</td>
 <td align="center">yes</td>
 <td align="center"><code>s</code></td>
-<td>Name of the device set by platform-specific means (such as Linux and Android).</td>
+<td>特定平台设置的设备名称(例如 Linux 和 Android).</td>
 </tr>
 <tr>
 <td><code>DeviceId</code></td>
@@ -1809,7 +1820,7 @@ for more information.</p>
 <td align="center">yes</td>
 <td align="center">no</td>
 <td align="center"><code>s</code></td>
-<td>Device identifier set by platform-specific means.</td>
+<td>特定平台设置的设备标识符</td>
 </tr>
 <tr>
 <td><code>AppName</code></td>
@@ -1817,7 +1828,7 @@ for more information.</p>
 <td align="center">yes</td>
 <td align="center">yes</td>
 <td align="center"><code>s</code></td>
-<td>Application name assigned by the app manufacturer (developer or the OEM).</td>
+<td>由应用程序制造商(开发者或 OEM)指定的应用程序名称</td>
 </tr>
 <tr>
 <td><code>Manufacturer</code></td>
@@ -1825,7 +1836,7 @@ for more information.</p>
 <td align="center">yes</td>
 <td align="center">yes</td>
 <td align="center"><code>s</code></td>
-<td>The manufacturer's name of the app.</td>
+<td>应用制造商的名称</td>
 </tr>
 <tr>
 <td><code>ModelNumber</code></td>
@@ -1833,7 +1844,7 @@ for more information.</p>
 <td align="center">yes</td>
 <td align="center">no</td>
 <td align="center"><code>s</code></td>
-<td>The app model number.</td>
+<td>应用程序型号代码</td>
 </tr>
 <tr>
 <td><code>SupportedLanguages</code></td>
@@ -1841,7 +1852,7 @@ for more information.</p>
 <td align="center">no</td>
 <td align="center">no</td>
 <td align="center"><code>as</code></td>
-<td>List of supported languages.</td>
+<td>支持的语言列表</td>
 </tr>
 <tr>
 <td><code>Description</code></td>
@@ -1849,7 +1860,7 @@ for more information.</p>
 <td align="center">no</td>
 <td align="center">yes</td>
 <td align="center"><code>s</code></td>
-<td>Detailed description expressed in language tags as in <a href="http://tools.ietf.org/html/rfc5646">RFC 5646</a>.</td>
+<td><a href="http://tools.ietf.org/html/rfc5646">RFC 5646</a>中语言标签的详细描述。</td>
 </tr>
 <tr>
 <td><code>DateOfManufacture</code></td>
@@ -1857,7 +1868,7 @@ for more information.</p>
 <td align="center">no</td>
 <td align="center">no</td>
 <td align="center"><code>s</code></td>
-<td>Date of manufacture using format YYYY-MM-DD (known as XML DateTime format).</td>
+<td>使用 YYYY-MM-DD（称为 XML 日期时间格式）格式的生产日期。</td>
 </tr>
 <tr>
 <td><code>SoftwareVersion</code></td>
@@ -1865,7 +1876,7 @@ for more information.</p>
 <td align="center">no</td>
 <td align="center">no</td>
 <td align="center"><code>s</code></td>
-<td>Software version of the app.</td>
+<td>应用程序的软件版本。</td>
 </tr>
 <tr>
 <td><code>AJSoftwareVersion</code></td>
@@ -1873,7 +1884,7 @@ for more information.</p>
 <td align="center">no</td>
 <td align="center">no</td>
 <td align="center"><code>s</code></td>
-<td>Current version of the AllJoyn SDK used by the application.</td>
+<td>目前应用程序使用的 AllJoyn SDK 版本。</td>
 </tr>
 <tr>
 <td><code>HardwareVersion</code></td>
@@ -1881,7 +1892,7 @@ for more information.</p>
 <td align="center">no</td>
 <td align="center">no</td>
 <td align="center"><code>s</code></td>
-<td>Hardware version of the device on which the app is running.</td>
+<td>运行应用程序的硬件设备版本。</td>
 </tr>
 <tr>
 <td><code>SupportUrl</code></td>
@@ -1889,21 +1900,21 @@ for more information.</p>
 <td align="center">no</td>
 <td align="center">no</td>
 <td align="center"><code>s</code></td>
-<td>Support URL (populated by the manufacturer).</td>
+<td>支持 URL （由制造商填充）</td>
 </tr>
 </tbody>
 </table>
 <h4 id="aoas-getobjectdescription"><code>a(oas) GetObjectDescription()</code></h4>
-<p><strong>Message arguments</strong></p>
-<p>None.</p>
-<p><strong>Reply arguments</strong></p>
+<p><strong>Message arguments</strong> <strong>Message 参数</strong>
+None.</p>
+<p><strong>Reply arguments</strong> <strong>Reply 参数</strong></p>
 <table>
 <thead>
 <tr>
-<th align="center">Argument</th>
-<th>Parameter name</th>
-<th align="center">Return signature</th>
-<th>Description</th>
+<th align="center">argument</th>
+<th>参数名</th>
+<th align="center">返回签名</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
@@ -1911,27 +1922,28 @@ for more information.</p>
 <td align="center">0</td>
 <td><code>objectDescription</code></td>
 <td align="center"><code>a(oas)</code></td>
-<td>Return the array of object paths and the list of supported interfaces provided by each object.</td>
+<td>返回对象路径的列表和每个对象提供的支持接口列表。</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Description</strong></p>
-<p>Retrieve the object paths and the list of all interfaces 
-implemented by each of objects.</p>
-<h3 id="signals">Signals</h3>
+<p><strong>Description</strong> <strong>描述</strong></p>
+<p>检索对象路径和每个对象提供的接口列表。</p>
+<h3 id="signals">Signals 信号</h3>
 <p>The following signals are emitted by a BusObject that implements the
-<code>org.alljoyn.About</code> interface.</p>
+<code>org.alljoyn.About</code> interface.
+以下 Signal 由提供 <code>org.alljoyn.About</code> 接口的 BusObject 发送。</p>
 <h4 id="announceqqaoasasv"><code>Announce('qqa(oas)a{sv}')</code></h4>
-<p>Announce signal is a Sessionless signal</p>
-<p><strong>Message arguments</strong></p>
+<p>Announce signal is a Sessionless signal
+Announce signal 是 Sessionless signal。</p>
+<p><strong>Message arguments</strong> <strong>Message 参数</strong> </p>
 <table>
 <thead>
 <tr>
 <th align="center">Argument</th>
-<th>Parameter name</th>
-<th align="center">Signature</th>
-<th>List of values</th>
-<th>Description</th>
+<th>参数名</th>
+<th align="center">签名</th>
+<th>有效值</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
@@ -1939,29 +1951,29 @@ implemented by each of objects.</p>
 <td align="center">0</td>
 <td><code>version</code></td>
 <td align="center"><code>q</code></td>
-<td>positive</td>
-<td>Version number of the About interface.</td>
+<td>正数</td>
+<td>About 接口的版本号。</td>
 </tr>
 <tr>
 <td align="center">1</td>
 <td><code>port</code></td>
 <td align="center"><code>q</code></td>
-<td>positive</td>
-<td>Session port the app will listen on incoming sessions.</td>
+<td>正数</td>
+<td>应用程序用来监听接入会话的会话端口</td>
 </tr>
 <tr>
 <td align="center">2</td>
 <td><code>objectDescription</code></td>
 <td align="center"><code>a(oas)</code></td>
-<td>Populated based on announced interfaces</td>
-<td>Array of object paths and the list of supported interfaces provided by each object.</td>
+<td>基于 announced interfaces 填写</td>
+<td>对象路径的列表和每个对象提供的支持接口的列表。</td>
 </tr>
 <tr>
 <td align="center">3</td>
 <td><code>aboutData</code></td>
 <td align="center"><code>a{sv}</code></td>
-<td>array of key/value pairs</td>
-<td>All the fields listed in <a href="#about-data-interface-fields">About data interface fields</a> with a yes value in the Announced column are provided in this signal.</td>
+<td>键／值对的列表</td>
+<td>在这个 signal 中提供所有<a href="#about-data-interface-fields">About data 接口数组</a>中 Announce 栏为 yes 的数组。</td>
 </tr>
 </tbody>
 </table>
@@ -1987,14 +1999,14 @@ implemented by each of objects.</p>
 &lt;/node&gt;
 </code></pre>
 
-<h2 id="icon-interface">Icon Interface</h2>
+<h2 id="icon">Icon 接口</h2>
 <table>
 <thead>
 <tr>
-<th>Interface name</th>
-<th align="center">Version</th>
-<th align="center">Secured</th>
-<th>Object path</th>
+<th>接口名称</th>
+<th align="center">版本</th>
+<th align="center">是否受保护</th>
+<th>对象路径</th>
 </tr>
 </thead>
 <tbody>
@@ -2010,51 +2022,50 @@ implemented by each of objects.</p>
 <table>
 <thead>
 <tr>
-<th>Property name</th>
-<th align="center">Signature</th>
-<th>List of values</th>
-<th>Read/Write</th>
-<th>Description</th>
+<th>属性名称</th>
+<th align="center">签名</th>
+<th>值</th>
+<th>描述</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>Version</code></td>
 <td align="center"><code>q</code></td>
-<td>Positive integers</td>
-<td>Read Only</td>
-<td>Interface version number</td>
+<td>正整数</td>
+<td>只读</td>
+<td>端口版本号</td>
 </tr>
 <tr>
 <td><code>MimeType</code></td>
 <td align="center"><code>s</code></td>
-<td>The Mime type corresponding to the icon's binary content</td>
-<td>Read Only</td>
-<td>Mime type for the icon</td>
+<td>对应图标的二进制内容的 Mime 类型</td>
+<td>只读</td>
+<td>图标的 Mime 类型</td>
 </tr>
 <tr>
 <td><code>Size</code></td>
 <td align="center"><code>u</code></td>
-<td>The size in bytes of the icons binary content</td>
-<td>Read Only</td>
-<td>Size of the Icon</td>
+<td>图标二进制内容的大小（字节表示）</td>
+<td>只读</td>
+<td>图标的大小｜</td>
 </tr>
 </tbody>
 </table>
 <h3 id="methods_1">Methods</h3>
-<p>The following methods are exposed by a BusObject that implements
-the <code>org.alljoyn.Icon</code> interface.</p>
+<p>以下 methods 由提供 <code>org.alljoyn.About</code> 接口的 BusObject 发布。</p>
 <h4 id="s-geturl"><code>s GetUrl()</code></h4>
-<p><strong>Message arguments</strong></p>
-<p>None.</p>
-<p><strong>Reply arguments</strong></p>
+<p><strong>Message arguments</strong> <strong>Message 参数</strong></p>
+<p>None.无。</p>
+<p><strong>Reply arguments</strong> <strong>Reply 参数</strong></p>
 <table>
 <thead>
 <tr>
 <th align="center">Argument</th>
-<th>Parameter name</th>
-<th align="center">Return signature</th>
-<th>Description</th>
+<th>参数名称</th>
+<th align="center">返回签名</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
@@ -2062,20 +2073,21 @@ the <code>org.alljoyn.Icon</code> interface.</p>
 <td align="center">0</td>
 <td><code>url</code></td>
 <td align="center"><code>s</code></td>
-<td>The URL if the icon is hosted on the cloud</td>
+<td>当图标保存在云上时的 URl。</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Description</strong></p>
-<p>Retrieve the URL of the icon if the icon is hosted on the cloud.</p>
+<p><strong>Description</strong> <strong>描述</strong> </p>
+<p>Retrieve the URL of the icon if the icon is hosted on the cloud.
+检索当图标保存在云上时的 URL。</p>
 <h4 id="ay-getcontent"><code>ay GetContent()</code></h4>
 <table>
 <thead>
 <tr>
 <th align="center">Argument</th>
-<th>Parameter name</th>
-<th align="center">Return signature</th>
-<th>Description</th>
+<th>参数名</th>
+<th align="center">返回签名</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
@@ -2083,12 +2095,12 @@ the <code>org.alljoyn.Icon</code> interface.</p>
 <td align="center">0</td>
 <td><code>content</code></td>
 <td align="center"><code>ay</code></td>
-<td>The binary content for the icon</td>
+<td>图标的二进制内容</td>
 </tr>
 </tbody>
 </table>
 <h3 id="signals_1">Signals</h3>
-<p>None.</p>
+<p>None.无。</p>
 <h2 id="alljoyn-introspection-xml_1">AllJoyn Introspection XML</h2>
 <pre><code class="xml">&lt;node name=&quot;/About/DeviceIcon&quot;
       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;

@@ -1453,9 +1453,9 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#system-architecture">System Architecture</a></li>
+                <li class="toctree-l3"><a href="#system-architecture">System Architecture 系统结构</a></li>
                 
-                    <li><a class="toctree-l4" href="#network-architecture">Network architecture</a></li>
+                    <li><a class="toctree-l4" href="#network-architecture">Network architecture 网络结构</a></li>
                 
                     <li><a class="toctree-l4" href="#device-architecture">Device architecture</a></li>
                 
@@ -1568,32 +1568,42 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="system-architecture">System Architecture</h1>
-<h2 id="network-architecture">Network architecture</h2>
+                <h1 id="system-architecture">System Architecture 系统结构</h1>
+<h2 id="network-architecture">Network architecture 网络结构</h2>
 <p>The AllJoyn&trade; network architecture is dependent upon the network 
-deployment scenario. This section captures the following deployment scenarios:</p>
+deployment scenario. This section captures the following deployment scenarios:
+ AllJoyn&trade; 网络结构由网络的部署方案决定。这部分包含了以下几种部署方案：</p>
 <ul>
 <li>Standalone AllJoyn network: A proximal network with a set 
 of peer devices which could be connected over the same or 
-different access mediums. </li>
-<li>Remote accessible AllJoyn network: A proximal network 
+different access mediums.</li>
+<li>
+<p>独立 AllJoyn 网络：一个拥有一系列对等设备的区域网络。设备之间可以通过相同或不同的介质相互连接。</p>
+</li>
+<li>
+<p>Remote accessible AllJoyn network: A proximal network 
 where services provided by devices are accessible and controllable 
-from outside the proximal network.</li>
+from outside the proximal network.</p>
+</li>
+<li>远程访问的 AllJoyn 网络：一些设备为区域网络提供了被区域网络之外的的网络访问和控制的功能。</li>
 </ul>
-<h3 id="standalone-alljoyn-network">Standalone AllJoyn network</h3>
+<h3 id="standalone-alljoyn-network-alljoyn">Standalone AllJoyn network 独立 AllJoyn 网络</h3>
 <p>A standalone AllJoyn network architecture is fairly simple 
 with two or more peer nodes coming together to dynamically 
 form an AllJoyn network.  Peers can be connected over different 
 access networks such as Wi-Fi. The AllJoyn advertisement and 
 discovery mechanism takes care of seamlessly discovering 
 these peers independent of the underlying transport being used. </p>
-<p>The following figure captures the network architecture for a 
-typical standalone AllJoyn network.</p>
+<p>独立 AllJoyn 网络结构是相当简单的。它由两个或以上的节点动态形成。节点之间可通过不同的网络（如 WI-FI）进行连接。Alljoyn 的 advertisement 和 discovery 机制可以无视基础网络传输方式，无缝地发现这些节点。
+The following figure captures the network architecture for a 
+typical standalone AllJoyn network.
+下图展示了一个典型的独立 ALlJoyn 网络的结构。</p>
 <p><img alt="standalone-network-arch" src="../../../../files/learn/system-desc/standalone-network-arch.png" /></p>
-<p><strong>Figure:</strong> Standalone AllJoyn network architecture</p>
+<p><strong>图:</strong> Standalone 独立 AllJoyn 网络结构</p>
 <p><strong>NOTE:</strong> In a Wi-Fi deployment, the AllJoyn framework requires 
 wireless isolation to be turned off at the access points to 
-enable peer-to-peer communication.</p>
+enable peer-to-peer communication.
+<strong>注意:</strong> 在 Wi-Fi 部署中，</p>
 <h4 id="bridging-multiple-transports">Bridging multiple transports</h4>
 <p>A standalone AllJoyn network can involve nodes connected 
 over both wireless and wired transport, e.g., nodes connected 
