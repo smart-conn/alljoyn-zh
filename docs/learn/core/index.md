@@ -8,11 +8,6 @@ even if the application is only using AllJoyn Service Frameworks.
 ## Bus Attachment
 AllJoyn 应用程序使用 AllJoyn Bus Attachment 进行交互以及连接到 AllJoyn 路由器。
 
-
-AllJoyn Applications use and interact with the AllJoyn network
-by first instantiating the AllJoyn Bus Attachment object and using
-that object to connect to the AllJoyn Router.
-
 ## 推广和发现
 
 AllJoyn 的应用程序通过两种机制来推广自己的服务： 发布公告以及著名名称。按照传输方式的可行性，AllJoyn 架构将应用相应的机制以确保应用程序可以被其他 AllJoyn 的应用程序发现。对于基于 IP 协议的传输层， mDNS 以及多路传送和 UDP 广播的结合将被使用。
@@ -29,8 +24,7 @@ multicast and broadcast UDP packets are used.
 
 在两种机制中，发现过程会对所识别的 UniqueName 返回一个 AllJoyn 应用程序列表。此列表将会被用于未来会话的创建。
 
-
-[了解更多关于 About Announcements 的知识][about].
+[了解更多关于 About Announcements][about].
 
 ## 会话和端口
 
@@ -60,80 +54,43 @@ ProxyBusObject 对象可被远端应用程序创建，来实现对 BusObject 的
 
 Sessionless Signal 是一个无需手动建立会话的信号接收机制。在后台，Well-Known Name 推广机制被用来告知新信号的存在。远端实体自动建立临时会话接受数据，接受完成后会话将被移除。AllJoyn Core APIs 提供这些功能的虚拟化。
 
-## 自省机制
-自省机制内置于 AllJoyn 架构中。 
-Introspection is built into the AllJoyn framework. APIs exist to easily introspect
-a remote AllJoyn application to discover its object paths and objects;
-its full interface including all methods; and parameters, properties,
-and signals. Via introspection, one can learn about the remote device
-and communicate with it without needing prior information about that
-device.
+## 内省机制
+内省机制内置于 AllJoyn 架构中。 API 被用于对远端 AllJoyn 应用程序的内省，从而发现其对象路径以及对象；此接口包括所有方法；所有参数及其对应属性，以及信号。通过自省机制，一方可了解远端机制并与其通信，而无需提前预知远端设备的具体信息。
 
-An application's interfaces and associated methods, signals, and properties are
-organized and defined by XML.  The schema for the introspection XML may be
-found on the AllSeen Alliance website:
-
+应用程序的接口以及相关方法，信号和属性由 XML 语言组织并定义。关于 XML 内省模式可参阅 AllSeen Alliance 的网站：
 https://allseenalliance.org/schemas/introspect.xsd
 
 ## Events and Actions
 
-Events and Actions is a convention for an application to describe its
-events and actions. By adding simple metadata descriptors to signals
-and methods, other AllJoyn applications can easily discover what
-events the application will emit and what actions the application can
-accept. This allows other applications to dynamically link events
-and actions together between different devices to create more complex
-if-this-then-that interactions.
+Events and Actions 是描述应用程序的事件与行为的常规。通过对信号和方法添加简单的元数据描述符，其他的 AllJoyn 应用程序可知晓该应用程序将要发出的事件，以及何种行为可被该应用程序所接受。此功能实现了不同设备间的应用程序与事件与行为的动态互联，从而实现更复杂的 if-this-then-that 接口。
 
-[Learn more about Events and Actions][events-and-actions].
+[了解更多关于 Events and Actions][events-and-actions].
 
-## Security
+## 安全性
 
-AllJoyn security occurs at the application level; there is no trust
-at the device level. Each interface can optionally require security.
-If required, authentication occurs on demand between the two apps
-when a method is invoked or to receive a signal. Mulitple authentication
-mechanisms are supported: PIN code, PSK, or ECDSA (Elliptical Curve Digital
-Signature Algorithm). Once authenticated, all messages between these
-two devices are encrypted using AES-128 CCM.
+AllJoyn 的安全机制运作在应用级别；在设备级别并没有任何信任。每一个接口可选择是否要求安全机制。如果要求，在两应用程序之间调用函数或者接受信号时会要求认证。 认证支持多种安全机制，包括 PIN 码, PSK, 以及 ECDSA (Elliptical Curve Digital
+Signature Algorithm). 一旦认证完成，所有设备间的交互信息将被用 AES－128 CCM 加密。
 
 ## Putting It All Together
 
-An AllJoyn Application interacts with the AllJoyn framework via the
-Bus Attachment. The application advertises its services via the About
-Announcement, which lists metadata about the application, including the
-supportedinterfaces. The UniqueName is returned in discovery to identify
-the application.
+AllJoyn 应用程序通过 Bus Attachment 与 AllJoyn 架构交互。应用程序通过 About Announcement 宣传其服务，这将会列出该应用程序的元数据，包括所有被支持的接口。在发现过程中，UniqueName 将会作为返回值用来识别应用程序。
 
-When a remote application discovers an AllJoyn application, it can
-create a session by connecting to a specific port. Both point-to-point
-and multi-point sessions are supported.  The AllJoyn application
-has the option of accepting or denying remote connection requests.
+当远端应用程序发现一个 AllJoyn 应用程序时， 一个由指定端口连接的会话可被创建。此会话可以是端对端的，也可以是多端的。AllJoyn 应用程序可以选择接受或拒绝该远端应用程序发出的会话请求。
 
-Prior to session creation, the application can create any number of bus
-objects and place them at a specific object path. Each bus object can
-implement a set of interfaces, defined by a set of methods, properties,
-and signals.
+在创建会话前，该应用程序可以建立任意个总线对象，并将其置入指定的对象路径中。每一个总线对象可实现由一系列方法，属性及信号定义的接口。
 
-After the session is created, the remote application will typically
-communicate with the application by creating a local ProxyBusObject to
-interact with the BusObject by invoking methods, getting and setting
-properties, receiving signals.
+会话创建后，一般情况下远端应用程序会创建一个本地的 ProxyBusObject 通过调用方法，获取及设定属性以及接收信号与 BusObject 交互，从而实现与应用程序的通话。
 
 ![alljoyn-core-components][alljoyn-core-components]
 
-In many cases, the client-side discovery, session setup and proxy object
-management follow a simple, common pattern across applications. The Standard
-Core library offers a convenience API for these cases with the
-[Observer][observer-api-guide] class. The Observer class automates About
-announcement parsing, session management and proxy object creation for the
-client application.
+许多情况下，客户端发现，会话建立以及代理对象管理都遵循一个通过应用程序的公共的，简单的模式。Standard Core 资源库提供一个简单易用的 API ， 定义在 [Observer][observer-api-guide] 类中。 Observer 类实现了客户应用程序对于 About Announcement 句法分析，会话管理以及代理对象创建的自动化操作。
 
-## Learn more
 
-* [Learn more about the AllJoyn Standard Core][aj-scl]
-* [Learn more about the AllJoyn Thin Core][aj-tcl]
-* [Learn more about the low-level details of the AllJoyn system][aj-system]
+## 了解更多
+
+* [了解更多关于 AllJoyn Standard Core][aj-scl]
+* [了解更多关于 AllJoyn Thin Core][aj-tcl]
+* [了解更多关于 AllJoyn system 的底层细节][aj-system]
 
 [about]: /learn/core/about-announcement
 [events-and-actions]: /learn/core/events-and-actions
