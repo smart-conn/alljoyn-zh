@@ -94,26 +94,26 @@ About 接口中的方法调用需要用到 AllJoyn 错误处理功能来设置�
 
 The following methods are exposed by a BusObject that implements 
 the `org.alljoyn.About` interface.
-以下方法由提供 `org.alljoyn.About` 接口的 BusObject 发布。
+以下 methods 由提供 `org.alljoyn.About` 接口的 BusObject 发布。
 
 
 #### `a{sv} GetAboutData('s')`
 
-**Message arguments** **消息参数** 
+**Message arguments** **Message 参数** 
 
-|参数 | 参数名称 | 签名 | 有效值 | 描述 |
+|Argument | 参数名称 | 签名 | 有效值 | 描述 |
 |:---:|---|:---:|---|---|
 | 0 | `languageTag` | `s` | IETF language tags specified by [RFC 5646](http://tools.ietf.org/html/rfc5646). | 所需语言 |
 
-**Reply arguments** **回复参数**
+**Reply arguments** **Reply 参数**
 
 |Argument | Parameter name | Return signature | Description |
 |:---:|---|:---:|---|
 | 0 | `AboutData` | `a{sv}` | 可用的元数据字段的字典。如果不指定语言标签， (如, ""), 将返回基于默认语言的元数据字段。|
 
-**Error reply** **错误回复**
+**Error reply** **Error 回复**
 
-|错误 | 描述 |
+|Error | 描述 |
 |---|---|
 | `org.alljoyn.Error.LanguageNotSupported` | 在语言标签不被支持时返回 |
 
@@ -137,50 +137,50 @@ for more information.
 | `DeviceName` | no | yes | yes | `s` | 特定平台设置的设备名称(例如 Linux 和 Android). |
 | `DeviceId` | yes | yes | no | `s` | 特定平台设置的设备标识符|
 | `AppName` | yes | yes | yes | `s` | 由应用程序制造商(开发者或 OEM)指定的应用程序名称|
-| `Manufacturer` | yes | yes | yes | `s` | The manufacturer's name of the app. |
-| `ModelNumber` | yes | yes | no | `s` | The app model number. |
-| `SupportedLanguages` | yes | no | no | `as` | List of supported languages. |
-| `Description` | yes | no | yes | `s` | Detailed description expressed in language tags as in [RFC 5646](http://tools.ietf.org/html/rfc5646). |
-| `DateOfManufacture` | no | no | no | `s` | Date of manufacture using format YYYY-MM-DD (known as XML DateTime format). |
-| `SoftwareVersion` | yes | no | no | `s` | Software version of the app. |
-| `AJSoftwareVersion` | yes | no | no | `s` | Current version of the AllJoyn SDK used by the application. |
-| `HardwareVersion` | no | no | no | `s` | Hardware version of the device on which the app is running. |
-| `SupportUrl` | no | no | no | `s` | Support URL (populated by the manufacturer). |
+| `Manufacturer` | yes | yes | yes | `s` | 应用制造商的名称|
+| `ModelNumber` | yes | yes | no | `s` | 应用程序型号代码 |
+| `SupportedLanguages` | yes | no | no | `as` | 支持的语言列表|
+| `Description` | yes | no | yes | `s` | [RFC 5646](http://tools.ietf.org/html/rfc5646)中语言标签的详细描述。 |
+| `DateOfManufacture` | no | no | no | `s` | 使用 YYYY-MM-DD（称为 XML 日期时间格式）格式的生产日期。|
+| `SoftwareVersion` | yes | no | no | `s` | 应用程序的软件版本。|
+| `AJSoftwareVersion` | yes | no | no | `s` | 目前应用程序使用的 AllJoyn SDK 版本。 |
+| `HardwareVersion` | no | no | no | `s` | 运行应用程序的硬件设备版本。|
+| `SupportUrl` | no | no | no | `s` | 支持 URL （由制造商填充）|
 
 #### `a(oas) GetObjectDescription()`
 
-**Message arguments**
-
+**Message arguments** **Message 参数**
 None.
 
-**Reply arguments**
+**Reply arguments** **Reply 参数**
 
-|Argument | Parameter name | Return signature | Description |
+|argument | 参数名 | 返回签名 | 描述 |
 |:---:|---|:---:|---|
-| 0 | `objectDescription` | `a(oas)` | Return the array of object paths and the list of supported interfaces provided by each object. |
+| 0 | `objectDescription` | `a(oas)` |  返回对象路径的列表和每个对象提供的支持接口列表。|
 
-**Description**
+**Description** **描述**
 
-Retrieve the object paths and the list of all interfaces 
-implemented by each of objects.
+检索对象路径和每个对象提供的接口列表。
 
-### Signals
+### Signals 信号
 
 The following signals are emitted by a BusObject that implements the
 `org.alljoyn.About` interface.
+以下 Signal 由提供 `org.alljoyn.About` 接口的 BusObject 发送。
 
 #### `Announce('qqa(oas)a{sv}')`
 
 Announce signal is a Sessionless signal
+Announce signal 是 Sessionless signal。
 
-**Message arguments**
+**Message arguments** **Message 参数** 
 
-|Argument | Parameter name| Signature | List of values | Description |
+|Argument | 参数名| 签名 | 有效值 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `version` | `q` | positive | Version number of the About interface. | 
-| 1 | `port`    | `q` | positive | Session port the app will listen on incoming sessions. |
-| 2 | `objectDescription` | `a(oas)` | Populated based on announced interfaces | Array of object paths and the list of supported interfaces provided by each object. |
-| 3 | `aboutData` | `a{sv}` | array of key/value pairs | All the fields listed in [About data interface fields][about-data-interface-fields] with a yes value in the Announced column are provided in this signal. |
+| 0 | `version` | `q` | 正数 | About 接口的版本号。 | 
+| 1 | `port`    | `q` | 正数 | 应用程序用来监听接入会话的会话端口|
+| 2 | `objectDescription` | `a(oas)` | 基于 announced interfaces 填写 | 对象路径的列表和每个对象提供的支持接口的列表。 |
+| 3 | `aboutData` | `a{sv}` | 键／值对的列表 | 在这个 signal 中提供所有[About data 接口数组][about-data-interface-fields]中 Announce 栏为 yes 的数组。|
 
 ## AllJoyn Introspection XML
 
@@ -206,51 +206,51 @@ Announce signal is a Sessionless signal
 </node>
 ```
 
-## Icon Interface
+## Icon 接口
 
-| Interface name | Version | Secured | Object path |
+| 接口名称 |版本 | 是否受保护 | 对象路径|
 |---|:---:|:---:|---|
 | `org.alljoyn.Icon` | 1 | no | `/About/DeviceIcon` |
 
 ### Properties
 
-|Property name | Signature | List of values | Read/Write | Description |
+| 属性名称 |签名|值 | 描述 |
 |---|:---:|---|---|---|
-| `Version` | `q` | Positive integers | Read Only | Interface version number |
-| `MimeType` | `s` | The Mime type corresponding to the icon's binary content | Read Only | Mime type for the icon |
-| `Size` | `u` | The size in bytes of the icons binary content | Read Only | Size of the Icon |
+| `Version` | `q` | 正整数 | 只读 | 端口版本号 |
+| `MimeType` | `s` | 对应图标的二进制内容的 Mime 类型 | 只读 | 图标的 Mime 类型 |
+| `Size` | `u` | 图标二进制内容的大小（字节表示） | 只读 | 图标的大小｜
 
 
 ### Methods
 
-The following methods are exposed by a BusObject that implements
-the `org.alljoyn.Icon` interface.
+以下 methods 由提供 `org.alljoyn.About` 接口的 BusObject 发布。
 
 #### `s GetUrl()`
 
-**Message arguments**
+**Message arguments** **Message 参数**
 
-None.
+None.无。
 
-**Reply arguments**
+**Reply arguments** **Reply 参数**
 
-|Argument | Parameter name | Return signature | Description |
+|Argument | 参数名称 | 返回签名| 描述 |
 |:---:|---|:---:|---|
-| 0 | `url` | `s` | The URL if the icon is hosted on the cloud |
+| 0 | `url` | `s` | 当图标保存在云上时的 URl。 |
 
-**Description**
+**Description** **描述** 
 
 Retrieve the URL of the icon if the icon is hosted on the cloud.
+检索当图标保存在云上时的 URL。
 
 #### `ay GetContent()`
 
-|Argument | Parameter name | Return signature | Description |
+|Argument | 参数名| 返回签名 |描述|
 |:---:|---|:---:|---|
-| 0 | `content` | `ay` | The binary content for the icon |
+| 0 | `content` | `ay` | 图标的二进制内容 |
 
 ### Signals
 
-None.
+None.无。
 
 ## AllJoyn Introspection XML
 
