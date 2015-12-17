@@ -62,51 +62,22 @@ AllJoyn 框架所提供的抽象层使其代码和应用程序可以在多种操
 
 ### 安全性
 
-在分布式应用程序中，安全性的自然模型是应用程序对应用程序的。
-The natural model for security in distributed applications is
-application-to-application. Unfortunately, in many cases, the
-network security model does not match this natural arrangement.
-For example, the Bluetooth protocol requires pairing between
-devices. Using this approach, once devices are paired, all
-applications on both devices are authorized. This may not be
-desirable when considering something more capable than a Bluetooth
-headset. For example, if two laptops are connected over Bluetooth,
-a much finer granularity is necessary. The AllJoyn framework is
-designed to provide extensive support for complex security models
-such as this, with an emphasis on application-to-application communication.
+在分布式应用程序中，安全性的自然模型是应用程序对应用程序的。不幸的事，在很多情况下网络安全模型并不适用于此模型。例如，蓝牙协议在完成设备配对时，会将双方设备中的所有应用程序全部授权。但如果双方设备比蓝牙耳机更复杂，如两台笔记本电脑通过蓝牙相连，这种授权模式将会变得不理想，转而需要更精细的粒度。AllJoyn 框架可对诸如此类强调应用对应用通信的复杂安全模型提供广泛支持。
 
-### Object model and remote method invocation
+### 对象模型以及远程方法调用
 
-The AllJoyn framework utilizes an easy-to-understand object model
-and Remote Method Invocation (RMI) mechanism. The AllJoyn model
-re-implements the wire protocol set forth by the D-Bus specification
-and extends the D-Bus wire protocol to support distributed devices.
+AllJoyn 框架应用了简单明了的对象模型以及远程方法调用（ RMI ）机制。AllJoyn 模式重新实现并扩展了 D-Bus 标准定义的有线协议，以实现对分布式设备的支持。
 
-### Software componentry
 
-Along with a standard object model and wire protocol comes the
-ability to standardize various interfaces into components.
-In much the same way that a Java Interface declaration provides
-a specification to interact with a local instantiation of an
-implementation, the AllJoyn object model provides a language-independent
-specification to interact with a remote implementation.
+### 软件元件
 
-Using a specification, many interface implementations can
-be considered, thereby enabling standard definitions for
-application communication. This is the enabling technology
-for software componentry. Software components are at the
-heart of many modern systems, and are especially visible
-in systems such as Android, which defines four primary
-component types as the only way to participate in the Android
-Application Framework; or in Microsoft systems which use
-descendants of the Component Object Model (COM) system.
+伴随着标准化对象模型和有线协议，随之而来是将各类接口标准化为元件的能力。与 Java 接口声明机制所提供的与本地实例交互功能的实 现规范类似，AllJoyn 的对象模型提供了与编程语言无关的，与远程实现交互的规范。
 
-We expect that a rich "sea" of interface definitions will
-emerge in order to enable the scenarios described in [Overview][overview].
-The AllJoyn project expects to work with users to define and
-publish standard interfaces and support the sharing of implementations.
+有了成型的规范，就可以考虑众多接口的实现，从而使应用程序通信的标准建立变得可行。这项技术对软件组件很有帮助。软件部分是许多现代系统的中心，在类似 Android 的系统中则更为明显。在 Android 中定义了4种主要成分类型，作为仅有的能接入 Android Application Framework 的方式，同理在微软系统中，Component Object Model （ COM ）的继任版本被用作此功能。
 
-## Conceptual Overview
+为了实现在 [概述][overview]中所描绘的场景，我们期盼接口定义将会出现丰富的“海洋”。 AllJoyn 项目期望能与众多用户一起完成接口 的定义与标准化，并协助实现方法的共享。
+
+## 概念性概述
 
 AllJoyn 架构包含一系列可供使用的抽象层以便于理解并将子模块关联起来。其中只有很小部分的抽象层是理解基于 AllJoyn 的系统所必须的。
 
@@ -129,110 +100,67 @@ AllJoyn 系统中最基本的抽象概念就是 AllJoyn 总线。它提供了一
 **Figure:** Prototypical AllJoyn bus
 
 AllJoyn 总线原理上讲包含一下几点：
-	•	图中较粗的黑色横线表示总线自身，竖线可以被理解为流经总线的消息流的源头和/或目的地“出口”。
-	•	与总线的连接用六边形表示。和高速公路上的出口通常会被编号类似，每一个连接会被赋予一个唯一的名字。图中使用了简化的形式来命名连接用以说明。
-	•	在很多情况下到总线的连接可以被认为是和线程共驻内存的。因此，唯一连接名:1.1可能被赋予给了一个运行着某个应用实例的线程所在的连接，而唯一连接名:1.4可能被赋予给了另一个运行着某个应用实例的线程所在的连接。AllJoyn 总线的目标就是使两个应用可以在不 需要处理底层具体的交换机制的情况下进行通信。一端的连接可以被认为是客户端存根而另一端则完成所有服务端存根所要求的所有任务。
+ • 图中较粗的黑色横线表示总线自身，竖线可以被理解为流经总线的消息流的源头和/或目的地“出口”。
+ • 与总线的连接用六边形表示。和高速公路上的出口通常会被编号类似，每一个连接会被赋予一个唯一的名字。图中使用了简化的形式来命名连接用以说明。
+ • 在很多情况下到总线的连接可以被认为是和线程共驻内存的。因此，唯一连接名:1.1可能被赋予给了一个运行着某个应用实例的线程所在的连接，而唯一连接名:1.4可能被赋予给了另一个运行着某个应用实例的线程所在的连接。AllJoyn 总线的目标就是使两个应用可以在不 需要处理底层具体的交换机制的情况下进行通信。一端的连接可以被认为是客户端存根而另一端则完成所有服务端存根所要求的所有任务。
 
-原始的 AllJoyn 总线图表达了一个 AllJoyz的案例
-The prototypical AllJoyn bus figure shows an instance of an AllJoyn bus and
-illustrates how a software bus can provide interprocess communication
-between components attached to the bus. The AllJoyn bus is
-typically extended across devices as shown in the following figure.
-A communication link between the segment of the logical bus
-residing on the Smartphone and the components residing on the
-Linux host is formed when required by the components.
-
-
+原始的 AllJoyn 总线图表达了一个 AllJoyz 总线的案例，并描绘了软件总线为接驳在其上的不同组件提供进程间通信的具体实现方法。一
+般情况下， AllJoyn 总线会被延伸到下图所示的设备中。当组件需要时，一条通信链路会建立在分布在智能手机上的逻辑总线片段和分布在 Linux 主机上的组件之间。
 
 ![device-device-comm][device-device-comm]
 
-**Figure:** Device-to-device communication handled by the AllJoyn framework
+**Figure:** 由 AllJoyn 框架操作的设备与设备间通信
 
-The management of this communication link is handled by the
-AllJoyn system and may be formed using a number of underlying
-technologies such as Wi-Fi or Wi-Fi Direct. There may be multiple
-devices involved in hosting the AllJoyn bus, but this is
-transparent to the users of the distributed bus. To a component
-on the bus, a distributed AllJoyn system looks like a bus
-that is local to the device.
+此通信链路由 AllJoyn 系统管理，可以由底层技术实现，诸如 Wi-Fi 或 Wi-Fi Direct. 在 AllJoyn 主线上作为主机运行的设备可以有多
+个，但对于在分布式主线上的用户这些主机是透明的。从主线的一个组件的角度看，分布式 AllJoyn 系统就像是在设备本地的一条主线。
 
-The following figure shows how the distributed bus may appear
-to a user of the bus. A component (for example, the Smartphone
-connection labeled `:1.1`) can make a procedure call to the
-component labeled `:1.7` on the Linux host without having to
-worry about the location of that component.
+下图展示了分布式主线在用户角度可能呈现的样子。组件（例如标签为 `:1.1`的智能手机连接）可以对标签为`:1.7`的 Linux 主机进行远
+程方法调用，而无需担心该组件所处的位置。
 
 ![dist-bus-local-bus][dist-bus-local-bus]
 
 **Figure:** A distributed AllJoyn bus appears as a local bus
 
-### Bus router
+### 总线路由
 
-The device-to-device communication figure illustrates that
-the logical distributed bus is actually split up into a number
-of segments, each running on a different device. The AllJoyn
-functionality that implements these logical bus segments is
-called an AllJoyn router.
+就像设备对设备通信图描绘的那样，逻辑分布式总线会被分为数个片段，每一片都运行在不同的设备上。在 AllJoyn 中，实现对逻辑总线分
+割功能的设备被称作 AllJoyn 路由。
 
-The term daemon is commonly used in Unix-derived systems to
-describe programs that run to provide some needed functionality
-to the computer system. On a Linux system instead of saying daemon
-we call it the standalone router. In Windows systems, the term
-service is more typically used, however we refer to it as the AllJoyn router.
+守护进程在由 Unix 衍生出的系统中很常见，他被用于描述为电脑系统提供重要功能性的一些程序。在 Linux 系统中我们将 daemon 称为
+独立路由。在 Windows 系统中更倾向于用“服务”这个词，但我们用 AllJoyn 路由来描述他。
 
-![bubble-diagram-bus][bubble-diagram-bus]
+![总线泡泡图][bubble-diagram-bus]
 
-**Figure:** Relating bubble diagrams to the bus
+**Figure:** 相关的总线泡泡图
 
-In order to visualize the AllJoyn router, it is useful to create
-a bubble diagram. Consider two AllJoyn bus segments, one residing
-on a Smartphone and one on a Linux Host, as shown in previous figure.
-The connections to the bus are labeled as clients (C) and
-services (S) using the sense of clients and services in the RMI model.
-The AllJoyn router that implements the core of the distributed
-bus is labeled (D). The components of the previous figure are typically
-translated into the illustration shown in the folliwing figure.
+创建泡泡图可以使 AllJoyn 路由可视化。如之前的图所示，两个 AllJoyn 总线片段分别位于智能手机和 Linux 主机上。我们用户（ C ）以及服务（ S ）来标注到总线的连接，这里用到了 RMI 中 的用户／服务理念模型。实现核心分布式总线功能的 AllJoyn 路由被标记
+为 （ D ）。图中的组件被转换成下图中的图标。
 
-![alljoyn-bubble-diagram][alljoyn-bubble-diagram]
+![alljoyn 泡泡图][alljoyn-bubble-diagram]
 
-**Figure:** AllJoyn bubble diagrams
+**Figure:** AllJoyn 泡泡图
 
-The bubbles can be viewed as computer processes running on a
-distributed system. The two client (C) and the service (S)
-processes on the left are running on the Smartphone. These three
-processes communicate with an AllJoyn router running on the Smartphone
-which implements the local segment of the distributed AllJoyn bus.
-On the right side, there is a router which implements the local
-segment of the AllJoyn bus on the Linux Host.
+图中的泡泡可被看作是运行在分布式系统上的电脑进程。左边的两个用户（ C ）和服务（ S ）进程运行在智能手机上。位于右侧的路由 器用于实现在 Linux 主机上的 AllJoyn 总线的本地片段。
 
-These two routing nodes coordinate the message flow across the
-logical bus, which appears as a single entity to the connections,
-as shown in the distributed AllJoyn bus figure. Similar to the configuration on the Smartphone,
-there are two service components and a client component on the Linux host.
+如分布式 AllJoyn 总线图所示，这两个路由点协调着跨越逻辑总线的消息流，呈现到连接上的则是一个整体。与智能手机端的配置相同，在 Linux 主机上同样设有两个服务组件和一个用户组件。
 
-In this configuration, client component C1 can make remote method
-calls to service component S1 as if it were a local object.
-Parameters are marshaled at the source and routed off of the
-local bus segment by the router residing on the Smartphone.
-The marshaled parameters are sent over the network link
-(transparently from the perspective of the client) to the
-routing node on the Linux host. The AllJoyn router running on
-the Linux host determines that the destination is S1 and arranges
-to have the parameters unmarshaled and the remote method invoked
-on the service. If return values are expected, the process is
-reversed to communicate the return values back to the client.
 
-Since the standalone routers are running in a background process
-and the clients and services are running in separate processes,
-there must be a "representative" of the routers in each of those
-separate processes. The AllJoyn framework calls these
-representatives bus attachments.
+在这种配置中，用户组件 C1 可以对服务组件 S1 进行远程方法调用，就像操作本地对象那样一样。序列化的参数由源头被运行在智能手机上
+的路由器传送出本地总线片段。经过网络链路（对用户透明）发送到 Linux 主机的路由点。Linux 主机上的 AllJoyn 路由识别出参数目的地
+为 S1，随后将参数解序列化并执行远程方法调用。如果需要返回值，此进程可被反转，将返回值送回客户端。
 
-### Bus attachments
+由于独立路由运行在后台进程中，不同于用户与服务所在的进程，在每一个进程中需要有一个路由“代表”。在 AllJoyn 框架中这些代表被称
+为总线附件。
 
-Every connection to the AllJoyn bus is mediated by a specific
-AllJoyn component called a bus attachment. A bus attachment lives
-in each process that has a need to connect to the AllJoyn software bus.
+
+### 总线附件
+
+每一个到 AllJoyn 总线的连接都会经过特定的 AllJoyn 组件，这个组件被称作总线附件。总线附件存在于每一个需要连接到 AllJoyn 软件
+总线的进程当中。
+
+当讨论软件组件时，常会在软件和硬件之间做一个类比。分布式 AllJoyn 总线上的本地片段就像是台式机上的硬件背板总线。硬件总线可传
+送电子信号，
+
 
 An analogy is often drawn between hardware and software when
 discussing software components. One can think of a local segment
