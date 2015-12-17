@@ -1,5 +1,9 @@
 # alljoyn-zh
 
+## 1217 待审阅文章
+
+* [ ] [docs/learn/core/system-description/system-architecture.md](docs/learn/core/system-description/system-architecture.md)
+
 ## 1216 待审阅文章
 
 * [ ] [docs/learn/index.md](docs/learn/index.md)
