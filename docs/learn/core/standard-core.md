@@ -159,117 +159,43 @@ AllJoyn 总线原理上讲包含一下几点：
 总线的进程当中。
 
 当讨论软件组件时，常会在软件和硬件之间做一个类比。分布式 AllJoyn 总线上的本地片段就像是台式机上的硬件背板总线。硬件总线可传
-送电子信号，
+送电子信号，与其他卡片有被称为连接体的接驳点。类比于硬件，AllJoyn 框架中的总线附件就像硬件中的连接体。
+
+AllJoyn 总线附件是一个已定义语言的对象，对于客户端，服务或者一个点，他代表着分布式 AllJoyn 总线。例如，C++ 语言中为用户提供
+了总线附件的一种实现方法，在 Java 中则有另一种实现方法来实现同一总线附件。由于 AllJoyn 框架添加了语言联编，更多已定义语言的 实现方法将会出现。
+
+### 总线方法，总线属性及总线信号
+
+AllJoyn 框架是一个面向对象的系统。在面向对象的系统中，总会提及调用对象上的方法 （因此，在提及分布式系统时也常会提及远程方法
+调用）。在面向对象编程理念中，对象有一系列成员。这些对象方法或属性，在 AllJoyn 框架中被称为总线方法和总线属性。AllJoyn 框架
+同时还有总线信号的概念，作为在对象中一些项目或状态变化的异步提醒。
+
+为了做到客户，服务与点之间的通信安排透明化，调用总线方法和总线信号的参数一定要有规范，同时也需要对总线属性定义一些种类信息。在计算机科学中，调用方法或信号的输入和输出的类型被称为类型签名。
+
+类型签名由字符串定义。同时类型签名可以描述字符串，以及所有主流编程语言中的数据类型和诸如数组，结构体的复合类型。类型签名的具体任务及使用已超出了此篇简介的介绍范围。总的来说，总线方法，信号或属性的类型签名可以告知底层 AllJoyn 系统如何将传输参数和返 回值从已序列化的表达方式中转换过来。
+
+### 总线接口
+
+在大多数面向对象系统当中，有内在共性的方法集和属性集会被编入小组。这些功能组的统一描述被称作接口。接口是一个在实现接口规范的
+实体和外界世界之间的契约。依此，接口是通过合适的标准机构的标准化的候选人。各类服务（从电话到媒体播放控制）的接口的规范可以在网站上找到。根据 D-Bus 规范，这些接口由 XML 描述。
+
+一个接口定义将一组主线方法，主线信号和主线属性，以及他们对应的类型签名集成到一个已命名的组中。在实际操作中，接口通常由客户，服务或者点的进程实现。当已命名的接口被实现后，在实现方和外界世界之间将生成一个内含的契约，并将支持所有该接口的总线方法，总线信号及总线属性。
+
+接口名通常取用反转的域名。例如，一个 AllJoyn 的标准接口是`org.alljoyn.Bus`接口，由路由器创建，并为总线附件提供一些基础服务。
+
+由任意命名空间的字符串创建接口名称是不可取的。接口名称字符串为一个特定的方法服务，不可以与其他相似的字符串相混淆，尤其是主线名称。例如，`org.alljoyn.sample.chat` 可以是一个恒定不变的可以由用户搜索到的主线名称。同时也可以是一个在总线对象中定义了与已定义了总线名称的总线附件相关的，可使用的方法，信号及属性的名字。被赋予名称的接口的存在暗含在主线名称的存在当中，虽然他们有时看起来完全相同，但他们是完全不同的两类。
 
 
-An analogy is often drawn between hardware and software when
-discussing software components. One can think of a local segment
-of a distributed AllJoyn bus in much the same way as one thinks of
-the hardware backplane bus in a desktop computer. The hardware bus
-itself moves electronic messages and has attachment points called
-connectors into which one plugs cards. The analogous function of
-the connector in the AllJoyn framework is the bus attachment.
+### 总线对象和总线路径
 
-An AllJoyn bus attachment is a local language-specific object that
-represents the distributed AllJoyn bus to a client, service, or peer.
-For example, there is an implementation of the bus attachment
-functionality provided for users of the C++ language, and there
-is an implementation of the same bus attachment functionality
-provided for users of the Java language. As the AllJoyn framework
-adds language bindings, more of these language-specific implementations
-will become available.
+总线接口为工作在分布式系统上的接口的声明提供了一个标准化的方式。总线对象为实现给定规范的接口提供了脚手架。总线对象存在于总线附件中，扮演通信终点的角色。
 
-### Bus methods bus properties and bus signals
+由于实现存在于任意给定总线附件的指定接口的方法不止一种，此处需要一个可以通过对象路径实现的附加结构，用以区分这些不同的接口实现方法。
 
-The AllJoyn framework is fundamentally an object-oriented system.
-In object-oriented systems, one speaks of invoking methods on objects
-(thus the term Remote Method Invocation when speaking of distributed
-systems). Objects in the object-oriented programming sense have members.
-Classically, these are object methods or properties, which are known
-as BusMethods and BusProperties in the AllJoyn framework. The AllJoyn
-framework also has the concept of a BusSignal, which is an asynchronous
-notification of some event or state change in an object.
+就像存在于接口命名空间的接口名字符串一样，对象路径也存在于一个命名空间中。此命名空间被规划为一个树型结构，在文件系统中寻找路径的模型则是一个目录树。事实上，对象路径的路径分隔符是一个正斜杠 (/)，与 Unix 文件系统中相同。由于总线对象是总线接口的实现，
+对象路径可以与其相应接口的命名规则保持一致。
 
-In order to transparently arrange for communication between clients,
-services, and peers, there must be some specification of the parameter
-ordering for bus methods and bus signals, and some form of type information
-for bus properties. In computer science, the description or definition of
-the types of the inputs and outputs of a method or signal is called the
-type signature.
-
-Type signatures are defined by character strings. Type signatures can
-describe character strings, all of the basic number types available
-in most programming languages, and composite types such as arrays and
-structures built up from these basic types. The specific assignment
-and use of type signatures is beyond the scope of this introduction,
-but the type signature of a bus method, signal, or property conveys
-to the underlying AllJoyn system how to convert the passed parameters
-and return values to and from the marshaled representation over the bus.
-
-### Bus interfaces
-
-In most object-oriented programming systems, collections of methods
-or properties are composed into groups that have some inherent
-common relationship. A unified declaration of this collection
-of functions is called an interface. The interface serves as a
-contract between an entity implementing the interface specification
-and the outside world. As such, interfaces are candidates for
-standardization by appropriate standards bodies. Specifications
-for numerous interfaces for services ranging from telephony to
-media player control can be found on various web sites. Interfaces
-specified this way are described in XML as per the D-Bus specification.
-
-An interface definition collects a group of bus methods, bus signals,
-and bus properties along with their associated type signatures into
-a named group. In practice, interfaces are implemented by client,
-service, or peer processes. If a given named interface is
-implemented, there is an implicit contract between the implementation
-and the outside world that the interface supports all of the
-bus methods, bus signals, and bus properties of the interface.
-
-Interface names typically take the form of a reversed domain name.
-For example, there are a number of standard interfaces that
-the AllJoyn framework implements. One of the AllJoyn standard
-interfaces is the `org.alljoyn.Bus` interface which routers
-implement and which provides some of the basic functionality
-for bus attachments.
-
-It is worth noting that the interface name is simply a string
-in a relatively free-form namespace and that other namespaces
-may have a similar look. The interface name string serves a
-specific function that should not be confused with other similar
-strings, in particular bus names. For example, `org.alljoyn.sample.chat`
-may be a bus name which is the constant, unchanging name that
-a client will search for. It may also be the case that
-`org.alljoyn.sample.chat` is the interface name that defines
-the methods, signals and properties available in a bus object
-associated with a bus attachment of the specified bus name.
-The existence of an interface with the given interface name
-is implied by the existence  of the bus name; however, they
-are two completely different things that can sometimes look
-exactly the same.
-
-### Bus objects and object paths
-
-The bus interface provides a standard way to declare an
-interface that works across the distributed system. The bus
-object provides the scaffolding into which an implementation
-of a given interface specification may be placed. Bus objects
-live in bus attachments and serve as endpoints of communication.
-
-Since there may be multiple implementations of a specific
-interface in any particular bus attachment, there must be
-additional structure to differentiate these interface implementations.
-This is provided by an object path.
-
-Just as an interface name is a string that lives in an interface
-namespace, the object path lives in a namespace. The namespace
-is structured as a tree, and the model for thinking about
-paths is a directory tree in a filesystem. In fact, the path
-separator in an object path is the slash character (/), just
-as in a Unix filesystem. Since bus objects are implementations
-of bus interfaces, object paths might follow the naming
-convention of the corresponding interface. In the case of an
+In the case of an
 interface defining a disk controller interface (for example,
 `org.freedesktop.DeviceKit.Disks`), one could imagine a case
 where multiple implementations of this interface were described
