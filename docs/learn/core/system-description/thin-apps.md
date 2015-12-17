@@ -1,6 +1,6 @@
-# Thin Apps
+# Thin Apps 精简应用程序
 
-## Overview
+## Overview 概览
 
 The AllJoyn&trade; system is designed to operate across AllJoyn-enabled
 devices with different capabilities. The AllJoyn Standard Core Library (AJSCL)
@@ -10,6 +10,7 @@ along with operating systems that support multiple processes/threads
 with multiple standard language environments. The AJSCL is designed
 for general purpose computer devices and supports application
 running on HLOS including Microsoft Windows, Linux, Android, iOS, and OpenWRT.
+AllJoyn 系统旨在实现夸 AllJoyn 设备的功能控制。AllJoyn 标准内核资源库通常应用于拥有较大内存、较大电源、较强处理能力和拥有多线程操作和多种标准语言环境的操作系统中。AJSCL 为通用计算机设计，支持运行在 HLOS（包括Microsoft Windows、Linux、Android、iOS 和 OpenWRT）上的应用程序。
 
 On the other hand, single-purpose AllJoyn-enabled devices
 usually have an embedded system running on a microcontroller
@@ -20,6 +21,7 @@ peripherals, user interfaces, or all of the above.
 The AllJoyn Thin Core Library (AJTCL) is designed to bring
 the benefits of the AllJoyn distributed programming environment
 to embedded system-based devices.
+另一方案，单一目的的 AllJoyn 设备通常拥有一套嵌入式系统。该系统运行在提供某种特定功能的微控制器上。这些嵌入式系统为了降低设备的成本和缩减设备的体积，通常采用削减内存，降低处理速度，限制电源功率，删除周边设备和用户接口等方法。AllJoyn 精简内核为嵌入式系统设备提供了良好的 AllJoyn 分布式编程环境。
 
 The AJTCL provides a lightweight implementation of core AllJoyn
 functionality for embedded microcontroller applications. An embedded
@@ -34,13 +36,16 @@ and inter-operable with standard AllJoyn applications on the
 AllJoyn proximal network. In fact, a remote application will
 not even know that it is talking with an AllJoyn thin application
 on the other side.
+AJTCL 为嵌入式微控制器程序提供了一种轻量级的核心 AllJoyn 功能的实现方案。嵌入式 AllJoyn 设备（精简 AllJoyn 设备）只包含一个采用 AJTCL 的精简 AllJoyn 程序，鉴于有限的资源环境，并不包含 AllJoyn 路由组件。它向 AllJoyn 临域网络内的某一标准 AllJoyn 设备借用其 AllJoyn 路由，并利用它实现 AllJoyn 核心功能，如 advertisement 和信息转发。AllJoyn 精简应用程序完全兼容与临域网络内的标准 AllJoyn 应用程序进行互操作。实际上，远程控制程序甚至不知道另一侧与正自己进行会话的是一个精简 AllJoyn 应用程序。
+
 
 The following figure shows a context architecture depicting
 how AllJoyn thin applications fit in the overall AllJoyn distributed system.
+下图展示了精简应用程序适配整个 AllJoyn 分布式系统的联系结构。
 
 ![img thin-app-arch][]
 
-**Figure:** Thin app context architecture
+**图:** Thin app context architecture 精简应用程序联系结构
 
 It shows two thin AllJoyn-enabled devices (device 3 and device 4)
 with a single AllJoyn thin application installed on each of them.
