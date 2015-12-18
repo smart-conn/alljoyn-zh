@@ -59,16 +59,18 @@ discovery phase, the AJTCL establishes a connection with
 the discovered AllJoyn router over TCP. Once connected with
 the AllJoyn router, the thin app is just like any other
 application endpoint on the AllJoyn distributed bus.
+该图展示了两个 AllJoyn 设备（device 3 和 device 4），它们各自安装了一个 AllJoyn 精简应用程序。基于 AJTCL 建立的精简应用程序通过与一个标准 AllJoyn 设备上的路由（如安装在 Wi-Fi Access Point 上的 AllJoyn 路由）与分布式 AllJoyn 总线建立连接。AJTCL 使用 AllJoyn 的 advertisement 和 discovery 服务，通过 BusNode well-known name 发现 AllJoyn 路由。
 
-**NOTE:** More than one thin application can connect to a given AllJoyn router.
+**注意:** More than one thin application can connect to a given AllJoyn router. 多个精简应用程序可连接到单个指定 AllJoyn 路由。
 
 A thin app can act as an AllJoyn service provider, an AllJoyn
 service consumer or both. It follows the same session establishment
 procedures as AllJoyn standard apps to accept sessions from and/or
 connect to sessions with other remote apps, which can be another
 AllJoyn thin app or AllJoyn standard app.
+一个精简应用程序可同时作为 AllJoyn 服务的提供者和使用者，或其中的任一身份。会话的建立方式与标准 AllJoyn 应用程序接受、建立与另一个远程应用程序（标准应用程序或精简应用程序）会话的过程相同。
 
-## Functional architecture
+## Functional architecture 功能结构
 
 The following figure shows the detailed functional architecture
 for an AllJoyn thin application. A thin app includes app-specific
@@ -77,22 +79,27 @@ app can include one or more AllJoyn service frameworks which
 include Onboarding, Configuration, and Notification service
 frameworks. App Code also includes app-specific AllJoyn services
 if the thin app is acting as an AllJoyn service provider.
+下图展示了 AllJoyn 精简应用程序的详细功能结构。一个精简应用程序包含了应用指定代码（应用代码）和 AJTCL。作为应用代码的一部分，一个精简应用程序包含了一个或多个 AllJoyn 服务架构。这些服务架构包含了 Onboarding、Configuration 和 Notification 服务架构。如果精简应用程序以 AllJoyn 服务提供者的身份运行，那么其应用代码也会包含应用指定 AllJoyn 服务。
 
 ![img thin-app-functional-arch][]
 
-**Figure:** Thin app functional architecture
+**图:** Thin app functional architecture 精简应用程序功能结构
 
 The AJTCL consists of some key functional modules as shown in
 the previous figure, among other supported functions. These include
 Bus Connection Manager, About, Messaging and App Authentication modules.
+AJTCL 包含了上图中所示支持的功能中比较重要的几个功能模块。这些模块包含了 Bus Connection Manager、About、Messaging 和 App Authentication 模块。
 
 * The Bus Connection Manger module provides discovery and
 connection establishment with a nearby AllJoyn router (BusNode).
+* Bus Connection Manager 模块提供了发现周边 AllJoyn 路由（BusNode）并与之建立连接的功能。
 * The About module provides advertisement and discovery
 functions for thin app. It supports sending out the Announcement
 sessionless signal for the thin app over distributed AllJoyn bus.
-* The Messaging module provides marshaling/unmarshaling for AllJoyn
+* About 模块为精简应用程序提供 advertisement 和 discovery 功能。该模块支持在分布式  AllJoyn 总线上发出精简应用程序的 Annoucement sessionless signal。
+* The  marshaling module provides marshaling/unmarshaling for AllJoyn
 messages and routing these to the connected AllJoyn router.
+* Marshaling 模块为 AllJoyn 信息提供了封送和逆封送功能，并把这些信息转发到连接的 AllJoyn 路由上。
 * The App Authentication module provides application-level authentication
 and security between thin app and remote AllJoyn apps. The ALLJOYN_PIN_KEYX
 auth mechanism is supported in the AJTCL for releases before the 14.06 release.
@@ -100,23 +107,28 @@ This auth mechanism is removed from AJTCL in the 14.06 release.
 Starting from the 14.06 release, the AJTCL supports a new set of
 Elliptic Curve Diffie-Hellman Ephemeral (ECDHE)-based auth mechanisms
 as described in [App layer authentication][app-layer-auth].
+* App Authentication 模块为精简应用程序与远程 AllJoyn 应用程序之间提供了应用级别的身份验证和安全保护。在 14.06 版本之前，AJTCL 采用的是 ALLJOYN_PIN_KEYX 验证机制。14.06 版本以及其后续版本，都采用了一套全新的如 [App layer authentication][app-layer-auth] 所述的基于Elliptic Curve Diffie-Hellman Ephemeral (ECDHE)的验证机制。
 
-## AJTCL-to-AllJoyn router connection
+## AJTCL-to-AllJoyn router connection AJTCL 与 AllJoyn 路由的连接
 
 Upon startup, the thin application initiates the process of
 discovery and connection establishment with an AllJoyn router
 on another standard AllJoyn-enabled device. This is done using
 the name-based discovery mechanism.
+在启动时，精简应用程序启动 discovery 进程，与另一个标准 AllJoyn 设备上的 AllJoyn 路由建立连接。这个过程通过 name-based discovery 机制实现。
 
 An AllJoyn router that supports hosting connections for thin apps
 advertises a BusNode well-known name. The advertised well-known
 name can be one or both of the following:
+AllJoyn 路由支持广告 BusNode well-known name 的精简应用程序。被广告的 well-known name 拥有一个或多个下列属性。
 
 * Generic BusNode well-known name "org.alljoyn.BusNode"
 driven by the AllJoyn router configuration
+* 由 AllJoyn 路由配置的通用 Generic BusNode well-known name "org.alljoyn.BusNode"
 * Specific BusNode well-known name advertised by an application
 attached to the AllJoyn router, meant for discovery only by
 related thin applications.
+* 由连接到 AllJoyn 路由的应用程序广播的特定 BusNode well-known name，旨在发现相关的精简应用程序。
 
 The AllJoyn router advertises the BusNode well-known name quietly,
 that is, the advertisement messages are not sent out
@@ -127,6 +139,7 @@ message is sent out quietly via unicast back to the requester
 (instead of being sent over multicast). This logic is meant
 to minimize the network traffic generated as a result of
 thin app-related discovery of an AllJoyn router.
+AllJoyn 路由以被动方式广告 BusNode well-known name，广告信息不会被平白无故地发送。当收到精简应用程序的的查询需求时，才会发送 BusNode well-known name advertisement。此外，广告信息通过单播方式（而不是多播方式）回应给请求者。这样的方式旨在减少由精简应用程序发现服务相关的 AllJoyn 路由产生的网络流量。
 
 The AllJoyn router limits the number of simultaneous connections
 with thin applications in the AllJoyn network. This limit is
@@ -134,9 +147,11 @@ configurable as '`max_remote_clients_tcp`' via the router
 config file. The AllJoyn router stops advertising all BusNode
 names when the '`max_remote_clients_tcp`' limit is reached and resumes when the
 current number of thin app connections drop down below the limit.
+AllJoyn 路由限制了 AllJoyn 网络中同时存在的精简应用程序连接数量。可以通过更改路由配置文件中的 '`max_remote_clients_tcp`' 值对限制值进行调整。
 
 The connection process between the AJTCL and the AllJoyn router
 is split into the following phases:
+AJTCL 与 AllJoyn 路由之间的连接过程分为以下几个阶段：
 
 * Discovery phase: The AJTCL discovers an AllJoyn router on
 the AllJoyn proximal network via the BusNode name-based
@@ -150,12 +165,15 @@ and 14.12 TCL.
   well-known name following a backoff schedule. The IS-AT
   message is sent over unicast to the AJTCL by the
   AllJoyn router advertising that BusNode name.
+* 发现阶段：AJTCL 通过 BusNode name-based discovery 机制发现 AllJoyn 临域网络内的的 AllJoyn 路由。发现的超时时常通过调用 `FindBusAndConnect()` API 进行设定。自 14.12 版本开始，AJTCL 加入了 mDNS-based discovery 方式进行 AllJoyn 路由发现。下文使用 pre-14.12 TCL 和 14.12 TCL 表述这两个阶段。AJTCl 为 BusNode well-known name 发送一个 WHO-HAS 消息，其后跟随一个退避列表。IS-AT 消息由广告 BusNode Name 的 AllJoyn 路由通过单播方式发送到 AJTCL。
 * Connection phase: The AJTCL establishes a TCP connection
 with the AllJoyn router based on the connection details
 received in the discovery response.
+* 连接阶段：AJTCL 通过从 discovery response 中获得的详细信息建立与 AllJoyn 路由之间的 TCP 连接。
 * Authentication phase: SASL anonymous authentication is used
 by the AJTCL to authenticate and start using services of the
 AllJoyn router.
+* 身份认证阶段：AJTCL 通过 SASL 匿名身份认证开始使用 AllJoyn 路由的服务。
 
 As part of the connection establishment, the AJTCL also exchanges
 the AllJoyn protocol version (AJPV) with the AllJoyn router.
@@ -167,16 +185,18 @@ in [Router blacklisting][RN blacklisting].
 For the first-time connecting with any AllJoyn router, this
 connection establishment process also generates a local GUID
 for the AJTCL and sends it to the AllJoyn router.
+作为连接形成的一部分，AJTCL 同样与 AllJoyn 路由之间交换 AllJoyn 协议版本（AJPV）。如果 AllJoyn 路由支持的协议版本比应用程序要求的最低（AJPV）版本还低，那么连接进程将失败。这种失败方式或者其它类型的验证失败将会导致该节点被加入黑名单，在［Router blacklisting][RN blacklisting] 中具体说明。
 
 ### Pre-14.12 router discovery
 
 The following figure shows the message flow for the pre-14.12
 release for the AJTCL discovering and connecting with the
 AllJoyn router.
+下图展示了 pre-14.12 版本 AJTCL 发现和连接 AllJoyn 路由的信息流。
 
 ![img RN Discovery pre-1412][]
 
-**Figure:** Pre-14.12 router discovery and connection
+**图:** Pre-14.12 router discovery and connection
 
 The AJTCL sends out a WHO-HAS message for the BusNode well-known
 name following the message schedule as described in
@@ -185,29 +205,33 @@ The response IS-AT message is sent over unicast to the AJTCL
 by the AllJoyn router advertising that BusNode name. Any
 responses received from the AllJoyn routers on the blacklist
 are ignored.
+¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥。回应的 IS-AT 消息通过 AllJoyn 路由广播该 BusNode Name 被单播传播至 AJTCL。所有从 AllJoyn 路由黑名单中发出的回应信息都会被忽略。
 
 After router discovery, the rest of the AJTCL logic is same as
 described above in [AJTCL-to-AllJoyn router connection][tcl-RN connect].
+在路由发现完成之后，其余的 AJTCL 逻辑与上述 [AJTCL-to-AllJoyn router connection][tcl-RN connect] 部分完全一致。
 
-#### WHO-HAS message schedule
+#### WHO-HAS message schedule WHO-HAS 消息标准
 
 Prior to the 14.12 release, the AJTCL supports the following
 retry schedule for sending WHO-HAS discovery messages:
+在14.12版本之前，AJTCL 支持以下方式重发 WHO-HAS 发现消息。
 
-1. Send the WHO-HAS message once a second for 10 seconds.
-2. Wait 10 seconds, then send another WHO-HAS message.
-3. Wait 20 seconds, then send another WHO-HAS message.
+1. Send the WHO-HAS message once a second for 10 seconds. 每 1 秒发送一条 WHO-HAS 消息，持续 10 秒。
+2. Wait 10 seconds, then send another WHO-HAS message. 等待10秒后，再发送一条 WHO-HAS 消息。
+3. Wait 20 seconds, then send another WHO-HAS message. 等待20秒后，再发送一条 WHO-HAS 消息。
 4. Wait 40 seconds, then send another; repeat until the overall discovery
-timeout expires.
+timeout expires. 等待40秒后，再发送一条 WHO-HAS 消息。不断重复直到发现服务超时。
 
 ### 14.12 router discovery
 
 The following figure shows the message flow for the 14.12 release
 for the AJTCL discovering and connecting with the AllJoyn router.
+下图展示了 14.12 版本 AJTCL 发现和连接 AllJoyn 路由的信息流。
 
 ![img RN Discovery 1412][]
 
-**Figure:** 14.12 router discovery and connection
+**图:** 14.12 router discovery and connection
 
 The AJTCL supports both mDNS and legacy discovery mechanism. If the
 AJTCL minimum AJPV is lower than "10", the AJTCL can connect
