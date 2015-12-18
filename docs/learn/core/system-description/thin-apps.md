@@ -239,6 +239,7 @@ to routers prior to the 14.06 release. In this case, the TCL
 generates and sends out both WHO-HAS and mDNS query messages
 for the BusName prefix. The schedule for sending these messages
 is described in [Discovery message schedule][discovery msg sched].
+AJTCL 同时支持 mDNS 和 以往的发现机制。如果 AJTCL 的最低 AJPV 小于 10，那么该 AJTCL 只能与 14.06 或更早的版本的路由建立连接。在这种情况下，TCL 会生成和发送 WHO-HAS 信号，同时也会发送 mDNS 信号查询 BusName 前缀。发送此类消息的详情，请参阅 [Discovery message schedule][discovery msg sched]。
 
 The discovery response (either an mDNS response or IS-AT message)
 is sent over unicast to the AJTCL by the AllJoyn router advertising
@@ -250,9 +251,9 @@ the version is less than the minimum required by the thin app.
 If both IS-AT and mDNS responses are received by AJTCL at the
 same time, the mDNS response is processed first. Responses received
 from the AllJoyn routers on the blacklist are ignored.
+Discovery response（无论 mDNS response 或是 IS-AT message）通过广告 BusNode Name 的 AllJoyn 路由通过单播的方式传送到 AJTCL。mDNS response 可能会包含一组键-值对，说明了发信 AllJoyn 路由的协议版本（在 14.12 版本中被加入），协议版本的键为 'ajpv'。ajpv 的值用于判断版本是否低于精简应用程序要求的最低版本，如果低于最低要求，那么就会忽略 discovery response。如果 AJTCL 同时收到 IS-AT 和 mDNS response， mDNS response 将被优先处理。通过 AllJoyn 路由收到的在黑名单上的 response 将被忽略。
 
-After router discovery, rest of the AJTCL logic is same as
-described above in [AJTCL-to-AllJoyn router connection][tcl-RN connect].
+在路由发现完成之后，其余的 AJTCL 逻辑与上述 [AJTCL-to-AllJoyn router connection][tcl-RN connect] 部分完全一致。
 
 #### Discovery message schedule
 
