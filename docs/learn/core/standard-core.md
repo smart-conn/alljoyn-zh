@@ -247,9 +247,6 @@ org.alljoyn.sample.chat.carol
 
 随之而来的问题是，处于分布式系统上的服务如何被定位。答案是通过客户端的服务广播以及发现机制。
 
-This leads to the question of how services are located in the
-distributed system. The answer is via service advertisement and discovery by clients.
-
 
 ### 广播及发现
 
@@ -314,7 +311,7 @@ Unique name::1.1
 第一个区域是会话选项，决定着数据的传送方式。在 IP 网络中，会话选项可以使 TCP 或者 UDP. 在 AllJoyn 框架中这些细节会被虚拟化，
 对应的选项则会变为“基于消息的”，“未排列的数据”，或者“不稳定的未排列数据”。服务的目的地由相关主线附件所请求的 well-known name 给出。
 
-与之前邮编地址例子中的���房间号类似，AllJoyn 模型中也有在主线附件“里面”的传送点概念。此概念在 AllJoyn 框架中被称为会话端口。房
+与之前邮编地址例子中的房间号类似，AllJoyn 模型中也有在主线附件“里面”的传送点概念。此概念在 AllJoyn 框架中被称为会话端口。房
 间号只有在给定建筑内才有意义，会话端口号同理，必须要在给定的总线附件范围内定义。联系端口的存在与数值被主线标识所间接指出，这与底层的对象和接口组被间接指出的方式相同。
 
 寄件人地址对应客户端信息，也是由相似的原理生成。为了和服务端正常通信，客户端必须有自己的 half-association.
@@ -347,176 +344,84 @@ Unique name::1.1
 
 #### 自我加入功能
 
-在 AllJoyn R14.06 的版本之前，应用程序无法参与由自己作主机的会话。
+在 AllJoyn R14.06 的版本之前，应用程序无法参与由自己作主机的会话。有些应用程序会使用自己提供的服务或信息，这会带来一些不对称：对于这些应用程序自己作为主机的应用程序和对其他设备作主机的情况必须区别对待。自我加入功能可使应用程序加入到自己作主机的会话中，从而消除了这一不对称。这样一来，就可以用以处理远端主机主线对象的相同的方式处理以本地主机的主线对象。
 
-In AllJoyn releases up to R14.06, it was impossible for applications
-to join a session they themselves hosted. For applications that consume
-information or services they themselves also provide, this created an
-asymmetry: they had to treat the bus objects they hosted themselves
-differently from those hosted by other peers. The self-join feature
-removes this asymmetry by allowing applications to join the sessions
-they themselves host. Consequently, a locally hosted bus object can be
-treated in exactly the same way as a remotely hosted bus object.
+#### 决定 peer 的出现 - pinging 以及 auto-pinging
 
-#### Determining the presence of a peer - pinging and auto-pinging
-
-Sometimes, a application needs to know which peers are present on the communication
-channel ("the wire") and which aren't.  For this reason, a PING API was introduced in
-version 14.06. This PING API allows to determine whether a peer is up or not.
-However, for this API, the responsibility for using the PING API was with the
-Application, which periodically needed to ping the peers. From Release 14.12 onwards,
-an automatic PING or Auto-Pinger is introduced. This Auto-Pinger performs the
-periodic peer detection, relieving  the application of having to do it.
+有些时候，应用程序需要知晓哪些 peer 正在信道（"the wire"）上存在着，哪些没有存在。为此，在14.06版本中引入了 PING API. PING API 可以判断 peer 是否存在。但是复测使用此 PING API 的是应用程序，他将会需要周期性的 ping 其他 peers.在14.12以及以后的版本，自动 ping 或者被称为 Auto-Pinger 的功能被加入。Auto-Pinger 可以完成周期性的 peer 探测，从而解放了应用程序。
 
 ### Bringing it all together
 
-The AllJoyn framework aims to provide a software bus that
-manages the implementation of advertising and discovering services,
-providing a secure environment, and enabling location-transparent
-remote method invocation. A traditional client/service arrangement
-is enabled, and peer-to-peer communications follow by combining
-the aspects of client and services.
+AllJoyn 框架致力于提供可以管理推广和发现服务的开发的软件总线，提供安全的环境，并实现了位置透明的远程方法调用模式。同时也支持传统的 client/service 布置，并通过结合 client 以及 service 层面的信息实现点对点通信。
 
-The most basic abstraction in the AllJoyn framework is the
-software bus that ties everything together. The virtual distributed
-bus is implemented by AllJoyn routing nodes which are background
-programs running on each device. Clients and services (and peers)
-connect to the bus via bus attachments. The bus attachments
-live in the local processes of the clients and services and
-provide the interprocess communication that is required to
-talk to the local AllJoyn router.
+在 AllJoyn 中最基本的抽象化就是将一切连接在一起的软件主线。虚拟的分布式主线由在每个设备上后台运行的 AllJoyn 路由点实现。用户以及服务（以
+及 peers）通过主线附件连接到主线。主线附件存在于用户端及服务端的本地进程中，提供进程间通信功能，以便实现与本地 AllJoyn 路由通信。
 
-Each bus attachment is assigned a unique name by the system
-when it connects. A bus attachment can request to be granted
-a unique human-readable bus name that it can use to advertise
-itself to the rest of the AllJoyn world. This well-known bus
-name lives in a namespace that looks like a reversed domain
-name and encourages self-management of the namespace.
-The existence of a bus attachment of a specific name implies
-the further existence of at least one bus object that implements
-at least one interface specified by a name. Interface names are
-assigned out of a namespace that is similar, but has a different
-meaning than bus names. Each bus object lives in a tree structure
-rooted at the bus attachment and described by an object path
-that looks like a Unix filesystem path.
+在连接后，每一个主线附件都会被分配一个唯一的标识。主线符号可以申请使用一个唯一的人类可读的主线名，以便对 AllJoyn 世界中的其他设备推送自己的服务。此 well-known 主线名存在于一个看起来很像倒置的域名，并提倡 self-management 的命名空间中。有给定标识的主线
+附件暗示着至少存在一个实现了至少一个给定标识的接口的主线对象。接口名称也由类似主线名的命名空间分配出，但有着不同的意义。每一个对象都生存在以主线附件为根节点的树结构中，并由类似 Unix 文件路径的对象路径描述。
+
+下图是一个展示片段相关性的假想排列：
 
 The following figure shows a hypothetical arrangement of how
 all of these pieces are related.
 
 ![hypothetical-alljoyn-bus-instance][hypothetical-alljoyn-bus-instance]
 
-**Figure:** Overview of a hypothetical AllJoyn bus instance
+**Figure:** 假设的 AllJoyn 主线实例概览。
 
-At the center is the dark line representing the AllJoyn bus.
-The bus has "exits" which are the BusAttachments assigned
-the unique names `:1.1` and `:1.4`. In the figure, the BusAttachment
-with the unique name of `:1.1` has requested to be known as
-`org.alljoyn.samples.chat.a` and has been assigned the corresponding
-well-known bus name. The "a" has been added to ensure that
-the bus name is unique.
+在中心的深色线代表 AllJoyn 主线。主线的“出口”是由 BusAttachment 分配的唯一标识`:1.1` 和 `:1.4`. 如图所示，在以`:1.1` 为唯一标识符的已请求
+自己的地址是 `org.alljoyn.samples.chat.a`，并已被分配到对应的 well-known 主线名称：`org.alljoyn.samples.chat.a`，被加在后面的 "a" 是为了确
+保主线名的唯一性。
 
-There are a number of things implied by taking on that bus name.
-First, there is a tree structure of bus objects that resides
-at different paths. In this hypothetical example, there are
-two bus objects. One is at the path `/org/alljoyn/samples/chat/chat`
-and which presumably implements an interface suitable for chatting.
-The other bus object lives at the path `/org/alljoyn/samples/chat/contacts`
-and implements an interface named `org.alljoyn.samples.chat.contacts`.
-Since the given bus object implements the interface, it must
-provide implementations of the corresponding bus methods,
-bus signals, and bus properties.
 
-The number 42 represents a contact session port that clients
-must use to initiate a communication session with the service.
-Note that the session port is unique only within the context of
-a particular bus attachment, so the other bus attachment in the
-figure may also use 42 as its contact port as shown.
+由主线名定义所暗示的东西还有很多。首先，在不用的路径上都有主线对象的树结构。在这个假设的例子中，一共有两个主线对象。第一个在 `/org/alljoyn/samples/chat/chat` 路径上，推测上是用来实现聊天功能的。另一个在 `/org/alljoyn/samples/chat/contacts` 路径上，并实现了以 `org.alljoyn.samples.chat.contacts` 命名的接口。由于给定的主线对象实现了接口，他必须同时提供相应的主线方法，主线信号以及主线属性的实现。
 
-After requesting and being granted the well-known bus name,
-a service will typically advertise the name to allow clients
-to discover its service. The following figure shows a service making an
-advertise request to its local router. The router, based on
-input from the service, decides what network medium-specific
-mechanism it should use to advertise the service and begins doing so.
+42代表着用户端用来初始化通信会话的通信会话端口。会话端口仅仅在特定的主线附件环境中才保有唯一性，这意味着在其他的主线附件中也可以用42作为会话端口。
+
+在申请并获批 well-known 主线名之后，一般情况下服务会将这个名字推广，以便其他用户发现该服务。下图展示了服务向本地路由发出推广申请的流程。基于服务输入的路由决定使用哪一个 network medium-specific mechanism 来推广服务并开始。
 
 ![service-performs-advertise][service-performs-advertise]
 
-**Figure:** Service performs an Advertise
+**Figure:** 服务正在进行推广
 
-When a prospective client wants to locate a service for consumption,
-it issues a find name request. Its local router device, again
-based on input from the client, determines the best way to
-look for advertisements and probes for advertisements.
+当未来用户想要定位一个服务时，他会发出一个寻找名字的请求。基于用户端输入的本地路由设备决定使用哪种广告以及广告探头。
+
 
 ![client-requests-find-name][client-requests-find-name]
 
-**Figure:** Client requests to Find Name
+**Figure:** 用户向 Find Name 发送请求。
 
-Once the devices move into proximity, they begin hearing
-each other's advertisements and discovery requests over whichever
-media are enabled. The following figure shows how the router hosting the
-service hears the discovery requests and responds.
+一旦设备进入到临近域，他们就开始监听其他设备发出的推广，并通过任意可用的媒体来发现请求。下图展示了服务端主机路由监听发现请求并给予回应的过程。
 
 ![router-reports-found-name][router-reports-found-name]
 
-**Figure:** Router reports Found Name
+**Figure:** 路由报告 Found Name
 
-Finally, the following figure shows the client receiving an indication
-that there is a new router in the area that is hosting the desired service.
+最后，下图展示了用户端接收到指示着在此地区内有一个新的路由器正在提供所想要的服务的消息。
 
 ![client-discovers-service][client-discovers-service]
 
-**Figure:** Client discovers service
+**Figure:** 用户发现服务
 
-The client and service sides of the developing scenario both
-use methods and callbacks on their bus attachment object to
-make the requests to orchestrate the advertisement and discovery
-process. The service side implements bus objects to provide
-its service, and the client will expect to use a proxy object
-to provide an easy-to-use interface for communicating with
-the service. This proxy object will use an AllJoyn ProxyBusObject
-to orchestrate communication with the service and provide
-for the marshaling and unmarshaling of method parameters
-and return values.
+用户和服务两端的开发场景都用到各自主线附件对象上的方法和回叫信号，以便发出对广播及发现进程进行集群管理的请求。服务端实现主线对象以提供他的服务，用户端则期待着使用代理对象以提供能和服务端通信的简洁易用的接口。此代理对象将使用 AllJoyn ProxyBusObject 来集群管理与服务端的通信，并
+提供对方法参数序列化，反序列化，以及返回值的功能。
 
-Before remote methods can be called, a communication session
-must be formed to effectively join the separate bus segments.
-Advertisement and discovery are different from session establishment.
-One can receive an advertisement and take no action. It is
-only when an advertisement is received, and a client decides
-to take action to join a communication session, that the
-buses are logically joined into one. To accomplish this,
-a service must create a communication session endpoint and
-advertise its existence; and a client must receive that
-advertisement and request to join the implied session.
-The service must define a half-association before it advertises
-its service. Abstractly this will look something like the following:
+在远程方法可被调用之前，必须先建立一个通信会话，用来将分离的主线片段汇集起来。广播和发现与建立会话是不同的。一方可以对收到的广播不做出回应。仅当用户收到广播，并决定加入会话的时候，两条主线才会被逻辑地汇集到一起。为了这个目标，服务端必须创建通信会话终点并广播它的存在；客户端必须接收到此广播，并请求加入该会话。服务端在发出广播之前必须定义一个 half-association . 抽象地说，这个表达大概是这样的：
 
 ```c
 {reliable IP messages, org.alljoyn.samples.chat.a, 42}
 ```
 
-This indicates that it will talk to clients over a reliable
-message-based transport, has taken the well-known bus name
-indicated, and expects to be contacted at session port 42.
-This is the situation seen in the hypothetical bus instance figure.
+可以看出，与用户端的对话是用过一个可靠的基于消息的传输系统完成的，并已表明 well-known 主线名，并期望在42号会话端口被联络。这就是在  bus instance figure 中所见的场景。
 
-Assume that there is a bus attachment with the unique
-name `:2.1` wanting to connect from a physically remote
-routing node. It will provide its half association to the
-system and a new session ID will be assigned and communicated
-to both sides of the conversation:
+假设一个唯一标识为 `:2.1` 的主线附件试图从物理远端的路由点连接。他将会对系统提供 half association, 一个新的会话 ID 会被分配并传输到两方：
 
 ```c
 {reliable IP messages, org.alljoyn.samples.chat.a, :2.1, 1025}
 ```
 
-The new communication session will use a reliable messaging
-protocol implemented using the IP protocol stack which will
-exist between the bus attachment named `org.alljoyn.samples.chat.a`
-(the service) and the bus attachment named :2.1 (the client).
-The session ID used to describe the session is assigned by
-the system and is 1025 in this case.
+新生的通信会话将存在于名为`org.alljoyn.samples.chat.a` （服务端）的主线附件以及名为2.1 （用户端）的主线附件之间，使用由 IP 协议组实现的可
+靠的消息协议。用于描述会话的会话 ID 由系统分配，在此例子中为1025.
 
 As a result of establishing the end-to-end communication
 session, the AllJoyn system takes whatever actions are
