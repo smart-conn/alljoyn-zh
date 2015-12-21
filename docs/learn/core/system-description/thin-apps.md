@@ -231,7 +231,7 @@ for the AJTCL discovering and connecting with the AllJoyn router.
 
 ![img RN Discovery 1412][]
 
-**图:** 14.12 router discovery and connection
+**图:** 14.12 router discovery and connection 14.12 路由发现和连接
 
 The AJTCL supports both mDNS and legacy discovery mechanism. If the
 AJTCL minimum AJPV is lower than "10", the AJTCL can connect
@@ -239,7 +239,7 @@ to routers prior to the 14.06 release. In this case, the TCL
 generates and sends out both WHO-HAS and mDNS query messages
 for the BusName prefix. The schedule for sending these messages
 is described in [Discovery message schedule][discovery msg sched].
-AJTCL 同时支持 mDNS 和 以往的发现机制。如果 AJTCL 的最低 AJPV 小于 10，那么该 AJTCL 只能与 14.06 或更早的版本的路由建立连接。在这种情况下，TCL 会生成和发送 WHO-HAS 信号，同时也会发送 mDNS 信号查询 BusName 前缀。发送此类消息的详情，请参阅 [Discovery message schedule][discovery msg sched]。
+AJTCL 同时支持 mDNS 和以往的发现机制。如果 AJTCL 的最低 AJPV 小于 10，那么该 AJTCL 只能与 14.06 或更早的版本的路由建立连接。在这种情况下，TCL 会生成和发送 WHO-HAS 信号，同时也会发送 mDNS 信号查询 BusName 前缀。发送此类消息的详情，请参阅 [Discovery message schedule][discovery msg sched]。
 
 The discovery response (either an mDNS response or IS-AT message)
 is sent over unicast to the AJTCL by the AllJoyn router advertising
@@ -251,7 +251,7 @@ the version is less than the minimum required by the thin app.
 If both IS-AT and mDNS responses are received by AJTCL at the
 same time, the mDNS response is processed first. Responses received
 from the AllJoyn routers on the blacklist are ignored.
-Discovery response（无论 mDNS response 或是 IS-AT message）通过广告 BusNode Name 的 AllJoyn 路由通过单播的方式传送到 AJTCL。mDNS response 可能会包含一组键-值对，说明了发信 AllJoyn 路由的协议版本（在 14.12 版本中被加入），协议版本的键为 'ajpv'。ajpv 的值用于判断版本是否低于精简应用程序要求的最低版本，如果低于最低要求，那么就会忽略 discovery response。如果 AJTCL 同时收到 IS-AT 和 mDNS response， mDNS response 将被优先处理。通过 AllJoyn 路由收到的在黑名单上的 response 将被忽略。
+Discovery response（无论 mDNS response 或是 IS-AT message）通过广告 BusNode Name 的 AllJoyn 路由通过单播的方式传送到 AJTCL。mDNS response 可能会包含一组键－值对，说明了发信 AllJoyn 路由的协议版本（在 14.12 版本中被加入），协议版本的键为 'ajpv'。ajpv 的值用于判断版本是否低于精简应用程序要求的最低版本，如果低于最低要求，那么就会忽略 discovery response。如果 AJTCL 同时收到 IS-AT 和 mDNS response， mDNS response 将被优先处理。通过 AllJoyn 路由收到的在黑名单上的 response 将被忽略。
 
 在路由发现完成之后，其余的 AJTCL 逻辑与上述 [AJTCL-to-AllJoyn router connection][tcl-RN connect] 部分完全一致。
 
@@ -263,13 +263,13 @@ minimum protocol version the thin app requests; if the minimum
 version is less than 10 it will send both an mDNS query and a
 WHO-HAS message. The retry schedule applies to both types of
 discovery messages and is as follows:
-在发送 discovery 信息时，AJTCL 提供了重试策略。同时AJTCL也会根据精简应用程序要求的最低协议版本，选择性地发送 WHO-HAS 信息；当最低版本低于10，将会同时发送 mDNS 查询和 WHO-HAS 信息，并且重试策略同时支持这两者。具体策略如下：
+在发送 discovery 信息时，AJTCL 提供了重试策略。同时 AJTCL 也会根据精简应用程序要求的最低协议版本，选择性地发送 WHO-HAS 信息；当最低版本低于10，将会同时发送 mDNS 查询和 WHO-HAS 信息，并且重试策略同时支持这两者。具体策略如下：
 
 1. Send a burst of three discovery message(s) and pause 1.1 seconds. Repeat 10
 times. 发送一段三连 discovery 信息，随后间隔 1.1 秒。重复十次。 
-2. Wait 10.1 seconds, then send another burst of three messages. 等待10.1秒，在发送一段三连信息。
-3. Wait 20.1 seconds, then send another burst of three messages. 等待20.1秒，在发送一段三连信息。
-4. Wait 40.1 seconds, then send another burst of three messages. 等待40.1秒，在发送一段三连信息。
+2. Wait 10.1 seconds, then send another burst of three messages. 等待10.1秒，再发送一段三连信息。
+3. Wait 20.1 seconds, then send another burst of three messages. 等待20.1秒，再发送一段三连信息。
+4. Wait 40.1 seconds, then send another burst of three messages. 等待40.1秒，再发送一段三连信息。
 Repeat until the overall discovery timeout expires. 不断重复直到发现服务超时。
 
 The addition of the 100 msec on the wait intervals ensures that
@@ -332,7 +332,7 @@ The default size of the blacklist is 16 entries; the addition of
 a 17th router will over-write the first in the list (i.e.,
 the list is actually a circular buffer). The blacklist only
 persists until the thin app is restarted.
-将路由加入黑名单的明确标准有亮点。一是身份认证失败导致的不成功连接，二是协议版本低于精简应用程序要求的最低标准。黑名单的默认容量是 16；第 17 个路由将覆盖第 1 个(即黑名单列表是一个循环缓冲区)。黑名单会在精简应用程序重启时重置。
+将路由加入黑名单的明确标准有两点。一是身份认证失败导致的不成功连接；二是协议版本低于精简应用程序要求的最低标准。黑名单的默认容量是 16；第 17 个路由将覆盖第 1 个(即黑名单列表是一个循环缓冲区)。黑名单会在精简应用程序重启时重置。
 
 
 ### AJTCL and AllJoyn router compatibility AJTCL 和 AllJoyn 路由兼容性
@@ -408,48 +408,55 @@ and Next-Gen Name Service functions are supported. 服务的发现和广告：�
 can implement secure interfaces and also access secure
 interfaces on other AllJoyn providers.AJTCl 提供应用层认证。使得精简应用程序实现安全接口，并访问其它 AllJoyn 提供者的安全接口。
 * New authentication schemes are supported in the 14.06 release
-(see [App layer authentication][app-layer-auth]).
+(see [App layer authentication][app-layer-auth]). 14.06 版本(查阅 [App layer authentication][app-layer-auth])中支持新的身份验证方案
 
 Thin apps can also include existing AllJoyn service framework
 functionality by bundling thin app-specific libraries provided
 for these service frameworks.
-
-## App layer authentication
+通过绑定应用程序指定的资源库，应用程序也能够包含已有 AllJoyn 服务架构的功能。
+## App layer authentication 应用层认证
 
 The AJTCL provides support for app layer authentication for
 the thin app to implement and access secure AllJoyn services.
 App layer authentication schemes supported are different in
 release prior to the 14.06 release and starting from the 14.06
 release as described below.
+AJTCL 为精简应用程序提供了应用层认证，使其可以部署和访问安全 AllJoyn 服务。14.06版本之前的应用层认证会有所不同，下文重点介绍 14.06 版本和以后版本的认证方式。
 
 Prior to the 14.06 release, the AJTCL supports ALLJOYN _PIN_KEYX
 auth mechanism for app layer authentication. Also, SASL protocol
 is used for authentication.
+在 14.06 版本之前，AJTCL 支持应用层认证的 ALLJOYN _PIN_KEYX 验证机制。同时，也支持 SASL 协议认证。
 
 Starting from the 14.06 release, ALLJOYN _PIN_KEYX auth mechanism
 is removed from AJTCL. New Elliptic Curve Diffie-Hellman Ephemeral
 (ECDHE)-based auth mechanism were added to the AJTCL:
+自 14.06 版本起，AJTCL 移除了 ALLJOYN _PIN_KEYX 验证机制。加入了 New Elliptic Curve Diffie-Hellman Ephemeral
+(ECDHE)-based 验证机制。
 
 * ECDHE_NULL is an anonymous key agreement. There is no PIN or pass-phrase
-required.
+required.ECDHE_NULL 是匿名的密钥协商协议。不需要 PIN 或者密码短语。
 * ECDHE_PSK is a key agreement authenticated with a pre-shared
-key like a PIN, pass-phrase, or symmetric key.
+key like a PIN, pass-phrase, or symmetric key. ECDHE_PSK 是通过预共享密钥，如 PIN、密码短语或对称密钥验证的匿名的密钥协商协议。
 * ECDHE_ECDSA is a key agreement authenticated with an asymmetric
-key validated with an ECDSA signature.
+key validated with an ECDSA signature. ECDHE_ECDSA 是通过 ECDSA 签名生成的非对称密钥进行认证的的密钥协商协议。
 
 The use of SASL protocol for authentication is removed from the
 AJTCL in the 14.06 release. Instead, an AllJoyn-based protocol
 is used for app layer authentication.
+14.06 版本移除了 SASL 协议的认证方式，加入了一种基于 AllJoyn 的协议进行应用层认证。
 
-### Auth compatibility
+### Auth compatibility 认证兼容性
 
 A 14.06 thin app cannot interact with a 14.02 thin app over secure
 interfaces and vice versa because these apps support different types
 of auth mechanisms. These apps can still talk to each other over non-secure
 interfaces.
+14.06 版本的精简应用程序不能与 14.02 版本的精简应用程序通过安全接口进行互动，反之亦然，因为它们分别采用了不同的认证方式。但它们可以通过非安全接口进行互动。
 
 The following table shows the thin app compatibility matrix across the 14.02 and
 14.06 releases.
+下表展示了 14.02 和 14.06 版本的精简应用程序兼容性
 
 | 14.02 provider thin app | 14.06 consumer thin app |
 |---|---|
