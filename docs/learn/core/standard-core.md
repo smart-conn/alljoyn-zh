@@ -1,495 +1,201 @@
 # AllJoyn&trade; Standard Core
 
-## Overview
+## 概览
+AllJoyn 框架是一个开源操作系统，为强调移动性，安全性以及动态配置的分布式应用程序提供运行环境。AllJoyn 系统可处理异构分布式系统所固有的复杂 问题，包括可移动性介入后所带来的特殊问题。借此帮助，程序开发者可以专注于解决核心问题。
 
-The AllJoyn framework is an open-source software system that
-provides an environment for distributed applications running
-across different device classes with an emphasis on mobility,
-security, and dynamic configuration. The AllJoyn system handles
-the hard problems inherent in heterogeneous distributed systems
-and addresses the unique issues that arise when mobility enters
-the equation. This leaves application developers free to concentrate
-on the core problems of the application they are building.
+AllJoyn 框架是“平台无关”的，其设计初衷为尽最大可能独立于运行设备的操作系统，硬件及软件特性。AllJoyn 框架被设计应用于 Microsoft Windows, Li- nux, Android, iOS, OS X, 以及 OpenWRT 平台。
 
-The AllJoyn framework is "platform-neutral", meaning it was designed
-to be as independent as possible of the specifics of the operating
-system, hardware, and software of the device on which it is running.
-fact, the AllJoyn framework was developed to run on Microsoft Windows,
-Linux, Android, iOS, OS X, and OpenWRT.
+亲近性与移动性一值保留在 AllJoyn 框架的设计理念当中。在移动环境中，设备会不停地进入，离开其他设备的邻域，与此同时，基础网络容量也会发生变化。
 
-The AllJoyn framework is designed with the concept of proximity and
-mobility always in mind. In a mobile environment, devices will constantly
-be entering and leaving the proximity of other devices, and underlying
-network capacities can be changing as well.
+AllJoyn SDKs 可在以下网址获得 (http://www.allseenalliance.org).
 
-The AllJoyn SDKs are available at (http://www.allseenalliance.org).
+可用 AllJoyn 框架开发的应用程序类别仅仅受限于开发者的想像力。例如社交网络的拓展。用户可以建立个人简介并定义喜好和兴趣。在进入一个位置时，支持 AllJoyn 的设备将会立即发现周边有着共同兴趣的同好，并与其建立通信网络以实现通信及信息交换。
 
-The types of applications that will use the AllJoyn framework are limited
-only by the imagination of developers. Extending social networking is one
-example. A user could define a profile with likes and interests.
-Upon entering a location, the AllJoyn-enabled handset would immediately
-discover other nearby peers with similar interests, create a communication
-network between the peer devices, allow them to communicate, and exchange information.
+现如今大多数设备都已集成 Wi-Fi，如此，当两名用户步入带有 Wi-Fi 热点的住宅或办公室时，他们的设备可连接到接触网络接入点，并公 开利用附加的网络容量。此外，这些设备还可以在其可见域内（取决于Wi-Fi的覆盖面积）对其他设备进行定位，同时可选择发现并使用其他 设备提供的各种服务。进一步，借助混合拓补结构，可以将一个应用了 AllJoyn Thin库的设备定义为应用蓝牙的传输机，由此便可与其他连 接到 Wi-Fi 的设备的应用程序进行交互。
 
-The majority of handsets today have Wi-Fi integrated, so if two
-users walk into a home or office that has a Wi-Fi hotspot, their
-devices can connect to the underlying access point and transparently
-take advantage of the additional network capacity. Additionally,
-their devices can locate other devices in the proximity (defined
-by the Wi-Fi coverage footprint), can discover additional services
-on the other devices, and use those services, if desired. Further,
-it is possible to leverage a mixed topology connection such that a
-device taking advantage of the AllJoyn Thin LIbrary can be designated
-to use Bluetooth as a transport. As such, once connected to a device
-that runs the AllJoyn framework, the device can interact with the
-applications on the Wi-Fi devices.
+另外一个例子是在实时多玩家游戏上的应用。例如，一款多玩家游戏可以运行在诸如笔记本电脑，平板电脑以及手持设备上，基础网络技术（例如 Wi-Fi）也不尽相同。这些所有的基础设施细节管理都可以经由 AllJoyn 架构处理，这使得游戏作者可以将全部精力投入游戏设计与 与实现上，而不必考虑点对点网络的复杂度。
 
-Enabling real-time multi-player gaming is another example of how the
-AllJoyn framework might be used. For example, a multi-user game
-can be accomplished using different device classes such as laptops,
-tablets, and handsets; and different underlying network technologies
-such as Wi-Fi. The details of the infrastructure management are all
-handled by the AllJoyn framework, allowing the game author to focus
-on the design and implementation of the game, rather than dealing
-with the complexities of the peer-to-peer networking.
+作为 AllJoyn 生态系统的延伸， 还有很多应用程序创意。例如：
 
-As the AllJoyn ecosystem expands, one can imagine any number of
-applications. For example:
+* 创建一个音乐播放列表，将歌曲共享到支持 AllJoyn 的车载音响系统中，或者将歌曲储存到家庭音响中 （受到数字版权保护）。
+* 在活动或旅程结束后的的返程路上，将照片或其他媒体文件同步至支持 AllJoyn 的电视中
+* 远程控制家用电器，例如电视机，数字监控系统，游戏机等。
+* 在局域网内与笔记本电脑和台式机互动并分享内容。
+* 在企业或教育场景中，完成同事或学生之间项目合作。
+* 提供适地性服务，例如发放优惠券或 vcards. 
 
-* Create a playlist consisting of music, and stream the songs
-to an AllJoyn-enabled car stereo system, or store them on a
-home stereo (subject to digital rights management)
-* Sync recent photos or other media to an AllJoyn-enabled
-digital picture frame or television upon returning home from
-an event or trip
-* Control home appliances such as televisions, DVRs, or game consoles
-* Interact and share content with laptops and desktop
-computers in the area
-* Engage in project collaboration between colleagues and students
-in enterprise and educational settings
-* Provide proximity-based services like distributing coupons or vcards
 
-## Benefits of the AllJoyn Framework
+## AllJoyn 架构的优势
 
-As mentioned, the AllJoyn framework is a platform-neutral system
-that is designed to simplify proximity networking across heterogeneous
-distributed mobile systems.
+之前已提及，AllJoyn 架构是一个平台无关的系统，旨在简化分布在异构分布式系统上的邻近网络。
 
-Heterogeneous in this case means not only different devices, but
-different kinds of devices (e.g., PCs, handsets, tablets, consumer
-electronics devices) running on different operating  systems,
-using different communication technologies.
+异构在这里不仅指代不同设备，还指运行在不同操作系统上，应用不同通信机制的不同种类的设备（例如，个人电脑，手持设备，平板电脑，消费类电子产品）。
 
-### Open source
+### 开源
+AllJoyn 架构一贯是开源开发。所有的 AllJoyn 代码库都开放检视并欢迎开发者进行补充和完善。如果 AllJoyn 架构缺失某一功能，你可 以添加。如果你在应用 AllJoyn 框架时遇到了困难或者技术问题，开源社区中的其他参与者会及时提供善意的帮助和指导。AllJoyn 的代码 库可以在以下网址获得 (http://www.allseenalliance.org).
 
-The AllJoyn framework is being developed as an open source project.
-This means that all of the AllJoyn codebase is available for
-inspection, and developers are encouraged to contribute
-additions and enhancements. If the AllJoyn framework is
-missing a feature, you can contribute. If you run into a snag
-using the AllJoyn framework, or have a technical question,
-other participants in the open source community are ready
-and willing to provide help and guidance. The AllJoyn codebase
-is available at (http://www.allseenalliance.org).
+### 操作系统无关性
 
-### Operating system independence
+AllJoyn 框架所提供的抽象层使其代码和应用程序可以在多种操作系统上运行。截止到本协议编写时，AllJoyn 框架已支持大多数 Linux 发行版包括 Ubuntu，并可以运行在 Android 2.3 （姜饼） 以及后续智能手机和平板电脑上。AllJoyn 框架代码也可运行在众多流行的微软 操作系统版本上，包括 Windows XP, Windows 7, Windows RT, 和 Windows 8. 此外，AllJoyn 框架代码可运行在 Apple 操作系统 iOS 以及 OS X上，以及诸如 OpenWRT 的嵌入式操作系统。
 
-The AllJoyn framework provides an abstraction layer allowing
-AllJoyn framework code and its applications to run on multiple
-OS platforms. As of this writing, the AllJoyn framework supports
-most standard Linux distributions including Ubuntu, and runs on
-Android 2.3 (Gingerbread) and later smartphones and tablets. The
-AllJoyn framework code also runs and is tested and validated on
-commonly available versions of the Microsoft Windows operating
-system including Windows XP, Windows 7, Windows RT, and Windows 8.
-Additionally, the AllJoyn framework code runs on Apple operating
-systems iOS and OS X, and on embedded operating systems such as OpenWRT.
+### 语言无关性
 
-### Language independence
+开发者目前使用 C++,Java, C#, JavaScript 以及 Objective-C 语言来创建应用程序。
 
-Currently, developers may create applications using C++,Java, C#,
-JavaScript, and Objective-C.
+### 物理网络及协议无关性
 
-### Physical network and protocol independence
+目前有许多可供联网设备使用的技术。AllJoyn 框架提供的抽象层定义了接入到基础网络站的清晰接口，使得主管软件工程师添加新的网络 实现工具变得相对容易。
 
-There are many technologies available to networked devices.
-The AllJoyn framework provides an abstraction layer that
-defines clean interfaces to the underlying network stacks
-and makes it relatively easy for a competent software engineer
-to add new networking implementations.
+例如，截止本协议编写时，Wi-Fi 联盟已经发布了支持点对点连接的 Wi-Fi Direct 技术的参数明细。Wi-Fi Direct 的网络模块正在密集的 被开发，很明显他会将 Wi-Fi Direct 以及预先关联的发现机制加入到可选网络选项中，供 AllJoyn 的开发者选择。
 
-For example, as of this writing, the Wi-Fi Alliance has recently
-released a specification for Wi-Fi Direct, which will allow
-for point-to-point Wi-Fi connectivity. A networking module for
-Wi-Fi Direct is actively being developed that will transparently
-add Wi-Fi Direct and its pre-association discovery mechanisms
-to the available networking options for AllJoyn developers.
+### 动态配置
 
-### Dynamic configuration
+移动设备在其寿命中常会经过多重地点，网络关联建立后又断开。这意味着 IP（Internet Protocal）地址会发生变化，网络接口会失效 ，服务也会不稳定。
 
-Often, as a mobile device makes its way through the various
-locations it encounters during its lifetime, associations with
-networks may come and go. This means that IP (Internet Protocol)
-addresses may change, network interfaces may become unusable,
-and services may be transitory.
+当旧服务失效以及新服务出现时，AllJoyn 框架会发出提醒，如有必要也将建立新的关联。AllJoyn 框架已做好成为Wi-Fi Hotspot 2.0 （使移动电话，移动基站与 Wi-Fi 热点透明连接的技术）应用层的准备。
 
-The AllJoyn framework notices when old services are lost and
-new services appear, and forms new associations when required.
-The AllJoyn framework is primed and ready as an application
-layer for Wi-Fi Hotspot 2.0 - a technology that aims to bring
-the roaming transparency of cell phones and cell towers to Wi-Fi hotspots.
+### 广告服务及发现
+无论何时，设备的通信一定伴随着服务的推广与发现。在过去的静态网时代，设备间的通信由人工管理员做出明确的分配实现。现今时代，零配置网络的概念已十分流行，特别是借助于 Apple Bonjour 以及 Microsoft Universal Plug and Play 的帮助。
 
-### Service advertisement and discovery
+同时，我们也见到了如 Bluetooth Service Discovery Protocol 的已经存在的发现机制，以及正在发展的如 Wi-Fi Direct P2P 的发现机
+制。AllJoyn 架构提供服务推广及发现的虚拟化，以简化定位及使用服务的过程。
 
-Whenever devices need to communicate, there must be some form
-of service advertisement and discovery. In the old days of
-static networks, human administrators made explicit arrangements
-to enable devices to communicate. More recently, the concepts of
-zero configuration networks have been popularized, especially
-with Apple Bonjour, and Microsoft Universal Plug and Play.
-We also see existing technology-specific discovery mechanisms
-available such the Bluetooth Service Discovery Protocol and
-emerging mechanisms such as the Wi-Fi Direct P2P Discovery
-specification. The AllJoyn framework provides a service
-advertisement and discovery abstraction that simplifies the
-process of locating and consuming services.
+### 安全性
 
-### Security
+在分布式应用程序中，安全性的自然模型是应用程序对应用程序的。不幸的事，在很多情况下网络安全模型并不适用于此模型。例如，蓝牙协议在完成设备配对时，会将双方设备中的所有应用程序全部授权。但如果双方设备比蓝牙耳机更复杂，如两台笔记本电脑通过蓝牙相连，这种授权模式将会变得不理想，转而需要更精细的粒度。AllJoyn 框架可对诸如此类强调应用对应用通信的复杂安全模型提供广泛支持。
 
-The natural model for security in distributed applications is
-application-to-application. Unfortunately, in many cases, the
-network security model does not match this natural arrangement.
-For example, the Bluetooth protocol requires pairing between
-devices. Using this approach, once devices are paired, all
-applications on both devices are authorized. This may not be
-desirable when considering something more capable than a Bluetooth
-headset. For example, if two laptops are connected over Bluetooth,
-a much finer granularity is necessary. The AllJoyn framework is
-designed to provide extensive support for complex security models
-such as this, with an emphasis on application-to-application communication.
+### 对象模型以及远程方法调用
 
-### Object model and remote method invocation
+AllJoyn 框架应用了简单明了的对象模型以及远程方法调用（ RMI ）机制。AllJoyn 模式重新实现并扩展了 D-Bus 标准定义的有线协议，以实现对分布式设备的支持。
 
-The AllJoyn framework utilizes an easy-to-understand object model
-and Remote Method Invocation (RMI) mechanism. The AllJoyn model
-re-implements the wire protocol set forth by the D-Bus specification
-and extends the D-Bus wire protocol to support distributed devices.
 
-### Software componentry
+### 软件元件
 
-Along with a standard object model and wire protocol comes the
-ability to standardize various interfaces into components.
-In much the same way that a Java Interface declaration provides
-a specification to interact with a local instantiation of an
-implementation, the AllJoyn object model provides a language-independent
-specification to interact with a remote implementation.
+伴随着标准化对象模型和有线协议，随之而来是将各类接口标准化为元件的能力。与 Java 接口声明机制所提供的与本地实例交互功能的实 现规范类似，AllJoyn 的对象模型提供了与编程语言无关的，与远程实现交互的规范。
 
-Using a specification, many interface implementations can
-be considered, thereby enabling standard definitions for
-application communication. This is the enabling technology
-for software componentry. Software components are at the
-heart of many modern systems, and are especially visible
-in systems such as Android, which defines four primary
-component types as the only way to participate in the Android
-Application Framework; or in Microsoft systems which use
-descendants of the Component Object Model (COM) system.
+有了成型的规范，就可以考虑众多接口的实现，从而使应用程序通信的标准建立变得可行。这项技术对软件组件很有帮助。软件部分是许多现代系统的中心，在类似 Android 的系统中则更为明显。在 Android 中定义了4种主要成分类型，作为仅有的能接入 Android Application Framework 的方式，同理在微软系统中，Component Object Model （ COM ）的继任版本被用作此功能。
 
-We expect that a rich "sea" of interface definitions will
-emerge in order to enable the scenarios described in [Overview][overview].
-The AllJoyn project expects to work with users to define and
-publish standard interfaces and support the sharing of implementations.
+为了实现在 [概述][overview]中所描绘的场景，我们期盼接口定义将会出现丰富的“海洋”。 AllJoyn 项目期望能与众多用户一起完成接口 的定义与标准化，并协助实现方法的共享。
 
-## Conceptual Overview
+## 概念性概述
 
-The AllJoyn framework contains a number of abstractions
-used to help understand and relate the various pieces.
-There is only a small number of key abstractions that one
-must know in order to understand AllJoyn-based systems.
+AllJoyn 架构包含一系列可供使用的抽象层以便于理解并将子模块关联起来。其中只有很小部分的抽象层是理解基于 AllJoyn 的系统所必须的。
 
-This section provides a high-level view of the AllJoyn framework
-to provide a foundation for follow-on documents such as the
-detailed API documentation.
+这一章提供了一个 AllJoyn 架构高层次的视角为之后的文档如 API 详解提供必要的基础。
 
-### Remote Method Invocation
+### 远程方法调用
 
-Distributed systems are groups of autonomous computers
-communicating over some form of network in order to achieve
-a common goal. Consider the ability of a program running in
-one address space on one machine to call a procedure located
-in another address space on a physically separate machine as
-if it were local. This is usually accomplished through
-Remote Procedure Call (RPC) or, if object-oriented concepts
-are in play, RMI or Remote Invocation (RI).
+分布式系统是以完成同一目标为目的的使用一定形式的网络连接起来的独立计算机群，因此需要有一台机器上的一定地址空间下的某个程序以类似于本地调用的方式使用位于另一台物理分离的机器上的一个地址空间下的进程的能力。这通常是通过远程函数调用（RPC）或者以面向对象的方式来说称作远程方法调用（RMI）或远程调用（RI）的方式来完成。
 
-The basic model in an RPC exchange involves a *client*, which
-is the caller of the RPC, and a server (called a service in
-the AllJoyn model), which actually executes the desired remote
-procedure. The caller executes a client stub that looks just
-like a local procedure on the local system. The client stub
-packages up the parameters of its procedure (called marshaling
-or serializing the parameters) into some form of message and
-then calls in to the RPC system to arrange delivery of the
-message over some standard transport mechanism such as the
-Transmission Control Protocol (TCP). At the remote machine,
-there is a corresponding RPC system running, which unmarshals
-(deserializes) the parameters and delivers the message to a
-server stub that arranges to execute the desired procedure.
-If the called procedure needs to return any information, a
-similar process is used to convey the return values back to
-the client stub, which in turn returns them to the original caller.
+RPC 的模型通常需要一个客户端也就是 RPC 的调用者和一个服务器端（AllJoyn模型中称为服务器）也就是实际上执行所期望的远程函数的 程序。调用者执行一个看上去和本地系统上的函数一样的客户端的存根，它会将函数的参数进行打包（称为对参数的编组或串行化）为某个格式的消息然后发送给 RPC 系统将其通过如传输控制协议（TCP）一类的标准机 制送达服务端。在远端机器上会有相应的 RPC 系统在运行 ，参数将会被反编组（反序列化）并将消息发送给服务端存根，它会安排执行期望的函数。如果被调用的函数需要返回任何信息，会使用相似的过程将返回值转运给客户端存根并将其发送给原始的调用者。
 
-Note that it is not required that a given process only implement
-a client personality or a service personality. If two or more
-processes implement the same client and service aspects,
-they are considered peers. In many cases, AllJoyn applications
-will implement similar functionality and be considered peers.
-The AllJoyn framework supports both classic client and service
-functions and also peer-to-peer networking.
+
+注意这里并没有要求一个客户端或服务端功能只能在一个进程中实现。如果两个或更多线程实现同一个客户端或服务端功能的某个方面，这些线程被看成端点。在很多情况下 AllJoyn 应用会实现类似的功能，这时它们也会被作为端点来看待。AllJoyn 架构能够支持经典的客户端 和服务器端的功能，同时也能支持端到端的网络功能。
 
 ### AllJoyn bus
-
-The most basic abstraction of the AllJoyn system is the
-AllJoyn bus. It provides a fast, lightweight way to move marshaled
-messages around the distributed system. One can view the AllJoyn bus
-as a kind of "freeway" over which those messages flow.
-The following figure shows what an instance of an AllJoyn bus
-on a single device might look like, conceptually.
+AllJoyn 系统中最基本的抽象概念就是 AllJoyn 总线。它提供了一中快速轻量的方法在分布式系统中传输编组过的消息。可以将 AllJoyn 总线看成是一种消息流的“高速公路”。下图从概念上展示了一个 AllJoyn 总线在同一个设备上的实例。
 
 ![prototypical-alljoyn-bus][prototypical-alljoyn-bus]
 
 **Figure:** Prototypical AllJoyn bus
 
-Points about the prototypical AllJoyn bus are detailed below.
+AllJoyn 总线原理上讲包含一下几点：
+ • 图中较粗的黑色横线表示总线自身，竖线可以被理解为流经总线的消息流的源头和/或目的地“出口”。
+ • 与总线的连接用六边形表示。和高速公路上的出口通常会被编号类似，每一个连接会被赋予一个唯一的名字。图中使用了简化的形式来命名连接用以说明。
+ • 在很多情况下到总线的连接可以被认为是和线程共驻内存的。因此，唯一连接名:1.1可能被赋予给了一个运行着某个应用实例的线程所在的连接，而唯一连接名:1.4可能被赋予给了另一个运行着某个应用实例的线程所在的连接。AllJoyn 总线的目标就是使两个应用可以在不 需要处理底层具体的交换机制的情况下进行通信。一端的连接可以被认为是客户端存根而另一端则完成所有服务端存根所要求的所有任务。
 
-* The bus itself is shown as the thick horizontal dark line.
-The vertical lines can be thought of as "exits" and are the
-sources and/or destinations of messages that are flowing over the bus.
-* The connections to the bus are depicted as hexagons. Just as
-the exits on a freeway are typically assigned numbers, each
-connection is assigned a unique connection name. A simplified
-form of the connection name is used here for clarity.
-* In many cases, the connections to the bus can be thought of
-as co-resident with processes. Therefore, the unique connection name
-`:1.1` may be assigned to a connection in a process running some
-instance of an application, and the unique connection name
-`:1.4` may be assigned to a connection in a process running an
-instance of some other application. The goal of the AllJoyn
-bus is to allow the two applications to communicate without
-having to deal with the details of the underlying mechanisms.
-One of the connections can be thought of as the client stub,
-and the other side can fulfill the duties of the service stub.
-
-The prototypical AllJoyn bus figure shows an instance of an AllJoyn bus and
-illustrates how a software bus can provide interprocess communication
-between components attached to the bus. The AllJoyn bus is
-typically extended across devices as shown in the following figure.
-A communication link between the segment of the logical bus
-residing on the Smartphone and the components residing on the
-Linux host is formed when required by the components.
+原始的 AllJoyn 总线图表达了一个 AllJoyz 总线的案例，并描绘了软件总线为接驳在其上的不同组件提供进程间通信的具体实现方法。一
+般情况下， AllJoyn 总线会被延伸到下图所示的设备中。当组件需要时，一条通信链路会建立在分布在智能手机上的逻辑总线片段和分布在 Linux 主机上的组件之间。
 
 ![device-device-comm][device-device-comm]
 
-**Figure:** Device-to-device communication handled by the AllJoyn framework
+**Figure:** 由 AllJoyn 框架操作的设备与设备间通信
 
-The management of this communication link is handled by the
-AllJoyn system and may be formed using a number of underlying
-technologies such as Wi-Fi or Wi-Fi Direct. There may be multiple
-devices involved in hosting the AllJoyn bus, but this is
-transparent to the users of the distributed bus. To a component
-on the bus, a distributed AllJoyn system looks like a bus
-that is local to the device.
+此通信链路由 AllJoyn 系统管理，可以由底层技术实现，诸如 Wi-Fi 或 Wi-Fi Direct. 在 AllJoyn 主线上作为主机运行的设备可以有多
+个，但对于在分布式主线上的用户这些主机是透明的。从主线的一个组件的角度看，分布式 AllJoyn 系统就像是在设备本地的一条主线。
 
-The following figure shows how the distributed bus may appear
-to a user of the bus. A component (for example, the Smartphone
-connection labeled `:1.1`) can make a procedure call to the
-component labeled `:1.7` on the Linux host without having to
-worry about the location of that component.
+下图展示了分布式主线在用户角度可能呈现的样子。组件（例如标签为 `:1.1`的智能手机连接）可以对标签为`:1.7`的 Linux 主机进行远
+程方法调用，而无需担心该组件所处的位置。
 
 ![dist-bus-local-bus][dist-bus-local-bus]
 
 **Figure:** A distributed AllJoyn bus appears as a local bus
 
-### Bus router
+### 总线路由
 
-The device-to-device communication figure illustrates that
-the logical distributed bus is actually split up into a number
-of segments, each running on a different device. The AllJoyn
-functionality that implements these logical bus segments is
-called an AllJoyn router.
+就像设备对设备通信图描绘的那样，逻辑分布式总线会被分为数个片段，每一片都运行在不同的设备上。在 AllJoyn 中，实现对逻辑总线分
+割功能的设备被称作 AllJoyn 路由。
 
-The term daemon is commonly used in Unix-derived systems to
-describe programs that run to provide some needed functionality
-to the computer system. On a Linux system instead of saying daemon
-we call it the standalone router. In Windows systems, the term
-service is more typically used, however we refer to it as the AllJoyn router.
+守护进程在由 Unix 衍生出的系统中很常见，他被用于描述为电脑系统提供重要功能性的一些程序。在 Linux 系统中我们将 daemon 称为
+独立路由。在 Windows 系统中更倾向于用“服务”这个词，但我们用 AllJoyn 路由来描述他。
 
-![bubble-diagram-bus][bubble-diagram-bus]
+![总线泡泡图][bubble-diagram-bus]
 
-**Figure:** Relating bubble diagrams to the bus
+**Figure:** 相关的总线泡泡图
 
-In order to visualize the AllJoyn router, it is useful to create
-a bubble diagram. Consider two AllJoyn bus segments, one residing
-on a Smartphone and one on a Linux Host, as shown in previous figure.
-The connections to the bus are labeled as clients (C) and
-services (S) using the sense of clients and services in the RMI model.
-The AllJoyn router that implements the core of the distributed
-bus is labeled (D). The components of the previous figure are typically
-translated into the illustration shown in the folliwing figure.
+创建泡泡图可以使 AllJoyn 路由可视化。如之前的图所示，两个 AllJoyn 总线片段分别位于智能手机和 Linux 主机上。我们用户（ C ）以及服务（ S ）来标注到总线的连接，这里用到了 RMI 中 的用户／服务理念模型。实现核心分布式总线功能的 AllJoyn 路由被标记
+为 （ D ）。图中的组件被转换成下图中的图标。
 
-![alljoyn-bubble-diagram][alljoyn-bubble-diagram]
+![alljoyn 泡泡图][alljoyn-bubble-diagram]
 
-**Figure:** AllJoyn bubble diagrams
+**Figure:** AllJoyn 泡泡图
 
-The bubbles can be viewed as computer processes running on a
-distributed system. The two client (C) and the service (S)
-processes on the left are running on the Smartphone. These three
-processes communicate with an AllJoyn router running on the Smartphone
-which implements the local segment of the distributed AllJoyn bus.
-On the right side, there is a router which implements the local
-segment of the AllJoyn bus on the Linux Host.
+图中的泡泡可被看作是运行在分布式系统上的电脑进程。左边的两个用户（ C ）和服务（ S ）进程运行在智能手机上。位于右侧的路由 器用于实现在 Linux 主机上的 AllJoyn 总线的本地片段。
 
-These two routing nodes coordinate the message flow across the
-logical bus, which appears as a single entity to the connections,
-as shown in the distributed AllJoyn bus figure. Similar to the configuration on the Smartphone,
-there are two service components and a client component on the Linux host.
+如分布式 AllJoyn 总线图所示，这两个路由点协调着跨越逻辑总线的消息流，呈现到连接上的则是一个整体。与智能手机端的配置相同，在 Linux 主机上同样设有两个服务组件和一个用户组件。
 
-In this configuration, client component C1 can make remote method
-calls to service component S1 as if it were a local object.
-Parameters are marshaled at the source and routed off of the
-local bus segment by the router residing on the Smartphone.
-The marshaled parameters are sent over the network link
-(transparently from the perspective of the client) to the
-routing node on the Linux host. The AllJoyn router running on
-the Linux host determines that the destination is S1 and arranges
-to have the parameters unmarshaled and the remote method invoked
-on the service. If return values are expected, the process is
-reversed to communicate the return values back to the client.
 
-Since the standalone routers are running in a background process
-and the clients and services are running in separate processes,
-there must be a "representative" of the routers in each of those
-separate processes. The AllJoyn framework calls these
-representatives bus attachments.
+在这种配置中，用户组件 C1 可以对服务组件 S1 进行远程方法调用，就像操作本地对象那样一样。序列化的参数由源头被运行在智能手机上
+的路由器传送出本地总线片段。经过网络链路（对用户透明）发送到 Linux 主机的路由点。Linux 主机上的 AllJoyn 路由识别出参数目的地
+为 S1，随后将参数解序列化并执行远程方法调用。如果需要返回值，此进程可被反转，将返回值送回客户端。
 
-### Bus attachments
+由于独立路由运行在后台进程中，不同于用户与服务所在的进程，在每一个进程中需要有一个路由“代表”。在 AllJoyn 框架中这些代表被称
+为总线附件。
 
-Every connection to the AllJoyn bus is mediated by a specific
-AllJoyn component called a bus attachment. A bus attachment lives
-in each process that has a need to connect to the AllJoyn software bus.
 
-An analogy is often drawn between hardware and software when
-discussing software components. One can think of a local segment
-of a distributed AllJoyn bus in much the same way as one thinks of
-the hardware backplane bus in a desktop computer. The hardware bus
-itself moves electronic messages and has attachment points called
-connectors into which one plugs cards. The analogous function of
-the connector in the AllJoyn framework is the bus attachment.
+### 总线附件
 
-An AllJoyn bus attachment is a local language-specific object that
-represents the distributed AllJoyn bus to a client, service, or peer.
-For example, there is an implementation of the bus attachment
-functionality provided for users of the C++ language, and there
-is an implementation of the same bus attachment functionality
-provided for users of the Java language. As the AllJoyn framework
-adds language bindings, more of these language-specific implementations
-will become available.
+每一个到 AllJoyn 总线的连接都会经过特定的 AllJoyn 组件，这个组件被称作总线附件。总线附件存在于每一个需要连接到 AllJoyn 软件
+总线的进程当中。
 
-### Bus methods bus properties and bus signals
+当讨论软件组件时，常会在软件和硬件之间做一个类比。分布式 AllJoyn 总线上的本地片段就像是台式机上的硬件背板总线。硬件总线可传
+送电子信号，与其他卡片有被称为连接体的接驳点。类比于硬件，AllJoyn 框架中的总线附件就像硬件中的连接体。
 
-The AllJoyn framework is fundamentally an object-oriented system.
-In object-oriented systems, one speaks of invoking methods on objects
-(thus the term Remote Method Invocation when speaking of distributed
-systems). Objects in the object-oriented programming sense have members.
-Classically, these are object methods or properties, which are known
-as BusMethods and BusProperties in the AllJoyn framework. The AllJoyn
-framework also has the concept of a BusSignal, which is an asynchronous
-notification of some event or state change in an object.
+AllJoyn 总线附件是一个已定义语言的对象，对于客户端，服务或者一个点，他代表着分布式 AllJoyn 总线。例如，C++ 语言中为用户提供
+了总线附件的一种实现方法，在 Java 中则有另一种实现方法来实现同一总线附件。由于 AllJoyn 框架添加了语言联编，更多已定义语言的 实现方法将会出现。
 
-In order to transparently arrange for communication between clients,
-services, and peers, there must be some specification of the parameter
-ordering for bus methods and bus signals, and some form of type information
-for bus properties. In computer science, the description or definition of
-the types of the inputs and outputs of a method or signal is called the
-type signature.
+### 总线方法，总线属性及总线信号
 
-Type signatures are defined by character strings. Type signatures can
-describe character strings, all of the basic number types available
-in most programming languages, and composite types such as arrays and
-structures built up from these basic types. The specific assignment
-and use of type signatures is beyond the scope of this introduction,
-but the type signature of a bus method, signal, or property conveys
-to the underlying AllJoyn system how to convert the passed parameters
-and return values to and from the marshaled representation over the bus.
+AllJoyn 框架是一个面向对象的系统。在面向对象的系统中，总会提及调用对象上的方法 （因此，在提及分布式系统时也常会提及远程方法
+调用）。在面向对象编程理念中，对象有一系列成员。这些对象方法或属性，在 AllJoyn 框架中被称为总线方法和总线属性。AllJoyn 框架
+同时还有总线信号的概念，作为在对象中一些项目或状态变化的异步提醒。
 
-### Bus interfaces
+为了做到客户，服务与点之间的通信安排透明化，调用总线方法和总线信号的参数一定要有规范，同时也需要对总线属性定义一些种类信息。在计算机科学中，调用方法或信号的输入和输出的类型被称为类型签名。
 
-In most object-oriented programming systems, collections of methods
-or properties are composed into groups that have some inherent
-common relationship. A unified declaration of this collection
-of functions is called an interface. The interface serves as a
-contract between an entity implementing the interface specification
-and the outside world. As such, interfaces are candidates for
-standardization by appropriate standards bodies. Specifications
-for numerous interfaces for services ranging from telephony to
-media player control can be found on various web sites. Interfaces
-specified this way are described in XML as per the D-Bus specification.
+类型签名由字符串定义。同时类型签名可以描述字符串，以及所有主流编程语言中的数据类型和诸如数组，结构体的复合类型。类型签名的具体任务及使用已超出了此篇简介的介绍范围。总的来说，总线方法，信号或属性的类型签名可以告知底层 AllJoyn 系统如何将传输参数和返 回值从已序列化的表达方式中转换过来。
 
-An interface definition collects a group of bus methods, bus signals,
-and bus properties along with their associated type signatures into
-a named group. In practice, interfaces are implemented by client,
-service, or peer processes. If a given named interface is
-implemented, there is an implicit contract between the implementation
-and the outside world that the interface supports all of the
-bus methods, bus signals, and bus properties of the interface.
+### 总线接口
 
-Interface names typically take the form of a reversed domain name.
-For example, there are a number of standard interfaces that
-the AllJoyn framework implements. One of the AllJoyn standard
-interfaces is the `org.alljoyn.Bus` interface which routers
-implement and which provides some of the basic functionality
-for bus attachments.
+在大多数面向对象系统当中，有内在共性的方法集和属性集会被编入小组。这些功能组的统一描述被称作接口。接口是一个在实现接口规范的
+实体和外界世界之间的契约。依此，接口是通过合适的标准机构的标准化的候选人。各类服务（从电话到媒体播放控制）的接口的规范可以在网站上找到。根据 D-Bus 规范，这些接口由 XML 描述。
 
-It is worth noting that the interface name is simply a string
-in a relatively free-form namespace and that other namespaces
-may have a similar look. The interface name string serves a
-specific function that should not be confused with other similar
-strings, in particular bus names. For example, `org.alljoyn.sample.chat`
-may be a bus name which is the constant, unchanging name that
-a client will search for. It may also be the case that
-`org.alljoyn.sample.chat` is the interface name that defines
-the methods, signals and properties available in a bus object
-associated with a bus attachment of the specified bus name.
-The existence of an interface with the given interface name
-is implied by the existence  of the bus name; however, they
-are two completely different things that can sometimes look
-exactly the same.
+一个接口定义将一组主线方法，主线信号和主线属性，以及他们对应的类型签名集成到一个已命名的组中。在实际操作中，接口通常由客户，服务或者点的进程实现。当已命名的接口被实现后，在实现方和外界世界之间将生成一个内含的契约，并将支持所有该接口的总线方法，总线信号及总线属性。
 
-### Bus objects and object paths
+接口名通常取用反转的域名。例如，一个 AllJoyn 的标准接口是`org.alljoyn.Bus`接口，由路由器创建，并为总线附件提供一些基础服务。
 
-The bus interface provides a standard way to declare an
-interface that works across the distributed system. The bus
-object provides the scaffolding into which an implementation
-of a given interface specification may be placed. Bus objects
-live in bus attachments and serve as endpoints of communication.
+由任意命名空间的字符串创建接口名称是不可取的。接口名称字符串为一个特定的方法服务，不可以与其他相似的字符串相混淆，尤其是主线名称。例如，`org.alljoyn.sample.chat` 可以是一个恒定不变的可以由用户搜索到的主线名称。同时也可以是一个在总线对象中定义了与已定义了总线名称的总线附件相关的，可使用的方法，信号及属性的名字。被赋予名称的接口的存在暗含在主线名称的存在当中，虽然他们有时看起来完全相同，但他们是完全不同的两类。
 
-Since there may be multiple implementations of a specific
-interface in any particular bus attachment, there must be
-additional structure to differentiate these interface implementations.
-This is provided by an object path.
 
-Just as an interface name is a string that lives in an interface
-namespace, the object path lives in a namespace. The namespace
-is structured as a tree, and the model for thinking about
-paths is a directory tree in a filesystem. In fact, the path
-separator in an object path is the slash character (/), just
-as in a Unix filesystem. Since bus objects are implementations
-of bus interfaces, object paths might follow the naming
-convention of the corresponding interface. In the case of an
-interface defining a disk controller interface (for example,
-`org.freedesktop.DeviceKit.Disks`), one could imagine a case
-where multiple implementations of this interface were described
-by the following object paths corresponding to an implementation
-of the interface for two separate physical disks in a system:
+### 总线对象和总线路径
+
+总线接口为工作在分布式系统上的接口的声明提供了一个标准化的方式。总线对象为实现给定规范的接口提供了脚手架。总线对象存在于总线附件中，扮演通信终点的角色。
+
+由于实现存在于任意给定总线附件的指定接口的方法不止一种，此处需要一个可以通过对象路径实现的附加结构，用以区分这些不同的接口实现方法。
+
+就像存在于接口命名空间的接口名字符串一样，对象路径也存在于一个命名空间中。此命名空间被规划为一个树型结构，在文件系统中寻找路径的模型则是一个目录树。事实上，对象路径的路径分隔符是一个正斜杠 (/)，与 Unix 文件系统中相同。由于总线对象是总线接口的实现，
+对象路径可以与其相应接口的命名规则保持一致。
+
+在定义磁盘控制器接口时（例如，`org.freedesktop.DeviceKit.Disks`），可以想像由下列对象路径所描述的多重实现方法，这些路径对应着两个不同的物理磁盘接口：
 
 ```sh
 /org/freedesktop/DeviceKit/Disks/sda1
@@ -497,195 +203,87 @@ of the interface for two separate physical disks in a system:
 /org/freedesktop/DeviceKit/Disks/sda2
 ```
 
-### Proxy bus object
+### 代理主线对象
 
-Bus objects on an AllJoyn bus are accessed through proxies.
-A proxy is a local representation of a remote object that is
-accessed through the bus. Proxy is a common term that is not
-specific to the AllJoyn system, however you will often encounter
-the term ProxyBusObject in the context of the AllJoyn framework
-to indicate the specific nature of the proxy - that it is a
-local proxy for a remotely located bus object.
+在 AllJoyn 主线上的主线对象通过代理被访问。代理是一个可被主线访问的远端对象的本地代表。代理并不是由 AllJoyn 系统所定义的，而
+是一个被广泛应用的名词。在 AllJoyn 框架中你会经常遇到 ProxyBusObject 这个词，他指示着代理的一个特定的本质－他是一个远端总线
+对象的本地代理。
 
-The ProxyBusObject is the portion of the low-level AllJoyn code
-that enables the basic functionality of an object proxy.
+ProxyBusObject 是底层级 AllJoyn 代码的一部分，负责对象代理基本功能的运行。
 
-Typically, the goal of an RMI system is to provide a proxy that
-implements an interface which looks just like that of the remote
-object that will be called. The proxy object implements the
-same interface as the remote object, but drives the process
-of marshaling the parameters and sending the data to the service.
+一般情况下，RMI 系统的目的是提供一个实现接口的代理，他看起来与将调用远程对象的那一个非常相近。代理对象与远程对象实现同一个接口，但运行不同的序列化参数以及向服务发送数据的进程。
 
-In the AllJoyn framework, the client and service software,
-often through specific programming language bindings, provides
-the actual user-level proxy object. This user-level proxy object
-uses the capabilities of the AllJoyn proxy bus object to
-accomplish its goal of local/remote transparency.
+在 AllJoyn 框架中，用户与服务软件常常通过特定的编程语言联编来实现具体的用户层代理对象。用户层的代理对象则通过 AllJoyn 代理总线路径的容量来实现局部透明／远程透明的目标。
 
-### Bus names
+### 总线名称
 
-A connection on the AllJoyn bus acting as a service provides
-implementations of interfaces described by interface names.
-The interface implementations are organized into a tree of
-bus objects in the service. Clients wishing to consume the
-services do so via proxy objects, which use lower-level
-AllJoyn proxy bus objects to arrange for delivery of bus method-,
-bus signal- and bus property-related information across the
-logical AllJoyn bus.
+AllJoyn 总线上的连接是一种用来实现被接口名所描述的接口的服务。接口的实现被整理到服务中接口总线对象的树中。用户希望通过代理对象来消费服务，这将会使用低层次 AllJoyn 代理主线对象来安排逻辑主线上主线方法，主线信号和主线属性相关信息的投递。
 
-In order to complete the addressing picture of the bus,
-connections to the bus must have unique names. The AllJoyn
-system assigns a unique temporary bus name to each bus attachment.
-However, this unique name is autogenerated each time the service
-connects to the bus and is therefore unsuitable for use as
-a persistent service identifier. There must be a consistent
-and persistent way to refer to services attached to the bus.
-These persistent names are referred to as *well-known names*.
+为了完成主线寻址步骤，与主线的连接必须有唯一标识。AllJoyn 系统为每一个主线附件分配一个临时的唯一主线标示，此唯一标识在服务每
+一次连接到主线时自动生成，因此该标示并不适合作为服务的持久标识。应该有一种可以持久查阅到服务的方式，*well-known names* 被用
+来充当服务的持久标示。
 
-Just as one might refer to a host system on the Internet by
-a domain name that does not change over time (e.g., quicinc.com),
-one refers to a functional unit on the AllJoyn bus by its well-known
-bus name. Just as interface names appear to be reversed domain names,
-bus names have the same appearance. Note that this is the source of
-some confusion, since interface names and well-known bus names
-are often chosen for convenience to be the same string.
-Remember that they serve distinct purposes: the interface name
-identifies a contract between the client and the service that
-is implemented by a bus object living in a bus attachment;
-and the well-known name identifies the service in a consistent
-way to clients wishing to connect to that attachment.
+就像可以经域名指代在网络上的主机系统，并且在一定时间内不会变化一样，同样可以通过 well-known bus name 指代AllJoyn 主线上的功
+能模块。就像接口名称是倒序的域名一样，主线名称也有此种呈现方法。由于接口名与 well-known bus names在出于方便的考虑下经常被设
+定为同样的字符串，这导致了一些混淆的发生。请谨记，他们的用途完全不同：接口名定义一个由主线对象实现的，运行在主线附件中的，描述用户与服务的契约；well-known name 则指为想连接到某服务的用户提供一个稳定不变的连接方式的服务。
 
-To use a well-known name, an application (by way of a bus
-attachment) must make a request to the bus router to use that
-name. If the well-known name is not already in use by another
-application, exclusive use of the well-known name is granted.
-This is how, at any time, well-known names are guaranteed to
-represent unique addresses on the bus.
+在应用 well-known name 时，应用程序（经过主线附件）必须事先对主线路由发出使用该标识的请求。如果此 well-known name 暂无其他用
+户占用，申请者将会被给予该名称的独家使用权。该机制确保 well-known names 在任何时间都能唯一指代主线上的特定地址。
 
-Typically, a well-known name implies a contract that the associated
-bus attachment implements a collection of bus objects and therefore
-some concept of a usable service. Since bus names provide a unique
-address on the distributed bus, they must be unique across the bus.
-For example, one could use the bus name, `org.alljoyn.sample.chat`,
-which would indicate that a bus attachment of the same name would
-be implementing a chat service. By virtue of the fact that it
-has taken that name, one could infer that it implements a
-corresponding `org.alljoyn.sample.chat` interface in a bus
-object located at object path `/org/alljoyn/sample/chat`.
+一般情况下，一个 well-known name 意味着相关的主线附件实现一系列主线对象以及一些可用服务概念的合约。由于主线名称为分布式主线
+提供唯一地址，所有在主线上的主线名称必须是独特唯一。例如，`org.alljoyn.sample.chat`可用作主线名称，意味着有着相同名称的主线
+附件将可实现一个聊天服务。根据该名称已被占用的事实，可以推断出在以 `/org/alljoyn/sample/chat` 为主线路径的主线对象上已经实现
+了 `/org/alljoyn/sample/chat` 接口。
 
-The problem with this is that in order to "chat", one would
-expect to see another similar component on the AllJoyn bus
-indicating that it also supports the chat service. Since bus
-names must uniquely identify a bus attachment, there is a
-requirement to append some form of suffix to ensure uniqueness.
-This could take the form of a user name, or a unique number.
-In the chat example, one could then imagine multiple bus attachments:
+在实现“聊天”功能时，一方往往期望着在 AllJoyn 总线上能发现另一个同样支持聊天功能的相似组件。由于主线名称必须作为组件附件的唯
+一识别，在这里就需要以加入后缀的方式确保唯一性。后缀可以是用户名，或者是一个唯一的数字。在聊天服务的例子中，可以使用多个总线附件：
 
 ```sh
 org.alljoyn.sample.chat.bob
 
 org.alljoyn.sample.chat.carol
 ```
+此处的 well-known name 中，前缀`org.alljoyn.sample.chat.`的作用是充当服务名，可以由其推断出聊天服务接口以及对象实现的存在。后缀 `bob` and `carol` 使两个实例的 well-known name 唯一。
 
-In this case, the well-known name prefix `org.alljoyn.sample.chat.`
-acts as the service name, from which one can infer the existence
-of the chat interface and object implementations. The suffixes,
-`bob` and `carol`, serve to make the instance of the well-known name unique.
+随之而来的问题是，处于分布式系统上的服务如何被定位。答案是通过客户端的服务广播以及发现机制。
 
-This leads to the question of how services are located in the
-distributed system. The answer is via service advertisement and discovery by clients.
 
-### Advertisements and discovery
+### 广播及发现
 
-There are two facets to the problem of service advertisement
-and discovery. As described above, even if the service resides
-on the local segment of the AllJoyn bus, one needs to be able
-to see and examine the well-known names of all of the bus attachments
-on the bus in order to determine that one of them has a specific
-service of interest. A more interesting problem occurs when
-one considers how to discover services that are not part of
-an existing bus segment.
+关于服务广播与发现的问题主要有两方面。之前提及到，即便是对于位于 AllJoyn 总线本地片段的服务，用户仍然需要遍历所有的 well-known names来搜寻自己所需要的服务。再者，当用户试图发现并不位于现有的主线片段上的服务时，会发生更有趣的问题。
 
-Consider what might happen when one brings a device running
-the AllJoyn framework into the proximity of another. Since the
-two devices have been physically separated, there is no way for
-the two involved bus routers to have any knowledge of the other.
-How do the routing nodes determine that the other exists, and
-how do they determine that there is any need to connect to
-each other and form a logical distributed AllJoyn bus?
+请考虑这个问题：当一方携带着运行 AllJoyn 框架的设备接近另一方的邻近场时。由于两设备已被物理分离的，框架的设备接近另一方的邻 近场时。由于两设备已被物理分离的事实，由都不可能知道对方的任何信息。那么路由点是如何确定对方设备的存在，如何判断是否有必要进行连接并建立逻辑分布式 AllJoyn 总线呢？
 
-The answer is through the AllJoyn service advertisement and
-discovery facility. When a service is started on a local device,
-it reserves a given well-known name and then advertises its
-existence to other devices in its proximity. The AllJoyn framework
-provides an abstraction layer that makes it possible for a
-service to do an advertise operation that may be communicated
-transparently via underlying technologies, such as Wi-Fi, Wi-Fi
-Direct, or other/future wireless transports. Neither the client
-nor the service require any knowledge of how these advertisements
-are managed by the underlying technology.
+答案是通过 AllJoyn 服务广播和发现设备。当服务在本地设备上开始时，他首先将被赋予的 well-known name 反转，随后向他邻近域的设备
+广播其存在。AllJoyn 框架提供一个抽象层，使服务可以通过底层技术，诸如Wi-Fi, Wi-Fi Direct 或其他未来的无线传输方式来实现透明广
+播。
 
-For example, in a contacts-exchanging application, one instance
-of the application may reserve the well-known name
-`org.alljoyn.sample.contacts.bob` and advertise the name.
-This might result in one or more of the following: a UDP
-multicast over a connected Wi-Fi access point, a pre-association
-service advertisement in Wi-Fi Direct, or a Bluetooth Service
-Discovery Protocol message. The mechanics of how the advertisement
-is communicated do not necessarily concern the advertiser.
-Since a contacts-exchange application is conceptually a
-peer-to-peer application, one would expect the second phone to
-also advertise a similar service, for example, `org.alljoyn.sample.contacts.carol`.
+例如，在一个联系人交换应用程序中，其中的一个实例可以将 well-known name：`org.alljoyn.sample.contacts.bob` 反转并广播。如此
+做将触发以下一种或多种事件：通过 Wi-Fi 接入点进行 UDP 组播，通过 Wi-Fi Direct 进行预关联服务的广播，或者通过蓝牙服务发现协议
+发送消息。广播的通信机制并不需要考虑广播者。由于联系人交换在概念上是一个点对点的应用程序，一方通常会希望另一方也广播类似的交换服务，例如 `org.alljoyn.sample.contacts.carol`.
 
-Client applications may declare their interest in receiving
-advertisements by initiating a discovery operation. For example,
-it may ask to discover instances of the contacts service as
-specified by the prefix `org.alljoyn.sample.contacts`. In this case,
-both devices would make that request.
+应用程序客户端也可通过初始化一个发现操作来声明他们对接收广播的兴趣所在。例如，用户可以要求添加前缀为`org.alljoyn.sample.contacts`的联系人服务实例。若如此做，两方设备都会发出这种请求。
 
-As soon as the phones enter the proximity of the other, the
-underlying AllJoyn systems transmit and receive the advertisements
-over the available transports. Each will automatically receive
-an indication that the corresponding service is available.
+底层 AllJoyn 系统在移动电话进入其他设备的邻近域时立即开始通过可用传输渠道传输并接受广播。每台设备在相应服务可使用时也会收到提醒。
 
-Since a service advertisement can receive over multiple
-transports, and in some cases it requires additional low-level work
-to bring up an underlying communication mechanism, there is another
-conceptual part to the use of discovered services. This is the communication session.
+由于服务推广可以通过多种传输方式接受，在某些情况里还需要附加的底层工作以便生成底层通信机制，对已发现服务的应用还有另外一部分概念。这就是通信会话。
 
-### Sessions
+### 会话
 
-The concepts of bus names, object paths, and interface names have
-been previously discussed. Recall that when an entity connects to
-an AllJoyn bus, it is assigned a unique name. Connections
-(bus attachments) may request that they be granted a well-known name.
-The well-known name is used by clients to locate or discover
-services on the bus. For example, a service may connect to an
-AllJoyn bus and be assigned the unique name `:1.1` by the bus.
-If a service wants other entities on the bus to be able to find it,
-the service must request a well-known name from the bus,
-for example, `com.companyA.ProductA` (remember that a unique
-instance qualifier is usually appended).
+关于总线名称，对象路径以及接口名成的概念已经被讨论过。回想一下，实体连接到 AllJoyn 总线后会被分配一个唯一的标识。连接（主线
+附件）也可申请一个 well-known name. 此 well-known name 可被用户用于定位或发现总线上的服务。例如，一个服务可以连接到 AllJoyn 总线上并被分配唯一识别符 `:1.1`. 如果服务希望他可以被其他在总线上的实体找到，此服务必须从总线申请一个 well-known name，例如
+`com.companyA.ProductA`（后面常会加上一个唯一的实体限定符）。
 
-This name implies at least one bus object that implements some
-well-known interface for it to be meaningful. Usually, the
-bus object is identified within the connection instance by a
-path with the same components as the well-known name (this is
-not a requirement, it is only a convention). In the example,
-the path to the bus object corresponding to the bus name
-`com.companyA.ProductA` might be `/com/companyA/ProductA`.
+此识别符至少指示一个实现了一些 well-known interface 的总线对象。一般情况下，在连接实例内，总线对象可以被一个与 well-known name 包含相同组件（此处并非是强制要求，仅仅是为了方便）的路径辨认出来。在这个例子中，对应总线识别符`com.companyA.ProductA`
+的路径可以是`/com/companyA/ProductA`.
 
-In order to understand how a communication session from a client
-bus attachment to a similar service attachment is formed and to
-provide an end-to-end example, it is useful to compare and contrast
-the AllJoyn mechanism to a more familiar mechanism.
 
-#### Postal address analogy
+为了明白用户总线附件到相似的服务附件之间的通信会话的形成机制，也为了提供一个终端到终端的例子，我们可以将 AllJoyn 机制与一个
+类似的机制做一下比对。
 
-In the AllJoyn framework, a service requests a human-readable name
-so it can advertise itself with a well-known and well-understood label.
-Well-known names must be translated into unique names for the
-underlying network to properly route information, for example:
+#### 邮政地址的类比
+
+在 AllJoyn 框架中，服务会请求一个对人类可读的名字，以便于将自己以众所周知的，简单易懂的标签广播出去。为了底层网络中消息交换的正常运转，Well-known names 一定需要被翻译成唯一的标识，例如：
 
 ```
 Well-known-name:org.alljoyn.sample.chat
@@ -693,497 +291,216 @@ Well-known-name:org.alljoyn.sample.chat
 Unique name::1.1
 ```
 
-This tells us that the well-known name advertised as
-`org.alljoyn.sample.chat` corresponds to a bus attachment that
-has been assigned the unique name `:1.1`. One can think of this
-in the same way as a business has a name and a postal address.
-To continue the analogy, a common situation arises when a
-business is located in a building along with other businesses.
-In such a situation, one might find a business address further
-qualified by a suite number. Since AllJoyn bus attachments are
-capable of providing more than one service, there must also be
-a way to identify more than one destination on a particular attachment.
-A "contact port number" corresponds to the suite number destination
-in the postal address analogy.
+这里我们得知，被以`org.alljoyn.sample.chat`广播的 well-known name 对应着已被分配唯一标识 `:1.1` 的总线附件。这种方式类似于有
+着名字和邮寄地址的生意。继续类比：此生意很可能会存在于同时有着其他生意的建筑中。在这种情况下，这个生意的地址可能会被一个更具体的房间号所描述。由于 AllJoyn 总线附件可以提供不止一个服务，这里一定也有可以识别多个在给定附件上的目的地址的方法。“ contact port numbe ”就对应着邮寄地址类比中的房间号。
 
-Just as one may send a letter by the national mail system
-(U.S. Post Office, La Poste Suisse) or a private company
-(Federal Express, United Parcel Service) and by different
-urgencies (overnight, two-day, overland delivery), when contacting
-a service using the AllJoyn framework, one must specify
-certain desired characteristics of the network connection to
-provide a complete delivery specification (e.g., reliably
-delivered messages, reliably delivered unstructured data,
-or unreliably delivered unstructured data).
+就像人们在发送信件时可以选择使用国家邮件系统（例如美国邮政局，法国邮政局），也可以使用私人公司（联邦快递，联合包裹服务公司），同时还可以选择紧急程度（次日达，两工作日，），在使用 AllJoyn 框架联系服务时，使用者必须明确提出想获取的网络连接的特性（
+例如，可靠送达的消息，可靠送达并未经排列的消息，不可靠送达并未经排列的消息）以便提供详尽的配送规范。
 
-Notice the separation of the address information and the
-delivery information in the example  above. Just as one can
-contemplate choosing several ways to get a letter from one place
-to another, it will become evident that one can choose from several
-ways to get data delivered using the AllJoyn system.
+请注意以上例子中地址信息的分隔以及信息的投递。同理于用户可考虑在诸多快递方式中选择一种完成信件传送，用户也可以在 AllJoyn 系统中选择一种方式完成数据传送。
 
-#### The AllJoyn session
+#### AllJoyn 会话
 
-Just as a properly labeled postal letter has "from" and "to"
-addresses, an AllJoyn session requires equivalent "from" and "to"
-information. In the case of an AllJoyn system, the from address
-would correspond to the location of the client component and
-the to address would relate to the service.
+与一封规范列出“寄出地”和“目的地”地址的信同理，AllJoyn 会话也需要与“寄出地”和“目的地”相等价的信息。在 AllJoyn 系统中，寄出地地址对应着用户组件的位置，目的地地址则对应服务的位置。
 
-Technically, these from or to addresses, in the context of
-computer networking, are called half-associations.
-In the AllJoyn framework, this to (service) address has the following form:
-
+严格地说，这些地址在电脑网络中应该被成为 half-associations. 在 AllJoyn 框架中，收件人（服务端）地址通常是如下形式的：
 ```c
 {session options, bus name, session port}
 ```
 
-The first field, session options, relates to how the data is
-moved from one side of the connection to the other. In an
-IP network, choices might be TCP or UDP. In the AllJoyn framework,
-these details are abstracted and so choices might be,
-"message-based", "unstructured data", or "unreliable unstructured data".
-A service destination is specified by the well-known name the
-corresponding bus attachment has requested.
+第一个区域是会话选项，决定着数据的传送方式。在 IP 网络中，会话选项可以使 TCP 或者 UDP. 在 AllJoyn 框架中这些细节会被虚拟化，
+对应的选项则会变为“基于消息的”，“未排列的数据”，或者“不稳定的未排列数据”。服务的目的地由相关主线附件所请求的 well-known name 给出。
 
-Similar to the suite number in the postal example, the AllJoyn
-model has the concept of a point of delivery "inside" the
-bus attachment. In the AllJoyn framework, this is called a
-session port. Just as a suite number has meaning only within
-a given building, the session port has meaning only within
-the scope of a given bus attachment. The existence and values
-of contact ports are inferred from the bus name in the same
-way that underlying collections of objects and interfaces are inferred.
+与之前邮编地址例子中的房间号类似，AllJoyn 模型中也有在主线附件“里面”的传送点概念。此概念在 AllJoyn 框架中被称为会话端口。房
+间号只有在给定建筑内才有意义，会话端口号同理，必须要在给定的总线附件范围内定义。联系端口的存在与数值被主线标识所间接指出，这与底层的对象和接口组被间接指出的方式相同。
 
-The from address, corresponding to the client information, is
-similarly formed. A client must have its own half-association
-in order to communicate with the service.
+寄件人地址对应客户端信息，也是由相似的原理生成。为了和服务端正常通信，客户端必须有自己的 half-association.
 
 ```c
 {session options, unique name, session ID}
 ```
+客户端不需要申请 well-known 主线名称，所以他们可以提供自己的唯一标识符（例如`:1.1`）。由于客户端不是会话的终点，他们也不需要提供会话端口，但是在连接建立完成后会被分配会话 ID. 在会话建立步骤中此会话 ID 也会被返回到服务器端。对于熟悉 TCP 网络结构的人
+，此操作与 TCP 中建立连接的操作是对等的，服务器端通过 well-known 端口被访问。在会话建立后，客户端用一个临时端口描述相似的 half-association.
 
-It is not required for clients to request a well-known bus name,
-so they provide their unique name (such as `:1.1`). Since clients
-do not act as the destination of a session, they do not provide
-a session port, but are assigned a session ID when the connection
-is established. Also during the session establishment procedure,
-a session ID is returned to the service. For those familiar with
-TCP networking, this is equivalent to the connection establishment
-procedure used in TCP, where the service is contacted over a
-well-known port. When the connection is established, the client
-uses an ephemeral port to describe a similar half-association.
-
-During the session establishment procedure, the two half-associations
-are effectively joined:
+在建立会话时，两方的 half-associations 会被聚合：
 
 ```c
 {session options, bus name, session port}	Service
 
 {session options, unique name, session ID}	Client
 ```
-
-Notice that there are two instances of the session options.
-When communication establishment begins, these may be viewed
-as supported session options provided by the service and
-requested session options provided by the client. Part of
-the session establishment procedure consists of negotiating
-an actual final set of options to be used in the session.
-Once a session has been formed, the half-associations of
-the client and service side describe a unique AllJoyn
-communication path:
+注意，会话选项中有两个选择。在通信建立时，会话机制被看作是服务端所能提供的会话选项以及由客户端所请求的会话选项。在会话建立过程中，有一部分是用来协商何种会话选项将会最终被采取。一旦会话建立完成，两方的 half-associations 会生成一个唯一的 AllJoyn 通信路径：
 
 ```c
 {session options, bus name, unique name, session ID}
 ```
 
-During the session establishment procedure, a logical networking
-connection is formed between the communicating routing nodes.
-This may result in the creation of a wireless radio topology
-management operation. If such a connection already exists,
-it is re-used. A newly created underlying router-to-router
-connection is used to perform initial security checks, and once
-this is complete, the two routers have effectively joined the
-two separate AllJoyn software bus segments into the larger virtual bus.
+在会话建立程序中，两个正在通信的路由节点之间会形成一个逻辑网络连接。这将会形成一个 wireless radio topology management operation. 如果以上连接已经存在，他将会被再次使用。新创建的底层路由对路由连接被用来完成初始安全检查，检查完成后两路由就已成功将两个原本分离的 AllJoyn 软件主线片段聚合成为一个更大一些的虚拟主线。
 
-Because issues regarding end-to-end flow control of the underlying
-connection must be balanced with topological concerns in some
-technologies, the actual connection between the two communicating
-endpoints (the "from" client and the "to" service) may or may
-not result in a separate communication channel being formed.
-In some cases it is better to flow messages over an ad hoc
-topology and in some cases it may be better to flow messages
-directly over a new connection (TCP/IP). This is another of the
-situations that may require deep understanding of the underlying
-technology to resolve, and which the AllJoyn framework happily
-accomplishes for you. A user need only be aware that messages
-are routed correctly over a transport mechanism that meets
-the abstract needs of the application.
+由于在某些技术中，有关终端对终端的底层连接流量控制一定要用拓扑学考虑使其均衡化，两个终端实际的连接（“寄件人”客户端和“收件人”服务端）可能也可能不会导致另一个独立的通信信道被创建。
 
-#### Self-join feature
+在某些情况中，经过 ad hoc 拓扑结构传送信息会较为方便，而在另外一些情况下通过一个新连接 （TCP/IP）进行直接传送比较方便。这种
+情况下需要对底层技术有深入的了解，AllJoyn 框架很乐意为你完成这一点。用户所要做的仅仅是确保消息通过某种传送机制根据应用程序的 抽象需求被正确的转发。
 
-In AllJoyn releases up to R14.06, it was impossible for applications
-to join a session they themselves hosted. For applications that consume
-information or services they themselves also provide, this created an
-asymmetry: they had to treat the bus objects they hosted themselves
-differently from those hosted by other peers. The self-join feature
-removes this asymmetry by allowing applications to join the sessions
-they themselves host. Consequently, a locally hosted bus object can be
-treated in exactly the same way as a remotely hosted bus object.
+#### 自我加入功能
 
-#### Determining the presence of a peer - pinging and auto-pinging
+在 AllJoyn R14.06 的版本之前，应用程序无法参与由自己作主机的会话。有些应用程序会使用自己提供的服务或信息，这会带来一些不对称：对于这些应用程序自己作为主机的应用程序和对其他设备作主机的情况必须区别对待。自我加入功能可使应用程序加入到自己作主机的会话中，从而消除了这一不对称。这样一来，就可以用以处理远端主机主线对象的相同的方式处理以本地主机的主线对象。
 
-Sometimes, a application needs to know which peers are present on the communication
-channel ("the wire") and which aren't.  For this reason, a PING API was introduced in
-version 14.06. This PING API allows to determine whether a peer is up or not.
-However, for this API, the responsibility for using the PING API was with the
-Application, which periodically needed to ping the peers. From Release 14.12 onwards,
-an automatic PING or Auto-Pinger is introduced. This Auto-Pinger performs the
-periodic peer detection, relieving  the application of having to do it.
+#### 决定 peer 的出现 - pinging 以及 auto-pinging
+
+有些时候，应用程序需要知晓哪些 peer 正在信道（"the wire"）上存在着，哪些没有存在。为此，在14.06版本中引入了 PING API. PING API 可以判断 peer 是否存在。但是复测使用此 PING API 的是应用程序，他将会需要周期性的 ping 其他 peers.在14.12以及以后的版本，自动 ping 或者被称为 Auto-Pinger 的功能被加入。Auto-Pinger 可以完成周期性的 peer 探测，从而解放了应用程序。
 
 ### Bringing it all together
 
-The AllJoyn framework aims to provide a software bus that
-manages the implementation of advertising and discovering services,
-providing a secure environment, and enabling location-transparent
-remote method invocation. A traditional client/service arrangement
-is enabled, and peer-to-peer communications follow by combining
-the aspects of client and services.
+AllJoyn 框架致力于提供可以管理推广和发现服务的开发的软件总线，提供安全的环境，并实现了位置透明的远程方法调用模式。同时也支持传统的 client/service 布置，并通过结合 client 以及 service 层面的信息实现点对点通信。
 
-The most basic abstraction in the AllJoyn framework is the
-software bus that ties everything together. The virtual distributed
-bus is implemented by AllJoyn routing nodes which are background
-programs running on each device. Clients and services (and peers)
-connect to the bus via bus attachments. The bus attachments
-live in the local processes of the clients and services and
-provide the interprocess communication that is required to
-talk to the local AllJoyn router.
+在 AllJoyn 中最基本的抽象化就是将一切连接在一起的软件主线。虚拟的分布式主线由在每个设备上后台运行的 AllJoyn 路由点实现。用户以及服务（以
+及 peers）通过主线附件连接到主线。主线附件存在于用户端及服务端的本地进程中，提供进程间通信功能，以便实现与本地 AllJoyn 路由通信。
 
-Each bus attachment is assigned a unique name by the system
-when it connects. A bus attachment can request to be granted
-a unique human-readable bus name that it can use to advertise
-itself to the rest of the AllJoyn world. This well-known bus
-name lives in a namespace that looks like a reversed domain
-name and encourages self-management of the namespace.
-The existence of a bus attachment of a specific name implies
-the further existence of at least one bus object that implements
-at least one interface specified by a name. Interface names are
-assigned out of a namespace that is similar, but has a different
-meaning than bus names. Each bus object lives in a tree structure
-rooted at the bus attachment and described by an object path
-that looks like a Unix filesystem path.
+在连接后，每一个主线附件都会被分配一个唯一的标识。主线符号可以申请使用一个唯一的人类可读的主线名，以便对 AllJoyn 世界中的其他设备推送自己的服务。此 well-known 主线名存在于一个看起来很像倒置的域名，并提倡 self-management 的命名空间中。有给定标识的主线
+附件暗示着至少存在一个实现了至少一个给定标识的接口的主线对象。接口名称也由类似主线名的命名空间分配出，但有着不同的意义。每一个对象都生存在以主线附件为根节点的树结构中，并由类似 Unix 文件路径的对象路径描述。
+
+下图是一个展示片段相关性的假想排列：
 
 The following figure shows a hypothetical arrangement of how
 all of these pieces are related.
 
 ![hypothetical-alljoyn-bus-instance][hypothetical-alljoyn-bus-instance]
 
-**Figure:** Overview of a hypothetical AllJoyn bus instance
+**Figure:** 假设的 AllJoyn 主线实例概览。
 
-At the center is the dark line representing the AllJoyn bus.
-The bus has "exits" which are the BusAttachments assigned
-the unique names `:1.1` and `:1.4`. In the figure, the BusAttachment
-with the unique name of `:1.1` has requested to be known as
-`org.alljoyn.samples.chat.a` and has been assigned the corresponding
-well-known bus name. The "a" has been added to ensure that
-the bus name is unique.
+在中心的深色线代表 AllJoyn 主线。主线的“出口”是由 BusAttachment 分配的唯一标识`:1.1` 和 `:1.4`. 如图所示，在以`:1.1` 为唯一标识符的已请求
+自己的地址是 `org.alljoyn.samples.chat.a`，并已被分配到对应的 well-known 主线名称：`org.alljoyn.samples.chat.a`，被加在后面的 "a" 是为了确
+保主线名的唯一性。
 
-There are a number of things implied by taking on that bus name.
-First, there is a tree structure of bus objects that resides
-at different paths. In this hypothetical example, there are
-two bus objects. One is at the path `/org/alljoyn/samples/chat/chat`
-and which presumably implements an interface suitable for chatting.
-The other bus object lives at the path `/org/alljoyn/samples/chat/contacts`
-and implements an interface named `org.alljoyn.samples.chat.contacts`.
-Since the given bus object implements the interface, it must
-provide implementations of the corresponding bus methods,
-bus signals, and bus properties.
 
-The number 42 represents a contact session port that clients
-must use to initiate a communication session with the service.
-Note that the session port is unique only within the context of
-a particular bus attachment, so the other bus attachment in the
-figure may also use 42 as its contact port as shown.
+由主线名定义所暗示的东西还有很多。首先，在不用的路径上都有主线对象的树结构。在这个假设的例子中，一共有两个主线对象。第一个在 `/org/alljoyn/samples/chat/chat` 路径上，推测上是用来实现聊天功能的。另一个在 `/org/alljoyn/samples/chat/contacts` 路径上，并实现了以 `org.alljoyn.samples.chat.contacts` 命名的接口。由于给定的主线对象实现了接口，他必须同时提供相应的主线方法，主线信号以及主线属性的实现。
 
-After requesting and being granted the well-known bus name,
-a service will typically advertise the name to allow clients
-to discover its service. The following figure shows a service making an
-advertise request to its local router. The router, based on
-input from the service, decides what network medium-specific
-mechanism it should use to advertise the service and begins doing so.
+42代表着用户端用来初始化通信会话的通信会话端口。会话端口仅仅在特定的主线附件环境中才保有唯一性，这意味着在其他的主线附件中也可以用42作为会话端口。
+
+在申请并获批 well-known 主线名之后，一般情况下服务会将这个名字推广，以便其他用户发现该服务。下图展示了服务向本地路由发出推广申请的流程。基于服务输入的路由决定使用哪一个 network medium-specific mechanism 来推广服务并开始。
 
 ![service-performs-advertise][service-performs-advertise]
 
-**Figure:** Service performs an Advertise
+**Figure:** 服务正在进行推广
 
-When a prospective client wants to locate a service for consumption,
-it issues a find name request. Its local router device, again
-based on input from the client, determines the best way to
-look for advertisements and probes for advertisements.
+当未来用户想要定位一个服务时，他会发出一个寻找名字的请求。基于用户端输入的本地路由设备决定使用哪种广告以及广告探头。
+
 
 ![client-requests-find-name][client-requests-find-name]
 
-**Figure:** Client requests to Find Name
+**Figure:** 用户向 Find Name 发送请求。
 
-Once the devices move into proximity, they begin hearing
-each other's advertisements and discovery requests over whichever
-media are enabled. The following figure shows how the router hosting the
-service hears the discovery requests and responds.
+一旦设备进入到临近域，他们就开始监听其他设备发出的推广，并通过任意可用的媒体来发现请求。下图展示了服务端主机路由监听发现请求并给予回应的过程。
 
 ![router-reports-found-name][router-reports-found-name]
 
-**Figure:** Router reports Found Name
+**Figure:** 路由报告 Found Name
 
-Finally, the following figure shows the client receiving an indication
-that there is a new router in the area that is hosting the desired service.
+最后，下图展示了用户端接收到指示着在此地区内有一个新的路由器正在提供所想要的服务的消息。
 
 ![client-discovers-service][client-discovers-service]
 
-**Figure:** Client discovers service
+**Figure:** 用户发现服务
 
-The client and service sides of the developing scenario both
-use methods and callbacks on their bus attachment object to
-make the requests to orchestrate the advertisement and discovery
-process. The service side implements bus objects to provide
-its service, and the client will expect to use a proxy object
-to provide an easy-to-use interface for communicating with
-the service. This proxy object will use an AllJoyn ProxyBusObject
-to orchestrate communication with the service and provide
-for the marshaling and unmarshaling of method parameters
-and return values.
+用户和服务两端的开发场景都用到各自主线附件对象上的方法和回叫信号，以便发出对广播及发现进程进行集群管理的请求。服务端实现主线对象以提供他的服务，用户端则期待着使用代理对象以提供能和服务端通信的简洁易用的接口。此代理对象将使用 AllJoyn ProxyBusObject 来集群管理与服务端的通信，并
+提供对方法参数序列化，反序列化，以及返回值的功能。
 
-Before remote methods can be called, a communication session
-must be formed to effectively join the separate bus segments.
-Advertisement and discovery are different from session establishment.
-One can receive an advertisement and take no action. It is
-only when an advertisement is received, and a client decides
-to take action to join a communication session, that the
-buses are logically joined into one. To accomplish this,
-a service must create a communication session endpoint and
-advertise its existence; and a client must receive that
-advertisement and request to join the implied session.
-The service must define a half-association before it advertises
-its service. Abstractly this will look something like the following:
+在远程方法可被调用之前，必须先建立一个通信会话，用来将分离的主线片段汇集起来。广播和发现与建立会话是不同的。一方可以对收到的广播不做出回应。仅当用户收到广播，并决定加入会话的时候，两条主线才会被逻辑地汇集到一起。为了这个目标，服务端必须创建通信会话终点并广播它的存在；客户端必须接收到此广播，并请求加入该会话。服务端在发出广播之前必须定义一个 half-association . 抽象地说，这个表达大概是这样的：
 
 ```c
 {reliable IP messages, org.alljoyn.samples.chat.a, 42}
 ```
 
-This indicates that it will talk to clients over a reliable
-message-based transport, has taken the well-known bus name
-indicated, and expects to be contacted at session port 42.
-This is the situation seen in the hypothetical bus instance figure.
+可以看出，与用户端的对话是用过一个可靠的基于消息的传输系统完成的，并已表明 well-known 主线名，并期望在42号会话端口被联络。这就是在  bus instance figure 中所见的场景。
 
-Assume that there is a bus attachment with the unique
-name `:2.1` wanting to connect from a physically remote
-routing node. It will provide its half association to the
-system and a new session ID will be assigned and communicated
-to both sides of the conversation:
+假设一个唯一标识为 `:2.1` 的主线附件试图从物理远端的路由点连接。他将会对系统提供 half association, 一个新的会话 ID 会被分配并传输到两方：
 
 ```c
 {reliable IP messages, org.alljoyn.samples.chat.a, :2.1, 1025}
 ```
 
-The new communication session will use a reliable messaging
-protocol implemented using the IP protocol stack which will
-exist between the bus attachment named `org.alljoyn.samples.chat.a`
-(the service) and the bus attachment named :2.1 (the client).
-The session ID used to describe the session is assigned by
-the system and is 1025 in this case.
+新生的通信会话将存在于名为`org.alljoyn.samples.chat.a` （服务端）的主线附件以及名为2.1 （用户端）的主线附件之间，使用由 IP 协议组实现的可
+靠的消息协议。用于描述会话的会话 ID 由系统分配，在此例子中为1025.
 
-As a result of establishing the end-to-end communication
-session, the AllJoyn system takes whatever actions are
-appropriate to create the virtual software bus shown in
-the distributed bus figure. Note that this is a virtual picture, and what
-may have actually happened is that a Wi-Fi Direct peer-to-peer
-connection was formed to host a TCP connection, or a Wireless
-access point was used to host a UDP connection, depending
-on the provided session options. Neither the client nor
-the service is aware that this possibly very difficult
-job was completed for them.
+在终端对终端的通信会话建立后，AllJoyn 会做出所有可行的动作来创建虚拟软件总线，如 distributed bus 图中所示。请注意这只是一张虚拟图，连接的建 立方式可能是由 Wi-Fi Direct 建立的点对点的 TCP 连接，或是由无线网络接入点建立的 UDP 连接， 这取决于会话所提供的选项。客户端和服务端都不知晓
+这其中的复杂过程。
 
+在这个时候，如果需要认证环节，则可以尝试认证。之后用户端和服务端就可以用 RMI 模型开始通信了。
 At this point, authentication can be attempted if desired
 and then the client and service begin communicating using the RMI model.
 
-Of course, the scenario is not limited to one client on one
-device and one service on another device. There may be any number
-of clients and any number of services (up to a limit of device or
-network capacity) combining to accomplish some form of
-cooperative work. Bus attachments may take on both client
-and service personalities and implement peer-to-peer services.
-AllJoyn routers take on the hard work of forming a manageable
-logical unit out of many disparate components and routing messages.
-Additionally, the nature of the interface description and
-language bindings allow interoperability between components
-written in different programming languages.
+该场景当然不是仅仅限于一台设备上的一个客户端以及另一台设备上的一个服务器端。而可以是任意数量的客户端以及任意数量的服务器端（需考虑设备限额及网络容量）的结合，以完成某种合作。主线附件可能会承担客户端以及服务器端双方的特色，以便实现点对点服务。
 
-## High-Level System Architecture
+AllJoyn 路由器将完全不同的组件和路由消息汇集成一个易处理的逻辑单元。不仅如此，接口描述以及语言联编的自然特性为不同语言编写的组件带来了互用性。
 
-From the perspective of a user of the AllJoyn system, the most
-important piece of the architecture to understand is that of
-a client, service, or peer. From a system perspective, there
-is really no difference between the three basic use cases;
-there are simply different usage patterns of the same system-provided functionality.
+## 高级系统架构
 
-### Clients, services, and peers
+从 AllJoyn 系统用户的角度来看，该体系中最需要透彻理解的概念就是客户，服务以及 peer. 从系统的角度看，这三个概念却没有什么区别；只是对系统提
+供的功能有着不同的使用方式。
 
-The following figure shows the architecture of the system from a user
-(not AllJoyn router) perspective.
+
+### 用户，服务以及 peers
+
+下图从用户（不是 AllJoyn 路由）的角度描述了该框架
 
 ![client-service-peer-arch][client-service-peer-arch]
 
-**Figure:** Basic client, service, or peer architecture
+**Figure:** 客户，服务和 peer 的基本结构
 
-At the highest level are the language bindings. The AllJoyn system
-is written in C++, so for users of this language, no bindings
-are required. However, for users of other languages, such
-as Java or JavaScript, a relatively thin translation layer
-called a language binding is provided. In some cases, the binding
-may be extended to offer system-specific support. For example,
-a generic Java binding will allow the AllJoyn system to be
-used from a generic Java system that may be running under
-Windows or Linux; however, an Android system binding may
-also be provided which more closely integrates the AllJoyn system
-into Android-specific constructs such as a service component in
-the Android application framework.
+最高的层次就是语言联编。AllJoyn 系统是由 C++ 编写的，对于 C++ 的用户就不需要任何联编。但对于类似 Java 或者 JavaScript 的其他语言使用者， 这里提供了较小型的转换层，称作语言联编。在有一些情况下，此绑定会被适度延伸以提供对特定系统的支持。例如，普通的 Java 绑定可以使 AllJoyn 系统运行在一般类别的 Java 系统上，例如 Windows 或 Linux；而 Android 系统的联编也可以被提供，他将 AllJoyn 系统集成到由 Android 定义的结构
+里，例如一个在 Android 应用程序框架里面的服务组件。
 
-The system and language bindings are built on a layer of helper
-objects which are designed to make common operations in the
-AllJoyn system easier. It is possible to use much of the AllJoyn
-system without using these helpers; however, their use is
-encouraged since it provides another level of abstract interface.
-The bus attachment, mentioned in the previous chapters, is a
-critical helper without which the system is unusable. In addition
-to the several critical functions provided, a bus attachment
-also provides convenience functions to make management of
-and interaction with the underlying software bus much easier.
+该系统以及语言联编被建立在一个带有帮手对象的层中，这使得在 AllJoyn 系统中进行常规操作变得更容易。不同这些帮助对象也可以充分使用 AllJoyn 系统，但是我们鼓励对帮手的使用，因为他们提供了另一个层级的虚拟接口。之前提到过的主线附件是一个重要的帮手，没有他系统将无法使用。除了几项关键功能外，总线附件还提供一系列管理底层软件总线并与其交互的便捷功能。
 
-Under the helper layer is the messaging and routing layer.
-This is the home of the functionality that marshals and
-unmarshals parameters and return values into messages that
-are sent across the bus. The routing layer arranges for the
-delivery of inbound messages to the appropriate bus objects
-and proxies, and arranges for messages destined for other
-bus attachments to be sent to an AllJoyn router for delivery.
+在帮手层下面的是信息和路由层。这是序列化，解序列化，以及向信息中返回值这些功能的家。路由层安排将入境的消息投递到制定的总线对象和代理，将待发送到其他总线的消息发送到 AllJoyn 路由器以待发送。
 
-The messaging and routing layer talks to an endpoint layer.
-In the lower levels of the AllJoyn system, data is moved
-from one endpoint to another. This is an abstract communication
-endpoint from the perspective of the networking code.
-Networking abstractions are fully complete at the top of the
-endpoint's layer, where there is essentially no difference
-between a connection over a non Wi-Fi radio (Bluetooth) and
-a connection over a wired Ethernet.
+信息和路由层与一个终点层通话。在 AllJoyn 系统较低的层级中，数据从一个终点流向另一个终点。从网络代码的角度来看，这就是一个虚拟的通信终点。网
+络抽象化在终点层的顶端就被完成，在这里通过非 Wi-Fi 无线连接（蓝牙）或者通过有线的以太网连接没有本质上的区别。
 
-Endpoints are specializations of transport mechanism-specific
-entities called transports, which provide basic networking
-functionality. In the case of a client, service, or peer,
-the only network transport used is the local transport.
-This is a local interprocess communication link to the
-local AllJoyn bus router. In Linux-based systems, this is
-a Unix-domain socket connection, and in Windows-based systems
-this is a TCP connection to the local router.
 
-The AllJoyn framework provides an OS abstraction layer to
-provide a platform on which the rest of the system is built,
-and at the lowest level is the native system.
+终点是对传送特定机制的实体对象的专门化，他提供着基本网络功能。在用户，服务或 peer 的实例中，网络传输仅仅使用本地传输。终点是本地进程间通信
+链路接入到本地 AllJoyn 总线路由。在基于 Linux 的系统中，终点是一个 Unix 域的套接字连接。在基于 Windows 的系统中终点是一个到本地路由的 TCP 连接。
 
-### Routers
+AllJoyn 框架还提供 OS 抽象化层。在这里，本地系统被至于最底层，余下的系统可以在该层的平台上建立。
 
-AllJoyn routers are the glue that holds the AllJoyn system together.
-As previously discussed, routers are programs that run in
-the background, waiting for interesting events to happen and
-responding to them. Because these events are usually external,
-it is better to approach the router architecture from a bottom-up
-perspective.
 
-At the lowest level of the router architecture figure below,
-resides the native system. We use the same OS abstraction layer
-as we do in the client architecture to provide common abstractions
-for routers running on Linux, Windows, and Android. Running on
-the OS abstraction layer, we have the various low-level networking
-components of the router. Recall that clients, services, and
-peers only use a local interprocess communication mechanism
-to talk to a router, so it is the router that must deal with
-the various available transport mechanisms on a given platform.
-Note the "Local" transport in the router architecture figure which is the sole
-connection to the AllJoyn clients, services, and peers running
-on a particular host.
+### 路由
+
+AllJoyn 的路由是将 AllJoyn 系统黏合在一起的胶水。之前提及过，路由器是运行在后台的程序，在他们感兴趣的事件发生时作出回应。由于这些事件通常都是外部的，通过自下而上的视角来观察路由结构会比较好。
+
+下图所示即为路由的最底层，原生系统生长在此处。和在客户结构中使用的 OS 虚拟层相同，我们用这个虚拟层为在 Linux，Windows 以及 Android 上运行 的路由提供常规抽象化。在 OS 抽象层中，我们有各种各样的底层路由网络组件。而客户端，服务端以及 peers 只用本地的进程间通信机制与路由器交流，
+所以在给定平台上，和众多可用的传送机制打交道的必须是路由器。请注意，"Local" 转送在路由架构图中就是唯一一个与运行在特定主机上的 AllJoyn的用 户，服务以及 peers 相连的. 
 
 ![router-arch][router-arch]
 
-**Figure:** Basic router architecture
+**Figure:** 基础路由架构图
 
-For example, a Bluetooth transport would handle the complexities
-of creating and managing piconets in the Bluetooth system.
-Additionally, a Bluetooth transport provides service advertisement
-and discovery functions appropriate to Bluetooth, as well
-as providing reliable communications. Bluetooth and other
-transports would be added at this transport layer along side
-the IP transport.
+例如，蓝牙传输系统会处理在蓝牙系统中创建并管理 piconets 的复杂工作。并且，蓝牙传输还提供适当的服务广播及发现功能，以及可靠的通信功能。蓝牙
+以及其他传输系统将会沿着 IP 传输被添加在该传输层中。
 
-The wired, Wi-Fi, and Wi-Fi Direct transports are grouped under
-an IP umbrella since all of these transports use the underlying
-TCP-IP network stack. There are sometimes significant differences
-regarding how service advertisement and discovery is accomplished,
-since this functionality is outside the scope of the TCP-IP
-standard; so there are modules dedicated to this functionality.
+有线的，Wi-Fi 以及 Wi-Fi Direct 传输会在 IP 伞下集合，这是因为所有这些传输机制都应用了底层的 TCP-IP 网络堆栈。有时，完成服务广播及发现的方
+式会有非常明显的不同，这是因为该功能不在 TCP-IP 标准的范畴之内；会有专门处理这些功能的模块存在。
 
-The various technology-specific transport implementations are
-collected into a Network Transports abstraction. The Sessions module
-handles the establishment and maintenance of communication
-connections to make a collection of routers and AllJoyn applications
-appear as a unified software bus.
+这一众特定技术的传输实现方式会被集合在一个 Network Transports 的抽象化中。Sessions 模块负责通信连接的简历以及维护，使一众路由器和 AllJoyn 应用程序呈现为一个整合在一起的软件总线。
 
-AllJoyn routers use the endpoint concept to provide connections
-to local clients, services, and peers but extend the use of
-these objects to bus-to-bus connections which are the transports
-used by routers to send messages from host-to-host.
+AllJoyn 路由使用终点概念提供到本地客户端，服务端，以及 peers 的连接，还将对这些对象的应用延伸到被路由用于传送主机到主机消息的总线对总线的连
+接。
 
-In addition to the routing functions implied by these connections,
-an AllJoyn router provides its own endpoints corresponding
-to bus objects used for managing or controlling the software
-bus segment implemented by the router. For example, when
-a service requests to advertise a well-known bus name, what
-actually happens is that the helper on the service translates
-this request into a remote method call that is directed to
-a bus object implemented on the router. Just as in the case
-of a service, the router has a number of bus objects living
-at associated object paths which implement specific named interfaces.
-The low-level mechanism for controlling an AllJoyn bus is
-sending remote method invocations to these router bus objects.
+除了这些连接所示的路由功能外，一个 AllJoyn 路由同时还提供他自己对应总线对象的终点，用来管理或控制其他路由实现的软件总线片段。举例来说，当一
+服务请求广播 well-known 总线名时，是在服务端的帮手将此请求解释成一个指向主线被路由实现的对象的远程方法调用。就像对于服务端一样，路由器有许多存在于相关对象路径，实现特定命名的接口的总线对象。用于控制 AllJoyn 总线的底层机制正在向这些路由总线对象发送远程方法调用。
 
-The overall operation of certain aspects of router operation
-are controlled by a configuration subsystem. This allows a
-system administrator to specify certain permissions for the
-system and provides the ability to arrange for on-demand
-creation of services. Additionally, resource consumption may
-be limited by configuration of the router, allowing a system
-administrator to, for example, limit the number of TCP connections
-active at any given time. There are options which allow system
-administrators to mitigate the effects of certain denial-of-service
-attacks, by limiting the number of connections which are
-currently authenticating, for example.
+对路由固定层面的总操作由一个配置子系统控制。这样一来，系统管理员可以指定对系统的特定许可，还可以安排按需创建服务。此外，路由可以添加限制资源消耗的配置，系统管理员因此可以对系统有所掌控，例如，随时限制 TCP 活跃连接的数量。还存在可以使管理员减缓拒绝服务攻击所带来的影响，例如限制
+正在进行认证的连接的数量。
 
-## Summary
+## 总结
 
-The AllJoyn framework is a comprehensive system designed to
-provide a framework for deploying distributed applications
-on heterogeneous systems with mobile elements.
+AllJoyn 框架是一个致力于为在带有移动元素的异构系统上开发分布式应用程序提供架构的综合系统。
 
-The AllJoyn framework provides solutions, building on proven
-technologies and standard security systems, that address the
-interaction of various network technologies in a coherent,
-systematic way. This allows application developers to focus
-on the content of their applications without requiring a large
-amount of low-level networking experience.
+AllJoyn 框架提供了强调能与多种网络结构进行有系统的交流的，建立于经过验证的技术及安全标准上的解决方案。应用程序开发者可专注于内容开发，而不需要有大规模的底层网络经验。
 
-The AllJoyn system is designed to work together as a whole
-and does not suffer from inherent impedance mismatches that
-might be seen in ad-hoc systems built from various pieces.
-We believe that the AllJoyn system can make development and
-deployment of distributed applications significantly simpler
-than those developed on other platforms.
+AllJoyn 系统是一个协同的整体，不会像由多个部分建立的 ad-hoc 系统那样忍受固有的阻抗错配的困扰。我们相信，相比于在其他平台上开发，使用 AllJoyn 系统可以使对分布式应用程序的开发和部署变得更加简单。
+
 
 [overview]: #overview
 [prototypical-alljoyn-bus]: /files/learn/standard-core/prototypical-alljoyn-bus.png
