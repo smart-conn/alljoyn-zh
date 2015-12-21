@@ -255,7 +255,7 @@ Discovery response（无论 mDNS response 或是 IS-AT message）通过广告 Bu
 
 在路由发现完成之后，其余的 AJTCL 逻辑与上述 [AJTCL-to-AllJoyn router connection][tcl-RN connect] 部分完全一致。
 
-#### Discovery message schedule
+#### Discovery message schedule Discovery 信息策略
 
 The AJTCL supports a retry schedule for sending discovery messages.
 It will also selectively send WHO-HAS messages depending on the
@@ -263,34 +263,38 @@ minimum protocol version the thin app requests; if the minimum
 version is less than 10 it will send both an mDNS query and a
 WHO-HAS message. The retry schedule applies to both types of
 discovery messages and is as follows:
+在发送 discovery 信息时，AJTCL 提供了重试策略。同时AJTCL也会根据精简应用程序要求的最低协议版本，选择性地发送 WHO-HAS 信息；当最低版本低于10，将会同时发送 mDNS 查询和 WHO-HAS 信息，并且重试策略同时支持这两者。具体策略如下：
 
 1. Send a burst of three discovery message(s) and pause 1.1 seconds. Repeat 10
-times.
-2. Wait 10.1 seconds, then send another burst of three messages.
-3. Wait 20.1 seconds, then send another burst of three messages.
-4. Wait 40.1 seconds, then send another burst of three messages.
-Repeat until the overall discovery timeout expires.
+times. 发送一段三连 discovery 信息，随后间隔 1.1 秒。重复十次。 
+2. Wait 10.1 seconds, then send another burst of three messages. 等待10.1秒，在发送一段三连信息。
+3. Wait 20.1 seconds, then send another burst of three messages. 等待20.1秒，在发送一段三连信息。
+4. Wait 40.1 seconds, then send another burst of three messages. 等待40.1秒，在发送一段三连信息。
+Repeat until the overall discovery timeout expires. 不断重复直到发现服务超时。
 
 The addition of the 100 msec on the wait intervals ensures that
-all possible 100ms slots are covered as quickly as possible.
+all possible 100ms slots are covered as quickly as possible. 
 This increases the likelihood of successful receipt of multicast
 packets over Wi-Fi.
+等待间隔时间多余的 100 毫秒保证了所有可能的 100 毫秒间隙都被以尽可能快的速度覆盖到。这增加了通过了 WI-FI 接受多播数据包回应的成功率。
 
-### Router Selection
+### Router Selection 路由选择
 
 Starting in the in the 15.04 release a feature called Router Selection was
 introduced. This feature enables an AJTCL to select the most desirable AllJoyn
 router. The detailed [design description][design desc] is available for download
 on the Core Working Group [Wikipage][Core Wiki].
+自 15.04 版本以来，AllJoyn 引入了路由选择功能。它为 AJTCL 提供了选择最理想 AllJoyn 路由的功能。[详细描述][design desc] ，请访问核心工作组 [Wikipage][Core Wiki] 的页面进行下载。
 
 The following figure shows the message flow for a 15.04 AJTCL discovering and
 connecting with a 15.04 AllJoyn router using router selection.
+下图展示了 AJTCL 利用路由选择，发现并连接 15.04 版本 AllJoyn 路由的信息流。
 
 ![img RN Discovery with RS][]
 
-**Figure:** Router discovery using Router Selection
+**图:** Router discovery using Router Selection 使用路由选择的路由发现
 
-At a high level the feature is implemented in two parts:
+At a high level the feature is implemented in two parts: 在高规格应用时，该功能将分为两个部分：
 
 1. The router uses a number of both static and dynamic parameters, including
 power source, mobility, as well as connection availability and capacity, to
@@ -298,18 +302,19 @@ calculate a **rank**, which is communicated via the Priority field of the mDNS
 response packet described above in [14.12 router discovery][RN discovery 1412].
 Details of the algorithm to calculate the rank, and how that is converted into
 the a DNS Priority value are in the [design description][design desc].
+1. 路由使用包括电源、速率、连接可用性和连接容量等一系列的静态和动态参数进行 **rank** 的计算。**rank** 通过上述 mDNS 返回包 [14.12 路由发现][RN discovery 1412] 中的 Priority 字段体现。
 
 2. AJTCL will wait a minimum of 5 seconds collecting discovery responses. For
-each response received the processing (described above in [14.12 router
-discovery][RN discovery 1412]) related to the 'ajpv' key-value pair and
+each response received the processing  related to the 'ajpv' key-value pair and
 blacklisting takes place. Once the wait time is complete AJTCL will connect to
 the router with the highest rank it has received to that point.  If there is a
 tie, or none of the discovery responses it receives contain a rank, it will
 randomly select among the equivalent routers and connect. After router
 discovery, the rest of the AJTCL logic is same as described above in
 [AJTCL-to-AllJoyn router connection][tcl-RN connect].
+2. AJTCL 至少花费 5 秒的时间接受 discovery 回应。每一个接受的回应的过程，都与上述 ‘ajpv’ 键－值对相关，同时黑名单也对这个过程有效。当等待时间结束，AJTCL 将选择期间接收的路由 rank 最高的一个进行连接。如果 rank 值相同，或者 discovery 回应中不包含 rank， AJTCL 将在路由中随机选择一个并连接。
 
-### Router blacklisting
+### Router blacklisting 路由黑名单
 
 Starting in the in the 15.04 release a feature called router blacklisting was
 added. This feature enables an AJTCL to track routers that are incompatible and
@@ -317,6 +322,7 @@ avoid attempting to connect to them again. In order to track incompatible
 routers (as determined during connection establishment), a blacklist has been
 implemented. The blacklist ensures discovery responses for routers on the
 blacklist are ignored.
+自 15.04 版本以来，AllJoyn 引入了路由黑名单功能。此功能使得 AJTCL 能够追踪不兼容的路由，并避免再次连接它们。为了追踪不兼容路由（根据建立情况决定），建立了黑名单。黑名单确保在名单内的 discovery 回应被忽略。
 
 The explicit criteria for adding a router to the blacklist
 is a connection failure either because authentication does
@@ -326,8 +332,10 @@ The default size of the blacklist is 16 entries; the addition of
 a 17th router will over-write the first in the list (i.e.,
 the list is actually a circular buffer). The blacklist only
 persists until the thin app is restarted.
+将路由加入黑名单的明确标准有亮点。一是身份认证失败导致的不成功连接，二是协议版本低于精简应用程序要求的最低标准。黑名单的默认容量是 16；第 17 个路由将覆盖第 1 个(即黑名单列表是一个循环缓冲区)。黑名单会在精简应用程序重启时重置。
 
-### AJTCL and AllJoyn router compatibility
+
+### AJTCL and AllJoyn router compatibility AJTCL 和 AllJoyn 路由兼容性
 
 The following table captures the compatibility matrix between
 the AJTCL and AllJoyn router across the AllJoyn 14.02 and 14.06
@@ -337,6 +345,7 @@ authentication. The AJTCL default minimum protocol version
 in the 14.12 AJTCL is set to 11 (the version of the 14.12
 AllJoyn router), but can be changed by the thin application
 if it does not need to use the NGNS feature.
+下表展示了 14.02 和 14.06 版本中 AJTCL 和 AllJoyn 路由之间的兼容性
 
 #### AJTCL and AllJoyn router compatibility
 
@@ -346,7 +355,7 @@ if it does not need to use the NGNS feature.
 | **14.06 (thin app not using NGNS)** | Incompatible | Compatible | Compatible |
 | **14.06 (thin app using NGNS)** | Incompatible | Incompatible | Compatible |
 
-### Detecting a router link failure
+### Detecting a router link failure 发现路由链接失败
 
 The AJTCL provides a mechanism for the thin application to
 implement a probing mechanism to detect connectivity failures
@@ -357,10 +366,12 @@ as part of this API. If no link activity is detected during
 this time period, the AJTCL sends probe packets every 5 seconds
 over the router link. If no acknowledgment is received for three
 consecutive probe packets, an error is returned to the thin application.
+AJTCL 为精简应用程序提供了一种检测与 AllJoyn 路由之间失败连接的机制。通过调用 AJTCL 提供的 `SetBusLinkTimeout()` API 实现。在 API 中，精简应用程序可以指定一个超时值（至少 40 秒）。如果在这期间没有发现活动连接，AJTCL 将在路由链接中每隔 5 秒发送一个探测包，并把错误返回给精简应用程序。
 
 At this point, the thin app should re-initiate discovery for the AllJoyn router.
+在这种情况下，精简应用程序应该再次启动寻找 ALlJoyn 路由的 discovery。
 
-## Thin app functionality
+## Thin app functionality 精简应用程序功能
 
 As mentioned previously, the AJTCL supports all of the key
 AllJoyn core functionality as a standard core library. APIs
@@ -372,28 +383,30 @@ the generated AllJoyn messages to the AllJoyn router to accomplish
 the given functionality. The thin app message flow for core
 functionality is similar to the standard app with the key difference
 that the thin app is connected remotely with the AllJoyn router.
+如上文所述，AJTCL 支持标准内核的主要功能。AJTCL 提供了一些 API，使得精简应用程序能够调用核心功能。AJTCL 轮流生成合适的 AllJoyn 格式信息（为方法调用／回应，信号等）调用 AllJoyn 路由上的相关 API。AJTCL 向 AllJoyn 路由发送生成的 AllJoyn 信息以完成指定功能。
 
 The following figure shows an example message flow for a thin
 app discovering a well-known name prefix.
+下图展示了精简应用程序发现 well-known name 前缀的信息流。
 
-**NOTE:** The AJTCL and AllJoyn router exchange data using AllJoyn
-messages (method_call/reply and signals).
+**注意:** The AJTCL and AllJoyn router exchange data using AllJoyn
+messages (method_call/reply and signals). AJTCL 与 AllJoyn 路由之间通过 AllJoyn 信息（方法调用／回应和信号）交换数据。
 
 ![img RN Discovery][]
 
-**Figure:** Thin app discovering a well-known-name prefix
+**图:** Thin app discovering a well-known-name prefix 精简应用程序发现 well-known-name 前缀
 
-The AJTCL provides support for following core AJ functionality:
+The AJTCL provides support for following core AJ functionality: AJTCL 为以下核心 AJ 功能提供支持：
 
 * Service Discovery and Advertisement:  Both legacy Name Service
-and Next-Gen Name Service functions are supported.
-* About advertisement
-* Session establishment
-* Sessionless signals
-* App layer authentication
+and Next-Gen Name Service functions are supported. 服务的发现和广告：支持老版本和新版本的 Name Service。
+* About advertisement About 广告
+* Session establishment 会话建立
+* Sessionless signals 
+* App layer authentication 应用层认证
 * The AJTCL provides app layer authentication so that thin app
 can implement secure interfaces and also access secure
-interfaces on other AllJoyn providers.
+interfaces on other AllJoyn providers.AJTCl 提供应用层认证。使得精简应用程序实现安全接口，并访问其它 AllJoyn 提供者的安全接口。
 * New authentication schemes are supported in the 14.06 release
 (see [App layer authentication][app-layer-auth]).
 
