@@ -423,199 +423,84 @@ all of these pieces are related.
 新生的通信会话将存在于名为`org.alljoyn.samples.chat.a` （服务端）的主线附件以及名为2.1 （用户端）的主线附件之间，使用由 IP 协议组实现的可
 靠的消息协议。用于描述会话的会话 ID 由系统分配，在此例子中为1025.
 
-As a result of establishing the end-to-end communication
-session, the AllJoyn system takes whatever actions are
-appropriate to create the virtual software bus shown in
-the distributed bus figure. Note that this is a virtual picture, and what
-may have actually happened is that a Wi-Fi Direct peer-to-peer
-connection was formed to host a TCP connection, or a Wireless
-access point was used to host a UDP connection, depending
-on the provided session options. Neither the client nor
-the service is aware that this possibly very difficult
-job was completed for them.
+在终端对终端的通信会话建立后，AllJoyn 会做出所有可行的动作来创建虚拟软件总线，如 distributed bus 图中所示。请注意这只是一张虚拟图，连接的建 立方式可能是由 Wi-Fi Direct 建立的点对点的 TCP 连接，或是由无线网络接入点建立的 UDP 连接， 这取决于会话所提供的选项。客户端和服务端都不知晓
+这其中的复杂过程。
 
+在这个时候，如果需要认证环节，则可以尝试认证。之后用户端和服务端就可以用 RMI 模型开始通信了。
 At this point, authentication can be attempted if desired
 and then the client and service begin communicating using the RMI model.
 
-Of course, the scenario is not limited to one client on one
-device and one service on another device. There may be any number
-of clients and any number of services (up to a limit of device or
-network capacity) combining to accomplish some form of
-cooperative work. Bus attachments may take on both client
-and service personalities and implement peer-to-peer services.
-AllJoyn routers take on the hard work of forming a manageable
-logical unit out of many disparate components and routing messages.
-Additionally, the nature of the interface description and
-language bindings allow interoperability between components
-written in different programming languages.
+该场景当然不是仅仅限于一台设备上的一个客户端以及另一台设备上的一个服务器端。而可以是任意数量的客户端以及任意数量的服务器端（需考虑设备限额及网络容量）的结合，以完成某种合作。主线附件可能会承担客户端以及服务器端双方的特色，以便实现点对点服务。
 
-## High-Level System Architecture
+AllJoyn 路由器将完全不同的组件和路由消息汇集成一个易处理的逻辑单元。不仅如此，接口描述以及语言联编的自然特性为不同语言编写的组件带来了互用性。
 
-From the perspective of a user of the AllJoyn system, the most
-important piece of the architecture to understand is that of
-a client, service, or peer. From a system perspective, there
-is really no difference between the three basic use cases;
-there are simply different usage patterns of the same system-provided functionality.
+## 高级系统架构
 
-### Clients, services, and peers
+从 AllJoyn 系统用户的角度来看，该体系中最需要透彻理解的概念就是客户，服务以及 peer. 从系统的角度看，这三个概念却没有什么区别；只是对系统提
+供的功能有着不同的使用方式。
 
-The following figure shows the architecture of the system from a user
-(not AllJoyn router) perspective.
+
+### 用户，服务以及 peers
+
+下图从用户（不是 AllJoyn 路由）的角度描述了该框架
 
 ![client-service-peer-arch][client-service-peer-arch]
 
-**Figure:** Basic client, service, or peer architecture
+**Figure:** 客户，服务和 peer 的基本结构
 
-At the highest level are the language bindings. The AllJoyn system
-is written in C++, so for users of this language, no bindings
-are required. However, for users of other languages, such
-as Java or JavaScript, a relatively thin translation layer
-called a language binding is provided. In some cases, the binding
-may be extended to offer system-specific support. For example,
-a generic Java binding will allow the AllJoyn system to be
-used from a generic Java system that may be running under
-Windows or Linux; however, an Android system binding may
-also be provided which more closely integrates the AllJoyn system
-into Android-specific constructs such as a service component in
-the Android application framework.
+最高的层次就是语言联编。AllJoyn 系统是由 C++ 编写的，对于 C++ 的用户就不需要任何联编。但对于类似 Java 或者 JavaScript 的其他语言使用者， 这里提供了较小型的转换层，称作语言联编。在有一些情况下，此绑定会被适度延伸以提供对特定系统的支持。例如，普通的 Java 绑定可以使 AllJoyn 系统运行在一般类别的 Java 系统上，例如 Windows 或 Linux；而 Android 系统的联编也可以被提供，他将 AllJoyn 系统集成到由 Android 定义的结构
+里，例如一个在 Android 应用程序框架里面的服务组件。
 
-The system and language bindings are built on a layer of helper
-objects which are designed to make common operations in the
-AllJoyn system easier. It is possible to use much of the AllJoyn
-system without using these helpers; however, their use is
-encouraged since it provides another level of abstract interface.
-The bus attachment, mentioned in the previous chapters, is a
-critical helper without which the system is unusable. In addition
-to the several critical functions provided, a bus attachment
-also provides convenience functions to make management of
-and interaction with the underlying software bus much easier.
+该系统以及语言联编被建立在一个带有帮手对象的层中，这使得在 AllJoyn 系统中进行常规操作变得更容易。不同这些帮助对象也可以充分使用 AllJoyn 系统，但是我们鼓励对帮手的使用，因为他们提供了另一个层级的虚拟接口。之前提到过的主线附件是一个重要的帮手，没有他系统将无法使用。除了几项关键功能外，总线附件还提供一系列管理底层软件总线并与其交互的便捷功能。
 
-Under the helper layer is the messaging and routing layer.
-This is the home of the functionality that marshals and
-unmarshals parameters and return values into messages that
-are sent across the bus. The routing layer arranges for the
-delivery of inbound messages to the appropriate bus objects
-and proxies, and arranges for messages destined for other
-bus attachments to be sent to an AllJoyn router for delivery.
+在帮手层下面的是信息和路由层。这是序列化，解序列化，以及向信息中返回值这些功能的家。路由层安排将入境的消息投递到制定的总线对象和代理，将待发送到其他总线的消息发送到 AllJoyn 路由器以待发送。
 
-The messaging and routing layer talks to an endpoint layer.
-In the lower levels of the AllJoyn system, data is moved
-from one endpoint to another. This is an abstract communication
-endpoint from the perspective of the networking code.
-Networking abstractions are fully complete at the top of the
-endpoint's layer, where there is essentially no difference
-between a connection over a non Wi-Fi radio (Bluetooth) and
-a connection over a wired Ethernet.
+信息和路由层与一个终点层通话。在 AllJoyn 系统较低的层级中，数据从一个终点流向另一个终点。从网络代码的角度来看，这就是一个虚拟的通信终点。网
+络抽象化在终点层的顶端就被完成，在这里通过非 Wi-Fi 无线连接（蓝牙）或者通过有线的以太网连接没有本质上的区别。
 
-Endpoints are specializations of transport mechanism-specific
-entities called transports, which provide basic networking
-functionality. In the case of a client, service, or peer,
-the only network transport used is the local transport.
-This is a local interprocess communication link to the
-local AllJoyn bus router. In Linux-based systems, this is
-a Unix-domain socket connection, and in Windows-based systems
-this is a TCP connection to the local router.
 
-The AllJoyn framework provides an OS abstraction layer to
-provide a platform on which the rest of the system is built,
-and at the lowest level is the native system.
+终点是对传送特定机制的实体对象的专门化，他提供着基本网络功能。在用户，服务或 peer 的实例中，网络传输仅仅使用本地传输。终点是本地进程间通信
+链路接入到本地 AllJoyn 总线路由。在基于 Linux 的系统中，终点是一个 Unix 域的套接字连接。在基于 Windows 的系统中终点是一个到本地路由的 TCP 连接。
 
-### Routers
+AllJoyn 框架还提供 OS 抽象化层。在这里，本地系统被至于最底层，余下的系统可以在该层的平台上建立。
 
-AllJoyn routers are the glue that holds the AllJoyn system together.
-As previously discussed, routers are programs that run in
-the background, waiting for interesting events to happen and
-responding to them. Because these events are usually external,
-it is better to approach the router architecture from a bottom-up
-perspective.
 
-At the lowest level of the router architecture figure below,
-resides the native system. We use the same OS abstraction layer
-as we do in the client architecture to provide common abstractions
-for routers running on Linux, Windows, and Android. Running on
-the OS abstraction layer, we have the various low-level networking
-components of the router. Recall that clients, services, and
-peers only use a local interprocess communication mechanism
-to talk to a router, so it is the router that must deal with
-the various available transport mechanisms on a given platform.
-Note the "Local" transport in the router architecture figure which is the sole
-connection to the AllJoyn clients, services, and peers running
-on a particular host.
+### 路由
+
+AllJoyn 的路由是将 AllJoyn 系统黏合在一起的胶水。之前提及过，路由器是运行在后台的程序，在他们感兴趣的事件发生时作出回应。由于这些事件通常都是外部的，通过自下而上的视角来观察路由结构会比较好。
+
+下图所示即为路由的最底层，原生系统生长在此处。和在客户结构中使用的 OS 虚拟层相同，我们用这个虚拟层为在 Linux，Windows 以及 Android 上运行 的路由提供常规抽象化。在 OS 抽象层中，我们有各种各样的底层路由网络组件。而客户端，服务端以及 peers 只用本地的进程间通信机制与路由器交流，
+所以在给定平台上，和众多可用的传送机制打交道的必须是路由器。请注意，"Local" 转送在路由架构图中就是唯一一个与运行在特定主机上的 AllJoyn的用 户，服务以及 peers 相连的. 
 
 ![router-arch][router-arch]
 
-**Figure:** Basic router architecture
+**Figure:** 基础路由架构图
 
-For example, a Bluetooth transport would handle the complexities
-of creating and managing piconets in the Bluetooth system.
-Additionally, a Bluetooth transport provides service advertisement
-and discovery functions appropriate to Bluetooth, as well
-as providing reliable communications. Bluetooth and other
-transports would be added at this transport layer along side
-the IP transport.
+例如，蓝牙传输系统会处理在蓝牙系统中创建并管理 piconets 的复杂工作。并且，蓝牙传输还提供适当的服务广播及发现功能，以及可靠的通信功能。蓝牙
+以及其他传输系统将会沿着 IP 传输被添加在该传输层中。
 
-The wired, Wi-Fi, and Wi-Fi Direct transports are grouped under
-an IP umbrella since all of these transports use the underlying
-TCP-IP network stack. There are sometimes significant differences
-regarding how service advertisement and discovery is accomplished,
-since this functionality is outside the scope of the TCP-IP
-standard; so there are modules dedicated to this functionality.
+有线的，Wi-Fi 以及 Wi-Fi Direct 传输会在 IP 伞下集合，这是因为所有这些传输机制都应用了底层的 TCP-IP 网络堆栈。有时，完成服务广播及发现的方
+式会有非常明显的不同，这是因为该功能不在 TCP-IP 标准的范畴之内；会有专门处理这些功能的模块存在。
 
-The various technology-specific transport implementations are
-collected into a Network Transports abstraction. The Sessions module
-handles the establishment and maintenance of communication
-connections to make a collection of routers and AllJoyn applications
-appear as a unified software bus.
+这一众特定技术的传输实现方式会被集合在一个 Network Transports 的抽象化中。Sessions 模块负责通信连接的简历以及维护，使一众路由器和 AllJoyn 应用程序呈现为一个整合在一起的软件总线。
 
-AllJoyn routers use the endpoint concept to provide connections
-to local clients, services, and peers but extend the use of
-these objects to bus-to-bus connections which are the transports
-used by routers to send messages from host-to-host.
+AllJoyn 路由使用终点概念提供到本地客户端，服务端，以及 peers 的连接，还将对这些对象的应用延伸到被路由用于传送主机到主机消息的总线对总线的连
+接。
 
-In addition to the routing functions implied by these connections,
-an AllJoyn router provides its own endpoints corresponding
-to bus objects used for managing or controlling the software
-bus segment implemented by the router. For example, when
-a service requests to advertise a well-known bus name, what
-actually happens is that the helper on the service translates
-this request into a remote method call that is directed to
-a bus object implemented on the router. Just as in the case
-of a service, the router has a number of bus objects living
-at associated object paths which implement specific named interfaces.
-The low-level mechanism for controlling an AllJoyn bus is
-sending remote method invocations to these router bus objects.
+除了这些连接所示的路由功能外，一个 AllJoyn 路由同时还提供他自己对应总线对象的终点，用来管理或控制其他路由实现的软件总线片段。举例来说，当一
+服务请求广播 well-known 总线名时，是在服务端的帮手将此请求解释成一个指向主线被路由实现的对象的远程方法调用。就像对于服务端一样，路由器有许多存在于相关对象路径，实现特定命名的接口的总线对象。用于控制 AllJoyn 总线的底层机制正在向这些路由总线对象发送远程方法调用。
 
-The overall operation of certain aspects of router operation
-are controlled by a configuration subsystem. This allows a
-system administrator to specify certain permissions for the
-system and provides the ability to arrange for on-demand
-creation of services. Additionally, resource consumption may
-be limited by configuration of the router, allowing a system
-administrator to, for example, limit the number of TCP connections
-active at any given time. There are options which allow system
-administrators to mitigate the effects of certain denial-of-service
-attacks, by limiting the number of connections which are
-currently authenticating, for example.
+对路由固定层面的总操作由一个配置子系统控制。这样一来，系统管理员可以指定对系统的特定许可，还可以安排按需创建服务。此外，路由可以添加限制资源消耗的配置，系统管理员因此可以对系统有所掌控，例如，随时限制 TCP 活跃连接的数量。还存在可以使管理员减缓拒绝服务攻击所带来的影响，例如限制
+正在进行认证的连接的数量。
 
-## Summary
+## 总结
 
-The AllJoyn framework is a comprehensive system designed to
-provide a framework for deploying distributed applications
-on heterogeneous systems with mobile elements.
+AllJoyn 框架是一个致力于为在带有移动元素的异构系统上开发分布式应用程序提供架构的综合系统。
 
-The AllJoyn framework provides solutions, building on proven
-technologies and standard security systems, that address the
-interaction of various network technologies in a coherent,
-systematic way. This allows application developers to focus
-on the content of their applications without requiring a large
-amount of low-level networking experience.
+AllJoyn 框架提供了强调能与多种网络结构进行有系统的交流的，建立于经过验证的技术及安全标准上的解决方案。应用程序开发者可专注于内容开发，而不需要有大规模的底层网络经验。
 
-The AllJoyn system is designed to work together as a whole
-and does not suffer from inherent impedance mismatches that
-might be seen in ad-hoc systems built from various pieces.
-We believe that the AllJoyn system can make development and
-deployment of distributed applications significantly simpler
-than those developed on other platforms.
+AllJoyn 系统是一个协同的整体，不会像由多个部分建立的 ad-hoc 系统那样忍受固有的阻抗错配的困扰。我们相信，相比于在其他平台上开发，使用 AllJoyn 系统可以使对分布式应用程序的开发和部署变得更加简单。
+
 
 [overview]: #overview
 [prototypical-alljoyn-bus]: /files/learn/standard-core/prototypical-alljoyn-bus.png
