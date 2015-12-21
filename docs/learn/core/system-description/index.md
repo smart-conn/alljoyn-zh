@@ -1,11 +1,11 @@
-# AllJoyn&trade; System Description
+# AllJoyn&trade; 系统描述
 
-## Release history
+## 发布历史
 
-| Release version | Date | What changed |
+| 发布版本 | 日期 | 改变内容 |
 |---|---|---|
-| 14.06 | 9/26/2014 | Initial release |
-| 14.12 | 12/17/2014 | <p>Updates for new functionality added in 14.12 release:</p><ul><li>UDP Transport design</li><li>TCP vs UDP Transport selection logic at the router</li><li>mDNS-based discovery for the router at the TCL</li><li>Updates to SLS fetch backoff design to support linear+exponential backoff</li><li>Router Probing mechanism to detect missing applications</li><li>Router logic to detect and disconnect slow reader nodes</li></ul><p>Other updates:</p><ul><li>Endpoints usage by AllJoyn Transport</li><li>TCP Transport data plane architecture and state machine</li><li>AllJoyn Protocol Version mapping for different releases</li><li>Link timeout mechanism between routers to detect missing routers</li></ul>|
+| 14.06 | 9/26/2014 | 初版 |
+| 14.12 | 12/17/2014 | <p>14.12中加入的新功能:</p><ul><li>UDP Transport design</li><li>TCP vs UDP Transport selection logic at the router</li><li>mDNS-based discovery for the router at the TCL</li><li>Updates to SLS fetch backoff design to support linear+exponential backoff</li><li>Router Probing mechanism to detect missing applications</li><li>Router logic to detect and disconnect slow reader nodes</li></ul><p>Other updates:</p><ul><li>Endpoints usage by AllJoyn Transport</li><li>TCP Transport data plane architecture and state machine</li><li>AllJoyn Protocol Version mapping for different releases</li><li>Link timeout mechanism between routers to detect missing routers</li></ul>|
 | 15.04 | 4/29/2015 | <p>Updates In Thin Apps section related to:</p><ul><li>Security and adding description of Router Selection</li><li>Some general clean up including fixing typos and readability and consistency changes</li></ul><p>Other changes:</p><ul><li>General cleanup</li><li>Removed references to RSA and PIN authe mechanisms as they are not longer supported</li>|
 
 This section describes in detail how AllJoyn works at the system level.
