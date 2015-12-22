@@ -110,49 +110,53 @@ and only display the notification text, that is, the artist and
 title. But a Consumer that is aware of this Producer, could also
 get the album art URL and display that along with the
 notification text to provide a richer custom notificaiton.
-举例说明，试想一个
+举例说明，试想一个收音机每播放一个新乐曲时发送一个通知。这个通知包含了通知文本形式的艺术家和曲名，以及一份专辑封面 URL 的定制属性。普通消费者在收到该通知后只会现实通知文本形式的部分，也就是艺术家和曲名。但是那些更加关注生产者的消费者，也能够从通知中获得专辑封面 URL 并显示出来以提供更丰富的定制通知。
 
-## How It Works
+## How It Works 运行方式
 
 Under the hood, notifications are sent using AllJoyn Sessionless Signals.
 Sessionless Signals provide everything that is needed to send and receive
 the notification:
+从内部来看，通知通过 AllJoyn Sessionless Signal 信号进行发送。Sessionless Signal 满足了发送和接收通知的一切需要：
 
 * A mechanism for a Producer to broadcast information to AllJoyn
-  apps/devices on the AllJoyn network.
+  apps/devices on the AllJoyn network. 使生产者能够在 AllJoyn 网络中向 AllJoyn 应用程序／设备广播信息的机制。
 
-* A concept of a TTL.
+* A concept of a TTL. TTL 的概念
 
 * A mechanism for new Consumers to join the network to be informed
-  of previously broadcasted notifications whose TTL had not expired.
+  of previously broadcasted notifications whose TTL had not expired. 当新消费者加入网络时，能被 TTL 尚未到期的广播通知到的机制。
 
 The sessionless signal contains the full notification, including
 all supported languages, and full metadata. Refer to the [Notification
 Interface Definition][notif-interface] for more details on the specific
 contents of the signal.
+Sessionless signal 包含完全版本的通知，包含所有支持的语言和所有的元数据。更多详细信息和信号的具体内容请参阅 [Notification
+Interface Definition][notif-interface]。
 
 Dismissing notifications are also handled by sessionless signals.
+拒绝通知也由 sessionless signal 处理。
 
-In summary, this is how things work:
+In summary, this is how things work: 综上所述，以下是它工作的方法：
 
-* A Producer sends a sessionless signal containing the notification.
+* A Producer sends a sessionless signal containing the notification. 生产者发送包含通知的 sessionless signal。
 
-* Consumers will receive this signal and display the notification.
+* Consumers will receive this signal and display the notification. 消费者在接收信号后显示通知。
 
 * Consumers joining the network later will also receive this signal
-  and display the information.
+  and display the information. 稍晚接入网络的消费者也会接收并显示该信息。
 
 * When the TTL expires, the Procuder will stop broadcasting this
-  sessionless signal. Consumers will stop displaying the notification
+  sessionless signal. Consumers will stop displaying the notification 当 TTL 超时后，生产者将会停止广播 sessionless signal。消费者将停止显示该通知。
 
 * At any time, a Producer or Consumer can send a sessionless signal
   to dismiss the notificaiton. Consumers, upon receiving this, will
-  stop displaying the notification.
+  stop displaying the notification. 任何时间，生产者或者消费者都可以通过发送一个 sessionless signal 以停止通知。消费者，一旦接收到这个信号，将会停止显示该通知。
 
 * A Consumer can connect to the Producer to request that the
-  notification stop being broadcasted.
+  notification stop being broadcasted. 消费者可以联系生产者，要求停止广播某一通知。
 
-## Learn More
+## Learn More 更多
 
 * [Learn more about the Notification Interface Definition][notif-interface]
 * [Download the SDK][download], [build][build] and
