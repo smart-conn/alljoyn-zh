@@ -5,84 +5,45 @@
 | 发布版本 | 日期 | 改变内容 |
 |---|---|---|
 | 14.06 | 9/26/2014 | 初版 |
-| 14.12 | 12/17/2014 | <p>14.12中加入的新功能:</p><ul><li>UDP 传输设计</li><li>路由端的 TCP vs UDP 选择逻辑</li><li>基于 mDNS 的 TCL 路由发现机制 TCL</li><li>更新了 SLS fetch backoff 设计以支持线性+指数性 backoff</li><li>加入路由探测机制Router Probing mechanism to detect missing applications</li><li>Router logic to detect and disconnect slow reader nodes</li></ul><p>Other updates:</p><ul><li>Endpoints usage by AllJoyn Transport</li><li>TCP Transport data plane architecture and state machine</li><li>AllJoyn Protocol Version mapping for different releases</li><li>Link timeout mechanism between routers to detect missing routers</li></ul>|
-| 15.04 | 4/29/2015 | <p>Updates In Thin Apps section related to:</p><ul><li>Security and adding description of Router Selection</li><li>Some general clean up including fixing typos and readability and consistency changes</li></ul><p>Other changes:</p><ul><li>General cleanup</li><li>Removed references to RSA and PIN authe mechanisms as they are not longer supported</li>|
+| 14.12 | 12/17/2014 | <p>14.12中加入的新功能:</p><ul><li>UDP 传输设计</li><li>路由端的 TCP vs UDP 选择逻辑</li><li>基于 mDNS 的 TCL 路由发现机制 TCL</li><li>更新了 SLS fetch backoff 设计以支持线性+指数性 backoff</li><li>加入路由探测机制以探测失踪的应用程序</li><li>加入可以检测并断开读取速度慢的节点的路有逻辑</li></ul><p>其他更新:</p><ul><li>Endpoints 对 AllJoyn 的传输可用</li><li>TCP 传输的数据平面模型以及状态机</li><li>AllJoyn 协议版本与不同发布的对应 </li><li>路由间的连接超时机制以检测失踪路由</li></ul>|
+| 15.04 | 4/29/2015 | <p>在 Thin Apps 部分中有关于如下功能的更新:</p><ul><li>安全性以及对路由选择添加描述</li><li>修复错字增强可读性和一致性的常规清理</li></ul><p>其他更新:</p><ul><li>常规清理</li><li>去掉了对 RSA 和 PIN认证机制的引用由于他们将不被支持</li>|
 
-This section describes in detail how AllJoyn works at the system level.
+此部分详细描述了 AllJoyn 在系统层中的工作方式
 
-## System Overview
+## 系统概览
 
-### IoE overview
+### 概览
+物联网（IoE）是一个令人兴奋的愿景，他承诺将人与物或物与物以各种方式连接在一起；这将会创造新的容量和丰富的体验，并将使我们的生活更简单。 IoE 承诺将把人，进程，数据以及物品汇聚到一起，给网络化的连接带来前所未有的相关性及价值，将信息转化成行动，并带来之前从未实现过的能力。
 
-The Internet of Everything (IoE) is an exciting vision which 
-promises to connect people with things and things with each 
-other in ways; this will create new capabilities and richer 
-experiences and overall make our life simpler. IoE promises 
-to bring people, process, data, and things together to make 
-networked connections more relevant and valuable than ever 
-before, turning information into actions and enabling capabilities 
-never possible before. 
 
-IoE will result in smart things or devices at homes, offices, 
-cars, streets, airports, malls etc. and these devices will work 
-together to provide contextual and real time experiences to users. 
-The IoE devices nearby each other will form proximal IoE networks, 
-e.g., at home, in the car, or in one's office. The IoE vision will 
-enable internetworking among multiple proximal IoE networks.
+IoE 将会为住宅，办公室，汽车，街道，机场以及购物中心等等带来智能物品和智能设备。这些设备将为用户提供实时的情景体验。距离相近的 IoE 设备将组
+建近端 IoE 网络，例如，在住宅内，在车里或者在办公室里。IoE 的愿景是实现多个 IoE 近端网络的互连互通。
 
-It is worthwhile to draw a comparison between Internet today and 
-Internet of Everything. The Internet today consists of millions of 
-registered top-level domains names centrally managed by the Internet 
-Assigned Numbers Authority (IANA). Discovery of these domains happen 
-through a hierarchical lookup via the Domain Name System (DNS). 
-In an IoE network, there will be potentially tens of billions of 
-IoE devices. It would be impossible to manage registration for 
-all of these devices via a central entity from a scalability 
-perspective. Also, in an IoE network, proximity-based interactions 
-among devices reduces latency as well as the need for each device 
-to connect directly to the Internet. So, the discovery should happen 
-automatically based on proximity criteria.  Security and privacy 
-issues become even more important in an IoE network where more 
-and more personal and home devices expose interfaces for connection 
-and control.
+对比现今存在的因特网以及物联网可以发现很多有趣的事。现今的因特网由受因特网编号管理局 (IANA) 集中管理的数百万已注册的高层域名构成。域名的发
+现可由通过域名系统（DNS）进行按层次查找完成。在 IoE 网络中，会存在潜在的数百亿 IoE 设备。由可测量性的角度看，想要试图通过一个中央实体对 IoE
+设备注册进行管理是不太可能的。并且在 IoE 网络中，基于邻近域的设备间交互减少了延迟，并且不需要将每个设备都直连到因特网。因此，物联网的发现机
+制应该是基于邻域标准自动触发的。由于越来越多的个人及家庭设备会将接口暴露给物联网用于连接及控制，安全性和隐私性变得尤为重要。
 
-The following figure shows an example IoE network with multiple 
-proximal IoE networks interconnected with each other via the Internet. 
+下图展示了多个通过因特网互相连接的邻域 IoE 网络的一个实例。
 
 ![ioe-network-example][ioe-network-example]
 
-**Figure:** IoE network example
+**Figure:** IoE 网络实例
 
-Smart devices within each IoE proximal network can dynamically 
-discover and communicate with each other over direct peer-to-peer 
-connection. For cases where some of these devices are behind NAT, 
-they can discover each other via some cloud-based discovery 
-services. The cloud-based discovery can also be used for 
-discovery and connection among IoE devices in different IoE proximal 
-networks. The overall IoE network can have additional cloud-based 
-services to provide specific functionality, e.g., remote home 
-automation, remote diagnostics/maintenance, data collection/reporting, etc. 
-The IoE network can also integrate with some of the existing cloud-based 
-services, e.g., integration with Facebook or Twitter for device status updates.
+通过直接的点对点连接，IoE 邻域网络中的智能设备可以做到对其他设备的动态发现和通信。对于某些使用网络地址转换的设备，他们可以通过基于云的发现服务来发现对方。基于云的发现服务也可以被用于不同的 IoE 邻域网络内 IoE 设备的发现和连接。综合 IoE 网络可能会有附加的用来提供特殊功能的基于云
+的服务，例如，远程住宅自动化，远程诊断/保养，数据收集/报告等等。IoE 网络还可以将一些现存的基于云的服务集成进来，例如将 Facebook 或 Twitter 集成到设备状态更新中。
 
-In any IoE network, interoperability among devices within and across 
-IoE proximal networks is of utmost importance to enable a rich, 
-scalable IoE ecosystem of applications and services for these devices. 
-Any IoE system must consider specific key design aspects including 
-device advertisement and discovery, mobility and dynamic IoE network 
-management, security and privacy, interoperability across multiple 
-bearers/OS, lightweight solution to support thin/dumb device, 
-extensibility and overall scalability. For an IoE system to be 
-truly adapted and successful, it must be open and provide a 
-horizontal solution that can be used across different vertical 
-use cases. 
+在任何 IoE 网络中，内在或夸 IoE 邻域网中设备的协同互用性对提供丰富的，可扩展的，为设备提供服务及应用程序的 IoE 生态系统至关重要。在设计 IoE
+系统时，一定要考虑一些特定的关键设计层面，包括设备的广播及发现，移动性和动态 IoE 网络管理，安全性和隐私性，跨载体/操作系统的协同互用
+性，用以支持瘦终端/哑终端的轻量化解决方案，可延展性以及总体可测量性。一个成功的 IoE 系统必须是开放的，并提供可用于跨越不同垂直用例的水平化
+解决方案。
 
-The AllJoyn system aims to address these key design aspects. 
-It provides an open-source software framework to enable proximity-based, 
-peer-to-peer, bearer-agnostic networking among IoE devices. 
-The AllJoyn system provides a way for devices and applications 
-to advertise and discover each other using peer-to-peer protocol 
-within a proximal network.
+AllJoyn 系统专注于这些核心设计层面。此系统提供开源的软件框架，可实现基于邻近域的，点对点的，承载无关的 IoE 设备网络化。AllJoyn 系统为设备及
+应用程序提供了可以通过使用点对点协议在邻近域网络内广播并发现对方的方式。
+
+AllJoyn 开源软件系统提供了可以完成夸异构分布式系统的 IoE 设备间通信的框架。AllJoyn 是一个基于邻近域的点对点通信平台，面向在分布式系统中的设
+备。他不需要使用集中式的服务器来完成通信。支持 AllJoyn 的设备运行一个或多个 AllJoyn 应用程序，并形成点对点的 AllJoyn 网络。AllJoyn 系统是分
+布式的软件平台，支持运行在 IoE 设备上的应用程序推广，发现服务，以及连接到其他设备以使用其他设备提供的服务。
 
 The AllJoyn open-source software system provides a framework for 
 enabling communication among IoE devices across heterogeneous 
