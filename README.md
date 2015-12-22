@@ -1,5 +1,10 @@
 # alljoyn-zh
 
+## 1222 待审阅文章
+
+* [ ] [docs/learn/base-services/notification/index.md](docs/learn/base-services/notification/index.md)
+* [ ] [docs/learn/base-services/controlpanel/index.md](docs/learn/base-services/controlpanel/index.md)
+
 ## 1221 待审阅文章
 
 * [ ] [docs/learn/core/index.md](docs/learn/core/index.md)
