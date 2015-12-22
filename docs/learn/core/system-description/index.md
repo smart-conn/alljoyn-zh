@@ -164,9 +164,9 @@ Unique Name = ":"<AJ router GUID>"."<Seq #>
 ![uniquename-assignment-1][uniquename-assignment-1]
 
 **Figure:** AllJoyn 唯一标识符分配1 (多个应用程序连接到单一 AllJoyn 路由)
-
-This scenario illustrates a device with multiple AllJoyn 
-applications connected to a single AllJoyn router. It is 
+ 
+此场景描述了有多个 AllJoyn 应用程序的设备连接到一个单一 AllJoyn 路由的情况。
+It is 
 expected that a large number of AllJoyn-enabled devices 
 will be single-purpose devices (e.g., refrigerator, oven, 
 light bulb, etc.), and will have only one application residing 
