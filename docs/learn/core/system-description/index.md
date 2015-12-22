@@ -43,105 +43,47 @@ AllJoyn 系统专注于这些核心设计层面。此系统提供开源的软件
 
 AllJoyn 开源软件系统提供了可以完成夸异构分布式系统的 IoE 设备间通信的框架。AllJoyn 是一个基于邻近域的点对点通信平台，面向在分布式系统中的设
 备。他不需要使用集中式的服务器来完成通信。支持 AllJoyn 的设备运行一个或多个 AllJoyn 应用程序，并形成点对点的 AllJoyn 网络。AllJoyn 系统是分
-布式的软件平台，支持运行在 IoE 设备上的应用程序推广，发现服务，以及连接到其他设备以使用其他设备提供的服务。
+布式的软件平台，支持运行在 IoE 设备上的应用程序推广，发现服务，以及连接到其他设备以使用其他设备提供的服务。AllJoyn 框架使这些应用程序可以通
+过可被发现的 API 来暴露自己的功能，这些 API 是定义应用程序所提供的功能的契约。
 
-The AllJoyn open-source software system provides a framework for 
-enabling communication among IoE devices across heterogeneous 
-distributed systems. The AllJoyn system is a proximity-based, 
-peer-to-peer communication platform for devices in a distributed 
-system. It does not require a centralized server for communication 
-across such devices. AllJoyn-enabled devices run one or more AllJoyn 
-applications and form a peer-to-peer AllJoyn network. The AllJoyn 
-system is a distributed software platform which enables applications 
-running on IoE devices to advertise, discover and connect to each 
-other for making use of services offered on these devices. 
-The AllJoyn framework enables these applications to expose 
-their functionality over the network via discoverable APIs 
-which are the contracts that define the functionality provided 
-by the application.  
+在邻近域 AllJoyn 网络中， 安装在 IoE 设备上的 AllJoyn 应用程序们互为 peers. 一个支持 AllJoyn 的应用程序可以作为一个供应方，消费方，或者既是
+供应方也是消费方，这取决于服务模型。供应方的应用程序实现服务，并将它们通过 AllJoyn 网络推广。对这些服务有兴趣的消费方应用程序就可以连接到供
+应方应用程序并根据自己的喜好使用服务。一个 AllJoyn 的应用程序可以同时扮演供应方和消费方的角色。这意味着该应用程序可以广播某一套他所支持的服
+务，也可以发现并利用其它在邻近域中的应用程序所提供的各种服务。
 
-In the proximal AllJoyn network, AllJoyn applications installed 
-on IoE devices are peers to each other. An AllJoyn-enabled 
-application can play the role of a provider, a consumer or 
-both depending upon the service model. Provider applications 
-implement services and advertise them over the AllJoyn network. 
-Consumer applications interested in these services discover 
-them via the AllJoyn network. Consumer applications then 
-connect to provider applications to make use of these services 
-as desired. An AllJoyn application can act as both provider and 
-consumer at the same time. This means that the app can advertise 
-a certain set of services it supports, and can also discover 
-and make use of services provided by other apps in the 
-proximal AllJoyn network.
-
-The following figure shows an AllJoyn network with 4 devices. 
+下图展示了有4台设备的 AllJoyn 网络
 
 ![alljoyn-network][alljoyn-network]
 
-**Figure:** AllJoyn network
+**Figure:** AllJoyn 网络
 
-Device 1 and Device 2 have only Provider applications providing 
-AllJoyn services. Device 3 has only consumer applications consuming 
-services from other provider devices. Device 4 has an application 
-that acts as both provider and consumer. The application on 
-Device 4 consumes services from the application on Device 2. 
-It also provides services which get consumed by applications 
-on Device 3. Arrow directions are from provider to consumer 
-indicating consumption of services.
+设备1和设备2只有提供 AllJoyn 服务的供应方应用程序。设备3只有使用其它设备服务的消费方应用程序。设备4的应用程序可以同时充当供应方和消费方。设备4上的应用程序使用设备2的应用程序所提供的服务。同时他提供的服务还被设备3上的应用程序所使用。箭头的方向从供应方指向消费方，指示着服务的消费。
 
-The AllJoyn framework establishes an underlying bus architecture 
-for communication among IoE devices. AllJoyn applications on 
-IoE devices connect and communicate to each other via the 
-AllJoyn Bus. The AllJoyn bus provides a framework for applications 
-to expose their services to other AllJoyn applications. The AllJoyn 
-bus provides a platform- and radio-link agnostic transport mechanism 
-for applications on IoE devices to send notifications or exchange 
-data. The AllJoyn bus takes care of adapting to an underlying 
-physical network-specific transport. 
+AllJoyn 框架为 IoE 设备之间的通信建立了一个底层总线结构。在 IoE 设备上的 AllJoyn 应用程序 通过 AllJoyn 主线与其他应用程序连接并通信。
+AllJoyn 主线为在 IoE 设备上的应用程序提供了可以发送通知或者交换数据的平台以及无线链路无关的传输机制。AllJoyn 主线负责处理与底层物理的特定网
+络传输相配饰的工作。
 
-Each AllJoyn app connects to a local AllJoyn bus. One or more 
-applications can connect to a given local AllJoyn bus. AllJoyn 
-bus enables attached AllJoyn applications to advertise, discover, 
-and communicate with other. AllJoyn buses on multiple devices 
-communicate with each other using underlying network technology 
-such as Wi-Fi.
+每一个 AllJoyn 的应用程序都连接到本地的 AllJoyn 主线。一个给定的本地 AllJoyn 主线可以连接一个或者多个应用程序。AllJoyn 主线使附着在它上面的
+应用程序可以完成广播服务，发现服务以及互相通信的功能。在多个设备上的 AllJoyn 主线用类似 Wi-Fi 的底层网络技术来互相通信。
 
-The AllJoyn framework's open-source implementation provides an 
-ecosystem where various parties can contribute by adding new 
-features and enhancements to the AllJoyn system. It supports 
-OS independence via an OS abstraction layer allowing the AllJoyn 
-framework and its applications to run on multiple OS platforms. 
-The AllJoyn framework supports most standard Linux distributions, 
-Android 2.3 and later, common versions of Microsoft Windows OS, 
-Apple iOS, Mac OS X and embedded OSs such as OpenWRT and 
-RTOSs like ThreadX.
+AllJoyn 平台的开源实现方式提供了一个生态系统，诸多用户可以通过添加新功能及增强功能来为 AllJoyn 生态系统做贡献。此系统支持通过 OS 抽象层实现
+的操作系统无关性，使得 AllJoyn 框架以及应用程序可以在多种操作平台上运行。AllJoyn框架支持大多数的标准 Linux 发行版，Android2.3 及后续版本，
+常见的 Microsoft Windows 操作系统，Apple iOS, Mac OS X, 嵌入式的诸如 OpenWRT 的操作系统以及类似 ThreadX 的实时操作系统。
 
-The AllJoyn framework also supports multiple programming 
-languages for writing applications and services for IoE 
-devices, which enable a wide ecosystem for developing AllJoyn 
-applications and services. The AllJoyn framework currently, 
-supports C, C++, Java, C#, JavaScript, and Objective-C.
+AllJoyn 框架同时也支持多种用于为 IoE设备开发应用程序及服务的编程语言，这丰富了开发 AllJoyn 应用及服务的生态系统。 AllJoyn 框架目前支持C, C++, Java, C#, JavaScript, 以及 Objective-C.
 
-### The AllJoyn system and D-bus specification
 
-The AllJoyn system implements a largely compatible version 
-of the D-Bus over-the-wire protocol and conforms to many of 
-the naming conventions and guidelines in the D-Bus specification. 
-The AllJoyn system has extended and significantly enhanced D-Bus 
-message bus to support a distributed bus scenario. The AllJoyn 
-system makes use of the D-Bus specification as follows: 
+### AllJoyn 系统以及 D-bus 规范
 
-* It uses the D-Bus data type system and D-Bus marshaling format. 
-* It implements an enhanced version of the D-Bus over-the-wire 
-protocol by adding new flags and headers (detailed in [Message 
-format][message-format]). 
-* It uses D-Bus naming guidelines for naming well-known names 
-(Service names), interface names, interface member names 
-(methods, signals and properties) and object path names.
-* It uses a D-Bus defined Simple Authentication and Security 
-Layer (SASL) framework for application layer authentication 
-between AllJoyn-enabled applications. It supports authentication 
-mechanisms beyond what are defines by the D-Bus specification.
+AllJoyn系统
+
+AllJoyn 实现了一个广泛兼容的 D-Bus over-the-wire 协议，并遵守在 D-Bus 规范中的众多命名习俗和指导原则。AllJoyn 延展并显著强化了 D-Bus 消息
+主线，以支持分布式主线的场景。AllJoyn 系统使用按照下文描述的 D-Bus 规范：
+
+* 使用 D-Bus 的数据类型系统以及序列化格式
+* 通过添加 flags 以及 headers（具体细节请参阅[Message format][message-format]）实现增强版的 D-Bus over-the-wire 协议。
+* 对 well-known names （服务器），接口，接口成员（方法，信号以及属性）以及对象路径的命名使用 D-Bus 的命名原则。
+* 使用 D-Bus 定义的简单认证与安全层（SASL）框架完成应用程序层中支持 AllJoyn 应用程序间的认证。并支持不限于由 D-Bus 规范定义的多种认证机制。
 
 The D-Bus specification can be found at (http://dbus.freedesktop.org/doc/dbus-specification.html).
 
