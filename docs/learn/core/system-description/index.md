@@ -85,129 +85,85 @@ AllJoyn 实现了一个广泛兼容的 D-Bus over-the-wire 协议，并遵守在
 * 对 well-known names （服务器），接口，接口成员（方法，信号以及属性）以及对象路径的命名使用 D-Bus 的命名原则。
 * 使用 D-Bus 定义的简单认证与安全层（SASL）框架完成应用程序层中支持 AllJoyn 应用程序间的认证。并支持不限于由 D-Bus 规范定义的多种认证机制。
 
-The D-Bus specification can be found at (http://dbus.freedesktop.org/doc/dbus-specification.html).
+D-Bus 规范请参阅以下网址： (http://dbus.freedesktop.org/doc/dbus-specification.html).
 
-### AllJoyn system key concepts
+### AllJoyn 系统的关键概念
 
-As previously stated, the AllJoyn framework provides an underlying 
-bus architecture for applications to advertise, discover, and 
-make use of each other's functionality. To achieve this, the 
-AllJoyn framework provides an object-oriented software framework 
-for applications to interact with each other. 
+如之前所述，AllJoyn 框架为应用程序提供可以推广和发现服务，以及使用其他应用程序提供的功能的底层主线结构。为了实现此结构，AllJoyn 框架提供了
+一个可供应用程序交互的面向对象的软件框架。
 
-#### AllJoyn router
+#### AllJoyn 路由
 
-The AllJoyn Router component provides core functionality of 
-the AllJoyn system, including peer-to-peer advertisement/discovery, 
-connection establishment, broadcast signaling and control/data 
-messages routing. The AllJoyn router implements software bus 
-functionality and an application connects to this bus to avail 
-core functions of the AllJoyn framework. Each instance of the 
-AllJoyn router has an associated globally unique identifier (GUID) 
-which is self-assigned. Currently, this GUID is not persisted, 
-so a new GUID is assigned whenever the AllJoyn router starts up.
-An AllJoyn router can be either bundled with each application 
-(bundled model), or can be shared across multiple applications 
-(standalone model) on the device as shown below.
+AllJoyn 路由组件为 AllJoyn 系统提供核心功能，包括点对点推广/发现，建立连接，广播信号以及控制/投递数据消息。AllJoyn 路由通过实现软件总线功能
+以及到应用程序的连接使 AllJoyn 框架的核心功能受益。每一个 AllJoyn 路由的实例都有一个自行分配的全球唯一标识符（GUID）。此 GUID 并不是持久有
+效的，每当 AllJoyn 路由启动时都会被分配一个新的 GUID. AllJoyn 路由可以是捆绑在每一个应用程序上的（捆绑模式），也可以是被众多应用程序所分享
+的（独立模型），如下图所示。
+
 
 ![alljoyn-bundled-standalone-router-examples][alljoyn-bundled-standalone-router-examples]
 
-**Figure:** AllJoyn bundled and standalone router examples
+**Figure:** AllJoyn 捆绑式以及独立式 router 举例
 
-An AllJoyn router has an associated AllJoyn protocol version 
-that defines the set of functionality it supports. This protocol 
-version is exchanged between AllJoyn routers on an AllJoyn 
-network when they establish connection with each other as 
-part of AllJoyn session establishment. 
+AllJoyn 路由有定义了被支持功能集合的相关 AllJoyn 协议译本。在连接建立后，此协议会在 AllJoyn 网络上的 AllJoyn 路由之间交换，作为建立 AllJoyn
+会话的一部分。
 
-#### AllJoyn bus
+#### AllJoyn 主线
 
-An AllJoyn router provides software bus functionality where 
-one or more applications can connect to it to exchange messages. 
-AllJoyn router instances on a device form a logical AllJoyn 
-bus local to the device as shown below. 
+AllJoyn 路由提供了软件总线功能，借助此功能一个或多个应用程序可以与总线建立连接并交换消息。在设备上的 AllJoyn 路由实例建立本地的 AllJoyn 逻 辑总线，如下图所示。
 
 ![logical-router-bus-mapping][logical-router-bus-mapping]
 
-**Figure:** Logical mapping of AllJoyn router to AllJoyn bus
+**Figure:** AllJoyn 路由到 AllJoyn 总线的映射转换
 
-The logical AllJoyn bus maps to a single AllJoyn router in two cases:  
+AllJoyn 逻辑总线映射到一个单独的 AllJoyn 路由有以下两种情况：
 
-* Bundled deployment model with only one app on the device, 
-shown as UC2. 
-* Standalone deployment model with one or more apps on the device, 
-shown as UC3. 
+* 设备上只有一个应用程序的捆绑部署模型，如 UC2 所示。
+* 设备上有一个或多个应用程序的独立部署模型，如 UC3 所示。
 
-The logical AllJoyn bus maps to multiple AllJoyn router instances 
-in the bundled deployment model with multiple apps on the device, 
-shown as UC1.
+在设备上有多个应用程序的捆绑部署模型中，AllJoyn 逻辑总线映射到多个 AllJoyn 路由实例的情况请参阅 UC1.
 
-**NOTE:*8 The AllJoyn router and AllJoyn bus terminology are used 
-interchangeably in this document as these refer to same set of 
-bus functionality provided by the AllJoyn system.
+**NOTE:*8 在此文档中，AllJoyn 路由与 AllJoyn 总线这两个术语是可以相互替换的，他们指代着一个由 AllJoyn 系统提供的相同集合的主线功能。
 
-The following figure shows a simplistic view of the local 
-AllJoyn bus on two different devices with multiple applications 
-connecting to the bus. 
+下图是在有多个应用程序连接到主线的两个不同设备上的 AllJoyn 本地主线的简化视图。
 
 ![alljoyn-bus][alljoyn-bus]
 
-**Figure:** AllJoyn bus
+**Figure:** AllJoyn 主线
 
-The AllJoyn bus provides a medium for communication between 
-apps connected to the bus. AllJoyn buses on multiple devices 
-communicate with each other using the underlying network 
-technology such as Wi-Fi.
+AllJoyn 主线为连接到主线的应用程序之间通信提供了一个媒介。在多个设备上的 AllJoyn 主线通过类似 Wi-Fi 的底层网络技术实现通信。
 
-Multiple instances of AllJoyn buses across multiple devices 
-form a logical distributed AllJoyn software bus as shown below.
+下图展示了由跨越多个设备的多个 AllJoyn 主线实例所构成的逻辑分布式 AllJoyn 软件主线:
 
 ![distributed-alljoyn-bus][distributed-alljoyn-bus]
 
-**Figure:** Distributed AllJoyn bus
+**Figure:** 分布式 AllJoyn 主线
 
-The distributed AllJoyn bus hides all the communication 
-link details from the applications running on multiple devices. 
-To an application connected to the AllJoyn bus, a remote application 
-running on another device looks like an app that is local to 
-the device. AllJoyn distributed bus provides a fast lightweight 
-way to move messages across the distributed system.
+分布式 AllJoyn 主线隐藏了所有运行在多个设备上的应用程序中的通信链路细节。对于连接到 AllJoyn 主线的一个应用程序来说，运行在另一个设备上的远
+端应用程序看起来就像在这个设备本地的一个应用程序一样。AllJoyn 分布式主线为在分布式系统上传送消息提供了一个快速且轻量化的方式。
 
-#### AllJoyn service
+#### AllJoyn 服务
 
-As described earlier, provider AllJoyn applications provide 
-services that can be consumed by other applications in the 
-AllJoyn network. For example, a TV may provide a picture rendering 
-service to display pictures from another AllJoyn device 
-(e.g., smartphone). An AllJoyn Service is a notional/logical 
-concept and is defined by one or more AllJoyn interfaces (described 
-in [AllJoyn interfaces][alljoyn-interfaces]) which expose 
-service functionality to consumers. 
+如前所述，在 AllJoyn 网络中，供应方应用程序提供可被 AllJoyn 网络中其他应用程序所使用的服务。例如，一台电视可以提供图像渲染功能，从而显示另
+一个设备（例如智能手机）上的图片。AllJoyn 服务是一个理论的/逻辑的概念，由向消费方暴露服务功能的一个或多个 AllJoyn 接口（详细描述请参阅
+[AllJoyn interfaces][alljoyn-interfaces]）定义。
 
-An AllJoyn application can act as both provider and consumer 
-by providing and consuming AllJoyn services at the same time.
+AllJoyn 应用程序可以同时提供并消费 AllJoyn 服务，也就是说 AllJoyn 应用程序可以同时扮演供应方和消费方。
 
-#### Unique name
-
-Each AllJoyn application connects to a single AllJoyn router. 
-To enable addressing for individual applications, an AllJoyn 
-router assigns a unique name to each connecting application. 
-The unique name uses AllJoyn router GUID as the prefix. It 
-follows the format below:
+#### 唯一标识
+每一个 AllJoyn 应用程序都连接到一个单一的 AllJoyn 路由。为了实现对每一个独立应用程序的寻址，AllJoyn 路由会为每一个连接在其上的应用程序分配
+一个唯一标识符。此唯一标示符使用 AllJoyn 路由的 GUID 作前缀，并遵循如下格式：
 
 ```
 Unique Name = ":"<AJ router GUID>"."<Seq #>
 ```
 
-**NOTE:** The ":<AJ router GUID>.1" unique name is always given 
-to the AllJoyn router local endpoint.
+**NOTE:** ":<AJ router GUID>.1" 标识符会一直被分配给 AllJoyn 路由的本地终点。
 
-The following figure shows the unique name assignment for three connected 
-apps to an AllJoyn bus by a single AllJoyn router with GUID=100. 
+下图展示了一个 GUID=100的单一 AllJoyn 路由为三个连接到 AllJoyn 主线的应用程序分配唯一标识符的过程：
 
 ![uniquename-assignment-1][uniquename-assignment-1]
 
-**Figure:** AllJoyn unique name assignment 1 (multiple apps connected to single AllJoyn router)
+**Figure:** AllJoyn 唯一标识符分配1 (多个应用程序连接到单一 AllJoyn 路由)
 
 This scenario illustrates a device with multiple AllJoyn 
 applications connected to a single AllJoyn router. It is 
