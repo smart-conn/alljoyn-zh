@@ -275,22 +275,12 @@ AllJoyn 核心库可以是为标准 AllJoyn 应用程序设计的标准核心库
 
 #### “About” 功能
 
-The AllJoyn framework supports the About feature as part 
-of the AJ Core Library. The About feature enables an application 
-to expose key information about itself including app name, app 
-identifier, device name, device identifier and a list of AllJoyn 
-interfaces supported by the app among other details. This 
-feature is supported by org.alljoyn.About interface implemented 
-by the org.alljoyn.About object.
+“About” 功能在 AllJoyn 框架中作为核心库的一部分被支持。“About”功能使应用程序可以展示关于自身的关键信息，包括应用程序名，应用程序识别符，设备名，设备识别符，被支持的 AllJoyn 接口列表以及其他信息。此功能由被 org.alljoyn.About object 对象实现的 org.alljoyn.About 接口支持。
 
-An application advertises key information about itself via an 
-Announce signal defined by the About interface. This signal is 
-sent as a sessionless signal on the proximal AllJoyn network. 
-Any AllJoyn applications interested in discovering services 
-via the AllJoyn interfaces make use of the Announce signal 
-for discovery. The About feature also provides a mechanism 
-to fetch application data via a direct method call. See the 
-[About HLD] for design details on the About feature.
+应用程序通过一个由“ About ”接口定义的 Announce 信号来展示自己的关键信息。此信号在邻域 AllJoyn 网络中被当作非会话信号发送。任何对发现服务有
+兴趣的应用程序都可以使用 Announce 信号用于发现。“About” 功能同时也提供通过直接调用方法来获取应用程序信息的机制。关于 “About” 功能的技术细节
+请参阅[About HLD]
+
 
 #### AllJoyn endpoints
 
