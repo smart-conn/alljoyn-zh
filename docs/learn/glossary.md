@@ -1,30 +1,33 @@
-# Glossary
+# Glossary 术语表
 
 ### About Client
 
 The implementation of the About feature that receives information 
-from an About Server.
+from an About Server. About 功能中用于从 About Sever 接收信息的工具。
 
 ### About feature
 
 Open implementation built using the AllJoyn&trade; framework that 
-allows for a broadcast of AboutData.
+allows for a broadcast of AboutData. 使用 AllJoyn&trade 架构构件的开放式工具，用于广播 AboutData。
 
 Software layer that enables devices to publish AllJoyn service 
 frameworks' interfaces and metadata (AboutData) in an Announcement 
 and in a session.
+软件分层结构使得设备可以在 Annoucement 和会话中发布 AllJoyn 服务架构的接口和元数据（AboutData）。
 
-[Learn more][about]
+[了解更多][about]
 
 ### AboutData
 
 A Hash structure (key-value pair) of a String key to an AllJoyn 
 Variant value that represents various device details.
+AllJoyn Variant 值的字符串密钥的哈希结构（键－值对），它表示各种设备的详细信息。
 
 ### AboutIcon
 
 An image representing the device that can be obtained remotely 
 via the About interface.
+用于表示可被通过 About 接口远程获取的设备的图像。
 
 ### AboutService
 
@@ -39,46 +42,48 @@ that discovers advertised AboutData.
 The implementation of the About feature that broadcasts About 
 details. Traditionally, this is an embedded device, but can 
 be a TV, mobile, or any device that supports AllJoyn service frameworks.
+About feature 用于广播 About 细节的工具。传统意义上，这是一个嵌入式系统。当然它也可以是任何支持 AllJoyn 服务架构的设备，如 电视、手机等。
 
 ### Action
 
-A function performed by an AllJoyn-enabled device. 
+A function performed by an AllJoyn-enabled device. AllJoyn 设备执行的功能。
 
-[Learn more][events-and-actions].
+[了解更多][events-and-actions].
 
-### Action descriptor
+### Action descriptor 
 
-An introspectable human readable description contained in the action. 
+An introspectable human readable description contained in the action. Action 中包含的内省的可读描述。
 
 ### Action-receiving device
 
 The device that performs an action. Related to the 
-[Events and Actions feature][events-and-actions].
+[Events and Actions feature][events-and-actions].执行某项操作的设备。有关 [Events and Actions feature][events-and-actions]。
 
 ### Adapter
 
 The Control Panel service framework layer that translates 
-the UI elements received to iOS UI elements.
+the UI elements received to iOS UI elements. 将接收的 UI 元素转换成 iOS UI 元素的控制面板服务架构。
 
 ### AJSCL
 
 AllJoyn Standard Core Library. An application or AllJoyn 
 daemon process that contains the full implementation 
-of the AllJoyn message bus.
+of the AllJoyn message bus. AllJoyn 标准内核资源库。包含完整 AllJoyn 信息总线工具的应用程序或 AllJoyn 守护进程。
 
 ### AJTCL
 
 AllJoyn Thin Core Library. The version of the AllJoyn library 
 that runs on devices that are memory and processing power-constrained. 
-This is intended for devices that are powered by a Micro Controller Unit (MCU).
+This is intended for devices that are powered by a Micro Controller Unit (MCU). AllJoyn 精简内核资源库。在内存和处理能力受限的设备上运行的 AllJoyn 资源库版本。 它更倾向于支持采用 Micro Controller Unit (MCU) 供电的设备。
 
 ### AllJoyn App
 
 An application that uses the AllJoyn framework. Apps use either the 
 AllJoyn Core APIs or the AllJoyn Service Frameworks API. Apps 
 can either use the Standard Core or Thin Core implementations.
+使用 AllJoyn 架构的应用程序，无论是 AllJoyn Core API 或者 AllJoyn Service Framework。应用程序既可以使用 Standard Core 工具，也可以使用 Thin Core 工具。
 
-[Learn more][apps-and-routers].
+[了解更多][apps-and-routers].
 
 ### AllJoyn client app
 
@@ -86,56 +91,62 @@ As part of a peer session, this application will take the role
 of requesting information through a peer session on a service 
 application. This does not correlate to a web client as the 
 client app may also expose service components.
+作为对等会话的一部分，此应用程序的作用是通过对等回话请求服务应用程序的信息。它与网页客户端并不相关，因为客户端应用程序也可能公开网络组件。
 
 ### AllJoyn core package
 
-AllJoyn software package
+AllJoyn software package AllJoyn 软件包
 
 ### AllJoyn-enabled device
 
 An entity which has an AllJoyn application installed to send 
 or receive notifications using the Notification service framework interface.
+安装了 AllJoyn 应用程序的设备，使用 Notification 服务架构接口，发送和接收通知。
 
 ### AllJoyn framework
 
 Open-source, peer-to-peer framework that allows for abstraction 
-of low-level network concepts and APIs.
+of low-level network concepts and APIs. 
+开源、端到端架构，支持低等规格网络概念和API。
 
-[Learn more][core]
+[了解更多][core]
 
 ### AllJoyn interface
 
 A collection of methods, signals and properties that make up 
-the contract of how applications communicate.
+the contract of how applications communicate. 组成应用程序相互通信的方法、信号和属性的集合。
+
 
 ### AllJoyn Router
 
 AllJoyn network components that talk to each other to enable 
-apps on different routers to communicate in the AllJoyn network.
+apps on different routers to communicate in the AllJoyn network. 在 AllJoyn 网络中，相互通信的 AllJoyn 网络组件。它能使不同路由上的应用程序进行通信。
 
-[Learn more][apps-and-routers].
+[了解更多][apps-and-routers].
 
 ### AllJoyn service (frameworks)
 
 A collection of full-feature implementations using the AllJoyn 
 framework that provides specific functionality. These are building 
 blocks can be combined together to build interoperable devices 
-and applications.
+and applications. 
+使用 AllJoyn 架构提供特定功能的全功能工具的集合。这些都是构建基块可以组合在一起以构建可互操作的设备
+和应用程序。
 
 ### AllJoyn Standard Core Library
 
-See [AJSCL][ajscl]
+See [AJSCL][ajscl] 详见 [AJSCL][ajscl]
 
 ### AllJoyn Thin Core Library
 
-See [AJTCL][ajtcl]
+See [AJTCL][ajtcl] 详见 [AJTCL][ajtcl]
 
 ### Announcement
 
 A sessionless signal whose payload includes published services' 
-interfaces and metadata that are used for discovery.
+interfaces and metadata that are used for discovery. 一种 sessionless signal，内容包含了用于发现的公开服务接口和元数据。
 
-[Learn more][about]
+[了解更多][about]
 
 ### ARDP
 
@@ -144,42 +155,51 @@ among other things, reliable delivery and ordering for UDP-based
 layer 4 transport mechanisms. In particular, ARDP is used in the
 UDP Transport to provide guarantees appropriate to AllJoyn Messaging.
 ARDP is modeled after RDP and extended for AllJoyn-specific requirements.
+AllJoyn Reliable Datagram Protocol（AllJoyn 可靠数据报协议）。ARDP 旨在提供基于 UDP 的第 4 层传输机制的可靠送达和命令。ARDP 特别用来保证在 UDP 传输中为 AllJoyn messaging 提供适当保障。ARDP 是效仿 RDP 建立的，并针对 AllJoyn 的需求进行了扩展。
 
 ### Audio service framework
 
 Open implementation built using the AllJoyn framework that 
 allows for synchronized audio to play back on one or many Sinks.
+开放工具，允许使用 AllJoyon 框架同步播放来自一个或多个源的音频。
 
 ### Authoring app
 
 Application that carries out the IFTTT rules. Related to the 
-[Events and Actions feature][events-and-actions].
+[Events and Actions feature][events-and-actions].执行 IFTTT 规则的应用程序。有关 [Events and Actions feature][events-and-actions].
+
 
 ### Bandwidth-Delay Product
 
 Refers to the product of a data link�s capacity in bits per second
 and its round-trip delay time. This characterizes the amount of data
 that can be in transit (sometimes called in-flight) in the network.
+是指产品每秒钟数据连接的容量和它的往返延迟。它代表了网络中可被传输（有时叫做空中传输）的数据量。
+
 
 ### Base services
 
 A set of service frameworks that are common across a range
 of applications and product categories.
+兼容各种应用程序和产品分类的一套服务架构。
 
 ### Bundled router
 
 AllJoyn router that includes an app on the same device. 
 The AllJoyn Standard Library supports bundled routers.
+包含了同一个设备上应用程序的 AllJoyn Router。
+AllJoyn Standard Library 支持 Bundled Router。
 
 ### CNG
 
-Cryptography Next Generation. Windows feature.
+Cryptography Next Generation. Windows feature.下一代加密技术。Windows 功能。
 
 ### ConfigClient
 
 A class in the AllJoyn Configuration service framework that is 
 used by an application developer to remotely configure a peer 
 device running an AllJoyn ConfigService.
+AllJoyn Configuration 服务架构中的一个类。通过它，应用程序开发者可以远程配置运行了 AllJoyn ConfigService 的设备。
 
 ### ConfigData
 
@@ -187,6 +207,7 @@ A Hash structure (key-value pair) of a String key to an AllJoyn
 Variant value that represents various device details that are 
 remotely updateable and are persisted to some permanent 
 storage layer, such as NVRAM.
+AllJoyn Variant 值的字符串密钥的哈希结构（键－值对），它表示各种设备的详细信息。这些信息可以被远程更改，并被保存到永久存储层，如 NVRAM。
 
 ### ConfigService
 
@@ -194,22 +215,26 @@ A module in the AllJoyn Configuration service framework that
 is used by a developer/OEM to build an application that 
 exposes the ability to remotely modify ConfigData that is 
 read from a PropertyStore and is persisted by it.
+软件开发者／OEM 建立应用程序的 AllJoyn Configuration 服务架构中的一个模块。这些应用程序开放了远程修改 ConfigData 的功能。ConfigData 从 PropertyStore 读取，并保持。
+
 
 ### Config Client
 
 The implementation of the Configuration service framework 
 that remotely configures a peer device.
-
+Configuration 服务架构的一个用于远程配置设备的工具。
 ### Config Server
 
 The implementation of the Configuration service framework 
 that exposes ConfigData and allows a peer device to modify it remotely.
+一个 Configuration 服务架构的工具。用于开放 ConfigData，并允许其他设备远程修改。
 
 ### Configuration service framework
 
 Software layer that enables devices to provide remote 
 configuration of AllJoyn service frameworks' metadata 
 (ConfigData) in a session.
+使设备能够为会话中 AllJoyn 服务架构的元数据（ConfigData）提供远程配置的软件层。
 
 ### Consumer
 
@@ -217,6 +242,8 @@ AllJoyn application consuming services on the AllJoyn network
 
 Device that receives the notification and has a way to notify 
 user such as a mobile phone or TV.
+AllJoyn 网络中的 AllJoyn 应用程序消费服务。
+设备收到通知后，可以通过某种方式告知用户，如手机和电视。
 
 [Learn more][notification]
 
@@ -227,6 +254,7 @@ device. A control panel is defined and announced by a
 Controllee; and discovered and displayed by a Controller. 
 A device can have more than one, and can be defined on a 
 per-language basis.
+Widgets的集合，使用户可以与设备进行互动。
 
 [Learn more][controlpanel]
 
@@ -234,23 +262,26 @@ per-language basis.
 
 An AllJoyn application that advertises its Control Panel 
 interfaces, so that other AllJoyn devices may control it.
+广告自己 Control Panel 接口的 AllJoyn 应用程序，所以其它 AllJoyn 设备能控制它。
 
 ### Controller
 
 An AllJoyn application that controls another AllJoyn device 
 that advertises its Control Panel interfaces.
+控制广告自己 Control Panel 接口应用程序的 AllJoyn 应用程序。
 
 ### ControlPanelEventsListener
 
-An interface to listen for control panel-related events.
+An interface to listen for control panel-related events. 用于监听控制面板相关事件的接口。
 
 ### DeviceControlPanel 
 
 A specific control panel of a controllable device. 
+某一可控制设备的特定控制面板。
 
 ### DeviceEventsListener
 
-An interface for listening to session events.
+An interface for listening to session events.监听会话事件的接口。
 
 ### Device-specific callbacks
 
@@ -258,7 +289,8 @@ Code provided by the OEM specific to the Controllee that
 will handle requests from Controllers to set property values, 
 to get property values and/or execute actions. Additionally, 
 it can initiate a refresh on the Controller by calling the 
-Control Panel service framework's appropriate functions.
+Control Panel service framework's appropriate functions
+由 OEM 提供给受控者的特定代码，用于处理控制者的请求，设定适当的值以执行操作。除此之外，它能通过调用 Control Panel 服务架构的相应功能，刷新控制者。
 
 ### Device passcode
 
@@ -267,6 +299,7 @@ interface. This passcode ensures that the information being
 passed to the device, like the home Wi-Fi password is encrypted. 
 The passcode may be prepopulated by the OEM or by the end user. 
 If no value is provided, the field will default to six zeroes.
+保存在设备配置接口中的一个安全密码。该安全密码保证了信息被传送至设备，类似家中 WI-FI 的加密方式。密码可以被 OEM 或 最终用户提前填充。如果没有提供值，那么该字段将被默认设置为六个零。
 
 [Learn more][onboarding]
 
@@ -275,64 +308,72 @@ If no value is provided, the field will default to six zeroes.
 A description of the AllJoyn network topology where AllJoyn 
 Applications attach to AllJoyn Routers, and AllJoyn Routers
 connect to each other. The entire network can be described
-as the Distributed AllJoyn bus.
+as the Distributed AllJoyn bus。
+AllJoyn Application 连接 AllJoyn Router，AllJoyn Router 之间彼此相连。这样的网络整体上被称为 Distributed AllJoyn 总线。
 
 ### Event
 
-(from system description) A message denoting that something has happened.
+(from system description) A message denoting that something has happened. 一条消息说明某些事情发生了（来自系统描述）。
 
 A signal on an AllJoyn interface that contains a human readable 
 description. The arguments may also include description fields.
+AllJoyn 接口中包含可读描述的信号。其参数也可能包含描述字段。
 
 ### Event Consumer
 
-Application that is set up to listen for events.
+Application that is set up to listen for events. 为监听事件建立的应用程序。
 
 ### Event descriptor
 
-Human-readable string attached to the event.
+Human-readable string attached to the event. 事件附带的可读字段。
 
 ### Event-emitting device
 
-The device that sends the event.
+The device that sends the event. 发送事件的设备
 
 ### Event Picker app
 
 Application that lets end users program actions to take when an event is sent.
+当某个事件被发送时，让最终用户的程序执行操作的应用程序。
 
 ### GUID
 
 Globally Unique Identifier. A 128 bit identifier generated 
 randomly in a way that the probability of collision is negligible.
+Globally Unique Identifier. 一种随机生成的 128 位标识符，其发生冲突的可能几乎可以忽略不计。
 
 ### IFTTT
 
 If This Then That. A logical construct that tests for a 
 certain condition and then performs an action if it is "true".
+If This Then That（如果这样，那么）。一种逻辑结构，如果它为 “true”。并且符合某种特定情况，那么就进行一个操作，
 
 ### IoE application
 
-See [AllJoyn App][alljoyn-app]
+See [AllJoyn App][alljoyn-app] 查看[AllJoyn App][alljoyn-app] 
 
 ### IoE device
 
 A device that that is connected to Internet directly or via 
 Gateway. For the purpose of this document it implies the device 
 that has an AllJoyn application running on it.
+某个直连或者通过网关连接到英特网的设备。在本文件中意味着它是一个运行 AllJoyn 程序的设备。
 
 ### Logical distributed software bus
 
-See [Distributed AllJoyn bus][distributed-alljoyn-bus]
+See [Distributed AllJoyn bus][distributed-alljoyn-bus] 查看 [Distributed AllJoyn bus][distributed-alljoyn-bus]
 
 ### Notification message
 
 A message sent by a producer specifying details of the 
 notification including any notification text to be displayed to the user.
+一条包含了指定细节的信息，包括显示给用户的通知文本。
 
 ### Notification service framework
 
 Software layer that enables devices to send or receive 
 human-consumable notifications.
+使设备能够发送和接收可消费通知的软件层。
 
 [Learn more][notification]
 
@@ -341,28 +382,32 @@ human-consumable notifications.
 The process of removing an AllJoyn device from a personal network. 
 It also removes the personal Access Point's (AP) SSID and password 
 values from the AllJoyn device memory.
+将 AllJoyn 设备移除个人网络的过程。同时也从 AllJoyn 设备内存中会移除个人 Access Point（AP） 的 SSID 和密码。
 
 ### Onboardee
 
 An application using this side of the service framework is 
 known as the Onboardee.
+％％％％％％％％％％％％％％％％％％
 
 An AllJoyn device that advertises that it implements the 
 Onboarding interface.
+％％％％％％％％％％％％％％％％
 
 ### Onboarder
 
 An application using this side of the service framework is 
-known as the Onboarder.
+known as the Onboarder.％％％％％％％％％％％％％％％％％％％％％％％％％％
 
 A device, usually a handset, that is used to interact with 
 the onboardee to pass it the Wi-Fi credentials needed for 
-onboarding.
+onboarding. 一个设备，通常是一个手持设备，与 onboardee 进行互动，并得到用来 onboard 的 Wi-Fi 凭据。
 
 ### Onboarding Client
 
 The implementation of the Onboarding service framework that 
 remotely onboards a peer device.
+Onboarding 服务架构的一个工具，用来远程 onboard 某设备。
 
 ### OnboardingData
 
@@ -370,12 +415,15 @@ A structure containing the relevant network configuration
 information and state that controls the device's onboarding 
 process. The details that are remotely updateable are persisted 
 to some permanent storage layer such as NVRAM.
+包含相关网络配置信息和控制设备 onboard 进程的状态的一种结构。远程更新的详细信息被保存到如 NVRAM 之类的永久存储层。
+
 
 ### OnboardingService
 
 A module in the Onboarding service framework that is used by 
 the developer/OEM to build an application that exposes the 
 ability to remotely modify OnboardingData that is persisted by it.
+Onboarding 服务架构中的一个模块，
 
 ### Onboarding Server
 
