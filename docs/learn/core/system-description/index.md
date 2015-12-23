@@ -270,16 +270,10 @@ AllJoyn 核心库将 AllJoyn 总线功能展示给 AllJoyn 应用程序。 每�
 
 **Figure:** AllJoyn 核心库
 
+AllJoyn 核心库可以是为标准 AllJoyn 应用程序设计的标准核心库（SCL），也可以是为精简 AllJoyn 应用程序设计的精简核心库（TCL）。在本文档中，大
+多数的系统设计都是又标准核心库描述的。更多关于精简核心库的设计细节，请查阅 [Thin Apps][thin-apps].
 
-
-An AllJoyn core library can be a Standard Core Library (SCL), 
-developed for use by AllJoyn standard applications or a 
-Thin Core Library (TCL) developed for use by AllJoyn thin 
-applications. Most of the system design in the document 
-is described using standard core library deployment. 
-For thin core library design details, see [Thin Apps][thin-apps].
-
-#### About feature
+#### “About” 功能
 
 The AllJoyn framework supports the About feature as part 
 of the AJ Core Library. The About feature enables an application 
