@@ -282,58 +282,40 @@ AllJoyn 核心库可以是为标准 AllJoyn 应用程序设计的标准核心库
 请参阅[About HLD]
 
 
-#### AllJoyn endpoints
+#### AllJoyn 端点
 
-AllJoyn applications exchange data in the form of D-Bus 
-formatted messages. These messages specify source and destination 
-as Endpoints. An AllJoyn Endpoint represents one side of an 
-AllJoyn communication link.Endpoints are used to route 
-messages to appropriate destinations. 
+AllJoyn 应用程序使用 D-Bus 格式的消息来交换信息。这些消息会指明原地址和目的地当作端点。一个 AllJoyn 端点代表着一条 AllJoyn 通信链路的一边。
+端点被用于将消息路由到正确的目的地。
 
-Both the Core Library and AllJoyn Router maintain endpoints 
-to enable message routing. The Core Library maintains the 
-following endpoints:
-* **Local Endpoint**: The local endpoint within the 
-Core Library represents a connection to the attached application. 
-* **Remote Endpoint**: The remote endpoint within the 
-Core Library represents the connection to the AllJoyn 
-router.This is applicable only for the case when AllJoyn 
-router is not bundled.
+端点由核心库以及 AllJoyn 路由维护，以实现消息路由。以下端点由核心库维护：
 
-An endpoint maintained by the AllJoyn router is uniquely 
-identified by a unique name assigned to it.The AllJoyn 
-router supports the following endpoints:
+* **Local Endpoint**: 在核心库内部的本地端点代表着到附属应用程序的连接。
 
-* **Local Endpoint**: A local endpoint is an endpoint within the 
-AllJoyn router itself. It identifies a connection to self 
-and is used to exchange AllJoyn control messages between 
-AllJoyn routers. This is the first endpoint which gets assigned 
-and always has the unique name ":<AJ router GUID>.1"
-* **Remote Endpoint**: A remote endpoint identifies the connection 
-between the application and the AllJoyn router. Messages destined 
-to applications get routed to app endpoints.
-* **Bus-to-Bus Endpoint**: A Bus-to-Bus (B2B) endpoint is a 
-specialized kind of remote endpoint that identifies 
-the connection between two AllJoyn routers. This endpoint 
-is used as next hop to route messages between AllJoyn routers.
+* **Remote Endpoint**: 在核心库内的远程端点代表着到 AllJoyn 路由的连接。仅当 AllJoyn 路由为非捆绑式时此端点才有效。
 
-A routing table is maintained at the AllJoyn router that is 
-responsible for routing messages to different types of endpoints. 
-Control messages between two AllJoyn routers (e.g., AttachSession 
-message) get routed to the local endpoint. AllJoyn messages 
-between two applications get routed to app endpoints. These 
-messages will have app endpoints as source and destination 
-within the message. B2B endpoints are used as the next hop 
-when routing messages (app-directed or control messages) 
-between two AllJoyn routers. 
+由 AllJoyn 路由维护的端点被分配给他的唯一标识所唯一确定。以下端点被 AllJoyn 路由维护：
+
+* **Local Endpoint**: 本地端点是在 AllJoyn 路由内部的端点。他定义了到路由本身的连接，被用于在 AllJoyn 路由间交换 AllJoyn 控制信息。第一个端
+点常常被分配":<AJ router GUID>.1"这个标识符
+
+* **Remote Endpoint**: 远程端点定义了在应用程序与 AllJoyn 路由器之间的连接。以应用程序为目的地的消息会被路由到应用程序端点。
+
+* **Bus-to-Bus Endpoint**: 总线到总线 (B2B) 端点是定义了两个 AllJoyn 路由之间连接的一类特殊的远程端点。在 AllJoyn 路由器交换消息时，此端点
+被当作路由消息的下一跳。 
+
+AllJoyn 路由会保留一张路由表，以便将消息路由到不同类型的端点。两个 AllJoyn 路由之间的控制消息（如 AttachSession 消息）会被路由到本地端点。
+两应用程序之间的 AllJoyn 消息会被路由到应用程序端点。这些消息将会把应用程序端点当作原地址和目的地。B2B 端点在两 AllJoyn 路由交换消息（app-
+directed 或者控制消息）时会作为下一跳。
+
+下图展示了 AllJoyn 系统中不同类型的端点。
 
 The following figure shows different endpoints in the AllJoyn system.
 
 ![alljoyn-endpoints][alljoyn-endpoints]
 
-**Figure:** AllJoyn endpoints
+**Figure:** AllJoyn 端点
 
-#### Introspection
+#### 自省性
 
 The AllJoyn system supports D-Bus defined introspection 
 feature that enables AllJoyn objects to be introspected at 
