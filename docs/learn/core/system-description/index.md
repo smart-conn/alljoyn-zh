@@ -317,25 +317,18 @@ The following figure shows different endpoints in the AllJoyn system.
 
 #### 自省性
 
-The AllJoyn system supports D-Bus defined introspection 
-feature that enables AllJoyn objects to be introspected at 
-runtime, returning introspection XML describing that object. 
-The object should implement org.freedesktop.DBus.Introspectable 
-interface. This interface has an Introspect method that can be 
-called to retrieve introspection XML for the object.
+AllJoyn 系统支持由 D-Bus 定义的自省功能，使 AllJoyn 对象可以在运行时进行自省，返回描述该对象的自省 XML.该对象应实现 org.freedesktop.DBus.Introspectable 接口。此接口中含有可以取回该对象自省 XML 的方法。
 
-#### AllJoyn entity relationship
 
-It is useful and important to understand how different high-level 
-AllJoyn entities relate to each other. 
+#### AllJoyn 实体关系
 
-The following figure captures the relationship between various 
-high-level AllJoyn entities including device, application, 
-objects, interfaces, and interface members. 
+知晓高层 AllJoyn 实体之间的联系是很重要，很有帮助的。
+
+下图捕获了众多高层 AllJoyn 实体，包括设备，应用程序，对象，接口以及接口成员之间的关系。
 
 ![alljoyn-entity-relationship][alljoyn-entity-relationship]
 
-**Figure:** AllJoyn entity relationship
+**Figure:** AllJoyn 实体关系
 
 An AllJoyn-enabled device can support one or more AllJoyn 
 applications. Each AllJoyn application supports one or more 
