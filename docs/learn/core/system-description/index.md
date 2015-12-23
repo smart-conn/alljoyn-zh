@@ -59,12 +59,12 @@ AllJoyn 开源软件系统提供了可以完成夸异构分布式系统的 IoE �
 
 设备1和设备2只有提供 AllJoyn 服务的供应方应用程序。设备3只有使用其它设备服务的消费方应用程序。设备4的应用程序可以同时充当供应方和消费方。设备4上的应用程序使用设备2的应用程序所提供的服务。同时他提供的服务还被设备3上的应用程序所使用。箭头的方向从供应方指向消费方，指示着服务的消费。
 
-AllJoyn 框架为 IoE 设备之间的通信建立了一个底层总线结构。在 IoE 设备上的 AllJoyn 应用程序 通过 AllJoyn 主线与其他应用程序连接并通信。
-AllJoyn 主线为在 IoE 设备上的应用程序提供了可以发送通知或者交换数据的平台以及无线链路无关的传输机制。AllJoyn 主线负责处理与底层物理的特定网
+AllJoyn 框架为 IoE 设备之间的通信建立了一个底层总线结构。在 IoE 设备上的 AllJoyn 应用程序 通过 AllJoyn 总线与其他应用程序连接并通信。
+AllJoyn 总线为在 IoE 设备上的应用程序提供了可以发送通知或者交换数据的平台以及无线链路无关的传输机制。AllJoyn 总线负责处理与底层物理的特定网
 络传输相配饰的工作。
 
-每一个 AllJoyn 的应用程序都连接到本地的 AllJoyn 主线。一个给定的本地 AllJoyn 主线可以连接一个或者多个应用程序。AllJoyn 主线使附着在它上面的
-应用程序可以完成广播服务，发现服务以及互相通信的功能。在多个设备上的 AllJoyn 主线用类似 Wi-Fi 的底层网络技术来互相通信。
+每一个 AllJoyn 的应用程序都连接到本地的 AllJoyn 总线。一个给定的本地 AllJoyn 总线可以连接一个或者多个应用程序。AllJoyn 总线使附着在它上面的
+应用程序可以完成广播服务，发现服务以及互相通信的功能。在多个设备上的 AllJoyn 总线用类似 Wi-Fi 的底层网络技术来互相通信。
 
 AllJoyn 平台的开源实现方式提供了一个生态系统，诸多用户可以通过添加新功能及增强功能来为 AllJoyn 生态系统做贡献。此系统支持通过 OS 抽象层实现
 的操作系统无关性，使得 AllJoyn 框架以及应用程序可以在多种操作平台上运行。AllJoyn框架支持大多数的标准 Linux 发行版，Android2.3 及后续版本，
@@ -78,7 +78,7 @@ AllJoyn 框架同时也支持多种用于为 IoE设备开发应用程序及服�
 AllJoyn系统
 
 AllJoyn 实现了一个广泛兼容的 D-Bus over-the-wire 协议，并遵守在 D-Bus 规范中的众多命名习俗和指导原则。AllJoyn 延展并显著强化了 D-Bus 消息
-主线，以支持分布式主线的场景。AllJoyn 系统使用按照下文描述的 D-Bus 规范：
+总线，以支持分布式总线的场景。AllJoyn 系统使用按照下文描述的 D-Bus 规范：
 
 * 使用 D-Bus 的数据类型系统以及序列化格式
 * 通过添加 flags 以及 headers（具体细节请参阅[Message format][message-format]）实现增强版的 D-Bus over-the-wire 协议。
@@ -89,7 +89,7 @@ D-Bus 规范请参阅以下网址： (http://dbus.freedesktop.org/doc/dbus-speci
 
 ### AllJoyn 系统的关键概念
 
-如之前所述，AllJoyn 框架为应用程序提供可以推广和发现服务，以及使用其他应用程序提供的功能的底层主线结构。为了实现此结构，AllJoyn 框架提供了
+如之前所述，AllJoyn 框架为应用程序提供可以推广和发现服务，以及使用其他应用程序提供的功能的底层总线结构。为了实现此结构，AllJoyn 框架提供了
 一个可供应用程序交互的面向对象的软件框架。
 
 #### AllJoyn 路由
@@ -107,7 +107,7 @@ AllJoyn 路由组件为 AllJoyn 系统提供核心功能，包括点对点推广
 AllJoyn 路由有定义了被支持功能集合的相关 AllJoyn 协议译本。在连接建立后，此协议会在 AllJoyn 网络上的 AllJoyn 路由之间交换，作为建立 AllJoyn
 会话的一部分。
 
-#### AllJoyn 主线
+#### AllJoyn 总线
 
 AllJoyn 路由提供了软件总线功能，借助此功能一个或多个应用程序可以与总线建立连接并交换消息。在设备上的 AllJoyn 路由实例建立本地的 AllJoyn 逻 辑总线，如下图所示。
 
@@ -122,24 +122,24 @@ AllJoyn 逻辑总线映射到一个单独的 AllJoyn 路由有以下两种情况
 
 在设备上有多个应用程序的捆绑部署模型中，AllJoyn 逻辑总线映射到多个 AllJoyn 路由实例的情况请参阅 UC1.
 
-**NOTE:*8 在此文档中，AllJoyn 路由与 AllJoyn 总线这两个术语是可以相互替换的，他们指代着一个由 AllJoyn 系统提供的相同集合的主线功能。
+**NOTE:*8 在此文档中，AllJoyn 路由与 AllJoyn 总线这两个术语是可以相互替换的，他们指代着一个由 AllJoyn 系统提供的相同集合的总线功能。
 
-下图是在有多个应用程序连接到主线的两个不同设备上的 AllJoyn 本地主线的简化视图。
+下图是在有多个应用程序连接到总线的两个不同设备上的 AllJoyn 本地总线的简化视图。
 
 ![alljoyn-bus][alljoyn-bus]
 
-**Figure:** AllJoyn 主线
+**Figure:** AllJoyn 总线
 
-AllJoyn 主线为连接到主线的应用程序之间通信提供了一个媒介。在多个设备上的 AllJoyn 主线通过类似 Wi-Fi 的底层网络技术实现通信。
+AllJoyn 总线为连接到总线的应用程序之间通信提供了一个媒介。在多个设备上的 AllJoyn 总线通过类似 Wi-Fi 的底层网络技术实现通信。
 
-下图展示了由跨越多个设备的多个 AllJoyn 主线实例所构成的逻辑分布式 AllJoyn 软件主线:
+下图展示了由跨越多个设备的多个 AllJoyn 总线实例所构成的逻辑分布式 AllJoyn 软件总线:
 
 ![distributed-alljoyn-bus][distributed-alljoyn-bus]
 
-**Figure:** 分布式 AllJoyn 主线
+**Figure:** 分布式 AllJoyn 总线
 
-分布式 AllJoyn 主线隐藏了所有运行在多个设备上的应用程序中的通信链路细节。对于连接到 AllJoyn 主线的一个应用程序来说，运行在另一个设备上的远
-端应用程序看起来就像在这个设备本地的一个应用程序一样。AllJoyn 分布式主线为在分布式系统上传送消息提供了一个快速且轻量化的方式。
+分布式 AllJoyn 总线隐藏了所有运行在多个设备上的应用程序中的通信链路细节。对于连接到 AllJoyn 总线的一个应用程序来说，运行在另一个设备上的远
+端应用程序看起来就像在这个设备本地的一个应用程序一样。AllJoyn 分布式总线为在分布式系统上传送消息提供了一个快速且轻量化的方式。
 
 #### AllJoyn 服务
 
@@ -159,183 +159,110 @@ Unique Name = ":"<AJ router GUID>"."<Seq #>
 
 **NOTE:** ":<AJ router GUID>.1" 标识符会一直被分配给 AllJoyn 路由的本地终点。
 
-下图展示了一个 GUID=100的单一 AllJoyn 路由为三个连接到 AllJoyn 主线的应用程序分配唯一标识符的过程：
+下图展示了一个 GUID=100的单一 AllJoyn 路由为三个连接到 AllJoyn 总线的应用程序分配唯一标识符的过程：
 
 ![uniquename-assignment-1][uniquename-assignment-1]
 
 **Figure:** AllJoyn 唯一标识符分配1 (多个应用程序连接到单一 AllJoyn 路由)
  
 此场景描述了有多个 AllJoyn 应用程序的设备连接到一个单一 AllJoyn 路由的情况。
-It is 
-expected that a large number of AllJoyn-enabled devices 
-will be single-purpose devices (e.g., refrigerator, oven, 
-light bulb, etc.), and will have only one application residing 
-on the device and connecting to the AllJoyn bus. However, there 
-can be devices where a single instance of an AllJoyn router will 
-support multiple applications, such as a TV.
 
-The following fiture shows the unique name assignment for AllJoyn 
-apps with multiple instances of an AllJoyn router forming an 
-AllJoyn bus. 
+我们期望大多数支持 AllJoyn 的设备都是单一目的设备（例如，冰箱，烤箱，照明灯泡等等），并只有一个连接到 AllJoyn 总线的应用程序在其上。但是也
+会有 AllJoyn 路由单一实例支持多个应用程序的设备，比如电视。
+
+下图展示了组成 AllJoyn 总线并在 AllJoyn 路由上有多个实例的 AllJoyn 应用程序的独立标识分配过程：
+
 
 ![uniquename-assignment-2][uniquename-assignment-2]
 
-**Figure:** AllJoyn unique name assignment 2 (each app has instance of AllJoyn router)
+**Figure:** AllJoyn 唯一标识符分配2 (每个应用程序都有 AllJoyn 路由的实例）。
 
-**NOTE:** The GUID part in each unique name is different and 
-corresponds to the GUID for the associated AllJoyn router. 
 
-The following figure shows the unique name assignment for 
-AllJoyn apps on two different devices connected over a 
-distributed AllJoyn bus.
+**NOTE:** 每个唯一标识的 GUID 部分都是不同的，他们与相关联的 AllJoyn 路由上的 GUID 相同
+
+下图展示了通过分布式 AllJoyn 总线连接的两个不同设备上应用程序的独立标识分配过程：
 
 ![uniquename-assignment-3][uniquename-assignment-3]
 
-**Figure:** AllJoyn unique name assignment 3 (AllJoyn apps on two devices connected over distributed AllJoyn bus)
+**Figure:** AllJoyn 唯一标识符分配3 (通过分布式 AllJoyn 总线连接的两个设备上的应用程序)。
 
 #### Well-known name
 
-An AllJoyn application can decide to use well-known names for 
-its services. A well-known name is a consistent way to refer 
-to a service (or collection of services) offered over the 
-AllJoyn bus. An app can use a single well-known name for all 
-the services it offers, or it can use multiple well-known names 
-across these services. 
+AllJoyn 应用程序可以决定为他的服务使用 well-known names.  well-known names 是由 AllJoyn 总线提供的可以持续地查阅到服务（或一系列服务）的方
+法。应用程序可以对其所提供的所有服务使用单一的 well-known name，也可以对这些服务使用多个 well-known names.
 
-An application can request use of one or more well-known names 
-from the AllJoyn bus for services it provides. If the requested 
-well-known name is not already in use, exclusive use of that 
-well-known name is granted to the application. This ensures 
-that well-known names represent unique addresses on the AllJoyn 
-bus at any point. The well-known name uniqueness is guaranteed 
-only within the local AllJoyn bus. Global uniqueness for a 
-well-known name should be achieved by adapting certain naming 
-guidelines and format.
+应用程序可以为他的服务向 AllJoyn 总线申请一个或多个 well-known names. 如果被申请的 well-known names 尚未被使用，申请使用的应用程序将会被授
+予独家使用权。该操作确保了 well-known names 在任何时候都可以代表唯一的地址。此唯一性仅在本地的 AllJoyn 总线内存在。若要实现 well-known names 的全局唯一性，需使用特定的命名规范及格式。
 
-The AllJoyn well-known name follows the reverse domain name 
-format. There can be multiple instances of a given application 
-on a distributed AllJoyn bus, for example, the same refrigerator 
-application running on two different refrigerators from the same 
-vendor in the proximal network (one in the kitchen and one in 
-the basement). To distinguish multiple instances of a given 
-app on the AllJoyn bus, the well-known name should have a 
-unique app specific identifier as a suffix, e.g., a GUID 
-identifying the app instance. 
+AllJoyn 的 well-known name 使用翻转的域名作为标准格式。在分布式 AllJoyn 总线上的给定应用程序可以用多个实例，例如，在邻域网中（一个在厨房， 另一个在地下室），由同一个供货商提供的两个不同冰箱上面运行的相同的冰箱应用程序。为了分辨在 AllJoyn 总线上一个给定应用程序的多个实例，需要给
+well-known name 加上声明应用程序的标签作后缀，例如，区别应用程序实例的 GUID.
 
-The AllJoyn well-known name (WKN) follows the D-Bus specification 
-guidelines for naming and has following format:
+AllJoyn 的 well-known name 遵守 D-Bus 规范中的命名原则，其格式如下所示：
 
 ```
 WKN = <reverse domain style name for service/app>"."<app instance GUID>
 ```
-
-For example, a refrigerator service can use the following 
-well-known name:
+例如，一个冰箱服务可以使用如下的 well-known name:
 
 ```
 com.alljoyn.Refrigerator.12345678
 ```
 
-#### AllJoyn object
+#### AllJoyn 对象
 
-AllJoyn applications implement one or more AllJoyn objects 
-to support AllJoyn services functionality. These AllJoyn objects 
-are called service objects and are advertised over the AllJoyn 
-bus. Other AllJoyn applications can discover these objects from 
-the AllJoyn bus and access them remotely to consume services provided 
-by them. 
+为了支持 AllJoyn 的服务功能，AllJoyn 应用程序可以实现一个或多个 AllJoyn 对象。这些 AllJoyn 对象被称为服务对象，并通过 AllJoyn 总线被推广。
+其他的 AllJoyn 应用程序可以通过 AllJoyn 总线发现这些对象，并对他们进行远程访问，消费他们提供的服务。
 
-A consumer application accesses an AllJoyn service object 
-through a proxy object. A proxy object is a local representation 
-of a remote service object that is accessed through the AllJoyn bus. 
+消费方应用程序通过一个代理对象来访问 AllJoyn 的服务对象。代理对象是远端服务对象的本地代表，通过 AllJoyn 总线被访问。
 
-The following figure shows the distinction between the AllJoyn 
-service object and proxy object.
+下图展示了 AllJoyn 服务对象与代理对象之间的区别。
 
 ![alljoyn-service-object-proxy-object][alljoyn-service-object-proxy-object]
 
-**Figure:** AllJoyn service object and AllJoyn proxy object
+**Figure:** AllJoyn 服务对象和代理对象
 
-Each AllJoyn service object instance has an associated object 
-path that uniquely identifies that object instance. This object 
-path gets assigned when a service object gets created on the 
-provider. The proxy object requires an object path to establish 
-communication with the remote service object. The object path 
-scope is within a given application, so object paths must be 
-unique only with the associated application implementing the 
-objects. Hence, object path naming does not need to follow 
-reverse domain naming convention, and it can be of any form 
-chosen by the application. 
+每一个服务对象实例都有对应的可以唯一指认出此实例的对象路径。在供应方创建服务对象时，对象路径即被分配。代理对象需要对象路径来建立与远端服务
+对象的通信。对象路径仅在给定的应用程序内有效，因此只有在实现对象的应用程序内，对象路径才有唯一性。所以对象路径的命名不需要遵守翻转域名命名转换规则，而可以由应用程序随意选择。
 
-The object path naming also adheres to the D-Bus specification 
-naming guidelines. An example object path for the service 
-object implemented by a refrigerator can be:
+对象路径的命名仍然遵循 D-Bus 规范的命名原则。一个由冰箱实现的服务对象的对象路径可以是如下表达：
 
 ```
 /MyApp/Refrigerator
 ```
 
-#### AllJoyn interfaces
+#### AllJoyn 接口
 
-Each AllJoyn object exposes its functionality over the AllJoyn 
-bus through one or more AllJoyn interfaces. An AllJoyn interface 
-defines a contract for communication between an entity implementing 
-the interface specification and other entities interested in 
-making use of the services provided by the interface. The AllJoyn 
-interfaces are candidates for standardization to enable interoperability 
-among AllJoyn enabled IoE devices.
+每一个 AllJoyn 对象经过一个或多个 AllJoyn 接口向 AllJoyn 总线显示他的功能。AllJoyn 接口定义了实现接口规范的实体与其他对此接口提供的服务有兴
+趣的其他实体之间的通信协议。AllJoyn 接口作为标准化的候选人，使支持 AllJoyn 的 IoE设备间能够互用。
 
-An AllJoyn interface can include one or more of following 
-types of members:
+AllJoyn 接口可以包含以下一种或者几种类型的成员：
 
-* Methods: A method is a function call that typically takes 
-a set of inputs, performs some processing using the inputs, 
-and typically returns one or more outputs reflecting the results 
-of the processing operation. Note that it is not mandatory for 
-methods to have input and/or output parameters. It is also not 
-mandatory for methods to have a reply.
-* Signals: A signal is an asynchronous notification that is 
-generated by a service to notify one or more remote peers of 
-an event or state change. Signals can be delivered over an
-already-established peer-to-peer AllJoyn connection (AllJoyn session), 
-or they can be broadcast globally to all AllJoyn peers over 
-the distributed AllJoyn bus. Signals can be of three types: 
-  * Session-specific signals: These signals get delivered to 
-  one or more peers connected over a given AllJoyn session 
-  in the proximal network. If a destination is specified, 
-  the signal is delivered to only that destination node connected 
-  over the AllJoyn session. If no destination is specified, 
-  the signal gets delivered to all nodes connected over the 
-  given session except the node that generated the signal. 
-  If the session is a multi-point session, such a signal 
-  is sent over multicast to all the other participants. 
-  * Session broadcast signals: These signals get delivered 
-  to all the nodes connected via any AllJoyn session in 
-  the proximal network. 
-  * Sessionless signals: These signals get delivered to all 
-  the nodes in a proximal network that have expressed interest 
-  in receiving sessionless signals. Nodes do not need to be 
-  connected over an AllJoyn session to receive such signals. 
-  Sessionless signals are essentially broadcast signals independent 
-  of a session connection.
-* Properties: A property is a variable that holds values and 
-it may be read-only, read-write or write-only.
+* 方法: 方法就是一个函数的调用，伴随一系列的输入，并对输入进行处理，通常会返回一个或多个反应处理结果的输出。请注意，方法并不是强制包含输入和（或）输出的，方法也不被强制给予回应。
+ 
 
-Every AllJoyn interface has a globally unique interface name 
-that identifies the grouping of methods, signals, and properties 
-provided by that interface. The AllJoyn interface name gets 
-defined as part of standardizing the interface. Similar to 
-the well-known name, the AllJoyn interface name also follows 
-reverse domain name format and D-Bus specification naming guidelines.
+* 信号: 信号是由服务生成的一个异步提醒，用来向一个或多个远端 peers 告知事件或状态的变化。 信号可以由已建立完成的对等网络 AllJoyn 连接（ AllJoyn 会话。也可以通过分布式 AllJoyn 总线被广播到全局所有的 AllJoyn peers. 信号有三种类型：
 
-For example, a refrigerator could support the following standard 
-AllJoyn refrigerator interface. 
+  * 指定会话的信号：这些信号被传输到一个或多个连接到邻域网中给定的 AllJoyn 会话的 peers. 如果目的地已写明，信号将只会被传输到那个通过 AllJoyn 会话连接的目的地节点。如果没有声明目的地，信号会被传输到除生成该信号的节点之外的通过给定会话连接的所有节点。如果会话是多端的，这种信号则会通过多播传送到其他所有的参与者。
+
+  * 会话广播信号：这些信号被送往所有通过任意 AllJoyn 会话连接的的节点
+
+  * 非会话信号: 这些信号被送往在邻域网中所有对接收非会话信号表示出兴趣的节点。在接收这种信号时，节点不需要通过 AllJoyn 会话建立连接。非会话
+  信号本质上就是独立于会话连接的广播信号。
+
+* 属性: 属性是一个有值的变量，他可以是只读的，可读写的，或者只写的。
+每一个 AllJoyn 接口都有一个全局唯一的接口名，用于识别由此接口提供的方法，信号以及属性群。AllJoyn 接口名的定义是接口标准化的一部分。与 well-known name 类似，AllJoyn 接口名也遵循域名反转规则以及 D-Bus 规范的命名原则。
+
+例如，一台冰箱可能支持一下标准的 AllJoyn 冰箱接口：
 
 ```
 org.alljoyn.Refrigerator
 ```
 
-#### AllJoyn core library
+#### AllJoyn 核心库
+
+
+
+
 
 The AllJoyn Core Library exposes AllJoyn bus functionality to 
 AllJoyn applications. Each application links with a single 
@@ -800,3 +727,30 @@ at the leaf (e.g. self-join, SessionLostWithReason, etc.)
 [alljoyn-endpoints]: /files/learn/system-desc/alljoyn-endpoints.png
 [alljoyn-entity-relationship]: /files/learn/system-desc/alljoyn-entity-relationship.png
 [alljoyn-service-service-object-relationship]: /files/learn/system-desc/alljoyn-service-service-object-relationship.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
