@@ -330,70 +330,43 @@ AllJoyn 系统支持由 D-Bus 定义的自省功能，使 AllJoyn 对象可以�
 
 **Figure:** AllJoyn 实体关系
 
-An AllJoyn-enabled device can support one or more AllJoyn 
-applications. Each AllJoyn application supports one or more 
-AllJoyn objects that implement desired application functionality. 
-Application functionality can include providing AllJoyn 
-services or consuming AllJoyn services, or both. Accordingly, 
-objects supported by the AllJoyn application can be service 
-objects, proxy objects, or combination of both. A service 
-object exposes its functionality via one or more AllJoyn 
-interfaces. Each AllJoyn interface can support one or more 
-of methods, signals, and properties.
+支持 AllJoyn 的设备可以支持一个或多个 AllJoyn 应用程序。每一个 AllJoyn 应用程序支持一个或多个实现所需应用程序功能的 AllJoyn 对象。应用程序
+功能可以包括提供或消费 AllJoyn 服务，或即提供也消费。相应的，被 AllJoyn 应用程序所支持的对象可以是服务对象，代理对象，或二者的结合体。服务
+对象将自己的功能通过一个或多个 AllJoyn 接口展示。每一个 AllJoyn 接口可以支持一个或多个方法，信号，以及属性。
 
-An AllJoyn service is implemented by one or more AllJoyn 
-service objects. An AllJoyn service object can implement 
-functionality for one or more AllJoyn services. Hence, AllJoyn 
-service and AllJoyn service object have an n:n relationship as 
-captured in the following figure.
+AllJoyn 服务由一个或多个 AllJoyn 服务对象实现。AllJoyn 服务对象可以为一个或多个 AllJoyn 服务实现功能。因此，AllJoyn 服务与 AllJoyn 服务对象
+有如下图所示的 n:n 关系：
 
 ![alljoyn-service-service-object-relationship][alljoyn-service-service-object-relationship]
 
-**Figure:** AllJoyn service and AllJoyn service object relationship
+**Figure:** AllJoyn 服务与 AllJoyn 服务对象之间的关系
 
-### AllJoyn services
+### AllJoyn 服务
 
-An AllJoyn application can support one or more service frameworks 
-and some application layer services.
+一个 AllJoyn 应用程序可以支持一个或多个服务框架以及一些应用层的服务。
 
-#### AllJoyn service framework
+#### AllJoyn 服务框架
 
-AllJoyn service frameworks provide some of the core and 
-fundamental functionality developed as enablers for higher-layer 
-application services. Service frameworks sit on top of the AllJoyn 
-router and provide APIs to application developers to invoke their 
-functionality. Initial AllJoyn service frameworks include 
-Configuration service framework, Onboarding service framework, 
-Notification service framework, and Control Panel service framework. 
+AllJoyn 服务框架为高层的应用程序服务提供一些作为 enablers 被开发的，核心的，基础的功能。服务框架位于 AllJoyn 路由的上面，为应用程序开发者提
+供可以调用其功能的 APIs. 最初的 AllJoyn 服务框架包括 Configuration 服务框架，Onboarding 服务框架，Notification 服务框架以及 Control Panel 服务框架。
+. 
+**NOTE:** 服务框架也会被称作基础服务。
 
-**NOTE:** Service frameworks are also referred to as base services.
 
-Example: a refrigerator application can make use of the Onboarding 
-service framework to onboard a refrigerator to a home network 
-and send out notifications to user devices using the Notification 
-service framework.
 
-#### Application layer service
+例如: 一个冰箱可以使用 OnBoarding 服务框架来将冰箱登入到家庭网络中，并通过 Notification 服务框架对用户设备发送提醒。
 
-An application layer service is an app-specific service provided 
-by the AllJoyn application to achieve desired application 
-layer functionality. These application layer services can 
-make use of service frameworks to achieve their functionality.
+#### 应用层服务
+应用层服务是由 AllJoyn 应用程序提供的针对应用程序的服务，用来完成所期望的应用层功能。这些应用层服务可以通过使用服务框架来实现他们的功能。
 
-Example: a refrigerator application can offer an application 
-layer service to change refrigerator and freezer temperature. 
-This service can make use of the Notification service framework 
-to send out a notification when the temperature setting goes 
-out of a specified range to notify the user.
+例如：一个冰箱应用程序可以提供一个调节冷藏及冷冻温度的应用层服务。此服务可以在温度设置超出给定范围的时候使用 Notification 服务框架向用户发
+松通知。
 
-### AllJoyn transport
+### AllJoyn 传输
+AllJoyn 传输是一个虚拟概念，他实现了通过 AllJoyn 路由，在 AllJoyn 应用程序中建立通信以及传送消息的功能。AllJoyn 传输逻辑因此会支持在多个底
+层物理传输，包括 TCP 传输，UDP 传输以及本地传输（例如 UNIX 域套接字 ）之间的消息传送。
 
-The AllJoyn Transport is an abstract concept that enables 
-connection setup and message routing across AllJoyn applications 
-via AllJoyn routers. The AllJoyn transport logic in turn 
-supports transmitting messages over multiple underlying 
-physical transports including TCP transport, UDP transport 
-and Local Transport (e.g., UNIX domain sockets).
+
 
 The AllJoyn transport logic delivers the advertisement and 
 discovery messages based on specified list of transports by 
