@@ -260,27 +260,17 @@ org.alljoyn.Refrigerator
 
 #### AllJoyn 核心库
 
+AllJoyn 核心库将 AllJoyn 总线功能展示给 AllJoyn 应用程序。 每一个应用程序都关联到一个单一的 AllJoyn 核心库实例上，以便与 AllJoyn 总线建立连
+接。AllJoyn 核心库在应用程序与远端 AllJoyn 应用程序点对点通信时扮演了网关的角色。他可被用于连接到总线，推广并发现服务，建立到远端 peer 的连
+接，消费服务，以及许多其他的 AllJoyn 功能。应用程序向 AllJoyn 核心库注册它的对象，以便将其推广到 AllJoyn 总线。
 
-
-
-
-The AllJoyn Core Library exposes AllJoyn bus functionality to 
-AllJoyn applications. Each application links with a single 
-instance of AllJoyn core library to connect with the AllJoyn 
-bus. The AllJoyn core library acts as an application's gateway 
-for peer-to-peer communications with other remote AllJoyn apps. 
-It can be used to connect to the bus, to advertise services, 
-to discover services, to establish connection with remote peer, 
-to consume services, and many other AllJoyn functions. An 
-application registers its objects with the AllJoyn core library 
-to advertise these over the AllJoyn bus.
-
-The following figure shows three apps connecting to a given 
-AllJoyn bus via the AllJoyn core Library. 
+下图展示了三个应用程序通过 AllJoyn 核心库连接到一个给定 AllJoyn 总线的过程：
 
 ![alljoyn-core-library][alljoyn-core-library]
 
-**Figure:** AllJoyn core library
+**Figure:** AllJoyn 核心库
+
+
 
 An AllJoyn core library can be a Standard Core Library (SCL), 
 developed for use by AllJoyn standard applications or a 
