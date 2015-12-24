@@ -591,7 +591,7 @@ service is defined by the set of AllJoyn service frameworks used.
 Callback method a developer implements in order to provide 
 language translations or string manipulations.
 
-[Learn more][events-and-actions]
+[了解更多][events-and-actions]
 
 ### User
 
