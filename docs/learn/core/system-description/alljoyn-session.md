@@ -1,54 +1,29 @@
-# AllJoyn&trade; Session
+# AllJoyn&trade; 会话
 
-## Overview
+## 综述
 
-After an AllJoyn consumer has discovered some desired services
-offered by provider devices, the next step is to establish an
-AllJoyn session with the provider to consume those services.
-An AllJoyn session is a logical connection between consumer
-and provider applications that allows these applications to
-communicate with each other and exchange data. A provider
-application creates an AllJoyn session and waits for consumer
-applications to join the session. The application that creates
-the session is the owner of the session (session host), and
-other applications are termed as joiners in that session.
+在 AllJoyn 使用方已经发现一些提供所需要的服务的提供方设备后，下一步就是与这些提供方建立会话以便使用服务。AllJoyn 会话是在使用者和提供者应用
+程序之间的逻辑连接，通过会话应用程序之间可以通信并交换信息。提供方应用程序创建 AllJoyn 会话，并等待使用方应用程序的加入。创建会话的应用程序
+就是会话的拥有者（session host），其他的应用程序则是会话的加入者（joiners）。
 
-On the provider side, the app binds a session port with the
-AllJoyn core library, specifying a list of session options
-(e.g., transports, session type, etc.) and then listens for
-consumers to join the session. The session port is typically
-known ahead of time to both the consumer and the provider app.
-Alternately, the session port can be discovered via the Announcement
-message received from that provider.
+在提供方的一边，应用程序将会话端口和 AllJoyn 核心库绑定，声明一个会话选项的列表（传输方式，会话类型等等），然后监听会话是否有使用者加入。会
+话端口一般都会提前被使用方和提供方的应用程序所知晓。另一种选择是，会话端口可以通过接收提供方的 Announcement 消息被发现到。
 
-On the consumer side, the app requests the AllJoyn bus to join
-the session with a given provider app by specifying the session
-port, well-known name/unique name for the service, and session
-options (transport, session type, etc.). After this, the AllJoyn
-router initiates a session establishment flow between the consumer
-and the provider apps. A unique session ID gets assigned by the
-provider to the AllJoyn session after the first client joins
-the session. The session ID is sent back to the consumer app
-and should be used for subsequent communication with the provider.
+在使用方的一边，应用程序通过声明会话端口，服务的 well-known name/ 唯一识别符以及会话选项（传输，会话类型等等），向 AllJoyn 总线发出加入给定
+提供方应用程序建立的会话的请求。在这以后，AllJoyn 路由将使用方和提供方应用程序之间的会话建立流初始化。在第一名使用者加入会话后，提供方应用
+会分配一个会话 ID. 此会话 ID 会被返回到使用方应用程序，并被用于后续与供应方的通话。
 
-The following figure shows the high-level architecture for the
-AllJoyn session establishment.
+下图展示了 AllJoyn 会话建立的高层结构
 
 ![alljoyn-session-establishment-arch][alljoyn-session-establishment-arch]
 
-**Figure:** AllJoyn session establishment architecture
+**Figure:** AllJoyn 会话建立结构
 
-The provider app binds a session port with the AllJoyn router
-for a given service. The combination of (well-known name/unique
-name and session port) uniquely identifies the endpoint.
-The consumer app starts a join session with the (well-known name/unique name +
-session port number) of the provider app. The AllJoyn router
-on the consumer side establishes a physical connection with
-the provider AllJoyn router based on already discovered information
-as part of the discovery step. Currently, this involves establishing
-a TCP connection or if a UDP Transport is used
-between the two routers for session setup, no physical channel
-needs to be established.
+提供方应用程序将针对于给定服务的会话端口与 AllJoyn 路由绑定。well-known name/ 独立标识符和会话端口的结合体唯一定义了端点。使用方应用程序根
+据提供方应用程序的 well-known name/ 独立标识符 + 会话端口号来加入会话。在使用者一方的 AllJoyn 路由根据作为发现过程一部分的已发现信息建立一
+个到供应方 AllJoyn 路由的物理连接。目前，这个操作包括建立建立一个 TCP 连接，或者，如果两路由间使用 UDP 传输建立会话，则不需要建立物理信道。
+
+
 
 After physical connection is established, the consumer AllJoyn router
 starts the session establishment with the provider side. The provider
