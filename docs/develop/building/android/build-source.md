@@ -1,14 +1,17 @@
 # Build From Source - Android
 
-## Prerequisites
+## Prerequisites 必备条件
 
 * The following content uses many terms and concepts that are described in the
 [Introduction to the AllJoyn Framework][intro-to-alljoyn-framework].
 Therefore, it is strongly recommended that you read the Introduction content first.
+以下内容使用了大量 [Introduction to the AllJoyn Framework][intro-to-alljoyn-framework] 中提到的术语和概念。因此，我们强烈建议您首先阅读介绍内容。
 
 * Before proceeding with development, make sure that you have set up the development
 environment as described here for [Windows][config-build-environment-windows] or
 for [Linux][config-build-environment-linux].
+在开始开发之前，请确保按照[Windows][config-build-environment-windows] 或
+针对 [Linux][config-build-environment-linux] 建立了开发环境。
 
 ## Setting Up the Programming Environment
 
