@@ -403,7 +403,7 @@ AllJoyn 为应用程序提供了可以推广发现 AllJoyn 服务的方法。All
 对使用 AllJoyn 服务有兴趣的消费方应用程序可以通过在接收来自 AllJoyn 路由的通告消息时声明他的兴趣来查找这些被广播的服务。当消费方的设备处于
 供应方设备的邻域内时，他会接收包含有受供应方支持的 AllJoyn 接口信息的服务公告。
 
-AllJoyn 路由保有连接信息，以便连接回发送服务公告信息的供应方。在发现过程后，消费方应用程序可以向 AllJoyn 路由申请建立支持到所需接口的供应方
+AllJoyn 路由保有连接信息，以便连接回发送服务通告信息的供应方。在发现过程后，消费方应用程序可以向 AllJoyn 路由申请建立支持到所需接口的供应方
 应用程序的连接，以便使用服务。AllJoyn 路由使用连接性信息以便连接回供应方应用程序。
 
 
@@ -414,158 +414,85 @@ AllJoyn 路由保有连接信息，以便连接回发送服务公告信息的供
 Service (NGNS). NGNS 支持基于 DNS 多播 （mDNS）的发现协议，支持在一个 over-the-wire 发现消息中指定 AllJoyn 接口。此外，基于 mDNS 的协议还可
 提供通过单播的发现响应功能，以提升发现协议的性能，并将在 AllJoyn 发现过程中总体的多播通信流量降到最小。
 
-AllJoyn 设备/应用程序中的存在检测机制已经通过添加一个明确的基于 mDNS 的 ping() 消息
+AllJoyn 设备/应用程序中的存在检测机制已经通过添加一个明确的基于 mDNS 的 ping() 消息, 此 ping 消息通过单播被发送，用于探测远程端点是否可用。
+ping() 机制由基于应用程序逻辑的应用程序所驱动。
 
-The presence detection mechanism for AllJoyn devices/apps 
-has been enhanced by adding an explicit mDNS-based ping() 
-message that is sent over unicast to determine if the remote 
-endpoint is still alive. The ping() mechanism is driven by 
-the application based on application logic.
 
-### AllJoyn session
+### AllJoyn 会话
+一旦用户发现感兴趣的 AllJoyn 服务，他必须与此服务建立连接才能使用该服务（完全依赖于非会话的信号的 Notification 服务除外）。连接到服务包括
+与该服务建立一个 AllJoyn 会话。会话是一个建立在使用者和提供者之间的流量受控的数据连接，并因此使得使用者可以与服务器通信。
 
-Once a client discovers an AllJoyn service of interest, 
-it must connect with the service in order to consume that 
-service (except for the Notification service framework, 
-which relies completely on sessionless signals). Connecting 
-with a service involves establishing an AllJoyn session with 
-that service. A session is a flow-controlled data connection 
-between a consumer and provider, and as such allows the client 
-to communicate with the service. 
+推广服务的提供方应用程序将 AllJoyn 总线与会话端口绑定，并监听用户是否进入会话。绑定与监听的动作使得供应方成为了会话的主机。一般情况下提供方和使用方的应用程序都会提前知道端口号。在 announcement-based 发现中，端口号是由通告消息( Announcement message )被发现的。在发现特定的服务之
+后，消费方应用程序会通过指定会话端口以及服务的唯一识别符/well-known name 来请求 AllJoyn 路由进入与远端服务的会话（把他变成一个 session joiner）。在这之后，AllJoyn 路由负责照看使用方与提供方应用程序之间的会话。
 
-A provider app advertising a service binds a session port with 
-the AllJoyn bus and listens for clients to join the session. 
-The action of binding and listening makes the provider the 
-session host. The session port is typically known ahead of 
-time to both the consumer and the provider app. In the case 
-of announcement-based discovery, the session port is discovered 
-via the Announcement message. After discovering a particular 
-service, the consumer app requests the AllJoyn router to 
-join the session with the remote service (making it a session 
-joiner) by specifying the session port and service's unique 
-name/well-known name. After this, the AllJoyn router takes 
-care of establishing the session between the consumer and 
-the provider apps. 
+每个会话都有一个唯一的会话识别符，由提供方的应用程序（会话主机）所分配。一个 AllJoyn 会话可以是一下的一种：
 
-Each session has a unique session identifier assigned by the 
-provider app (session host). An AllJoyn session can be one 
-of the following:
 
-* Point-to-point session: A session with only two participants-the 
-session host and the session joiner. 
-* Multi-point session: A session with multiple participants-a 
-single session host and multiple session joiners.
+* 点对点的会话：只有两个参与者的会话-会话主机以及会话参与者。
+* 多放对话：有多个参与者的会话-一个单一的会话主机以及多个会话参与者。
 
-After session establishment, the consumer application must 
-create a proxy object to interact with the provider app. The 
-proxy object should be initialized with a session ID and the 
-remote service object path. Once complete, the consumer app 
-can now interact with the remote service object via this proxy object.
+会话建立完成后，消费方应用程序必须创建一个代理对象与提供方应用程序交互。此代理对象需要一个会话 ID 和远端服务的对象路径来初始化。一旦完成，
+使用方应用程序可以通过这个代理对象来与远端服务对象建立联系。
 
-### Sessionless signals
 
-The AllJoyn framework provides a mechanism to broadcast signals 
-over the proximal AllJoyn network. A broadcast signal does 
-not require any application layer session to be established 
-for delivering the signal. Such signals are referred to as 
-sessionless signals and are broadcast using a sessionless 
-signaling mechanism supported by the AllJoyn router. 
 
+### 非会话信号
+
+AllJoyn 框架提供了可以将信号广播在邻近域网络上。广播信号的建立不需要任何应用层会话。这类信号被称为非会话信号，由被 AllJoyn 路由支持的非会话 的信号机制所广播。
+
+非会话信号的投递有以下两个过程
 The delivery of sessionless signals is done as a two-step process. 
 
-1. The provider device (sessionless signal emitter) advertises 
-that there are sessionless signals to receive. 
-2. Any consumer devices wishing to receive a sessionless 
-signal will connect with the provider device to retrieve new signals. 
+1. 供应方设备（非会话信号发射端）发出存在等待接收的非会话信号的推广。
+2. 任何希望接收非会话信号的设备将与供应方连接，并接收新信号。
 
-Using the sessionless signal mechanism, a provider application 
-can send broadcast signals to the AllJoyn router. The AllJoyn 
-router maintains a cache for these signals. The content of the 
-sessionless signal cache is versioned. The AllJoyn router sends 
-out a sessionless signal advertisement message notifying other 
-devices of new signals at the provider device. The sessionless 
-signal advertisement message includes a sessionless signal-specific 
-well-known name specifying the version of the sessionless signal cache. 
+使用非会话信号机制，供应方应用程序可以向 AllJoyn 路由发送广播信号。AllJoyn 路由将这些信号缓存。这些非会话信号的内容将被分成各个版本。 AllJoyn 路由发出一个提醒其他设备在供应方有新消息的信号推广消息。此非会话信号推广消息包括一个非会话的指定信号的 well-known name, 声明该非
+会话信号缓存的版本。
 
-The consumer app interested in receiving the sessionless signal 
-performs discovery for the sessionless signal-specific well-known 
-name. The AllJoyn bus on the consumer maintains the latest sessionless 
-signal version it has received from each of the provider AllJoyn router. 
-If it detects a sessionless signal advertisement with an updated 
-sessionless signal version, it will fetch new set of sessionless 
-signals and deliver them to the interested consumer applications.
+对接收非会话信号有兴趣的消费方应用程序针对非会话信号指定信号的 well-known name 执行发现行为。在使用端的 AllJoyn 总线会保持已经从每一个供应
+方 AllJoyn 路由接收到的最新的非会话信号。如果他探测到伴随着更新过的非会话信号版本到来的非会话信号推广，他将接收新的非会话信号并将它们送到感
+兴趣的使用方应用程序。
 
-#### Sessionless signal enhancement in the 14.06 release
 
-The sessionless signal feature was enhanced in the 14.06 release 
-to enable a consumer application to request sessionless signals 
-from provider applications that support certain desired AllJoyn 
-interfaces. The following sessionless signal enhancements were made:
+#### 14.06版本中对非会话信号的增强
 
-* The sessionless signal advertised name was enhanced to add 
-<INTERFACE> information from the header of the sessionless signal. 
-Consumers use this to fetch sessionless signals only from those 
-providers that are emitting signals from the <INTERFACE> it 
-is interested in. A separate sessionless signal name is advertised 
-one for each unique interface in the sessionless signal cache.
-* A mechanism was added for the consumer app to indicate receiving 
-Announce sessionless signal only from applications implementing 
-certain AllJoyn interfaces.
+非会话信号功能在14.06版本中被增强，以便使使用方应用程序可以向支持所需的 AllJoyn 接口的供应方请求非会话信号。对非会话信号的增强如下：
 
-Sessionless signals are only fetched from those providers that 
-support desired interfaces. This improves the overall performance 
-of the sessionless signal feature.
+* 非会话信号被推广时的名字被增强，可以在非会话消息的头部增加 <INTERFACE> 信息。使用者可以根据自己感兴趣的 <INTERFACE> 名来选择收取相应的
+提供者的非会话信号。每一个在非会话信号缓存中的接口都会被推广一个单独的非会话信号名。
 
-### Thin apps
 
-An AllJoyn Thin App is designed for use in embedded devices 
-such as sensors. These types of embedded devices are optimized 
-for a specific set of functions and are constrained in energy, 
-memory and computing power. An AllJoyn thin app is designed to 
-bring the benefits of the AllJoyn framework to embedded systems. 
-The thin app is designed to have a very small memory footprint. 
+* 加入了新机制：使用者端的应用程序可以指明只接收实现了一定种类的 AllJoyn 接口发出的 Announce 非会话信号。
 
-A thin AllJoyn device makes use of lightweight thin application 
-code along with the AllJoyn Thin Core Library (AJTCL) running 
-on the device. It does not have an AllJoyn router running on 
-that device. As a result, the thin app must use an AllJoyn 
-router running on another AllJoyn-enabled device, essentially 
-borrowing the AllJoyn router functionality running on that device. 
+仅当非会话信号是由支持所需要接口的供应方发出时，才会被收取。
 
-At startup, the thin application discovers and connects with 
-an AllJoyn router running on another AllJoyn-enabled device. 
-From that point onwards, the thin app uses that AllJoyn router 
-for accomplishing core AllJoyn functionality including service 
-advertisement/discovery, session establishment, signal 
-delivery, etc. If a thin app is not able to connect to previously 
-discovered AllJoyn router, it attempts to discover another 
-AllJoyn router to connect to.
 
-An AllJoyn thin app is fully interoperable with an AllJoyn 
-standard application. It uses same set of over-the-wire protocols 
-as a standard AllJoyn app. This ensures compatibility between 
-the thin app and standard apps. An AllJoyn standard app communicating 
-with a thin app will not know that it is talking to a thin app 
-and vice versa. However, there are some message size constraints 
-that apply to the thin app based on available RAM size.
+### 精简应用程序
 
-### AllJoyn protocol version
+AllJoyn 的就及应用程序被用于嵌入式设备中，例如传感器。针对一些特定的功能，这些嵌入式设备被优化，并被限制了功率，内存以及运算能力。AllJoyn 精简应用程序的设计宗旨是将 AllJoyn 框架的优势带入到嵌入式系统中。精简应用程序的内存占有普遍很小。
 
-Functionality implemented by the AllJoyn Router is versioned through an AllJoyn
-Protocol Version (AJPV) field. The following table shows the AJPV for various
-AllJoyn releases; unless otherwise noted the AJPV for the major release version
-applies to all the patch release versions as well. The AJPV is exchanged
-between routers as part of the BusHello messaging during the AllJoyn session
-establishment and between the leaf and routing node when the leaf node connects
-to the router. This field is used by the core libraries to identify
-compatibility with the router, and specifically by thin apps to determine
-whether or not to connect to a particular router or keep searching for another
-one.  It is also used by the router to determine if functionality is available
-at the leaf (e.g. self-join, SessionLostWithReason, etc.)
+AllJoyn 精简设备的使用
+精简设备使用轻量化的精简应用代码以及 AllJoyn 精简内核库 （AJTCL）.这些设备上没有 AllJoyn 路由。因此，精简应用程序必须使用运行在其他支持 AllJoyn 设备上的 AllJoyn 路由，本质上就是借用其他设备的 AllJoyn 路由功能。
 
-** Table: ** AllJoyn Release to Protocol Version mapping
+在启动时，精简应用程序发现并连接到运行在另一个支持 AllJoyn 设备上的 AllJoyn 路由。从此刻开始，此精简应用程序就使用该 AllJoyn 路由完成 AllJoyn 的核心功能，包括服务的推广/发现，建立会话，传递信号等等。如果一个精简应用程序不能连接到之前发现的 AllJoyn 路由，他讲尝试发现另一个
+可连接的 AllJoyn 路由。
 
-| &#160; Release version &#160; | &#160; AJPV &#160; |
+AllJoyn 的精简应用程序可以和 AllJoyn 的标准应用程序完全兼容。他们使用相同的 over-the-wire 协议。这保障了精简应用程序与标准应用程序之间的兼
+容性。AllJoyn 的标准应用程序在与 AllJoyn 的精简应用程序通话时，并不会知道对方是精简的，反之亦然。但是对于精简应用程序会有针对消息大小的一些
+限制，这取决于可使用的 RAM 容量。
+
+
+### AllJoyn 协议版本
+
+通过 AllJoyn 路由实现的功能会通过一个 AllJoyn 协议版本字段（AJPV）进行版本分类。下表真实了不同 AllJoyn 发布版本的 AJPV；除非另行通知，主发
+行版本的 AJPV 也被使用到所有补丁版本。AJPV 作为 BusHello 消息的一部分，在 AllJoyn 会话建立时的路由之间和在叶节点连接到路由时的叶节点和路由
+节点之间被交换。这个字段被核心库用于识别对其他路由的兼容性，并特定的被精简应用程序用来决定是否连接到一个特定路由，或继续搜索。它同样被其他
+路由用于决定叶节点的功能是否可用（例如自我加入，SessionLostWithReason 等等）
+
+
+** Table: ** AllJoyn 版本对协议映射表
+
+| &#160; 发布版本 &#160; | &#160; AJPV &#160; |
 |:------------------------------:|:-----------------:|
 |        legacy 03.04.06         |        9          |
 |        v14.02                  |        9          |
