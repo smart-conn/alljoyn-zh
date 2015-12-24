@@ -1,5 +1,11 @@
 # alljoyn-zh
 
+## 1224 待审阅文章
+
+* [ ] [docs/learn/core/system-description/index.md](docs/learn/core/system-description/index.md)
+* [ ] [docs/learn/glossary.md](docs/learn/glossary.md)
+* [ ] [docs/develop/building/index.md](docs/develop/building/index.md)
+
 ## 1222 待审阅文章
 
 * [ ] [docs/learn/base-services/notification/index.md](docs/learn/base-services/notification/index.md)
