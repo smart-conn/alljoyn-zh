@@ -36,6 +36,7 @@ in either client mode or server mode. Server mode is used to
 build an application that advertises AboutData that is read 
 from a PropertyStore. Client mode is used to build an application 
 that discovers advertised AboutData.
+开发者／OEM 在客户端模式或者服务器模式使用的 About 功能的一个类。服务器模式用来建立广告 AboutData 的应用程序，AboutData 从 PropertyStore 读取。客户端模式用来建立应用程序发现广告的 AboutData。
 
 ### About Service
 
@@ -423,30 +424,34 @@ to some permanent storage layer such as NVRAM.
 A module in the Onboarding service framework that is used by 
 the developer/OEM to build an application that exposes the 
 ability to remotely modify OnboardingData that is persisted by it.
-Onboarding 服务架构中的一个模块，
+Onboarding 服务架构中的一个模块，开发者／OEM 用其建立应用程序，这样的应用程序提供了远程修改固化在其中的 OnboardingData 的能力。
 
 ### Onboarding Server
 
 The implementation of the Onboarding service framework that 
 exposes OnboardingData and allows a peer device to modify it 
 remotely and control the onboarding process.
+Onboarding 服务架构的一种工具。它开放了 OnboradingData，允许设备远程修改并且控制 onboarding 进程。
 
 ### Onboarding service framework
 
 Software layer that enables devices to provide remote 
 configuration (OnboardingData) and control (driver mode) 
 over a device's onboarding process to a Wi-Fi AP over an 
-AllJoyn session.
+AllJoyn session。
+一种软件层。它允许设备提供远程配置（OnboardingData）和控制（驱动模式）设备通过 AllJoyn 会话 onboard 一个 Wi-Fi AP 的进程。
 
 A set of capabilities that enables an AllJoyn device to 
 be brought on or removed from a user's personal network 
 (onboarding/offboarding).
+使设备可以进入和退出（onboarding/offboarding）用户个人网络的一组功能。
 
 ### Personal AP
 
 The target network that the end user wants the AllJoyn 
 device to join. This is typically an end user's personal 
 network (personal, work, office, etc.).
+最终用户希望 AllJoyn 设备加入的目标网络。这通常是最终用户的个人网络（个人、工作、办公室网络等）
 
 ### Producer
 
@@ -454,55 +459,69 @@ AllJoyn application providing services on the AllJoyn network.
 
 Device that generates and sends the notification to a device 
 such as a household appliance.
+在 AllJoyn 网络中提供服务的 AllJoyn 应用程序。
+向如家庭电器的设备生成并发送通知的 AllJoyn 设备。
 
-[Learn more][notification]
+
+[了解更多][notification]
 
 ### PropertyStore
 
 (from a thin app document) A module that maintains the default 
-and runtime property values for the service frameworks.
+and runtime property values for the service frameworks.（根据 thin app document）一种为服务架构保留默认值和运行时的属性值的模块。
 
 A module that maintains the values returned as AboutData that 
 has been merged with the values from ConfigData.
-
+该模块保留的值以 AboutData 的形式返回，这时 AboutData 已经与 ConfigData 的值合并了。
 ### Proximal network
 
 Refers to a network that does not include a cloud-based service
+不包含云服务的网络
 
 ### Proximal IoE network
 
 Refers to a network that includes a cloud-based service
+包含云服务的网络
 
 ### RDP
 
 Reliable Data Protocol. An efficient reliable data transport
 service for packet-based applications.
+Reliable Data Protocol（可靠数据协议）。为基于包的应用程序提供的一种高效可靠的数据传输服务。
 
 ### Reliable event
 
 An event this is sent with guaranteed delivery to all interested consumers. 
+一种保证传输到相关消费者的事件。
 
 ### Remote application
 
 Typically, AllJoyn applications communicate with one another.
 A remote application is the peer that a particular application
 is communicating with.
+通常，AllJoyn 应用程序与另一个 AllJoyn 应用程序之间通信。Remote application 就是正在与此应用程序通信的远端应用程序。
 
 ### Rule
 
 The pairing of an event with an action the user wants to have 
 occur when a device supporting the Events interface performs 
 an action defined by the OEM that warrants monitoring.
+某一事件与用户希望的动作的一组匹配对。当设备支持 Event 接口，并通过 OEM 鉴权时，就会完成动作。
+
+
 
 ### Security
 
 Framework for AllJoyn applications to authenticate each other 
 and send encrypted data between them.
+AllJoyn 应用程序用于相互鉴权并相互传递加密数据的一种架构。
+
 
 ### Service_Common
 
 A module that contains code shared by multiple services, 
 including the PropertyStore API definition.
+一个包含了多种服务共享的代码的模块，包括 PropertyStore API 的定义。
 
 ### Sessionless signal
 
@@ -511,6 +530,7 @@ listening on the end user's home network (such as the Wi-Fi network).
 The sessionless signals are broadcast on the network until an 
 associated time-to-live (TTL) value expires. The About feature 
 sends Announcements as sessionless signals over the Wi-Fi network.
+一种广播的 AllJoyn 信号，可以被所有在最终用户家庭网络（如 Wi-Fi 网络）中监听的设备接收到。Sessionless sigal 会在网络中持续广播，直到 time-to-live (TTL) 时间超时。About 功能通过 sessionless signal 的方式在 Wi-Fi 网络中发送 Annoucement。
 
 [Learn more][sessionless-signal]
 
@@ -518,35 +538,44 @@ sends Announcements as sessionless signals over the Wi-Fi network.
 
 When the AllJoyn device is not connected to a Wi-Fi Access Point 
 (not onboarded) it broadcasts in access point mode.
+当 AllJoyn 设备没有连接到 Wi-Fi Access Point（不在线）时，它会以 access point 模式发送广播。
 
 Software-enabled Access Point that allows the device to work 
 as both the AP and the client.
+软件实现的 Access Point 允许设备既能在 AP 模式工作，也能在客户端模式工作。
 
 ### Standalone router
 
 Contains the main progrem, liballjoyn.so, and librouter.so files.
 It is not bundled with an AllJoyn app.
+包含了主程序、liballjoyn.so 和 librouter.so。它不与 AllJoyn 应用程序绑定。
 
 ### Standard app
 
 AllJoyn app that uses the AllJoyn Standard Library.
+使用 AllJoyn Standard Library 的 AllJoyn 应用程序。
 
 ### Standard core
 
 Contains the Standard library and router library
+包含了 Standard library 和 router library
 
 ### SYN, SYN+ACK, ACK
 
 The kinds of segments that are involved in a three-way handshake
 connection establishment protocol. Used in TCP and ARDP.
+三路握手建立连接协议的几个部分。用于 TCP 和 ARDP。
+
 
 ### Thin app
 
 An AllJoyn application that incorporates the AllJoyn thin core library.
+包含 AllJoyn thin core library 的 AllJoyn 应用程序。
 
 ### Thin core
 
 Contains the Thin library
+包含 Thin library
 
 ### Thin Library service app
 
@@ -555,6 +584,7 @@ peer session. It does not correlate to a web service as the
 service may play the role of a client at various times 
 (depending on the implementation). The function of the AllJoyn 
 service is defined by the set of AllJoyn service frameworks used.
+作为会话的一部分公开一组功能的 AllJoyn 应用程序。它不会关联到 web 服务，因为 web 服务可能会作为客户端多次使用（由工具而定）。AllJoyn 服务的功能由其使用的一套 AllJoyn 服务架构而定。
 
 ### Translator
 
@@ -565,22 +595,25 @@ language translations or string manipulations.
 
 ### User
 
-Has many contexts.
+Has many contexts.有很多情况。
 
 In Events and Actions, the individual using the device that 
 has the Event Picker application installed.
+在 Events and Actions 中，他是使用有 Event Picker 应用程序的设备的人
 
 ### Well-Known Name (WKN)
 
 Well Known names are used as the basis for AllJoyn discovery 
 for announcements. Typically applications will use About
 announcements and not the lower level Well-Known Names.
+Well Known name 是 AllJoyn 发现 annoucement 的基础。通常应用程序会使用 About annoucement 而不是更低级别的 Well-Known Name。
 
 ### Widget
 
 A UI element in the control panel used to represent an interface. 
 It graphically enables a user to perform a function and/or 
 access properties.
+控制面板中的用于表示接口的 UI 元素。它以图形的方式调用设备功能和／或访问设备属性。
 
 ### WKN
 
