@@ -366,28 +366,18 @@ AllJoyn 服务框架为高层的应用程序服务提供一些作为 enablers �
 AllJoyn 传输是一个虚拟概念，他实现了通过 AllJoyn 路由，在 AllJoyn 应用程序中建立通信以及传送消息的功能。AllJoyn 传输逻辑因此会支持在多个底
 层物理传输，包括 TCP 传输，UDP 传输以及本地传输（例如 UNIX 域套接字 ）之间的消息传送。
 
+AllJoyn 的传输逻辑根据应用程序所指定的传输列表投递广播与发现消息。类似的，AllJoyn 传输同样基于应用程序的传输选择来建立会话，以及多底层平台
+传输的消息路由。由 AllJoyn 传输所支持的底层传输在 TransportMask 中定义，具体请参见 [AllJoyn Transport in Networking  Model][alljoyn-transport-in-networking-model].
 
+如果应用程序并没有指定任何的传输方式， AllJoyn 传输值默认为 TRANSPORT_ANY.
 
-The AllJoyn transport logic delivers the advertisement and 
-discovery messages based on specified list of transports by 
-the app.  Similarly, the AllJoyn transport enables session 
-establishment and message routing over multiple underlying 
-transports based on transport selection made by the application. 
-The set of underlying transports supported by the AllJoyn 
-transport is specified by a TransportMask as captured in 
-[AllJoyn Transport in Networking Model][alljoyn-transport-in-networking-model].
-If an app does not specify any transport(s), the AllJoyn 
-transport value defaults to TRANSPORT_ANY.
+具体信息参见 [AllJoyn Transport][alljoyn-transport-section].
 
-See [AllJoyn Transport][alljoyn-transport-section] for more information.
+### 推广与发现
 
-### Advertisement and discovery 
-
-The AllJoyn framework provides a means for applications to 
-advertise and discover AllJoyn services. The AllJoyn discovery 
-protocol manages the dynamic nature of services coming in 
-and going out of the proximal AllJoyn network and notifies 
-AllJoyn applications of the same. The AllJoyn framework 
+AllJoyn 为应用程序提供了可以推广发现 AllJoyn 服务的方法。AllJoyn 发现协议负责管理进入并离开 AllJoyn 邻域网络服务的动力性，并对 AllJoyn 应用
+程序发出响应的提醒。AllJoyn 框架
+The AllJoyn framework 
 leverages an underlying transport-specific mechanism to 
 optimize the discovery process. The AllJoyn framework makes 
 use of IP multicast over Wi-Fi for service advertisement and 
