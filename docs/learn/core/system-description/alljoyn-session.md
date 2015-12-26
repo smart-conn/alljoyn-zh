@@ -23,23 +23,17 @@
 据提供方应用程序的 well-known name/ 独立标识符 + 会话端口号来加入会话。在使用者一方的 AllJoyn 路由根据作为发现过程一部分的已发现信息建立一
 个到供应方 AllJoyn 路由的物理连接。目前，这个操作包括建立建立一个 TCP 连接，或者，如果两路由间使用 UDP 传输建立会话，则不需要建立物理信道。
 
+在建立了物理连接后，使用方的 AllJoyn 路由开始建立与提供方的会话。提供方 AllJoyn 路由将一个唯一的会话 ID 分配给会话，并创建一个存贮相关会话
+信息的会话地图。一旦会话建立，Session Joined 回交将会与会话 ID 一起发送给提供方应用程序。使用方应用程序会收到带有会话 ID 的 Status OK 回应
+，作为加入会话呼叫的回应。使用方应用程序也会建立存储会话细节的会话地图。
 
 
-After physical connection is established, the consumer AllJoyn router
-starts the session establishment with the provider side. The provider
-AllJoyn router assigns a unique session ID for the session and also
-creates a session map storing the relevant session information.
-Once the session is established, a Session Joined callback is
-sent to the provider app with generated session ID. The consumer
-app receives a Status OK response for the join session call that
-includes the session ID. A session map also gets created on the
-consumer AllJoyn router side, storing session details.
 
-## Types of sessions
+## 会话类型
 
-An AllJoyn session can be categorized into different types based
-on the allowed number of participants in the session or the data
-encapsulation option used over the session.
+根据被允许参与会话的用户数，或者根据会话数据的封装选项，AllJoyn 会话可以被分为不同的类型。
+
+根据被允许参与会话的用户数，AllJoyn 系统支持
 
 The AllJoyn system supports the following types of session
 based on allowed number of participants:
