@@ -74,15 +74,14 @@ is version 14.12 or earlier.
 
 ![establishing-p2p-session][establishing-p2p-session]
 
-**Figure:** AllJoyn 点对点会话建立 - 14.12版本 or 更早
+**Figure:** AllJoyn 点对点会话建立 - 14.12版本或更早
 
 下面是生产方或使用方之一是14.12或更早的版本情况下的消息流程。
 
 1. 提供方与使用方都通过 AllJoyn 核心库连接到各自的 AllJoyn 路由上，并获取被分配的唯一标识。
 2. 提供方应用程序向 AllJoyn 核心库注册服务的总线对象。
-3. The provider app requests a well-known name with the
-AllJoyn router via the AllJoyn core library.
-4. The provider app binds a session port with the AllJoyn router via the AllJoyn
+3. 提供方应用程序通过 AllJoyn 核心库向 AllJoyn 路由请求一个 well-known name.
+4. 提供方应用程序通过 AllJoyn 库的 `BindSessionPort` API 将会话端口捆绑，The provider app binds a session port with the AllJoyn router via the AllJoyn
 library's `BindSessionPort` API. This call specifies a session port, session
 options, and a SessionPortListener for the session.
 5. The consumer app discovers the provider app using the AllJoyn Advertisement and Discovery mechanism.
