@@ -36,77 +36,50 @@
 根据被允许参与会话的用户数，AllJoyn 系统支持如下种类的会话
 
 
-* 点对点会话: 只有一个使用者（参与者）和一个服务端（）的 AllJoyn 会话 An AllJoyn session with a single
-consumer (joiner) and single provider (session host) endpoints
-participates in the session. When either participant leaves
-the session, the point-to-point session ends. A SessionLost
-indication is sent to the remaining participant.
-* Multi-Point Session: An AllJoyn session allows more than
-two participants. Such a session involves a provider app
-(session host app) and one or more consumer apps (joiner apps)
-participating in the same session. A multi-point session can
-be joined multiple times to form a single session with multiple
-(greater than 2) endpoints. New consumers can join a multi-point
-session after the session has been created, and existing consumers
-can leave a multi-point session. All participants in a multi-point
-session can communicate to each other.
+* 点对点会话: 只有一个使用者（参与者）和一个服务端（会话主机）的 AllJoyn 会话。当任意一方离开会话时，此点对点会话结束。SessionLost 提示将被
+发送给余下的参与者。
+* 多方会话: AllJoyn 会话支持多于两个参与者的会话。这种会话包含一个提供者应用程序（会话主机应用程序）以及一个或多个使用方应用程序（参与方应用程序）在同一个会话中。多方会话可以在多个时间被加入，构成与多个（多于两个）端点的一对一会话。在会话被建立后，新的使用者可加入多方会话，现存的使用者也可以离开多方会话。在多方会话内的所有的参与者都可以相互沟通。
 
-In a multi-point session, all communications go through session host.
-Similar to a point-to-point session, a multi-point session ends when two
-participants are left and one of them leaves the session.
-A SessionLost indication is sent to the remaining participant.
+在一个多方会话中，所有的通信流量都会经过会话主机。与点对点会话类似，当一个参与者离开会话，仅剩余两个参与者时，多方会话便结束。
 
-The following figure depicts point-to-point and multi-point
-AllJoyn sessions with the multi-point session showing four participants.
+下图描绘了点对点 AllJoyn 会话以及四个参与者的多方 AllJoyn 会话。
+
 
 ![p2p-multipoint-session-examples][p2p-multipoint-session-examples]
 
-**Figure:** AllJoyn point-to-point and multi-point session examples
+**Figure:** 点对点以及多方 AllJoyn 会话
 
-### Raw session
+### 原始会话
 
-In the AllJoyn system, typical data exchange between peer nodes
-occurs in the form of enhanced D-Bus messages. However in some
-scenarios, the overhead associated with D-Bus messages may not
-be desirable. In such cases, raw data can be exchanged between
-nodes using what is called an AllJoyn raw session.
+在 AllJoyn 系统中，两对等节点之间典型的数据交换使用增强的 D-Bus 消息格式。但在一些场景中，与 D-Bus 相关的间接费用会带来不便。在这种情况中，
+可以在两节点间使用 AllJoyn 原始会话交换原始数据。
 
-An AllJoyn raw session is used to exchange raw data between
-endpoints using an underlying physical connection (e.g., TCP/UDP
-socket-based communication). A raw session does not carry D-Bus
-encapsulated messages like a regular AllJoyn session.
-Instead, a raw session carries unencapsulated raw data directly
-sent over TCP/UDP sockets. A raw session can only be a
-point-to-point session.
+AllJoyn 原始会话使用一个底层的物理连接（例如 TCP/UDP 基于套接字的通信）来实现端点间原始数据的交换。与常规会话不同，原始会话不携带 D-Bus 封装的消息，而是携带被直接由 TCP/UDP 套接字发送的未经封装的原始数据。原始会话仅支持点对点会话。
 
-**NOTE:** The raw session feature is only supported on the AllJoyn
-standard client and is not supported on thin app. This feature
-is being deprecated and it is recommended that developers not
-to use the raw session feature.
+**NOTE:** 原始会话功能仅可在 AllJoyn 标准用户上使用，精简应用程序无法使用。此功能正在被反对，推荐开发者不使用原始会话功能。
 
-## Point to Point Session establishment
 
-The AllJoyn protocol version obtained from the BusHello message is used to
-determine which call flow is used.
 
-### Pre-15.04 Point to Point Session establishment
+## 点对点会话的建立
 
+由 BusHello 消息获取的 AllJoyn 协议版本用来决定哪一个呼叫流程将被使用。
+
+
+### Pre-15.04 点对点会话建立
+
+下图描述了一个点对点 AllJoyn 会话建立的消息流程，生产方或使用方之一是14.12或更早的版本。
 The following figure captures the AllJoyn session establishment
 message flow for a point-to-point session when either the producer or consumer
 is version 14.12 or earlier.
 
 ![establishing-p2p-session][establishing-p2p-session]
 
-**Figure:** AllJoyn point-to-point session establishment - 14.12 or earlier
+**Figure:** AllJoyn 点对点会话建立 - 14.12版本 or 更早
 
-This is the message flow when either the producer or consumer is version 14.12
-or earlier.
+下面是生产方或使用方之一是14.12或更早的版本情况下的消息流程。
 
-1. Both the provider and consumer apps connect with their
-respective AllJoyn routers via the AllJoyn core library
-and get a unique name assigned.
-2. The provider app registers service Bus Objects with the
-AllJoyn core library.
+1. 提供方与使用方都通过 AllJoyn 核心库连接到各自的 AllJoyn 路由上，并获取被分配的唯一标识。
+2. 提供方应用程序向 AllJoyn 核心库注册服务的总线对象。
 3. The provider app requests a well-known name with the
 AllJoyn router via the AllJoyn core library.
 4. The provider app binds a session port with the AllJoyn router via the AllJoyn
