@@ -33,12 +33,10 @@
 
 根据被允许参与会话的用户数，或者根据会话数据的封装选项，AllJoyn 会话可以被分为不同的类型。
 
-根据被允许参与会话的用户数，AllJoyn 系统支持
+根据被允许参与会话的用户数，AllJoyn 系统支持如下种类的会话
 
-The AllJoyn system supports the following types of session
-based on allowed number of participants:
 
-* Point-to-point session: An AllJoyn session with a single
+* 点对点会话: 只有一个使用者（参与者）和一个服务端（）的 AllJoyn 会话 An AllJoyn session with a single
 consumer (joiner) and single provider (session host) endpoints
 participates in the session. When either participant leaves
 the session, the point-to-point session ends. A SessionLost
