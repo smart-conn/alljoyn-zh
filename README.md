@@ -1,5 +1,10 @@
 # alljoyn-zh
 
+## 1228 待审阅文章
+
+* [ ] [docs/develop/building/android/build-source.md](docs/develop/building/android/build-source.md)
+* [ ] [docs/develop/building/linux/build-source.md](docs/develop/building/linux/build-source.md)
+
 ## 1224 待审阅文章
 
 * [ ] [docs/learn/core/system-description/index.md](docs/learn/core/system-description/index.md)
