@@ -522,16 +522,18 @@ $ scons WS=fix
 
 By default, the AllJoyn framework builds the debug variant. To build
 the release version of the AllJoyn framework, use this:
+默认情况下，AllJoyn 架构建立 debug 变量。建立发行版本的 AllJoyn 架构，使用：
 
 ```sh
 $ scons VARIANT=release
 ```
 
-## Bindings option
+## Bindings option Bindings 选项
 
 The default SCons script tries to build all of the language bindings
 by default. If you are only interested in a particular language binding,
 the `BINDINGS` option can be used to select the language(s) of interest.
+默认 SCons 脚本采用默认方式建立所有的语言绑定。如果您只对某一种语言绑定有意向，`BINDINGS` 选项可供您选择您希望的语言。
 
 The `BINDINGS` option takes a comma-separated list of languages you
 wish to build. Current valid languages are cpp, c, java, and js. The language is
@@ -539,8 +541,9 @@ always specified in all lower case with no extra spaces between languages. If a
 dependency is not listed, the dependency will automatically be built. For
 example, java requires that cpp is built. If an empty string is used only the
 core files will be built.
+`BINDINGS` 选项可以用使用逗号列出您所希望用于构建的多种语言。目前，支持的语言有 cpp,c,java 和 js。语言必须采用小写形式，并且语言之间不能有空格。如果依赖项没有被列出，它们也会自动被建立。举例说明，java 需要以 cpp 的建立为基础。如果使用了空白字段，仅会建立核心文件。
 
-For example:
+For example:举例：
 
 ```sh
 $ scons BINDINGS=java #this will build core files and Java language bindings
@@ -548,23 +551,24 @@ $ scons BINDINGS=c,java #this will build C language bindings and Java language b
 $ scons BINDINGS= #only build the core files alljoyn_core and common
 ```
 
-## Crypto option
+## Crypto option Crypto 选项：
 
 AllJoyn v15.04 adds a CRYPTO option to the scons command line. To build AllJoyn
 without dependencies on OpenSSL libcrypto, use CRYPTO=builtin:
+AllJoyn v15.04 在 scons 命令行中加入了 CRYPTO 选项。使用 CRYPTO=builtin，能够除去 OpenSSL 的依赖，进行 AllJoyn 的构建。
 
 ```sh
 $ scons CRYPTO=builtin
 ```
 
-To use crypto implementations in OpenSSL:
+To use crypto implementations in OpenSSL:使用 OpenSSl 提供的加密方式：
 
 ```sh
 $ scons CRYPTO=openssl
 ```
 
 
-## PolicyDB option
+## PolicyDB option PolicyDB 选项
 
 AllJoyn v14.06 provides functionality that
 can be compiled into AllJoyn routers that acts as firewall/filter
@@ -580,40 +584,45 @@ Example:
 $ scons POLICYDB=on
 ```
 
-## Build C++ unit tests
+## Build C++ unit tests 建立 C++ 单元测试
 
 The AllJoyn framework now includes a set of unit tests that
 are built using the Google Test C++ framework. To build the
 unit test, the location of the Google Test source code must
 be specified as explained in googletest. Use the GTEST_DIR
 option to specify the location of the Google Test source code.
+AllJoyn 架构目前自带了一套使用 Google Test C++ 架构的单元测试。为了建立单元测试，必须如 googletest 中提到指定 Google Test 源代码的位置。使用 GTEST_DIR 选项指定 Google Test 源代码的位置。
 
-Example:
+Example:示例：
 
 ```sh
 $ scons GTEST_DIR=$HOME/gtest/gtest-1.7.0
 ```
 
-## Running the AllJoyn Applications
+## Running the AllJoyn Applications 运行 AllJoyn 应用程序
 
 
-**NOTE:** For v2.6 and onward, Bundled Router mode only.
+**注意:** For v2.6 and onward, Bundled Router mode only.对于 v2.6 和更高版本，仅有 Bundled Router 模式。
 
 To ensure that the Linux development platform is set up
 correctly, use the instructions in this section to run
 the AllJoyn router.
+为了保证 Linux 开发平台被正确地建立，使用本章的指导运行 AllJoyn 路由。
 
 With the release of AllJoyn v2.6, running a separate standalone
 router (alljoyn-daemon) is no longer required. All of the
 functionality of the router can now be built into each individual
 application, which means:
+随着 AllJoyn v2.6 的发布，不再能够运行分离的独立路由（alljoyn-daemon）。所有的路由程序现在可以被加入任何一个独立的应用程序，这意味着：
 
 * Users of your program no longer need to install and run a
 background service (daemon) to run a program that uses the AllJoyn framework.
+您的用户不再需要安装和运行后台服务（守护进程）来运行使用 AllJoyn 架构的应用程序。
 * Each application that you run will have its own built-in router.
+每一个您运行的应用程序将有一个它们自己的内置路由。
 
 1. On the command line, type the following commands to run
-the AllJoyn application:
+the AllJoyn application:在命令行中，输入以下命令以运行 AllJoyn 应用程序：
 
    ```sh
       $ cd <workspace>/build/{OS}/{CPU}/{VARIANT}/dist/cpp/bin
@@ -624,14 +633,14 @@ the AllJoyn application:
    ```
 
 2. Open another tab and type the following commands to run
-another application:
+another application:打开另一个标签并输入以下命令以运行另一个应用程序。
 
    ```sh
       $ cd <workspace>/build/{OS}/{CPU}/{VARIANT}/dist/cpp/bin
       $	./bbclient -n com.test -d
    ```
 
-3. Check for the following output on bbclient:
+3. Check for the following output on bbclient:在 bbclient 上检查以下输出：
 
    ```sh
       Sending "Ping String 1" to org.alljoyn.alljoyn_test.my_ping synchronously
@@ -639,24 +648,25 @@ another application:
          "Ping String 1"
    ```
 
-## AllJoyn router command line executable
+## AllJoyn router command line executable AllJoyn 路由命令行可执行
 
-**NOTE:** Applies only to versions before 2.6.
+**注意:** Applies only to versions before 2.6.仅对 2.6 之前的版本生效。
 
 The concept of bundling a router with the application was
 introduced in v2.6. Prior to this version, to run any AllJoyn
 application, you needed to run the alljoyn-daemon first.
+v2.6 中引入了路由与应用程序绑定的概念。在此版本之前，在运行 AllJoyn 应用程序时，您需要首先运行 alljoyn-daemon。
 
-As part of the build process, an executable for the alljoyn-daemon is built.
+As part of the build process, an executable for the alljoyn-daemon is built.作为生成过程的一部分，建立了 alljoyn-daemon 的可执行文件。
 
 1. On the command line, type the following commands to run
-the AllJoyn router as a separate process:
+the AllJoyn router as a separate process:在命令行中，输入以下命令，以分离进程运行 AllJoyn router。
 
    ```sh
       $ cd <workspace>/build/{OS}/{CPU}/{VARIANT}/dist/cpp/bin
       $ ./alljoyn-daemon --internal
    ```
-   The options for the variables are as follows:
+   The options for the variables are as follows:变量的可选项如下：
 
    {OS} = linux
    {CPU} = x86 or x86-64
@@ -665,9 +675,10 @@ the AllJoyn router as a separate process:
    This starts the AllJoyn router with a built-in default
    configuration. For most users the command listed is sufficient
    to run the AllJoyn framework.
+   此方法采用默认配置开启 AllJoyn 路由。对于大部分用户，以上的命令足够运行 AllJoyn 架构。
 
-2. Press **Ctrl-c** at any time to stop the alljoyn-daemon process.
-3. To display other options, type the following:
+2. Press **Ctrl-c** at any time to stop the alljoyn-daemon process.任意时刻按下 **Ctrl-c** 停止 alljoyn-daemon 进程。
+3. To display other options, type the following:输入以下命令显示其他选项：
 
    ```sh
       $ ./alljoyn-daemon -h
@@ -691,19 +702,19 @@ the AllJoyn router as a separate process:
             Print the version and copyright string, and exit.
    ```
 
-For examples of different configuration files, see examples in:
+For examples of different configuration files, see examples in:从以下位置获得不同配置文件的示例：
 
 ```sh
 <workspace>/alljoyn_core/daemon/test/conf.
 ```
 
-**NOTE:** Not all configuration files found in the daemon/test/conf
-directory are valid for use on a computer running Linux.
+**注意:** Not all configuration files found in the daemon/test/conf
+directory are valid for use on a computer running Linux. 不是所有在 daemon/test/conf 文件夹中的配置文件适用于运行 Linux 的电脑。
 
-### Verify that the router is running
+### Verify that the router is running 验证路由正在工作
 
 Navigate to the projects samples directory and run the service
-and the client as follows:
+and the client as follows:导航至工程示例目录并用以下命令运行服务和客户端：
 
 ```sh
 $ cd <workspace>/build/{OS}/{CPU}/{VARIANT}/dist/cpp/bin/samples
@@ -711,7 +722,7 @@ $ ./basic_service & #this will be a background process; it could be run on its o
 $ ./basic_client
 ```
 
-When the client runs, the following will display:
+When the client runs, the following will display:当客户端在运行时，会显示下述语句：
 
 ```
 AllJoyn Library version: v2.6.0
@@ -727,28 +738,30 @@ org.alljoyn.Bus.sample.cat ( path=/sample) returned "Hello World!"
 basic client exiting with status 0 (ER_OK)
 ```
 
-## Running Unit Tests
+## Running Unit Tests 运行单元测试
 
-**NOTE:** The following instructions are valid only for the AllJoyn
-framework version 2.6 and newer.
+**注意:** The following instructions are valid only for the AllJoyn
+framework version 2.6 and newer.以下指导只适用于 v2.6 和更高版本的 AllJoyn 架构。
 
-### Running C++ unit tests
+### Running C++ unit tests 运行 C++ 单元测试
 
 If the `GTEST_DIR` option was specified when building the code,
 the C++ unit tests will automatically be built and placed in
 the following location:
+如果在建立代码时制定了 `GTEST_DIR` 选项，C++ 测试单元会在以下位置被自动建立。
 
 ```sh
 <workspace>/build/{OS}/{CPU}/{VARIANT}/test/cpp/bin.
 ```
 
-There will be two executable files there: ajtest and cmtest.
+There will be two executable files there: ajtest and cmtest.将会有两个可执行文件：ajtest 和 cmtest。
 
 #### cmtest
 
 The cmtest executable tests the code from the common project
 and does not require the AllJoyn router to be running.
 Run cmtest as follows:
+cmtest 测试常用工程的代码，不需要 AllJoyn 路由的运行。cmtest 运行如下：
 
 ```sh
 <workspace>/build/{OS}/{CPU}/{VARIANT}/test/cpp/bin/cmtest
@@ -761,14 +774,15 @@ For the tests to run successfully, an AllJoyn router must
 also be running. Currently, ajtest is limited; it cannot test
 bus-to-bus (i.e., device-to-device) communication.
 Run ajtest as follows:
+ajtest 测试 alljoyn_core 中的代码。为了测试的成功运行，必须运行 AllJoyn 路由器。目前，ajtest 是有局限性的。它不能测试总线到总线（如设备到设备）的连接。ajtest 运行如下：
 
-1. Start the alljoyn-daemon (optional-see note below):
+1. Start the alljoyn-daemon (optional-see note below):开启 alljoyn-daemon(可选查看注释)
 
    ```sh
       <workspace>/build/{OS}/{CPU}/{VARIANT}/dist/cpp/bin/alljoyn-daemon --internal
    ```
 
-2. Run ajtest.
+2. Run ajtest.运行 ajtest。
 
    ```sh
       <workspace>/build/{OS}/{CPU}/{VARIANT}/test/cpp/bin/ajtest
@@ -777,24 +791,25 @@ Run ajtest as follows:
 For all paths, replace {OS}, {CPU}, and {VARIANT} with the
 actual value used when the code was built (i.e., use the same OS,
 CPU, and VARIANT option specified when running SCons).
+关于路径，使用运行 SCons 时特定的 OS，CPU 和 VARIANT 替换 {OS}、{CPU} 和 {VARIANT}。
 
-**NOTE:** If the code was built using the bundled router
+**注意:** If the code was built using the bundled router
 (i.e., SCons flag BR=on), then ajtest can be run without
-first starting the separate alljoyn-daemon.
+first starting the separate alljoyn-daemon.如果采用绑定路由的方式构建代码（如，SCons flag BR=on），ajtest 不需要启动分离的 alljoyn-daemon。
 
-### Running the Java junit tests
+### Running the Java junit tests 运行 Java junit 测试。
 
 The junit tests are always built at the same time as the Java
 bindings. The junit tests are specifically designed to test the
-Java bindings.
+Java bindings.junit 测试总是和 Java 绑定同时存在。junit 测试专为测试 Java 绑定而设计。
 
-1. From the top build folder, use ant to start the test.
+1. From the top build folder, use ant to start the test.从顶部建立文件夹，使用 ant 开始测试。
 
    ```sh
       ant test -DOS={OS} -DCPU={CPU} -DVARIANT={VARIANT}
    ```
 
-2. Find the HTML version of the results in the following location:
+2. Find the HTML version of the results in the following location:从以下位置的结果中获得 HTML 版本。
 
    ```sh
       <workspace>/build/{OS}/{CPU}/{VARIANT}/test/java/reports/junit/
@@ -808,7 +823,7 @@ Java bindings.
 
 ### Library liballjoyn.so not found
 
-If the following error is returned:
+If the following error is returned:如果返回以下错误：
 
 ```
 error while loading shared libraries: liballjoyn.so:
@@ -817,6 +832,7 @@ cannot open shared object file: No such file or directory
 
 The SCons scripts build a shared library and link
 against that shared library. Add the library to the link path.
+SCons 脚本建立一个共享库并且与之进行连接。把该库加入 link path。
 
 ```sh
 $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<workspace>/build/{OS}/{CPU}/
@@ -825,10 +841,12 @@ $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<workspace>/build/{OS}/{CPU}/
 
 After adding the library LD_LIBRARY_PATH re-run the program
 that produced the error.
+在加入了 library LD_LIBRARY_PATH 后，重新运行报错的程序。
 
-### Additional projects
+### Additional projects 额外工程
 
 The AllJoyn source code has other projects, such as alljoyn_js
 (javascript), and alljoyn_c (C bindings). These bindings are supported from
 version 2.6 onward. The build instructions for these projects are outside the
 scope of this section. For more information, see https://allseenalliance.org.
+AllJoyn 源代码包含其它代码，如 alljoyn-js(javascript) 和 alljoyn_c (C bindings)。自 2.6 版本以来，支持这些 bindings。这些工程的建立指导不在本章内容的范围之内。欲知详情，查看 https://allseenalliance.org。
