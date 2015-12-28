@@ -1,70 +1,78 @@
 # Build From Source - Linux
 
-## Build tools and libs
+## Build tools and libs 建立工具和库
 
-1. Open a terminal window and run the following command:
+1. Open a terminal window and run the following command:打开一个终端窗口并且执行以下命令：
 
   ```sh
   $ sudo apt-get install build-essential libgtk2.0-dev
      libssl-dev xsltproc ia32-libs libxml2-dev libcap-dev
   ```
 2. To create a 32-bit build of the AllJoyn&trade; framework
-on a 64-bit operating system, install these required development libraries:
+on a 64-bit operating system, install these required development libraries:如果要在一个 64 为操作系统上建立一个 32 位 AllJoyn&trade;，需要安装这些开发库：
   ```sh
   $ sudo apt-get install gcc-multilib g++-multilib libc6-i386
      libc6-dev-i386 libssl-dev:i386 libxml2-dev:i386
   ```
 
-**NOTE:** libssl-dev does not have multilib support.
+**注意:** libssl-dev does not have multilib support.libssl-dev 不支持多库并存。
 If the 32-bit version of libssl-dev is installed, then the 64-bit version is
 replaced with the 32-bit version. You can delete the 32-bit version of the
 libraries and reinstall the 64-bit version if you wish to go back to 64-bit.
 libssl-dev is not required if building AllJoyn with the CRYPTO=builtin option.
+如果安装了 32 位的 libssl-dev，那么 64 位的版本将被 32 位的版本取代。如果您想要回到 64 位，您需要首先删除 32 位的版本，再重新安装 64 位的版本。当建立拥有 CRYPTO=builtin 选项的 AllJoyn 时，不需要 libssl-dev。
 
 ## Python v2.6/2.7
 
-**NOTE:** Python v3.0 is not compatible and will cause errors.
+**注意:** Python v3.0 is not compatible and will cause errors.Python 3.0 不兼容，将导致错误。
 
 1. Python is a common part of most Linux distributions. You can
 determine whether Python is already installed on your system by
 opening a terminal window and running the following command:
+Python 是大部分 Linux 版本的一个常规部分。您可以通过使用终端窗口运行以下指令了解 Python 是否已经被安装：
   ```sh
   $ which python
   ```
 
   If a path (e.g., /usr/bin/python) is returned, Python is already installed.
+  如果返回了一个路径（如 /usr/bin/python），说明 Python 已经被安装了。
 
 2. Otherwise, open a terminal window and run the following command:
+否则，打开一个终端窗口并且执行以下命令：
   ```sh
   $ sudo apt-get install python
   ```
 
 3. If this installation method does not give you the correct
 version of Python, install the [required version](http://www.python.org/download/).
+如果此安装方法未能给您提供一个正确版本的 Python， 安装 [required version](http://www.python.org/download/).
 
 ## SCons
 
 [SCons](http://www.scons.org/) is a software construction tool
 used to build the AllJoyn framework. SCons is a default package
 on most Linux distributions.
+[SCons](http://www.scons.org/) 是一个建立 AllJoyn 架构的软件构建工具。SCons 在大部分 Linux 版本中是一个默认包。
 
-Open a terminal window and run the following command:
+Open a terminal window and run the following command:打开一个终端窗口并执行以下命令：
 
 ```sh
 $ sudo apt-get install scons
 ```
 
-AllJoyn's builds are verified with SCons v2.3.
+AllJoyn's builds are verified with SCons v2.3.SCons v2.3 验证 AllJoyn 的构建。
 
-## OpenSSL (optional)
+## OpenSSL (optional) OpenSSL（可选）
 
 OpenSSL is an open-source toolkit for implementing secure network
 communication and cryptographic functions. AllJoyn only uses the
 cryptographic functions of OpenSSL.
 It is recommended that you always use the [newest version of
 OpenSSL](http://www.openssl.org/).
+OpenSSL 是提供安全网络通信和加密方式的一种开源工具包。AllJoyn 只使用 OpenSSL 的加密方式。
+建议您使用[最新版本的 OpenSSL](http://www.openssl.org/).
 
-Open a terminal window and run the following command:
+Open a terminal window and run the following command:打开一个终端窗口并且执行以下命令：
 
 ```sh
 $ sudo apt-get install libssl-dev
@@ -74,8 +82,9 @@ $ sudo apt-get install libssl-dev
 
 [Git](http://git-scm.com/) is a source code repository access tool. The AllJoyn
 source code is stored in a set of [git projects](https://git.allseenalliance.org/cgit).
+[Git](http://git-scm.com/) 是一个连接源代码文件夹的工具。AllJoyn 源代码存储在一套 [git projects](https://git.allseenalliance.org/cgit)中。
 
-Open a terminal window and run the following command:
+Open a terminal window and run the following command:打开一个终端窗口并执行以下命令：
 
 ```sh
 $ sudo apt-get install git-core
@@ -88,22 +97,23 @@ git projects. The AllJoyn source code is stored in a set of git
 projects that can be cloned individually or as a group using
 [Google's repo tool](http://source.android.com/source/version-control.html).
 This tool is not required, but is highly recommended.
+Repo 是用于管理多个 git 工程的工具。Alljoyn 源代码以一系列 git 工程的形式存储，可以通过使用 [Google's repo tool](http://source.android.com/source/version-control.html) 单独或批量克隆。此工具不是必需的，但强烈建议使用。
 
-1. Open a terminal window and run the following command to install curl:
+1. Open a terminal window and run the following command to install curl:打开一个终端窗口并且执行以下命令安装 curl：
 
   ```sh
   $ sudo apt-get install curl
   ```
 
 2. Navigate to your home directory and download repo by running
-the following command:
+the following command:导航至根目录并且执行以下命令下载 repo。
 
   ```sh
   $ curl https://storage.googleapis.com/git-repo-downloads/repo >
   ~/bin/repo
   ```
 
-3. Copy repo to /usr/local/bin and make it executable using the following commands:
+3. Copy repo to /usr/local/bin and make it executable using the following commands:将 repo 拷贝至/usr/local/bin 并执行以下命令使其可执行：
 
   ```sh
   $ sudo cp repo /usr/local/bin
@@ -116,16 +126,18 @@ Uncrustify is a source code formatting tool used to maintain a consistent
 coding style in the AllJoyn code base. It is not required to build AllJoyn,
 but if you intend to contribute code changes to the AllJoyn project you should
 configure and use the tool.
+Uncrustify 是一个用于保持 AllJoyn 代码库编程风格一致的代码格式工具。这不是构建 AllJoyn 所必需的，但如果您希望对 AllJoyn 工程的代码进行改动，您应该配置并使用这个工具。
 
-**NOTE:** Uncrustify v0.61 is required for AllJoyn v15.04 and
+**注意:** Uncrustify v0.61 is required for AllJoyn v15.04 and
 later. Earlier AllJoyn versions require uncrustify v0.57. Since the
 existing AllJoyn code was formatted with a specific version of
 uncrustify, using any other version of uncrustify can cause unexpected
 build errors when not building with the WS=off option.
+Uncrustify v0.61 支持 AllJoyn v15.05 和更高版本。早起版本的 AllJoyn 需要 uncrustify v0.57。由于使用了特定版本的 uncrustify 规定了现有 AllJoyn 代码的格式，当不使用 WF＝OFF 选项构建程序时，使用其它版本的 uncrustify 可能会遇到不可预料的构建错误。
 
-There are two ways to install Uncrustify.
+There are two ways to install Uncrustify.有两种方式安装 Uncrustify。
 
-* Download the source and then build and install Uncrustify:
+* Download the source and then build and install Uncrustify:下载源并构建和安装 Uncrustify：
 
   ```sh
    $ mkdir $HOME/uncrustify # for example
@@ -141,9 +153,10 @@ There are two ways to install Uncrustify.
    $ sudo make install
   ```
 
-**NOTE:** In some cases, Uncrustify has failed to build on more recent
+**注意:** In some cases, Uncrustify has failed to build on more recent
 Ubuntu versions. Try making the following change to get
 Uncrustify to build:
+在某些情况下，Uncrustify 在最新的 Ubuntu 版本中构建不成功。试着进行以下改变以构建 Uncrustify。
 
   ```sh
    diff --git a/src/uncrustify.cpp b/src/uncrustify.cpp index 2635189..7aba76d 100644
@@ -159,26 +172,26 @@ Uncrustify to build:
    struct cp_data cpd;
   ```
 
-* Install the Uncrustify v0.57 package on Ubuntu:
-   1. Go to: http://packages.ubuntu.com/precise/uncrustify.
-   2. From the website, click in the "Download uncrustify"
-   table to select your machine's architecture.
+* Install the Uncrustify v0.57 package on Ubuntu:在 Ubuntu 上安装 Uncrustify v0.57 包。
+   1. Go to: http://packages.ubuntu.com/precise/uncrustify.前往 http://packages.ubuntu.com/precise/uncrustify。
+   2. From the website, click in the "Download uncrustify" table to select your machine's architecture.在网站中点击 "Download uncrustify" 表选择您设备的架构。
    3. From the page that opens after your selection, choose
-   a mirror based on your location, and download the .deb package.
-   4. Install the package using either of these two commands, as appropriate:
+   a mirror based on your location, and download the .deb package. 在选择后打开的网页中，选择一个基于您位置的镜像，下载 .deb 包。
+   4. Install the package using either of these two commands, as appropriate:根据情况，使用以下任一命令安装此包。
 
    ```sh
    $ sudo dpkg -i uncrustify_0.57-1_amdd64.deb
    $ sudo dpkg -i uncrustify_0.57-1_i386.deb
    ```
-   Uncrustify v0.61 packages are not currently available.
+   Uncrustify v0.61 packages are not currently available.目前暂不支持 Uncrustify v0.61。
 
 ## Doxygen
 
 The [Doxygen tool](http://www.doxygen.org) builds HTML documentation from
 source code. It is not required for building AllJoyn binaries.
+ [Doxygen tool](http://www.doxygen.org)从源代码生成 HTML 文档。它不用与建立 AllJoyn 代码。
 
-Open a terminal window and run the following command:
+Open a terminal window and run the following command:打开一个终端窗口并执行以下命令：
 
 ```sh
 $ sudo apt-get install doxygen
@@ -188,8 +201,9 @@ $ sudo apt-get install doxygen
 
 The [Graphviz Dot tool](http://www.graphviz.org/) diagrams class hierarchies
 and is used by doxygen.
+[Graphviz Dot tool](http://www.graphviz.org/)把类的层级结构通过图标展示。Doxygen 会使用它。
 
-Open a terminal window and run the following command:
+Open a terminal window and run the following command:打开一个终端窗口并执行以下命令：
 
 ```sh
 $ sudo apt-get install graphviz
@@ -202,7 +216,7 @@ and style sheets for Linux. This optional tool may be used to
 produce AllJoyn's API documentation as a PDF document from
 the source. It is possible to compile the AllJoyn framework
 without producing the documentation.
-
+[TeX Live](http://www.tug.org/texlive/) 提供 LaTeX 二进制文件和针对Linux的样式表。这个可选工具可用于从源中生成 PDF 格式的 AllJoyn API 的文档
 Install TeX Live if you want to produce PDF documentation.
 
 ```sh
