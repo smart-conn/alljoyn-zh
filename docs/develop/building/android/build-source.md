@@ -183,20 +183,24 @@ see http://source.android.com/source/downloading.html
 When running the repo init command specify the branch name for
 the Android release you are targeting. Branch names are listed at
 http://source.android.com/source/build-numbers.html#source-code-tags-and-builds
+当使用 repo init 命令指定您所需 Android 版本的分支名称时，查看 http://source.android.com/source/build-numbers.html#source-code-tags-and-builds 获取分支名称。
 
 
 For instructions on building and running the build source, see
 http://source.android.com/source/building.html
+有关生成和运行生成源的说明，查看 http://source.android.com/source/building.html
 
-* Build the "generic" version of Android.
-* There is no need to run the code. Only the build libraries
-that are not available in the NDK are used.
+* Build the "generic" version of Android.生成"通用"版本的 Android
+* There is no need to run the code. Only the build libraries 
+that are not available in the NDK are used. 不需要运行代码。使用仅在 NDK 中不可用的生成库。
 
-### Obtaining the AllJoyn source
+### Obtaining the AllJoyn source 获取 AllJoyn 源
 
 If you followed the instructions in [The Android source][android-source],
 you should have the repo tool and git installed on your system.
 Enter the following commands to get the AllJoyn source:
+如果您按照 [The Android source][android-source] 的指导进行操作，您的系统中应装有 repo 工具和 git。
+输入以下代码以获取 AllJoyn 源。
 
 ```sh
 $ mkdir $HOME/alljoyn # for example
@@ -206,7 +210,7 @@ $ repo sync
 $ repo start master --all
 ```
 
-### Building the AllJoyn framework for Android
+### Building the AllJoyn framework for Android 为 Android 建立 AllJoyn 架构
 
 At this point. you have all of the files and programs required
 to build the AllJoyn framework for Android. The following commands assume
@@ -214,8 +218,11 @@ you have installed the Android NDK at `/usr/local/android-ndk-r9d`,
 you have downloaded and built the Android source, and it is
 located in `$HOME/android-platform`.
 
+此时，您拥有为 Android 建立 AllJoyn 架构所需的全部文件和程序。下述指令建立在您已经在 `/usr/local/android-ndk-r9d` 安装 Android NDK，并下载和在 `$HOME/android-platform` 建立了 Android 源。
+
 Use the following commands to build the AllJoyn framework for Android using
 builtin crypto:
+对于采用内置加密的 Android，使用下述命令建立 AllJoyn 架构。
 
 ```sh
 $ export JAVA_HOME="/usr/lib/jvm/java-6-sun" # or java-5-sun
@@ -224,7 +231,7 @@ $ scons OS=android CPU=arm CRYPTO=builtin ANDROID_NDK=/usr/local/android-ndk-r9b
    ANDROID_SRC=$HOME/android-platform WS=off
 ```
 
-To build using OpenSSL crypto functions:
+To build using OpenSSL crypto functions: 对于采用 OpenSSL 加密的，使用下述方法：
 
 ```sh
 $ export JAVA_HOME="/usr/lib/jvm/java-6-sun" # or java-5-sun
@@ -239,6 +246,7 @@ AllJoyn framework can use Uncrustify to check white space
 compliance and Doxygen for producing API documentation for
 the C++ APIs. See [Configuring the Build Environment (Linux Platform)][config-build-environment-linux]
 for detailed instructions for installing these two tools.
+允许指定 AllJoyn 架构在构建过程中使用额外工具。如使用 Uncrustify 对空格进行排版或使用 Doxygen 为 C++ API 生成文档。查看[Configuring the Build Environment (Linux Platform)][config-build-environment-linux] 获取更多关于安装这两个工具的详细指导。
 
 [intro-to-alljoyn-framework]: /learn/core/standard-core
 [config-build-environment-windows]: /develop/building/windows/build-source
