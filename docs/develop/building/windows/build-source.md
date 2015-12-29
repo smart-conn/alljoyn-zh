@@ -90,19 +90,20 @@ MiKTeX is used to create LaTeX binaries and Windows style sheets. MiKTeX 用于�
 
 The JDK is required to build Java bindings. Building the Java 
 bindings is optional, but if you want to build them, you need the JDK.
+需要使用 JDK 建立 Java 绑定。建立 Java 绑定是可选的，但如果您想要建立，您需要 JDK。
 
 #### JDK SE6
 
 1. Open a browser and navigate to
-http://www.oracle.com/technetwork/java/javase/downloads/jdk6downloads-1902814.html.
-2. Download JDK 6u43 for your version of Windows.
+http://www.oracle.com/technetwork/java/javase/downloads/jdk6downloads-1902814.html.打开浏览器并导航至 http://www.oracle.com/technetwork/java/javase/downloads/jdk6downloads-1902814.html。
+2. Download JDK 6u43 for your version of Windows.下载针对您 Windows 版本的 JDK 6u43。
 
 #### JDK SE5
 
 1. Open a browser and navigate to
-http://www.oracle.com/technetwork/java/javase/downloads/index-jdk5-jsp-142662.html.
-2. Find **JDK5.0 update 22** and click **Download**.
-3. Download the JDK installer for your version of Windows.
+http://www.oracle.com/technetwork/java/javase/downloads/index-jdk5-jsp-142662.html.打开浏览器并导航至 http://www.oracle.com/technetwork/java/javase/downloads/index-jdk5-jsp-142662.html。
+2. Find **JDK5.0 update 22** and click **Download**.找到 **JDK5.0 update 22** 并且点击 **Download**。
+3. Download the JDK installer for your version of Windows.下载针对您 Windows 版本的 JDK 安装程序。
 
 #### junit
 
