@@ -1,86 +1,90 @@
 # Building from Source on Windows
 
-## Configuring a Windows-Specific Environment
+## Configuring a Windows-Specific Environment 配置 Windows 指定环境
 
 It is recommended to note the install location of each tool 
 discussed in this section to complete the system configuration.
+建议您注意本章完成系统配置过程中提及的每一个工具的安装位置。
 
-### Microsoft Visual Studio 2012, 2013, or 2015
+### Microsoft Visual Studio 2012, 2013, or 2015 Microsoft Visual Studio 2012、2013 或 2015
 
 You should have at least one version of Microsoft Visual Studio 
 installed on your system. Visual Studio 2010 is no longer officially
 supported.
+您的系统中应至少安装一个版本的 Microsoft Visual Studio。官方已不支持 Visual Studio 2010。
 
 ### Python 2.7.10 for Windows
 
-**NOTE:** Python 2.7.9 may also be used. Use the 32-bit version of 
+**注意:** Python 2.7.9 may also be used. Use the 32-bit version of 
 Python even if you are building the AllJoyn&trade; framework for a 64-bit architecture.
+也可以使用 Python 2.7.9。即使在一个 64 位结构中建立 AllJoyn&trade; 架构，也应当使用 32 位版本的 Python。
 
-1. Open a browser and navigate to http://www.python.org/download/.
-2. From the Python web page, select **Python 2.7.10 Windows Installer (32-bit)**.
-3. Click **Run** and **Run** again. The Python setup wizard appears.
-4. Click **Finish**, **Yes**, and **Finish** again.
+1. Open a browser and navigate to http://www.python.org/download/.打开浏览器并导航至 http://www.python.org/download/。
+2. From the Python web page, select **Python 2.7.10 Windows Installer (32-bit)**.在 Python 网页中，选择 **Python 2.7.10 Windows Installer (32-bit)**。
+3. Click **Run** and **Run** again. 点击 **Run** 两次。显示 Python 安装向导。
+4. Click **Finish**, **Yes**, and **Finish** again.依次点击 **Finish**、**Yes** 和 **Finish** 。
 
 ### SCons 2.3.4 for Windows
 
-**NOTE:** SCons 1.3.0 may also be used.
+**注意:** SCons 1.3.0 may also be used.也可以使用 SCons 1.3.0。
 
-1. Open a browser and navigate to http://www.scons.org.
-2. From the SCons web page, under 'Scons 2.3.4 is available', click the **download page** link.
-3. Select "Download scons-2.3.4-setup.exe", and click **Run** and **Run** again. The setup wizard appears.
-4. Proceed through the wizard steps to complete the SCons installation.
+1. Open a browser and navigate to http://www.scons.org.打开浏览器并导航至 http://www.scons.org。
+2. From the SCons web page, under 'Scons 2.3.4 is available', click the **download page** link.在 SCons 网页中，在 'Scons 2.3.4 is available' 字样下，点击 **download page** 链接。
+3. Select "Download scons-2.3.4-setup.exe", and click **Run** and **Run** again. The setup wizard appears.选择 "Download scons-2.3.4-setup.exe"，并点击两次 **Run**。
+4. Proceed through the wizard steps to complete the SCons installation.按照安装向导的流程完成 SCons 的安装。
 
 ### Msysgit version 1.9.5 for Windows
 
-1. Open a browser and navigate to http://code.google.com/p/msysgit/downloads/list.
-2. From the msysgit web page, click the most recent version of git Installer for Windows.
-3. Download the file, click Run and Run again. The setup wizard appears.
-4. Proceed through the wizard steps to complete the git installation.
+1. Open a browser and navigate to http://code.google.com/p/msysgit/downloads/list.打开浏览器并导航至 http://code.google.com/p/msysgit/downloads/list。
+2. From the msysgit web page, click the most recent version of git Installer for Windows.在 msygit 网页中，点击针对 Windows 的最新版本 git Installer。
+3. Download the file, click Run and Run again. The setup wizard appears.下载文件，点击两次 Run。出现安装向导
+4. Proceed through the wizard steps to complete the git installation.按照安装向导的流程完成 git 的安装。
 
 ### Uncrustify version 0.61 for Windows
 
-Uncrustify is a formatting tool for source code.
+Uncrustify is a formatting tool for source code.Uncrustify 是一种针对源代码的格式工具。
 
 1. Open a browser and navigate to 
-http://sourceforge.net/projects/uncrustify/files/uncrustify/uncrustify-0.61/.
-2. From the Uncrustify Code Beautifier web page, click **uncrustify-0.61.3-gf65394e-win32.zip**.
-3. Download `uncrustify-0.61.3-gf6594e-win32.zip` and unzip.
-4. Move the contents to `C:\uncrustify-0.61-win32`.
+http://sourceforge.net/projects/uncrustify/files/uncrustify/uncrustify-0.61/.打开浏览器并导航至 http://sourceforge.net/projects/uncrustify/files/uncrustify/uncrustify-0.61/。
+2. From the Uncrustify Code Beautifier web page, click **uncrustify-0.61.3-gf65394e-win32.zip**.在 Uncrustify Code Beautifier 页面中，点击 **uncrustify-0.61.3-gf65394e-win32.zip**。
+3. Download `uncrustify-0.61.3-gf6594e-win32.zip` and unzip.下载 `uncrustify-0.61.3-gf6594e-win32.zip` 并解压缩。
+4. Move the contents to `C:\uncrustify-0.61-win32`.把内容移动至 `C:\uncrustify-0.61-win32`。
 
 ### Doxygen for Windows
 
 Doxygen generates documentation from source code. This tool is 
-optional, but is required for creating documentation.
+optional, but is required for creating documentation.Doxygen 为源代码生成文档。此工具是可选工具，但需要使用它建立文档。
 
 1. Open a browser and navigate to
-http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc.
+http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc.打开浏览器并导航至 http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc。
 2. From the Doxygen web page, under **Doxygen source and binary releases** 
 and **Windows XP/Vista/7**, select **http**, click **Run**, 
-then **Yes**. The setup wizard appears.
-3. Proceed through the wizard steps to complete the Doxygen installation.
+then **Yes**. The setup wizard appears.在 Doxygen 页面中，在 **Doxygen source and binary releases** 和 **Windows XP/Vista/7** 字样下方，选择 **http**，点击 **Run**,再点击**Yes**。出现安装向导。
+3. Proceed through the wizard steps to complete the Doxygen installation.按照安装向导的流程完成 Doxygen 的安装。
 
 ### Graphviz 2.30.1 for Windows
 
 Graph visualization is a way of representing structural 
 information as diagrams of abstract graphs and networks. 
 This tool is optional, but is required for creating documentation.
+Graph 视图化是一种以抽象的图像和网络形成的图示表示结构信息的方式。
 
-1. Open a browser and navigate to http://www.graphviz.org/Download_windows.php
-2. From the download to Windows, click **graphviz-2.30.1.msi** and then **Run**.
-3. Click **Run** again. The setup wizard appears.
-4. Proceed through the wizard steps to complete the Graphviz installation.
+1. Open a browser and navigate to http://www.graphviz.org/Download_windows.php 打开浏览器并导航至 http://www.graphviz.org/Download_windows.php
+2. From the download to Windows, click **graphviz-2.30.1.msi** and then **Run**.选择针对 Windows 的下载，点击 **graphviz-2.30.1.msi**，随后点击**Run**。
+3. Click **Run** again. The setup wizard appears.再次点击 **Run**。显示安装向导。
+4. Proceed through the wizard steps to complete the Graphviz installation.按照安装向导的流程完成 Graphviz 的安装。
 
 ### MiKTeX
 
-MiKTeX is used to create LaTeX binaries and Windows style sheets.
+MiKTeX is used to create LaTeX binaries and Windows style sheets. MiKTeX 用于创建 LaTeX 二进制代码和 Windows 风格的表格。
 
-**IMPORTANT:** Install MiKTeX ONLY if you need to produce a PDF version of an API document.
+**重要:** Install MiKTeX ONLY if you need to produce a PDF version of an API document.仅在您需要生成 PDF 版本的 API 文档时需要安装 MiKTeX。
 
-1. Open a browser and navigate to http://www.miktex.org/2.8/setup.
-2. From the MiKTeX web page, under **Installing a basic MiKTeX system**, click **Download**.
-3. Click **Run**. The Copying Conditions appear.
-4. Click **I accept the MiKTeX copying conditions** and click **Next**.
-5. Proceed through the install steps to complete the MiKTeX installation.
+1. Open a browser and navigate to http://www.miktex.org/2.8/setup.打开浏览器并导航至 http://www.miktex.org/2.8/setup。
+2. From the MiKTeX web page, under **Installing a basic MiKTeX system**, click **Download**.在 MiKTeX 网页中，**Installing a basic MiKTeX system** 字样下方，点击 **Download**。
+3. Click **Run**. The Copying Conditions appear.点击 **Run**。出现复制条款。
+4. Click **I accept the MiKTeX copying conditions** and click **Next**.点击 **I accept the MiKTeX copying conditions** 并且点击 **Next**。
+5. Proceed through the install steps to complete the MiKTeX installation.按照安装向导的流程完成 MiKTeX 的安装。
 
 ### Java Development Kit (JDK)
 
