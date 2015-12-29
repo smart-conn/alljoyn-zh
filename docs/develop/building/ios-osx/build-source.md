@@ -278,7 +278,7 @@ by running the following command:通过运行以下命令更改您的目录至�
       -scheme alljoyn_core_ios -sdk iphoneos -configuration Debug
    ```
 
-   * iOS simulator, run the following command:iOS 模拟区，运行以下命令：
+   * iOS simulator, run the following command:iOS 模拟器，运行以下命令：
 
    ```sh
    $ /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild
