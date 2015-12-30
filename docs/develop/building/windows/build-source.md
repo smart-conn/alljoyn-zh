@@ -107,96 +107,97 @@ http://www.oracle.com/technetwork/java/javase/downloads/index-jdk5-jsp-142662.ht
 
 #### junit
 
-Required to build Java bindings.
+Required to build Java bindings.需要它建立 Java 绑定。
 
 1. Open a browser and navigate to
-https://github.com/junit-team/junit/wiki/Download-and-Install.
-2. Download the Plain-old JAR (`junit.jar`) v4.11.
-3. Place the jar file in a known location (e.g., `C:\junit\junit-4.11.jar`).
+https://github.com/junit-team/junit/wiki/Download-and-Install.打开浏览器并导航至 https://github.com/junit-team/junit/wiki/Download-and-Install。
+2. Download the Plain-old JAR (`junit.jar`) v4.11.下载 Plain-old JAR (`junit.jar`)。
+3. Place the jar file in a known location (e.g., `C:\junit\junit-4.11.jar`).在已知位置存储此 jar 文件。(如 `C:\junit\junit-4.11.jar`)
 
 ### googletest
 
-Google Test is Google's framework for writing C++ tests. 
+Google Test is Google's framework for writing C++ tests. Google Test 是 Google 编写 C++ 测试的一种架构。
 Google Test is an xUnit testing architecture used to test 
 the native AllJoyn framework C++ APIs. Google Test is optional, 
 but is required for building the C++ unit tests.
+Google Test 是一种用于测试本地 AllJoyn 架构 C++ API 的一种 xUnit 测试结构。Google Test 是可选的，但它是建立 C++ 单元测试所必需的。
 
-1. Open a browser and navigate to http://code.google.com/p/googletest/downloads/list.
-2. From the googletest download page download `gtest-1.7.0.zip`.
+1. Open a browser and navigate to http://code.google.com/p/googletest/downloads/list.打开浏览器并导航至 http://code.google.com/p/googletest/downloads/list。
+2. From the googletest download page download `gtest-1.7.0.zip`.在 googletest 下载页面中下载 `gtest-1.7.0.zip`。
 3. Unzip the contents of `gtest-1.7.0.zip` to a known location 
-(e.g., `C:\gtest\gtest-1.7.0`).
+(e.g., `C:\gtest\gtest-1.7.0`).解压缩 `gtest-1.7.0.zip` 的内容到已知位置（如 `C:\gtest\gtest-1.7.0`）
 
 ### Apache Ant
 
 Apache Ant is a Java library and command line tool for 
 building software. This tool is optional, but is required 
-for running junit tests.
+for running junit tests.Apache Ant 是一个 Java 库，也是一个用于构建软件的命令行工具。这个工具是可选的，但它是运行 junit 测试所必需的。
 
-1. Open a browser and navigate to http://ant.apache.org/bindownload.cgi.
-2. From the Apache Ant web page, download `apache-ant-1.9.0-bin.zip`.
+1. Open a browser and navigate to http://ant.apache.org/bindownload.cgi.打开浏览器并导航至 http://ant.apache.org/bindownload.cgi。
+2. From the Apache Ant web page, download `apache-ant-1.9.0-bin.zip`.在 Apache Ant 页面中，下载 `apache-ant-1.9.0-bin.zip`。
 3. Unzip the contents of `apache-ant-1.9.0-bin.zip` to a 
-known location (e.g., `C:\apache-ant-1.9.0`).
+known location (e.g., `C:\apache-ant-1.9.0`).解压缩 `apache-ant-1.9.0-bin.zip` 的内容到已知位置（如 `C:\apache-ant-1.9.0`）
 
-### Adding environment variables
+### Adding environment variables 加入环境变量
 
-1. Click **Start**.
-2. Right-click **Computer**.
-3. Select **Properties**.
-4. Select **Advanced system settings** from the left pane (Windows 7).
-5. Select the **Advanced** tab.
-6. Click **Environment Variables**.
-7. Under the User variables, search for 'PATH'.
+1. Click **Start**.点击 **Start**。
+2. Right-click **Computer**.右击 **Computer**。
+3. Select **Properties**.选择  **Properties**。
+4. Select **Advanced system settings** from the left pane (Windows 7).从左窗格中选择 **Advanced system settings** （Windows 7）
+5. Select the **Advanced** tab.选择 **Advanced** 标签
+6. Click **Environment Variables**.点击 **Environment Variables**
+7. Under the User variables, search for 'PATH'.在 User 变量中，搜索 'PATH'。
 
-   **NOTE:** There is a 'Path' variable under System variables, 
+   **注意:** There is a 'Path' variable under System variables, 
    which you could add to; however, it is considered good 
-   practice to add new variables to User variables.
+   practice to add new variables to User variables.您可以向 System 变量 'Path' 中加入变量，但我们还是建议您向 User 变量中加入新变量。
 
-   1. If there is no 'PATH' under User variables, click **New**. 
-      1. Enter PATH as the variable name.
+   1. If there is no 'PATH' under User variables, click **New**. 如果在 User 变量下没有 'PATH'，点击 **New**。
+      1. Enter PATH as the variable name.键入 PATH 作为变量名。
       2.  Append the following to the %PATH% variable, separated 
       by a semicolon (adjust the path of each item, as necessary, 
-      to account for the install location):
+      to account for the install location):将下列路径加入 %PATH% 变量，使用分号隔开（根据需求，加入每一个项目的路径，以交代安装位置）
       
       ```bat
       C:\Python27;C:\Python27\Scripts;C:\Program Files\doxygen\bin;
       C:\Program Files\Git\cmd;C:\uncrustify-0.61-win32
       ```
 
-   2. If there is a 'PATH' under User variables, select it, and click **Edit**.
+   2. If there is a 'PATH' under User variables, select it, and click **Edit**.如果在 User 变量下有一个 'PATH'，选择它，并点击 **Edit**。
 
       Append the following to the %PATH% variable, separated by a 
       semicolon (adjust the path of each item, as necessary, 
-      to account for the install location):
+      to account for the install location):将下列路径加入 %PATH% 变量，使用分号隔开（根据需求，加入每一个项目的路径，以交代安装位置）
 
       ```bat
       C:\Python27;C:\Python27\Scripts;C:\Program Files\doxygen\bin;
       C:\Program Files\Git\cmd;C:\uncrustify-0.61-win32
       ```
 
-8. If you are generating the API documentation using Doxygen:
-   1. Add a 'New...' User variable DOXYGEN_HOME. 
-   2. Set `DOXYGEN_HOME=C:\PROGRA~1\doxygen`.
-   3. Add a 'New...' User variable GRAPHVIZ_HOME.
-   4. Set `GRAPHVIZ_HOME=C:\PROGRA~1\Graphviz 2.30.1`.
-9. If you are building the AllJoyn Java bindings:
-   1. Add a 'New...' User variable JAVA_HOME.
-   2. Set `JAVA_HOME=C:\PROGRA~1\Java\jdk1.6.0_43`. 
-   3. Add a 'New...' User Variable CLASSPATH.
-   4. Set `CLASSPATH=C:\junit\junit-4.11.jar`.
+8. If you are generating the API documentation using Doxygen:如果您使用 Doxygen 生成 API 文档。
+   1. Add a 'New...' User variable DOXYGEN_HOME.加入一个 'New...' User 变量 DOXYGEN_HOME。
+   2. Set `DOXYGEN_HOME=C:\PROGRA~1\doxygen`.设置 `DOXYGEN_HOME=C:\PROGRA~1\doxygen`
+   3. Add a 'New...' User variable GRAPHVIZ_HOME.加入一个 'New...' User 变量 GRAPHVIZ_HOME。
+   4. Set `GRAPHVIZ_HOME=C:\PROGRA~1\Graphviz 2.30.1`.设置 `GRAPHVIZ_HOME=C:\PROGRA~1\Graphviz 2.30.1`。
+9. If you are building the AllJoyn Java bindings:如果您建立 AllJoyn Java 绑定。
+   1. Add a 'New...' User variable JAVA_HOME.加入一个 'New...' User 变量 JAVA_HOME。
+   2. Set `JAVA_HOME=C:\PROGRA~1\Java\jdk1.6.0_43`. 设置 `JAVA_HOME=C:\PROGRA~1\Java\jdk1.6.0_43`。
+   3. Add a 'New...' User Variable CLASSPATH.加入一个 'New...' User 变量 CLASSPATH。
+   4. Set `CLASSPATH=C:\junit\junit-4.11.jar`.设置 `CLASSPATH=C:\junit\junit-4.11.jar`。
 10. If you are using Apache Ant, use your personal install 
-directories:
-   1. Add a 'New' User variable ANT_HOME.
-   2. Set `ANT_HOME=C:\apache-ant-1.9.0`.
-   3. Add the following to the %PATH% variable:
+directories:如果您使用 Apache Ant，使用您的个人安装目录：
+   1. Add a 'New' User variable ANT_HOME.加入一个 'New' 变量 ANT_HOME。
+   2. Set `ANT_HOME=C:\apache-ant-1.9.0`.设置 `ANT_HOME=C:\apache-ant-1.9.0`。
+   3. Add the following to the %PATH% variable:将下列代码加入 %PATH% 变量。
 
       ```bat
       %ANT_HOME%\bin
       ```
 
-### Verify installation
+### Verify installation 验证安装
 
 Open the command window, and check that you can run the 
-following commands:
+following commands:打开一个命令窗口，运行以下命令检查：
 
 ```bat
 C:\>python --version
@@ -219,11 +220,11 @@ C:\>uncrustify -v
 uncrustify 0.61
 ```
 
-### Obtaining AllJoyn source code from the Git repository
+### Obtaining AllJoyn source code from the Git repository 从 Git 库中获得 AllJoyn 源代码。
 
-Obtain a copy of each repository using the `git clone` command.
+Obtain a copy of each repository using the `git clone` command.使用 `git clone` 命令获得每个库的拷贝。
 
-1. Create a workspace for the AllJoyn project.
+1. Create a workspace for the AllJoyn project.为 AllJoyn 工程建立一个 workspace。
 
    ```bat
    C:\>mkdir allseen
@@ -236,14 +237,14 @@ Obtain a copy of each repository using the `git clone` command.
    C:\>cd alljoyn
    ```
 
-2. Make a clone of the Git repository associated with the AllJoyn project.
+2. Make a clone of the Git repository associated with the AllJoyn project.做一个与 AllJoyn 工程相关的 Git 库的克隆。
 
    ```bat
    c:\allseen\core\alljoyn> git clone 
    https://git.allseenalliance.org/gerrit/core/alljoyn.git
    ```
 
-### CRLF issues when using msysgit
+### CRLF issues when using msysgit 使用 msysgit 时遇到的 CRLF 问题。
 
 If you have just checked out the repository, msysgit sees issues 
 that deal with the end-of-line symbol. This is an issue from going 
@@ -253,17 +254,18 @@ msysgit reports that a freshly checked out file has been
 modified and does not let you pull from the repository, 
 check the files, or even merge changes. The current solution 
 is to tell git to ignore the CRLF issues using the following command:
+如果您检查了库，mysysgit 会发现关于行尾标志的问题。这个从 Linux 和 Windows 之间不断反复造成的问题，因为 Windows 中的换行符 是 CRSL，而 Linux 中的仅仅是 CR。Mysysgit 回报告一个刚被检查完成的文件再次被修改，并不允许您从库中提取，检查甚至融合文件。目前的解决办法是让 git 忽略 CRLF 问题，使用以下命令：
 
 ```bat
 git config core.autocrlf false
 ``` 
 
-## Build the AllJoyn Framework
+## Build the AllJoyn Framework 建立 AllJoyn 架构
 
-Use the following instructions to build the AllJoyn project.
+Use the following instructions to build the AllJoyn project.遵循以下指导建立 AllJoyn 工程。
 
 1. From the command line, go to the AllJoyn allseen folder. 
-The path used here is just an example.
+The path used here is just an example.在命令行中，进入 AllJoyn allseen 文件夹。示例如下：
 
    ```bat
    cd c:\allseen\core\alljoyn
@@ -272,42 +274,43 @@ The path used here is just an example.
 2. Run the appropriate command from the list below to build 
 the AllJoyn framework for Windows. Use 'scons -h' for some 
 basic settings. In the examples below, any of the scons 
-variables default values can be set as environment variables.
+variables default values can be set as environment variables.从以下列表选择合适的命令，建立 Windows 平台的 AllJoyn 架构。使用 'scons -h' 命令进行一些基础设置。在以下示例中，任何 scons 变量的默认值都能被设定为环境变量。
 
-#### Building for Windows 7
+#### Building for Windows 7 Windows 7 的建立方式
 
-For 32-bit x86 target using Visual Studio 2013:
+For 32-bit x86 target using Visual Studio 2013:在 32 位 x86 系统上使用 Visual Studio 2013:
 
 ```bat
 C:\>cd allseen\core\alljoyn
 C:\allseen\core\alljoyn>scons OS=win7 CPU=x86 MSVC_VERSION=12.0 BINDINGS=cpp
 ```
 
-For 64-bit x86-64 target: using Visual Studio 2013
+For 64-bit x86-64 target: using Visual Studio 2013 在 64 位 x86-64 系统上使用 Visual Studio 2013:
 
 ```bat
 C:\>cd allseen\core\alljoyn
 C:\allseen\core\alljoyn>scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 BINDINGS=cpp
 ```
 
-**NOTE:** If you are using Windows 7, you may need to run SCons as administrator.
+**注意:** If you are using Windows 7, you may need to run SCons as administrator.如果您使用 Windows 7，可能需要以管理员身份运行 SCons。
 
-### Build variants
+### Build variants 建立变量
 
 Building in "release mode" removes all symbol information 
 and enables code optimization. To build in release mode, 
 add the VARIANT build option to your scons command line. 
 The values are:
+使用 "release mode" 建立，移除了所有标志信息并且支持代码优化。把 VARIANT 建设选项加入您的 scons 命令行以使用 release mode。
 
 * debug - (default value) Build the debug variant with all 
 symbol information and improved logging features for the 
-AllJoyn framework.
+AllJoyn framework.debug -（默认值）针对 AllJoyn 架构，使用所有标志信息和改进的日志功能建立 debug 变量。
 * release - Build the release variant of the code. This will 
 be optimized for code size. It will not include symbol 
 information and will only log critical errors associated 
-with the AllJoyn framework.
+with the AllJoyn framework. release - 生成 release 变量的代码。这将优化代码的大小。它将不会包含标志信息，并且只包含关于 AllJoyn 架构的关键性错误日志。
 
-Example:
+Example:示例：
 
 ```bat
 scons OS=win7 CPU=x86 VARIANT=release MSVC_VERSION=12.0 BINDINGS=cpp
@@ -321,54 +324,56 @@ The only difference is it must be done from the root `allseen\core\alljoyn`
 folder or the `alljoyn_java` folder, not the `alljoyn_core` folder. 
 To build the Java code, SCons needs to know where the Java 
 tools and junit are located.
+当使用 Java 代码建立 AllJoyn 架构时，使用在 Windows 上建立 AllJoyn 核心的相同命令。唯一的区别在于必须，根目录为 `allseen\core\alljoyn` 或 `alljoyn_java` 文件夹，不是 `alljoyn_core` 文件夹。建立 Java 代码之前，需要知道 Java 工具和 junit 所在的位置。
 
-Set an environment variable to tell scons the location of the build tools:
+Set an environment variable to tell scons the location of the build tools:设定一个环境变量，告诉 scons 生成工具的位置。
 
 ```bat
 set JAVA_HOME="C:\Program Files\Java\jdk1.6.0_43"
 ```
 
-Here is the path used on a development setup:
+Here is the path used on a development setup:这是用于开发安装的路径：
 
 ```bat
 set CLASSPATH="C:\junit\junit-4.11.jar"
 ```
 
-**NOTE:** These environment variables are already set if you 
-followed the instructions in [Adding environment variables][adding-environment-variables].
+**注意:** These environment variables are already set if you 
+followed the instructions in [Adding environment variables][adding-environment-variables].如果您遵循 [Adding environment variables][adding-environment-variables] 的指导，这些环境变量已经被设定完毕。
 
 As noted, to build Java code, use the same commands as were 
 used to make AllJoyn core for Windows; e.g., a Java for Windows 
-release variant. For example:
+release variant. For example:如上文所述，使用 Windows 平台上建立 AllJoyn 核心相同的代码建立 Java 代码。举一个 Windows release 变量的 Java版本：
 
 ```bat
 scons OS=win7 CPU=x86_64 VARIANT=release MSVC_VERSION=12.0 BINDINGS=core,java
 ``` 
 
-### Whitespace options
+### Whitespace options 空白选项
 
 The AllJoyn build environment uses uncrustify and a python 
 script that are automatically run each time the AllJoyn 
-framework is built.
+framework is built.AllJoyn 生成环境使用 uncrustify 和 python 脚本。它们会在 AllJoyn 架构建设完毕后自动运行。
 
 If source code is found that does not match the AllJoyn coding
 guidelines and whitespace checking is enabled, the build will fail
 when it runs the whitespace script. The WS option controls the
 behavior of the whitespace checker.
+如果发现源代码没有匹配 AllJoyn 编程规则，并且空白检查已开启，当它运行空白脚本时，生成将失败。WS 选项控制着空白检查器的行为。
 
-The values of the WS option are:
+The values of the WS option are:Ws 选项的值为：
 
 * off - (Default) Don't check the code for adherence to the 
-AllJoyn whitespace policy. Example:
+AllJoyn whitespace policy. Example:off - （默认）不检查代码是否符合 AllJoyn 空白规则。
 * check - This option will check the code 
-to see if it adheres to the AllJoyn white space policy.
+to see if it adheres to the AllJoyn white space policy.check - 该选项将检查代码是否符合 AllJoyn 空白规则。
 * detail - Display what changes are needed to make the 
-code adhere to the AllJoyn white space policy.
-* fix - Modify the code to use the AllJoyn white space 
+code adhere to the AllJoyn white space policy.detail - 列出如何使代码符合 AllJoyn 空白规则的修改意见。
+* fix - Modify the code to use the AllJoyn white space fix - 
 policy. This will automatically apply the changes that 
-are shown when using the detail option.
+are shown when using the detail option.使用 AllJoyn 空白修改规则修改代码。它会将 detail 选项中列出的修改意见自动执行。
 
-Example:
+Example:示例：
   ```bat
   scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 WS=off BINDINGS=cpp,java
   ```
