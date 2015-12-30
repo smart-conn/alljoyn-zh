@@ -1,5 +1,10 @@
 # alljoyn-zh
 
+## 1230 待审阅文章
+
+* [ ] [docs/develop/building/ios-osx/build-source.md](docs/develop/building/ios-osx/build-source.md)
+* [ ] [docs/develop/building/windows/build-source.md](docs/develop/building/windows/build-source.md)
+
 ## 1228 待审阅文章
 
 * [ ] [docs/develop/building/android/build-source.md](docs/develop/building/android/build-source.md)
