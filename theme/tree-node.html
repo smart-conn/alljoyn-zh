@@ -1,0 +1,11 @@
+{% if nav_item.children %}
+  <ul>
+    {% for nav_item in nav_item.children %}
+      {% include "tree-node.html" %}
+    {% endfor %}
+  </ul>
+{% else %}
+  <li class="main {% if nav_item.active %}active{% endif %}">
+    <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+  </li>
+{% endif %}
