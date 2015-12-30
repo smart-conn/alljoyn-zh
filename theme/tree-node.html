@@ -1,11 +1,22 @@
 {% if nav_item.children %}
-  <ul>
-    {% for nav_item in nav_item.children %}
-      {% include "tree-node.html" %}
+  <li class="{% if nav_item.active %}active{% endif %}">
+    {% for child in nav_item.children %}
+      {% if child.title == "Home" %}
+        <a href="{{ child.url }}">{{ nav_item.title }}</a>
+      {% endif %}
     {% endfor %}
-  </ul>
-{% else %}
-  <li class="main {% if nav_item.active %}active{% endif %}">
-    <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+    <ul>
+      <div>
+        {% for nav_item in nav_item.children %}
+          {% include "tree-node.html" %}
+        {% endfor %}
+      </div>
+    </ul>
   </li>
+{% else %}
+  {% if nav_item.title != "Home" %}
+    <li class="{% if nav_item.active %}active{% endif %}">
+      <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+    </li>
+  {% endif %}
 {% endif %}
