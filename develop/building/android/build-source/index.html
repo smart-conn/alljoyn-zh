@@ -1,1674 +1,1561 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build source - My Docs</title>
   
-
+  
   <link rel="shortcut icon" href="../../../../img/favicon.ico">
 
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <title>Build source - SmartConn Docs</title>
 
-  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../css/highlight.css">
+  <link href="../../../../css/bootstrap-custom.min.css" rel="stylesheet">
+  <link href="../../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+  <link href="../../../../css/highlight.css" rel="stylesheet">
+  <link href="../../../../css/base.css" rel="stylesheet">
+  <link href="../../../../css/smartconn.css" rel="stylesheet">
 
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Build source";
-  </script>
-  
-  <script src="../../../../js/jquery-2.1.1.min.js"></script>
-  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script>
-  <script src="../../../../js/theme.js"></script> 
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
 
   
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body>
 
-  <div class="wy-grid-for-nav">
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
 
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href="../../../.." class="icon icon-home"> My Docs</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-  </form>
+    <!-- Collapsed navigation -->
+    <div class="navbar-header">
+      <!-- Expander button -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- Main title -->
+      <a class="navbar-brand" href="../../../..">SmartConn Docs</a>
+    </div>
+
+    <!-- Expanded navigation -->
+    <div class="navbar-collapse collapse">
+      <!-- Main navigation -->
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="/docs">Docs</a>
+        </li>
+      </ul>
+
+      <!-- Search, Navigation and Repo links -->
+      <ul class="nav navbar-nav navbar-right">
+        <li >
+          <a rel="next" href="../../alljoyn-js/">
+            <i class="fa fa-arrow-left"></i> Previous
+          </a>
+        </li>
+        <li >
+          <a rel="prev" href="../">
+            Next <i class="fa fa-arrow-right"></i>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../../../..">Home</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Ambassadors</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../ambassadors/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Develop</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../">Home</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Api guide</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/">Home</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>About</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/about/c-thin/">C thin</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/about/cpp-legacy/">Cpp legacy</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/about/cpp/">Cpp</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/about/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/about/java-legacy/">Java legacy</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/about/java/">Java</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/about/objc-legacy/">Objc legacy</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/about/objc/">Objc</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Audio streaming</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/audio-streaming/cpp/">Cpp</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/audio-streaming/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Config</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/config/c-thin/">C thin</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/config/cpp/">Cpp</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/config/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/config/java/">Java</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/config/objc/">Objc</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Controlpanel</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/controlpanel/c-thin/">C thin</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/controlpanel/cpp/">Cpp</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/controlpanel/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/controlpanel/java/">Java</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/controlpanel/objc/">Objc</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Core</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/core/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/core/java/">Java</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/core/objc/">Objc</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Auto ping</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/core/auto-ping/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Observer</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/core/observer/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Propcache</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/core/propcache/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Events and actions</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/events-and-actions/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Notification</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/notification/c-thin/">C thin</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/notification/cpp/">Cpp</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/notification/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/notification/java/">Java</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/notification/objc/">Objc</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Onboarding</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/onboarding/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/onboarding/java/">Java</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-guide/onboarding/objc/">Objc</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Api reference</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../api-reference/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Ask</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../ask/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../ask/popular/">Popular</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Building</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../thin-linux/">Thin linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../thin-windows/">Thin windows</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Alljoyn js</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../alljoyn-js/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Android</span></li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Build source</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#build-from-source-android">Build From Source - Android</a></li>
-                
-                    <li><a class="toctree-l4" href="#prerequisites">Prerequisites</a></li>
-                
-                    <li><a class="toctree-l4" href="#setting-up-the-programming-environment">Setting Up the Programming Environment</a></li>
-                
-                    <li><a class="toctree-l4" href="#building-alljoyn-from-source-for-android">Building AllJoyn from Source for Android</a></li>
-                
-            
-            </ul>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Ios osx</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../ios-osx/build-source/">Build source</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../ios-osx/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Linux</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/build-source/">Build source</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../linux/openwrt/">Openwrt</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Windows</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../windows/build-source/">Build source</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../windows/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Debug</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../debug/common-issues/">Common issues</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../debug/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Run sample apps</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/">Home</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>About</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/about/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/about/ios-osx/">Ios osx</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/about/linux/">Linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/about/windows/">Windows</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Acserver</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/acserver/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/acserver/linux/">Linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/acserver/thin-linux/">Thin linux</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Alljoyn js</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/alljoyn-js/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Basic</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/basic/android/">Android</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/basic/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/basic/ios-osx/">Ios osx</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/basic/linux/">Linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/basic/thin-linux/">Thin linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/basic/thin-windows/">Thin windows</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/basic/windows/">Windows</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Chat</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/chat/android/">Android</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/chat/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/chat/ios-osx/">Ios osx</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/chat/linux/">Linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/chat/thin-linux/">Thin linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/chat/windows/">Windows</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Config</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/config/android/">Android</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/config/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/config/ios-osx/">Ios osx</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/config/linux/">Linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/config/thin-linux/">Thin linux</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Controlpanel</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/controlpanel/android/">Android</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/controlpanel/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/controlpanel/linux/">Linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Notification</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/notification/android/">Android</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/notification/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/notification/ios-osx/">Ios osx</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/notification/linux/">Linux</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/notification/thin-linux/">Thin linux</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Observer</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/observer/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Onboarding</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/onboarding/android/">Android</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/onboarding/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/onboarding/ios-osx/">Ios osx</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/onboarding/linux/">Linux</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Test</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/test/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../run-sample-apps/test/sessions/">Sessions</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Tutorial</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../tutorial/arduino-and-gt202/">Arduino and gt202</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../tutorial/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../tutorial/ios/">Ios</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../tutorial/thin-app/">Thin app</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../tutorial/videos/">Videos</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Core</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../tutorial/core/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-    </ul>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Learn</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/architecture/">Architecture</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/glossary/">Glossary</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/use-cases/">Use cases</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Base services</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/">Home</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Audiostreaming</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/audiostreaming/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/audiostreaming/interface/">Interface</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Configuration</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/configuration/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/configuration/interface-14-02/">Interface 14 02</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/configuration/interface/">Interface</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Controlpanel</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/controlpanel/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/controlpanel/interface-14-02/">Interface 14 02</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/controlpanel/interface/">Interface</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Notification</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/notification/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/notification/interface-14-02/">Interface 14 02</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/notification/interface/">Interface</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Onboarding</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/onboarding/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/onboarding/interface-14-02/">Interface 14 02</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/base-services/onboarding/interface/">Interface</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Core</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/events-and-actions/">Events and actions</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/standard-core/">Standard core</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/thin-core/">Thin core</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>About announcement</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/about-announcement/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/about-announcement/interface-14-02/">Interface 14 02</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/about-announcement/interface/">Interface</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Rn config</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/rn_config/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Security2 0</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/security2_0/hld/">Hld</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/security2_0/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>System description</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/system-description/advertisement-discovery/">Advertisement discovery</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/system-description/alljoyn-security/">Alljoyn security</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/system-description/data-exchange/">Data exchange</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/system-description/events-actions/">Events actions</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/system-description/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/system-description/sessionless-signal/">Sessionless signal</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/system-description/system-architecture/">System architecture</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../learn/core/system-description/thin-apps/">Thin apps</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-    </ul>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Project lifecycle</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../project-lifecycle/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Supported platforms</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../supported-platforms/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>User groups</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../../../user-groups/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-        </ul>
-      </div>
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../..">My Docs</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../../../..">Docs</a> &raquo;</li>
+  <div class="container">
+    <div class="col-md-3"><!-- <div class="bs-sidebar hidden-print affix well" role="complementary">
+  <ul class="nav bs-sidenav">
     
       
-        
-          <li>Android &raquo;</li>
-        
+        <li >
+          <a href="../../../..">Home</a>
+        </li>
       
     
-    <li>Build source</li>
-    <li class="wy-breadcrumbs-aside">
       
-    </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ambassadors <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+              <li >
+                <a href="../../../../ambassadors/">Home</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Develop <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+              <li >
+                <a href="../../../">Home</a>
+              </li>
+            
+              <li >
+                <a href="">Api guide</a>
+              </li>
+            
+              <li >
+                <a href="">Api reference</a>
+              </li>
+            
+              <li >
+                <a href="">Ask</a>
+              </li>
+            
+              <li class="active">
+                <a href="">Building</a>
+              </li>
+            
+              <li >
+                <a href="">Debug</a>
+              </li>
+            
+              <li >
+                <a href="">Run sample apps</a>
+              </li>
+            
+              <li >
+                <a href="">Tutorial</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Learn <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+              <li >
+                <a href="../../../../learn/architecture/">Architecture</a>
+              </li>
+            
+              <li >
+                <a href="../../../../learn/glossary/">Glossary</a>
+              </li>
+            
+              <li >
+                <a href="../../../../learn/">Home</a>
+              </li>
+            
+              <li >
+                <a href="../../../../learn/use-cases/">Use cases</a>
+              </li>
+            
+              <li >
+                <a href="">Base services</a>
+              </li>
+            
+              <li >
+                <a href="">Core</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project lifecycle <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+              <li >
+                <a href="../../../../project-lifecycle/">Home</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Supported platforms <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+              <li >
+                <a href="../../../../supported-platforms/">Home</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User groups <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+              <li >
+                <a href="../../../../user-groups/">Home</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
   </ul>
-  <hr/>
-</div>
-          <div role="main">
-            <div class="section">
-              
-                <h1 id="build-from-source-android">Build From Source - Android</h1>
-<h2 id="prerequisites">Prerequisites</h2>
+</div> -->
+
+<div class="bs-sidebar hidden-print well" role="complementary">
+  <ul class="nav bs-sidenav">
+    
+      
+  <li class="main ">
+    <a href="../../../..">Home</a>
+  </li>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../ambassadors/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../">Home</a>
+  </li>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/">Home</a>
+  </li>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/about/c-thin/">C thin</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/about/cpp-legacy/">Cpp legacy</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/about/cpp/">Cpp</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/about/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/about/java-legacy/">Java legacy</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/about/java/">Java</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/about/objc-legacy/">Objc legacy</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/about/objc/">Objc</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/audio-streaming/cpp/">Cpp</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/audio-streaming/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/config/c-thin/">C thin</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/config/cpp/">Cpp</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/config/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/config/java/">Java</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/config/objc/">Objc</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/controlpanel/c-thin/">C thin</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/controlpanel/cpp/">Cpp</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/controlpanel/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/controlpanel/java/">Java</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/controlpanel/objc/">Objc</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/core/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/core/java/">Java</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/core/objc/">Objc</a>
+  </li>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/core/auto-ping/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/core/observer/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/core/propcache/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/events-and-actions/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/notification/c-thin/">C thin</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/notification/cpp/">Cpp</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/notification/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/notification/java/">Java</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/notification/objc/">Objc</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/onboarding/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/onboarding/java/">Java</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../api-guide/onboarding/objc/">Objc</a>
+  </li>
+
+    
+  </ul>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../api-reference/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../ask/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../ask/popular/">Popular</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../thin-linux/">Thin linux</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../thin-windows/">Thin windows</a>
+  </li>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../alljoyn-js/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main active">
+    <a href="./">Build source</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../ios-osx/build-source/">Build source</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../ios-osx/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../linux/build-source/">Build source</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../linux/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../linux/openwrt/">Openwrt</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../windows/build-source/">Build source</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../windows/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../debug/common-issues/">Common issues</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../debug/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/">Home</a>
+  </li>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/about/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/about/ios-osx/">Ios osx</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/about/linux/">Linux</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/about/windows/">Windows</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/acserver/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/acserver/linux/">Linux</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/acserver/thin-linux/">Thin linux</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/alljoyn-js/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/basic/android/">Android</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/basic/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/basic/ios-osx/">Ios osx</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/basic/linux/">Linux</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/basic/thin-linux/">Thin linux</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/basic/thin-windows/">Thin windows</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/basic/windows/">Windows</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/chat/android/">Android</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/chat/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/chat/ios-osx/">Ios osx</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/chat/linux/">Linux</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/chat/thin-linux/">Thin linux</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/chat/windows/">Windows</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/config/android/">Android</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/config/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/config/ios-osx/">Ios osx</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/config/linux/">Linux</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/config/thin-linux/">Thin linux</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/controlpanel/android/">Android</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/controlpanel/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/controlpanel/linux/">Linux</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/notification/android/">Android</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/notification/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/notification/ios-osx/">Ios osx</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/notification/linux/">Linux</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/notification/thin-linux/">Thin linux</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/observer/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/onboarding/android/">Android</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/onboarding/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/onboarding/linux/">Linux</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/test/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../run-sample-apps/test/sessions/">Sessions</a>
+  </li>
+
+    
+  </ul>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../tutorial/arduino-and-gt202/">Arduino and gt202</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../tutorial/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../tutorial/ios/">Ios</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../tutorial/thin-app/">Thin app</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../tutorial/videos/">Videos</a>
+  </li>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../tutorial/core/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+  </ul>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/architecture/">Architecture</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/glossary/">Glossary</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/use-cases/">Use cases</a>
+  </li>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/">Home</a>
+  </li>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/audiostreaming/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/audiostreaming/interface/">Interface</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/configuration/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/configuration/interface-14-02/">Interface 14 02</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/configuration/interface/">Interface</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/controlpanel/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/controlpanel/interface/">Interface</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/notification/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/notification/interface-14-02/">Interface 14 02</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/notification/interface/">Interface</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/onboarding/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/onboarding/interface-14-02/">Interface 14 02</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/base-services/onboarding/interface/">Interface</a>
+  </li>
+
+    
+  </ul>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/events-and-actions/">Events and actions</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/standard-core/">Standard core</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/thin-core/">Thin core</a>
+  </li>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/about-announcement/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/about-announcement/interface-14-02/">Interface 14 02</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/about-announcement/interface/">Interface</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/rn_config/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/security2_0/hld/">Hld</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/security2_0/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/system-description/advertisement-discovery/">Advertisement discovery</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/system-description/alljoyn-security/">Alljoyn security</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/system-description/data-exchange/">Data exchange</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/system-description/events-actions/">Events actions</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/system-description/">Home</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/system-description/sessionless-signal/">Sessionless signal</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/system-description/system-architecture/">System architecture</a>
+  </li>
+
+    
+      
+  <li class="main ">
+    <a href="../../../../learn/core/system-description/thin-apps/">Thin apps</a>
+  </li>
+
+    
+  </ul>
+
+    
+  </ul>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../project-lifecycle/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../supported-platforms/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+      
+  <ul>
+    
+      
+  <li class="main ">
+    <a href="../../../../user-groups/">Home</a>
+  </li>
+
+    
+  </ul>
+
+    
+  </ul>
+</div></div>
+    <div class="col-md-8" role="main">
+
+<h1 id="build-from-source-android">Build From Source - Android</h1>
+<h2 id="prerequisites">Prerequisites 必备条件</h2>
 <ul>
 <li>
 <p>The following content uses many terms and concepts that are described in the
 <a href="../../../../learn/core/standard-core">Introduction to the AllJoyn Framework</a>.
-Therefore, it is strongly recommended that you read the Introduction content first.</p>
+Therefore, it is strongly recommended that you read the Introduction content first.
+以下内容使用了大量 <a href="../../../../learn/core/standard-core">Introduction to the AllJoyn Framework</a> 中提到的术语和概念。因此，我们强烈建议您首先阅读介绍内容。</p>
 </li>
 <li>
 <p>Before proceeding with development, make sure that you have set up the development
 environment as described here for <a href="../../../../develop/building/windows/build-source">Windows</a> or
-for <a href="../../../../develop/building/linux/build-source">Linux</a>.</p>
+for <a href="../../../../develop/building/linux/build-source">Linux</a>.
+在开始开发之前，请确保按照<a href="../../../../develop/building/windows/build-source">Windows</a> 或
+针对 <a href="../../../../develop/building/linux/build-source">Linux</a> 建立了开发环境。</p>
 </li>
 </ul>
-<h2 id="setting-up-the-programming-environment">Setting Up the Programming Environment</h2>
+<h2 id="setting-up-the-programming-environment">Setting Up the Programming Environment 建立编程环境</h2>
 <p>This section explains how to set up the programming environment
 for developing AllJoyn&trade;-enabled Android applications.
-It covers the following topics:</p>
+It covers the following topics:
+该章节解释了如何为开发 AllJoyn&trade; Android 应用程序建立编程环境。
+包含了以下几点：</p>
 <ul>
-<li>Install the Android SDK and NDK</li>
-<li>Install an IDE</li>
+<li>Install the Android SDK and NDK 安装 Android SDK 和 NDK</li>
+<li>Install an IDE 安装一个 IDE</li>
 </ul>
-<p><strong>NOTE:</strong> The procedures described in this section require the
-specified tool versions.</p>
-<h3 id="installing-the-android-sdk">Installing the Android SDK</h3>
+<p><strong>注意:</strong> The procedures described in this section require the
+specified tool versions. 这一节中描述的流程要求使用指定的工具版本。</p>
+<h3 id="installing-the-android-sdk-android-sdk">Installing the Android SDK 安装 Android SDK</h3>
 <p>The Android software development kit (SDK) provides the
 tools needed for building Android applications and transferring
-applications to or from an Android device. The 'adb' tool is used to:</p>
+applications to or from an Android device. The 'adb' tool is used to:
+Android 软件开发工具包（SDK）为建立 Android 应用程序提供了工具；也为从某个 Android 设备接收或发出应用程序提供工具。</p>
 <ul>
-<li>Transfer/pull files to/from the phone</li>
-<li>Run the AllJoyn standalone router</li>
-<li>Install/uninstall applications</li>
+<li>Transfer/pull files to/from the phone 从手机发送／接收文件。</li>
+<li>Run the AllJoyn standalone router 运行 AllJoyn 独立路由</li>
+<li>Install/uninstall applications 安装／卸载 应用程序</li>
 </ul>
 <p>For AllJoyn v15.04, download Android SDK version r20 or later from the
-following location:</p>
+following location:
+针对 AllJoyn v15.04，从以下地址下载 Android SDk r20 或后续版本：</p>
 <p>http://developer.android.com/sdk/index.html</p>
 <p>Earlier versions of AllJoyn can work with older versions of the Android
 SDK. Please refer to documentation for your version of AllJoyn if you
-require an older Android SDK.</p>
-<p>Install the SDK by following the directions given here:</p>
+require an older Android SDK.
+更早版本的 AllJoyn 能兼容早起版本的 Android SDK。如果你需要使用早期版本的 Android SDK，请参考对应版本的 AllJoyn 文档。</p>
+<p>Install the SDK by following the directions given here:
+通过以下链接安装 SDK。</p>
 <p>http://developer.android.com/sdk/installing/index.html</p>
 <p>The SDK requires certain software packages
 to be pre-installed on your system. For more information,
-see the following location:</p>
+see the following location:
+SDK 需要在系统中预装特定的软件包。欲知详情，请查看以下地址：</p>
 <p>http://developer.android.com/sdk/requirements.html</p>
 <p>After installing the SDK, you must install the Android platform
-support packages you wish to use. See:</p>
+support packages you wish to use. See:
+SDK 安装完毕后，您需要安装想要使用的 Android 平台支持包。查看：</p>
 <p>http://developer.android.com/sdk/installing/adding-packages.html</p>
 <p>The AllJoyn v15.04 framework uses Android API levels 16 to 22.
-Note that installing these packages may take some time.</p>
-<h3 id="installing-the-android-ndk">Installing the Android NDK</h3>
+Note that installing these packages may take some time.
+AllJoyn v15.04 架构使用 16 至 22 级的 Android API。注意，安装这些包需要花费一些时间。</p>
+<h3 id="installing-the-android-ndk-android-ndk">Installing the Android NDK 安装 Android NDK</h3>
 <p>The Android native development kit (NDK) enables developers
 to build Java native libraries (JNI libraries) which can be
 called from Android (Java) applications. Android NDK is
 required only to write Java native libraries. The Android NDK
 is not required to use the Android Java bindings, but is
-required to build AllJoyn.</p>
+required to build AllJoyn.
+Android 本地环境包（NDK）使开发者能够建立 JAVA 本地资源库（JNI libraries），可以通过 Android（Java）应用程序调用它们。仅在写入 Java 本地资源库时需要用到 Android NDK。当使用 Android 与 JAVA 绑定时，不需要 Android NDK，但在建立 AllJoyn 时需要使用 Android NDK。</p>
 <p>The main tool used from the Android NDK is 'ndk-build', which
-is used to build the native library of the JNI application.</p>
+is used to build the native library of the JNI application.
+Android NDK 中使用最多的工具是 'ndk-build'。它用于建立 JNI 应用程序的本地资源库。</p>
 <p>To run Android JNI applications using AllJoyn 15.04, install any
-NDK version 9d or above from http://developer.android.com/tools/sdk/ndk/index.html .</p>
-<p>Install the NDK by following the directions given on the download page.</p>
+NDK version 9d or above from http://developer.android.com/tools/sdk/ndk/index.html .
+为了运行使用 AllJoyn 15.04 的 Android JNI 应用程序，需要安装任意高于 9d 版本的 NDK，地址：http://developer.android.com/tools/sdk/ndk/index.html。</p>
+<p>Install the NDK by following the directions given on the download page.
+按照下载页面的提示安装 NDK。</p>
 <p>To run, the NDK requires that the following software packages
-are pre-installed on your system:</p>
+are pre-installed on your system:
+NDK 需要在系统中预装以下软件包才能运行。</p>
 <ul>
-<li>Latest Android SDK (including all dependencies)</li>
-<li>GNU Make 3.81 or later</li>
-<li>Recent version of awk (GNU awk or nawk)</li>
+<li>Latest Android SDK (including all dependencies) 最新的Android SDK （包括所有依赖）</li>
+<li>GNU Make 3.81 or later GNU Make 3.81 或更高版本</li>
+<li>Recent version of awk (GNU awk or nawk) 最新版本的 awk （GNU awk 或 nawk）</li>
 </ul>
-<p>For more information, see the NDK download page.</p>
+<p>For more information, see the NDK download page.
+欲知详情，查看 NDK 下载页面。</p>
 <h3 id="android-ides">Android IDEs</h3>
 <p>Instructions and downloads for Android integrated development
-environments are available here:</p>
+environments are available here:
+Android 集成开发环境的指导和下载：</p>
 <p>http://developer.android.com/sdk/installing/index.html</p>
-<h3 id="downloading-the-openssl-header-files-and-library-optional">Downloading the OpenSSL header files and library (optional)</h3>
+<h3 id="downloading-the-openssl-header-files-and-library-optional-openssl">Downloading the OpenSSL header files and library (optional) 下载 OpenSSL 头文件和资源库（可选）</h3>
 <p>The AllJoyn framework optionally uses the OpenSSL crypto library.
 AllJoyn 15.04 and later have built-in crypto functions, but
-may be built with OpenSSL if needed.</p>
+may be built with OpenSSL if needed.
+AllJoyn 架构可选择性地使用 OpenSSL 加密库。AllJoyn 15.04 和后续版本拥有内建加密库，但也可以根据需要使用 OpenSSL。</p>
 <p>If you build AllJoyn in the OpenSSL configuration, the prebuilt
 libcrypto library is needed to link AllJoyn applications.
 It can be downloaded directly from the Android device or
 emulator into the lib folder of the AllJoyn distribution.
 Attach the device (or launch the Android emulator), then
-run the following commands:</p>
+run the following commands:
+如果您在 OpenSSL 配置中建立 AllJoyn，预构建的加密资源库需要连接到 AllJoyn 应用程序。它可以被直接从 Android 设备下载，或者从 AllJoyn 分布的模拟器的 lib 文件夹中获得。连接设备（或者打开 Android 模拟器），执行以下指令：</p>
 <pre><code class="sh">cd &lt;alljoyn_dir&gt;/lib
 adb pull /system/lib/libcrypto.so libcrypto.so
 </code></pre>
 
-<p>The above command means:</p>
-<p>adb pull <location of the file on the phone that you want to pull>
+<p>The above command means: 以上命令表示：</p>
+<p>adb pull <location of the file on the phone that you want to pull 您想得到的文件在手机中的位置>
 <destination on your machine where you want to store the pulled
-file with the name that you want></p>
+file with the name that you want 在您的设备中，希望存储获得的文件的位置和名称></p>
 <p>The library can also be built from the Android source repository.
 For details on building the Android source tree, see the
-Android source repository web site:</p>
+Android source repository web site:
+资源库也可以通过 Android 资源库建立。了解更多关于建立 Android 资源树，查看 Android 资源库网站：</p>
 <p>http://source.android.com/source/building.html</p>
 <p>IMPORTANT: Be sure you pull the <code>libcrypto.so</code>
-library from the version of Android you are building for.</p>
-<h2 id="building-alljoyn-from-source-for-android">Building AllJoyn from Source for Android</h2>
-<p>For most developers, the SDK package available to download
-from https://allseenalliance.org/developers/download
-is sufficient for developing Android applications using AllJoyn.
-However, if you wish to obtain and compile AllJoyn from source,
-follow the directions in this section.</p>
-<p>To compile AllJoyn from source, the following items are required:</p>
+library from the version of Android you are building for.
+重要：务必为您所搭建的 Android 版本从资源库中获取 <code>libcrypto.so</code></p>
+<h2 id="building-alljoyn-from-source-for-android-android-alljoyn">Building AllJoyn from Source for Android 通过 Android 核心建立 AllJoyn</h2>
+<p>For most developers, the SDK package available to download from https://allseenalliance.org/developers/download is sufficient for developing Android applications using AllJoyn. However, if you wish to obtain and compile AllJoyn from source, follow the directions in this section.</p>
+<p>对于大部分开发者，从 https://allseenalliance.org/developers/download 下载的 SDK 包足够开发使用 AllJoyn 的 Android 应用程序。当然，如果您希望从源代码获取和编译 AllJoyn，请跟随本章节的指导：</p>
+<p>To compile AllJoyn from source, the following items are required:
+为了从源代码编译 AllJoyn，需要以下几个工具：</p>
 <ul>
 <li>Android SDK</li>
 <li>Android NDK</li>
@@ -1676,29 +1563,37 @@ follow the directions in this section.</p>
 <li>Android source</li>
 </ul>
 <p>Instructions for obtaining the Android SDK, Android NDK, and IDEs
-are in <a href="#setting-up-the-programming-environment">Setting Up the Programming Environment</a>.</p>
-<h3 id="the-android-source">The Android source</h3>
+are in <a href="#setting-up-the-programming-environment">Setting Up the Programming Environment</a>.
+关于获取 Android SDK、Android NDK 和 IDEs 的指导，请参阅 <a href="#setting-up-the-programming-environment">Setting Up the Programming Environment</a>。</p>
+<h3 id="the-android-source-android">The Android source Android 源代码</h3>
 <p>The Android source (http://source.android.com) is required
 for building Android targets using OpenSSL. Google has detailed
-instructions for downloading and building Android source.</p>
+instructions for downloading and building Android source.
+需要使用 Android 源代码建立使用 OpenSSL 的 Android target。Google 提供了下载和建立 Android 源代码的详细指导：</p>
 <p>For a list of system requirements and instructions for obtaining
-the required tools, see http://source.android.com/source/initializing.html</p>
+the required tools, see http://source.android.com/source/initializing.html
+系统需求列表和获得相关工具的指导，查看 http://source.android.com/source/initializing.html。</p>
 <p>For instructions on obtaining the Android Source Tree,
-see http://source.android.com/source/downloading.html</p>
+see http://source.android.com/source/downloading.html
+获取 Android Source Tree 的指导，查看 http://source.android.com/source/downloading.html。</p>
 <p>When running the repo init command specify the branch name for
 the Android release you are targeting. Branch names are listed at
-http://source.android.com/source/build-numbers.html#source-code-tags-and-builds</p>
+http://source.android.com/source/build-numbers.html#source-code-tags-and-builds
+当使用 repo init 命令指定您所需 Android 版本的分支名称时，查看 http://source.android.com/source/build-numbers.html#source-code-tags-and-builds 获取分支名称。</p>
 <p>For instructions on building and running the build source, see
-http://source.android.com/source/building.html</p>
+http://source.android.com/source/building.html
+有关生成和运行生成源的说明，查看 http://source.android.com/source/building.html</p>
 <ul>
-<li>Build the "generic" version of Android.</li>
-<li>There is no need to run the code. Only the build libraries
-that are not available in the NDK are used.</li>
+<li>Build the "generic" version of Android.生成"通用"版本的 Android</li>
+<li>There is no need to run the code. Only the build libraries 
+that are not available in the NDK are used. 不需要运行代码。使用仅在 NDK 中不可用的生成库。</li>
 </ul>
-<h3 id="obtaining-the-alljoyn-source">Obtaining the AllJoyn source</h3>
+<h3 id="obtaining-the-alljoyn-source-alljoyn">Obtaining the AllJoyn source 获取 AllJoyn 源</h3>
 <p>If you followed the instructions in <a href="#the-android-source">The Android source</a>,
 you should have the repo tool and git installed on your system.
-Enter the following commands to get the AllJoyn source:</p>
+Enter the following commands to get the AllJoyn source:
+如果您按照 <a href="#the-android-source">The Android source</a> 的指导进行操作，您的系统中应装有 repo 工具和 git。
+输入以下代码以获取 AllJoyn 源。</p>
 <pre><code class="sh">$ mkdir $HOME/alljoyn # for example
 $ cd $HOME/alljoyn
 $ repo init -u git://github.com/alljoyn/manifest.git
@@ -1706,21 +1601,23 @@ $ repo sync
 $ repo start master --all
 </code></pre>
 
-<h3 id="building-the-alljoyn-framework-for-android">Building the AllJoyn framework for Android</h3>
+<h3 id="building-the-alljoyn-framework-for-android-android-alljoyn">Building the AllJoyn framework for Android 为 Android 建立 AllJoyn 架构</h3>
 <p>At this point. you have all of the files and programs required
 to build the AllJoyn framework for Android. The following commands assume
 you have installed the Android NDK at <code>/usr/local/android-ndk-r9d</code>,
 you have downloaded and built the Android source, and it is
 located in <code>$HOME/android-platform</code>.</p>
+<p>此时，您拥有为 Android 建立 AllJoyn 架构所需的全部文件和程序。下述指令建立在您已经在 <code>/usr/local/android-ndk-r9d</code> 安装 Android NDK，并下载和在 <code>$HOME/android-platform</code> 建立了 Android 源。</p>
 <p>Use the following commands to build the AllJoyn framework for Android using
-builtin crypto:</p>
+builtin crypto:
+对于采用内置加密的 Android，使用下述命令建立 AllJoyn 架构。</p>
 <pre><code class="sh">$ export JAVA_HOME=&quot;/usr/lib/jvm/java-6-sun&quot; # or java-5-sun
 $ export CLASSPATH=&quot;/usr/share/java/junit.jar&quot;
 $ scons OS=android CPU=arm CRYPTO=builtin ANDROID_NDK=/usr/local/android-ndk-r9b
    ANDROID_SRC=$HOME/android-platform WS=off
 </code></pre>
 
-<p>To build using OpenSSL crypto functions:</p>
+<p>To build using OpenSSL crypto functions: 对于采用 OpenSSL 加密的，使用下述方法：</p>
 <pre><code class="sh">$ export JAVA_HOME=&quot;/usr/lib/jvm/java-6-sun&quot; # or java-5-sun
 $ export CLASSPATH=&quot;/usr/share/java/junit.jar&quot;
 $ scons OS=android CPU=arm CRYPTO=openssl ANDROID_NDK=/usr/local/android-ndk-r9b
@@ -1732,50 +1629,33 @@ additional tools during the build process. For example, the
 AllJoyn framework can use Uncrustify to check white space
 compliance and Doxygen for producing API documentation for
 the C++ APIs. See <a href="../../../../develop/building/linux/build-source">Configuring the Build Environment (Linux Platform)</a>
-for detailed instructions for installing these two tools.</p>
-              
-            </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../" class="btn btn-neutral float-right" title="Home"/>Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../../alljoyn-js/" class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
+for detailed instructions for installing these two tools.
+允许指定 AllJoyn 架构在构建过程中使用额外工具。如使用 Uncrustify 对空格进行排版或使用 Doxygen 为 C++ API 生成文档。查看<a href="../../../../develop/building/linux/build-source">Configuring the Build Environment (Linux Platform)</a> 获取更多关于安装这两个工具的详细指导。</p></div>
+    <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
+  <ul class="nav bs-sidenav">
     
+      <li class="main active"><a href="#build-from-source-android">Build From Source - Android</a></li>
+      
+        <li><a href="#prerequisites">Prerequisites 必备条件</a></li>
+      
+        <li><a href="#setting-up-the-programming-environment">Setting Up the Programming Environment 建立编程环境</a></li>
+      
+        <li><a href="#building-alljoyn-from-source-for-android-android-alljoyn">Building AllJoyn from Source for Android 通过 Android 核心建立 AllJoyn</a></li>
+      
+    
+  </ul>
+</div></div>
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-	  
-        </div>
-      </div>
+  <footer class="col-md-12">
+    <hr>
+    
+    <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+  </footer>
 
-    </section>
-
-  </div>
-
-<div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../../alljoyn-js/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
-</div>
-
+  <script src="../../../../js/jquery-1.10.2.min.js"></script>
+  <script src="../../../../js/bootstrap-3.0.3.min.js"></script>
+  <script src="../../../../js/highlight.pack.js"></script>
+  <script src="../../../../js/base.js"></script>
 </body>
 </html>
