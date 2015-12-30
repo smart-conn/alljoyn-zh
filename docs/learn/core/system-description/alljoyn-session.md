@@ -81,80 +81,54 @@ is version 14.12 or earlier.
 1. 提供方与使用方都通过 AllJoyn 核心库连接到各自的 AllJoyn 路由上，并获取被分配的唯一标识。
 2. 提供方应用程序向 AllJoyn 核心库注册服务的总线对象。
 3. 提供方应用程序通过 AllJoyn 核心库向 AllJoyn 路由请求一个 well-known name.
-4. 提供方应用程序通过 AllJoyn 库的 `BindSessionPort` API 将会话端口捆绑，The provider app binds a session port with the AllJoyn router via the AllJoyn
-library's `BindSessionPort` API. This call specifies a session port, session
-options, and a SessionPortListener for the session.
-5. The consumer app discovers the provider app using the AllJoyn Advertisement and Discovery mechanism.
-6. The consumer app initiates joining the session with the
-provider via the `JoinSession` API. This call specifies the unique name
-of session host, session port, desired session options, and a SessionListener.
-7. The consumer side AllJoyn router establishes a physical
-channel with the provider side AllJoyn router (as applicable). For
-TCP Transport, this involves setting up a TCP connection
-between the two AllJoyn routers. If a UDP Transport is used
-between the two routers for session setup, no physical channel
-needs to be established.
-8. Once a connection is set up between the two AllJoyn buses,
-the consumer AllJoyn router initiates a `BusHello` message to
-send its bus GUID and AllJoyn protocol version. The provider
-AllJoyn router responds with its GUID, AllJoyn protocol
-version, and unique name. The protocol version received from the routing nodes
-during the `BusHello` stage is used to determine if the pre-15.04 or post-15.04
-call flow is used.
-9. The consumer and provider AllJoyn routers send out `ExchangeNames`
-signals to exchange the set of known unique names and well-known names.
-10. The consumer AllJoyn router invokes the `AttachSession`
-method call at the provider AllJoyn router to join the session.
-This call specifies the session port, session options, and unique
-name/well-known name of the session host among other parameters.
-11. If the session opts are compatible, the provider AllJoyn router invokes an
-`AcceptSession` method call with the provider app which returns 'true' if the
-session gets accepted.
-Refer to section [Session options negotiation][session-options-negotiation] for
-details of session opts compatibility.
-12. In case of incompatible session opts or if the session is not accepted by
-the provider app, an appropriate error code is sent back. If the session gets
-accepted, the provider AllJoyn router generates a unique sessionId for this
-session and sends a successful response. It sends back an `AttachSession` response
- message to the consumer AllJoyn router providing the result and sessionId if
- applicable.
-13. The provider AllJoyn router sends a SessionJoined signal
-to the provider app specifying the sessionId.
-14. After receiving the `AttachSession` response, the consumer
-AllJoyn router sends a JoinSession response message to the
-app with an OK status and provides the session Id.
+4. 提供方应用程序通过 AllJoyn 库的 `BindSessionPort` API 将会话端口捆绑。此呼叫为会话指定一个会话号，会话选项以及一个 SessionPortListener.
 
-### Post-15.04 Point to Point Session establishment
+5. 使用方应用程序使用 AllJoyn 的推广与发现机制来发现提供方应用程序。
+6. 使用方应用程序通过 `JoinSession` API 来初始化加入到提供方的会话。此呼叫指定一个会话主机的唯一识别符，会话端口，偏好的会话选项以及一个
+SessionListener.
+7. 使用方的 AllJoyn 路由建立一个到供应方 AllJoyn 路由的物理信道（如果可用）。在 TCP 传输时，这将包括在两个 AllJoyn 路由之间建立一个 TCP 连
+接。在 UDP 传输时，无需建立物理信道。
+8. 两个 AllJoyn 总线之间的连接建立之后，使用方的 AllJoyn 路由会初始化一个 `BusHello` 消息，以发送他的总线 GUID 和 AllJoyn 协议版本。提供方
+应用程序会回应此消息，并附带自己的 GUID 和 AllJoyn 协议版本，以及唯一识别符。在 `BusHello` 阶段时收到的由路由节点发送的协议版本信息被用来判
+断是早于15.04版本的通话流程正在被使用还是晚于15.04版本的通话流程正在被使用。
+9. 使用方和提供方的 AllJoyn 路由发送 `ExchangeNames` 信号，交换已知的独立识别符和 well-known names.
+10. 使用方 AllJoyn 路由调用在提供者路由上的 `AttachSession` 来加入会话。此调用会指定会话主机的端口号，端口选项，独立识别符/ well-known names 以及其他的参数。
+11. 如果会话选项可用，提供方 AllJoyn 路由调用 `AcceptSession` 方法，如果会话被接受，提供方应用程序将返回一个 'true '.更多关于会话选项适用性
+的细节请参阅 [Session options negotiation][session-options-negotiation].
+12. 在会话选项不可用，或是提供方应用程序没有接受该会话时，系统将发出一合适的错误代码。如果会话被接受，提供方的 AllJoyn 路由器会为此会话提供
+一个唯一标识符作为 sessionId，并发送一个提示成功的回应。他将 `AttachSession` 消息发送给使用方 AllJoyn 路由，以提供结果以及 sessionID (若可以使用)
+13. 提供方 AllJoyn 路由向提供方应用程序发送一个 SessionJoined 信号，指定了sessionaID.
+14. 在接收到 `AttachSession` 回应之后，使用者的 AllJoyn 路由发出一个 JoinSession 回应消息，带有 OK status 以及会话的 ID.
 
-The following figure captures the AllJoyn session establishment
-message flow for a point-to-point session when both the producer and consumer
-are version 15.04 or later.
+### 15.04版本后 点对点会话的建立
+
+下图展示了 AllJoyn 会话建立的消息流程，此会话是点对点的，提供方和使用方的版本都是15.04或更新。
 
 ![establishing-p2p-session-1504][establishing-p2p-session-1504]
 
-**Figure:** AllJoyn point-to-point session establishment - 15.04 or later
+**Figure:** AllJoyn 建立点对点对话 - 15.04 或更晚。
 
 
-This is the message flow when both the producer and consumer are version 15.04
-or later.
+下面是使用者和提供者都是15.04或以后版本时的消息流程：
 
-1. The call flow until the `BusHello` stage is the same as described in [Pre-15.04 Point to Point Session establishment][pre-15-04-point-to-point-session-establishment].
-The protocol version received from the routing nodes during the `BusHello` stage
-is used to determine if the pre-15.04 or post-15.04 call flow is used.
-2. The consumer AllJoyn router invokes the `AttachSessionWithNames`
-method call at the provider AllJoyn router to join the session. This call
-specifies the session port, session options, and unique name/well-known name of
-the session host among other parameters. As a part of this method call, the
- consumer AllJoyn router also sends out the names required for establishing the
- session. It may send out all names if it has been requested by the consumer or
- provider app.
- Refer to [Names sent as a part of AttachSessionWithNames][names-sent-as-a-part-of-attachsessionwithnames] for more details.
-3. If the session opts are compatible, the provider AllJoyn router invokes an
-`AcceptSession` method
-call with the provider app which returns 'true' if the session gets accepted.
-Refer to section [Session options negotiation][session-options-negotiation] for
-details of session opts compatibility.
-4. In case of incompatible session opts or if the session is not accepted by
+1. 直到 `BusHello`阶段，之前的流程与 [Pre-15.04 Point to Point Session establishment][pre-15-04-point-to-point-session-establishment] 中所
+描述的一样。在 `BusHello` 阶段时收到的由路由节点发送的协议版本信息被用来判断是早于15.04版本的通话流程正在被使用还是晚于15.04版本的通话流程正在被使用。
+
+2. 使用方的 AllJoyn 路由调用位于提供方 AllJoyn 路由的  `AttachSessionWithNames` 方法以加入会话。此呼叫指定会话端口，会话选项，以及会话主机
+的唯一识别符/ well-known name. 作为这个方法的一部分使用方 AllJoyn 路由同时也发出建立会话所需的标识符们。如果被使用者或提供者的应用程序所请
+求，他可以发送出所有标识符。
+ 参考： [Names sent as a part of AttachSessionWithNames][names-sent-as-a-part-of-attachsessionwithnames] 
+
+3. 如果会话选项是兼容的，提供方 AllJoyn 路由调用 `AcceptSession` 方法，如果会话被接受了，提供方应用程序会返回 'true'，更多信息请参阅
+[Session options negotiation][session-options-negotiation] 
+
+4. 在不兼容的会话选择中，或者，假如会话没能被提供方应用程序所接受，会有一个适当的错误代码被送回。如果会话被接受了，提供方的 AllJoyn 路由为
+会话生成一个唯一的 sessionID. 他将送回一个 `AttachSessionWithNames` 回复消息到使用方 AllJoyn 路由，提供结果和 sessionID（如果可用）.
+
+5.
+
+
+In case of incompatible session opts or if the session is not accepted by
 the provider app, an appropriate error code is sent back. If the session gets
 accepted, the provider AllJoyn router generates a unique sessionId for this
 session. It sends back an `AttachSessionWithNames` response message to the
