@@ -378,7 +378,7 @@ Example:示例：
   scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 WS=off BINDINGS=cpp,java
   ```
 
-### Generating API documentation
+### Generating API documentation 生成 API 文档
 
 By default the Java API documentation will always build 
 when building the Java bindings; this is not the default 
@@ -386,18 +386,20 @@ behavior for the C++ API documentation. Since the documentation
 for the C++ API requires Doxygen and Graphviz to be installed 
 on your system, it is not built by default. Use the DOCS option 
 to generate the C++ API documentation.
+默认情况下，Java API 文档会随着 Java 绑定的生成而生成；但这样的情况不适用于 C++ API 文档。由于 C++ API 文档的生成需要系统中 Doxygen 和 Graphviz 的支持，所以它不会被默认建立。使用 DOCS 选项生成 C++ API 文档。
 
-The values are:
+The values are:值如下：
 
-* none - (default option) Do not generate the API documentation.
+* none - (default option) Do not generate the API documentation.none - （默认值）不生成 API 文档。
 * html - (recommended option if documentation is desired ) 
 Produce an HTML version of the API documentation. This is what 
 is published to www.allseenalliance.org. The output can be 
-found in `<allseen\core\alljoyn>\alljoyn_core\docs\html\index.html`.
+found in `<allseen\core\alljoyn>\alljoyn_core\docs\html\index.html`. - (建议选项，如果需要文档)
+生成 HTML 版本的 API 文档。这是 www.allseenalliance.org 采用的方式。可以在 `<allseen\core\alljoyn>\alljoyn_core\docs\html\index.html` 找到生成文档。
 * pdf - Produce a PDF form of the document. If you are unable 
 to build the HTML form of the documentation the PDF form will 
 not build. The resulting document can be found in 
-`<allseen\core\alljoyn>\alljoyn_core\docs\html\refman.pdf`.
+`<allseen\core\alljoyn>\alljoyn_core\docs\html\refman.pdf`.pdf- 生成 PDF 格式的文档。如果您未能生成 HTML 格式的文档，PDF 格式也不能生成。可以在 `<allseen\core\alljoyn>\alljoyn_core\docs\html\refman.pdf` 找到生成文档。
 * dev - Produce HTML documentation for the entire AllJoyn 
 codebase, not just the public APIs. When Doxygen runs using 
 this command, it produces a lot of warnings and will generate 
@@ -406,58 +408,62 @@ used inside AllJoyn code and not in any other projects.
 This option is for people developing AllJoyn code, not for 
 people using the AllJoyn framework to develop other applications. 
 The output will override the output from the HTML option.
+dev - 为这个那个 AllJoyn 代码库生成 HTMl 代码，不仅仅是 public APIs。当 Doxygen 运行该命令，它将生成许多警告，并且会生成仅能在 AllJoyn 代码内部生成（不在任何其它工程中）的方法和功能。此选项针对开发 AllJoyn 代码的人，并不适用于基于 AllJoyn 架构开发应用的人。生成文档将会覆盖 HTML 选项生成的文档。
  
-Example:
+Example: 示例：
 
 ```bat
 scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 DOCS=html BINDINGS=cpp,java
 ```
 
-### Specifying the Microsoft Visual C++ version
+### Specifying the Microsoft Visual C++ version 指定 Microsoft Visual C++ 的版本
 
 To build in Windows, you are required to have at least one 
 version of Microsoft Visual C++ installed on your system. 
 At this time, only Microsoft compilers can be used to build 
 AllJoyn applications. Use the MSVC_VERSION to specify what 
 version of Microsoft Visual C++ you are using.
+在 Windows 中搭建，您至少需要其中安装至少一个本的 Microsoft Visual C++。此时，只有 Microsoft 编译器能用来构建 AllJoyn 应用程序。使用 MSVC_VERSION 指定您使用的 Microsoft Visual C++ 的版本。
 
-The values are:
+The values are:值如下：
 
-* 11.0 - Use Microsoft Visual C++ 2012
-* 11.0Exp - Use Microsoft Visual C++ 2012 Express Edition
-* 12.0 - (Default) Use Microsoft Visual C++ 2013
-* 12.0Exp - Use Microsoft Visual C++ 2013 Express Edition
-* 14.0 - Use Microsoft Visual C++ 2015
-* 14.0Exp - Use Microsoft Visual C++ 2015 Express Edition
+* 11.0 - 使用 Microsoft Visual C++ 2012
+* 11.0Exp - 使用 Microsoft Visual C++ 2012 Express Edition
+* 12.0 - (默认) 使用 Microsoft Visual C++ 2013
+* 12.0Exp - 使用 Microsoft Visual C++ 2013 Express Edition
+* 14.0 - 使用 Microsoft Visual C++ 2015
+* 14.0Exp - 使用 Microsoft Visual C++ 2015 Express Edition
 
-### Build C++ unit tests
+### Build C++ unit tests 建立 C++ 单元测试
 
 The AllJoyn framework now includes a basic set of unit tests 
 that are built using the Google Test code. To build the unit 
 test, you must specify the location of the Google Test 
 source code that was obtained in googletest. Use the `GTEST_DIR` 
 option to specify the location of Google Test source code.
+AllJoyn 架构内建了一套使用 Google test 代码构建的基本的单元测试。为了构建测试单元，您必须指定 googletest 中 Google Test 源代码的位置。使用 `GTEST_DIR` 选项指定 Google Test 源代码的位置。
  
-Example:
+Example:示例：
 
 ```bat
 scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 GTEST_DIR=c:\gtest\gtest-1.7.0
 BINDINGS=cpp
 ``` 
 
-### Verify that the AllJoyn project is built properly
+### Verify that the AllJoyn project is built properly 验证 AllJoyn 工程被正确建立
 
-1. From the command line, navigate to:
+1. From the command line, navigate to:在命令行中，导航至：
 
    ```bat
    <allseen\core\alljoyn>\build{OS}{CPU}{VARIANT}\dist\cpp\bin\samples
    ```
 
-2. Run `basic_service.exe` on one command line.
-3. Run `basic_client.exe` on another command line.
+2. Run `basic_service.exe` on one command line.在一个命令行中运行 `basic_service.exe`。
+3. Run `basic_client.exe` on another command line.在另一个命令行中运行 `basic_client.exe`。
 
    When the client runs, the following will display: 
    (Output may vary slightly from what is shown)
+   当客户端运行时，会出现以下提示（可能会略有不同）：
 
    ```
    AllJoyn Library version: v3.2.0
@@ -476,24 +482,28 @@ BINDINGS=cpp
    org.alljoyn.Bus.sample.cat ( path=/sample) returned "Hello World!"
    ```
 
-## Running Unit Tests
+## Running Unit Tests 运行单元测试
 
-### Running C++ unit tests
+### Running C++ unit tests 运行 C++ 单元测试
 
 If the `GTEST_DIR` option was specified when building the code, 
 the C++ unit test will automatically be built and placed in 
 the following location: `build\{OS}\{CPU}\{VARIANT}\test\cpp\bin`. 
 There will be two executable files there: `cmtest` and `ajtest`.
+如果在生成代码时指定了 `GTEST_DIR` 选项，C++ 单元测试将被自动建立并存放在以下位置：`build\{OS}\{CPU}\{VARIANT}\test\cpp\bin`。其中有两个可执行文件 `cmtest` 和 `ajtest`。
 
 For all paths, replace `{OS}`, `{CPU}`, and `{VARIANT}` with the 
 actual value used when the code was built (i.e., use the 
 same `OS`, `CPU`, and `VARIANT` option specified when running SCons).
+对于所有路径，根据代码生成的环境更改 `{OS}`、`{CPU}` 和 `{VARIANT}` 的值。（如，使用与运行 SCons 时相同的`{OS}`、`{CPU}` 和 `{VARIANT}`）
 
 ### cmtest
 
 The cmtest executable, tests the code from the common project 
 and does not require the AllJoyn router to be running. 
 Run cmtest as follows: 
+可执行文件 cmtest, 测试通用工程代码，不需要运行 AllJoyn 路由。
+执行以下代码运行 cmtest：
 
 ```bat
 build\{OS}\{CPU}\{VARIANT}\test\cpp\bin\cmtest.exe
@@ -505,32 +515,36 @@ The ajtest executable tests the code found in alljoyn_core.
 For the tests to run successfully, an AllJoyn router must 
 also be running. Currently `ajtest` is limited, it cannot 
 test bus-to-bus (i.e., device-to-device) communication. 
+Ajtest 可执行文件测试 alljoyn_core 中的代码。为了测试的顺利运行，必须运行 AllJoyn 路由。目前，`ajtest` 功能有限。它不能测试总线与总线之间的通信（如 设备到设备）
+
 
 Run ajtest as follows:
+执行以下代码运行 ajtest：
 
 ```bat
 build\{OS}\{CPU}\{VARIANT}\test\cpp\bin\ajtest.exe
 ```
 
-### Running the Java junit tests
+### Running the Java junit tests 运行 Java junit 测试
 
-The junit tests are always built the same time as the Java bindings. 
-The junit tests are specifically designed to test the Java bindings.
+The junit tests are always built the same time as the Java bindings. junit test 总是和 Java 绑定同时建立。
+The junit tests are specifically designed to test the Java bindings. junit test 专为测试 Java 绑定而设计。
 
 1. Copy and rename from `alljoyn_java\ build.xml.top` to the 
 top `build.xml` folder.
+把 `alljoyn_java\ build.xml.top` 拷贝至顶部文件夹，并重命名为 `build.xml`。
 
    ```bat
    copy alljoyn_java\build.xml.top build.xml
    ```
 
-2. From the top build folder use ant to start the test.
+2. From the top build folder use ant to start the test.在顶部文件夹中使用 ant 开启测试。
 
    ```bat
    ant test -DOS={OS} -DCPU={CPU} -DVARIANT={VARIANT}
    ```
 
-3. html version of the results can be found in this location:
+3. html version of the results can be found in this location:html 版本的结果存储在以下路径：
 
    ```bat
    build\{OS}\{CPU}\{VARIANT}\test\java\reports\junit\
@@ -540,3 +554,5 @@ For all paths and commands, replace {OS}, {CPU}, and {VARIANT}
 with the actual value used when the code was built 
 (i.e., use the same OS, CPU, and VARIANT option specified 
 when running SCons).
+
+对于所有路径和命令，根据代码生成的环境更改 `{OS}`、`{CPU}` 和 `{VARIANT}` 的值。（如，使用与运行 SCons 时相同的`{OS}`、`{CPU}` 和 `{VARIANT}`）
