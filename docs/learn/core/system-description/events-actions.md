@@ -1,17 +1,15 @@
 # Events and Actions
 
-## Overview
+## 概览
 
-The Events and Actions feature is part of the AllJoyn&trade Core,
-designed to enable creating If-This-Then-That (IFTTT)-based
-rules logic in the AllJoyn network.
+事件和行为功能是 AllJoyn&trade Core 的一部分，他被设计用于在 AllJoyn 网络中创建基于 If-This-Then-That (IFTTT) 的逻辑规则。
 
-* Events are used by AllJoyn devices/apps to notify other
-AllJoyn devices/apps when something of significance occurs in the network.
+*  AllJoyn 设备/应用程序在网络有重要事件发生时用于提醒其他
+AllJoyn 设备/应用程序的行为，就是事件。在这方面，事件和行为是协同进行的
 * Actions enable specific responses to AllJoyn events detected
 in the AllJoyn network. In this regard, Events and actions
 go hand-in-hand. An action is a way for making an application
-or device do something.
+or device do something.行为是对 AllJoyn 网络中的 AllJoyn 事件作出的特定反应。 
 
 For example, an AllJoyn application can broadcast an event
 signifying that something has happened, such as movement
