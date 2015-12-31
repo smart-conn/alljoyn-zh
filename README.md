@@ -1,5 +1,10 @@
 # alljoyn-zh
 
+## 1231 待审阅文章
+
+* [ ] [docs/develop/building/thin-windows.md](docs/develop/building/thin-windows.md)
+* [ ] [docs/learn/core/system-description/alljoyn-session.md](docs/learn/core/system-description/alljoyn-session.md)
+
 ## 1230 待审阅文章
 
 * [ ] [docs/develop/building/ios-osx/build-source.md](docs/develop/building/ios-osx/build-source.md)
