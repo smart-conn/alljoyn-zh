@@ -1,870 +1,594 @@
-# AllJoyn&trade; Session
+# AllJoyn&trade; 会话
 
-## Overview
+## 综述
 
-After an AllJoyn consumer has discovered some desired services
-offered by provider devices, the next step is to establish an
-AllJoyn session with the provider to consume those services.
-An AllJoyn session is a logical connection between consumer
-and provider applications that allows these applications to
-communicate with each other and exchange data. A provider
-application creates an AllJoyn session and waits for consumer
-applications to join the session. The application that creates
-the session is the owner of the session (session host), and
-other applications are termed as joiners in that session.
+在 AllJoyn 使用方已经发现一些提供所需要的服务的提供方设备后，下一步就是与这些提供方建立会话以便使用服务。AllJoyn 会话是在使用者和提供者应用
+程序之间的逻辑连接，通过会话应用程序之间可以通信并交换信息。提供方应用程序创建 AllJoyn 会话，并等待使用方应用程序的加入。创建会话的应用程序
+就是会话的拥有者（session host），其他的应用程序则是会话的加入者（joiners）。
 
-On the provider side, the app binds a session port with the
-AllJoyn core library, specifying a list of session options
-(e.g., transports, session type, etc.) and then listens for
-consumers to join the session. The session port is typically
-known ahead of time to both the consumer and the provider app.
-Alternately, the session port can be discovered via the Announcement
-message received from that provider.
+在提供方的一边，应用程序将会话端口和 AllJoyn 核心库绑定，声明一个会话选项的列表（传输方式，会话类型等等），然后监听会话是否有使用者加入。会
+话端口一般都会提前被使用方和提供方的应用程序所知晓。另一种选择是，会话端口可以通过接收提供方的 Announcement 消息被发现到。
 
-On the consumer side, the app requests the AllJoyn bus to join
-the session with a given provider app by specifying the session
-port, well-known name/unique name for the service, and session
-options (transport, session type, etc.). After this, the AllJoyn
-router initiates a session establishment flow between the consumer
-and the provider apps. A unique session ID gets assigned by the
-provider to the AllJoyn session after the first client joins
-the session. The session ID is sent back to the consumer app
-and should be used for subsequent communication with the provider.
+在使用方的一边，应用程序通过声明会话端口，服务的 well-known name/ 唯一识别符以及会话选项（传输，会话类型等等），向 AllJoyn 总线发出加入给定
+提供方应用程序建立的会话的请求。在这以后，AllJoyn 路由将使用方和提供方应用程序之间的会话建立流初始化。在第一名使用者加入会话后，提供方应用
+会分配一个会话 ID. 此会话 ID 会被返回到使用方应用程序，并被用于后续与供应方的通话。
 
-The following figure shows the high-level architecture for the
-AllJoyn session establishment.
+下图展示了 AllJoyn 会话建立的高层结构
 
 ![alljoyn-session-establishment-arch][alljoyn-session-establishment-arch]
 
-**Figure:** AllJoyn session establishment architecture
+**Figure:** AllJoyn 会话建立结构
 
-The provider app binds a session port with the AllJoyn router
-for a given service. The combination of (well-known name/unique
-name and session port) uniquely identifies the endpoint.
-The consumer app starts a join session with the (well-known name/unique name +
-session port number) of the provider app. The AllJoyn router
-on the consumer side establishes a physical connection with
-the provider AllJoyn router based on already discovered information
-as part of the discovery step. Currently, this involves establishing
-a TCP connection or if a UDP Transport is used
-between the two routers for session setup, no physical channel
-needs to be established.
+提供方应用程序将针对于给定服务的会话端口与 AllJoyn 路由绑定。well-known name/ 独立标识符和会话端口的结合体唯一定义了端点。使用方应用程序根
+据提供方应用程序的 well-known name/ 独立标识符 + 会话端口号来加入会话。在使用者一方的 AllJoyn 路由根据作为发现过程一部分的已发现信息建立一
+个到供应方 AllJoyn 路由的物理连接。目前，这个操作包括建立建立一个 TCP 连接，或者，如果两路由间使用 UDP 传输建立会话，则不需要建立物理信道。
 
-After physical connection is established, the consumer AllJoyn router
-starts the session establishment with the provider side. The provider
-AllJoyn router assigns a unique session ID for the session and also
-creates a session map storing the relevant session information.
-Once the session is established, a Session Joined callback is
-sent to the provider app with generated session ID. The consumer
-app receives a Status OK response for the join session call that
-includes the session ID. A session map also gets created on the
-consumer AllJoyn router side, storing session details.
+在建立了物理连接后，使用方的 AllJoyn 路由开始建立与提供方的会话。提供方 AllJoyn 路由将一个唯一的会话 ID 分配给会话，并创建一个存贮相关会话
+信息的会话地图。一旦会话建立，Session Joined 回交将会与会话 ID 一起发送给提供方应用程序。使用方应用程序会收到带有会话 ID 的 Status OK 回应
+，作为加入会话命令的回应。使用方应用程序也会建立存储会话细节的会话地图。
 
-## Types of sessions
 
-An AllJoyn session can be categorized into different types based
-on the allowed number of participants in the session or the data
-encapsulation option used over the session.
 
-The AllJoyn system supports the following types of session
-based on allowed number of participants:
+## 会话类型
 
-* Point-to-point session: An AllJoyn session with a single
-consumer (joiner) and single provider (session host) endpoints
-participates in the session. When either participant leaves
-the session, the point-to-point session ends. A SessionLost
-indication is sent to the remaining participant.
-* Multi-Point Session: An AllJoyn session allows more than
-two participants. Such a session involves a provider app
-(session host app) and one or more consumer apps (joiner apps)
-participating in the same session. A multi-point session can
-be joined multiple times to form a single session with multiple
-(greater than 2) endpoints. New consumers can join a multi-point
-session after the session has been created, and existing consumers
-can leave a multi-point session. All participants in a multi-point
-session can communicate to each other.
+根据被允许参与会话的用户数，或者根据会话数据的封装选项，AllJoyn 会话可以被分为不同的类型。
 
-In a multi-point session, all communications go through session host.
-Similar to a point-to-point session, a multi-point session ends when two
-participants are left and one of them leaves the session.
-A SessionLost indication is sent to the remaining participant.
+根据被允许参与会话的用户数，AllJoyn 系统支持如下种类的会话
 
-The following figure depicts point-to-point and multi-point
-AllJoyn sessions with the multi-point session showing four participants.
+
+* 点对点会话: 只有一个使用者（参与者）和一个服务端（会话主机）的 AllJoyn 会话。当任意一方离开会话时，此点对点会话结束。SessionLost 提示将被
+发送给余下的参与者。
+* 多方会话: AllJoyn 会话支持多于两个参与者的会话。这种会话包含一个提供者应用程序（会话主机应用程序）以及一个或多个使用方应用程序（参与方应用程序）在同一个会话中。多方会话可以在多个时间被加入，构成与多个（多于两个）端点的一对一会话。在会话被建立后，新的使用者可加入多方会话，现存的使用者也可以离开多方会话。在多方会话内的所有的参与者都可以相互沟通。
+
+在一个多方会话中，所有的通信流量都会经过会话主机。与点对点会话类似，当一个参与者离开会话，仅剩余两个参与者时，多方会话便结束。
+
+下图描绘了点对点 AllJoyn 会话以及四个参与者的多方 AllJoyn 会话。
+
 
 ![p2p-multipoint-session-examples][p2p-multipoint-session-examples]
 
-**Figure:** AllJoyn point-to-point and multi-point session examples
+**Figure:** 点对点以及多方 AllJoyn 会话
 
-### Raw session
+### 原始会话
 
-In the AllJoyn system, typical data exchange between peer nodes
-occurs in the form of enhanced D-Bus messages. However in some
-scenarios, the overhead associated with D-Bus messages may not
-be desirable. In such cases, raw data can be exchanged between
-nodes using what is called an AllJoyn raw session.
+在 AllJoyn 系统中，两对等节点之间典型的数据交换使用增强的 D-Bus 消息格式。但在一些场景中，与 D-Bus 相关的间接费用会带来不便。在这种情况中，
+可以在两节点间使用 AllJoyn 原始会话交换原始数据。
 
-An AllJoyn raw session is used to exchange raw data between
-endpoints using an underlying physical connection (e.g., TCP/UDP
-socket-based communication). A raw session does not carry D-Bus
-encapsulated messages like a regular AllJoyn session.
-Instead, a raw session carries unencapsulated raw data directly
-sent over TCP/UDP sockets. A raw session can only be a
-point-to-point session.
+AllJoyn 原始会话使用一个底层的物理连接（例如 TCP/UDP 基于套接字的通信）来实现端点间原始数据的交换。与常规会话不同，原始会话不携带 D-Bus 封装的消息，而是携带被直接由 TCP/UDP 套接字发送的未经封装的原始数据。原始会话仅支持点对点会话。
 
-**NOTE:** The raw session feature is only supported on the AllJoyn
-standard client and is not supported on thin app. This feature
-is being deprecated and it is recommended that developers not
-to use the raw session feature.
+**NOTE:** 原始会话功能仅可在 AllJoyn 标准用户上使用，精简应用程序无法使用。此功能正在被反对，推荐开发者不使用原始会话功能。
 
-## Point to Point Session establishment
 
-The AllJoyn protocol version obtained from the BusHello message is used to
-determine which call flow is used.
 
-### Pre-15.04 Point to Point Session establishment
+## 点对点会话的建立
 
+由 BusHello 消息获取的 AllJoyn 协议版本用来决定哪一个呼叫流程将被使用。
+
+
+### Pre-15.04 点对点会话建立
+
+下图描述了一个点对点 AllJoyn 会话建立的信息流，生产方或使用方之一是14.12或更早的版本。
 The following figure captures the AllJoyn session establishment
 message flow for a point-to-point session when either the producer or consumer
 is version 14.12 or earlier.
 
 ![establishing-p2p-session][establishing-p2p-session]
 
-**Figure:** AllJoyn point-to-point session establishment - 14.12 or earlier
+**Figure:** AllJoyn 点对点会话建立 - 14.12版本或更早
 
-This is the message flow when either the producer or consumer is version 14.12
-or earlier.
+下面是生产方或使用方之一是14.12或更早的版本情况下的信息流。
 
-1. Both the provider and consumer apps connect with their
-respective AllJoyn routers via the AllJoyn core library
-and get a unique name assigned.
-2. The provider app registers service Bus Objects with the
-AllJoyn core library.
-3. The provider app requests a well-known name with the
-AllJoyn router via the AllJoyn core library.
-4. The provider app binds a session port with the AllJoyn router via the AllJoyn
-library's `BindSessionPort` API. This call specifies a session port, session
-options, and a SessionPortListener for the session.
-5. The consumer app discovers the provider app using the AllJoyn Advertisement and Discovery mechanism.
-6. The consumer app initiates joining the session with the
-provider via the `JoinSession` API. This call specifies the unique name
-of session host, session port, desired session options, and a SessionListener.
-7. The consumer side AllJoyn router establishes a physical
-channel with the provider side AllJoyn router (as applicable). For
-TCP Transport, this involves setting up a TCP connection
-between the two AllJoyn routers. If a UDP Transport is used
-between the two routers for session setup, no physical channel
-needs to be established.
-8. Once a connection is set up between the two AllJoyn buses,
-the consumer AllJoyn router initiates a `BusHello` message to
-send its bus GUID and AllJoyn protocol version. The provider
-AllJoyn router responds with its GUID, AllJoyn protocol
-version, and unique name. The protocol version received from the routing nodes
-during the `BusHello` stage is used to determine if the pre-15.04 or post-15.04
-call flow is used.
-9. The consumer and provider AllJoyn routers send out `ExchangeNames`
-signals to exchange the set of known unique names and well-known names.
-10. The consumer AllJoyn router invokes the `AttachSession`
-method call at the provider AllJoyn router to join the session.
-This call specifies the session port, session options, and unique
-name/well-known name of the session host among other parameters.
-11. If the session opts are compatible, the provider AllJoyn router invokes an
-`AcceptSession` method call with the provider app which returns 'true' if the
-session gets accepted.
-Refer to section [Session options negotiation][session-options-negotiation] for
-details of session opts compatibility.
-12. In case of incompatible session opts or if the session is not accepted by
-the provider app, an appropriate error code is sent back. If the session gets
-accepted, the provider AllJoyn router generates a unique sessionId for this
-session and sends a successful response. It sends back an `AttachSession` response
- message to the consumer AllJoyn router providing the result and sessionId if
- applicable.
-13. The provider AllJoyn router sends a SessionJoined signal
-to the provider app specifying the sessionId.
-14. After receiving the `AttachSession` response, the consumer
-AllJoyn router sends a JoinSession response message to the
-app with an OK status and provides the session Id.
+1. 提供方与使用方都通过 AllJoyn 核心库连接到各自的 AllJoyn 路由上，并获取被分配的唯一标识。
+2. 提供方应用程序向 AllJoyn 核心库注册服务的总线对象。
+3. 提供方应用程序通过 AllJoyn 核心库向 AllJoyn 路由请求一个 well-known name.
+4. 提供方应用程序通过 AllJoyn 库的 `BindSessionPort` API 将会话端口捆绑。此命令为会话指定一个会话号，会话选项以及一个 SessionPortListener.
 
-### Post-15.04 Point to Point Session establishment
+5. 使用方应用程序使用 AllJoyn 的推广与发现机制来发现提供方应用程序。
+6. 使用方应用程序通过 `JoinSession` API 来初始化加入到提供方的会话。命令叫指定一个会话主机的唯一识别符，会话端口，偏好的会话选项以及一个
+SessionListener.
+7. 使用方的 AllJoyn 路由建立一个到供应方 AllJoyn 路由的物理信道（如果可用）。在 TCP 传输时，这将包括在两个 AllJoyn 路由之间建立一个 TCP 连
+接。在 UDP 传输时，无需建立物理信道。
+8. 两个 AllJoyn 总线之间的连接建立之后，使用方的 AllJoyn 路由会初始化一个 `BusHello` 消息，以发送他的总线 GUID 和 AllJoyn 协议版本。提供方
+应用程序会回应此消息，并附带自己的 GUID 和 AllJoyn 协议版本，以及唯一识别符。在 `BusHello` 阶段时收到的由路由节点发送的协议版本信息被用来判
+断是早于15.04版本的通话流程正在被使用还是晚于15.04版本的通话流程正在被使用。
+9. 使用方和提供方的 AllJoyn 路由发送 `ExchangeNames` 信号，交换已知的独立识别符和 well-known names.
+10. 使用方 AllJoyn 路由调用在提供者路由上的 `AttachSession` 来加入会话。此调用会指定会话主机的端口号，端口选项，独立识别符/ well-known names 以及其他的参数。
+11. 如果会话选项可用，提供方 AllJoyn 路由调用 `AcceptSession` 方法，如果会话被接受，提供方应用程序将返回一个 'true '.更多关于会话选项适用性
+的细节请参阅 [Session options negotiation][session-options-negotiation].
+12. 在会话选项不可用，或是提供方应用程序没有接受该会话时，系统将发出一合适的错误代码。如果会话被接受，提供方的 AllJoyn 路由器会为此会话提供
+一个唯一标识符作为 sessionId，并发送一个提示成功的回应。他将 `AttachSession` 消息发送给使用方 AllJoyn 路由，以提供结果以及 sessionID (若可以使用)
+13. 提供方 AllJoyn 路由向提供方应用程序发送一个 SessionJoined 信号，指定了sessionaID.
+14. 在接收到 `AttachSession` 回应之后，使用者的 AllJoyn 路由发出一个 JoinSession 回应消息，带有 OK status 以及会话的 ID.
 
-The following figure captures the AllJoyn session establishment
-message flow for a point-to-point session when both the producer and consumer
-are version 15.04 or later.
+### 15.04版本后 点对点会话的建立
+
+下图展示了 AllJoyn 会话建立的信息流，此会话是点对点的，提供方和使用方的版本都是15.04或更新。
 
 ![establishing-p2p-session-1504][establishing-p2p-session-1504]
 
-**Figure:** AllJoyn point-to-point session establishment - 15.04 or later
+**Figure:** AllJoyn 建立点对点对话 - 15.04 或更晚。
 
 
-This is the message flow when both the producer and consumer are version 15.04
-or later.
+下面是使用者和提供者都是15.04或以后版本时的信息流：
 
-1. The call flow until the `BusHello` stage is the same as described in [Pre-15.04 Point to Point Session establishment][pre-15-04-point-to-point-session-establishment].
-The protocol version received from the routing nodes during the `BusHello` stage
-is used to determine if the pre-15.04 or post-15.04 call flow is used.
-2. The consumer AllJoyn router invokes the `AttachSessionWithNames`
-method call at the provider AllJoyn router to join the session. This call
-specifies the session port, session options, and unique name/well-known name of
-the session host among other parameters. As a part of this method call, the
- consumer AllJoyn router also sends out the names required for establishing the
- session. It may send out all names if it has been requested by the consumer or
- provider app.
- Refer to [Names sent as a part of AttachSessionWithNames][names-sent-as-a-part-of-attachsessionwithnames] for more details.
-3. If the session opts are compatible, the provider AllJoyn router invokes an
-`AcceptSession` method
-call with the provider app which returns 'true' if the session gets accepted.
-Refer to section [Session options negotiation][session-options-negotiation] for
-details of session opts compatibility.
-4. In case of incompatible session opts or if the session is not accepted by
-the provider app, an appropriate error code is sent back. If the session gets
-accepted, the provider AllJoyn router generates a unique sessionId for this
-session. It sends back an `AttachSessionWithNames` response message to the
-consumer AllJoyn router providing the result and sessionId if applicable.
-The provider AllJoyn router also sends out the names required for establishing
-the session as a part of the response. It may send out all names if it has been
-requested by the consumer or provider app.
- Refer to [Names sent as a part of AttachSessionWithNames][names-sent-as-a-part-of-attachsessionwithnames] for more details.
-5. The provider AllJoyn router sends a SessionJoined signal
-to the provider app specifying the sessionId.
-6. After receiving the `AttachSessionWithNames` response, the consumer
-AllJoyn router sends a JoinSession response message to the
-app with an OK status and provides the session Id.
+1. 直到 `BusHello`阶段，之前的流程与 [Pre-15.04 Point to Point Session establishment][pre-15-04-point-to-point-session-establishment] 中所
+描述的一样。在 `BusHello` 阶段时收到的由路由节点发送的协议版本信息被用来判断是早于15.04版本的通话流程正在被使用还是晚于15.04版本的通话流程正在被使用。
 
+2. 使用方的 AllJoyn 路由调用位于提供方 AllJoyn 路由的  `AttachSessionWithNames` 方法以加入会话。此命令指定会话端口，会话选项，以及会话主机
+的唯一识别符/ well-known name. 作为这个方法的一部分使用方 AllJoyn 路由同时也发出建立会话所需的标识符们。如果被使用者或提供者的应用程序所请
+求，他可以发送出所有标识符。
+ 参考： [Names sent as a part of AttachSessionWithNames][names-sent-as-a-part-of-attachsessionwithnames] 
 
-## Multipoint Session Establishment
+3. 如果会话选项是兼容的，提供方 AllJoyn 路由调用 `AcceptSession` 方法，如果会话被接受了，提供方应用程序会返回 'true'，更多信息请参阅
+[Session options negotiation][session-options-negotiation] 
 
-The following use cases illustrate various AllJoyn session scenarios:
+4. 在不兼容的会话选择中，或者，假如会话没能被提供方应用程序所接受，会有一个适当的错误代码被送回。如果会话被接受了，提供方的 AllJoyn 路由为
+会话生成一个唯一的 sessionID. 他将送回一个 `AttachSessionWithNames` 回复消息到使用方 AllJoyn 路由，提供结果和 sessionID（如果可用）。提供方
+AllJoyn 路由也会发出建立会话所需的标识符，作为回应的一部分。如果他已经被使用方或提供方应用程序请求，他可能会发送所有的标识符。具体细节请参阅 [Names sent as a part of AttachSessionWithNames][names-sent-as-a-part-of-attachsessionwithnames].
+5. 提供方 AllJoyn 路由向提供方应用程序发送一个指明 sessionID 的 SessionJoined 信号。
+6. 在收到 `AttachSessionWithNames` 回应后，使用方的 AllJoyn 路由向应用程序发送一个带有 OK status 和会话 ID 的 JoinSession 回复。
 
-* Establish a multi-point session
-* Consumer joins an existing multi-point session
-* Consumer leaves a point-to-point Session
-* Consumer leaves a multi-point session with more than 2 participants
-* Provider unbinds a session port
+## 多方会话的建立
 
-### Establish a multi-point session
+下列用例说明了多种 AllJoyn 会话场景:
 
-The following figure captures the session establishment
-message flow for a multi-point session between two participants.
+*  建立一个多方的会话
+*  使用方加入现存的多方会话
+*  使用方离开一个点对点的会话
+*  使用方离开一个多于两个参与者的多方会话
+*  提供方解绑一个会话端口
+
+### 建立一个多方会话
+
+下图解释了在两个参与者之间的多方会话建立时的信息流
 
 ![establishing-multipoint-session][establishing-multipoint-session]
 
-**Figure:** AllJoyn session - establishing a multi-point session
+**Figure:** AllJoyn 会话 - 建立一个多方会话
 
-A multi-point session follows same message flow as the
-point-to-point session with the additional step of sending
-out the `MPSessionChanged` signal from the AllJoyn router
-to the application indicating new participant. This signal
-specifies the sessionId, the unique name/well-known name
-of the participant, and a flag to indicate whether the
-participant was added.
+多方会话与点对点会话建立的信息流是一致的。只是多出了由 AllJoyn 路由发送给应用程序指示新参与者的 `MPSessionChanged` 信号。此信号指明
+sessionID, 参与者的唯一识别符/ well-known name 以及指示参与者是否被添加的标志位。
 
-### Consumer joins an existing multi-point session
-The following figure captures the message flow for the
-scenario where a new consumer joins an existing multi-point session.
+### 使用方加入现存的多方会话
+下图展示了新使用方加入现存的多方会话场景的信息流
 
-In a multi-point session, the new joiner is responsible
-for notifying existing participants (other than session host)
-of the newly added member to the session. This is so that
-existing members can update their session routing information
-to include the new joiner, and future session messages can be
-routed appropriately. To achieve this, the new member invokes
-an `AttachSession` with all existing members. This results in
-existing members adding the new joiner to their session-related tables.
+在多方会话中，新加入者（并不是会话主机）负责提醒现存的参与者有新成员加入会话。这样一来，现存的成员就可以更新自己的会话路由信息，将新成员加入其中，未来的会话消息即可被正确传送。新成员调用 `AttachSession` 来实现这一行为。该调用将导致现存成员将新成员添加到他们的会话相关表中。
 
-#### Consumer joins an existing multi-point session - Pre-15.04 call flow
+#### 使用者加入一个现存的点对点会话 - 15.04及以前版本的呼叫流程
 
 ![consumer-joins-multipoint-session][consumer-joins-multipoint-session]
 
-**Figure:** AllJoyn session - consumer joins a multi-point session - 14.12 or earlier
+**Figure:** AllJoyn 会话 - 使用者加入多方会话 - 14.12版本或更早
 
-The message flow steps are described below.
+信息流如下所述
+[Establish a multi-point session][establish-multi-point-session]
+1. 提供方与使用方的应用程序被安装，使用方使用 AllJoyn 发现与推广机制来发现生产方应用程序。
+2. AllJoyn 会话的建立发生在加入者1（使用者1）以及会话主机（提供方）之间，目的是建立一个如 [Establish a multi-point session][establish-multi-point-session] 所示的多方会话
+3. 使用者2（加入者2）想要加入当前的多方会话，并使用自己的 AllJoyn 路由初始化了一个 JoinSession 命令。 
+4. 加入者2的 AllJoyn 路由建立了与提供方 AllJoyn 路由（如果可用）的物理信道。在 TCP 传输中，这将包括建立两 AllJoyn 路由之间的 TCP 连接。如使
+用 UDP 则不需要物理层链路。
+5. 一旦两个 AllJoyn 总线之间的连接建立之后，使用方的 AllJoyn 路由会初始化一个 `BusHello` 消息，以发送他的总线 GUID 和 AllJoyn 协议版本。提供方应用程序会回应此消息，并附带自己的 GUID 和 AllJoyn 协议版本，提供方 AllJoyn 路由将自己的 GUID 及 AllJoyn协议版本还有唯一
+识别符发出作为回应。
+6. 参与者2 和提供方路由发出 `ExchangeNames` 信号，交换已知的唯一识别符和 well-known names. 提供方 AllJoyn 路由将 `ExchangeNames` 发送到所有
+连接到他的路由，包括参与者2的 AllJoyn 路由。
+7. AllJoyn 会话建立的步骤发生在参与者2和会话主机之间，试图将新来的加入者添加到多人会话。 
+8. 一个 `MPSessionChanged` 信号会被送到会话主机应用程序上，通知有新的成员加入会话。
+9. 参与者2从会话主机那里收到了多方会话中现存成员的集合，作为 `AttachSession` 回复的一部分。
+10.参与者2初始化了一个`AttachSession`，面向除了会话主机以外的每一个成员，随后将其送到会话主机。  
+11. 会话主机将 `AttachSession` 发送到现存的人员处。
+12. 参与者1收到来自参与者2的 `AttachSession`，更新自己的会话相关表，以添加参与者2。 
+13. 参与者1上的 AllJoyn 路由向应用程序发出 `MPSessionChanged` 信号，指示有新加入成员进入多方会话。
+14. 参与者2也向在会话中的成员的应用程序发送 `MPSessionChanged` 信号。
 
-1. The provider and consumer app are set up and the consumer discovers the producer app
-by using the AllJoyn Advertisement and Discovery mechanism.
-2. The AllJoyn session establishment steps occur between
-joiner 1 (consumer 1) and the session host (provider) to
-establish a multi-point session as captured in [Establish a
-multi-point session][establish-multi-point-session].
-3. Consumer 2 (joiner 2) wants to join the existing multi-point
-session, and initiates a JoinSession call with its AllJoyn router.
-4. The joiner 2 AllJoyn router establishes a physical
-channel with the provider side AllJoyn router (as applicable). For
-TCP Transport, this involves setting up a TCP connection
-between the two AllJoyn routers. If a UDP Transport is used
-between the two routers for session setup, no physical channel
-needs to be established.
-5. Once a connection is set up between the two AllJoyn buses,
-the consumer AllJoyn router initiates a `BusHello` message to
-send its bus GUID and AllJoyn protocol version. The provider
-AllJoyn router responds with its GUID, AllJoyn protocol
-version, and unique name.
-6. The joiner 2 and provider AllJoyn routers send out `ExchangeNames`
-signals to exchange the set of known unique names and well-known names. The provider AllJoyn router forwards this `ExchangeNames` to all other connected routers including the joiner 2 AllJoyn router.
-7. The AllJoyn session establishment steps occur between
-joiner 2 and the session host to add this joiner to the
-existing multi-point session.
-8. An `MPSessionChanged` signal is sent out to the session
-host app informing it of new joiner in the session.
-9. Joiner 2 receives the set of existing members for the
-multi-point session from the session host as part of the
-`AttachSession` response.
-10. Joiner 2 initiates an `AttachSession` with every received
-member of the session (except the session host, which it
-just did using the `AttachSession`) and sends it to the session host.
-11. The session host forwards this `AttachSession` to the existing session member.
-12. Joiner 1 receives `AttachSession` from joiner 2 and updates
-its session-related tables to add joiner 2.
-13. The AllJoyn router on joiner 1 sends out an `MPSessionChanged`
-signal to the app, indicating a newly added member to the
-multi-point session.
-14. Joiner 2 also sends out separate `MPSessionChanged` signal
-to the app for each existing member of the session.
-
-#### Consumer joins an existing multi-point session - Post-15.04 call flow
+#### 使用者加入一个现存的多方会话 - 15.04及其以后版本的呼叫流程
 
 ![consumer-joins-multipoint-session-post-1504][consumer-joins-multipoint-session-post-1504]
 
-**Figure:** AllJoyn session - consumer joins a multi-point session - 15.04 or later
+**Figure:** AllJoyn session - 使用者加入多方会话 - 15.04 或更新
 
 The message flow steps are described below.
 
-1. The provider and consumer app are set up and the consumer discovers the producer app
-by using the AllJoyn Advertisement and Discovery mechanism.
-2. The AllJoyn session establishment steps occur between
-joiner 1 (consumer 1) and the session host (provider) to
-establish a multi-point session as captured in [Establish a
-multi-point session][establish-multi-point-session].
-3. Consumer 2 (joiner 2) wants to join the existing multi-point
-session, and initiates a JoinSession call with its AllJoyn router.
-4. The AllJoyn session establishment steps occur between
-joiner 2 and the session host to add this joiner to the
-existing multi-point session and exchanges the necessary names.
-Refer to [Names sent as a part of AttachSessionWithNames][names-sent-as-a-part-of-attachsessionwithnames] for more details.
-5. An `MPSessionChanged` signal is sent out to the session
-host app informing it of new joiner in the session.
-6. Joiner 2 receives the set of existing members for the
-multi-point session from the session host as part of the
-`AttachSessionWithNames` response.
-7. Joiner 2 initiates an `AttachSessionWithNames` with every received
-member of the session (except the session host, which it
-just did using the `AttachSessionWithNames`) to the session host.
-8. The session host forwards this `AttachSessionWithNames` to the existing
-session member and sends the unique name and aliases of the joiner app and its
-routing node.  Refer to [Names sent as a part of AttachSessionWithNames][names-sent-as-a-part-of-attachsessionwithnames] for more details.
-9. Joiner 1 receives `AttachSessionWithNames` from joiner 2 and updates
-its session-related tables to add joiner 2 and sends a response back to the
-session host AllJoyn Router.
-10. The session  host AllJoyn Router forwards this response back to the
-Joiner 2 routing node.
-11. The AllJoyn router on joiner 1 sends out an `MPSessionChanged`
-signal to the app, indicating a newly added member to the
-multi-point session.
-12. Joiner 2 also sends out separate `MPSessionChanged` signal
-to the app for each existing member of the session.
+1. 提供方与使用方的应用程序被安装，使用方使用 AllJoyn 发现与推广机制来发现生产方应用程序。
+2. AllJoyn 会话的建立发生在加入者1（使用者1）以及会话主机（提供方）之间，目的是建立一个如 [Establish a multi-point session][establish-multi-point-session] 所示的多方会话
+3. 使用者2（加入者2）想要加入当前的多方会话，并使用自己的 AllJoyn 路由初始化了一个 JoinSession 命令。 
+4. AllJoyn 会话建立的步骤发生在参与者2和会话主机之间，试图将新来的加入者添加到多人会话，并交换所需要的标识符。详情请参阅
+[Names sent as a part of AttachSessionWithNames][names-sent-as-a-part-of-attachsessionwithnames].
+5. 一个 `MPSessionChanged` 信号会被送到会话主机应用程序上，通知有新的成员加入会话。
+6. 参与者2从会话主机那里收到了多方会话中现存成员的集合，作为 `AttachSession` 回复的一部分。
+7. 参与者2初始化了一个`AttachSessionWithNames`，面向除了会话主机以外的每一个成员。
+8. 会话主机将此 `AttachSessionWithNames` 发送到现有的会话成员，同时将加入应用程序的唯一识别符，别名和路由节点一并发送。详情请参阅
+[Names sent as a part of AttachSessionWithNames][names-sent-as-a-part-of-attachsessionwithnames].
+9. 加入者1从加入者2处接收到`AttachSessionWithNames`，并更新自己的会话相关表，将加入者2添加进来，同时给会话主机的 AllJoyn 路由发送回复。
+10. 会话主机的 AllJoyn 路由将此回复返还给加入者2的路由节点。
+11. 加入者1上的 AllJoyn 路由向应用程序发送 `MPSessionChanged` 信号，指示有新成员加入多方会话。
+12. 加入者2也向每一个在会话中的成员的应用程序发送 `MPSessionChanged` 信号。
 
 
-### Consumer leaves a point-to-point session
+### 使用方离开点对点会话
 
-The following figure captures the message flow for the scenario
-where a consumer leaves an existing point-to-point session.
-The same message flow is also applicable for the scenario when
-a consumer leaves a multi-point session with only two participants.
+下图展示了使用方离开一个现存的点对点会话场景时的信息流。此信息流同样适用于使用方离开只有两个参与者的多方会话的场景。
 
-When a participant leaves a point-to-point session or a multi-point
-session with only two participants, the session ends and is removed
-from session tables of both the participants. A participant can
-leave a session by initiating a LeaveSession call with the AllJoyn
-router. This results in a DetachSession signal being delivered
-to the other member of the session. Receipt of this signal triggers
-clearing of sessionId and other session-related information
-from the session tables of that member. Whenever a session ends,
-a SessionLost signal is sent to the application.  
+当一参与者离开一个点对点或只有两个参与者的多方会话时，会话会终结，并从两方的会话表中被移除。通过向 AllJoyn 路由初始化一个 LeaveSession 命令，参与者可以离开会话。这将会导致 DetachSession 信号被传输到其他会话成员。此信号的接收将会触发会话列表中关于此参与者的 sessionID 以及其 他与会话相关信息的清除。不论会话何时结束，SessionLost 信号都会被发送到该应用程序。
 
-**NOTE:** Either the joiner or the host of the session can leave
-a session. A similar message flow is applicable when a session
-host leaves the session.
+**NOTE:** 会话主机及参与者都可以选择离开会话，会话主机离开时的信息流也是类似的。
+
+
 
 ![consumer-leaves-p2p-session][consumer-leaves-p2p-session]
 
-**Figure:** AllJoyn session - consumer leaves a point-to-point session
+**Figure:** AllJoyn 会话 - 使用方离开一个点对点会话
 
-The message flow steps are described below.
+信息流描述如下：
 
-1. The consumer app establishes a session with the session host.
-2. The consumer app decides to leave the session. It invokes
-a LeaveSession API with the AllJoyn router via the AllJoyn
-core library. This call takes in the sessionId as input parameter.
-3. The AllJoyn router generates a DetachSession signal specifying
-the sessionId and the member that is leaving the session.
-This signal is sent to the other member in the session.
-4. After receiving the DetachSession signal, the AllJoyn router
-on the session host determines that it is the only member
-left in the session. As a result, it concludes that the session
-has ended and clears sessionId details from its session tables.
-5. The AllJoyn router on the consumer side clears sessionId
-details from its session tables and sends a successful
-LeaveSession response to the application.
-6. The AllJoyn router on the session host sends a SessionLost
-signal to the application indicating that the session has ended.
+1. 使用方应用程序与会话主机建立会话。
+2. 使用方应用程序决定离开会话。他通过 AllJoyn 核心库对 AllJoyn 路由调用了 LeaveSession API. 此调用使用 SessionID 作为输入。
+3. AllJoyn 路由生成了针对 sessionID 和正在离开的成员生成 DetachSession 信号，此信号被发送到会话中的其他成员。
+4. 收到 DetachSession 信号后，会话主机上的 AllJoyn 路由判断出自己是会话上仅存的成员。因此，他推断出会话已经结束，进而将会话表上的 sessionID 细节全部清除。
+5. 使用方一端的 AllJoyn 路由将自己会话表上的 sessionID 信息清除，并向应用程序发送 LeaveSession 成功的回复。 
+6. 会话主机上的 AllJoyn 路由向应用程序发送 SessionLost 信号，指示会话已经结束。
 
-### Consumer leaves a multi-point session
+### 使用方离开多方会话
 
-The following figure captures the message flow for the scenario
-where a consumer leaves a multi-point session with more
-than two participants.
-In this scenario, the session continues with remaining
-participants even after a member leaves the session.
-The remaining participants update their session tables to
-remove the member that left the session.
+下图展示了使用方离开一个多于两个参与者的多方会话场景时的信息流。
+在这个场景中，即使一方离开，剩下的参与者依然继续着会话。剩下的参与者将自己的会话表更新，将离开会话的成员移除。
 
 ![consumer-leaves-multipoint-session][consumer-leaves-multipoint-session]
 
-**Figure:** AllJoyn session - consumer leaves a multi-point session
+**Figure:** AllJoyn 会话 - 使用方离开多方会话
 
-The message flow steps are described below.
+以下描述了信息流
 
-1. Two consumer apps (joiner 1 and joiner 2) have joined in
-a single multi-point session with the provider.
-2. Joiner 2 decides to leave the session. It invokes a
-LeaveSession API with the AllJoyn router, specifying the sessionId.
-3. The AllJoyn router on joiner 2 generates a DetachSession
-signal, specifying the sessionId and the member that is
-leaving the session. This signal is sent as a session broadcast
-signal to all the other members in the session.
-4. Upon receiving the DetachSession signal, the AllJoyn router
-involved in the multi-point session determines that there
-are two or more remaining participants in the session,
-meaning the session will continue to exist. As a result,
-it updates its session tables to remove the member received
-in the DetachSession signal for that sessionId. The AllJoyn
-router then sends an `MPSessionChanged` signal to the app
-indicating member deletion for that session. This logic is
-executed by the AllJoyn router for every remaining participant
-in the session.
-5. The AllJoyn router on the member leaving the session clears
-sessionId details from its session tables and sends a successful
-LeaveSession response to the application.
+1. 两个使用方应用程序（参与者1与参与者2）已经加入同一与供应方的多方会话。
+2. 参与者2决定离开会话。他向 AllJoyn 路由调用了 LeaveSession API，并指明了 sessionID.
+3. 参与者2上的 AllJoyn 路由生成了指明 sessionID 和成员的 DetachSession 信号。该信号被当作会话
+的广播信号发送到所有会话中的其他成员。
+4. 根据接收到的 DetachSession 信号， 多方会话中的 AllJoyn 路由发现会话中还剩余两个或多个参与者，会话将会继续存在。于是他会更新他的会话表，
+根据 DetachSession 信号中的 sessionID 将对应的成员移除。AllJoyn 路由于是向应用程序发送一个 `MPSessionChanged` 信号，指示着会话中有成员被删
+除。该逻辑由 AllJoyn 路由对会话中每一个剩余的参与者执行。
+5. 离开会话成员的 AllJoyn 路由会清除自己会话表上的 sessionID 细节信息，并向应用程序发送一个 LeaveSession 成功回复。
 
-### Provider leaves a multi-point session
+### 提供方离开一个多方会话
 
-The following figure captures the message flow for the scenario
-where a provider (session host) leaves a multi-point session
-with more than two participants. In this case, the session
-continues to exist and the remaining participants can continue
-to communicate; however, no new participants can join the multi-point session.
+下图指示了提供方（会话主机）离开一个有多于两个参与者的多方会话场景中的信息流。在这个例子中，会话仍可继续，剩余的参与者也可以互相通信；但是
+没有新的参与者可以加入该多方会话。
 
 ![provider-leaves-multipoint-session][provider-leaves-multipoint-session]
 
-**Figure:** AllJoyn session - provider leaves a multi-point session
+**Figure:** AllJoyn 会话 - 提供方离开一个多方会话
 
-### Provider unbinds a session port
+### Provider 解绑会话端口
 
-The provider app can unbind a previously bound session port
-at any time. As a result, no new sessions can be established
-on that session port. Any existing sessions on that session
-port will continue and are not impacted. If there was any multi-point
-session on that session port, no new members can be added to
-that multi-point session.
+提供方应用程序可以在任何时间解绑之前已经绑定的会话端口。后果是，该会话端口不能再建立新的会话。任何在此会话端口上现存的会话可以继续，不会受到影响。如果该会话端口上存在多方会话的话，则没有新的成员可以被加入到这些多方会话中。
 
-## Session options
+## Session 选项
 
-The following tables capture the session options and values supported
-for the AllJoyn session. Traffic, proximity, and transports
-fields in the session option are specified as bit masks with values.
+下表展示了 AllJoyn 会话中的会话选项以及支持的值。在会话选项中，流量，邻域以及传送领域由带值的比特掩码声明。
 
-| Option       | Description                                                     | Data type |
+
+| 选项         | 描述                                                            | 数据类型  |
 |--------------|-----------------------------------------------------------------|-----------|
-| traffic      | Specifies type of traffic sent over the session                 | byte      |
-| isMultipoint | Specifies whether the session is multi-point or point-to-point. | bool      |
-| proximity    | Specifies the proximity scope for this session                  | byte      |
-| transports   | Specifies the allowed transports for this Session               | short     |
-| nameTransfer | Name transfer type of session - Internal use only               | byte      |
+| traffic      | 指在会话中被发送的 traffic 类型                                 | byte      |
+| isMultipoint | 区分会话是点对点还是多方                                        | bool      |
+| proximity    | 声明此会话的邻域范围                                            | byte      |
+| transports   | 声明会话中被允许使用的传输方式                                  | short     |
+| nameTransfer | 声明会话中识别符转换的类型 - 仅限内部使用                       | byte      |
 
-### Traffic session allowed values
+### 会话中的 traffic 值
 
-| Name                   | Value | Description |
+| 名称                   |  值   |   描述   |
 |------------------------|:-----:|----------------------------------------------------------------------------------|
-| TRAFFIC_MESSAGES       | 0x01  | Use reliable message-based communication to move data between session endpoints. |
-| TRAFFIC_RAW_UNRELIABLE | 0x02  | Use unreliable (e.g., UDP) socket-based communication to move data between session endpoints. This creates a raw session where MESSAGE encapsulation is not used. |
-| TRAFFIC_RAW_RELIABLE   | 0x04  | Use reliable (e.g., TCP) socket-based communication to move data between session endpoints. RAW. This creates a raw session where MESSAGE encapsulation is not used. |
+| TRAFFIC_MESSAGES       | 0x01  | 使用可靠的基于消息的通信在会话的端点之间传送数据|
+| TRAFFIC_RAW_UNRELIABLE | 0x02  | 使用不可靠的（例如 UDP）基于套接字的通信在两个会话端点之间传送数据。这会创造一个不封装 MESSAGE 的原始会话 |
+| TRAFFIC_RAW_RELIABLE   | 0x04  | 使用可靠的（例如TCP）基于套接字的通信在两个会话端点之间传送数据。这会创造一个不封装 MESSAGE 的原始会话 |
 
-### IsMultipoint session allowed values
+### 会话中的 IsMultipoint 值
 
-| Name | Value | Description |
+| 名称 | 值 | 描述 |
 |---|:---:|---|
-| N/A | true | A multi-point capable session. A multi-point session can be joined multiple times to form a single session with multiple (> 2) endpoints. |
-| N/A | false | Session is not multi-point capable. Each join attempt will create a new point-to-point session. |
+| N/A | true  | 支持多方参与的会话。多点会话可以被加入多次，形成一个有多于两个端点参与的单个对话。 |
+| N/A | false | 不支持多方参与的会话。每一次加入会话的尝试将会创建一个新的点对点会话。|
 
-### Proximity session allowed values
+### 会话中的 Proximity 值
 
-**NOTE:** The PROXIMITY_PHYSICAL and PROXIMITY_NETWORK options are
-not supported semantically today, meaning no enforcement is
-done for spatial scope. Only bit matching is done for these
-options when looking to find a set of compatible set of
-session options. AllJoyn system provides flexibility to
-support specific semantics for these options in future if needed.
+**NOTE:** PROXIMITY_PHYSICAL 和  PROXIMITY_NETWORK 选项在现在不再被识别，也就是说不再有针对空间范围的限制。在寻找兼容的会话选项时，只通过
+未匹配即可完成。如果未来有需要，AllJoyn 系统会为这些选项的特定语意提供灵活。
 
-| Name | Value | Description |
+| 名称 | 值 | 描述 |
 |---|:---:|---|
-| PROXIMITY_ANY	| 0xFF | Spatial scope of the session is not limited. Session can be joined by joiners located anywhere. |
-| PROXIMITY_PHYSICAL | 0x01 | Spatial scope of session is limited to the local host. Interpreted as "the same physical machine." Session can be joined by joiners located only on the same physical machine as the one hosting the session. |
-| PROXIMITY_NETWORK | 0x02 | Spatial scope of session is limited to anywhere on the local logical network segment. Session can be joined by joiners located anywhere on the network. |
+| PROXIMITY_ANY	| 0xFF | 会话没有空间范围限制。 会话可以被在任何地点的参与者加入。|
+| PROXIMITY_PHYSICAL | 0x01 | 会话空间仅限于本地主机，解释为“同一个物理机器”。只有与会话主机在相同物理机器上的参与者可以加入。|
+| PROXIMITY_NETWORK | 0x02 | 会话空间限于本地逻辑网络部分。在此网络上任意位置的参与者都可以加入会话。|
 
-### Transports session allowed values
+### 会话中的 Transports 值
 
-| Name                   |  Value   | Description |
+| 名称                   |  值      |    描述     |
 |------------------------|:--------:|-------------|
-| TRANSPORT_NONE         | `0x0000` | Use no transport to communicate with a given session. |
-| TRANSPORT_LOCAL        | `0x0001` | Use only the local transport to communicate with a given session. |
-| TRANSPORT_TCP          | `0x0004` | Use only the TCP transport to communicate with a given session. |
-| TRANSPORT_UDP          | `0x0100` | Use only the UDP/ARDP transport to communicate with a given session. |
-| TRANSPORT_EXPERIMENTAL | `0x8000` | Use only the experimental transport that has not yet reached the performance, stability or testing requirements of a commercialized transport to communicate with a given session. |
-| TRANSPORT_IP           | `TRANSPORT_TCP` &#124; `TRANSPORT_UDP` | Use any IP based transport to communicate with a given session |
-| TRANSPORT_ANY          | `TRANSPORT_LOCAL` &#124; `TRANSPORT_IP` | Use any commercialized transport. |
+| TRANSPORT_NONE         | `0x0000` | 不适用任何传输来与给定会话通信  |
+| TRANSPORT_LOCAL        | `0x0001` | 仅使用本地传输来与给定会话通信  |
+| TRANSPORT_TCP          | `0x0004` | 仅使用 TCP 传输来与给定会话通信 |
+| TRANSPORT_UDP          | `0x0100` | 仅使用 UDP/ARDP 传输来与给定会话通信|
+| TRANSPORT_EXPERIMENTAL | `0x8000` | 使用还未达到商用传输所要求的性能以及稳定性要求的实验形传输与给定会话通信。 |
+| TRANSPORT_IP           | `TRANSPORT_TCP` &#124; `TRANSPORT_UDP` | 使用任何基于 IP 的传输来与给定会话通信。|
+| TRANSPORT_ANY          | `TRANSPORT_LOCAL` &#124; `TRANSPORT_IP` | 使用任意商业化传输。 |
 
-### Names sent as a part of AttachSessionWithNames
+### 作为 AttachSessionWithNames 一部分发送的 NAME.
 
-AllJoyn routers only exchange names required for establishing a session unless
-specifically requested by the consumer and/or producer app. The app can request
-for the routers to exchange all names by invoking the `SetAllNames` API on the
-sessionOpts or by passing `exchangeAllNames=true` in the `SessionOpts` constructor.
-The app may invoke the `SetSessionNames` API on the sessionOpts to reset to the
-default behavior of exchanging only the required names.
+除非使用方和/或者 供应方应用程序有特殊请求，AllJoyn 路由仅交换建立会话所需要的识别符。应用程序可以通过调用在 sessionOpts 上的 `SetAllNames` API, 或者通过在 `SessionOpts` 构造函数中传递 `exchangeAllNames=true`来向路由申请交换所有的识别符。应用程序可以通过调用在 sessionOpts 上的
+`SetSessionNames` API 来重置到仅交换所需要的识别符的默认设置。
 
-#### Behavior when Session Names option is used
-Point to point session: The Consumer and Provider AllJoyn routing nodes exchange
-unique name and aliases of the routing node and session host/joiner app only as
-a part of the `AttachSessionWithNames` method call/response.
 
-Multipoint session: The Consumer AllJoyn routing node sends the unique name and
-aliases of the routing node and session joiner app only. The Provider routing
-node sends the unique names and aliases of the routing node, host and existing
-members and their routing nodes. When the provider forwards an
-`AttachSessionWithNames` to an existing session member, it sends out the unique
-name and aliases of the joiner app and routing node.
+#### Session Names 选项启用时的反应
+点对点会话：使用方和提供方 AllJoyn 路由节点交换该节点，会话主机/参与方应用程序的唯一识别符和别名的行为仅仅当作 `AttachSessionWithNames` 
+方法的调用/回复。
 
-#### Behavior when All Names option is used
-Unique names of all locally and remotely connected router and leaf nodes are
-exchanged as a part of the `AttachSessionWithNames` and its response.
-In this case the names exchanged are identical to the ones exchanged between pre-15.04 routing nodes except that the names are exchanged as a part of `AttachSessionWithNames` instead of a separate `ExchangeNames` signal.
+多方会话：使用方 AllJoyn 路由节点仅发送路由节点和会话参与者应用程序的唯一识别符和别名。提供方路由节点发送该路由点，主机和现存成员，以及他们的路有点的唯一识别符和别名。当提供方发送 `AttachSessionWithNames`到一个现存的会话成员时，他会发送出该参与者应用程序和路有点的唯一识别符和别
+名。
 
-### Session options negotiation
 
-A compatible set of session options must be agreed upon
-between two endpoints to establish a session. If a compatible
-set of session options cannot be established between two
-endpoints, session establishment fails.
-Session options negotiation occurs between session options
-provided by the provider app at the time of invoking
-`BindSessionPort(...)` and the session options requested
-by the consumer app when invoking the `JoinSession(...)`.
+#### All Names 选项启用时的反应`AttachSessionWithNames`
 
-* For certain session options, e.g., traffic, an
-exact match must occur between the provider and consumer
-session options for negotiation to be successful.
-* For certain session options, e.g. isMultipoint, the option provided by
-the producer is used.
-* For other session options, the negotiation happens to the
-lowest common session option level. Exact details of session
-options negotiation is outside the scope of this document.
+所有本地和远端连接的路由和叶子节点的唯一识别符都会被交换，作为 `AttachSessionWithNames` 和其相应的一部分。在这种情况中的识别符交换与在15.04
+之前版本中路由节点之间的识别符交换大致相同，唯一的区别是识别符交换不再是分开的 `ExchangeNames` 信号，而是 `AttachSessionWithNames` 的一部分。
 
-## Detecting missing or slow endpoints
+### Session 选项协商
 
-The AllJoyn Router supports a probing mechanism to detect
-other missing routers and missing applications so that
-resources can be cleaned up for missing endpoints. Separate
-logic is supported for detecting other missing routers and
-applications as described in [Probing mechanism for detecting missing routers][probing-mechanism-for-detecting-missing-routers]
-and [Probing mechanism for detecting missing applications][probing-mechanism-for-detecting-missing-apps].
+两个端点之间必须存在相兼容的会话选项集合，会话才能建立。如果相兼容的会话选项集合没能在两端点之间被建立，会话建立会失败。
+会话选项协商发生在由提供方应用程序通过调用 `BindSessionPort(...)` 所提供的会话选项，以及使用方应用程序调用 `JoinSession(...)` 时请求的会话选项之间。
+求的会话选项。
 
-The AllJoyn router also supports logic to detect and disconnect
-any AllJoyn applications or other AllJoyn routers that are
-slower to read data than the minimum desired performance level.
-This logic is captured in [Detecting a slow reader][detecting-slow-reader].
 
-Once a remote endpoint (an application or anther router) is
-disconnected based on probing mechanism or slow reader detection
-logic, the AllJoyn router will clean up any connection slots,
-active advertisements and sessions associated with the remote
-endpoint. The AllJoyn router will also send SessionLost,
-`MPSessionChanged` and `DetachSession` signals to participants
-that are in a session with the disconnected remote application
-or in a session with applications connected to the disconnected
-remote router.
+* 对于给定的会话选项，例如，traffic，提供方和使用方的会话选项必须精确吻合，协商才能成功。
+* 对于给定的会话选项，例如 isMultipoint，提供方提供的选项被使用。
+* 对于其他会话选项，协商会发生在最低的通用会话选项级别。更详尽的会话选项协商机制不在本文档的描述范围内。
 
-### Probing mechanism for detecting missing routers
+## 探测丢失或速度慢的端点
+AllJoyn 路由支持用于探测其他丢失的路由以及应用程序的探测机制，因此分配给丢失端点的资源可以被清除。对于探测其他丢失的路由和应用程序，使用了
+不同的逻辑，请参见[Probing mechanism for detecting missing routers][probing-mechanism-for-detecting-missing-routers]
+以及 [Probing mechanism for detecting missing applications][probing-mechanism-for-detecting-missing-apps].
 
-The AllJoyn router provides a `SetLinkTimeout()` API which
-can be invoked by the application to detect missing routers.
-The application provides an idle timeout value as part of the
-API, which should be greater than or equal to the minimum value
-(40 sec) defined at the router. A single probe is sent to the
-other router after inactivity is detected for idle timeout period.
-If no response is received in probe timeout period (10 sec), that
-router is disconnected and all associated connection slots,
-active advertisements and sessions are cleaned up.
+AllJoyn 路由也支持用于探测并断开任意读取数据速度低于最小性能需求限制的 AllJoyn 应用程序或者路由的逻辑。该逻辑在 [Detecting a slow reader][detecting-slow-reader] 中有描述。
 
-This functionality to detect missing routers is not enabled
-by default. An app needs to call the `SetLinkTimeout()` API
-to enable it.
+一旦一个远端节点（应用程序或者另一个路由）根据探测机制或者根据读取速度慢探测逻辑被断开， AllJoyn 路由会将与之相关的所有连接点，动态的推广以
+及会话全部清除。AllJoyn 路由同时也会发送 SessionLost, `MPSessionChanged` 以及 `DetachSession` 信号，通知与被断开应用程序同在一个对话中的参
+与者，或是连接到被断开路由的应用程序。
 
-### Probing mechanism for detecting missing applications
 
-The AllJoyn router provides a probing mechanism using DBus
-pings to detect missing AllJoyn applications. The following
-parameters determine the transmission schedule of the DBus pings:
-* Number of probes(N): Total number of DBus pings sent.
-* Idle timeout(I): Time after which the first DBus ping will be sent.
-* Probe timeout(P): Time after which subsequent DBus ping
-will be sent if a reply to the previous ping has not yet been received.
+### 用于探测丢失路由的探测机制
 
-The values of the above parameters are specific to the AllJoyn TCP versus
-UDP Transport over which the AllJoyn application is connected
-to the AllJoyn router.
+AllJoyn 提供了 `SetLinkTimeout()` API, 可被应用程序调用，用于探测丢失的路由。该应用程序提供了一个大于等于路由器定义的最小值(40 sec)的空闲超时值，作为 API 的一部分。当有超过空闲超时值周期的静止被探测到时，一个单独的探针会被送到其他路由。如果在探针超时周期（10 sec）内
+没有收到回复，该路由将被断开，与其相关的连接位，动态推广以及会话也会被清除。
 
-The following figure shows the transmission schedule of the DBus pings.
+该探测路由的功能不是默认开启的。若要开启应用程序需要调用  `SetLinkTimeout()` API.
 
+
+### 用于探测丢失应用程序的探测机制
+
+AllJoyn 路由提供一个使用 D-Bus pings 功能的用于探测丢失的 AllJoyn 应用程序的探针机制。下列参数决定了D-Bus pings 的传输方案：
+
+* 探针数量(N): DBus pings 被发送的总数。
+* 空闲超时(I): 第一个 DBus ping 被发送之前的等待时间。 
+* 探针超时(P): 前面发送的 ping 没有回应的情况下，下一个DBus ping 被发送前的等待时间。 
+
+以上参数的值是针对 AllJoy TCP 相对于 UDP 在连接到 AllJoyn 路由上的应用程序上传输设定的。
+
+下图展示了 DBus pings 的传输方案。
 ![probe-transmission-schedule-for-detecting-missing-apps][probe-transmission-schedule-for-detecting-missing-apps]
 
-**Figure:** Probe transmission schedule for detecting missing apps
+**Figure:** 用于探测丢失应用程序的探针传输方案
 
-Connected AllJoyn applications will be able to select values
-for idle and probe timeouts within a transport specific range
-by invoking the `SetIdleTimeouts()` API. The call specifies
-the requested idle and probe timeouts and returns the actual
-values for the idle and probe timeouts.
+通过调用 `SetIdleTimeouts()` API , 已连接的 AllJoyn 应用程序可以在一个运输专用的范围内选择空闲超时和探针超时的值。该调用声明了所请求的空闲
+以及探针超时值，并将实际的空闲以及探针超时值返回。
 
-### Detecting a slow reader
+### 探测一个读取速度慢的应用程序
 
-In order to maintain quality of service, the AllJoyn router
-will disconnect any AllJoyn applications or AllJoyn routers
-that are slower than the minimum desired performance level.
+为了保持服务质量，AllJoyn 路由会将任何读取速度低于最小性能所需值的 AllJoyn 路由或者应用程序断开。
 
-The AllJoyn router will disconnect a remote AllJoyn application/router
-in either of the following scenarios:
-* Once the network send buffer on the router and network
-receive buffer on remote application/router are both full,
-the remote application/router does not read data fast enough
-to be able to fit the pending AllJoyn message within the
-Send Timeout period.
-* More than (10 * Send timeout) control messages originating
-from the router are currently queued for the remote application/router.
+在下面任一种场景中，AllJoyn 路由会断开一个远端的 AllJoyn 应用程序/路由：
 
-The value of the Send timeout is specific to the TCP or UDP
-transport over which the remote AllJoyn application/router is
-connected to this AllJoyn router.
+* 每当路由端的网络发送缓存以及远端应用程序/路由端的网络接受缓存同时被占满，远端应用程序/路由端的读取速度在 Send Timeout 周期内不能应付即将发生的 AllJoyn 消息时。
+* 在路由端排队等待发送给远端应用程序/路由端的控制消息多于（10 * Send timeout）个。
 
-## Methods/signals used for an AllJoyn session
+Send timeout 的值是针对远端应用程序/路由端连接到 AllJoyn 路由的连接方式（TCP 或是 UDP）而设定的。 
 
-The AllJoyn framework supports session-related functionality
-as part of the following AllJoyn interfaces:
+## AllJoyn 会话中所用的方法/信号
+
+AllJoyn 框架支持作为下列 AllJoyn 接口一部分的会话关联的功能：
 
 * org.alljoyn.Daemon
 * org.alljoyn.Bus
 * org.alljony.Bus.Peer.Session
 
-This section provides a summary of methods and signals from
-these interfaces used for AllJoyn session-related functionality.
+此章节将为 AllJoyn 会话关联的功能中的方法和信号做出总结。
 
 ### org.alljoyn.Daemon
 
-The org.alljoyn.Daemon interface is the main over-the-wire
-interface used for communication between two AllJoyn router
-components. The following tables summarize the org.alljoyn.Daemon
-interface methods and signals used for session-related functions.
+org.alljoyn.Daemon 接口是用于两个 AllJoyn 路由组建之间通信的主要 over-the-wire 接口。下列表格列出了该接口被用于会话关联的功能的方法和信号： 
+#### org.alljoyn.Daemon 接口的方法
 
-#### org.alljoyn.Daemon interface methods
-
-| Method name | Description |
+| 方法名 | 描述 |
 |---|---|
-| AttachSession	| Method for a remote AllJoyn router to attach a session with this AllJoyn router. |
-| GetSessionInfo | Method for a remote AllJoyn router to get session information from this AllJoyn router. |
+| AttachSession	| 针对远端 AllJoyn 路由的方法，可以将一个会话附加到此路由上。|
+| GetSessionInfo | 针对远端 AllJoyn 路由的方法，可以获取此路由的会话信息。 |
 
-#### org.alljoyn.Daemon.AttachSession method parameters
+#### org.alljoyn.Daemon.AttachSession 方法参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| session port | in | AllJoyn session port |
-| Joiner | in | Unique name of the joiner |
-| creator | in | Unique name or well-known name of the session host |
-| dest | in | <p>Unique name of the destination for the AttachSession.</p><ul><li>For point-to-point session, this is same as creator.</li><li>For multi-point session, this field can be different than the creator.</li></ul> |
-| b2b | in | Unique name of the bus-to-bus end point on the joiner side. This is used to set up the message routing path for the session. |
-| busAddr | in | A string indicating how to connect to the bus endpoint, for example, "tcp:192.23.5.6, port=2345" |
-| optsIn | in | Session options requested by the joiner. |
-| status | out | Session join status |
-| sessionId | out | Assigned session ID |
-| optsOut | out | Final selected session options |
-| members | out | List of session members |
+| session port | in | AllJoyn 会话端口 |
+| Joiner | in | 参与者的唯一标识符 |
+| creator | in | 会话主机的唯一标识符或者 well-known names |
+| dest | in | <p>AttachSession 目的地的唯一标识符.</p><ul><li>对于点对点会话，此项与 creator 相同</li><li>对于多方会话，此项可能与 creator 有区别</li></ul> |
+| b2b | in | 参与者一方总线对总线端点的唯一标识符，用于建立会话的消息路由路径 |
+| busAddr | in | 指示如何连接到总线端点的字符串，例如 "tcp:192.23.5.6, port=2345" |
+| optsIn | in | 参与者请求的会话选项 |
+| status | out | 会话参与状态 |
+| sessionId | out | 被分配的会话 ID |
+| optsOut | out | 最终会话选项 |
+| members | out | 会话成员列表 |
 
-#### org.alljoyn.Daemon.AttachSessionWithNames method parameters
+#### org.alljoyn.Daemon.AttachSessionWithNames 方法参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| session port | in | AllJoyn session port |
-| Joiner | in | Unique name of the joiner |
-| creator | in | Unique name or well-known name of the session host |
-| dest | in | <p>Unique name of the destination for the AttachSession.</p><ul><li>For point-to-point session, this is same as creator.</li><li>For multi-point session, this field can be different than the creator.</li></ul> |
-| b2b | in | Unique name of the bus-to-bus end point on the joiner side. This is used to set up the message routing path for the session. |
-| busAddr | in | A string indicating how to connect to the bus endpoint, for example, "tcp:192.23.5.6, port=2345" |
-| optsIn | in | Session options requested by the joiner. |
-| names | in | List of unique and well known names |
-| status | out | Session join status |
-| sessionId | out | Assigned session ID |
-| optsOut | out | Final selected session options |
-| members | out | List of session members |
-| names | out | List of unique and well known names |
+| session port | in | AllJoyn 会话端口 |
+| Joiner | in | 参与者的唯一标识符 |
+| creator | in | 会话主机的唯一标识符或者 well-known names |
+| dest | in | <p>AttachSession 目的地的唯一标识符.</p><ul><li>对于点对点会话，此项与 creator 相同</li><li>对于多方会话，此项可能与 creator 有区别</li></ul> |
+| b2b | in | 参与者一方总线对总线端点的唯一标识符，用于建立会话的消息路由路径 |
+| busAddr | in | 指示如何连接到总线端点的字符串，例如 "tcp:192.23.5.6, port=2345" |
+| optsIn | in | 参与者请求的会话选项 |
+| names | in | 唯一标识符与 well-known names 的列表 |
+| status | out | 会话参与状态 |
+| sessionId | out | 被分配的会话 ID |
+| optsOut | out | 最终会话选项 |
+| members | out | 会话成员列表 |
+| names | out | 唯一标识符与 well-known names 的列表 |
 
-#### org.alljoyn.Daemon.GetSessionInfo method parameters
+#### org.alljoyn.Daemon.GetSessionInfo 方法参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| creator | in | Unique name for the app that bound the session port. |
-| session port | in | Session port. |
-| optsIn | in | Session options requested by the joiner. |
-| busAddr | out | Returned bus address for the session to use when attempting to create a connection for joining the session, for example, "tcp:192.23.5.6, port=2345" |
+| creator | in | 绑定会话端口的应用程序的唯一识别符 |
+| session port | in | 会话端口 |
+| optsIn | in | 参与者请求的会话选项 |
+| busAddr | out | 试图创建加入会话的连接时返回的供会话使用的总线地址，例如 "tcp:192.23.5.6, port=2345" |
 
-#### org.alljoyn.Daemon interface signals
+#### org.alljoyn.Daemon 接口信号
 
-| Signal name | Description |
+| 信号名 | 描述 |
 |---|---|
-| ExchangeNames | A signal that informs remote AllJoyn router of names available on the local AllJoyn router. |
-| DetachSession | A signal sent out to detach a joiner from an existing session |
+| ExchangeNames | 用于通知远端 AllJoyn 路由本地 AllJoyn 路由可用的识别符的信号 |
+| DetachSession | 使参与者离开现存会话的信号 |
 
-#### org.alljoyn.Daemon.ExchangeNames signal parameters
+#### org.alljoyn.Daemon.ExchangeNames 信号参数
 
-| Parameter name | Description |
+| 参数名 | 描述 |
 |---|---|
-| uniqueName | List of one or more unique names available on the local AllJoyn router. |
-| WKNs | List of one or more well-known names registered with each of the known unique name on the local AllJoyn router. |
+| uniqueName | 包含一个或多个在本地 AllJoyn 路由上可用的唯一识别符的列表 |
+| WKNs | 包含一个或多个对应注册到本地 AllJoyn 路由上唯一识别符的 well-known names |
 
-#### org.alljoyn.Daemon.DetachSession signal parameters
+#### org.alljoyn.Daemon.DetachSession 信号参数
 
-| Parameter name | Description |
+| 参数名 | 描述 |
 |---|---|
-| sessionId | AllJoyn session ID |
-| Joiner | Unique name of the joiner |
+| sessionId | AllJoyn 会话 ID |
+| Joiner | 参与者的唯一标识符 |
 
 ### org.alljoyn.Bus
 
-The org.alljoyn.Bus interface is the main AllJoyn interface
-between the application and the AllJoyn router. The following
-tables summarize the org.alljoyn.Bus interface methods and
-signals used for session-related functions.
+org.alljoyn.Bus 接口是位于应用程序和 AllJoyn 路由之间的主要接口。下表总结了该接口中用于会话相关功能的方法与信号。
 
-#### org.alljoyn.Bus interface methods
+#### org.alljoyn.Bus 接口方法
 
-| Method name | Description |
+| 方法名 | 描述 |
 |---|---|
-| BusHello | Method used to exchange identifiers. This can be used between app and AllJoyn router, as well as between two AllJoyn router components. |
-| BindSessionPort | Method for an application to initiate binding a session port with the AllJoyn bus. |
-| UnbindSessionPort | Method for an application to unbind a session port with the AllJoyn bus. |
-| JoinSession | Method for an application to initiate joining a session. |
-| LeaveSession | Method for an application to initiate leaving an existing session. |
+| BusHello | 用于交换标识符的方法。可被用于应用程序和 AllJoyn 路由之间，也可被用于两个 AllJoyn 路由组建之间。 |
+| BindSessionPort | 应用程序用来初始化将会话端口绑定到 AllJoyn 总线的方法 |
+| UnbindSessionPort | 应用程序用来将会话端口与 AllJoyn 总线解除绑定的方法 |
+| JoinSession | 应用程序用来初始化加入一个会话的方法 |
+| LeaveSession | 应用程序用来初始化离开一个现存会话的方法 |
 
-#### org.alljoyn.Bus.BusHello method parameters
+#### org.alljoyn.Bus.BusHello 方法参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| GUIDC | in | GUID of the client AllJoyn router. |
-| protoVerC | in | AllJoyn protocol version of client AllJoyn router. |
-| GUIDS | out | GUID of the service side AllJoyn router. |
-| uniqueName | out | Unique name assigned to the bus-to-bus endpoint between two AllJoyn router components. |
-| protoVerS | out | AllJoyn protocol version of service side of AllJoyn router. |
+| GUIDC | in | 客户端 AllJoyn 路由的 GUID |
+| protoVerC | in | 客户端 AllJoyn 路由的 AllJoyn 协议版本 |
+| GUIDS | out | 服务端 AllJoyn 路由的 GUID |
+| uniqueName | out | 两 AllJoyn 路由组建之间总线对总线端点的唯一标识符 |
+| protoVerS | out | 服务端 AllJoyn 路由的 AllJoyn 协议版本 |
 
-#### org.alljoyn.Bus.BindSessionPort method parameters
+#### org.alljoyn.Bus.BindSessionPort 方法参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| sessionPort | in | Specified session port. Set to SESSION_PORT_ANY if app is asking AllJoyn router to assign a session port. |
-| opts | in | Specified session options. |
-| resultCode | out | Result status |
-| sessionPort | out | Same as input sessionPort unless SESSION_PORT_ANY was specified. In the latter case, set to an AllJoyn router-assigned session port. |
+| sessionPort | in | 指定的会话端口。如果应用程序向 AllJoyn 路由申请分配一个会话端口，则设置为 SESSION_PORT_ANY |
+| opts | in | 指定的会话选项 |
+| resultCode | out | 结果状态 |
+| sessionPort | out | 与输入的 sessionPort 相同，除非 SESSION_PORT_ANY 之前被指定。如被指定，则将此参数设定为一个由 AllJoyn 路由分配的会话 端口。|
 
-#### org.alljoyn.Bus.UnbindSessionPort method parameters
+#### org.alljoyn.Bus.UnbindSessionPort 方法参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| sessionPort | in | Specified session port. |
-| resultCode | out | Result status |
+| sessionPort | in | 指定的会话端口 |
+| opts | in | 指定的会话选项 |
 
-#### org.alljoyn.Bus.JoinSession method parameters
+#### org.alljoyn.Bus.JoinSession 方法参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| sessionHost | in | Well-known name/unique name of the session creator. |
-| sessionPort | in | Specified session port. |
-| optsIn | in | Session options requested by the joiner. |
-| resultCode | out | Result status |
-| sessionId | out | Assigned session ID. |
-| opts | out | Final selected session options. |
+| sessionHost | in | 会话创建者的唯一识别符/ well-known name |
+| sessionPort | in | 给定的会话端口 |
+| optsIn | in | 参与方请求的会话选项 |
+| resultCode | out | 结果状态 |
+| sessionId | out | 被分配的会话 ID |
+| opts | out | 最终选择的会话选项 |
 
-#### org.alljoyn.Bus.LeaveSession method parameters
+#### org.alljoyn.Bus.LeaveSession 方法参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| sessionId | in | Session ID of the session. |
-| resultCode | out | Result status |
+| sessionId | in | 会话的会话 ID |
+| resultCode | out | 结果状态 |
 
-#### org.alljoyn.Bus interface signals
+#### org.alljoyn.Bus 接口信号
 
-| Signal name | Description |
+| 信号名 | 描述 |
 |---|---|
-| SessionLost | A signal that informs application when a session ends. |
-| MPSessionChanged | A signal that informs application on changes to an existing session. |
+| SessionLost | 在会话结束时用来通知应用程序的信号 |
+| MPSessionChanged | 在现存会话发生变化时用来通知应用程序的信号 |
 
-#### org.alljoyn.Bus.SessionLost signal parameters
+#### org.alljoyn.Bus.SessionLost 信号参数
 
-| Parameter name | Description |
+| 参数名 | 描述 |
 |---|---|
-| sessionId | Session ID of the session that was just lost. |
+| sessionId |刚刚丢失的会话的会话 ID |
 
-#### org.alljoyn.Bus.MPSessionChanged signal parameters
+#### org.alljoyn.Bus.MPSessionChanged 信号参数
 
-| Parameter name | Description |
+| 参数名 | 描述 |
 |---|---|
-| sessionId | Session ID that changed. |
-| name | Unique name of the session member that changed. |
-| isAdd | Flag indicating whether member was added. Set to true if the member has been added. |
+| sessionId | 改变的会话 ID |
+| name | 改变的会话成员的唯一识别符 |
+| isAdd | 指示成员是否被添加的标志位。如已经被添加则设置为 true |
 
 ### org.alljoyn.Bus.Peer.Session
 
-The org.alljoyn.Bus.Peer.Session interface is an AllJoyn
-interface between application and the AllJoyn router. The
-following tables summarize the org.alljoyn.Bus.Peer.Session
-interface methods and signals used for session-related functions.
+org.alljoyn.Bus.Peer.Session 接口是用于应用程序和 AllJoyn 路由之间的 AllJoyn 接口。下表总结了该接口中用于会话相关功能的方法与信号。
 
-#### org.alljoyn.Bus.Peer.Session interface methods
+#### org.alljoyn.Bus.Peer.Session 接口方法
 
-| Method name | Description |
+| 方法名 | 描述 |
 |---|---|
-| AcceptSession	| Method for invoking accepting a session locally on the session host. |
+| AcceptSession	| 会话主机端用来调用接受一个会话到本地的方法 |
 
-#### org.alljoyn.Bus.Peer.Session.AcceptSession parameters
+#### org.alljoyn.Bus.Peer.Session.AcceptSession 参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| sessionPort | in | Session port that received the join request. |
-| sessionId | in | ID for the new session (if accepted). |
-| creatorName | in | Session creator unique name. |
-| joinerName | in | Session joiner unique name. |
-| opts | in | Session options requested by the joiner. |
-| isAccepted | out | Set to true if the creator accepts the session. |
+| sessionPort | in | 收到加入请求的会话端口 |
+| sessionId | in | 新会话的 ID （如果被接受的话） |
+| creatorName | in | 会话创立者的唯一标识符 |
+| joinerName | in | 会话参与者的唯一标识符 |
+| opts | in | 参与者请求的会话选项|
+| isAccepted | out | 如果创建者接受了此会话，则将其设置为 true |
 
 
-#### org.alljoyn.Bus.Peer.Session interface signals
+#### org.alljoyn.Bus.Peer.Session 接口信号
 
-| Signal name | Description |
+| 信号名 | 描述 |
 |---|---|
-| SessionJoined | A signal sent locally on the session host to inform it that a session was successfully joined. |
+| SessionJoined | 在会话主机本地发送的信号，提示着会话已经被成功建立 |
 
-#### org.alljoyn.Bus.Peer.SessionJoined signal parameters
+#### org.alljoyn.Bus.Peer.SessionJoined 信号参数
 
-| Parameter name | Description |
+| 参数名 | 描述 |
 |---|---|
-| sessionPort | Session port of the session which was just lost. |
-| sessionId | ID for the new session. |
-| creatorName | Session creator unique name. |
-| joinerName | Session joiner unique name. |
+| sessionPort | 刚刚丢失的会话的会话端口 |
+| sessionId | 新回话的 ID |
+| creatorName | 会话创建者的唯一识别符 |
+| joinerName | 会话加入者的唯一识别符 |
 
 
 
