@@ -1,16 +1,16 @@
-# Notification Interface Definition
+# 提醒接口定义
 
-## Release History
+## 发布版本
 
-To access a previous version of this document, click the release version link below.
+如需访问此文档的历史版本，请点击下面的链接。
 
-|Release version | Date | What changed |
+|版本号| 日期 | 修改 |
 |---|---|---|
-| Pre-14.02 | N/A | Notification interface version 1 was added. |
-| [14.02][notification-14.02] | 2/28/2014 | <p>The following interfaces were added:</p><ul><li>Dismisser interface version 1</li><li>Producer interface version 1</li></ul> |
-| 14.06 | 6/30/2014 | No updates |
-| 14.06 Update 1 | 9/29/2014 | <ul><li>Updated the document title (changed from Specification to Definition)</li><li>Added the release version number to the document title for version tracking.</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.</li></ul> |
-| 14.12 | 12/17/2014 | Cleanup to make requirements for methods and signals more clear. |
+| Pre-14.02 | N/A | 提醒接口版本第一版被加入 |
+| [14.02][notification-14.02] | 2/28/2014 | <p>添加了如下接口</p><ul><li>Dismisser 接口第一版</li><li>Producer 接口第一版</li></ul> |
+| 14.06 | 6/30/2014 | 无 |
+| 14.06 更新1 | 9/29/2014 | <ul><li>更新了文档标题 (由“规范” (Specification) 变为“定义” (Definition)</li><li>在文档标题中加入了版本号以便查询</li><li>在 Definition 的 Overview 章节加入了用来处理 AllSeen Alliance Compliance and Certification 项目的便笺</li><li>Added 强制加入了支持 AllSeen Alliance Compliance and Certification 项目的方法和信号的参数列</li></ul> |
+| 14.12 | 12/17/2014 | 清除了复杂的规范，使对方法和信号的要求更清晰。 |
 
 ## Definition Overview
 
