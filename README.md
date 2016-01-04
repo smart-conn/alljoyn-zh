@@ -1,5 +1,12 @@
 # alljoyn-zh
 
+## 0104 待审阅文章
+
+* [ ] [docs/learn/core/events-and-actions.md](docs/learn/core/events-and-actions.md)
+* [ ] [docs/learn/base-services/onboarding/index.md](docs/learn/base-services/onboarding/index.md)
+* [ ] [docs/learn/base-services/notification/interface.md](docs/learn/base-services/notification/interface.md)
+* [ ] [docs/learn/core/system-description/events-actions.md](docs/learn/core/system-description/events-actions.md)
+
 ## 1231 待审阅文章
 
 * [ ] [docs/develop/building/thin-windows.md](docs/develop/building/thin-windows.md)
