@@ -4,82 +4,50 @@
 
 事件和行为功能是 AllJoyn&trade Core 的一部分，他被设计用于在 AllJoyn 网络中创建基于 If-This-Then-That (IFTTT) 的逻辑规则。
 
-*  AllJoyn 设备/应用程序在网络有重要事件发生时用于提醒其他
-AllJoyn 设备/应用程序的行为，就是事件。在这方面，事件和行为是协同进行的
-* Actions enable specific responses to AllJoyn events detected
-in the AllJoyn network. In this regard, Events and actions
-go hand-in-hand. An action is a way for making an application
-or device do something.行为是对 AllJoyn 网络中的 AllJoyn 事件作出的特定反应。 
+*  AllJoyn 设备/应用程序在网络有重要事件发生时使用事件来提醒其他设备，应用程序。
+*  行为使在 AllJoyn 网络中的事件被检测到时，系统可以做出特定的回应。这样一来，二者可以协同作用，行为是使应用程序或设备做具体工作的一个方法。
 
-For example, an AllJoyn application can broadcast an event
-signifying that something has happened, such as movement
-that was detected by a motion detector. An AllJoyn application
-can receive this event and respond to it by taking a specific
-action, such as turning on the security camera.
+例如，AllJoyn 应用程序可以广播发送指示着有情况已发生的事件，例如动作传感器检测到移动。AllJoyn 应用程序就可以收到此事件，并通过采取特定的行
+为来作出回应，例如打开安全照相机。
 
-Events are realized using AllJoyn sessionless signals,
-while actions are realized using AllJoyn methods. A description
-element is added to the AllJoyn introspect XML format to
-provide human readable text for the Events and Actions feature.
+事件由 AllJoyn 中的 AllJoyn 非会话信号实现，而行为由 AllJoyn 的方法实现。在 AllJoyn 内省 XML 格式中添加了一个描述元素，用于对事件和行为的功
+能提供可读的文本。
 
-The following figure illustrates the context architecture
-for the Events and Actions feature.
+下图展示了事件和行为功能的脉络架构。
 
 ![events-actions-arch][events-actions-arch]
 
-**Figure:** Events and Actions context architecture
+**Figure:** 事件和行为
+事件和行为是通过使用 org.allseen.Inrospectable 接口在 Annoucement 信号中被广播的。任何支持事件发出接口或者行为接收接口的被
+广播设备会将此次的新接口加入到 Announcement 信号当中呢。正在验证的应用程序是一个支持 AllJoyn 的应用程序，他为创建用于 IoE 网络自动化的基于 IFTTT 的规则提供了图形界面。正在验证的应用程序通过发出事件和（或者）可以接收行为的 AllJoyn 设备来接收 Announcement 消息。
 
-Events and actions are advertised in the Announcement signal
-using the org.allseen.Inrospectable interface. Any advertised
-object supporting an event-emitting interface or action-receiving
-interface will include this new interface in the Announcement
-signal. The Authoring app is an AllJoyn-enabled app that provides
-a UI for creating IFTTT based rules for automation in the
-IoE network The Authoring app receives announcement signals
-from AllJoyn devices that emit events and/or can receive actions.
-The app introspects those devices to retrieve a human-readable
-description for events and actions as part of the enhanced
-introspection XML data.  
+应用程序将那些设备进行内省，以检索对事件和行为的人类可读的描述，作为增强的 XML 内省数据的一部分。
 
-These human readable text description details can be presented
-to a user allowing the user to create IFTTT based rules for
-automation in the IoE network. These IFTTT rules get configured
-on a Rule Engine which could be on the same device or a different
-device than the Authoring app.
+这些人类可读的文本描述细节可以被呈现给用户，从而使用户可以创建用于 IoE 网络自动化的基于 IFTTT 的规则。这些 IFTTT 规则通过一个 Rule Engine 进行配置，此 Rule Engine 可以与该 Authoring 应用程序在同一个设备上，也可在不同的设备上。
 
-**NOTE:** The Rules Engine is beyond the scope of current design
-and its implementation is left to the ecosystem). The Rules Engine
-app detects when the event is emitted. Based on the configured
-IFTTT rules, it executes actions (method call) on the action-receiving devices.
 
-## Enhanced introspection XML
+**NOTE:** Rule Engine 不在目前的设计范围内，他的实现留给生态系统来完成。Rules Engine 应用程序会探测到被发出的应用程序。根据配置好的 IFTTT 规则，此引擎在 action-receiving 设备上执行行为（方法调用）。
 
-The AllJoyn system supports introspection XML format as
-defined by the D-Bus specification via org.freedesktop.DBus.Introspectable
-interface. To make events and actions discoverable, an enhanced AllJoyn
-introspection XML is made available to provide human readable description
-elements. This XML provides description elements as applicable under Objects,
-Interfaces, Methods (including parameters), Signals (including parameters) and Properties.
+## 加强版内省 XML
 
-The description element may appear inside the enhanced introspection
-XML under the elements captured in [Elements carrying description element][elements-carrying-description-element].
+AllJoyn 系统通过 org.freedesktop.DBus.Introspectable 接口支持由 D-Bus 规范定义的内省 XML 格式。为了使事件和行为可被发现，此处提供了可以提供 人类可读描述的加强版 AllJoyn 内省 XML. 此 XML 提供了可以适用于对象，接口，方法（包括参数），信号（包括参数）以及属性的描述元素。
 
-#### Elements carrying description element
+此描述元素可能出现在加强版内省 XML 的内部，在被捕获的 [Elements carrying description element][elements-carrying-description-element] 元素下。
 
-| XML element | Description |
+#### 携带描述元素的元素
+
+| XML 元素 | 描述 |
 |---|---|
-| node | Objects and sub-objects within the tree of objects. |
-| interface | Interface element. |
-| method | Method element. |
-| property | Property element. |
-| signal | Signal element. |
-| arg | Arguments to signals and methods. |
+| node | Objects and sub-objects within the tree of objects.在对象树之内的对象和子对象 |
+| interface | 接口元素 |
+| method | 方法元素 |
+| property | 属性元素 |
+| signal | 信号元素 |
+| arg | 信号及方法的 arguments |
 
-In addition, the enhanced Introspection XML also includes
-sessionless="true|false" attribute for the signal element
-to indicate whether or not it is sessionless signal.
+此外，加强版内省 XML 也包含 sessionless="true|false" 的属性，信号元素可借此指示是否为非会话信号。
 
-The following is an example of enhanced introspection XML format.
+以下是加强版内省 XML 格式的一个例子：
 
 ```xml
 <node name="/com/example/LightBulb">
@@ -105,33 +73,30 @@ The following is an example of enhanced introspection XML format.
 </node>
 ```
 
-## Introspectable interface
+## 内省的接口
 
-The org.allseen.introspectable interface is designed to
-provide access to the enhanced introspection XML containing
-the description elements. The following table provides the definition
-for the org.allseen.introspectable interface which is
-implemented by all AllJoyn objects.
+org.allseen.introspectable 接口用于提供到包含描述元素的加强版内省 XML 的访问。 下表提供了由所有 AllJoyn 对象所实现的 org.allseen.introspectable 接口的定义：
 
-### Introspectable interface methods
+### 内省接口的方法
 
-| Method | Description |
+| 方法 | 描述 |
 |---|---|
-| AttachSession | Return the aggregate of the languages for which this object has descriptions. For example, if an object implements two interfaces, X and Y - X has all of its members described in English (en) and French (fr) and Y has some descriptions in English (en) and Chinese (cn), this method will return ["en", "fr", "cn"]. The language tags will comply with IETF language tag standards. |
-| IntrospectWithDescription | Returns the XML defined above with descriptions in the specified language (exact match only - no best match). If an element, e.g., method, does not have a description in that language, no description attribute is placed within the element. |
+| AttachSession | 返回此对象所包含描述的语言类别总集。例如，如果一个对象实现两个接口，X 和 Y - X 的所有成员均用英语（en）和法语（fr）描
+述，Y 有一些英语（en）的描述，也有一些中文（cn）的描述，此方法将会返回["en","fr","cn"].语言标签将会依照 IETF 的语言标签标准。|
+| IntrospectWithDescription | 返回之前定义的 XML 以及由特定语言表达的描述(准确匹配，非最佳)。如果一个元素，例如，一个方法，没有用此语言生成 的描述，则此元素内不会被放置任何描述。|
 
-### Introspectable.AttachSession method parameters
+### Introspectable.AttachSession 方法参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| languageTags | out | List of the languages in which this object has descriptions. |
+| languageTags | out | 对象所拥有的所有语言描述的语种列表 |
 
-### Introspectable.IntrospectWithDescription method parameters
+### Introspectable.IntrospectWithDescription 方法参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| languageTag | in | Requested Language. |
-| data | out | Returned introspection XML. |
+| languageTag | in | 被请求的语言种类 |
+| data | out | 返回的 XML 内省 |
 
 
 
