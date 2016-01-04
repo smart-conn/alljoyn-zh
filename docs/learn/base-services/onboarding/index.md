@@ -1,61 +1,50 @@
-# Onboarding Service
+# 加入服务
 
-The Onboarding service provides a common and simple way for new device
-to be brought onto the Wi-Fi network. This is especially useful for
-devices that have a limited user interface, like a SmartPlug.
+加入服务为被带入 Wi-Fi 网络的新设备提供普适简便的加入方式。对于像 SmartPlug 这样的用户接口有限的设备，加入服务会更加实用。
 
-## How Does it Work?
 
-The current onboarding mechanism leverages Wi-Fi only, though the system
-can evolve to leverages additional hardware (like BTLE) as they become
-more prelevant in these class of devices.
+## 工作原理
 
-Two roles are supported:
+现存的加入机制只使用 Wi-Fi, 但系统在变得与使用其它标准的设备越来越相关的时候，可以进化到使用其它的硬件（例如 BTLE）.
 
-* **Onboardee**. This is the device that is unconfigured and needs to be
-  brought onto the Wi-Fi network.
+所支持的两个角色：
 
-* **Onboarder**. This is the device is configuring the Onboardee device,
-  typically a mobile application or PC.
+* **Onboardee**. 指的是未被配置并需要被带入 Wi-Fi 网络的的设备，
 
-The following are the steps to onboard a device.
+* **Onboarder**. 指的是配置 Onboardee 所用的设备，通常是一个移动式的应用程序或是‘一台电脑’。
 
-### 1. Onboardee broadcasts its SSID
+下面展示了加入设备的方法
 
-When an Onboardee device is first plugged in, it will advertise its SSID
-over Wi-Fi. The SSID is either prefixed with "AJ\_" or postfixed with "\_AJ"
-to help indicate that this device that supports the AllJoyn&trade; Onboarding service.
+### 1. Onboardee 广播自己的 SSID
 
-### 2. Onboarder connects to Onboardee
+当 Onboardee 设备第一次接入时，他会通过 Wi-Fi 广播其 SSID. 此 SSID 以 “AJ\” 或者 “\_AJ” 为前缀，意思是该设备支持 AllJoyn&trade 的加入服务。
 
-The Onboarder will scan for unconfigured AllJoyn devices by looking for
-SSID names with "AJ\_" or "\_AJ". A user can then choose to onboard a specific
-Onboardee device. The first step is to connect to the Onboardee device's
-SSID. Depending on the Onboarder platform, this may be done
-automatically by the application.
+### 2. Onboarder 连接到 Onboardee
 
-### 3. Onboarder sends Wi-Fi credentials
+Onboarder 将会通过查找带有 "AJ\_" 或者 "\_AJ" 的 SSID 来扫描未被配置的 AllJoyn 设备。用户可以选择操作一个特定的 Onboardee 设备。第一步是
+连接到该 Onboardee 设备的 SSID 上。根据 Onboarder 平台，这件事可以由应用程序自动完成。
 
-After connecting to the Onboardee's SSID, the Onboarder will listen for
-[AllJoyn About announcements][about-announcement]. Then, the Onboarder will
-use the Onboarding service interfaces to send the target Wi-Fi network
-credentials to the Onboardee device.
 
-### 4. Switch to target Wi-Fi network
+### 3. Onboarder 发送 Wi-FI 凭证
 
-Both devices will then switch to the target Wi-Fi network.
+在连接到 Onboardee 的 SSID 之后，Onboarder 会监听 [AllJoyn About announcements][about-announcement]. 之后，Onboarder 会使用加入服务接口向
+Onboardee 设备发送目标 Wi-Fi 网络的凭证。
 
-### 5. Onboarder listens for Onboardee device
 
-As a final step, the Onboader will listen to receive About announcements
-from the Onboardee device. When received, the Onboarder considers
-the Onboardee device fully onboarded.
+### 4. 切换到目标 Wi-Fi 
+
+两方设备都将会切换到目标 Wi-Fi 网络
+
+### 5. Onboarder 监听 Onboardee 设备
+
+最后一步是，Onboarder 会监听来自 Onboardee 设备的 About announcement。当收到时，Onboarder 就认为 Onboardee 已经顺利连接。
+
 
 ![][onboarding-state-diagram]
 
 [onboarding-state-diagram]: /files/learn/onboarding-state-diagram.png
 
-## Learn More
+## 学习更多
 
 * [Learn more about the Onboarding Interface Definition][onboarding-interface]
 * [Download the SDK][download], [build][build] and
