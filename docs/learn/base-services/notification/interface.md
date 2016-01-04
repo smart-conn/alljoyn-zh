@@ -9,7 +9,7 @@
 | Pre-14.02 | N/A | 提醒接口版本第一版被加入 |
 | [14.02][notification-14.02] | 2/28/2014 | <p>添加了如下接口</p><ul><li>Dismisser 接口第一版</li><li>Producer 接口第一版</li></ul> |
 | 14.06 | 6/30/2014 | 无 |
-| 14.06 更新1 | 9/29/2014 | <ul><li>更新了文档标题 (由“规范” (Specification) 变为“定义” (Definition)</li><li>在文档标题中加入了版本号以便查询</li><li>在 Definition 的 Overview 章节加入了用来处理 AllSeen Alliance Compliance and Certification 项目的便笺</li><li>Added 强制加入了支持 AllSeen Alliance Compliance and Certification 项目的方法和信号的参数列</li></ul> |
+| 14.06 更新1 | 9/29/2014 | <ul><li>更新了文档标题 (由“规范” (Specification) 变为“定义” (Definition))</li><li>在文档标题中加入了版本号以便查询</li><li>在 Definition 的 Overview 章节加入了用来处理 AllSeen Alliance Compliance and Certification 项目的便笺</li><li>Added 强制加入了支持 AllSeen Alliance Compliance and Certification 项目的方法和信号的参数列</li></ul> |
 | 14.12 | 12/17/2014 | 清除了复杂的规范，使对方法和信号的要求更清晰。 |
 
 ## Definition Overview
