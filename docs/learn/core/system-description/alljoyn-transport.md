@@ -130,18 +130,21 @@ the Bus-to-Bus Endpoints in the Routing Nodes may be managed by
 the TCP Transport or the UDP Transport, which also handles the 
 details of moving Messages from one end (Endpoint) of the implied 
 connection to another.
+Remote Endpoints 通过 AllJoyn Transport 相关的底层通讯机制进行配对。举例说明， Routing Nodes 中的 Bus-to-Bus Endpoints 可能通过 TCP Transport 或者 UDP Transport 控制，它们同时也控制了从一段（Endpoint）到另一段的连接中传递 Messages 的细节。
 
 In the case of the Remote Endpoints that connect the Core Library 
 to the AllJoyn Router, the underlying communication mechanism 
 could be different based on host environments. For example, a 
 UNIX domain sockets implementation is used on Linux systems, 
 while a TCP implementation is used on Windows systems.
+在核心资源库与 AllJoyn 路由之间通过 Remote Endpoints 连接的情况下，底层通信机制可能根据主机环境的不同而有所区别。举例说明，Linux 系统中使用 UNIX domain sockets 工具，然而 Windows 系统中使用 TCP 工具。
 
-### Thin Core Library Endpoints
+### Thin Core Library Endpoints 精简资源库终点
 
 The Thin Core Library (TCL) makes use of the TCP Transport, 
 however its implementation is quite different than the regular 
 TCP Transport connection between a Core Library and AllJoyn Router.  
+
 
 On the TCL, there is no explicit breaking out of a Remote Endpoint 
 and a Local Endpoint. The TCL provides minimal implementation of the 
