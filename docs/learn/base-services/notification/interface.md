@@ -9,80 +9,47 @@
 | Pre-14.02 | N/A | 提醒接口版本第一版被加入 |
 | [14.02][notification-14.02] | 2/28/2014 | <p>添加了如下接口</p><ul><li>Dismisser 接口第一版</li><li>Producer 接口第一版</li></ul> |
 | 14.06 | 6/30/2014 | 无 |
-| 14.06 更新1 | 9/29/2014 | <ul><li>更新了文档标题 (由“规范” (Specification) 变为“定义” (Definition))</li><li>在文档标题中加入了版本号以便查询</li><li>在 Definition 的 Overview 章节加入了用来处理 AllSeen Alliance Compliance and Certification 项目的便笺</li><li>Added 强制加入了支持 AllSeen Alliance Compliance and Certification 项目的方法和信号的参数列</li></ul> |
+| 14.06 更新1 | 9/29/2014 | <ul><li>更新了文档标题 (由“规范” (Specification) 变为“定义” (Definition))</li><li>在文档标题中加入了版本号以便查询</li><li>在概览( Overview ) 章节加入了用来处理 AllSeen Alliance Compliance and Certification 程序的便笺</li><li> 强制加入了支持 AllSeen Alliance Compliance and Certification 程序的方法和信号的参数列</li></ul> |
 | 14.12 | 12/17/2014 | 清除了复杂的规范，使对方法和信号的要求更清晰。 |
 
-## Definition Overview
+## 定义概览 Overview
 
-The AllJoyn&trade; Notification service framework is a software layer that 
-enables AllJoyn devices to send notifications to other 
-AllJoyn devices. These devices are categorized as producers 
-and consumers. Producers produce and send notifications, while 
-consumers consume and display these notifications. An end user's 
-home (Wi-Fi) network can have multiple producers connected and 
-generating notification messages, as well as multiple consumers 
-connected and consuming these messages.
+AllJoyn&trade; 提醒服务的框架是一个使得 AllJoyn 设备可以向其他 AllJoyn 设备发送通知的软件层发送。这些设备被分为两类：提供方和使用方。提供方
+生产并发送提醒，但使用方只使用和显示这些提醒。终端用户的家庭网络（例如　Wi-Fi）可以连接到多个提供方，同时有多个使用者可以连接并使用这些消息。
 
-The Notification service framework design supports text 
-notification payload as well as rich notification media 
-(icon and audio). For rich media, the notification message 
-payload can include URL links or AllJoyn object path references 
-to rich notification media. The consumer app receiving the 
-notification message will fetch the rich notification media 
-from the object path or the producer device.
+提醒服务框架的设计支持文字提醒载荷，同时也有富提醒（图标及音频）。对于富媒体，提醒消息的载荷可以包括 URL 链接，或者是 AllJoyn 对象路径
+引用到的富媒体。使用方应用程序收到提醒消息后将会根据对象路径或者提供方的设备来取出消息里的富媒体。
 
-The Notification service framework uses the AllJoyn framework 
-sessionless signal to deliver notification messages. The 
-Notification service framework exposes the Notification Service 
-API for application developers to deliver and receive notification 
-messages. The device OEM uses the Notification service framework 
-Producer API to send notification messages. The Notification 
-service framework sends these notification messages over the 
-AllJoyn sessionless signal transport mechanism and makes them 
-available to consumer devices listening for sessionless signals. 
-The consumer running the Notification service framework registers 
-with the AllJoyn framework to receive notification messages. 
-The application developer for the consumer device uses the 
-Notification service framework Consumer API to register and 
-receive notifications from any producer that is sending 
-notification on the Wi-Fi network.
+提醒服务框架使用了 AllJoyn 框架的非会话信号来传送提醒消息。提醒服务框架将 Notification Service API 暴露给应用程序开发者，以达到传送和接收提
+醒消息的目的。设备制造商使用提醒服务框架的 Producer API 来发送提醒消息。提醒服务框架通过 AllJoyn 非会话信号传输机制来发送这些提醒消息，并使
+这些消息对正在监听非会话信号的使用方设备有效。使用方在 AllJoyn 框架上运行提醒服务框架记录器，以接收提醒消息。针对使用方设备的应用程序开发者
+则使用提醒服务框架上的 Consumer API 来注册并接收从任意通过 Wi-Fi 网络发送提醒的提供方发送的提醒。
 
-**NOTE:** All methods and signals are considered mandatory to 
-support the AllSeen Alliance Compliance and Certification program. 
+**NOTE:** 所有方法和信号都被认为是强制支持 AllSeen Alliance Compliance and Certification 程序的。
 
-### Architecture
+### 结构
 
-The Notification service framework implements the Notification 
-interface which is the over-the-wire interface to deliver messages 
-from producers to consumers. Application developers making use of 
-the Notification service framework implement against the
-Notification service framework APIs (producer and consumer side). 
-They do not implement the Notification interface.
+提醒服务框架实现了 Notification 接口，这是一个 over-the wire 的，将消息从提供方传送到使用方的接口。应用程序开发者通过提醒服务框架 API ( 提
+供方和使用方) 来使用提醒服务框架。开发者不实现提醒接口。
 
-The following figure illustrates the Notification service 
-framework API and Notification interface on producers and consumers.
+下图展示了提醒服务框架 API 以及在提供方和使用方上的提醒接口。
+
 
 ![notification-arch][notification-arch]
 
-**Figure:** Notification service framework architecture within the AllJoyn framework
+**Figure:** 在 AllJoyn 框架内的提醒服务框架结构。
 
-## Typical call flow
+## 典型的消息流程
 
-The following figure illustrates a typical Notification service 
-framework call flow with a single producer app generating a notification 
-message. The message is then acquired by two consumer apps on the 
-AllJoyn network.
+下图展示了一个典型的单个提供方应用程序生成一个提醒消息的提醒服务框架消息流程。此消息随后被两个在 AllJoyn 网络上的使用方应用程序所获取。
+
 
 ![notification-typical-call-flow][notification-typical-call-flow]
 
-**Figure:** Typical Notification service framework call flow
+**Figure:** 典型的提醒消息服务框架消息流程
 
-The AllJoyn framework on the producer device does a sessionless 
-signal broadcast for the notification message. This is received 
-by the AllJoyn framework on the consumer devices. The AllJoyn 
-framework then fetches the notification message over unicast 
-session from the producer AllJoyn core and delivers to the 
-consumer application.
+在提供方设备上的 AllJoyn 框架为提醒消息做一个非会话的信号广播。这将被使用方设备上的 AllJoyn 框架所接收到。AllJoyn 框架随后通过与提供方 AllJoyn 内核的单播会话提取该消息，并将其传送到使用方应用程序上。
+
 
 ## Specification
 
