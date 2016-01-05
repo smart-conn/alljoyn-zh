@@ -1,69 +1,57 @@
-# Control Panel Interface Definition
+# 控制面板接口定义
 
-## Release History
+## 版本历史
 
-To access a previous version of this document, click the release version link below.
+若想访问历史版本请点击表格中的版本号链接。
 
-|Release version | Date | What changed |
+|版本号 | 日期 | 变化 |
 |---|---|---|
-| [14.02][controlpanel-14.02] | 2/28/2014 | <p>The following interfaces were added:</p><ul><li>ControlPanel.ControlPanel interface version 1</li><li>ControlPanel.Container interface version 1</li><li>ControlPanel.SecuredContainer interface version 1</li><li>ControlPanel.Property interface version 1</li><li>ControlPanel.SecuredProperty interface version 1</li><li>ControlPanel.LabelProperty interface version 1</li><li>ControlPanel.Action interface version 1</li><li>ControlPanel.SecuredAction interface version 1</li><li>ControlPanel.NotificationAction interface version 1</li><li>ControlPanel.Dialog interface version 1</li><li>ControlPanel.SecuredDialog interface version 1</li><li>ControlPanel.ListProperty interface version 1</li><li>ControlPanel.SecuredListProperty interface version 1</li><li>ControlPanel.HTTPControl interface version 1</li></ul> |
-| 14.06 | 6/30/2014 | No updates |
-| 14.06 Update 1 | 9/29/2014 | <ul><li>Updated the document title and Overview chapter title (changed Specification to Definition)</li><li>Added the release version number to the document title for version tracking.</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.</li></ul> |
-| 14.12 | 12/17/2014 | Cleanup to make requirements for methods and signals more clear. |
+| [14.02][controlpanel-14.02] | 2/28/2014 | <p>加入了下列接口:</p><ul><li>ControlPanel.ControlPanel interface version 1</li><li>ControlPanel.Container interface version 1</li><li>ControlPanel.SecuredContainer interface version 1</li><li>ControlPanel.Property interface version 1</li><li>ControlPanel.SecuredProperty interface version 1</li><li>ControlPanel.LabelProperty interface version 1</li><li>ControlPanel.Action interface version 1</li><li>ControlPanel.SecuredAction interface version 1</li><li>ControlPanel.NotificationAction interface version 1</li><li>ControlPanel.Dialog interface version 1</li><li>ControlPanel.SecuredDialog interface version 1</li><li>ControlPanel.ListProperty interface version 1</li><li>ControlPanel.SecuredListProperty interface version 1</li><li>ControlPanel.HTTPControl interface version 1</li></ul> |
+| 14.06 | 6/30/2014 | 没有变化 |
+| 14.06 Update 1 | 9/29/2014 | <ul><li>更新了文档标题以及 Overview 的章节标题 (将“规范” (Specification) 改为“定义” (Definition)). </li><li>在文档标题中加入了版本号以便查询</li><li>在概览( Overview ) 章节加入了用来处理 AllSeen Alliance Compliance and Certification 程序的便笺。</li><li>强制加入了支持 AllSeen Alliance Compliance and Certification 程序的方法和信号的参数列。</li></ul> |
+| 14.12 | 12/17/2014 |清除了复杂的规范，使对方法和信号的要求更清晰。 |
 
-## Definition Overview
+## 定义概览
 
-The Control Panel interfaces must be implemented by an 
-application on a controllee. The following figure illustrates 
-the relationship between a controllee app and a controller app.
+控制面板的接口必须由被控制方上的应用程序实现。下图展示了被控制方应用程序和控制方应用程序之间的关系。
 
 ![controlpanel-arch][controlpanel-arch]
 
-**Figure:** Control Panel service framework architecture within 
-the AllJoyn&trade; framework
+**Figure:** 在 AllJoyn 框架内的控制面板服务框架的结构。
 
-The OEM is responsible for writing the Control interfaces and 
-the Control Panel service framework metadata.
+设备制造商负责撰写控制接口以及控制面板服务框架的元数据。
 
-The UI Toolkit Adaption Layer, a library used to map the metadata 
-to platform-specific UI elements, is made available as part of the 
-Control Panel service framework release.
 
-**NOTE:** All methods and signals are considered mandatory to support 
-the AllSeen Alliance Compliance and Certification program. 
+在 UI Toolkit Adaption 层, 有一个用于将元数据映射到特定平台 UI 元素的库。此库作为控制面板服务框架的一部分被一同发布。
 
-## Discovery
+**NOTE:** 所有方法和信号都被认为是强制支持 AllSeen Alliance Compliance and Certification 程序的。
 
-Controllees are discovered via an AllJoyn announcement. Each AllJoyn 
-device uses the About feature to announce basic app information like 
-app name, device name, manufacturer, and model number. The announcement 
-also contains the list of object paths and service interfaces to allow 
-the controller to determine whether the controllee provides 
-functionality of interest.
+## 发现
 
-The About announcement is propagated using a sessionless signal.
+被控制方通过 AllJoyn announcement 被发现。每一个 AllJoyn 设备使用 About 功能来宣布关于自己的基本应用程序信息，如应用程序名，设备名，制造商
+，型号等等。此 announcement 同时包括对象路径列表以及服务接口列表，控制方可以根据此列表决定哪些受控制方提供的功能是自己感兴趣的。
 
-## Call Flows
+About announcement 通过非会话信号来传播。
 
-### Static Control Panel flow
+## 呼叫流程
 
-The following figure illustrates a typical call flow for a control 
-panel that does not change once rendered.
+### 静态的控制面板流程
+
+下图展示了一个典型的控制面板呼叫流程，一旦呈现就不会改变。
 
 ![controlpanel-static-call-flow][controlpanel-static-call-flow]
 
-**Figure:** Static Control Panel call flow
+**Figure:** 静态控制面板流程
 
-### Dynamic Control Panel flow
+### 动态的控制面板流程
 
-The following figure illustrates a call flow for a control panel that 
-changes as the end user interacts with the widgets.
+下图展示了一个随着终端用户与小工具交互而发生变化的控制面板呼叫流程。
 
 ![controlpanel-dynamic-call-flow][controlpanel-dynamic-call-flow]
 
-**Figure:** Dynamic Control Panel call flow
+**Figure:** 动态控制面板流程
 
-## Error Handling
+## 错误处理
 
 The method calls in the Control Panel interfaces use the AllJoyn 
 error message handling feature (ER_BUS_REPLY_IS_ERROR_MESSAGE) 
