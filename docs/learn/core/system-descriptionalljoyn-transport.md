@@ -144,29 +144,32 @@ while a TCP implementation is used on Windows systems.
 The Thin Core Library (TCL) makes use of the TCP Transport, 
 however its implementation is quite different than the regular 
 TCP Transport connection between a Core Library and AllJoyn Router.  
-
+精简资源库 (TCL) 使用 TCP 传输，但它的实现与一般的核心资源库与 AllJoyn 路由之间的 TCP 传输有所不同。
 
 On the TCL, there is no explicit breaking out of a Remote Endpoint 
 and a Local Endpoint. The TCL provides minimal implementation of the 
 functionality required to connect and communicate with the 
 TCP Remote Endpoint at the Alljoyn Router hosted on another 
 AllJoyn device. 
+在 TCL 中，没有明确的远程终点和本地终点。TCL 提供了与另一台 AllJoyn 设备上的 AllJoyn 路由上的 TCP 远程节点连接并通信的最小功能实现。
 
 On the Routing Node side, a Thin Library device connects as 
 if it was any local Core Library connecting using a local 
 TCP loopback connection. 
+在 Routing Node 侧，精简资源库设备连接方式，就像使用本地 TCP 回环连接的本地核心资源库。
 
-**NOTE:** This is how Bus Attachments connect to Routing Nodes in 
+**注意:** This is how Bus Attachments connect to Routing Nodes in 
 the Windows environment. The TCP transport is used for the 
 connection, but the data does not actually travel across the 
 network; but rather is "looped back" and sent back up the 
 networking stack before being sent out on a connected IP network.
+这是 Windows 环境下，Bus Attachments 连接 Routing Nodes 的方式。TCP 传输用于连接，但是数据实际上不通过网络传输；而是在被发送到某个已连接的 IP 网络之前，被回环并发送至网络堆栈。
 
-The Thin Library Endpoint usage is captured in the following figure.
+The Thin Library Endpoint usage is captured in the following figure.下图展示了精简资源库终点的使用方式。
 
 ![thin-core-library-endpoint][thin-core-library-endpoint]
  
-**Figure:** Thin Core Library Endpoint
+**图:** Thin Core Library Endpoint 精简资源库终点
 
 ## AllJoyn Transport in Networking Model
 
@@ -176,19 +179,21 @@ it is important to distinguish the AllJoyn Transport from the
 concept of transport layer (layer 4) in the International 
 Standards Organization Open Systems Interconnection (ISO/OSI) 
 7-layer model.
+尽管 AllJoyn 传输的基本任务是从一个终点向另一个终点传输或转移 AllJoyn Messages，但是也须要区别 AllJoyn Transport 与  International Standards Organization Open Systems Interconnection (ISO/OSI) 7-layer model 中传输层（第四层）的概念。
 
 The following figure shows where AllJoyn Transports fit in the 
-7-layer ISO/OSI model. 
+7-layer ISO/OSI model. 下图展示了在 七层 ISO/OSI 模型概念中，AllJoyn Transport 的位置。
 
 ![alljoyn-osi-seven-layer-arch][alljoyn-osi-seven-layer-arch]
 
-**Figure:** AllJoyn transport in the ISO/OSI 7-layer model
+**图:** 七层 ISO/OSI 模型中的 AllJoyn Transport
 
 Underneath the Application Logic, there exists an AllJoyn Message 
 layer which is responsible for marshaling and unmarshaling of 
 AllJoyn messages (Signals and Method Calls). This layer can be 
 thought of as residing in the presentation layer (layer 6) 
 of the ISO/OSI model. 
+在应用程序逻辑之下，有一个负责封包和解包 AllJoyn 信息（信号和方法调用）的 AllJoyn Message 层。该层可被视为位于 ISO/OSI 模型的表现层。
 
 These AllJoyn messages are routed to their intended destination 
 by the AllJoyn Transport layer. Since the AllJoyn Transport layer 
@@ -197,36 +202,38 @@ the network, it can be thought of corresponding to the session
 layer (layer 5) of the ISO/OSI model. AllJoyn Transports make 
 use of layer 4 transports like TCP or UDP in order to manage 
 the actual movement of AllJoyn messages between various network entities.
+AllJoyn 信息通过 AllJoyn Transport 层被路由至目的地。由于 AllJoyn Transport 层控制应用程序和 AllJoyn 路由之间的连接，所以它可以被相应地视为 ISO/OSI 模型中的会话层（第五层）。AllJoyn Tranport 使用第四层的传输方式，如 TCP 或 UDP，以便管理不同网络实体间 AllJoyn 信息的实际传输。
 
 Since an AllJoyn Transport encapsulates the functions of moving 
 data sequences, establishing connections, advertisement and discovery, 
 there are separate AllJoyn Transports for separate underlying 
-transport mechanisms.  
-* The AllJoyn TCP Transport uses TCP/IP as the mechanism for moving data.
-* The AllJoyn UDP Transport uses UDP/IP as the mechanism for moving data. 
+transport mechanisms. 由于 AllJoyn Transport 包含了转移数据序列、建立连接、广告和发现功能，针对不同的底层传输机制，有不同的 AllJoyn Transports。
+* The AllJoyn TCP Transport uses TCP/IP as the mechanism for moving data. AllJoyn TCP Transport 使用 TCP/IP 机制传输数据。
+* The AllJoyn UDP Transport uses UDP/IP as the mechanism for moving data. AllJoyn UCP Transport 使用 UCP/IP 机制传输数据。
 * The AllJoyn Bluetooth (BT) Transport does the same for Bluetooth 
-connections.
-* The AllJoyn Local Transport uses UNIX domain sockets. 
+connections.AllJoyn Bluetooth (BT) Transport 使用相同的方式进行蓝牙连接。
+* The AllJoyn Local Transport uses UNIX domain sockets.  AllJoyn Local Transport 使用  UNIX domain sockets。
 
 The name given to an AllJoyn transport typically echoes the method 
-used in the underlying OSI layer 4 mechanism.  
+used in the underlying OSI layer 4 mechanism.  AllJoyn 传输方式的命名通畅参照其使用的底层 OSI 四层机制中的方法。
 
 An AllJoyn applications may select the AllJoyn Transport that 
 is actually used by choosing one or more TransportMask bits 
 in the appropriate AllJoyn APIs. The currently available 
-TransportMask bits are shown in the following table. 
+TransportMask bits are shown in the following table. AllJoyn 应用程序可能会选择 AllJoyn Transport，通过在适当的 AllJoyn API 中选择一个或多个 TransportMask 位来实现。目前支持的 TransportMask 位在展示在下表中：
+
 
 #### AllJoyn TransportMask definition
 
-|Transport name | Value | Description |
+|Transport name | 值 | 描述 |
 |---|:---:|---|
-| TRANSPORT_NONE         | 0x0000 | No transport. |
-| TRANSPORT_LOCAL        | 0x0001 | The local transport. |
-| TRANSPORT_TCP          | 0x0004 | Transport using TCP as the underlying mechanism. |
-| TRANSPORT_UDP          | 0x0100 | Transport using UDP as the underlying mechanism. |
-| TRANSPORT_EXPERIMENTAL | 0x8000 | Select a release-specific experimental transport. |
-| TRANSPORT_IP           | 0x0104 | Allow the system to decide between TCP or UDP. |
-| TRANSPORT_ANY          | 0x0105 | Allow the system to choose any appropriate transport. |
+| TRANSPORT_NONE         | 0x0000 | 无传输。 |
+| TRANSPORT_LOCAL        | 0x0001 | 本地传输。 |
+| TRANSPORT_TCP          | 0x0004 | Transport 使用 TCP 作为底层传输机制。 |
+| TRANSPORT_UDP          | 0x0100 | Transport 使用 UDP 作为底层传输机制。 |
+| TRANSPORT_EXPERIMENTAL | 0x8000 | 选择一个 release-specific 实验性传输方式。 |
+| TRANSPORT_IP           | 0x0104 | 允许系统选择使用 TCP 或是 UDP。 |
+| TRANSPORT_ANY          | 0x0105 | 允许系统选择任意适当的传输工具。|
 
 If an AllJoyn application desires to only use TCP as the 
 underlying layer 4 mechanism, it can do so by specifying 
@@ -234,6 +241,7 @@ TRANSPORT_TCP in advertisement, discovery and Session join
 and bind options. If an application desires only that an 
 IP-based transport be used, it can specify TRANSPORT_IP and 
 allow the AllJoyn system to select between TCP and UDP, for example.  
+如果 AllJoyn 应用程序希望只使用 TCP 作为第四层传输机制，它可以在广播、发现、加入会话、绑定选项中指定为 TRANSPORT_TCP。如果应用程序只希望使用基于 IP 的传输方式，它可以设定为 TRANSPORT_IP，使 AllJoyn 系统从 TCP 和 UDP 中选择。
 
 Each transport establishes and maintains connectivity based 
 on the underlying physical transport it supports. Based on the 
@@ -244,13 +252,15 @@ network whose topology does not necessarily map directly to the
 topology of the underlying network. If an application has no 
 preference, it can provide TRANSPORT_ANY and allow the AllJoyn system 
 to determine which transport to use.
+每种传输方式根据其基于的底层物理传输方式建立和保持连接。根据底层物理传输方式的不同，在一个 AllJoyn 网络中两个节点间的实际连接可以是单跳或多跳的。AllJoyn 分布式总线基本上是一种覆盖网络，它的拓扑结构不需要直接映射到底层网络的拓扑结构。如果某个应用程序没有偏好，它可以设为 TRANSPORT_ANY 并且允许 AllJoyn 系统决定使用何种传输方式。
 
-## Local AllJoyn Transports
+## Local AllJoyn Transports 本地 AllJoyn 传输方式
 
 AllJoyn Local Transports is a broad grouping of AllJoyn Transports 
 that are designed to essentially provide communication between the
 Core Library and their associated AllJoyn Routers. The following 
 Local Transports are used in the AllJoyn system:
+
 * Null Transport
 * UNIX Domain Socket Transport
 * TCP Transport
