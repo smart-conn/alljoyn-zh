@@ -53,86 +53,70 @@ About announcement 通过非会话信号来传播。
 
 ## 错误处理
 
-The method calls in the Control Panel interfaces use the AllJoyn 
-error message handling feature (ER_BUS_REPLY_IS_ERROR_MESSAGE) 
-to set the error name and error message.
+控制面板接口中的方法调用使用 AllJoyn 错误消息处理功能 (ER_BUS_REPLY_IS_ERROR_MESSAGE) 来设定错误名称和错误消息。
 
-|Error name | Error message |
+|错误名称 | 错误消息 |
 |---|---|
-| `org.alljoyn.Error.OutOfRange` | Value out of range |
-| `org.alljoyn.Error.InvalidState` | Invalid state |
-| `org.alljoyn.Error.InvalidProperty` | Invalid property |
-| `org.alljoyn.Error.InvalidValue` | Invalid value |
-| `org.alljoyn.Error.MethodNotAllowed` | Method call not allowed |
+| `org.alljoyn.Error.OutOfRange` | 值超出范围 |
+| `org.alljoyn.Error.InvalidState` | 无效的声明 |
+| `org.alljoyn.Error.InvalidProperty` | 无效的属性 |
+| `org.alljoyn.Error.InvalidValue` | 无效的值 |
+| `org.alljoyn.Error.MethodNotAllowed` | 调用方法不被允许 |
 
-## BusObject Map
+## BusObject 映射
 
-### BusObject structure
+### BusObject 结构
 
-The following figure shows the tree structure diagram that 
-represents the basic organization of AllJoyn objects used in 
-the support of the Control Panel service framework. A control 
-panel is implemented using several AllJoyn objects.
+下图展示了代表着被用于支持控制面板服务框架的 AllJoyn 对象的基本接口的树形结构图。使用多个 AllJoyn 对象可实现一个控制面板。
 
 ![controlpanel-busobject-map][controlpanel-busobject-map]
 
-**Figure:** BusObject map
+**Figure:** BusObject 映射
 
-The objects are organized to support multiple units and multiple 
-languages. Only the top-level panels should be listed in the announcement.
+对象们已经被整理好，以实现对多单元和多语种的支持。Announcement 只需要列出顶层的面板。
 
-Since the IETF language tag allows for hyphen (-) which is not 
-allowed in the bus object path, any language tag in the object 
-path replaces a hyphen (-) with an underscore (_).
+由于在 IETF 语言标签中被允许的连字符(-)在总线对象路径中不被允许，任何在对象路径中的语言标签都将连字符(-)替换为下划线(_).
 
-In addition to the control panels, the Control Panel service 
-framework can also support other panels such as a notification 
-panel. These panels are not required to be advertised in the announcement.
+不仅是控制面板，控制面板服务框架也支持其他的面板，如通知面板。这些面板不要求被在 announcement 中推广。
 
-It is the controller's job to introspect and walk the object 
-tree of a control panel to retrieve all the metadata for that 
-control panel.
 
-### BusObject map examples
+内省及遍历控制面板的对象树以取回所有关于此控制面板的元数据应当由控制方完成。
 
-#### Washing machine example
+### BusObject 映射实例
+
+#### 洗衣机实例
 
 ![controlpanel-washing-machine-example][controlpanel-washing-machine-example]
 
-**Figure:** Washing machine example
+**Figure:** 洗衣机实例
 
 #### Sprinkler system example
 
 ![controlpanel-sprinkler-system-example][controlpanel-sprinkler-system-example]
 
-**Figure:** Sprinkler system example
+**Figure:** 洒水器实例
 
-## ControlPanel Interface
+## 控制面板接口
 
-This interface indicates whether the object is a control panel. 
-This object will support at least one language. The service only 
-needs to advertise this type of object in the About announcement. 
-No other objects in the Control Panel service framework tree 
-should be announced.
+此接口指示了该对象是否是一个控制面板。该对象将会支持至少一种语言。在 About announcement 中该服务仅需要推广这一类型的对象。在控制面板服务框
+架树结构中的其他对象则不需要被推广。
 
-**NOTE:** It's the responsibility of the controller to introspect 
-the children objects to locate the corresponding root container 
-of the given panel for the specific language code.
+**NOTE:** 内省子对象以定位对应给定面板的指定语言代码的容器应当由控制方完成。
 
-### Interface name
+### 接口名
 
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.ControlPanel.ControlPanel` | 1 | no | `/ControlPanel/{unit)/{panelName}` |
-|  |  |  | Example: /ControlPanel/washing/consolePanel |
+| `org.alljoyn.ControlPanel.ControlPanel` | 1 | 否 | `/ControlPanel/{unit)/{panelName}` |
+|  |  |  | 举例: /ControlPanel/washing/consolePanel |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值列表 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
 
-### Introspect XML
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -143,21 +127,20 @@ of the given panel for the specific language code.
 </node>
 ```
 
-## Container Interface
+## 容器接口
 
-This interface provides all the metadata to guide the 
-controller to render the UI for a container widget.
+此接口对指导控制方为容器部件渲染 UI 提供了所有的元数据。
 
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.ControlPanel.Container` | 1 | no | <p>`/ControlPanel/{unit)/{panelName}/{language}/.../{containerName}`</p><p>Examples:</p><ul><li>/ControlPanel/washing/consolePanel/en</li><li>/ControlPanel/sprinkler/mainPanel/en/Schedules/InputForm/RunOnDays</li></ul> |
-| `org.alljoyn.ControlPanel.SecuredContainer` | 1 | yes | `/ControlPanel/{unit)/{panelName}/{language}/.../{containerName}` |
+| `org.alljoyn.ControlPanel.Container` | 1 | 否 | <p>`/ControlPanel/{unit)/{panelName}/{language}/.../{containerName}`</p><p>例如：:</p><ul><li>/ControlPanel/washing/consolePanel/en</li><li>/ControlPanel/sprinkler/mainPanel/en/Schedules/InputForm/RunOnDays</li></ul> |
+| `org.alljoyn.ControlPanel.SecuredContainer` | 1 | 是 | `/ControlPanel/{unit)/{panelName}/{language}/.../{containerName}` |
 
-### Properties
+### 属性
 
-| Property name | Signature | List of values | Read/Write | Description |
+| 属性名 | 签名 | 值列表 | 可读/可写| 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
 | States | `u` | Bit mask | Read-only | Bit mask for various widget states. States bit mask information is detailed below. |
 | OptParams | `a{qv}` | N/A | Read-only | Metadata dictionary. See [Container widget metadata][container-widget-metadata] for more information. |
 
