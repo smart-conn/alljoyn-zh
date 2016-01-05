@@ -147,21 +147,18 @@ AllJoyn 携带信号的提醒消息。
 | | List<langText> | attributes |配对的属性和值的集合。用于填充提醒消息正文中的选项字段。参见 [Attributes][attributes]. |
 | | List<customAttributes> | customAttributes | 配对的属性和值的集合。设备制造商可用此向提醒消息添加设备制造商指定的字段。 |
 | langText | langTag | string | 提醒消息文字的相关语言，根据 RFC 5646 设置。 |
-| | text | string | 使用 UTF-8 编码的提醒消息文字Notification message text in UTF-8 character encoding. |
-| attributes | attrName | string | Name of the attribute. |
-| | attrValue | variant | Value of the attribute. |
-| customAttributes | attrName | string | Name of the attribute. |
-| | attrValue | variant | Value of the attribute. |
+| | text | string | 使用 UTF-8 编码的提醒消息文字 |
+| attributes | attrName | string | 属性名 |
+| | attrValue | variant | 属性值|
+| customAttributes | attrName | string | 属性名 |
+| | attrValue | variant | 属性值 |
 
-**NOTE:** If the richIconUrl, richAudioUrl, richIconObjectPath, 
-richAudioObjectPath, or respObjectPath fields were specified 
-by the producer app for a notification message, the Notification 
-service framework sends this information as attributes in the 
-attributes field, as per [Attributes][attributes].
+**NOTE:** 如果 richIconUrl, richAudioUrl, richIconObjectPath, richAudioObjectPath, 或者 respObjectPath 字段已经被提供方应用程序声明，提醒
+服务框架则根据属性字段中的属性来发送这些信息，参见 [Attributes][attributes].
 
-### Attributes
+### 属性
 
-| Attribute| Values | 
+| 属性 | 值 | 
 |---|---|
 | Rich Notification Url | <ul><li>attrName=0</li><li>attrValue= </li><li>variant signature=s</li><li>value=&lt;Icon URL&gt;</li></ul> |
 | Rich Notification Audio Url | <ul><li>attrName=1</li><li>attrValue= </li><li>variant signature=a{ss}</li><li>value=List&lt;langTag, Audio URL&gt;</li></ul> |
@@ -170,16 +167,16 @@ attributes field, as per [Attributes][attributes].
 | Response Object Path | <ul><li>attrName=4</li><li>attrValue= (values detailed below) </li></ul>|
 | Original Sender | <ul><li>attrName=5</li><li>attrValue= (values detailed below) </li></ul> |
 
-**attrValue information**
+**attrValue 信息**
 
-| Attribute name | Values |
+| 属性名 | 值 |
 |---|---|
 | Rich Notification Icon Object Path | <ul><li>variant signature=o</li><li>value=&lt;Rich notification icon object path&gt;</li></ul> |
 | Rich Notification Audio Object Path | <ul><li>variant signature=o</li><li>value=&lt;Rich notification audio object path&gt;</li></ul> |
 | Response Object Path | <ul><li>variant signature=o</li><li>value=&lt;Response object path>&gt;</li></ul> |
 | Original Sender | <ul><li>variant signature=s</li><li>value=&lt;Producer bus name&gt;</li></ul> |
 
-### Introspection XML
+### 内省 XML
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -203,46 +200,41 @@ attributes field, as per [Attributes][attributes].
 </node>
 ```
 
-## Producer Interface
+## 提供方接口
 
-The Notification Producer interface is announced such that, 
-when a device scans the network, it can find all producer devices.
+提供方提醒接口设定后，当一个设备扫描网络时，他可以发现所有的提供方设备。
 
-### Interface name
-
-| Interface name | Version | Secured | Object path |
+### 接口名
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.Notification.Producer` | 1 | no | `/notificationProducer` |
+| `org.alljoyn.Notification.Producer` | 1 | 否 | `/notificationProducer` |
 
-### Properties
-
-|Property name | Signature | List of values | Read/Write | Description |
+### 属性
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
 
-### Methods
+### 方法
 
-The following methods are exposed by the object that implements 
-the `org.alljoyn.Notification.Producer` interface.
+下列方法被暴露于实现 `org.alljoyn.Notification.Producer` 接口的对象
 
 #### `Dismiss('i')`
 
-**Message arguments**
+**消息参数**
 
-| Argument | Parameter name| Signature | List of values | Description |
+| 参数 | 参数名 | 类型 | 值列表 | 描述 |
 |:---:|---|---|---|---|
-| 0 | `msgId` | integer | N/A | A way to notify the producer that a notification was dismissed. |
+| 0 | `msgId` | integer | N/A | 通知提供方一个提醒被驳回的一种方式。 |
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The consumer asks the producer to send a dismiss signal and 
-stop advertising a given notification.
+使用方请求提供方发送一个驳回信号，并停止推广指定的提醒。
 
-### Introspection XML
+### 内省 XML
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -257,42 +249,41 @@ stop advertising a given notification.
 </node>
 ```
 
-## Dismisser Interface
+## 驳回接口
 
-The Dismiss sessionless signals are sent to notify other 
-consumers on the proximal network that a notification has 
-been dismissed.
+Dismiss 非会话信号被发送到邻近域网络的使用方上，指示着一个提醒已经被驳回。
 
-### Interface name
-
-| Interface name | Version | Secured | Object path |
+### 接口名
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.Notification.Dismisser` | 1 | no | `/notification/Dismisser` |
+| `org.alljoyn.Notification.Dismisser` | 1 | 否 | `/notification/Dismisser` |
 
-### Properties
 
-|Property name | Signature | List of values | Read/Write | Description |
+### 属性
+
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
 
-### Signals
+### 信号
 
 #### `Dismiss('iay')`
 
-Dismiss signal is a Sessionless signal.
+Dismiss 信号是非会话信号。
 
-**Message arguments**
 
-| Argument | Parameter name | Signature | List of values | Description |
+**消息参数**
+
+| 参数 | 参数名 | 类型 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
 | 0 | `msgId` | `i` | positive | |
 | 1 | `appId` | `ay`| positive | |
 
-**Description**
+**描述**
 
-Notifies consumers that the notification has been dismissed.
+提醒使用方一个提醒已经被驳回
 
-### Introspect XML
+### 内省 XML
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -308,46 +299,36 @@ Notifies consumers that the notification has been dismissed.
 </node>
 ```
 
-## Notification Service Framework Use Cases
+## 提醒服务框架用例
 
-### Device connecting within and outside the TTL period
+### 在 TTL 周期内和周期外连接上的设备
 
-The following figure illustrates two consumers (television and 
-tablet) connecting within the notification message TTL period 
-and a third consumer (smartphone) connecting after the TTL period. 
-The first two consumers receive the notification message, the 
-third consumer does not.
+下图展示了两个使用方（电视和平板电脑）在 提醒消息 TTL 周期内完成连接，以及第三个使用方（智能手机）在 TTL 周期过后完成连接的场景。前两个使用
+方可以收到提醒消息，而第三个使用方不能收到。
 
-**NOTE:** The AllJoyn core block represents the collective AllJoyn 
-framework functionality on various producers and consumers.
+**NOTE:** AllJoyn 核心区指的是在各个提供方和使用方上的 AllJoyn 框架和功能的集合。
 
 ![notification-use-case-ttl-period][notification-use-case-ttl-period]
 
-**Figure:** Notification message behavior within and outside the TTL period
+**Figure:** 在 TTL 周期内和周期外提醒消息的行为
 
-### Notification message handling based on message types
+### 根据消息类型不同对提醒消息的不同处理方式
 
-The following figure illustrates how a notification message 
-overwrites a notification message of the same type, and how 
-notification messages of different types can coexist using 
-the AllJoyn framework.
+下图展示了同类型的提醒消息如何相互覆盖，以及不同类型的提醒消息如何在 AllJoyn 框架上共同存在。
 
-**NOTE:** The AllJoyn core block represents the collective AllJoyn 
-framework functionality on various producers and consumers.
+**NOTE:** AllJoyn 核心区指的是在各个提供方和使用方上的 AllJoyn 框架和功能的集合。
 
 ![notification-use-case-msg_handling][notification-use-case-msg_handling]
 
-**Figure:** Notification message handling based on message type
+**Figure:** 根据不同的消息类型处理消息
 
-### Notifications dismissed when producer is on network
+### 在提供方在网络上时驳回提醒消息。
 
-The following figure illustrates the flow of dismissing a 
-notification from the consumer until it is received by other 
-consumers on the network.
+下图展示了使用方驳回一个提醒的流程，一直到此提醒被网络上的其他使用方接收。
 
 ![notification-use-case-dismissed-notification-producer][notification-use-case-dismissed-notification-producer]
 
-**Figure:** Notifications that are dismissed when the producer is on the network
+**Figure:** 在提供方在网络上时驳回提醒消息
 
 
 [notification-14.02]: /learn/base-services/notification/interface-14-02
