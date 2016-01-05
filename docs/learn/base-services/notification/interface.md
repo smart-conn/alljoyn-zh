@@ -12,7 +12,7 @@
 | 14.06 更新1 | 9/29/2014 | <ul><li>更新了文档标题 (由“规范” (Specification) 变为“定义” (Definition))</li><li>在文档标题中加入了版本号以便查询</li><li>在概览( Overview ) 章节加入了用来处理 AllSeen Alliance Compliance and Certification 程序的便笺</li><li> 强制加入了支持 AllSeen Alliance Compliance and Certification 程序的方法和信号的参数列</li></ul> |
 | 14.12 | 12/17/2014 | 清除了复杂的规范，使对方法和信号的要求更清晰。 |
 
-## 定义概览 Overview
+## 定义概览
 
 AllJoyn&trade; 提醒服务的框架是一个使得 AllJoyn 设备可以向其他 AllJoyn 设备发送通知的软件层发送。这些设备被分为两类：提供方和使用方。提供方
 生产并发送提醒，但使用方只使用和显示这些提醒。终端用户的家庭网络（例如　Wi-Fi）可以连接到多个提供方，同时有多个使用者可以连接并使用这些消息。
