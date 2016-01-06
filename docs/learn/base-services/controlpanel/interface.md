@@ -144,47 +144,47 @@ About announcement 通过非会话信号来传播。
 | States | `u` | Bit mask | Read-only | Bit mask for various widget states. States bit mask information is detailed below. |
 | OptParams | `a{qv}` | N/A | Read-only | Metadata dictionary. See [Container widget metadata][container-widget-metadata] for more information. |
 
-**States property bit mask information**
+**状态属性位掩码信息**
 
-| Mask | Name | Description |
+| 掩码 | 名称 | 描述 |
 |:---:|---|---|
-| 0x01 | enabled | Indicates whether the widget is enabled. A disabled widget should be grayed out or invisible. |
+| 0x01 | enabled | 指示部件是否被启用。未启用的部件应被标为灰色或不可见。|
 
-#### Container widget metadata
+#### 容器组件元数据
 
-| Dictionary key | Field name | Signature | Description |
+| 字典键值 | 字段名 | 签名 | 描述 |
 |:---:|---|:---:|---|
-| 0 | Label | `s` | Label |
-| 1 | bgColor | `u` | Background color expressed as RGB value. If not specified, then the background color of the enclosing container is used. |
-| 2 | layoutHints | `aq` | Layout hints. See [Container widget layout hints][container-widget-layout-hints] for more information. |
+| 0 | Label | `s` | 标签 |
+| 1 | bgColor | `u` | 背景颜色由 RGB 值表达。如果尚未指定背景，则使用封闭容器的背景颜色。|
+| 2 | layoutHints | `aq` | 布局提醒。 更多信息请参见 [Container widget layout hints][container-widget-layout-hints]  |
 
-#### Container widget layout hints
+#### 容器组件的布局提醒。
 
-| Hint ID | Hint name | Description |
+| 提醒 ID | 提醒名 | 描述 |
 |:---:|---|---|
-| 1 | Vertical Linear | A layout that aligns all components in a vertical direction. |
-| 2 | Horizontal Linear | A layout that aligns all components in a horizontal direction. |
+| 1 | Vertical Linear | 将所有的组件都排成竖直排列 。 |
+| 2 | Horizontal Linear | 将所有的组件都排成水平排列。 |
 
-### Methods
+### 方法
 
+没有方法被暴露到此接口
 No methods are exposed by this interface.
-
-### Signals
+。
+### 信号
 
 #### `MetadataChanged`
 
-MetadataChanged signal is not a Sessionless signal.
+MetadataChanged 信号不是非会话信号。
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The metadata has changed. This can occur due to changes in 
-any of the property objects.
+元数据已经改变。任何属性对象的改变都会引起元数据改变
 
-### Introspect XML
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -198,16 +198,15 @@ any of the property objects.
 </node>
 ```
 
-## Property Interface
+## 属性接口
 
-This interface provides the control mechanism for the property widget. 
-Each widget is represented by an AllJoyn object implementing this interface.
+此接口为属性部件提供了控制机制。每一个部件都被实现此接口的一个 AllJoyn 对象所代表。
 
-### Interface name
+### 接口名
 
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.ControlPanel.Property` | 1 | no | <p>`/ControlPanel/{unit)/{panel}/{language}/.../{object name}`</p><p>Examples:</p><ul><li>/ControlPanel/washing/consolePanel/en/Mode</li><li>/ControlPanel/sprinkler/mainPanel/en/Schedules/InputForm/ScheduleName</li></ul> |
+| `org.alljoyn.ControlPanel.Property` | 1 | 否 | <p>`/ControlPanel/{unit)/{panel}/{language}/.../{object name}`</p><p>实例:</p><ul><li>/ControlPanel/washing/consolePanel/en/Mode</li><li>/ControlPanel/sprinkler/mainPanel/en/Schedules/InputForm/ScheduleName</li></ul> |
 | `org.alljoyn.ControlPanel.SecuredProperty` | 1 | yes | `/ControlPanel/{unit}/{panel}/.../{object name}` |
 
 ### Properties
