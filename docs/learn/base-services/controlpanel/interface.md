@@ -155,7 +155,7 @@ About announcement 通过非会话信号来传播。
 | 字典键值 | 字段名 | 签名 | 描述 |
 |:---:|---|:---:|---|
 | 0 | Label | `s` | 标签 |
-| 1 | bgColor | `u` | 背景颜色由 RGB 值表达。如果尚未指定背景，则使用封闭容器的背景颜色。|
+| 1 | bgColor | `u` | 由 RGB 值表达的背景颜色。如果尚未指定背景，则使用封闭容器的背景颜色。|
 | 2 | layoutHints | `aq` | 布局提醒。 更多信息请参见 [Container widget layout hints][container-widget-layout-hints]  |
 
 #### 容器组件的布局提醒。
@@ -209,60 +209,60 @@ MetadataChanged 信号不是非会话信号。
 | `org.alljoyn.ControlPanel.Property` | 1 | 否 | <p>`/ControlPanel/{unit)/{panel}/{language}/.../{object name}`</p><p>实例:</p><ul><li>/ControlPanel/washing/consolePanel/en/Mode</li><li>/ControlPanel/sprinkler/mainPanel/en/Schedules/InputForm/ScheduleName</li></ul> |
 | `org.alljoyn.ControlPanel.SecuredProperty` | 1 | yes | `/ControlPanel/{unit}/{panel}/.../{object name}` |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
-| States | `u` | Bit mask | Read-only | Bit mask for various widget states. States bit mask information is detailed below. |
-| OptParams | `a{qv}` | N/A | Read-only | Metadata dictionary. See [Property widget metadata][property-widget-metadata] for more information. |
-| Values | `v` | N/A | Read-write | Actual value of the property. When modifying the property, the device may give the AllJoyn error `org.alljoyn.Error.MethodNotAllowed` if the property is ReadOnly. The supported data types are listed in [Supported data types][supported-data-types]. |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
+| States | `u` | Bit mask | 只读 | 众多组建状态的掩码。状态掩码信息在下面会有详细说明。 |
+| OptParams | `a{qv}` | N/A | 只读 | 元数据字典，详细信息请参见 [Property widget metadata][property-widget-metadata]. |
+| Values | `v` | N/A | 只写 | 属性的具体值，如果状态是只读的，在状态被修改时设备会报错： `org.alljoyn.Error.MethodNotAllowed`. 被支持的数
+剧类型在下表中有列出 [Supported data types][supported-data-types]. |
 
-**States property bit mask information**
+**状态属性位掩码信息**
 
-| Mask | Name | Description |
+| 掩码 | 名字 | 描述 |
 |:---:|---|---|
-| 0x01 | enabled | Indicates whether the widget is enabled. A disabled widget should be grayed out or invisible. |
-| 0x02 | writable | Indicates whether the widget is writable. |
+| 0x01 | enabled | 指示部件是否被启用。未启用的部件应被标为灰色或不可见。 |
+| 0x02 | writable | 指示部件是否可写。 |
 
-#### Property widget metatdata
-
-| Dictionary key | Field name | Signature | Description |
+#### 属性组件元数据
+| 字典键值 | 字段名 | 签名 | 描述 |
 |:---:|---|:---:|---|
-| 0 | Label | `s` | Label |
-| 1 | bgColor | `u` | Background color expressed as RGB value. If not specified, then the background color of the enclosing container is used. |
-| 2 | hints | `aq` | The widget rendering hints. See [Property widget hints][property-widget-hints] for more information. |
-| 3 | unitOfMeasure | `s` | Unit of measurement. |
-| 4 | constrainToValue | `a(vs)` | Constraint on the value as a list of values. Any value of the property must match one of the values in this list. See [List of values][list-of-values] for more information. |
-| 5 | range | `vv` | Constraint on the value as a range; a value of this property  must stay within the range. See [Property widget ranges][property-widget-ranges] for more information. |
+| 0 | Label | `s` | 标签 |
+| 1 | bgColor | `u` | 由 RGB 值表达的背景颜色。如果尚未指定背景，则使用封闭容器的背景颜色。 |
+| 2 | hints | `aq` | 组件绘制提示，详细信息请参阅 [Property widget hints][property-widget-hints]. |
+| 3 | unitOfMeasure | `s` | 测量单位 |
+| 4 | constrainToValue | `a(vs)` | 受限制的值列表，属性中的任何一个值都必须与此表中的一个值一致。详细信息请参阅 [List of  values][list-of-values]|.
+| 5 | range | `vv` | 受限制的值的范围; 属性中的值必须在此限制范围内。详细信息请参阅 [Property widget ranges][property-widget-ranges]|.
 
-#### Property widget hints
+#### 属性组建提示
 
-| Hint ID | Hint name | Description |
+| 提示 ID | 提示名 | 描述 |
 |:---:|---|---|
-| 1 | Switch | Two-state buttons allowing the end-user to toggle the state of a single settings option. |
-| 2 | CheckBox | Widget for multi-select. It allows the end user to select multiple options from a list. |
-| 3 | Spinner | Widget for single-select. It allows the end user to select a single option from a list. |
-| 4 | RadioButton | Widget for single-select. It allows the end user to select a single option from a list. |
-| 5 | Slider | Allows the end user to select a value from a continuous or discrete range. The appearance is linear, either horizontal or vertical. |
-| 6 | TimePicker | Allows the end user to specify a time value. |
-| 7 | DatePicker | Allows the end user to specify a date value. |
-| 8 | NumberPicker | Allows the end user to specify a numeric value |
-| 9 | NumericKeypad | Provides the end user with a numeric entry field and buttons for 0-9 digits, to enter a numeric value. The developer must know the min/max number of digits allowed in the entry field. |
-| 10 | RotaryKnob | An alternate way to represent a slider. |
-| 11 | TextLabel | Read-only text label. |
-| 12 | NumericView | Provides a read-only, numeric field with an optional label and numbers. For example, a washing machine display shows the time remaining for wash is 35:00 minutes. |
-| 13 | EditText | Provides the end user with a text entry field and keyboard. The developer must know the min/max number of letters allowed in the entry field. |
+| 1 | Switch | 双态按钮使终端用户可以使用一个设置选项来切换状态。 |
+| 2 | CheckBox | 多重选择组件。允许用户从一个列表中选择多个选项。|
+| 3 | Spinner | 单选组件。允许用户从一个列表中选择单个选项。|
+| 4 | RadioButton | 单选组件。&&允许用户从一个列表中选择单个选项。 |
+| 5 | Slider | 允许用户从一个连续或离散的区间内选择一个值。外观应是线性的，水平或者竖直。|
+| 6 | TimePicker | 允许终端用户指定一个时间。 |
+| 7 | DatePicker | 允许终端用户指定一个日期。 |
+| 8 | NumberPicker | 允许终端用户指定一个数字。|
+| 9 | NumericKeypad | 为终端用户提供了数字的输入字段和0-9的数字按钮，以便输入一个数字值。开发者必须了解输入字段所支持的的最大/最小限制位数。 |
+| 10 | RotaryKnob | 代表滑块的另一种方式 |
+| 11 | TextLabel | 只读的文字标签 |
+| 12 | NumericView | 提供一个只读的数字字段和一个可选的标签。例如洗衣机显示屏可以显示剩余时间为 35:00 分钟。 |
+| 13 | EditText | 为终端用户提供一个输入文本的字段以及键盘。开发者必须了解输入字段所支持的最大/最小字母数。 |
 
-#### Supported data types
+#### 支持的数据类型
 
-| Category | Supported data types |
+| 类别 | 支持的数据类型 |
 |---|---|
-| Scalar types | <ul><li>BOOLEAN - b</li><li>BYTE - y</li><li>BYTE ARRAY - ay</li><li>Numeric types (types listed below)</li><li>STRING - s</li></ul> |
-| Composite types | All composite data type must have the following signature--q(type)--where the first value is an enum value indicating the composite type. Details provided below. |
-| Collection of records | Array of records of only scalar and supported composite types. All records in the array must be of the same record type. |
+| 标量类别 | <ul><li>BOOLEAN - b</li><li>BYTE - y</li><li>BYTE ARRAY - ay</li><li>数量类别 (如下所示)</li><li>STRING - s</li></ul> |
+| 混合类别 | 所有的混合数据类别必须含有以下签名--q(type)--第一个值是一个 enum 值，指示混合类别。下文会阐述细节。 |
+| 记录集 | 只有标量和受支持的混合类别的记录数组。一个数组内的所有的记录必须是同一记录类型的。 |
 
-**Numeric types**
+**数字类型**
 
 * INT16 - n
 * UINT16 - q
@@ -272,61 +272,62 @@ MetadataChanged 信号不是非会话信号。
 * UINT64 - t
 * DOUBLE - d
 
-**Composite types information**
+**混合类型信息**
 
-| Composite type enum | Composite type name | Signature | Description |
+| 混合类型 enum |混合类型名称 | 签名 | 描述 |
 |---|---|---|---|
-| 0 | Date | `q(qqq)` | Data type per RFC3339. There are three fields: date-mday (1-31); date-month (1-12); and date-fullyear (4-digit year). |
-| 1 | Time | `q(qqq)` | Time type per RFC3339. There are three fields: time-hour (0-23); time-minute (0-59); and time-second (0-59). |
+| 0 | 日期 | `q(qqq)` | 根据 RFC3339 标准的日期，有三个字段： date-mday (1-31); date-month (1-12)； 以及 date-fullyear (4-digit year). |
+| 1 | 名称 | `q(qqq)` | 根据 RFC3339 标准的时间，有三个字段： time-hour (0-23); time-minute (0-59); 以及 time-second (0-59). |
 
-#### List of values
+#### 值列表
 
-A list of values is an array of structs.
+一个值列表就是一个结构数组
 
-| Field name | Signature | Description |
+| 字段名 | 签名 | 描述 |
 |---|:---:|---|
-| Value | `v` | Value with the same data type of the property. |
-| Label | `s` | Display label. |
+| Value | `v` | 与属性相同的数据类型的值 |
+| Label | `s` | 显示标签 |
 
-#### Property widget ranges
+#### 属性组件范围
 
-| Field name | Signature | Description |
+| 字段名 | 签名 | 描述 |
 |---|:---:|---|
-| min | `v` | Minimum value with the same data type as that of the property. |
-| max | `v` | Maximum value with the same data type as that of the property. |
-| increment | `v` | Value to increment/decrement by. It has the same data type as that of the property. |
+| min | `v` | 与属性的数据类型相同的最小值 |
+| max | `v` | 与属性的数据类型相同的最大值 |
+| increment | `v` | 增加/减少值的量。与属性的数据类型相同。 |
 
-### Methods
+### 方法
 
-No methods are exposed by this interface.
+此接口不被暴露任何方法
 
-### Signals
+### 信号
 
 #### `MetadataChanged`
 
-MetadataChanged signal is not a Sessionless signal.
+MetadataChanged 信号不是非会话信号
 
 **Message arguments**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The metadata has changed. This can occur due to changes in any of the property objects.
+元数据已变化，任何属性对象的变化都会引发元数据的变化。
+
 
 #### `ValueChanged`
 
-ValueChanged signal is not a Sessionless signal.
+ValueChanged 信号不是非会话信号
 
 **Message arguments**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The property's value has changed.
+此属性的值已改变。
 
-### Introspect XML
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -344,39 +345,37 @@ The property's value has changed.
 </node>
 ```
 
-## LabelProperty Interface
+## LabelProperty 接口
  
-This interface provides the control mechanism for the label 
-property widget (a text label). Each widget is represented 
-by an AllJoyn object implementing this interface.
+ 此接口为标签属性组件（一个文本标签）提供控制机制。每一个组件都由一个实现这个接口的 AllJoyn 对象所代表。
  
-### Interface name
+### 接口名
  
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 安全性 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.ControlPanel.LabelProperty` | 1 | no | <p>`/ControlPanel/{unit}/{panel}/{language}/.../ {object name}`</p><p>Example:</p><p>/ControlPanel/airconditioner/consolel/Warning</p> |
+| `org.alljoyn.ControlPanel.LabelProperty` | 1 | no | <p>`/ControlPanel/{unit}/{panel}/{language}/.../ {object name}`</p><p>实例:</p><p>/ControlPanel/airconditioner/consolel/Warning</p> |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值列表 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
-| States | `u` | Bit mask | Read-only | Bit mask for various widget states. States bit mask information is detailed below. |
-| Label | `s` | N/A | Read-only | Text label |
-| OptParams | `a{qv}` | N/A | Read-only | Metadata dictionary. See [LabelProperty widget metadata][labelproperty-widget-metadata] for more information. |
+| Version | `q` | Positive integers | 只读 | 接口版本 |
+| States | `u` | Bit mask | 只读 | 众多组建状态的掩码。状态掩码信息在下面会有详细说明。 |
+| Label | `s` | N/A | 只读 | 文本标签 |
+| OptParams | `a{qv}` | N/A | 只读 | 元数据字典，详细信息请参见  [LabelProperty widget metadata][labelproperty-widget-metadata]  |
 
 **States bit mask information**
 
-| Mask | Name | Description |
+| 掩码 | 名称 | 描述 |
 |---|---|---|
-| 0x01 | enabled | Indicates whether the widget is enabled. A disabled widget should be grayed out or invisible. |
+| 0x01 | enabled | 指示部件是否被启用。未启用的部件应被标为灰色或不可见。|
 
-#### LabelProperty widget metadata
+#### LabelProperty 组件元数据
 
-| Dictionary key | Field name | Signature | Description |
+| 字典键值 | 字段名 | 签名 | 描述 |
 |:---:|---|:---:|---|
-| 1 | bgColor | `u` | Background color expressed as RGB value. If not specified, then the background color of the enclosing container is used. |
-| 2 | hints | `aq` | The widget rendering hints. See [LabelProperty widget hints][labelproperty-widget-hints] for more information. |
+| 1 | bgColor | `u` | 由 RGB 值表达的背景颜色。如果尚未指定背景，则使用封闭容器的背景颜色。 |
+| 2 | hints | `aq` | 组件绘制提示，详细信息请参阅 [LabelProperty widget hints][labelproperty-widget-hints]. |
 
 #### LabelProperty widget hints
 
