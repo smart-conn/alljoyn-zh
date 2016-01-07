@@ -1,52 +1,29 @@
 # Audio Streaming
 
-The AllJoyn&trade; Audio service framework is a full-feature implementation
-using the AllJoyn framework that allows for synchronized audio playback on
-one or many Sinks. An application using the Audio service framework can
-discover nearby Sinks and by adding them have the ability to stream audio
-(PCM data) by calling a single command to play on all added Sinks. The
-service provides controls to pause, stop, play, volume up/down, and mute.
+The AllJoyn&trade; Audio 服务架构是一种使用了 AllJoyn 架构，实现了设备从不同 Sinks 同步播放音频的全部功能。应用程序使用 Audio 服务架构能够发现附近的 Sinks，只需要一个命令，便可以让应用程序串流 （PCM data）播放所有加入的 Sinks 的音频。
 
-## Concepts and Terminology
+## 概念和术语
 
-### Sink and Source
+### Sink 与 Source
 
-Two roles exist:
-* Sink. This is who receives the raw audio data.
-* Source. This is who sends the raw audio data.
+有两个角色：
+* Sink. 用于接收原始音频数据。
+* Source. 用于发送原始音频数据。
 
-## How Does It Work?
+## 工作方式
+Audio Service 架构使用软件架构中的标准化接口将 PCM 数据转移到每一个设备中。当 PCM 数据通过 AllJoyn 信号被发送后，Source 会形成一个端到端的会话。连接所有希望发送音频的 Sink。它将会在每一个会话中发送一个包含音频数据块和时间戳的信号。时间戳用于提供一种简单的同步多个扬声器的功能。
 
-The Audio Service framework uses the interfaces standardized in this
-software framework in order to move PCM data to each device. When PCM
-data is sent is is done so via an AllJoyn Signal. The Source will form
-a point-to-point session with each Sink that it wishes to send audio.
-It will then send a Signal on each session that includes the audio
-data chunk and a timestamp. The timestamp is used to provide an simple
-synchronization between the multiple speakers.
+在能够发送音频之前，Source 必须首先告知 Sink 它希望发送的音频的细节信息。Source 负责获取除 FIFO 大小以外每个 Sink 的容量。Source 随后会重新填满 FIFO 并且随着乐曲的播放，开始发送更多数据快的进程。
 
-Prior to being able to send audio, a Source must first tell the Sink
-the details of the audio that it wishes to send. The Source is
-responsible for requesting the capabilities of each Sink in addition
-to the FIFO size. The Source then prefills the FIFO and starts the
-process of sending more data chunks as the song plays.
+媒体和音量控制使用不同 AllJoyn Interface 功能控制不同的部分。举例说明，在 Sink 中的音量控制通过可读／写的 AllJoyn Property 控制当前音量，声音范围通过定义最大、最小和单位值的结构来表示。
 
-When media and volume controls are used the function on a separate
-AllJoyn Interface for each respective part. For example, volume control
-on a Sink specifies the current volume via an AllJoyn Property that is
-read/write and a volume range represented by a structure that defines
-the max, min, and step values.
+除提供音频数据之外，Source 还能够提供音频元数据。举例说明，图表、专辑、艺术家和／或曲名。使用这些，如果可能的话，使得 Sink 能够显示内容。元数据是可选的，不强制 Source 应用程序使用。
 
-In addition to providing the audio data a Source can provide the audio
-metadata. For example the icon, album, artist, and/or track name.
-Doing this allows for a Sink, if capable, to display the content.
-The metadata is optional and not mandatory to a Source application.
+## 了解更多
 
-## Learn More
-
-* [Learn more about the Audio Streaming Interface Definition][audiostreaming-interface]
-* [Download the SDK][download] and [build][build]
-* [Learn more about the APIs][api-guide]
+* [了解更多关于 Audio Streaming Interface Definition][audiostreaming-interface]
+* [下载 SDK][download] 和 [build][build]
+* [了解更多关于 APIs][api-guide]
 
 [audiostreaming-interface]: /learn/base-services/audiostreaming/interface
 [download]: https://allseenalliance.org/framework/download
