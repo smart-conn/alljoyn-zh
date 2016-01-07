@@ -1,12 +1,12 @@
 # Security 2.0
 
-The Security 2.0 feature is an enhancement to the existing AllJoyn&trade; Security.
+Security 2.0 是对已有 AllJoyn&trade; Security 的一次加强。
 
-The goal of the Security 2.0 feature is to allow an application to validate access to secure interfaces or secure objects based on policies installed by the owner. This feature is part of the AllJoyn Core library. It is not an option for the application to enforce permission. It is up to the user to dictate how the application performs based on the access control lists (ACLs) defined for the application. The AllJoyn Core Permission Management component does all the enforcement including the concept of mutual authorization before any message action can be taken.
+Security 2.0 的目的在于，能够使应用程序根据其拥有者安装的规则，验证到安全端口或安全对象到连接。此功能是 AllJoyn 核心资源库的一部分。它不是应用程序执行权限的一个可选项。由用户根据应用程序访问控制列表（ACL），决定应用程序如何运行。
 
-The Security Manager is optional service that helps the user with key management and permission rules building. Using policy templates defined by application developer, the Security Manager builds the application manifest to let the user authorize which interactions the application can do.
+Security Manager 是一个可选服务，它帮助用户进行密钥管理和权限规则的制定。通过使用应用开发者定义的规则模板，Security Manager 生成应用程序清单，让用户授权应用程序可以做哪些交互。
 
-## Learn More
+## 了解更多
 
 * [Security 2.0 High Level Design (HLD)][security2_0-hld]
 * [Download the SDK][download], [build][build]
