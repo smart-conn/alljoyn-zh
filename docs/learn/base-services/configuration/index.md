@@ -1,42 +1,31 @@
 # Configuration Service
 
-The Configuration Service provides an ability to
-configure a device, like its device name or passcode.
+Configuration Service 提供了配置设备的功能。如配置设备的名称和密码。
 
-## Concepts and Terminology
+## 概念和术语
 
-Two roles exist:
-* **Config Server**. This runs on the device that is being configured,
-  the device that is offering the Configuration service.
+Two roles exist:有两个角色：
+* **Config Server**. Config Server 运行在被配置的设备上，这些设备提供 Configuration 服务。
 
-* **Config Client**. This runs on the device or app that is used to
-  configure a remote device.
+* **Config Client**. Config Client 运行在设备或应用程序上，用于配置远程设备。
 
-The following configurations can be configured:
+有以下几个可配置项：
 
-* **Factory Reset**. Restores the device to its original
-  factory settings. All configurable data is restored;
-  if the device supports the Onboarding service, then
-  the device will enter its original offboarded state.
+* **Factory Reset**. 将设备恢复至原生出厂设置。所有配置数据将被还原；如果设备支持 Onboarding 服务，那么设备将会进入它原本的 offboarded 区域。
 
-* **Set Passcode**. Sets the device's passcode, which
-  is used when accessing secure interfaces.
+* **Set Passcode**. 设置设备的密码，用于连接安全端口。
 
-* **Default Language**. Sets the default language used
-  by the device if a specific language is not requested.
+* **Default Language**. 在没有指定语言的情况下，设置设备的默认语言。
 
-* **Device Name**. Sets the device's name.
+* **Device Name**. 设置设备名称。
 
-The Configuration Service exposes a simple secured
-interface to provide this service. See the
-[Configuration Interface Definition][config-interface]
-for more details.
+Configuration Service 在一个简单的安全端口中提供服务。查看 [Configuration Interface Definition][config-interface] 获取更多信息。
 
-## Learn More
+## 了解更多
 
-* [Learn more about the Configuration Interface Definition][config-interface]
-* [Download the SDK][download] and [build][build]
-* [Learn more about the Configuration APIs][api-guide]
+* [了解更多关于 Configuration Interface Definition][config-interface]
+* [下载 SDK][download] and [build][build]
+* [了解更多关于 Configuration APIs][api-guide]
 
 [config-interface]: /learn/base-services/configuration/interface
 [download]: https://allseenalliance.org/framework/download
