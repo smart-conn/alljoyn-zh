@@ -1,150 +1,122 @@
-# Control Panel Interface Definition
+# 控制面板接口定义
 
-## Release History
+## 版本历史
 
-To access a previous version of this document, click the release version link below.
+若想访问历史版本请点击表格中的版本号链接。
 
-|Release version | Date | What changed |
+|版本号 | 日期 | 变化 |
 |---|---|---|
-| [14.02][controlpanel-14.02] | 2/28/2014 | <p>The following interfaces were added:</p><ul><li>ControlPanel.ControlPanel interface version 1</li><li>ControlPanel.Container interface version 1</li><li>ControlPanel.SecuredContainer interface version 1</li><li>ControlPanel.Property interface version 1</li><li>ControlPanel.SecuredProperty interface version 1</li><li>ControlPanel.LabelProperty interface version 1</li><li>ControlPanel.Action interface version 1</li><li>ControlPanel.SecuredAction interface version 1</li><li>ControlPanel.NotificationAction interface version 1</li><li>ControlPanel.Dialog interface version 1</li><li>ControlPanel.SecuredDialog interface version 1</li><li>ControlPanel.ListProperty interface version 1</li><li>ControlPanel.SecuredListProperty interface version 1</li><li>ControlPanel.HTTPControl interface version 1</li></ul> |
-| 14.06 | 6/30/2014 | No updates |
-| 14.06 Update 1 | 9/29/2014 | <ul><li>Updated the document title and Overview chapter title (changed Specification to Definition)</li><li>Added the release version number to the document title for version tracking.</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.</li></ul> |
-| 14.12 | 12/17/2014 | Cleanup to make requirements for methods and signals more clear. |
+| [14.02][controlpanel-14.02] | 2/28/2014 | <p>加入了下列接口:</p><ul><li>ControlPanel.ControlPanel interface version 1</li><li>ControlPanel.Container interface version 1</li><li>ControlPanel.SecuredContainer interface version 1</li><li>ControlPanel.Property interface version 1</li><li>ControlPanel.SecuredProperty interface version 1</li><li>ControlPanel.LabelProperty interface version 1</li><li>ControlPanel.Action interface version 1</li><li>ControlPanel.SecuredAction interface version 1</li><li>ControlPanel.NotificationAction interface version 1</li><li>ControlPanel.Dialog interface version 1</li><li>ControlPanel.SecuredDialog interface version 1</li><li>ControlPanel.ListProperty interface version 1</li><li>ControlPanel.SecuredListProperty interface version 1</li><li>ControlPanel.HTTPControl interface version 1</li></ul> |
+| 14.06 | 6/30/2014 | 没有变化 |
+| 14.06 Update 1 | 9/29/2014 | <ul><li>更新了文档标题以及 Overview 的章节标题 (将“规范” (Specification) 改为“定义” (Definition)). </li><li>在文档标题中加入了版本号以便查询</li><li>在概览( Overview ) 章节加入了用来处理 AllSeen Alliance Compliance and Certification 程序的便笺。</li><li>强制加入了支持 AllSeen Alliance Compliance and Certification 程序的方法和信号的参数列。</li></ul> |
+| 14.12 | 12/17/2014 |清除了复杂的规范，使对方法和信号的要求更清晰。 |
 
-## Definition Overview
+## 定义概览
 
-The Control Panel interfaces must be implemented by an 
-application on a controllee. The following figure illustrates 
-the relationship between a controllee app and a controller app.
+控制面板的接口必须由被控制方上的应用程序实现。下图展示了被控制方应用程序和控制方应用程序之间的关系。
 
 ![controlpanel-arch][controlpanel-arch]
 
-**Figure:** Control Panel service framework architecture within 
-the AllJoyn&trade; framework
+**Figure:** 在 AllJoyn 框架内的控制面板服务框架的结构。
 
-The OEM is responsible for writing the Control interfaces and 
-the Control Panel service framework metadata.
+设备制造商负责撰写控制接口以及控制面板服务框架的元数据。
 
-The UI Toolkit Adaption Layer, a library used to map the metadata 
-to platform-specific UI elements, is made available as part of the 
-Control Panel service framework release.
 
-**NOTE:** All methods and signals are considered mandatory to support 
-the AllSeen Alliance Compliance and Certification program. 
+在 UI Toolkit Adaption 层, 有一个用于将元数据映射到特定平台 UI 元素的库。此库作为控制面板服务框架的一部分被一同发布。
 
-## Discovery
+**NOTE:** 所有方法和信号都被认为是强制支持 AllSeen Alliance Compliance and Certification 程序的。
 
-Controllees are discovered via an AllJoyn announcement. Each AllJoyn 
-device uses the About feature to announce basic app information like 
-app name, device name, manufacturer, and model number. The announcement 
-also contains the list of object paths and service interfaces to allow 
-the controller to determine whether the controllee provides 
-functionality of interest.
+## 发现
 
-The About announcement is propagated using a sessionless signal.
+被控制方通过 AllJoyn announcement 被发现。每一个 AllJoyn 设备使用 About 功能来宣布关于自己的基本应用程序信息，如应用程序名，设备名，制造商
+，型号等等。此 announcement 同时包括对象路径列表以及服务接口列表，控制方可以根据此列表决定哪些受控制方提供的功能是自己感兴趣的。
 
-## Call Flows
+About announcement 通过非会话信号来传播。
 
-### Static Control Panel flow
+## 呼叫流程
 
-The following figure illustrates a typical call flow for a control 
-panel that does not change once rendered.
+### 静态的控制面板流程
+
+下图展示了一个典型的控制面板呼叫流程，一旦呈现就不会改变。
 
 ![controlpanel-static-call-flow][controlpanel-static-call-flow]
 
-**Figure:** Static Control Panel call flow
+**Figure:** 静态控制面板流程
 
-### Dynamic Control Panel flow
+### 动态的控制面板流程
 
-The following figure illustrates a call flow for a control panel that 
-changes as the end user interacts with the widgets.
+下图展示了一个随着终端用户与小工具交互而发生变化的控制面板呼叫流程。
 
 ![controlpanel-dynamic-call-flow][controlpanel-dynamic-call-flow]
 
-**Figure:** Dynamic Control Panel call flow
+**Figure:** 动态控制面板流程
 
-## Error Handling
+## 错误处理
 
-The method calls in the Control Panel interfaces use the AllJoyn 
-error message handling feature (ER_BUS_REPLY_IS_ERROR_MESSAGE) 
-to set the error name and error message.
+控制面板接口中的方法调用使用 AllJoyn 错误消息处理功能 (ER_BUS_REPLY_IS_ERROR_MESSAGE) 来设定错误名称和错误消息。
 
-|Error name | Error message |
+|错误名称 | 错误消息 |
 |---|---|
-| `org.alljoyn.Error.OutOfRange` | Value out of range |
-| `org.alljoyn.Error.InvalidState` | Invalid state |
-| `org.alljoyn.Error.InvalidProperty` | Invalid property |
-| `org.alljoyn.Error.InvalidValue` | Invalid value |
-| `org.alljoyn.Error.MethodNotAllowed` | Method call not allowed |
+| `org.alljoyn.Error.OutOfRange` | 值超出范围 |
+| `org.alljoyn.Error.InvalidState` | 无效的声明 |
+| `org.alljoyn.Error.InvalidProperty` | 无效的属性 |
+| `org.alljoyn.Error.InvalidValue` | 无效的值 |
+| `org.alljoyn.Error.MethodNotAllowed` | 调用方法不被允许 |
 
-## BusObject Map
+## BusObject 映射
 
-### BusObject structure
+### BusObject 结构
 
-The following figure shows the tree structure diagram that 
-represents the basic organization of AllJoyn objects used in 
-the support of the Control Panel service framework. A control 
-panel is implemented using several AllJoyn objects.
+下图展示了代表着被用于支持控制面板服务框架的 AllJoyn 对象的基本接口的树形结构图。使用多个 AllJoyn 对象可实现一个控制面板。
 
 ![controlpanel-busobject-map][controlpanel-busobject-map]
 
-**Figure:** BusObject map
+**Figure:** BusObject 映射
 
-The objects are organized to support multiple units and multiple 
-languages. Only the top-level panels should be listed in the announcement.
+对象们已经被整理好，以实现对多单元和多语种的支持。Announcement 只需要列出顶层的面板。
 
-Since the IETF language tag allows for hyphen (-) which is not 
-allowed in the bus object path, any language tag in the object 
-path replaces a hyphen (-) with an underscore (_).
+由于在 IETF 语言标签中被允许的连字符(-)在总线对象路径中不被允许，任何在对象路径中的语言标签都将连字符(-)替换为下划线(_).
 
-In addition to the control panels, the Control Panel service 
-framework can also support other panels such as a notification 
-panel. These panels are not required to be advertised in the announcement.
+不仅是控制面板，控制面板服务框架也支持其他的面板，如通知面板。这些面板不要求被在 announcement 中推广。
 
-It is the controller's job to introspect and walk the object 
-tree of a control panel to retrieve all the metadata for that 
-control panel.
 
-### BusObject map examples
+内省及遍历控制面板的对象树以取回所有关于此控制面板的元数据应当由控制方完成。
 
-#### Washing machine example
+### BusObject 映射实例
+
+#### 洗衣机实例
 
 ![controlpanel-washing-machine-example][controlpanel-washing-machine-example]
 
-**Figure:** Washing machine example
+**Figure:** 洗衣机实例
 
 #### Sprinkler system example
 
 ![controlpanel-sprinkler-system-example][controlpanel-sprinkler-system-example]
 
-**Figure:** Sprinkler system example
+**Figure:** 洒水器实例
 
-## ControlPanel Interface
+## 控制面板接口
 
-This interface indicates whether the object is a control panel. 
-This object will support at least one language. The service only 
-needs to advertise this type of object in the About announcement. 
-No other objects in the Control Panel service framework tree 
-should be announced.
+此接口指示了该对象是否是一个控制面板。该对象将会支持至少一种语言。在 About announcement 中该服务仅需要推广这一类型的对象。在控制面板服务框
+架树结构中的其他对象则不需要被推广。
 
-**NOTE:** It's the responsibility of the controller to introspect 
-the children objects to locate the corresponding root container 
-of the given panel for the specific language code.
+**NOTE:** 内省子对象以定位对应给定面板的指定语言代码的根容器应当由控制方完成。
 
-### Interface name
+### 接口名
 
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.ControlPanel.ControlPanel` | 1 | no | `/ControlPanel/{unit)/{panelName}` |
-|  |  |  | Example: /ControlPanel/washing/consolePanel |
+| `org.alljoyn.ControlPanel.ControlPanel` | 1 | 否 | `/ControlPanel/{unit)/{panelName}` |
+|  |  |  | 举例: /ControlPanel/washing/consolePanel |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值列表 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
 
-### Introspect XML
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -155,65 +127,63 @@ of the given panel for the specific language code.
 </node>
 ```
 
-## Container Interface
+## 容器接口
 
-This interface provides all the metadata to guide the 
-controller to render the UI for a container widget.
+此接口对指导控制方为容器部件渲染 UI 提供了所有的元数据。
 
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.ControlPanel.Container` | 1 | no | <p>`/ControlPanel/{unit)/{panelName}/{language}/.../{containerName}`</p><p>Examples:</p><ul><li>/ControlPanel/washing/consolePanel/en</li><li>/ControlPanel/sprinkler/mainPanel/en/Schedules/InputForm/RunOnDays</li></ul> |
-| `org.alljoyn.ControlPanel.SecuredContainer` | 1 | yes | `/ControlPanel/{unit)/{panelName}/{language}/.../{containerName}` |
+| `org.alljoyn.ControlPanel.Container` | 1 | 否 | <p>`/ControlPanel/{unit)/{panelName}/{language}/.../{containerName}`</p><p>例如：:</p><ul><li>/ControlPanel/washing/consolePanel/en</li><li>/ControlPanel/sprinkler/mainPanel/en/Schedules/InputForm/RunOnDays</li></ul> |
+| `org.alljoyn.ControlPanel.SecuredContainer` | 1 | 是 | `/ControlPanel/{unit)/{panelName}/{language}/.../{containerName}` |
 
-### Properties
+### 属性
 
-| Property name | Signature | List of values | Read/Write | Description |
+| 属性名 | 签名 | 值列表 | 可读/可写| 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
 | States | `u` | Bit mask | Read-only | Bit mask for various widget states. States bit mask information is detailed below. |
 | OptParams | `a{qv}` | N/A | Read-only | Metadata dictionary. See [Container widget metadata][container-widget-metadata] for more information. |
 
-**States property bit mask information**
+**状态属性位掩码信息**
 
-| Mask | Name | Description |
+| 掩码 | 名称 | 描述 |
 |:---:|---|---|
-| 0x01 | enabled | Indicates whether the widget is enabled. A disabled widget should be grayed out or invisible. |
+| 0x01 | enabled | 指示部件是否被启用。未启用的部件应被标为灰色或不可见。|
 
-#### Container widget metadata
+#### 容器组件元数据
 
-| Dictionary key | Field name | Signature | Description |
+| 字典键值 | 字段名 | 签名 | 描述 |
 |:---:|---|:---:|---|
-| 0 | Label | `s` | Label |
-| 1 | bgColor | `u` | Background color expressed as RGB value. If not specified, then the background color of the enclosing container is used. |
-| 2 | layoutHints | `aq` | Layout hints. See [Container widget layout hints][container-widget-layout-hints] for more information. |
+| 0 | Label | `s` | 标签 |
+| 1 | bgColor | `u` | 由 RGB 值表达的背景颜色。如果尚未指定背景，则使用封闭容器的背景颜色。|
+| 2 | layoutHints | `aq` | 布局提醒。 更多信息请参见 [Container widget layout hints][container-widget-layout-hints]  |
 
-#### Container widget layout hints
+#### 容器组件的布局提醒。
 
-| Hint ID | Hint name | Description |
+| 提醒 ID | 提醒名 | 描述 |
 |:---:|---|---|
-| 1 | Vertical Linear | A layout that aligns all components in a vertical direction. |
-| 2 | Horizontal Linear | A layout that aligns all components in a horizontal direction. |
+| 1 | Vertical Linear | 将所有的组件都排成竖直排列 。 |
+| 2 | Horizontal Linear | 将所有的组件都排成水平排列。 |
 
-### Methods
+### 方法
 
-No methods are exposed by this interface.
+没有方法被暴露到此接口
 
-### Signals
+### 信号
 
 #### `MetadataChanged`
 
-MetadataChanged signal is not a Sessionless signal.
+MetadataChanged 信号不是非会话信号。
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The metadata has changed. This can occur due to changes in 
-any of the property objects.
+元数据已经改变。任何属性对象的改变都会引起元数据改变
 
-### Introspect XML
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -227,72 +197,71 @@ any of the property objects.
 </node>
 ```
 
-## Property Interface
+## 属性接口
 
-This interface provides the control mechanism for the property widget. 
-Each widget is represented by an AllJoyn object implementing this interface.
+此接口为属性部件提供了控制机制。每一个部件都被实现此接口的一个 AllJoyn 对象所代表。
 
-### Interface name
+### 接口名
 
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.ControlPanel.Property` | 1 | no | <p>`/ControlPanel/{unit)/{panel}/{language}/.../{object name}`</p><p>Examples:</p><ul><li>/ControlPanel/washing/consolePanel/en/Mode</li><li>/ControlPanel/sprinkler/mainPanel/en/Schedules/InputForm/ScheduleName</li></ul> |
+| `org.alljoyn.ControlPanel.Property` | 1 | 否 | <p>`/ControlPanel/{unit)/{panel}/{language}/.../{object name}`</p><p>实例:</p><ul><li>/ControlPanel/washing/consolePanel/en/Mode</li><li>/ControlPanel/sprinkler/mainPanel/en/Schedules/InputForm/ScheduleName</li></ul> |
 | `org.alljoyn.ControlPanel.SecuredProperty` | 1 | yes | `/ControlPanel/{unit}/{panel}/.../{object name}` |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
-| States | `u` | Bit mask | Read-only | Bit mask for various widget states. States bit mask information is detailed below. |
-| OptParams | `a{qv}` | N/A | Read-only | Metadata dictionary. See [Property widget metadata][property-widget-metadata] for more information. |
-| Values | `v` | N/A | Read-write | Actual value of the property. When modifying the property, the device may give the AllJoyn error `org.alljoyn.Error.MethodNotAllowed` if the property is ReadOnly. The supported data types are listed in [Supported data types][supported-data-types]. |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
+| States | `u` | Bit mask | 只读 | 众多组建状态的掩码。状态掩码信息在下面会有详细说明。 |
+| OptParams | `a{qv}` | N/A | 只读 | 元数据字典，详细信息请参见 [Property widget metadata][property-widget-metadata]. |
+| Values | `v` | N/A | 只写 | 属性的具体值，如果状态是只读的，在状态被修改时设备会报错： `org.alljoyn.Error.MethodNotAllowed`. 被支持的数
+剧类型在下表中有列出 [Supported data types][supported-data-types]. |
 
-**States property bit mask information**
+**状态属性位掩码信息**
 
-| Mask | Name | Description |
+| 掩码 | 名字 | 描述 |
 |:---:|---|---|
-| 0x01 | enabled | Indicates whether the widget is enabled. A disabled widget should be grayed out or invisible. |
-| 0x02 | writable | Indicates whether the widget is writable. |
+| 0x01 | enabled | 指示部件是否被启用。未启用的部件应被标为灰色或不可见。 |
+| 0x02 | writable | 指示部件是否可写。 |
 
-#### Property widget metatdata
-
-| Dictionary key | Field name | Signature | Description |
+#### 属性组件元数据
+| 字典键值 | 字段名 | 签名 | 描述 |
 |:---:|---|:---:|---|
-| 0 | Label | `s` | Label |
-| 1 | bgColor | `u` | Background color expressed as RGB value. If not specified, then the background color of the enclosing container is used. |
-| 2 | hints | `aq` | The widget rendering hints. See [Property widget hints][property-widget-hints] for more information. |
-| 3 | unitOfMeasure | `s` | Unit of measurement. |
-| 4 | constrainToValue | `a(vs)` | Constraint on the value as a list of values. Any value of the property must match one of the values in this list. See [List of values][list-of-values] for more information. |
-| 5 | range | `vv` | Constraint on the value as a range; a value of this property  must stay within the range. See [Property widget ranges][property-widget-ranges] for more information. |
+| 0 | Label | `s` | 标签 |
+| 1 | bgColor | `u` | 由 RGB 值表达的背景颜色。如果尚未指定背景，则使用封闭容器的背景颜色。 |
+| 2 | hints | `aq` | 组件绘制提示，详细信息请参阅 [Property widget hints][property-widget-hints]. |
+| 3 | unitOfMeasure | `s` | 测量单位 |
+| 4 | constrainToValue | `a(vs)` | 受限制的值列表，属性中的任何一个值都必须与此表中的一个值一致。详细信息请参阅 [List of  values][list-of-values]|.
+| 5 | range | `vv` | 受限制的值的范围; 属性中的值必须在此限制范围内。详细信息请参阅 [Property widget ranges][property-widget-ranges]|.
 
-#### Property widget hints
+#### 属性组建提示
 
-| Hint ID | Hint name | Description |
+| 提示 ID | 提示名 | 描述 |
 |:---:|---|---|
-| 1 | Switch | Two-state buttons allowing the end-user to toggle the state of a single settings option. |
-| 2 | CheckBox | Widget for multi-select. It allows the end user to select multiple options from a list. |
-| 3 | Spinner | Widget for single-select. It allows the end user to select a single option from a list. |
-| 4 | RadioButton | Widget for single-select. It allows the end user to select a single option from a list. |
-| 5 | Slider | Allows the end user to select a value from a continuous or discrete range. The appearance is linear, either horizontal or vertical. |
-| 6 | TimePicker | Allows the end user to specify a time value. |
-| 7 | DatePicker | Allows the end user to specify a date value. |
-| 8 | NumberPicker | Allows the end user to specify a numeric value |
-| 9 | NumericKeypad | Provides the end user with a numeric entry field and buttons for 0-9 digits, to enter a numeric value. The developer must know the min/max number of digits allowed in the entry field. |
-| 10 | RotaryKnob | An alternate way to represent a slider. |
-| 11 | TextLabel | Read-only text label. |
-| 12 | NumericView | Provides a read-only, numeric field with an optional label and numbers. For example, a washing machine display shows the time remaining for wash is 35:00 minutes. |
-| 13 | EditText | Provides the end user with a text entry field and keyboard. The developer must know the min/max number of letters allowed in the entry field. |
+| 1 | Switch | 双态按钮使终端用户可以使用一个设置选项来切换状态。 |
+| 2 | CheckBox | 多重选择组件。允许用户从一个列表中选择多个选项。|
+| 3 | Spinner | 单选组件。允许用户从一个列表中选择单个选项。|
+| 4 | RadioButton | 单选组件。&&允许用户从一个列表中选择单个选项。 |
+| 5 | Slider | 允许用户从一个连续或离散的区间内选择一个值。外观应是线性的，水平或者竖直。|
+| 6 | TimePicker | 允许终端用户指定一个时间。 |
+| 7 | DatePicker | 允许终端用户指定一个日期。 |
+| 8 | NumberPicker | 允许终端用户指定一个数字。|
+| 9 | NumericKeypad | 为终端用户提供了数字的输入字段和0-9的数字按钮，以便输入一个数字值。开发者必须了解输入字段所支持的的最大/最小限制位数。 |
+| 10 | RotaryKnob | 代表滑块的另一种方式 |
+| 11 | TextLabel | 只读的文字标签 |
+| 12 | NumericView | 提供一个只读的数字字段和一个可选的标签。例如洗衣机显示屏可以显示剩余时间为 35:00 分钟。 |
+| 13 | EditText | 为终端用户提供一个输入文本的字段以及键盘。开发者必须了解输入字段所支持的最大/最小字母数。 |
 
-#### Supported data types
+#### 支持的数据类型
 
-| Category | Supported data types |
+| 类别 | 支持的数据类型 |
 |---|---|
-| Scalar types | <ul><li>BOOLEAN - b</li><li>BYTE - y</li><li>BYTE ARRAY - ay</li><li>Numeric types (types listed below)</li><li>STRING - s</li></ul> |
-| Composite types | All composite data type must have the following signature--q(type)--where the first value is an enum value indicating the composite type. Details provided below. |
-| Collection of records | Array of records of only scalar and supported composite types. All records in the array must be of the same record type. |
+| 标量类别 | <ul><li>BOOLEAN - b</li><li>BYTE - y</li><li>BYTE ARRAY - ay</li><li>数量类别 (如下所示)</li><li>STRING - s</li></ul> |
+| 混合类别 | 所有的混合数据类别必须含有以下签名--q(type)--第一个值是一个 enum 值，指示混合类别。下文会阐述细节。 |
+| 记录集 | 只有标量和受支持的混合类别的记录数组。一个数组内的所有的记录必须是同一记录类型的。 |
 
-**Numeric types**
+**数字类型**
 
 * INT16 - n
 * UINT16 - q
@@ -302,61 +271,62 @@ Each widget is represented by an AllJoyn object implementing this interface.
 * UINT64 - t
 * DOUBLE - d
 
-**Composite types information**
+**混合类型信息**
 
-| Composite type enum | Composite type name | Signature | Description |
+| 混合类型 enum |混合类型名称 | 签名 | 描述 |
 |---|---|---|---|
-| 0 | Date | `q(qqq)` | Data type per RFC3339. There are three fields: date-mday (1-31); date-month (1-12); and date-fullyear (4-digit year). |
-| 1 | Time | `q(qqq)` | Time type per RFC3339. There are three fields: time-hour (0-23); time-minute (0-59); and time-second (0-59). |
+| 0 | 日期 | `q(qqq)` | 根据 RFC3339 标准的日期，有三个字段： date-mday (1-31); date-month (1-12)； 以及 date-fullyear (4-digit year). |
+| 1 | 名称 | `q(qqq)` | 根据 RFC3339 标准的时间，有三个字段： time-hour (0-23); time-minute (0-59); 以及 time-second (0-59). |
 
-#### List of values
+#### 值列表
 
-A list of values is an array of structs.
+一个值列表就是一个结构数组
 
-| Field name | Signature | Description |
+| 字段名 | 签名 | 描述 |
 |---|:---:|---|
-| Value | `v` | Value with the same data type of the property. |
-| Label | `s` | Display label. |
+| Value | `v` | 与属性相同的数据类型的值 |
+| Label | `s` | 显示标签 |
 
-#### Property widget ranges
+#### 属性组件范围
 
-| Field name | Signature | Description |
+| 字段名 | 签名 | 描述 |
 |---|:---:|---|
-| min | `v` | Minimum value with the same data type as that of the property. |
-| max | `v` | Maximum value with the same data type as that of the property. |
-| increment | `v` | Value to increment/decrement by. It has the same data type as that of the property. |
+| min | `v` | 与属性的数据类型相同的最小值 |
+| max | `v` | 与属性的数据类型相同的最大值 |
+| increment | `v` | 增加/减少值的量。与属性的数据类型相同。 |
 
-### Methods
+### 方法
 
-No methods are exposed by this interface.
+此接口不被暴露任何方法
 
-### Signals
+### 信号
 
 #### `MetadataChanged`
 
-MetadataChanged signal is not a Sessionless signal.
+MetadataChanged 信号不是非会话信号
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The metadata has changed. This can occur due to changes in any of the property objects.
+元数据已变化，任何属性对象的变化都会引发元数据的变化。
+
 
 #### `ValueChanged`
 
-ValueChanged signal is not a Sessionless signal.
+ValueChanged 信号不是非会话信号
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The property's value has changed.
+此属性的值已改变。
 
-### Introspect XML
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -374,65 +344,63 @@ The property's value has changed.
 </node>
 ```
 
-## LabelProperty Interface
+## LabelProperty 接口
  
-This interface provides the control mechanism for the label 
-property widget (a text label). Each widget is represented 
-by an AllJoyn object implementing this interface.
+ 此接口为标签属性组件（一个文本标签）提供控制机制。每一个组件都由一个实现这个接口的 AllJoyn 对象所代表。
  
-### Interface name
+### 接口名
  
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 安全性 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.ControlPanel.LabelProperty` | 1 | no | <p>`/ControlPanel/{unit}/{panel}/{language}/.../ {object name}`</p><p>Example:</p><p>/ControlPanel/airconditioner/consolel/Warning</p> |
+| `org.alljoyn.ControlPanel.LabelProperty` | 1 | no | <p>`/ControlPanel/{unit}/{panel}/{language}/.../ {object name}`</p><p>实例:</p><p>/ControlPanel/airconditioner/consolel/Warning</p> |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值列表 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
-| States | `u` | Bit mask | Read-only | Bit mask for various widget states. States bit mask information is detailed below. |
-| Label | `s` | N/A | Read-only | Text label |
-| OptParams | `a{qv}` | N/A | Read-only | Metadata dictionary. See [LabelProperty widget metadata][labelproperty-widget-metadata] for more information. |
+| Version | `q` | Positive integers | 只读 | 接口版本 |
+| States | `u` | Bit mask | 只读 | 众多组建状态的掩码。状态掩码信息在下面会有详细说明。 |
+| Label | `s` | N/A | 只读 | 文本标签 |
+| OptParams | `a{qv}` | N/A | 只读 | 元数据字典，详细信息请参见  [LabelProperty widget metadata][labelproperty-widget-metadata]  |
 
-**States bit mask information**
+**状态属性位掩码信息**
 
-| Mask | Name | Description |
+| 掩码 | 名称 | 描述 |
 |---|---|---|
-| 0x01 | enabled | Indicates whether the widget is enabled. A disabled widget should be grayed out or invisible. |
+| 0x01 | enabled | 指示部件是否被启用。未启用的部件应被标为灰色或不可见。|
 
-#### LabelProperty widget metadata
+#### LabelProperty 组件元数据
 
-| Dictionary key | Field name | Signature | Description |
+| 字典键值 | 字段名 | 签名 | 描述 |
 |:---:|---|:---:|---|
-| 1 | bgColor | `u` | Background color expressed as RGB value. If not specified, then the background color of the enclosing container is used. |
-| 2 | hints | `aq` | The widget rendering hints. See [LabelProperty widget hints][labelproperty-widget-hints] for more information. |
+| 1 | bgColor | `u` | 由 RGB 值表达的背景颜色。如果尚未指定背景，则使用封闭容器的背景颜色。 |
+| 2 | hints | `aq` | 组件绘制提示，详细信息请参阅 [LabelProperty widget hints][labelproperty-widget-hints]. |
 
-#### LabelProperty widget hints
+#### LabelProperty 组件提示
 
-| Hint ID | Hint name | Description |
+| 提示 ID | 提示名 | 描述 |
 |:---:|---|---|
-| 1 | TextLabel | Read-only text label. |
+| 1 | TextLabel | 只读的文字标签 |
 
-### Methods
+### 方法
 
-No methods are exposed by this interface.
+没有方法被暴露到此接口。
 
-### Signals
+### 信号
 
 #### `MetadataChanged`
 
-MetadataChanged signal is not a Sessionless signal.
+MetadataChanged 信号不是非会话信号。
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The metadata has changed. This can occur due to changes in any of the property objects.
+元数据已经改变。任何属性对象的改变都会引起元数据改变
 
-### Introspect XML
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -447,82 +415,76 @@ The metadata has changed. This can occur due to changes in any of the property o
 </node>
 ```
 
-## Action Interface
+## 行为接口
 
-This interface provides the control mechanism for the Action widget. 
-Each Action widget is represented by an AllJoyn object implementing 
-this interface. An action widget can optionally provide a confirmation 
-dialog widget in its object sub-tree to allow for a pop-up dialog to 
-appear whenever the UI presentation of this action is activated. 
-The action taken on the confirmation dialog will take place instead 
-of the `Exec` method call for this Action widget.
+此接口为属性部件提供了控制机制。每一个部件都被实现此接口的一个 AllJoyn 对象所代表。行为组件可以选择在自己的对象子树中提供一个允许在该行为 的 UI 表达被激活的任意时间里弹出对话框的确认对话框组件。在确认对话框中发生的行为将会代替对这个行为组件的 `Exec` 方法调用。
 
-### Interface name
+### 接口名
  
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
 | `org.alljoyn.ControlPanel.Action` | 1 | no | <p>`/ControlPanel/{unit}//{panel}/{language}/.../{object name}`</p><p>Example:</p><p>/ControlPanel/{unit}/{panel}/{language}/.../{object name}</p>  |
 | `org.alljoyn.ControlPanel.SecuredAction` | 1 | yes | `/ControlPanel/{unit}/{panel}/{language}/.../{object name}` |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
-| States | `u` | Bit mask | Read-only | Bit mask for various widget states. States bit mask information is detailed below. |
-| OptParams | `a{qv}` | N/A | Read-only | Metadata dictionary. See [Action widget metadata][action-widget-metadata] for more information. |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
+| States | `u` | Bit mask | 只读 | 众多组建状态的掩码。状态掩码信息在下面会有详细说明。 |
+| OptParams | `a{qv}` | N/A | 只读 | 元数据字典，详细信息请参见 [Action widget metadata][action-widget-metadata]. |
 
-**States bit mask information**
+**状态属性位掩码信息**
 
-| Mask | Name | Description |
+| 掩码 | 名称 | 描述 |
 |---|---|---|
-| 0x01 | enabled | Indicates whether the widget is enabled. A disabled widget should be grayed out or invisible. |
+| 0x01 | enabled | 指示部件是否被启用。未启用的部件应被标为灰色或不可见。|
 
-#### Action widget metadata
+#### 行为组件元数据
 
-| Dictionary key | Field name | Signature | Description |
+| 字典键值 | 字段名 | 签名 | 描述 |
 |:---:|---|:---:|---|
-| 0 | label | `s` | Label |
-| 1 | bgColor | `u` | Background color expressed as RGB value. If not specified, then the background color of the enclosing container is used. |
-| 2 | hints | `aq` | The widget rendering hints. See [Action widget hints][action-widget-hints] for more information. |
+| 0 | label | `s` | 标签 |
+| 1 | bgColor | `u` | 由 RGB 值表达的背景颜色。如果尚未指定背景，则使用封闭容器的背景颜色。 |
+| 2 | hints | `aq` | 组件绘制提示，详细信息请参阅 [Action widget hints][action-widget-hints]. |
 
-#### Action widget hints
+#### 行为组件提示
 
-| Hint ID | Hint name | Description |
+| 提示 ID | 提示名 | 描述 |
 |:---:|---|---|
-| 1 | ActionButton | Button associated with an action or a method call, for example, "submit". |
+| 1 | ActionButton | 与一个行为或者方法调用相关联的按钮，例如“提交” |
 
-### Methods
+### 方法
 
 #### `Exec`
 
-**Message arguments** 
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**回复参数**
 
-None.
+无.
 
-**Description**
+**描述**
 
-Executes the action command.
+执行行为命令。
 
-### Signals
+### 信号
 
 #### `MetadataChanged`
 
-MetadataChanged signal is not a Sessionless signal.
+MetadataChanged 信号不是非会话信号。
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The metadata has changed. This can occur due to changes in any of the property objects.
+元数据已经改变。任何属性对象的改变都会引起元数据改变
 
-### Introspect XML
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -537,49 +499,41 @@ The metadata has changed. This can occur due to changes in any of the property o
 </node>
 ```
 
-## NotificationAction Interface
+## NotificationAction 接口
 
-This interface indicates whether the object is a notification 
-action object. A notification object is typically referenced 
-in a notification message. Upon receiving such notification, 
-the controller can generate the notification action panel 
-based on the metadata provided by this type of object. 
-This object is different from a regular control panel since 
-it allows the controllee to send a signal to tell the controller 
-to dismiss the panel.
+此接口指示着该对象是否是一个提醒行为对象。提醒对象一般会在一个提醒消息中被引用。根据收到的提醒，控制方可以根据此类型对象提供的元数据来生成
+提醒行为面板。此对象不同于其他的常规控制面板，因为他可以允许被控制方向控制方发送告知解散面板的信号。
 
-This object supports at least one language. It's the responsibility 
-of the controller to introspect the children objects to locate 
-the corresponding root container of the given panel for the 
-specific language code.
+此对象支持至少一种语言。内省子对象以定位对应给定面板的指定语言代码的根容器应当由控制方完成。
 
-### Interface name
+### 接口名
  
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.ControlPanel.NotificationAction` | 1 | no | <p>`/NotificationPanel/{unit}/{actionPanelName}`</p><p>Example:</p><p>/NotificationPanel/washing/CycleCompleted</p> |
+| `org.alljoyn.ControlPanel.NotificationAction` | 1 | 否 | <p>`/NotificationPanel/{unit}/{actionPanelName}`</p><p>Example:</p><p>/NotificationPanel/washing/CycleCompleted</p> |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
 
-### Signals
+
+### 信号
 
 #### `Dismiss`
 
-Dismess signal is not a Sessionless signal.
+Dismess 信号不是非会话信号。
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The controller must dismiss this notification panel.
+控制方必须解散此控制面板
 
-### Introspection XML
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -591,123 +545,121 @@ The controller must dismiss this notification panel.
 </node>
 ```
 
-## Dialog Interface
+## 会话接口
 
-This interface provides all the metadata to guide the controller 
-to render the UI for a dialog widget. A dialog widget typically 
-has a message and up to three action buttons.
+此接口对指导控制方为对话部件渲染 UI 提供了所有的元数据。对话部件通常有一个消息和最多三个行为按钮。
 
-### Interface name
+### 接口名
  
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
 | `org.alljoyn.ControlPanel.Dialog` | 1 | no | <p>`/ControlPanel/{unit)/{panelName}/{language}/.../{dialogName}`</p><p>Example:</p><p>/ControlPanel/washing/mainPanel/en/Confirmation</p> |
-| `org.alljoyn.ControlPanel.SecuredDialog` | 1 | yes | `/ControlPanel/{unit}/{panel}/{language}/.../{dialogName}` |
+| `org.alljoyn.ControlPanel.SecuredDialog` | 1 | 是 | `/ControlPanel/{unit}/{panel}/{language}/.../{dialogName}` |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
-| States | `u` | Bit mask | Read-only | Bit mask for various widget states. States bit mask information is detailed below. |
-| OptParams | `a{qv}` | N/A | Read-only | Metadata dictionary. See [Dialog widget metadata][dialog-widget-metadata] for more information. |
-| Message | `q` | N/A | Read-only | Display message. |
-| NumActions | `q` | 1-3 | Read-only | Number of available actions. |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
+| States | `u` | Bit mask | 只读 | 众多组建状态的掩码。状态掩码信息在下面会有详细说明。 |
+| OptParams | `a{qv}` | N/A | 只读 | 元数据字典，详细信息请参见 [Dialog widget metadata][dialog-widget-metadata]. |
+| Message | `q` | N/A | 只读 | 显示消息。 |
+| NumActions | `q` | 1-3 | 只读 | 可用行为的数量。 |
 
-**States bit mask information**
+**状态属性位掩码信息**
 
-| Mask | Name | Description |
+| 掩码 | 名称 | 描述 |
 |---|---|---|
-| 0x01 | enabled | Indicates whether the widget is enabled. A disabled widget should be grayed out or invisible. |
+| 0x01 | enabled | 指示部件是否被启用。未启用的部件应被标为灰色或不可见。|
 
-#### Dialog widget metadata
+#### 对话组件元数据
 
-| Dictionary key | Field name | Signature | Description |
+| 字典键值 | 字段名 | 签名 | 描述 |
 |:---:|---|:---:|---|
-| 0 | label | `s` | Label or title of the dialog. |
-| 1 | bgColor | `u` | Background color expressed as RGB value. If not specified, then the background color of the enclosing container is used. |
-| 2 | hints | `aq` | Layout hints. See [Dialog widget layout hints][dialog-widget-layout-hints] for more information. |
-| 6 | labelAction1 | `s` | Label of the action1 widget. |
-| 7 | labelAction2 | `s` | Label of the action2 widget. |
-| 8 | labelAction3 | `s` | Label of the action3 widget. |
+| 0 | label | `s` | 标签。 |
+| 1 | bgColor | `u` | 由 RGB 值表达的背景颜色。如果尚未指定背景，则使用封闭容器的背景颜色。 |
+| 2 | hints | `aq` | 组件绘制提示，详细信息请参阅 [Dialog widget layout hints][dialog-widget-layout-hints]. |
+| 6 | labelAction1 | `s` | 行为1 组件的标签。 |
+| 7 | labelAction2 | `s` | 行为2 组件的标签。 |
+| 8 | labelAction3 | `s` | 行为3 组件的标签。 |
 
-#### Dialog widget layout hints
+#### 对话组件布局提示
 
-| Hint ID | Hint name | Description |
+| 提示 ID | 提示名 | 描述 |
 |:---:|---|---|
-| 1 | AlertDialog | Widget that combines a label, text data, and buttons in a single dialog box. A minimum of 1 button is required. A maximum of 3 buttons is supported. |
+| 1 | AlertDialog | 将标签，文本数据以及按钮集成到一个对话框里面的部件。需要至少一个按钮，支持最多三个按钮。 |
 
-### Methods
+
+### 方法
 
 #### `Action1`
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Executes the action number 1.
+执行行动1
 
 #### `Action2`
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**回复参数**
 
-None.
+无 
 
-**Description**
+**描述**
 
-Executes the action number 2. 
+执行行动2
 
-**Error reply**
+**错误回复**
 
-| Error | Description |
+| 错误 | 描述 |
 |---|---|
-| `org.alljoyn.Error.MethodNotAllowed` | Returned if the NumActions property is less than 2. |
+| `org.alljoyn.Error.MethodNotAllowed` |  NumActions 属性小于2则返回。|
 
-#### `Action3`
+**消息参数**
 
-**Message arguments**
+无。
 
-None.
+**回复参数**
 
-**Reply arguments**
+无 
 
-None.
+**描述**
 
-**Description**
+执行行动 3. 
 
-Executes the action number 3. 
+**错误回复**
 
-**Error reply**
-
-| Error | Description |
+| 错误 | 描述 |
 |---|---|
-| `org.alljoyn.Error.MethodNotAllowed` | Returned if the NumActions property is less than 3. |
+| `org.alljoyn.Error.MethodNotAllowed` | NumActions 属性小于3则返回。 |
 
-### Signals
+### 信号
 
 #### `MetadataChanged`
 
-MetadataChanged signal is not a Sessionless signal.
+MetadataChanged 信号不是非会话信号。
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The metadata has changed. This can occur due to changes in any of the property objects.
+元数据已经改变。任何属性对象的改变都会引起元数据改变
 
-### Introspection XML
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -726,196 +678,179 @@ The metadata has changed. This can occur due to changes in any of the property o
 </node>
 ```
 
-## ListProperty Interface
+## ListProperty 接口
 
-This interface provides the control mechanism for the list 
-property widget. A list property widget holds a list of 
-records and a container representing the UI of the record 
-display/input form.
+此接口为列表属性组件提供控制机制。列表属性组件含有记录列表以及代表记录的显示/输入格式的容器。
 
-### Interface name
+### 接口名
  
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
 | `org.alljoyn.ControlPanel.ListProperty` | 1 | no | <p>`/ControlPanel/{unit}/{language}/{panel}/{object name}`</p><p>Example:</p><p>/ControlPanel/sprinkler/mainPanel/en/Schedules</p> |
-| `org.alljoyn.ControlPanel.SecuredListProperty` | 1 | yes | `/ControlPanel/{unit}/{language}/{panel}/.../{object name}` |
+| `org.alljoyn.ControlPanel.SecuredListProperty` | 1 | 是 | `/ControlPanel/{unit}/{language}/{panel}/.../{object name}` |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
-| States | `u` | Bit mask | Read-only | Bit mask for various widget states. States bit mask information is detailed below. |
-| OptParams | `a{qv}` | N/A | Read-only | Metadata dictionary. See [ListProperty widget metadata][listproperty-widget-metadata] for more information. |
-| Value | `a{qs}` | N/A | Read-only | <p>List of records. Each record in the list holds the following fields:</p><ul><li>recordID ('q'): the record ID</li><li>label ('s'): the label to display on the list</li></ul><p>The record data are not exposed in this property. The `View` method call can be used to view each record.</p> |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
+| States | `u` | Bit mask | 只读 | 众多组建状态的掩码。状态掩码信息在下面会有详细说明。 |
+| OptParams | `a{qv}` | N/A | 只读 | 元数据字典，详细信息请参见 [ListProperty widget metadata][listproperty-widget-metadata]. |
+| Value | `a{qs}` | N/A | 只读 | <p>记录列表。列表中的每一条记录都有以下字段：</p><ul><li>recordID ('q'): 记录 ID</li><li>label ('s'): 列表上显示的标签</li></ul><p>在此属性中，记录的数据不被暴露。 调用 `View` 方法可以查看每一条记录</p> |
 
-**States bit mask information**
+**状态属性位掩码信息**
 
-| Mask | Name | Description |
+| 掩码 | 名称 | 描述 |
 |---|---|---|
-| 0x01 | enabled | Indicates whether the widget is enabled. A disabled widget should be grayed out or invisible. |
+| 0x01 | enabled | 指示部件是否被启用。未启用的部件应被标为灰色或不可见。|
 
-#### ListProperty widget metadata
+#### ListProperty 组件元数据
 
-| Dictionary key | Field name | Signature | Description |
+| 字典键值 | 字段名 | 签名 | 描述 |
 |:---:|---|:---:|---|
-| 0 | label | `s` | Label |
-| 1 | bgColor | `u` | Background color expressed as RGB value. If not specified, then the background color of the enclosing container is used. |
-| 2 | hints | `aq` | Widget rendering hints. See [ListProperty widget hints][listproperty-widget-hints] for more information. |
+| 0 | label | `s` | 标签。 |
+| 1 | bgColor | `u` | 由 RGB 值表达的背景颜色。如果尚未指定背景，则使用封闭容器的背景颜色。 |
+| 2 | hints | `aq` | 组件绘制提示，详细信息请参阅 [ListProperty widget hints][listproperty-widget-hints]. |
 
-#### ListProperty widget hints
+#### ListProperty 组件提示
 
-| Hint ID | Hint name | Description |
+| 提示 ID | 提示名 | 描述 |
 |:---:|---|---|
-| 1 | DynamicSpinner | Widget that allows the end user to select an option from a list, add a new option, delete an option, and update an option. |
+| 1 | DynamicSpinner | 允许用户从列表中选择一个选项，添加一个新的选项，删除一个选项以及更新一个选项的组件。|
 
-### Methods
+### 方法
 
 #### `Add`
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**返回参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Prepares the input form for adding a new record to the list. 
-UI requirements follow:
+为向列表加入新的记录做输入准备。UI 要求如下：
 
-* The controller must present an OK button and tie it to the 
-`Confirm` method call. Completing the add action on the input 
-form will add the new record to the list.
-* The controller must present a Cancel button and tie to the 
-`Cancel` method call to allow for discarding the operation.
+* 控制方必须呈现一个 OK 按钮，并将其绑定到调用 `Confirm` 方法。完成输入表格的添加行为将会在列表上添加一个新的记录。 
+* 控制方必须呈现一个 OK 按钮，并将其绑定到调用 `Cancel` 方法，使得操作可以被取消。
 
 #### `Delete('q')`
 
-**Message arguments**
+**消息参数**
 
-| Argument | Parameter name | Signature | List of values | Description |
+| 参数 | 参数名 | 返回签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | recordID | `q` | positive | The record ID. |
+| 0 | recordID | `q` | positive | 记录的 ID. |
 
-**Reply arguments**
+**返回参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Prepares the form for view the record prior to the delete action. 
-UI requirements follow:
-* The controller must present an OK button and tie it to the 
-`Confirm` method call. A confirm action deletes the record 
-from the list.
-* The controller must present a Cancel button and tie to the 
-`Cancel` method call to allow for discarding the operation.
+在删除前准备用于查阅的表格。UI 要求如下：
+* 控制方必须呈现一个 OK 按钮，并将其绑定到调用 `Confirm` 方法。行为确认后将会从列表中删除该记录。
+* 控制方必须呈现一个 OK 按钮，并将其绑定到调用 `Cancel` 方法，使得操作可以被取消。
+
 
 #### `View('q')`
 
-**Message arguments**
+**消息参数**
 
-| Argument | Parameter name | Signature | List of values | Description |
+| 参数 | 参数名 | 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | recordID | `q` | positive | The record ID. |
+| 0 | recordID | `q` | positive | 记录的 ID. |
 
-**Reply arguments**
+**返回参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Prepares the display form to view the record identified by the recordID. 
-
-The controller must present an OK button to dismiss the view form.
+为观看由记录 ID 识别的记录准备需要显示的表格。控制方必须呈现用于结束这次观看。
 
 #### `Update('q')`
 
-**Inputs**
+**输入**
 
-| Argument | Parameter name | Signature | List of values | Description |
+| 参数 | 参数名 | 签名 | 值列表 | 描述 |
 |:---|---|---|---|---|
-| recordID | yes | q | positive | The record ID. |
+| recordID | yes | q | positive | 记录的 ID. |
 
-**Reply arguments**
+**返回参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Prepares the input form to view the record identified by the 
-recordID and allow the end user to modify the fields. 
-UI requirements follow:
+为观看由记录 ID 识别的记录准备输入表格，允许终端用户修改字段。UI 要求如下：
 
-* The controller must present an OK button and tie it to the 
-`Confirm` method call. A confirm action updates the given 
-record with new information.
-* The controller must present a Cancel button and tie to the 
-`Cancel` method call to allow for discarding the operation.
+* 控制方必须呈现一个 OK 按钮，并将其绑定到调用 `Confirm` 方法。行为确认后将会更新指定记录。
+* 控制方必须呈现一个 OK 按钮，并将其绑定到调用 `Cancel` 方法，使得操作可以被取消。
 
 #### `Confirm`
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**返回参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Confirms the action and save the change requested.
+确认此次行为并保存所提出的更改。
 
-The controller must present an OK button to dismiss the view form.
+控制方必须呈现一个 Cancel 按钮，用于结束这次观看。
 
 #### `Cancel`
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**返回参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Cancels the current action.
+取消此次行为。
 
-The controller must present a Cancel button to dismiss the input form.
+控制方必须呈现一个 Cancel 按钮，用于结束输入表格。
 
-### Signals
+### 信号
 
 #### `MetadataChanged`
 
-MetadataChanged signal is not a Sessionless signal.
+MetadataChanged 信号不是非会话信号。
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The metadata has changed. This can occur due to changes in any of the property objects.
+元数据已经改变。任何属性对象的改变都会引起元数据改变
 
 #### `ValueChanged`
 
-ValueChanged signal is not a Sessionless signal.
+ValueChanged 信号不是非会话信号。
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The property's value has changed. Because the list data can 
-be large, the signal does not send the current value.
+属性值已经改变。由于列表数据可能很大，此信号不会立即发送当前值。
 
-### Introspect XML
+
+### 内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -946,46 +881,43 @@ be large, the signal does not send the current value.
 </node>
 ```
 
-## Support of Existing HTTP Control Pages
+## 对现存 HTTP 控制页面的支持
 
-Should a device already have HTTP control pages hosted 
-on the device itself, it can advertise those pages using 
-the HTTPControl interface.
+如果设备已经有运行在其上的 HTTP 控制页面，他可以通过 HTTPControl 接口将这些页面推广。
 
-This interface provides all the information about the 
-hosted HTTP control pages on the device.
+该接口提供关于设备上运行的 HTTP 控制页面的所有信息。
 
-### Interface name
+### 接口名
  
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
 | `org.alljoyn.ControlPanel.HTTPControl` | 1 | no | `/Control/{unit}/HTTPControl` |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+| 属性名 | 签名 | 值列表 | 可读/可写| 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
 
-### Methods
+### 方法
 
 #### `s GetRootURL`
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**回复参数**
 
-| Argument | Parameter name | Return signature | List of values | Description |
+| 参数 | 参数名 | 返回签名 | 值列表 | 描述 |
 |:---|---|:---:|---|---|
-| 0 | url | `s` | N/A | Root URL of the control pages. |
+| 0 | url | `s` | N/A | 控制页面的根 URL |
 
-### Signals
+### 信号
 
-No signals are emitted from this interface.
+此接口不发出任何信号。
 
-###Introspection XML
+###内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

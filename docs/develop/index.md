@@ -1,6 +1,6 @@
 # Develop
 
-This will contain information about developing for the AllJoyn&trade; framework.
+此部分包含关于开发 AllJoyn&trade; 框架的信息：
 
 * [Building][build]
 * [Running Sample Applications][sample-apps]
