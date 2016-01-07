@@ -1,5 +1,14 @@
 # alljoyn-zh
 
+## 0107 待审阅文章
+
+* [ ] [docs/learn/base-services/controlpanel/interface.md](docs/learn/base-services/controlpanel/interface.md)
+* [ ] [docs/develop/index.md](docs/develop/index.md)
+* [ ] [docs/learn/core/security2_0/index.md](docs/learn/core/security2_0/index.md)
+* [ ] [docs/learn/base-services/configuration/index.md](docs/learn/base-services/configuration/index.md)
+* [ ] [docs/learn/core/system-descriptionalljoyn-transport.md](docs/learn/core/system-descriptionalljoyn-transport.md)
+* [ ] [docs/learn/base-services/notification/interface.md](docs/learn/base-services/notification/interface.md)
+
 ## 0104 待审阅文章
 
 * [ ] [docs/learn/core/events-and-actions.md](docs/learn/core/events-and-actions.md)
