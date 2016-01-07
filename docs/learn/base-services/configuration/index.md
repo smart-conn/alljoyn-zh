@@ -24,7 +24,7 @@ Configuration Service 在一个简单的安全端口中提供服务。查看 [Co
 ## 了解更多
 
 * [了解更多关于 Configuration Interface Definition][config-interface]
-* [下载 SDK][download] and [build][build]
+* [下载 SDK][download] 和 [build][build]
 * [了解更多关于 Configuration APIs][api-guide]
 
 [config-interface]: /learn/base-services/configuration/interface
