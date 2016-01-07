@@ -70,27 +70,19 @@ http://developer.android.com/sdk/installing/index.html
 
 ### 下载 OpenSSL 头文件以及库（可选）
 
-The AllJoyn framework optionally uses the OpenSSL crypto library.
-AllJoyn 15.04 and later have built-in crypto functions, but
-may be built with OpenSSL if needed.
+AllJoyn 框架选择性地使用了 OpenSSL crypto 库。AllJoyn 15.04 以及后续的版本内置了 crypto 函数，如果需要也可能会内置 OpenSSL 的功能。
 
-If you build AllJoyn in the OpenSSL configuration, the prebuilt
-libcrypto library is needed to link AllJoyn applications.
-It can be downloaded directly from the Android device or
-emulator into the lib folder of the AllJoyn distribution.
-Attach the device (or launch the Android emulator), then
-run the following commands:
+如果您在 OpenSLL 配置下搭建 AllJoyn，则需要预制的 libcrypto 库来将 AllJoyn 应用程序链接起来。该库可在 Android 设备上直接下载，或者在 AllJoyn 发布版中的 lib 文件夹中进行仿真。连接上设备（或者开启 Android 仿真器），然后运行以下命令：
 
 ```sh
 cd <alljoyn_dir>/lib
 adb pull /system/lib/libcrypto.so libcrypto.so
 ```
 
-The above command means:
+上述命令的意思是：
 
-adb pull <location of the file on the phone that you want to pull>
-<destination on your machine where you want to store the pulled
-file with the name that you want>
+adb 拉去 <你想要在手机上拉去的文件的地址>，<你想要在电脑上存储的文件地址以及给文件的命名>。
+
 
 The library can also be built from the Android source repository.
 For details on building the Android source tree, see the
