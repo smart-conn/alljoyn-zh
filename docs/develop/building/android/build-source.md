@@ -1,98 +1,74 @@
 # Build From Source - Android
 
-## Prerequisites
+## 前提条件
 
-* The following content uses many terms and concepts that are described in the
-[Introduction to the AllJoyn Framework][intro-to-alljoyn-framework].
-Therefore, it is strongly recommended that you read the Introduction content first.
+* 以下内容涉及到很多在 [Introduction to the AllJoyn Framework][intro-to-alljoyn-framework] 中所描述的概念和术语，因此我们强烈建议您首先阅读 Introduction 当中的内容。
 
-* Before proceeding with development, make sure that you have set up the development
-environment as described here for [Windows][config-build-environment-windows] or
-for [Linux][config-build-environment-linux].
+* 在进行开发之前，请确认您已设置好开发环境。参见[Windows][config-build-environment-windows] 或 [Linux][config-build-environment-linux].
 
-## Setting Up the Programming Environment
+## 设置编译环境
 
-This section explains how to set up the programming environment
-for developing AllJoyn&trade;-enabled Android applications.
-It covers the following topics:
+此章节解释了如何设置可用于开发适用于 AllJoyn&trade; 的 Android 应用程序的编译环境。此章节包含以下主题：
 
-* Install the Android SDK and NDK
-* Install an IDE
+* 安装 Android SDK 和 NDK
+* 安装一个 IDE
 
-**NOTE:** The procedures described in this section require the
-specified tool versions.
+**NOTE:** 此章节描述的设置过程需要指定的工具版本。
 
-### Installing the Android SDK
+### 安装 Android SDK
 
-The Android software development kit (SDK) provides the
-tools needed for building Android applications and transferring
-applications to or from an Android device. The 'adb' tool is used to:
 
-* Transfer/pull files to/from the phone
-* Run the AllJoyn standalone router
-* Install/uninstall applications
+Android 软件开发包 (SDK) 为开发 Android 应用程序以及 Android 设备发送/接收应用程序提供了必备的工具。'adb'工具被用于：
 
-For AllJoyn v15.04, download Android SDK version r20 or later from the
-following location:
+* 向手机端传输文件及从手机端获取文件。
+* 运行 ALlJoyn 独立路由。
+* 安装/卸载应用程序。
+
+对于 v15.04版本的 AllJoyn, 可由以下地址下载 r20 或更晚版本的 Android SDK:
 
 http://developer.android.com/sdk/index.html
 
-Earlier versions of AllJoyn can work with older versions of the Android
-SDK. Please refer to documentation for your version of AllJoyn if you
-require an older Android SDK.
+新版本的 Android SDK 会兼容早起版本的 AllJoyn. 如果您需要新版本的 Android SDK 请参阅对应 AllJoyn 版本的说明文档。
 
-Install the SDK by following the directions given here:
+安装 SDK 的步骤如下：
 
 http://developer.android.com/sdk/installing/index.html
 
-The SDK requires certain software packages
-to be pre-installed on your system. For more information,
-see the following location:
+安装 SDK 需要在您的系统中预装特定的软件包。详细信息请参见以下链接：
 
 http://developer.android.com/sdk/requirements.html
 
-After installing the SDK, you must install the Android platform
-support packages you wish to use. See:
+在 SDK 安装完毕后，您必须安装您希望使用的 Android 平台支持包。参见：
 
 http://developer.android.com/sdk/installing/adding-packages.html
 
-The AllJoyn v15.04 framework uses Android API levels 16 to 22.
-Note that installing these packages may take some time.
+AllJoyn v15.04版本架构使用16到22 levels 的 Android API. 注意，安装这些软件包会花费一些时间。
 
-### Installing the Android NDK
+### 安装 Android NDK
 
-The Android native development kit (NDK) enables developers
-to build Java native libraries (JNI libraries) which can be
-called from Android (Java) applications. Android NDK is
-required only to write Java native libraries. The Android NDK
-is not required to use the Android Java bindings, but is
-required to build AllJoyn.
+Android 原生开发工具包（NDK）使开发者可以建造可由 Android（Java）应用程序调用的 Jave 原生库（JNI Libraries）. 只有编写 Java 原生库时才会需
+要 Android NDK. Android NDK 不要求使用 Android Java 绑定，但搭建 AllJoyn 则要求此绑定。
 
-The main tool used from the Android NDK is 'ndk-build', which
-is used to build the native library of the JNI application.
+Android NDK 中的主要工具是'ndk-build',用来搭建 JNI 应用程序的原生库。
 
-To run Android JNI applications using AllJoyn 15.04, install any
-NDK version 9d or above from http://developer.android.com/tools/sdk/ndk/index.html .
+如需在15.04版本的 AllJoyn 上运行 Android JNI 应用程序，可以从 http://developer.android.com/tools/sdk/ndk/index.html 安装 9d 以及任意之前版 本的 NDK.
 
-Install the NDK by following the directions given on the download page.
+安装 NDK 可参考下载页中的指导。
 
-To run, the NDK requires that the following software packages
-are pre-installed on your system:
+为了顺利运行，NDK 要求以下软件包已预先安装到您的系统：
 
-* Latest Android SDK (including all dependencies)
-* GNU Make 3.81 or later
-* Recent version of awk (GNU awk or nawk)
+* 最新的 Android SDK (包含所有附属)
+* GNU Make 3.81版本或更新。
+* 近期版本的 awk (GNU awk 或者 nawk)
 
-For more information, see the NDK download page.
+更多信息请参阅 NDK 的下载页。
 
 ### Android IDEs
-
-Instructions and downloads for Android integrated development
-environments are available here:
+Android 集成开发环境的指导和下载可由如下链接获得：
 
 http://developer.android.com/sdk/installing/index.html
 
-### Downloading the OpenSSL header files and library (optional)
+### 下载 OpenSSL 头文件以及库（可选）
 
 The AllJoyn framework optionally uses the OpenSSL crypto library.
 AllJoyn 15.04 and later have built-in crypto functions, but
