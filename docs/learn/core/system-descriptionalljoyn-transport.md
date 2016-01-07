@@ -260,6 +260,7 @@ AllJoyn Local Transports is a broad grouping of AllJoyn Transports
 that are designed to essentially provide communication between the
 Core Library and their associated AllJoyn Routers. The following 
 Local Transports are used in the AllJoyn system:
+AllJoyn Local Transports 是被设计主要用于提供核心资源库和它们的 AllJoyn 路由之间连接的一组 AllJoyn Transports。
 
 * Null Transport
 * UNIX Domain Socket Transport
@@ -275,6 +276,7 @@ tied to the other side via function calls. There is really
 no Transport in the communication path between the Core Library 
 and router in this case, the link is "jumpered" together 
 using a direct function call interface.
+最简单的本地传输方式是 Null Transport。设计这种传输方式用于提供核心资源库与绑定路由之间的连接，它们都在常规进程内运行。根据功能调用。一个 Null Transport 的终点直接通过方法调用连接到另一侧。在这种情况下，实际上核心资源库与路由之间的连接路径并没有 Transport，连接通过一种称之为接口的直接方式连接在了一起。
 
 ### UNIX Domain Sockets Transport
 
@@ -284,6 +286,7 @@ and a preinstalled AllJoyn Router. Since this is a local transport,
 there is no requirement to support multiple endpoints, or to 
 advertise and discover. The implementation of this local transport 
 is split across the Core Library and the AllJoyn Router.
+Posix 系统采用 The UNIX Domain Sockets Transport 为 核心资源库和预装 AllJoyn 路由之间提供了一个进程间的连接（IPC）。由于是一种本地传输方式，不需要支持多终点，广播和发现。
 
 ### TCP Transport
 
