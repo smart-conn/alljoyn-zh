@@ -2,7 +2,7 @@
 
 ## 发布版本
 
-如需访问此文档的历史版本，请点击下面的链接。
+如需访问此文档的历史版本，请点击表格中的链接。
 
 |版本号| 日期 | 修改 |
 |---|---|---|
@@ -12,7 +12,7 @@
 | 14.06 更新1 | 9/29/2014 | <ul><li>更新了文档标题 (由“规范” (Specification) 变为“定义” (Definition))</li><li>在文档标题中加入了版本号以便查询</li><li>在概览( Overview ) 章节加入了用来处理 AllSeen Alliance Compliance and Certification 程序的便笺</li><li> 强制加入了支持 AllSeen Alliance Compliance and Certification 程序的方法和信号的参数列</li></ul> |
 | 14.12 | 12/17/2014 | 清除了复杂的规范，使对方法和信号的要求更清晰。 |
 
-## 定义概览 Overview
+## 定义概览
 
 AllJoyn&trade; 提醒服务的框架是一个使得 AllJoyn 设备可以向其他 AllJoyn 设备发送通知的软件层发送。这些设备被分为两类：提供方和使用方。提供方
 生产并发送提醒，但使用方只使用和显示这些提醒。终端用户的家庭网络（例如　Wi-Fi）可以连接到多个提供方，同时有多个使用者可以连接并使用这些消息。
@@ -51,150 +51,114 @@ AllJoyn&trade; 提醒服务的框架是一个使得 AllJoyn 设备可以向其�
 在提供方设备上的 AllJoyn 框架为提醒消息做一个非会话的信号广播。这将被使用方设备上的 AllJoyn 框架所接收到。AllJoyn 框架随后通过与提供方 AllJoyn 内核的单播会话提取该消息，并将其传送到使用方应用程序上。
 
 
-## Specification
+## 
 
-### Notification messages
+### 提醒消息
 
-The notification message comprises a set of fields including 
-message type and message TTL. These notification fields are 
-specified by the producer app when sending notification message 
-as part of Notification service framework Producer API.
+提醒消息包括消息类型和消息 TTL 在内的一系列字段。在发送提醒消息时，这些消息字段作为提醒服务框架提供方 API 的一部分，又提供方的应用程序指定
+。
 
-#### Message type and TTL fields
+#### 消息类型和 TTL 字段
 
-The message type defines the type of notification messages 
-(emergency, warning and information). Multiple types of 
-notification messages can be sent at the same time by a producer. 
-The message TTL defines the validity period of the notification message.
-Notification messages can be received by consumers that connect 
-during the defined message TTL value.
+消息类型定义了提醒消息的类型（紧急，警告和消息）。提供方也可以同时发送多种类型的通知消息。消息 TTL 定理了提醒消息的有效期。在已定义的消息 TTL 时间内，提醒消息可以被使用方接收。
 
-Messages with the same message type will overwrite each other 
-on the producer, so a consumer that connects to the network 
-after the notification was sent will receive only the last 
-of each message type.
+在提供方，有着同样消息类型的消息会彼此覆盖，因此在提醒被发送后连接到网络的使用方将仅会接收到每一个消息类型的最后一条消息。
 
-#### Notification message behavior
 
-The following behavior is supported using the Notification 
-service framework.
+#### 提醒消息行为
 
-* If another notification message of the same message type 
-is sent by a producer app within the TTL period, the new message 
-overwrites the existing message.
-* If a consumer connects to the network after the TTL period 
-expires, that consumer will not receive the message. For example, 
-when a consumer such as a mobile phone is on the home network 
-and the end user leaves the home; the consumer is no longer on 
-the home network. The mobile phone will not receive notification 
-messages when it reacquires the home network and the TTL of 
-those notifications have expired.
+使用提醒服务框架可支持下列行为：
 
-**NOTE:** The value is only used for message validity on the producer 
-device. The TTL field is not sent as part of the notification 
-message payload data over the end user's home network.
+* 如果在 TTL 周期内有另一个同样消息类型的消息被提供方应用程序发送，新消息会覆盖现存消息。
+* 如果使用方在 TTL 过期后连接到网络，他将不会收到消息。例如，一个作为使用方的手机正处于家庭网络上，这时终端使用者离开了家；使用方不再在家庭网络上。在该手机重新回到家庭网络，并且之前提醒的 TTL 已经过期的情况，手机将不会接收到任何提醒消息。
 
-See [Notification Service Framework Use Cases][notification-use-cases] 
-for use case scenarios related to notification message behavior.
+**NOTE:** 此值仅用于在提供方设备上指示消息有效性。TTL 字段不属于通过用户家庭网络发送的提醒消息正文数据。
 
-#### Dismissing a notification
+有关提醒消息行为的具体用例和场景请参阅 [Notification Service Framework Use Cases][notification-use-cases].
 
-The dismiss notification is an option for consumers that have 
-received the notification to let the producer know that this 
-notification has been seen and there is no need to continue 
-sending. It also lets other consumers know that the notification 
-can be removed from the user display.
+#### 驳回提醒
 
-When a consumer attempts to dismiss a notification, the service 
-framework creates a session with the producer using the original 
-sender field sent in the notification.
+提醒的驳回是已经接收到提醒的使用方的一种处理选项，目的是让提供方知晓此提醒已经被发送，并且没有必要继续发送。同时也会让其他使用方知道此消息可以从用户显示中移除。
 
-Using the original sender field confirms that the notification 
-is received by the actual producer and not the super agent in 
-case the consumer received the notification from the super agent.
+当使用方试图驳回一个提醒时，服务框架使用在提醒中被发送的原有发送者字段来与提供方建立会话。
 
-The producer will then send out a dismiss sessionless signal 
-to notify the rest of the consumers in the network that this 
-notification has been dismissed.
+使用原有的发送者字段确保提醒会被实际提供方接收，而不是超级代理,这防止了使用方从超级代理接收提醒。
 
-If the producer is not reachable, the consumer will send out 
-the dismiss sessionless signal on its own.
+提供方随后会发出一个驳回非会话信号，通知在网络中的其他使用方此提醒已经被驳回。
 
-## Notification Interface
+如果无法到达生产方，使用方则会自己发出驳回非会话信号。
 
-The Notification interface is announced such that when a 
-device scans the network, it can find all producer devices.
+## 提醒接口
 
-### Interface name
+提醒接口设定后，当一个设备扫描网络时，他可以发现所有的提供方设备。
 
-| Interface name | Version | Secured | Object path |
+### 接口名
+
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.Notification` | 1 | yes | <ul><li>`/emergency`</li><li>`/warning`</li><li>`/info`</li></ul> |
+| `org.alljoyn.Notification` | 1 | 是 | <ul><li>`/emergency`</li><li>`/warning`</li><li>`/info`</li></ul> |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| version | `q` | positive integer | 只读 | 接口版本号 |
 
-### Methods
+### 方法
 
-No methods are exposed by this interface.
+没有任何方法被暴露于此接口
 
-### Signals
+### 信号
 
 #### `notify('qiqssaysa{ss}a{iv}a(ss)')`
 
-Notify signal is a Sessionless signal.
+Notify 信号是非会话信号
 
-**Message arguments**
+**消息参数s**
 
-|Argument | Parameter name | Signature | List of values | Description |
+|参数 | 参数名 | 签名 | 值类型 | 描述 |
 |:---|---|:---:|---|---|
-| 0 | `version` | `q` | positive | Version of the Notification protocol. |
-| 1 | `msgId` | `i` | positive | Unique identification assigned to the notification message by the Notification service framework. |
-| 2 | `msgType` | `q` | integer | <p>Type of notification message.</p><ul><li>0 - Emergency</li><li>1 - Warning</li><li>2 - Information</li></ul> |
-| 3 | `deviceId` | `s` | positive | Globally unique identifier for a given AllJoyn-enabled device. |
-| 4 | `deviceName` | `s` | positive | Name for a given AllJoyn-enabled device. |
-| 5 | `AppId` | `ay` | positive | Globally unique identifier (GUID) for a given AllJoyn application. |
-| 6 | `appName` | `s` | string | Name for a given AllJoyn-enabled device. |
-| 7 | `attributes` | `a{iv}` | positive | Set of attribute and value pair. This is used to hold optional fields in the notification message payload. See [Attributes][attributes]. |
-| 8 | `customAttributes` | `a{ss}` | positive | Set of attribute and value pair. This can be used by the OEMs to add OEM-specific fields to the notification message. |
-| 9 | `langText` | `a{ss}` | string | Language-specific notification text. |
+| 0 | `version` | `q` | positive | 提醒协议的版本 |
+| 1 | `msgId` | `i` | positive | 由 Notification 服务框架分配给提醒消息的唯一标识 |
+| 2 | `msgType` | `q` | integer | <p>提醒消息类型</p><ul><li>0 - 紧急</li><li>1 - 警告</li><li>2 - 通知</li></ul> |
+| 3 | `deviceId` | `s` | positive | 给定支持 AllJoyn 设备的全局唯一识别码 |
+| 4 | `deviceName` | `s` | positive | 给定支持 AllJoyn 设备的名字 |
+| 5 | `AppId` | `ay` | positive | AllJoyn 应用程序的全局唯一标识 (GUID)  |
+| 6 | `appName` | `s` | string | 给定支持 AllJoyn 的应用程序的名字 |
+| 7 | `attributes` | `a{iv}` | positive | 配对的属性和值的集合。用于填充提醒消息正文中的选项字段。参见 [Attributes][attributes]. |
+| 8 | `customAttributes` | `a{ss}` | positive | 配对的属性和值的集合。 设备制造商可用此向提醒消息添加设备制造商指定的字段。 |
+| 9 | `langText` | `a{ss}` | string | 指定语言的提醒文字 |
 
-** Description**
+** 描述**
 
-AllJoyn signal-carrying notification message.
+AllJoyn 携带信号的提醒消息。
 
-### Data types
+### 数据类型
 
-| Name | Definition | Signature | Description |
+| 名字 | 定义 | 签名 | 描述 |
 |---|---|---|---|
-| notificationMsg | version | short | Version of the Notification protocol. |
-| | msgId | integer | Unique identification assigned to the notification message by the Notification service framework. |
-| | msgType | short | <p>Type of notification message.</p><ul><li>0 - Emergency</li><li>1 - Warning</li><li>2 - Information</li></ul> |
-| | deviceId | string | Globally unique identifier for a given AllJoyn-enabled device. |
-| | deviceName | string | Name for a given AllJoyn-enabled device. |
-| | appId | array of bytes | Globally unique identifier for a given AllJoyn application. |
-| | appName | string | Name for a given AllJoyn-enabled device. |
-| | List<langText> | attributes | Set of attribute and value pair. This is used to hold optional fields in the notification message payload. See [Attributes][attributes]. |
-| | List<customAttributes> | customAttributes | Set of attribute and value pair. This can be used by the OEMs to add OEM-specific fields to the notification message. |
-| langText | langTag | string | Language associated with the notification text. This is set as per RFC 5646. |
-| | text | string | Notification message text in UTF-8 character encoding. |
-| attributes | attrName | string | Name of the attribute. |
-| | attrValue | variant | Value of the attribute. |
-| customAttributes | attrName | string | Name of the attribute. |
-| | attrValue | variant | Value of the attribute. |
+| notificationMsg | version | short | 提醒协议版本|
+| | msgId | integer | 由提醒服务框架发送给提醒消息的唯一识别符 |
+| | msgType | short | <p>提醒消息的类型</p><ul><li>0 - 紧急</li><li>1 - 警告</li><li>2 - 通知</li></ul> |
+| | deviceId | string | 给定支持 AllJoyn 设备的全局唯一识别码  |
+| | deviceName | string | 给定支持 AllJoyn 设备的名字 |
+| | appId | array of bytes | 给定支持 AllJoyn 的应用程序的全局唯一识别码 |
+| | appName | string | 给定支持 AllJoyn 的应用程序名 |
+| | List<langText> | attributes |配对的属性和值的集合。用于填充提醒消息正文中的选项字段。参见 [Attributes][attributes]. |
+| | List<customAttributes> | customAttributes | 配对的属性和值的集合。设备制造商可用此向提醒消息添加设备制造商指定的字段。 |
+| langText | langTag | string | 提醒消息文字的相关语言，根据 RFC 5646 设置。 |
+| | text | string | 使用 UTF-8 编码的提醒消息文字 |
+| attributes | attrName | string | 属性名 |
+| | attrValue | variant | 属性值|
+| customAttributes | attrName | string | 属性名 |
+| | attrValue | variant | 属性值 |
 
-**NOTE:** If the richIconUrl, richAudioUrl, richIconObjectPath, 
-richAudioObjectPath, or respObjectPath fields were specified 
-by the producer app for a notification message, the Notification 
-service framework sends this information as attributes in the 
-attributes field, as per [Attributes][attributes].
+**NOTE:** 如果 richIconUrl, richAudioUrl, richIconObjectPath, richAudioObjectPath, 或者 respObjectPath 字段已经被提供方应用程序声明，提醒
+服务框架则根据属性字段中的属性来发送这些信息，参见 [Attributes][attributes].
 
-### Attributes
+### 属性
 
-| Attribute| Values | 
+| 属性 | 值 | 
 |---|---|
 | Rich Notification Url | <ul><li>attrName=0</li><li>attrValue= </li><li>variant signature=s</li><li>value=&lt;Icon URL&gt;</li></ul> |
 | Rich Notification Audio Url | <ul><li>attrName=1</li><li>attrValue= </li><li>variant signature=a{ss}</li><li>value=List&lt;langTag, Audio URL&gt;</li></ul> |
@@ -203,16 +167,16 @@ attributes field, as per [Attributes][attributes].
 | Response Object Path | <ul><li>attrName=4</li><li>attrValue= (values detailed below) </li></ul>|
 | Original Sender | <ul><li>attrName=5</li><li>attrValue= (values detailed below) </li></ul> |
 
-**attrValue information**
+**attrValue 信息**
 
-| Attribute name | Values |
+| 属性名 | 值 |
 |---|---|
 | Rich Notification Icon Object Path | <ul><li>variant signature=o</li><li>value=&lt;Rich notification icon object path&gt;</li></ul> |
 | Rich Notification Audio Object Path | <ul><li>variant signature=o</li><li>value=&lt;Rich notification audio object path&gt;</li></ul> |
 | Response Object Path | <ul><li>variant signature=o</li><li>value=&lt;Response object path>&gt;</li></ul> |
 | Original Sender | <ul><li>variant signature=s</li><li>value=&lt;Producer bus name&gt;</li></ul> |
 
-### Introspection XML
+### 内省 XML
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -236,46 +200,41 @@ attributes field, as per [Attributes][attributes].
 </node>
 ```
 
-## Producer Interface
+## 提供方接口
 
-The Notification Producer interface is announced such that, 
-when a device scans the network, it can find all producer devices.
+提供方提醒接口设定后，当一个设备扫描网络时，他可以发现所有的提供方设备。
 
-### Interface name
-
-| Interface name | Version | Secured | Object path |
+### 接口名
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.Notification.Producer` | 1 | no | `/notificationProducer` |
+| `org.alljoyn.Notification.Producer` | 1 | 否 | `/notificationProducer` |
 
-### Properties
-
-|Property name | Signature | List of values | Read/Write | Description |
+### 属性
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
 
-### Methods
+### 方法
 
-The following methods are exposed by the object that implements 
-the `org.alljoyn.Notification.Producer` interface.
+下列方法被暴露于实现 `org.alljoyn.Notification.Producer` 接口的对象
 
 #### `Dismiss('i')`
 
-**Message arguments**
+**消息参数**
 
-| Argument | Parameter name| Signature | List of values | Description |
+| 参数 | 参数名 | 类型 | 值列表 | 描述 |
 |:---:|---|---|---|---|
-| 0 | `msgId` | integer | N/A | A way to notify the producer that a notification was dismissed. |
+| 0 | `msgId` | integer | N/A | 通知提供方一个提醒被驳回的一种方式。 |
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-The consumer asks the producer to send a dismiss signal and 
-stop advertising a given notification.
+使用方请求提供方发送一个驳回信号，并停止推广指定的提醒。
 
-### Introspection XML
+### 内省 XML
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -290,42 +249,41 @@ stop advertising a given notification.
 </node>
 ```
 
-## Dismisser Interface
+## 驳回接口
 
-The Dismiss sessionless signals are sent to notify other 
-consumers on the proximal network that a notification has 
-been dismissed.
+Dismiss 非会话信号被发送到邻近域网络的使用方上，指示着一个提醒已经被驳回。
 
-### Interface name
-
-| Interface name | Version | Secured | Object path |
+### 接口名
+| 接口名 | 版本 | 是否安全 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.Notification.Dismisser` | 1 | no | `/notification/Dismisser` |
+| `org.alljoyn.Notification.Dismisser` | 1 | 否 | `/notification/Dismisser` |
 
-### Properties
 
-|Property name | Signature | List of values | Read/Write | Description |
+### 属性
+
+|属性名 | 签名 | 值类型 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | Positive integers | 只读 | 接口版本号 |
 
-### Signals
+### 信号
 
 #### `Dismiss('iay')`
 
-Dismiss signal is a Sessionless signal.
+Dismiss 信号是非会话信号。
 
-**Message arguments**
 
-| Argument | Parameter name | Signature | List of values | Description |
+**消息参数**
+
+| 参数 | 参数名 | 类型 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
 | 0 | `msgId` | `i` | positive | |
 | 1 | `appId` | `ay`| positive | |
 
-**Description**
+**描述**
 
-Notifies consumers that the notification has been dismissed.
+提醒使用方一个提醒已经被驳回
 
-### Introspect XML
+### 内省 XML
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -341,46 +299,36 @@ Notifies consumers that the notification has been dismissed.
 </node>
 ```
 
-## Notification Service Framework Use Cases
+## 提醒服务框架用例
 
-### Device connecting within and outside the TTL period
+### 在 TTL 周期内和周期外连接上的设备
 
-The following figure illustrates two consumers (television and 
-tablet) connecting within the notification message TTL period 
-and a third consumer (smartphone) connecting after the TTL period. 
-The first two consumers receive the notification message, the 
-third consumer does not.
+下图展示了两个使用方（电视和平板电脑）在 提醒消息 TTL 周期内完成连接，以及第三个使用方（智能手机）在 TTL 周期过后完成连接的场景。前两个使用
+方可以收到提醒消息，而第三个使用方不能收到。
 
-**NOTE:** The AllJoyn core block represents the collective AllJoyn 
-framework functionality on various producers and consumers.
+**NOTE:** AllJoyn 核心区指的是在各个提供方和使用方上的 AllJoyn 框架和功能的集合。
 
 ![notification-use-case-ttl-period][notification-use-case-ttl-period]
 
-**Figure:** Notification message behavior within and outside the TTL period
+**Figure:** 在 TTL 周期内和周期外提醒消息的行为
 
-### Notification message handling based on message types
+### 根据消息类型不同对提醒消息的不同处理方式
 
-The following figure illustrates how a notification message 
-overwrites a notification message of the same type, and how 
-notification messages of different types can coexist using 
-the AllJoyn framework.
+下图展示了同类型的提醒消息如何相互覆盖，以及不同类型的提醒消息如何在 AllJoyn 框架上共同存在。
 
-**NOTE:** The AllJoyn core block represents the collective AllJoyn 
-framework functionality on various producers and consumers.
+**NOTE:** AllJoyn 核心区指的是在各个提供方和使用方上的 AllJoyn 框架和功能的集合。
 
 ![notification-use-case-msg_handling][notification-use-case-msg_handling]
 
-**Figure:** Notification message handling based on message type
+**Figure:** 根据不同的消息类型处理消息
 
-### Notifications dismissed when producer is on network
+### 在提供方在网络上时驳回提醒消息。
 
-The following figure illustrates the flow of dismissing a 
-notification from the consumer until it is received by other 
-consumers on the network.
+下图展示了使用方驳回一个提醒的流程，一直到此提醒被网络上的其他使用方接收。
 
 ![notification-use-case-dismissed-notification-producer][notification-use-case-dismissed-notification-producer]
 
-**Figure:** Notifications that are dismissed when the producer is on the network
+**Figure:** 在提供方在网络上时驳回提醒消息
 
 
 [notification-14.02]: /learn/base-services/notification/interface-14-02
