@@ -1,19 +1,18 @@
 # Building Linux
 
-## Setup
+## 设置
 
-**NOTE:** The installation commands below refer specifically to
-Debian/Ubuntu Linux. Equivalent commands are available for other distributions of Linux.
+**NOTE:** 下列安装命令是针对 Debian/Ubuntu Linux 系统的。 对应其他 Linux 版本的安装命令也有提供。
 
-* Build tools and libs
+* 搭建工具和库
 ```sh
 sudo apt-get install build-essential libgtk2.0-dev libssl-dev xsltproc ia32-libs libxml2-dev libcap-dev
 ```
-* Install Python v2.6/2.7 (Python v3.0 is not compatible and will cause errors)
+* 安装 Python v2.6/2.7 (不兼容 Python v3.0, 会引发错误。)
 ```sh
 sudo apt-get install python
 ```
-* Install SCons v2.0
+* 安装 SCons v2.0
 ```sh
 sudo apt-get install scons
 ```
@@ -21,8 +20,7 @@ sudo apt-get install scons
 ```sh
 sudo apt-get install libssl-dev
 ```
-* Download the [AllJoyn Source zip][download] and extract source. The tree
-  should look like below. Note, extra directories may exist.
+* 下载 [AllJoyn Source zip][download] 并提取源代码。此树应为如下所示。可能会存在更多的目录。
 ```sh
 root-source-dir/
     core/
@@ -34,17 +32,16 @@ root-source-dir/
 ```
 
 
-## Build Samples
+## 搭建样例
 
 ```sh
 cd <root dir of source>/core/alljoyn
 scons BINDINGS=cpp WS=off BT=off ICE=off SERVICES="about,notification,controlpanel,config,onboarding,sample_apps"
 ```
 
-## Build AC Server Sample
+## 搭建 AC 服务器 样例
 
-The AC Server Sample app uses all of the base services to simulate
-an AC device.
+AC 服务器样例应用程序使用全部的基础服务来模拟一个 AC 设备。
 
 ```sh
 # Note, exclude the "base" dir for pre-14.06 source
@@ -52,9 +49,9 @@ cd $AJ_ROOT/services/base/sample_apps
 scons BINDINGS=cpp WS=off ALL=1
 ```
 
-## Add the AllJoyn&trade; framework to an existing app
+## 向现存的应用程序添加一个 AllJoyn&trade; 框架。
 
-* Setup
+* 设置
 
 ```sh
   export AJ_ROOT=~/alljoyn
@@ -63,7 +60,7 @@ scons BINDINGS=cpp WS=off ALL=1
   export AJ_DIST="$AJ_ROOT/core/alljoyn/build/linux/<TARGET CPU>/debug/dist"
 ```
 
-* Add header include directories
+* 添加 header （包括目录）
 
 ```sh
 export CXXFLAGS="$CXXFLAGS \
@@ -76,7 +73,7 @@ export CXXFLAGS="$CXXFLAGS \
     -I$AJ_DIST/samples_common/inc"
 ```
 
-* Configure linker to include required libs
+* 配置连接器，以纳入所需要的库
 
 ```sh
 export LDFLAGS="$LDFLAGS \
