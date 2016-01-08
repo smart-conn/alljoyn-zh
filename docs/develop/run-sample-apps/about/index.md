@@ -1,17 +1,13 @@
 # Running The About Samples
 
-There are two About sample applications, an About Client and an About Service. 
-Because the About feature is required and used by any application using one or 
-more of the service frameworks, all of the AllJoyn&trade; service framework, 
-example applications also function as either an About client or an About service. 
+此处有两个 About 用例应用程序，About 用户端以及 About 服务器端。由于任何使用一个或多个服务框架的应用程序都需要使用 About 功能，所有的 AllJoyn&trade; 服务，框架以及示例应用程序同时也提供着 About 用户端或者 About 服务器端的功能。
 
-The About Client is used to list out the services offered up by an 
-AllJoyn application using the About Service. It provides [service-level discovery][service_discovery] 
-so that an application can be written to interact with devices that speak the same services.
+About 用户端被用于列出被一个 使用 About 服务器端的 AllJoyn 应用程序提供的所有功能。他提供了[service-level discovery][service_discovery] ，
+借此，应用程序可以同与自己使用相同服务的设备进行交互。
 
-The About Service is used to demonstrate the use of the About Service API.  By itself, the application does nothing but expose a set of values that can be discovered and the About APIs can be executed.
+About 服务器端被用于演示 About 服务器端 API 的使用。单独来看，应用程序只需把一系列可被发现的值和可被执行的 About APIs 暴露。
 
-The About interface is defined as follows:
+About 接口有如下定义：
 
 ```xml
 <node name="/About">
@@ -47,7 +43,7 @@ The About interface is defined as follows:
 </node>
 ```
 
-The samples can be run on the following platforms:
+此实例可在以下平台运行：
 * [Windows][windows]
 * [Linux][linux]
 * [iOS/OSX][ios-osx]
