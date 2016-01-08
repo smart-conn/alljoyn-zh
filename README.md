@@ -1,5 +1,19 @@
 # alljoyn-zh
 
+## 0108 待审阅文章
+* [ ] [docs/learn/base-services/controlpanel/interface.md](docs/learn/base-services/controlpanel/interface.md)
+* [ ] [docs/learn/base-services/audiostreaming/index.md](docs/learn/base-services/audiostreaming/index.md)
+* [ ] [docs/develop/building/alljoyn-js/index.md](docs/develop/building/alljoyn-js/index.md)
+* [ ] [docs/develop/index.md](docs/develop/index.md)
+* [ ] [docs/develop/building/android/build-source.md](docs/develop/building/android/build-source.md)
+* [ ] [docs/develop/building/android/index.md](docs/develop/building/android/index.md)
+* [ ] [docs/develop/building/linux/index.md](docs/develop/building/linux/index.md)
+* [ ] [docs/develop/building/ios-osx/index.md](docs/develop/building/ios-osx/index.md)
+* [ ] [docs/develop/building/windows/index.md](docs/develop/building/windows/index.md)
+* [ ] [docs/develop/building/thin-linux.md](docs/develop/building/thin-linux.md)
+* [ ] [docs/develop/run-sample-apps/about/index.md](docs/develop/run-sample-apps/about/index.md)
+* [ ] [docs/develop/run-sample-apps/about/linux.md](docs/develop/run-sample-apps/about/linux.md)
+
 ## 0107 待审阅文章
 
 * [ ] [docs/learn/base-services/controlpanel/interface.md](docs/learn/base-services/controlpanel/interface.md)
