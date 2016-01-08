@@ -83,62 +83,48 @@ adb pull /system/lib/libcrypto.so libcrypto.so
 
 adb 拉去 <你想要在手机上拉去的文件的地址>，<你想要在电脑上存储的文件地址以及给文件的命名>。
 
-
-The library can also be built from the Android source repository.
-For details on building the Android source tree, see the
-Android source repository web site:
+此库也可由 Android 源库搭建。关于搭建 Android 源树的细节，请参阅 Android 源库的网站：
 
 http://source.android.com/source/building.html
 
-IMPORTANT: Be sure you pull the `libcrypto.so`
-library from the version of Android you are building for.
+IMPORTANT: 请确认你已根据正在搭建的 Android 版本拉去了 `libcrypto.so` 库。
 
-## Building AllJoyn from Source for Android
+## 由 Android 源搭建 AllJoyn.
 
-For most developers, the SDK package available to download
-from https://allseenalliance.org/developers/download
-is sufficient for developing Android applications using AllJoyn.
-However, if you wish to obtain and compile AllJoyn from source,
-follow the directions in this section.
+对于大多数开发者，从 https://allseenalliance.org/developers/download 下载的 SDK 包已足以完成开发使用 AllJoyn 的 Android 应用程序这项任务。
+但如果您希望从源头来获取和编译 AllJoyn, 请参阅此章节的指导。
 
+为了顺利从源头编译 AllJoyn，下列各项目都是必备的:
 To compile AllJoyn from source, the following items are required:
 
 * Android SDK
 * Android NDK
-* An Android IDE
-* Android source
+* 一个 Android IDE
+* Android 源
 
-Instructions for obtaining the Android SDK, Android NDK, and IDEs
-are in [Setting Up the Programming Environment][set-up-programming-environment].
 
-### The Android source
+获取 Android SDK, Android NDK, and IDEs 的指导请参与 [Setting Up the Programming Environment][set-up-programming-environment].
 
-The Android source (http://source.android.com) is required
-for building Android targets using OpenSSL. Google has detailed
-instructions for downloading and building Android source.
+### Android 源码
 
-For a list of system requirements and instructions for obtaining
-the required tools, see http://source.android.com/source/initializing.html
+Android 源码 (http://source.android.com) 是搭建使用 OpenSSL 的 Android 目标所必须的。Google 已经详细给出了下载和搭建 Android 源码的指导。
 
-For instructions on obtaining the Android Source Tree,
-see http://source.android.com/source/downloading.html
+对于系统要求列表和获取所需工具的指导，请参见 http://source.android.com/source/initializing.html
 
-When running the repo init command specify the branch name for
-the Android release you are targeting. Branch names are listed at
+对于获取 Android 源码树的指导，参见 http://source.android.com/source/downloading.html
+
+在运行 repo init 命令时，需要指定目标 Android 发布版本的分支名。分支名请参见：
 http://source.android.com/source/build-numbers.html#source-code-tags-and-builds
 
-For instructions on building and running the build source, see
-http://source.android.com/source/building.html
+ 对于搭建及运行构建源的指导，参见：http://source.android.com/source/building.html
 
-* Build the "generic" version of Android.
-* There is no need to run the code. Only the build libraries
-that are not available in the NDK are used.
+* 搭建 Android 的 "generic" 版本。
+* 不需要运行代码。只有在 NDK 中不可用的库才需要被搭建。
 
-### Obtaining the AllJoyn source
+### 获取 AllJoyn 源码
 
-If you followed the instructions in [The Android source][android-source],
-you should have the repo tool and git installed on your system.
-Enter the following commands to get the AllJoyn source:
+如果您已按照 [The Android source][android-source] 上的步骤完成安装, 系统上会安装好repo 工具和 git.
+输入一下命令可以获取 AllJoyn 源码：
 
 ```sh
 $ mkdir $HOME/alljoyn # for example
@@ -148,16 +134,12 @@ $ repo sync
 $ repo start master --all
 ```
 
-### Building the AllJoyn framework for Android
+### 搭建适用于 Android 系统的 AllJoyn 框架。
 
-At this point. you have all of the files and programs required
-to build the AllJoyn framework for Android. The following commands assume
-you have installed the Android NDK at `/usr/local/android-ndk-r9d`,
-you have downloaded and built the Android source, and it is
-located in `$HOME/android-platform`.
+截止到此处，您已经有了搭建适用于 Android 系统的 AllJoyn 框架所需要的全部文件和程序。以下命令假定您已在  `/usr/local/android-ndk-r9d` 位置
+上安装了 Android NDK, 并已将 Android 源码下载并搭建在 `$HOME/android-platform` 位置上。
 
-Use the following commands to build the AllJoyn framework for Android using
-builtin crypto:
+使用以下命令可以通过使用内置的 crypto 搭建适用于 Android 系统的 AllJoyn 框架：
 
 ```sh
 $ export JAVA_HOME="/usr/lib/jvm/java-6-sun" # or java-5-sun
@@ -166,7 +148,7 @@ $ scons OS=android CPU=arm CRYPTO=builtin ANDROID_NDK=/usr/local/android-ndk-r9b
    ANDROID_SRC=$HOME/android-platform WS=off
 ```
 
-To build using OpenSSL crypto functions:
+使用 OpenSSL crypto 函数来搭建：
 
 ```sh
 $ export JAVA_HOME="/usr/lib/jvm/java-6-sun" # or java-5-sun
@@ -175,12 +157,7 @@ $ scons OS=android CPU=arm CRYPTO=openssl ANDROID_NDK=/usr/local/android-ndk-r9b
    ANDROID_SRC=$HOME/android-platform WS=off
 ```
 
-It is possible to specify that the AllJoyn framework uses
-additional tools during the build process. For example, the
-AllJoyn framework can use Uncrustify to check white space
-compliance and Doxygen for producing API documentation for
-the C++ APIs. See [Configuring the Build Environment (Linux Platform)][config-build-environment-linux]
-for detailed instructions for installing these two tools.
+可以确定的是 AllJoyn 框架在搭建过程中使用了附加工具。例如，AllJoyn 框架可使用 Uncrustify 检查空白空间是否符合规定，使用 Doxygen 产生面向 C++ API 的 API 文档。关于这两种工具的安装指导请参阅 [Configuring the Build Environment (Linux Platform)][config-build-environment-linux].
 
 [intro-to-alljoyn-framework]: /learn/core/standard-core
 [config-build-environment-windows]: /develop/building/windows/build-source
