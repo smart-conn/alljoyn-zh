@@ -1,31 +1,24 @@
-# Running About Sample App - iOS
+# 运行 About Sample 应用程序 - iOS
 
-## Prerequisites
-Follow steps in the [Building - iOS OS X section][build-ios-osx] 
-to build and install the About sample app on an iOS device.
+## 前提条件
+根据 [Building - iOS OS X section][build-ios-osx]  中的步骤在 iOS 设备上搭建和安装 About sample 应用程序。
 
-You can use the About sample app to act as an About Client, an About Service, 
-or both a Client and a Service simultaneously. If you run the app as both 
-a client and server simultaneously, you will be able to publish and 
-receive About announcements on a single iOS device.
+你可以将 About sample 应用程序用作一个 About Client, 或者是一个 About Service, 也可以同时作Client 和 Service. 如果你将应用程序同时运行作输
+入和输出，你将会在同一部 iOS 设备上发送和接收同一个消息称。                                                                                                                                                                                                                                                                                                                                                                      另外，还可在两台分别做 client 和service 的设备上运行应用程序。                                                                                                                                                                                                                                                                   
 
 Alternately, run the app as a client on one device, and as a service on another device.
 
-**NOTE:** Both devices must be on the same Wi-Fi network.
+**NOTE:** 两设备必须处于同一个 Wi-Fi 网络中。
 
-## Run the About sample app as a Client
+## 使用 About sample 应用程序作客户端
 
-1. Launch the About sample app on your iOS device.
-2. Click **Connect to AllJoyn**.
-3. In the pop-up that appears, set the name to be used by the 
-About feature in the application. You can use the default of 
-org.alljoyn.BusNode.aboutClient, or enter your own.
-  * The application is now running in Client mode. 
-  * In the list area below the **Disconnect from AllJoyn** button, 
-  you will see any nearby applications that have been discovered 
-  via their About announcements.
-  NOTE: If there are no nearby devices, follow the steps in 
-  [Run the About sample app as a Service][run-about-sample-app-as-service] 
+1. 在你的 iOS 设备上运行 About sample 应用程序。
+2. 点击 **Connect to AllJoyn**.
+3. 在弹出的窗口中设定应用程序 About 功能的名字。可以使用默认的 org.alljoyn.BusNode.aboutClient，也可自定义。
+  * 应用程序现在以客户端模式开始运行。The application is now running in Client mode. 
+  * 在 **Disconnect from AllJoyn** 按键下放的列表区域, 你将会看到通过 About announcements 被发现的附近的应用程序。 
+  NOTE: 如果找不到附近设备，请按照 [Run the About sample app as a Service][run-about-sample-app-as-service] 中的指示同时运行应用程序，作为
+一个 About Service. 
   to run the application simultaneously as an About Service. This will allow 
   you to interact with the About Server running in the app through the 
   About Client that is also running in the app.
