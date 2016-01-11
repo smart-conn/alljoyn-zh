@@ -1,11 +1,11 @@
 # Linux - Running About Sample Apps
 
-## Running Linux AboutClient and AboutService Apps
+## 运行 Linux AboutClient 和 AboutService 应用程序
 
-### Prerequisites
+### 前提条件
 
-1. Open two terminal windows.
-2. In each, navigate to the AllJoyn&trade; root dir, then:
+1. 打开两个命令行窗口。
+2. 每一个都切换到 AllJoyn&trade; 根目录（root dir）, 然后:
 
 ```sh
 export AJ_ROOT=`pwd`
@@ -16,30 +16,28 @@ export TARGET_CPU=x86
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$LD_LIBRARY_PATH
 ```
 
-### Run the AboutService Sample App
+### 运行 AboutService Sample 应用程序
 
-In one of the terminal windows, run `AboutService`:
+在其中一个命令行中，运行 `AboutService`:
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/AboutService
 ```
 
-**NOTE:** The application just runs and will print information when an AboutClient connects.
+**NOTE:** 应用程序已经运行，在有 AboutClient 连接上时将会打印相关信息。
 
-### Run the AboutClient Sample App
+### 运行 AboutClient Sample App
 
-In the other terminal window, run `AboutClient`:
+在另一个命令行中，运行 `AboutClient`:
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/AboutClient
 ```
 
-**NOTE:** The application searches for any instance of AboutService that is announcing
-the `com.example.about.feature.interface.sample` it will connect to the service
-and call all the methods specified in the About Interface and the Echo method
-specified in the `com.example.about.feature.interface.sample` interface.
+**NOTE:** 此应用程序会搜索任何正在宣布 `com.example.about.feature.interface.sample` 接口的 AboutService 实例。他将会连接到该服务，并调用
+About Interface 中所定义的所有方法，以及由 `com.example.about.feature.interface.sample` 接口所定义的 Echo 方法。
 
-## Run Legacy AboutService and AboutClient Apps
+## 运行 Legacy AboutService 和 Legacy AboutClient 应用程序。
 
 ```sh
 export AJ_ROOT=`pwd`
@@ -49,49 +47,45 @@ export TARGET_CPU=x86
 
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$LD_LIBRARY_PATH
 ```
-Depending on the version of the AllJoyn SDK the location of the Legacy sample
-apps may be in a different location. If the dist directory contains a subdirectory
-named `about` you may need to add the about folder to the LD_LIBRARY_PATH
+由于 AllJoyn SDK 的版本差异，存储 Legacy 示例应用程序的地址也会有所不同。如果分发目录包含一个名为 `about` 的子目录，您需要将此 about 文件夹
+添加到 LD_LIBRARY_PATH.
 
 ```sh
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/lib:$LD_LIBRARY_PATH
 ```
 
-### Run the AboutService Sample App
+### 运行 AboutService Sample App
 
-In one of the terminal windows, run `AboutService`:
+在一个命令行窗口中，运行 `AboutService`:
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/AboutService_legacy
 ```
-
-Depending on the version of the AllJoyn SDK, the location of the Legacy sample
-apps may have moved. If the dist directory contains a subdirectory
-named `about`, you may need to run the sample for the different location
+由于 AllJoyn SDK 的版本差异，存储 Legacy 示例应用程序的地址可能已经改变。如果分发目录包含一个名为 `about` 的子目录，您需要在另一个位置运行
+该示例。
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/bin/AboutService
 ```
 
-**NOTE:** The application just runs and will print information when an AboutClient connects.
+**NOTE:** 应用程序已经运行，在有 AboutClient 连接上时将会打印相关信息。
 
-### Run the AboutClient Sample App
+### 运行 AboutClient Sample App
 
-In the other terminal window, run `AboutClient`:
+在另一个命令行窗口中运行 `AboutClient`:
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/AboutClient_legacy
 ```
 
-Depending on the version of the AllJoyn SDK, the location of the Legacy sample
-apps may have moved. If the dist directory contains a subdirectory
-named `about`, you may need to run the sample for the different location
+由于 AllJoyn SDK 的版本差异，存储 Legacy 示例应用程序的地址可能已经改变。如果分发目录包含一个名为 `about` 的子目录，您需要在另一个位置运行
+该示例。
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/bin/AboutClient
 ```
+此应用程序会搜索任何正在宣布 `com.example.about.feature.interface.sample` 接口的 AboutService 实例。他将会连接到该服务，并调用
+About Interface 中所定义的所有方法，以及由 `com.example.about.feature.interface.sample` 接口所定义的 Echo 方法。
 
-**NOTE:** The application searches for any instance of AboutService that is announcing
-the `org.alljoyn.About` and `org.alljoyn.Icon` it will connect to the service
-and call all the methods specified in the About Interface and the the About Icon
-interface.
+**NOTE:** 此应用程序会搜索任何正在宣布 `org.alljoyn.About` 以及 `org.alljoyn.Icon` 接口的 AboutService 实例。他将会连接到该服务，并调用
+About Interface 以及 About Icon interface 中所定义的所有方法。
