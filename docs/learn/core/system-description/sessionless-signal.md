@@ -1,14 +1,8 @@
 # Sessionless Signal
 
-## Overview
+## 概览
 
-The sessionless signal is an AllJoyn&trade; feature that enables 
-broadcasting of signals to all reachable nodes in the AllJoyn 
-proximal network. This is different than the session-based signals 
-described in [Data Exchange][data-exchange], where signals are sent 
-only to participants connected over a given session or 
-multiple sessions (for session broadcast signals) based on 
-sessionId/destination based routing. 
+Sessionless signal 是一项 AllJoyn&trade; 功能，它能够在 AllJoyn 临域网络内广播信号至各个节点。这与在 [Data Exchange][data-exchange] 中描述的基于���会话的信号不同，基于会话的信号通过指定会话，或者根据 sessionId/destination 的路由通过多个会话，发送给接受人。
 
 Sessionless signals are logically broadcast signals and any 
 app on the AllJoyn proximal network interested in receiving 
