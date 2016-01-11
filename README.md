@@ -1,5 +1,45 @@
 # alljoyn-zh
 
+## 0108 待审阅文章
+* [ ] [docs/learn/base-services/controlpanel/interface.md](docs/learn/base-services/controlpanel/interface.md)
+* [ ] [docs/learn/base-services/audiostreaming/index.md](docs/learn/base-services/audiostreaming/index.md)
+* [ ] [docs/develop/building/alljoyn-js/index.md](docs/develop/building/alljoyn-js/index.md)
+* [ ] [docs/develop/index.md](docs/develop/index.md)
+* [ ] [docs/develop/building/android/build-source.md](docs/develop/building/android/build-source.md)
+* [ ] [docs/develop/building/android/index.md](docs/develop/building/android/index.md)
+* [ ] [docs/develop/building/linux/index.md](docs/develop/building/linux/index.md)
+* [ ] [docs/develop/building/ios-osx/index.md](docs/develop/building/ios-osx/index.md)
+* [ ] [docs/develop/building/windows/index.md](docs/develop/building/windows/index.md)
+* [ ] [docs/develop/building/thin-linux.md](docs/develop/building/thin-linux.md)
+* [ ] [docs/develop/run-sample-apps/about/index.md](docs/develop/run-sample-apps/about/index.md)
+* [ ] [docs/develop/run-sample-apps/about/linux.md](docs/develop/run-sample-apps/about/linux.md)
+
+## 0107 待审阅文章
+
+* [ ] [docs/learn/base-services/controlpanel/interface.md](docs/learn/base-services/controlpanel/interface.md)
+* [ ] [docs/develop/index.md](docs/develop/index.md)
+* [ ] [docs/learn/core/security2_0/index.md](docs/learn/core/security2_0/index.md)
+* [ ] [docs/learn/base-services/configuration/index.md](docs/learn/base-services/configuration/index.md)
+* [ ] [docs/learn/core/system-descriptionalljoyn-transport.md](docs/learn/core/system-descriptionalljoyn-transport.md)
+* [ ] [docs/learn/base-services/notification/interface.md](docs/learn/base-services/notification/interface.md)
+
+## 0104 待审阅文章
+
+* [ ] [docs/learn/core/events-and-actions.md](docs/learn/core/events-and-actions.md)
+* [ ] [docs/learn/base-services/onboarding/index.md](docs/learn/base-services/onboarding/index.md)
+* [ ] [docs/learn/base-services/notification/interface.md](docs/learn/base-services/notification/interface.md)
+* [ ] [docs/learn/core/system-description/events-actions.md](docs/learn/core/system-description/events-actions.md)
+
+## 1231 待审阅文章
+
+* [ ] [docs/develop/building/thin-windows.md](docs/develop/building/thin-windows.md)
+* [ ] [docs/learn/core/system-description/alljoyn-session.md](docs/learn/core/system-description/alljoyn-session.md)
+
+## 1230 待审阅文章
+
+* [ ] [docs/develop/building/ios-osx/build-source.md](docs/develop/building/ios-osx/build-source.md)
+* [ ] [docs/develop/building/windows/build-source.md](docs/develop/building/windows/build-source.md)
+
 ## 1228 待审阅文章
 
 * [ ] [docs/develop/building/android/build-source.md](docs/develop/building/android/build-source.md)

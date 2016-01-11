@@ -1,21 +1,22 @@
 # AllJoyn&trade; Transport
 
-## Overview
+## Overview 概览
 
 AllJoyn Transport is an abstraction for a concrete mechanism 
 that is used to move AllJoyn Messages (corresponding to a 
 method call, method reply, a property get/set or a signal) 
 between AllJoyn applications.
+AllJoyn Transport 是一种具体机制的概念。这个机制用于在 AllJoyn 应用之间传递 AllJoyn Messsages（根据方法调用，方法答复，属性获取/设置或信号）。
 
 The AllJoyn Transport provides the following fundamental 
-pieces of functionality:
+pieces of functionality:AllJoyn Tranport 提供了以下基础功能：
 * The ability to create and destroy connections between 
 AllJoyn applications (through AllJoyn routers) and between 
-AllJoyn applications and routers.
+AllJoyn applications and routers.在 AllJoyn 应用（通过 AllJoyn 路由）之间和在 AllJoyn 应用和程序之间建立和摧毁连接。
 * The ability to reliably send and receive AllJoyn Messages 
-between AllJoyn applications and routers.  
+between AllJoyn applications and routers.  在 AllJoyn 应用和路由之间可靠地发送和接收 AllJoyn Messages。
 * Optionally, to provide advertisement and discovery services 
-appropriate to the underlying network technology.
+appropriate to the underlying network technology.可选地，提供适用于底层网络技术的广告和发现服务。
 
 The AllJoyn Transport supports connections establishment and 
 delivering messages over multiple underlying physical transport 
@@ -24,18 +25,19 @@ list of underlying transports supported by the AllJoyn Transport
 is captured in [AllJoyn TransportMask definition][alljoyn-transportmask-definition].
 An application can specify which underlying transport to be 
 used for connection establishment and message delivery.
+AllJoyn Transport 支持在多种底层物理网络层，包括 TCP、UDP 和 本地 UNIX 传输中建立连接和传递信息。AllJoyn Transport 支持的完整底层传输列表收录在 [AllJoyn TransportMask definition][alljoyn-transportmask-definition]。应用程序能够指定运行在何种用于建立连接和传递信息的底层传输方式中。
 
 Based on the type of connection endpoints, AllJoyn Transport functionality can be 
-divided into the following categories:
+divided into the following categories:根据连接终点的类型划分， AllJoyn Transport 功能可被分围以下几个类型：
 * **Local AllJoyn Transports**: Local AllJoyn Transports are designed 
 to essentially provide communication between Core Library 
 and associated AllJoyn Router. This supports connection establishment 
 and message routing between Application and the Router. Details 
-on Local Transports are captured in [Local AllJoyn Transports][local-alljoyn-transports].
+on Local Transports are captured in [Local AllJoyn Transports][local-alljoyn-transports].Local AllJoyn Transports 主要负责提供核心资源库与 AllJoyn 路由之间的通信。它支持应用和路由之间连接的建立和信息转发。关于此种 Local Transports 的详细信息，收录在 [Local AllJoyn Transports][local-alljoyn-transports]。
 * **Bus-to-Bus AllJoyn Transports**: These AllJoyn Transports enable 
 connection establishment and message routing between AllJoyn 
 routers. Details on Bus-to-Bus Transports are captured in 
-[Bus-to-Bus AllJoyn Transports][b2b-alljoyn-transports].
+[Bus-to-Bus AllJoyn Transports][b2b-alljoyn-transports].该类型的 AllJoyn Transports 支持 AllJoyn 路由之间连接建立和信息转发。关于此种 Local Transports 的详细信息，收录在 [Bus-to-Bus AllJoyn Transports][b2b-alljoyn-transports]。
 
 ## Endpoints usage in AllJoyn Transports
 
@@ -46,25 +48,26 @@ Endpoint is analogous to a socket endpoint as used in socket
 programming. An AllJoyn Endpoint is one side of an AllJoyn communication 
 link. The AllJoyn communication link could be between an Application 
 and an AllJoyn router, or it could be between two AllJoyn routers. 
+如 [AllJoyn endpoints][alljoyn-endpoints] 所述，AllJoyn Transport 使用终点建立连接并在应用和路由之间转发信息。AllJoyn Endpoint 类似与 socket 编程中的 socket endpoint。AllJoyn Endpoint 是 AllJoyn 通信连接中的一侧。AllJoyn 通信连接可以建立在一个应用与一个路由之间，或者建立在两个路由之间。
 
-The broad classification of endpoints in the AllJoyn system are listed below:
+The broad classification of endpoints in the AllJoyn system are listed below:下面列出了 AllJoyn 系统中的终点的一般分类：
 * **Local Endpoint**: A local endpoint represents a connection 
 to self. It is used in the Core Library to provide a connection 
 to the application itself and used in the AllJoyn Router to 
 provide connection to the router itself. A local endpoint 
-represents a connection within the same process.
+represents a connection within the same process.本地重点代表了一个指向自己的连接。在核心资源库中，它路由和应用用来建立指向自己的连接。本地终点表示在同一进程内的连接。
 * **Remote Endpoint**: A remote endpoint represents a connection 
 between the application and the AllJoyn router. Messages destined 
 to an applications get routed to its remote endpoint. A specialized 
 type of remote endpoint called "Bus-to-Bus" endpoint represents 
 connection between two AllJoyn Routers. A remote endpoint represents 
-a connection between two processes.
- 
-The following figure shows the concepts of local and remote endpoints. 
+a connection between two processes.远程终点代表应用和路由之间的连接。发往应用程序的消息路由到其远程终点。一种特别的远程终点的类型称为 “Bus-to-Bus” 终点，表示两个路由之间的连接。远程终点表示两个进程之间连接。
+
+The following figure shows the concepts of local and remote endpoints. 下图展示了本地终点和远程终点的概念。
 
 ![local-remote-endpoints][local-remote-endpoints]
 
-**Figure:** Local and remote endpoints
+**图:** 本地和远程终点
 
 The figure illustrates a hypothetical connection between an AllJoyn application 
 and a preinstalled Router. The AllJoyn application talks to a Core Library 
@@ -72,39 +75,46 @@ that provides the gateway to the larger AllJoyn distributed bus.
 The Core Library has two main connections: the connection to the 
 application, which is provided through what is called the Local Endpoint, 
 and the connection to the Router, which is represented by a Remote Endpoint.
+图片表明了 AllJoyn 应用与预装路由之间的假想连接。AllJoyn 应用与核心资源库进行会话，把网关提供给更广的分布式总线。核心资源库有两个主要连接：一是应用之间的连接，由 Local Endpoint 提供 ；二是与路由之间的连接（代表了远程 Remote Endpoint）。
 
 The AllJoyn Router also has a corresponding Remote Endpoint to represent 
 the endpoint of the communication link with the Core Library for routing 
 messages. The Local endpoint within the AllJoyn Router represents a 
 connection to the router for routing control messages destined for the router. 
+AllJoyn 路由有相应的远程终点代表与用于转发信息的核心资源库相连连接的终点。AllJoyn 路由内的 本地终点表示一个连接到路由器上的路由发送到路由器的控制消息。
 
 Multiple applications can connect to a single AllJoyn Router in a 
 distributed bus architecture. An AllJoyn router maintains a remote 
 endpoint to each connected application as shown in the following
 figure (AllJoyn router wiht multiple remote endpoints). 
+多个程序能够在一个分布式总线结构中连接同一个 AllJoyn 路由。AllJoyn 路由为每一个连接的程序提供了一个远程终点，如下图所示 (AllJoyn router wiht multiple remote endpoints)。
 
 ![alljoyn-router-multiple-remote-endpoints][alljoyn-router-multiple-remote-endpoints]
 
-**Figure:** AllJoyn router with multiple remote endpoints
+**图:** AllJoyn router with multiple remote endpoints
 
 Both the Core Library and the router maintain remote endpoints, 
 however they differ in terms of message routing functionality - 
 an AllJoyn Router can move (route) messages between Remote Endpoints, 
 whereas a Core Library only moves messages between exactly 
 one Local and exactly one Remote Endpoint. 
+核心资源库和路由都提供远程终点，然而他们在信息转发功能方面有所不同-AllJoyn 路由能在终点之间转发信息，然而核心资源库仅能在特定一组本地和远程终点之间转发信息。
 
 The AllJoyn system supports a fully distributed bus configuration, 
 where a router communicates with other routers to join bus segments 
 into a single distributed AllJoyn bus as shown in the following figure. 
+AllJoyn 系统支持完全分布式的总线配置，具体表现为一个路由通过与其它路由的连接，加入一个单一分布式 AllJoyn 总线的总线段，如图所示：
+
 
 ![alljoyn-distributed-bus-b2b-endpoints][alljoyn-distributed-bus-b2b-endpoints]
 
-**Figure:** AllJoyn distributed bus with bus-to-bus endpoints
+**图:** AllJoyn distributed bus with bus-to-bus endpoints 包含 bus-to-but 终点的 AllJoyn 分布式总线
 
 In this figure, one bus segment comprising an AllJoyn Router and 
 two Applications is shown in the top half. Another bus segment, 
 also with an AllJoyn Router and two Applications, is shown in the 
 bottom half of the figure. 
+如图，在图片的上半部分展示了一个包含一个 AllJoyn 路由和两个应用程序的总线段。在图片的下半部分，同样有一个包含一个 AllJoyn 路由和两个应用程序的总线段。
 
 The two bus segments are connected together via remote endpoints 
 called Bus-to-Bus Endpoints. Each router maintains a Bus-to-Bus Endpoint 
@@ -112,6 +122,7 @@ for every other router it is connected to. In the figure,
 One Bus-to-Bus Endpoint represents the connection to the upper 
 Routing Node and another Bus-to-Bus Endpoint represents the 
 connection to the lower Routing Node. 
+这两个总线段通过称为 Bus-to-Bus 的远程终点相连。每个路由为它所连接的路由提供了一个 Bus-to-Bus Endpoint。在图中，一个 Bus-to-Bus Endpoint 表示于上方 Routing Node 的连接，另一个 Bus-to-Bus Endpoint 表示与下方Routing Node 的连接。
  
 The Remote Endpoints are paired with an underlying communication 
 mechanism as part of the associated AllJoyn Transport. For example, 
@@ -119,40 +130,46 @@ the Bus-to-Bus Endpoints in the Routing Nodes may be managed by
 the TCP Transport or the UDP Transport, which also handles the 
 details of moving Messages from one end (Endpoint) of the implied 
 connection to another.
+Remote Endpoints 通过 AllJoyn Transport 相关的底层通讯机制进行配对。举例说明， Routing Nodes 中的 Bus-to-Bus Endpoints 可能通过 TCP Transport 或者 UDP Transport 控制，它们同时也控制了从一段（Endpoint）到另一段的连接中传递 Messages 的细节。
 
 In the case of the Remote Endpoints that connect the Core Library 
 to the AllJoyn Router, the underlying communication mechanism 
 could be different based on host environments. For example, a 
 UNIX domain sockets implementation is used on Linux systems, 
 while a TCP implementation is used on Windows systems.
+在核心资源库与 AllJoyn 路由之间通过 Remote Endpoints 连接的情况下，底层通信机制可能根据主机环境的不同而有所区别。举例说明，Linux 系统中使用 UNIX domain sockets 工具，然而 Windows 系统中使用 TCP 工具。
 
-### Thin Core Library Endpoints
+### Thin Core Library Endpoints 精简资源库终点
 
 The Thin Core Library (TCL) makes use of the TCP Transport, 
 however its implementation is quite different than the regular 
 TCP Transport connection between a Core Library and AllJoyn Router.  
+精简资源库 (TCL) 使用 TCP 传输，但它的实现与一般的核心资源库与 AllJoyn 路由之间的 TCP 传输有所不同。
 
 On the TCL, there is no explicit breaking out of a Remote Endpoint 
 and a Local Endpoint. The TCL provides minimal implementation of the 
 functionality required to connect and communicate with the 
 TCP Remote Endpoint at the Alljoyn Router hosted on another 
 AllJoyn device. 
+在 TCL 中，没有明确的远程终点和本地终点。TCL 提供了与另一台 AllJoyn 设备上的 AllJoyn 路由上的 TCP 远程节点连接并通信的最小功能实现。
 
 On the Routing Node side, a Thin Library device connects as 
 if it was any local Core Library connecting using a local 
 TCP loopback connection. 
+在 Routing Node 侧，精简资源库设备连接方式，就像使用本地 TCP 回环连接的本地核心资源库。
 
-**NOTE:** This is how Bus Attachments connect to Routing Nodes in 
+**注意:** This is how Bus Attachments connect to Routing Nodes in 
 the Windows environment. The TCP transport is used for the 
 connection, but the data does not actually travel across the 
 network; but rather is "looped back" and sent back up the 
 networking stack before being sent out on a connected IP network.
+这是 Windows 环境下，Bus Attachments 连接 Routing Nodes 的方式。TCP 传输用于连接，但是数据实际上不通过网络传输；而是在被发送到某个已连接的 IP 网络之前，被回环并发送至网络堆栈。
 
-The Thin Library Endpoint usage is captured in the following figure.
+The Thin Library Endpoint usage is captured in the following figure.下图展示了精简资源库终点的使用方式。
 
 ![thin-core-library-endpoint][thin-core-library-endpoint]
  
-**Figure:** Thin Core Library Endpoint
+**图:** Thin Core Library Endpoint 精简资源库终点
 
 ## AllJoyn Transport in Networking Model
 
@@ -162,19 +179,21 @@ it is important to distinguish the AllJoyn Transport from the
 concept of transport layer (layer 4) in the International 
 Standards Organization Open Systems Interconnection (ISO/OSI) 
 7-layer model.
+尽管 AllJoyn 传输的基本任务是从一个终点向另一个终点传输或转移 AllJoyn Messages，但是也须要区别 AllJoyn Transport 与  International Standards Organization Open Systems Interconnection (ISO/OSI) 7-layer model 中传输层（第四层）的概念。
 
 The following figure shows where AllJoyn Transports fit in the 
-7-layer ISO/OSI model. 
+7-layer ISO/OSI model. 下图展示了在 七层 ISO/OSI 模型概念中，AllJoyn Transport 的位置。
 
 ![alljoyn-osi-seven-layer-arch][alljoyn-osi-seven-layer-arch]
 
-**Figure:** AllJoyn transport in the ISO/OSI 7-layer model
+**图:** 七层 ISO/OSI 模型中的 AllJoyn Transport
 
 Underneath the Application Logic, there exists an AllJoyn Message 
 layer which is responsible for marshaling and unmarshaling of 
 AllJoyn messages (Signals and Method Calls). This layer can be 
 thought of as residing in the presentation layer (layer 6) 
 of the ISO/OSI model. 
+在应用程序逻辑之下，有一个负责封包和解包 AllJoyn 信息（信号和方法调用）的 AllJoyn Message 层。该层可被视为位于 ISO/OSI 模型的表现层。
 
 These AllJoyn messages are routed to their intended destination 
 by the AllJoyn Transport layer. Since the AllJoyn Transport layer 
@@ -183,36 +202,38 @@ the network, it can be thought of corresponding to the session
 layer (layer 5) of the ISO/OSI model. AllJoyn Transports make 
 use of layer 4 transports like TCP or UDP in order to manage 
 the actual movement of AllJoyn messages between various network entities.
+AllJoyn 信息通过 AllJoyn Transport 层被路由至目的地。由于 AllJoyn Transport 层控制应用程序和 AllJoyn 路由之间的连接，所以它可以被相应地视为 ISO/OSI 模型中的会话层（第五层）。AllJoyn Tranport 使用第四层的传输方式，如 TCP 或 UDP，以便管理不同网络实体间 AllJoyn 信息的实际传输。
 
 Since an AllJoyn Transport encapsulates the functions of moving 
 data sequences, establishing connections, advertisement and discovery, 
 there are separate AllJoyn Transports for separate underlying 
-transport mechanisms.  
-* The AllJoyn TCP Transport uses TCP/IP as the mechanism for moving data.
-* The AllJoyn UDP Transport uses UDP/IP as the mechanism for moving data. 
+transport mechanisms. 由于 AllJoyn Transport 包含了转移数据序列、建立连接、广告和发现功能，针对不同的底层传输机制，有不同的 AllJoyn Transports。
+* The AllJoyn TCP Transport uses TCP/IP as the mechanism for moving data. AllJoyn TCP Transport 使用 TCP/IP 机制传输数据。
+* The AllJoyn UDP Transport uses UDP/IP as the mechanism for moving data. AllJoyn UCP Transport 使用 UCP/IP 机制传输数据。
 * The AllJoyn Bluetooth (BT) Transport does the same for Bluetooth 
-connections.
-* The AllJoyn Local Transport uses UNIX domain sockets. 
+connections.AllJoyn Bluetooth (BT) Transport 使用相同的方式进行蓝牙连接。
+* The AllJoyn Local Transport uses UNIX domain sockets.  AllJoyn Local Transport 使用  UNIX domain sockets。
 
 The name given to an AllJoyn transport typically echoes the method 
-used in the underlying OSI layer 4 mechanism.  
+used in the underlying OSI layer 4 mechanism.  AllJoyn 传输方式的命名通畅参照其使用的底层 OSI 四层机制中的方法。
 
 An AllJoyn applications may select the AllJoyn Transport that 
 is actually used by choosing one or more TransportMask bits 
 in the appropriate AllJoyn APIs. The currently available 
-TransportMask bits are shown in the following table. 
+TransportMask bits are shown in the following table. AllJoyn 应用程序可能会选择 AllJoyn Transport，通过在适当的 AllJoyn API 中选择一个或多个 TransportMask 位来实现。目前支持的 TransportMask 位在展示在下表中：
+
 
 #### AllJoyn TransportMask definition
 
-|Transport name | Value | Description |
+|Transport name | 值 | 描述 |
 |---|:---:|---|
-| TRANSPORT_NONE         | 0x0000 | No transport. |
-| TRANSPORT_LOCAL        | 0x0001 | The local transport. |
-| TRANSPORT_TCP          | 0x0004 | Transport using TCP as the underlying mechanism. |
-| TRANSPORT_UDP          | 0x0100 | Transport using UDP as the underlying mechanism. |
-| TRANSPORT_EXPERIMENTAL | 0x8000 | Select a release-specific experimental transport. |
-| TRANSPORT_IP           | 0x0104 | Allow the system to decide between TCP or UDP. |
-| TRANSPORT_ANY          | 0x0105 | Allow the system to choose any appropriate transport. |
+| TRANSPORT_NONE         | 0x0000 | 无传输。 |
+| TRANSPORT_LOCAL        | 0x0001 | 本地传输。 |
+| TRANSPORT_TCP          | 0x0004 | Transport 使用 TCP 作为底层传输机制。 |
+| TRANSPORT_UDP          | 0x0100 | Transport 使用 UDP 作为底层传输机制。 |
+| TRANSPORT_EXPERIMENTAL | 0x8000 | 选择一个 release-specific 实验性传输方式。 |
+| TRANSPORT_IP           | 0x0104 | 允许系统选择使用 TCP 或是 UDP。 |
+| TRANSPORT_ANY          | 0x0105 | 允许系统选择任意适当的传输工具。|
 
 If an AllJoyn application desires to only use TCP as the 
 underlying layer 4 mechanism, it can do so by specifying 
@@ -220,6 +241,7 @@ TRANSPORT_TCP in advertisement, discovery and Session join
 and bind options. If an application desires only that an 
 IP-based transport be used, it can specify TRANSPORT_IP and 
 allow the AllJoyn system to select between TCP and UDP, for example.  
+如果 AllJoyn 应用程序希望只使用 TCP 作为第四层传输机制，它可以在广播、发现、加入会话、绑定选项中指定为 TRANSPORT_TCP。如果应用程序只希望使用基于 IP 的传输方式，它可以设定为 TRANSPORT_IP，使 AllJoyn 系统从 TCP 和 UDP 中选择。
 
 Each transport establishes and maintains connectivity based 
 on the underlying physical transport it supports. Based on the 
@@ -230,13 +252,16 @@ network whose topology does not necessarily map directly to the
 topology of the underlying network. If an application has no 
 preference, it can provide TRANSPORT_ANY and allow the AllJoyn system 
 to determine which transport to use.
+每种传输方式根据其基于的底层物理传输方式建立和保持连接。根据底层物理传输方式的不同，在一个 AllJoyn 网络中两个节点间的实际连接可以是单跳或多跳的。AllJoyn 分布式总线基本上是一种覆盖网络，它的拓扑结构不需要直接映射到底层网络的拓扑结构。如果某个应用程序没有偏好，它可以设为 TRANSPORT_ANY 并且允许 AllJoyn 系统决定使用何种传输方式。
 
-## Local AllJoyn Transports
+## Local AllJoyn Transports 本地 AllJoyn 传输方式
 
 AllJoyn Local Transports is a broad grouping of AllJoyn Transports 
 that are designed to essentially provide communication between the
 Core Library and their associated AllJoyn Routers. The following 
 Local Transports are used in the AllJoyn system:
+AllJoyn Local Transports 是被设计主要用于提供核心资源库和它们的 AllJoyn 路由之间连接的一组 AllJoyn Transports。
+
 * Null Transport
 * UNIX Domain Socket Transport
 * TCP Transport
@@ -251,6 +276,7 @@ tied to the other side via function calls. There is really
 no Transport in the communication path between the Core Library 
 and router in this case, the link is "jumpered" together 
 using a direct function call interface.
+最简单的本地传输方式是 Null Transport。设计这种传输方式用于提供核心资源库与绑定路由之间的连接，它们都在常规进程内运行。根据功能调用。一个 Null Transport 的终点直接通过方法调用连接到另一侧。在这种情况下，实际上核心资源库与路由之间的连接路径并没有 Transport，连接通过一种称之为接口的直接方式连接在了一起。
 
 ### UNIX Domain Sockets Transport
 
@@ -260,6 +286,7 @@ and a preinstalled AllJoyn Router. Since this is a local transport,
 there is no requirement to support multiple endpoints, or to 
 advertise and discover. The implementation of this local transport 
 is split across the Core Library and the AllJoyn Router.
+Posix 系统采用 The UNIX Domain Sockets Transport 为 核心资源库和预装 AllJoyn 路由之间提供了一个进程间的连接（IPC）。由于是一种本地传输方式，不需要支持多终点，广播和发现。
 
 ### TCP Transport
 
