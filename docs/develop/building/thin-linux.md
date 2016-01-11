@@ -1,23 +1,22 @@
 # Building Thin - Linux
 
-## Setup
+## 设置
 
-**NOTE:** The installation commands below refer specifically to
-Debian/Ubuntu Linux. Equivalent commands are available for other distributions of Linux.
+**NOTE:** 下列安装命令是针对 Debian/Ubuntu Linux 系统的。 对应其他 Linux 版本的安装命令也有提供。
 
-* Build tools and libs
+* 搭建工具和库
 
 ```sh
 sudo apt-get install build-essential libgtk2.0-dev libssl-dev xsltproc ia32-libs libxml2-dev
 ```
 
-* Install Python v2.6/2.7 (Python v3.0 is not compatible and will cause errors)
+* 安装 Python v2.6/2.7 (不兼容 Python v3.0, 会引发错误。)
 
 ```sh
 sudo apt-get install python
 ```
 
-* Installl SCons v2.0.
+* 安装 SCons v2.0.
 
 ```sh
 sudo apt-get install scons
@@ -29,40 +28,40 @@ sudo apt-get install scons
 sudo apt-get install libssl-dev
 ```
 
-* Download the [AllJoyn&trade; source zip][download] and extract.
+* 下载并提取 [AllJoyn&trade; source zip][download].
 
-## Build the samples
+## 搭建样例
 
-#### Build the core samples:
+#### 搭建核心样例：
 
 ```sh
 cd $AJ_ROOT/core/ajtcl
 scons WS=off
 ```
 
-Binaries for samples are located at `$AJ_ROOT/core/ajtcl/samples/`
+核心样例的二进制文件在： `$AJ_ROOT/core/ajtcl/samples/`
 
-#### Build the services samples:
+#### 搭建服务器样例:
 
 ```sh
 cd $AJ_ROOT/services/sample_apps
 scons WS=off AJ_TCL_ROOT=../../core/ajtcl
 ```
 
-Binaries for service samples are located at `$AJ_ROOT/services/sample_apps/build`
+服务器样例的二进制文件在 `$AJ_ROOT/services/sample_apps/build`
 
-#### Build the complete service sample (AC Server):
+#### 搭建完全的服务器样例 (AC 服务器):
 
 ```sh
 cd $AJ_ROOT/services/sample_apps/ACServerSample
 scons WS=off AJ_TCL_ROOT=../../../core/ajtcl
 ```
 
-The binary for the AC Server sample is located at `$AJ_ROOT/services/sample_apps/ACServerSample/build`
+AC 服务器样例的二进制文件在 `$AJ_ROOT/services/sample_apps/ACServerSample/build`
 
-## Add the AllJoyn framework to an application
+##向应用程序添加一个 AllJoyn™ 框架。
 
-See the [Build an Application using the Thin Library][build-app-thin-library] section for instructions.
+具体指导请参见 [Build an Application using the Thin Library][build-app-thin-library] 章节。
 
 [download]: https://allseenalliance.org/framework/download
 [build-app-thin-library]:  /develop/tutorial/thin-app
