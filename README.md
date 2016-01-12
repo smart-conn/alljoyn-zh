@@ -1,6 +1,10 @@
 # alljoyn-zh
 
 * [ ] [docs/develop/run-sample-apps/alljoyn-js/index.md](docs/develop/run-sample-apps/alljoyn-js/index.md)
+* [ ] [docs/develop/run-sample-apps/about/ios-osx.md](docs/develop/run-sample-apps/about/ios-osx.md)
+* [ ] [docs/develop/run-sample-apps/acserver/index.md](docs/develop/run-sample-apps/acserver/index.md)
+* [ ] [docs/develop/run-sample-apps/acserver/linux.md](docs/develop/run-sample-apps/acserver/index.md)
+* [ ] [docs/develop/run-sample-apps/acserver/thin-linux.md](docs/develop/run-sample-apps/acserver/index.md)
 
 ## 0108 待审阅文章
 * [ ] [docs/learn/base-services/controlpanel/interface.md](docs/learn/base-services/controlpanel/interface.md)
