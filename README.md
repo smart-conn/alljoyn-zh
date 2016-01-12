@@ -1,5 +1,7 @@
 # alljoyn-zh
 
+* [ ] [docs/develop/run-sample-apps/alljoyn-js/index.md](docs/develop/run-sample-apps/alljoyn-js/index.md)
+
 ## 0108 待审阅文章
 * [ ] [docs/learn/base-services/controlpanel/interface.md](docs/learn/base-services/controlpanel/interface.md)
 * [ ] [docs/learn/base-services/audiostreaming/index.md](docs/learn/base-services/audiostreaming/index.md)
