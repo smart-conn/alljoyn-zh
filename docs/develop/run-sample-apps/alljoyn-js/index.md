@@ -330,69 +330,44 @@ $eval foo(bar);
 <foo will then be executed>
 ```
 
+命令行 debugger 非常实用，但是也比较原始。使用 GUI 可以一次性看到更丰富的信息，从而提供了更好的 debug 体验。控制台文本被彻底的描述，以更好
+的描述 debugger 内部发生的事情。GUI debugger 也使用之前描述过的那些命令，但是输出结果会经过视觉上的排列整理，使得观看和操作变得更容易。
 
-The command line debugger is useful but primitive. The GUI allows
-much more information to be seen at once, which provides a better debugging
-experience. The text console was described in depth because it
-better illustrates what is happening within
-the debugger. The GUI debugger executes the same commands that were just described, but the output
-is visually organized to be more easily viewed and manipulated. The GUI debugger
-has some extra dependencies.
 
 # Python GUI Debugger
 
-Provided you have sucessfully built the Python debugger extension for your platform,
-you can begin debugging an AllJoyn.js application. Begin by starting the debugger GUI,
-optionally specifying an AllJoyn.js device name. On Windows, make sure your PATH
-environment variable has the Python 3.4 directory listed first.
+假设你已经成功为自己的平台搭建了 Python debugger 扩展， 你可以开始对一个 AllJoyn.js 应用程序进行 debug. 首先要运行 debugger GUI，选择性地
+指定一个 AllJoyn.js 设备名。在 Windows 上，请确认你的 PATH 环境变量包括如下所示的 Python 3.4 的目录：
 
 ```
 python pydebugger.py --name my_ajs
 python pydebugger.py
 ```
 
-Once connected to the AllJoyn.js device, the GUI will display the currently
-installed script (if one exists) as well as the available control buttons.
+一旦连接了 AllJoyn.js 设备，GUI 中将会显示最近安装的脚本（如果存在的话）以及可使用的控制按钮。
 
 ![][DebuggerPicture]
 
 [DebuggerPicture]: /files/develop/run-sample-apps/alljoyn-js/DebugGUIFull.png
 
-1. The control buttons are along the left side of the GUI. This is how functions
-like single stepping, pause, resume, attach, detach, script install, or
-closing the GUI are controlled.
+1. 控制按钮在 GUI 的左侧。在这里你可以完成 single stepping, pause, resume, attach, detach, script install, 或者 closing the GUI 这些控制。
 
-2. This is the source viewer window where you see the JavaScript code that is
-running on the device. Along the left side of this window are
-the line numbers. Line numbers highlighted in red have indicate that a breakpoint
-has been set there. In this case there are two breakpoints set, one at line 35
-and the other at line 53. You can set breakpoints in this window by double clicking
-the line number. The line the debugger is
-paused on is highlighted in yellow. Here we are paused at line 46.
+2. 这里是源码观察窗口，你可以看到正在设备上运行的 JavaScript 代码。在窗口的左边是行数。被红色高亮的行数代表此处有 breakpoint 插入。在本例中
+设置了两个 breakpoints，分别位于第35行和第53行。你可以通过双击行号来设定 breakpoints. 黄色高亮行指示着 debugger 暂停的位置，既第46行。
 
-3. The top right window contains all local variables as well as a space to change
-the values of the locals (i.e. $putvar functionality). To use the $putvar
-functionality you must select a variable, highlighting it yellow, and then type
-the desired value in the text box next to the "PutVar" button. Clicking "PutVar"
-will change the selected variables value.
+3. 右上角的窗口包括所有的本地变量以及可供改变变量值的空间 (例如 $putvar 功能)。若要使用 $putvar 功能，必须先选择一个变量，将其高亮为黄色，
+然后在 “PutVar” 按钮旁边的文本框内键入新的设定值。点击 “PutVar” 按钮将改变所选变量的值。
 
-4. This is the breakpoint view. Here you can add and delete breakpoints.
-To add a breakpoint you must type the script name followed by the line number
-then press the "Add Breakpoint" button.
-To delete a breakpoint you can either click the breakpoint (highlighting
-it yellow) and press the delete key or type the breakpoint's index into the text box above
-"Delete" and press the "Delete" button.
+4. 这里是 breakview 试图。在这里你可以添加和删除 breakpoints. 若要添加 breakpoint，必须键入脚本名和行号的组合，随后点击 "Add Breakpoint" 按钮。若要删除 breakpoint，可以通过点击 breakpoint 将其高亮为黄色，然后按下 delete 键。也可以通过将 breakpoint 的指数键入 “Delete” 按钮上方
+的文本框中，随后按下 “Delete” 按钮。
 
-5. Here is your stack trace viewer. It will dynamically change as you step in or
-out of functions. You can see the current function you're in, the line number, and
-the Program Counter (PC) for each stack window.
+5. 这里是你的 stack 追踪试图。伴随你使用 step in 或者 step out 功能时这里会动态地变化。 你可以看到你目前所处的函数，行号，以及每一个 stack
+窗口的 Program Counter （PC）.
 
-6. This box and button are for executing $eval while debugging. You can do everything
-that is available in the text console by typing in the eval string and clicking
-"Eval". You will see the output in the console window (see 7 below).
+6. 这里的框和按钮在 debug 的时候用来执行 $eval 命令。你可以在控制台文本框键入任何合法的 eval 字符串并点击 “Eval” 来执行。在控制台窗口中可以
+看到命令的输出（参见下面第7条）。
 
-7. This window displays any relevant information as you are debugging. It will show
-any printed text, notifications from the AllJoyn notification service, and eval results.
-You can also see relevant debug state information, like breakpoints being added or deleted.
-To the left of this window are filter buttons which turn on or off printing of the three
-notification types.
+7. 此窗口会展示任何在 debug 途中相关的信息。包括任何打印文本，AllJoyn 提醒服务发送的提醒以及 eval 结果。除此之外你还可以看到相关的 debug 状
+态信息，例如 添加或删除 breakpoints. 窗口的左边是过滤器按钮，可以控制打印三种类型提醒的开关。
+
+
