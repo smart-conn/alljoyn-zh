@@ -1,13 +1,12 @@
 # Running AC Server Sample - Thin Linux
 
-## Prerequisites
+## 前提条件
 * [Build the thin Linux samples][build-thin-linux]
-* [Build the AllJoyn&trade; router][build-linux]. AllJoyn thin 
-  apps require an AllJoyn router to connect to in order to function properly.
+* [Build the AllJoyn&trade; router][build-linux]. AllJoyn 精简应用程序小需要一个可连接的 AllJoyn 路由，以便正常工作。
 
-### Run AC Server Sample
+### 运行 AC 服务器样例应用程序
 
-1. Launch the AllJoyn router to allow thin apps to connect.
+1. 运行 AllJoyn 路由，使得精简应用程序可以连接。
 
   ```sh
   # <TARGET CPU> can be either x86_64, x86, or whatever value you set for CPU= when running SCons.
@@ -20,7 +19,8 @@
    ./alljoyn-daemon &
   ```
 
-2. Launch the AC Server Sample (in a new terminal).
+2. 运行 AC 服务器端示例 (在新的窗口中).
+ (in a new terminal).
 
   ```sh
   cd $AJ_ROOT/services/sample_apps/ACServerSample/build
@@ -28,7 +28,7 @@
   ```
 
 3. Use the following apps to interact with the different services 
-provided by the AC Server Sample:
+provided by the AC Server Sample:使用下列应用程序与由 AC 服务器示例所提供的不同服务进行交互。
    * About
      * [iOS About Sample][about_ios]
      * [Linux About Client Sample][about_linux]
