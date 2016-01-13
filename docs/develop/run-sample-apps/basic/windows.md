@@ -28,6 +28,7 @@ AllJoyn&trade; Standard Library Windows SDK 包含一个预编译的二进制码
 
 ###Visual Studio
 Basic sample 应用程序们被合并到一个 Visual Studio 项目里。你可以运行上面提及的对应的 .exe 文件，也可以创建一个新的包含所需要 debug 的samples 的 Visual Studio 项目。
+
 1. 打开 visual studio 的 basic project 文件.
 2. 右击你想要运行的项目，选择 **Set as StartUpProject**.
 3. 在菜单选项上方，选择 **Debug** > **Start Debugging**.
