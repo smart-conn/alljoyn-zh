@@ -22,22 +22,22 @@ Android 聊天应用程序展示了如何使用 AllJoyn&trade; 框架实现聊�
 
 1. 将所有设备连接到同一个网络中。
 2. 将 Chat.apk 载入到各设备，随后启动 "AllJoyn Chat Sample for Android" 应用程序。
-4. 在第一个设备上创建并开始一个信道。
+3. 在第一个设备上创建并开始一个信道。
       * 选择正确的标签 (带有 "+" 符号的那一个).
   ![][1.SetUpChannel]
       * 通过 **Set Channel Name** 按钮创建信道 - 在有提醒时输入一个信道名。
   ![][2.SetChannelName]
       * 按下 **Start Channel** 按钮。
   ![][3.StartChannel]
-5. 加入第一个设备所在的信道。
+4. 加入第一个设备所在的信道。
       * 点击左边的标签。
       * 按下 **Join Channel** 按钮，选择那个刚刚被创建的信道。
   ![][4.ChooseChannelToJoin]
   ![][5.ChannelJoined]
-6. 加入在其他设备上信道。
+5. 加入在其他设备上信道。
       * 点击左边的标签。
       * 按下 **Join Channel** 按钮， 选择上面刚刚创建的那个信道。
-7. 在 "Enter message here" 文本框中输入字符，然后按下 enter 键与其他人聊天。在消息历史中，从"其他“设备发来的消息的左边栏会显示对应总线附件 的唯一识别符，来自本设备的消息则会显示 “Me”.
+6. 在 "Enter message here" 文本框中输入字符，然后按下 enter 键与其他人聊天。在消息历史中，从"其他“设备发来的消息的左边栏会显示对应总线附件 的唯一识别符，来自本设备的消息则会显示 “Me”.
   ![][6.SendMessages]
 
 
