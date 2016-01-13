@@ -1,21 +1,16 @@
-# Running the Chat Sample
+# 运行聊天样例
 
-The Chat sample application provides the ability to send AllJoyn&trade; 
-Signals on a connected session.
+聊天样例应用程序提供了在已连接的会话中发送 AllJoyn&trade; 信号的功能。
 
-The Chat application runs slightly differently on each platform. 
-At a minimum, the application advertises a well-known name with 
-the prefix of "org.alljoyn.bus.samples.chat".
+各个平台上的聊天应用程序在运行时都有些许不同。但至少，聊天应用程序会推广一个带有 "org.alljoyn.bus.samples.chat" 前缀的 well-known name. 
 
-It will then append a "." followed by the name of the chat room 
-to be parsed off and possibly displayed in the UI. Each room 
-will accept sessions on the session port 27.
+随后，应用程序会再附上一个 "." 和聊天室名的组合，从而达到解析关闭，并显示到 UI 上。每一个聊天室都将接收在27号会话端口上的会话。
 
-Depending on the platform, the application must have a role 
-of Client or Service and may need to join its own session. 
-See each of the platform links below for more details on running the sample. 
+根据所使用的平台，此应用程序一定在扮演一个客户端 (Client) 或者一个服务器端 (Service) 的角色，同时他还有可能需要加入自己发起的会话。具体细节
+请参考下放各个平台的链接。
 
-The Chat interface is as follows:
+
+聊天接口如下定义：
 
 ```xml
 <node name="/chatService">
@@ -27,7 +22,7 @@ The Chat interface is as follows:
 </node>
 ```
 
-The sample can be run on the following platforms:
+此样例可以在以下平台中使用：
 * [Android][android]
 * [Linux][linux]
 * [iOS/OSX][ios-osx]
