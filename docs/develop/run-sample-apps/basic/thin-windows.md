@@ -1,14 +1,13 @@
-# Running Basic Sample - Thin Windows
+# Running Basic Sample - 精简 Windows
 
-## Prerequisites
+## 前提条件
 * [Build the samples][build-thin-windows]
 * [Build the AllJoyn&trade; router][build-windows]. 
-  AllJoyn&trade; thin apps require an AllJoyn router to 
-  connect to in order to function properly.
+   AllJoyn 精简应用程序需要一个可以连接到的 AllJoyn 路由来完成正常功能。
 
-## Run Basic Client & Service
-
-1. Launch the AllJoyn daemon to allow thin apps to connect (in a command prompt window).
+## 运行 Basic Client & Service
+使用配置文件运行 AllJoyn daemon，使精简应用程序可以连接。 
+1. 运行 AllJoyn daemon ，使精简应用程序可以连接。  (在一个命令提示符窗口)。
 
   ```sh
   # <TARGET CPU> can be either x86_64, x86, or whatever value you set for CPU= when running SCons.
@@ -16,21 +15,21 @@
   
   SampleDaemon.exe 
    ```
-2. Launch basic_service (in a command prompt window).
+2. 运行 basic_service  (在一个命令提示符窗口)。
 
   ```sh
   cd $AJ_ROOT\core\ajtcl\samples\basic
   basic_service.exe
   ```
 
-3. Launch basic_client (in a command prompt window).
+3. 运行 basic_client  (在一个命令提示符窗口)。
 
   ```sh
   cd $AJ_ROOT\core\ajtcl\samples\basic
   basic_client.exe
   ``` 
 
-The output from basic_client should look like this:
+ basic_client 的输出应为如下所示：should look like this:
 
 ```
 basic_client.exe
@@ -38,7 +37,7 @@ basic_client.exe
 Basic client exiting with status 0.
 ```
 
-The output from basic_service should look like this:
+basic_service 的输出应为如下所示：
 
 ```
 basic_service.exe
