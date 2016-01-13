@@ -1,45 +1,43 @@
-# Running Basic Sample - iOS
+# 运行 Basic Sample - iOS
 
-## Prerequisites
+## 前提条件
 
-* [Build samples][build-ios-osx] and install the Basic Client and Service sample apps on two iOS devices.
-* Both iOS devices must be connected to the same Wi-Fi network
+* [Build samples][build-ios-osx] 在两个 iOS 设备上安装 Basic Client 和 Basic Service sample 应用程序。 
+* 两个 iOS 设备必须连接到同一个 Wi-Fi 网络中。
 
 
-## Run Basic Client & Service
-1. Launch the Basic Client app on one iOS device.
-2. The Basic Client app screen should look similar to this:
+## 运行 Basic Client & Service
+1. 在一个 iOS 设备上运行 Basic Client 应用程序。
+2. Basic Client 应用程序的显示界面应类似于下图所示： 
 
   ![][basic-client-screen-1]
 
-  **Figure:** Client startup screen
+  **Figure:** 客户端初始化界面
 
-3. Launch the Basic Service app on a second iOS device.
-4. The screen should look similar to this:
+3. 在第二个 iOS 设备上运行 Basic Service 应用程序。
+4. 显示界面应类似于下图所示：
 
   ![][basic-service-screen-1]
 
-  **Figure:** Service startup screen
+  **Figure:** 服务器端初始化界面
 
-5. In the Basic Client app, press the **Call Service** button.
-This will cause the client to try and find the service, connect
-to the service, and execute a sample bus method.
+5. 在 Basic Client 应用程序中, 按下 **Call Service** 按钮。这会引发客户端试图寻找服务，连接到服务并执行一个 sample 总线方法。
 
   ![][basic-client-screen-2]
 
-  **Figure:** Client screen after pressing `Call Service`
+  **Figure:** 按下 `Call Service` 之后的客户端界面
 
-6. The Basic Client app screen should look like this:
+6. Basic Client 应用程序的显示界面应类似于下图所示
 
   ![][basic-client-screen-3]
 
-  **Figure:** Client screen after successful connection
+  **Figure:** 成功连接后的客户端界面。
 
-7. The Basic Service app screen should look like this:
+7. Basic Service 应用程序的显示界面应类似于下图所示：
 
   ![][basic-service-screen-2]
 
-  **Figure:** Service screen after successful connection
+  **Figure:** 成功连接后的服务器端界面。
 
 [basic-client-screen-1]: /files/develop/run-sample-apps/ios-basic-sample/ios-basic-client-1.png
 [basic-client-screen-2]: /files/develop/run-sample-apps/ios-basic-sample/ios-basic-client-2.png
