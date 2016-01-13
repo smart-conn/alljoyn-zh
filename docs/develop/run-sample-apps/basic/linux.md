@@ -1,19 +1,15 @@
 # Linux - Basic Sample App
 
-## Running Linux BasicClient, BasicService Apps
+## 运行Linux BasicClient, BasicService 应用程序。
 
-The Linux BasicClient and BasicService provide a simple example 
-of how a basic client and service app could be implemented. 
-The BasicService listens for connections and advertises a service, 
-the BasicClient listens for a service advertisement and joins the 
-BasicService session. After joining the session, the BasicClient 
-makes a method call on a BusObject of the BasicService, and 
-prints out the string return value.
+Linux BasicClient 和 BasicService 为解释客户端和服务器端应用程序的实现原理提供了一个简单的例子。BasicService 监听连接并推广一个服务，BasicClient 监听
+服务推广并加入 BasicService 发起的会话。在加入会话之后，BasicClient 调用一个在 BasicService 中的 BusObject 上的方法，并打印出返回值。
 
-### Prerequisites
 
-1. Open two terminal windows.
-2. In each, navigate to the AllJoyn root dir, then:
+### 前提条件
+
+1. 打开两个命令行窗口
+2. 每一个都切换到 ALlJoyn 根目录，然后：
    
    ```sh
    export AJ_ROOT=`pwd`
@@ -24,17 +20,17 @@ prints out the string return value.
    export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$LD_LIBRARY_PATH
    ```
 
-### Run the Linux BasicClient Sample App
+### 运行 Linux BasicClient Sample 应用程序
 
-In one of the terminal windows, run `basic_client`:
+在一个命令行窗口中运行 `basic_client`:
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/basic_client
 ```
 
-### Run the Linux BasicService Sample App
+### 运行 Linux BasicService Sample 应用程序
 
-In the other terminal window, run `basic_service`:
+在另一个命令行窗口中，运行 `basic_service`:
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/basic_service
