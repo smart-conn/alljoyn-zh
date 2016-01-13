@@ -1,6 +1,6 @@
 # Windows - Basic Sample App
 
-## 运行 basic_client and basic_service
+## 运行 basic_client 和 basic_service
 ###Precompiled .exe
 AllJoyn&trade; Standard Library Windows SDK 包含一个预编译的二进制码集合。 
 
