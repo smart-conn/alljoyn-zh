@@ -1,18 +1,18 @@
 # Windows - Basic Sample App
 
-## Running basic_client and basic_service
+## 运行 basic_client and basic_service
 ###Precompiled .exe
-The AllJoyn&trade; Standard Library Windows SDK includes a precompiled set of binaries.
+AllJoyn&trade; Standard Library Windows SDK 包含一个预编译的二进制码集合。 
 
 ####Service
-1. Open a Command Terminal window.
-2. CD to the root AllJoyn SDK folder in your file system.
-3. CD to the cpp/bin/samples folder.
-4. Run basic_service:
+1. 打开一个命令行窗口。
+2. 切换到你们文件系统的 AllJoyn SDK 根目录。
+3. 切换到 cpp/bin/samples 文件夹。.
+4. 运行 basic_service:
 
     basic_service
 
-**NOTE:** The application just runs and will print information when a basic client connects.
+**NOTE:** 应用程序正在运行，将会在有 basic client 连接的时候打印信息。
 
 ####Client
 1. Open a Command Terminal window.
