@@ -1,14 +1,13 @@
-# Running Basic Sample - Thin Linux
+# Running Basic Sample - 精简 Linux
 
-## Prerequisites
+## 前途条件
 
 * [Build the thin Linux samples][build-thin-linux]
-* [Build the AllJoyn&trade; router][build-linux]. AllJoyn thin 
-  apps require an AllJoyn router to connect to in order to function properly.
+* [Build the AllJoyn&trade; router][build-linux]. AllJoyn 精简应用程序需要一个可以连接到的 AllJoyn 路由来完成正常功能。
 
-## Run Basic Client and Service
+## 运行 Basic Client 和 Service
 
-1. Launch the AllJoyn daemon using the config file to allow thin apps to connect.
+1. 使用配置文件运行 AllJoyn daemon，使精简应用程序可以连接。 
 
   ```sh
   # <TARGET CPU> can be either x86_64, x86, or whatever value you set for CPU= when running SCons.
@@ -21,21 +20,21 @@
   ./alljoyn-daemon &
   ```
 
-2. Launch basic_service (in a new terminal).
+2. 运行 basic_service (在新的命令行中).
 
   ```sh
   cd $AJ_ROOT/core/ajtcl/samples/basic
   ./basic_service
   ```
 
-3. Launch basic_client (in a new terminal).
+3. 运行 basic_client (在新的命令行中).
 
   ```sh
   cd $AJ_ROOT/core/ajtcl/samples/basic
   ./basic_client
   ``` 
 
-The output from basic_client should look like this:
+basic_client 的输出应为如下所示：
 
 ```
 ./basic_client
@@ -57,8 +56,7 @@ The output from basic_client should look like this:
 'org.alljoyn.Bus.sample.cat' (path='/sample') returned 'Hello World!'.
 Basic client exiting with status 0.
 ```
-
-The output from basic_service should look like this:
+basic_service 的输出应为如下所示：
 
 ```
 ./basic_service
