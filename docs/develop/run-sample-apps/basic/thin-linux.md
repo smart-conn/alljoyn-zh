@@ -1,6 +1,6 @@
 # Running Basic Sample - 精简 Linux
 
-## 前途条件
+## 前提条件
 
 * [Build the thin Linux samples][build-thin-linux]
 * [Build the AllJoyn&trade; router][build-linux]. AllJoyn 精简应用程序需要一个可以连接到的 AllJoyn 路由来完成正常功能。
