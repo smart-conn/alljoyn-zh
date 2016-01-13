@@ -87,119 +87,56 @@ Sessionless signal 端到端逻辑包含以下几个方面，以下章节会进�
 
    多数情况下,每一个 sessionless signal 缓存中的 INTERFACE 标头字段值，会要求并广告一个 well-known name。
 
-The following figure shows the provider side SLS module logic 
-prior to the AllJoyn 14.06 release.
+下图展示了 14.06 版本之前的提供者侧的 SLS 模块逻辑。
 
 ![provider-sls-module-logic-pre-1406][provider-sls-module-logic-pre-1406]
 
-**Figure:** Provider SLS module logic (prior to the AllJoyn 14.06 release)
+**图:** 提供者侧 SLS 模块逻辑（14.06 之前的版本）
 
-The following figure shows the provider side SLS module logic 
-introduced in the AllJoyn 14.06 release.
+下图展示了 14.06 版本的提供者侧的 SLS 模块逻辑。
 
 ![provider-sls-module-logic-1406][provider-sls-module-logic-1406]
 
-**Figure:** Provider SLS module logic (introduced in the AllJoyn 14.06 release)
+**图:** 提供者侧 SLS 模块逻辑（14.06 版本）
 
-### Consumer discovers sessionless signal providers
+### 消费者发现 sessionless signal 的提供者
 
-On the consumer side, the app registers an interest in a 
-sessionless signal by calling the D-Bus AddMatch method.
+在消费者侧，应用程序通过调用 D-Bus AddMatch 方法在 sessionless signal 中注册一个兴趣。
 
-**NOTE:** The D-Bus AddMatch method is part of the org.freedesktop. 
-The D-Bus interface and is implemented by the /org/freedesktop/DBus object.
+**注意:** D-Bus AddMatch 方法是 org.freedesktop 的一部分。D-Bus 接口由 org/freedesktop/DBus object 提供。
 
-The match rule includes "sessionless='t'" to indicate registration 
-for a sessionless signal, along with any other key/value pairs for 
-filtering signals.  
+匹配规则包含了指示针对 sessionless signal 注册的 "sessionless='t'" 和其它筛选信号的键／值对。
 
-Prior to the AllJoyn 14.06 release, the SLS module starts the 
-name-based discovery process to discover the SLS WKN prefix 
-"org.alljoyn.sl." after receiving the first sessionless 
-match rule. When the last match rule is removed by an app 
-connected to the AllJoyn router, the SLS module cancels 
-discovering the SLS WKN prefix.
+在 14.06 版本之前，在接收到第一个 sessionless 匹配规则后，SLS 模块启动给予名称的发现进程，发现前缀为 "org.alljoyn.sl." 的 SLS WNK。当应用程序从 AllJoyn 路由中移除了最后一条撇配规则，SLS 模块停止发现 SLS WNK 前缀。
 
-Starting with the AllJoyn 14.06 release, the sessionless 
-signal logic on the consumer side was enhanced to enable 
-an application requesting sessionless signals from providers 
-implementing certain AllJoyn interfaces. A new 'implements' 
-key was added to the AddMatch method to achieve this. 
-The 'implements' key specifies an AllJoyn interface that 
-should be implemented by the sessionless signal provider. 
-Multiple 'implements' key/value pairs may be specified in 
-a single match rule. These are treated as a logical AND 
-when discovering sessionless signal providers. In the current 
-implementation, the 'implements' key is only applicable for 
-receiving the Announcement sessionless signal. An AddMatch 
-that includes the 'implements' key should always include 
-"interface= org.alljoyn.About".
+自 14.06 版本开始，消费者侧的 sessionless signal 逻辑针对消费者从提供者的指定 AllJoyn 接口处获取 sessionless signal 的能力进行了加强。新加入 AddMatch 的键 “implements” 用于实现它。在同一个匹配规则中可以指定多对 “implements” 键／值对。在发现 sesssionless signal 提供者的过程中，它们被视作逻辑与的关系。在目前的情况下，“implements” 键仅在接收 Annoucement sessionless sigal 时适用。包含 “implements” 键的 AddMatch 必需包含 "interface= org.alljoyn.About"。
 
-The following figure shows the consumer logic for discovering 
-sessionless signal providers implemented in the 14.06 release.
+下图展示了 14.06 版本中发现 sessionless signal 提供者的消费者逻辑。
 
 ![consumer-logic-sessionless-providers-1406][consumer-logic-sessionless-providers-1406]
 
-**Figure:** Consumer logic for discovering sessionless providers (introduced in the AllJoyn 14.06 release)
+**图:** 发现 sessionless 提供者的消费者逻辑（14.06 AllJoyn 版本中引入）
 
-If the AddMatch includes the 'interface' key but no 'implements' 
-key, the SLS module performs name-based discovery to discover 
-the name prefix "<interface>.sl." for the specified interface 
-in the match rule.
+如果 AddMatch 包含 "interface" 键但不包含 "implements" 键，SLS 模块使用基于名称的方式发现匹配规则中指定的 "<interface>.sl." 的名称前缀。
 
-If the AddMatch includes one or more 'implements' keys, the 
-SLS module performs interface name discovery via the NGNS 
-to discover providers implementing interfaces specified by 
-the 'implements' key. The SLS module also performs a name-based 
-discovery for name prefix "org.alljoyn.sl." both via mDNS 
-and using the WHO-HAS message. The latter is intended to 
-discover any sessionless signal providers prior to the 14.06 
-release. Name-based discovery over mDNS is performed to catch 
-unsolicited mDNS responses from providers for new/updated 
-sessionless signals.
+如果 AddMatch 包含一个或多个 "implements" 键，那么 SLS 会通过 NGNS 的方式发现 "implements" 指定的接口名称。SLS 模块也会通过 mDNS，使用 WHO-HAS message 进行基于名称的发现，找到具有 "org.alljoyn.sl." 前缀的名称。后者用于在 14.06 之前的版本中发现 sessionless signal 提供者。基于 mDNS 的基于名称的发现用于从提供者的新／更新的 sessionless signal 处获取未经请求的 mDNS 回应，
 
-The app unregisters interest in a sessionless signal by 
-calling the RemoveMatch method with a previously added 
-match rule. When the last sessionless signal match rule is 
-removed, the SLS module stops sessionless signal-related 
-discovery, including both name-based and interface name discovery. 
+应用程序通过调用 RemoveMatch 方法和之前加入的匹配规则，取消对 sessionless signal 的兴趣。当最后一条 sessionless signal 匹配规则被移除时，SLS 模块停止与 sessionless signal 相关的发现，包括基于名称和接口名称的发现。
 
-### Consumer fetches sessionless signals from a provider
+### 消费者从提供者处获取 sessionless signal
 
-After discovering a provider, the consumer SLS module 
-determines if it needs to fetch sessionless signals from 
-the provider based on the consumer's match rules and the 
-change_id of the provider in the advertisement. The consumer 
-SLS module keeps track of last acquired change_id for every 
-provider GUID it has discovered via the sessionless signal 
-advertised name. The sessionless signal fetch logic and the 
-state maintained by the consumer for each provider was modified 
-in the 14.06 release. The fetch logic functionality differences 
-are described below.
+在发现一个提供者后，消费者 SLS 模块根据消费者的匹配规则和提供者广告中的 change_id，决定它是否需要从提供者处获取 sessioless signal。消费者 SLS 模块始终跟随最后一个 change_id，为了得到其通过 sessionless signal 广播名称发现的提供者 GUID。Sessionless signal 的获取逻辑和消费者对于每个提供者维持的状态，在 14.06 版本中都经过了修改。获取逻辑功能的区别如下：
 
-* Prior to the 14.06 release, the consumer SLS module maintains 
-the List<Provider GUID, last acquired change_id> information 
-for discovered providers. The consumer SLS module fetch sessionless 
-signals if an updated change_id is received from the provider 
-as part of the sessionless signal advertised name.
-* Starting with the 14.06 release, multiple sessionless signal 
-advertised names can be received from a given provider. 
-In addition, the associated change_id can be different for 
-each of those sessionless signal advertised names. The consumer 
-SLS module maintains the List<Provider GUID, SLS name, change_id> 
-for discovered providers. It also keeps track of the match rules 
-that have been applied for a given provider. 
+* 在 14.06 之前的版本中，消费者 SLS 模块保留了 <Provider GUID, last acquired change_id> 列表信息来发现提供者。当从提供者处接收到任何更新的 change_id 时，消费者 SLS 模块会获取 sessionless signal，其中 change_id 是 sessionless signal 广播名称中的一部分。
+* 自 14.06 版本起，能够从一个给定的提供者处获取多个 sessionless signal 广告名称。除此之外，相关的 change_id 能够根据每个 sessionless signal 广告名称的不同而不同。消费者 SLS 模块为发现的提供者保留了 <Provider GUID, SLS name, change_id> 列表。它也会保持对应用于给定提供者的匹配规则的跟踪。
 
-The following figure captures the consumer sessionless signal 
-fetch logic implemented in the 14.06 release.
+下图展示了 14.06 版本中消费者 sessionless signal 的获取逻辑。
 
 ![consumer-logic-sls-fetch-1406][consumer-logic-sls-fetch-1406]
 
-**Figure:** Consumer logic to determine sessionless signal fetch (introduced in the 14.06 release)
+**图:** 决定 sessionless signal 获取的消费者逻辑 （14.06 版本中引入）
 
-The consumer SLS module receives the sessionless signal 
-advertised name from a provider. The sessionless signal 
-name can be received via multiple means:
+消费者 SLS 模块从提供者处接收 sessionless signal 广播名称。sessionless signal 名称能够通过以下方式获取：
 
 * Solicited mDNS response over unicast as a result of an mDNS query
 * Unsolicited mDNS response over multicast
