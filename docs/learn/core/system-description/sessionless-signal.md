@@ -138,62 +138,37 @@ Sessionless signal 端到端逻辑包含以下几个方面，以下章节会进�
 
 消费者 SLS 模块从提供者处接收 sessionless signal 广播名称。sessionless signal 名称能够通过以下方式获取：
 
-* Solicited mDNS response over unicast as a result of an mDNS query
-* Unsolicited mDNS response over multicast
-* IS-AT multicast message (solicited or unsolicited). 
+* 以单拨形式回应 mDNS 请求
+* 未经请求的 mDNS 通过多拨形式回应
+* IS-AT 多拨信息（经请求或自发）
 
 The consumer checks if any new match rules have been added 
 after the last fetch from the provider or the received change_id 
 in the sessionless signal name is greater than what was fetched 
 previously from that provider.  
+消费者在最后一次从提供者处获取信息后，检查匹配规则是否被改变。或者从 sessionless signal 名称获取的 change_id 是否比之前从提供者处获取的更大。
 
-If either condition is true, the consumer initiates a sessionless 
-signal fetch from a legacy provider (prior to the 14.06 release) 
-without further checks. This is determined by examining the GUID 
-segment of the sessionless signal advertised name received from the provider: 
+如果以上任意条件成立，消费者无需更多检查，便可以生成一个从旧 provider （14.06 版本之间）获取的 sessionles signal。这由检查从提供者处获取的 sessionless signal 的广告名的 GUID 部分所决定。
 
-* Prior to the 14.06 release, the GUID is prefixed with an "x".
-* Starting with the 14.06 release, GUID is prefixed with a "y". 
+* 在 14.06 版本之前，GUID 以 “x” 为前缀。
+* 自 14.06 版本起，GUID 以 “y” 为前缀。
 
 If the sessionless signal name is from a 14.06 release or 
 later provider, the consumer performs further checks to determine 
 if the sessionless signal fetch should be done with the provider. 
+如果 sessionless signal 名是来自 14.06 版本或后序版本，消费者会进行进一步确认，确定是否能从提供者处获取 sessionless signal。
 
-Starting with the 14.06 release, the sessionless signal name 
-also includes the interface value from the sessionless signal 
-header. In this case, the consumer SLS module checks whether 
-the interface specified (if any) in the match rule is the same 
-as the interface received in the sessionless signal name. 
+自 14.06 版本起，sessionless signal 名也包含了从 sessionless signal 头文件获取的接口值。在这种情况下，消费者 SLS 模块会检查匹配规则中指定的接口（如果有的话）是否和从 sessionless signal 名获取的接口一致。
 
-* If yes, the consumer initiates a sessionless signal fetch 
-with the provider. 
-* If no interface was specified in the match rule, the consumer 
-initiates a sessionless signal fetch anyway because this 
-constitutes a wildcard match. 
+* 如果是，那么消费者开始从提供者处获取 sessionless signal。
+* 如果匹配规则中没有指定接口，消费者也会开始获取 sessionless singal，因为这构成通配符匹配。
 
-In the 14.06 release, a new RequestRangeMatch() signal is 
-defined as part of the org.alljoyn.sl interface. This signal 
-is used to fetch a set of sessionless signals that matches 
-any of the match rules specified in the RequestRangeMatch()
-signal. The consumer SLS module uses this signal to fetch 
-sessionless signals from the 14.06 providers. 
+在 14.06 版本中，一个新的 RequestRangeMatch() 信号被定义为 org.alljoyn.sl 信号的一部分。这个信号用于获取一组匹配 RequestRangeMatch() 指定的任意匹配规则的 sessionless signal。消费者 SLS 模块使用此信号获取 14.06 版本提供者的 sessionless signal。
 
-**NOTE:** The current implementation does a catchup fetch for 
-new match rules before fetching new signals for updated 
-change_id. This results in two fetches upon receiving the 
-sessionless signal advertised name, however, this would be 
-a rare occurrence because adding a new match rule and 
-receiving a sessionless signal advertised name typically 
-does not occur at the same time.
+**注意:** 目前的实现方法，是在获取新信号以更新 change_id 之前，预先获取新匹配规则。两种获取的结果用于接收 sessionless signal 的广告名，然而，这种情况很少出现因为加入一个新的匹配规则和接收一个 sessionless signal 广告名通常不会同时出现。
 
-Whenever a new AddMatch rule is added for sessionless signals, 
-the consumer SLS module triggers a catchup fetch with already 
-known providers for the new match rule per the logic captured 
-in [Consumer fetches sessionless signals from a provider]
-[consumer-fetches-sls-from-provider]. For a catchup fetch, the 
-RequestRangeMatch signal only includes the new match rule. 
-If the new AddMatch includes an 'implements' key, the consumer 
-SLS module performs discovery for providers implementing those interfaces.
+
+当一个新的 AddMatch 规则被加入 sessinless signal，消费者 SLS 模块会被触发，从已知的提供则出预获取匹配规则，如 [Consumer fetches sessionless signals from a provider][consumer-fetches-sls-from-provider] 所述。在预获取中，RequestRangeMatch 信号只包含新匹配规则。如果新 AddMatch 包含 “implements” 键，消费者 SLS 模块会开始发现这些接口的提供者。
 
 The consumer schedules a sessionless signal fetch immediately 
 for sessionless signal advertised names received in the 
@@ -202,6 +177,7 @@ advertised names received as part of the unsolicited mDNS or IS-AT
 response messages, the sessionless signal fetch is scheduled 
 following a backoff algorithm as described in 
 [Sessionless signal fetch backoff algorithm][sls-fetch-backoff-algorithm]. 
+一旦从经过请求的 mDNS 或 IS-AT 回复信息中的取得 sessionless signal 广告名，消费者会立刻安排 sessionless signal 的获取。
 
 The steps to fetch sessionless signals follow.
 
