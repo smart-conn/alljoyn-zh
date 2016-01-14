@@ -1,5 +1,26 @@
 # alljoyn-zh
 
+## 0114 待审阅文章
+
+* [ ] [docs/develop/run-sample-apps/basic/index.md](docs/develop/run-sample-apps/basic/index.md)
+* [ ] [docs/develop/run-sample-apps/basic/android.md](docs/develop/run-sample-apps/basic/android.md)
+* [ ] [docs/develop/run-sample-apps/basic/ios-osx.md](docs/develop/run-sample-apps/basic/ios-osx.md)
+* [ ] [docs/develop/run-sample-apps/basic/linux.md](docs/develop/run-sample-apps/basic/linux.md)
+* [ ] [docs/develop/run-sample-apps/basic/thin-linux.md](docs/develop/run-sample-apps/basic/thin-linux.md)
+* [ ] [docs/develop/run-sample-apps/basic/thin-windows.md](docs/develop/run-sample-apps/basic/thin-windows.md)
+* [ ] [docs/develop/run-sample-apps/basic/windows.md](docs/develop/run-sample-apps/basic/windows.md)
+* [ ] [docs/develop/run-sample-apps/chat/android.md](docs/develop/run-sample-apps/chat/android.md)
+* [ ] [docs/develop/run-sample-apps/chat/ios-osx.md](docs/develop/run-sample-apps/chat/ios-osx.md)
+* [ ] [docs/develop/run-sample-apps/chat/linux.md](docs/develop/run-sample-apps/chat/linux.md)
+* [ ] [docs/develop/run-sample-apps/chat/thin-linux.md](docs/develop/run-sample-apps/chat/thin-linux.md)
+* [ ] [docs/develop/run-sample-apps/chat/windows.md](docs/develop/run-sample-apps/chat/windows.md)
+* [ ] [docs/develop/run-sample-apps/config/android.md](docs/develop/run-sample-apps/config/android.md)
+* [ ] [docs/develop/run-sample-apps/config/index.md](docs/develop/run-sample-apps/config/index.md)
+* [ ] [docs/develop/run-sample-apps/config/ios-osx.md](docs/develop/run-sample-apps/config/ios-osx.md)
+* [ ] [docs/develop/run-sample-apps/config/linux.md](docs/develop/run-sample-apps/config/linux.md)
+* [ ] [docs/develop/run-sample-apps/config/thin-linux.md](docs/develop/run-sample-apps/config/thin-linux.md)
+* [ ] [docs/develop/run-sample-apps/controlpanel/android.md](docs/develop/run-sample-apps/controlpanel/android.md)
+
 ## 0112 待审阅文章
 
 * [ ] [docs/develop/run-sample-apps/alljoyn-js/index.md](docs/develop/run-sample-apps/alljoyn-js/index.md)
