@@ -170,108 +170,59 @@ if the sessionless signal fetch should be done with the provider.
 
 当一个新的 AddMatch 规则被加入 sessinless signal，消费者 SLS 模块会被触发，从已知的提供则出预获取匹配规则，如 [Consumer fetches sessionless signals from a provider][consumer-fetches-sls-from-provider] 所述。在预获取中，RequestRangeMatch 信号只包含新匹配规则。如果新 AddMatch 包含 “implements” 键，消费者 SLS 模块会开始发现这些接口的提供者。
 
-The consumer schedules a sessionless signal fetch immediately 
-for sessionless signal advertised names received in the 
-solicited mDNS or IS-AT response messages. For sessionless signal 
-advertised names received as part of the unsolicited mDNS or IS-AT 
-response messages, the sessionless signal fetch is scheduled 
-following a backoff algorithm as described in 
-[Sessionless signal fetch backoff algorithm][sls-fetch-backoff-algorithm]. 
-一旦从经过请求的 mDNS 或 IS-AT 回复信息中的取得 sessionless signal 广告名，消费者会立刻安排 sessionless signal 的获取。
+一旦从经过请求的 mDNS 或 IS-AT 回复信息中的取得 sessionless signal 广告名，消费者会立刻安排 sessionless signal 的获取。由于 sessionless signal 广告名作为未经请求的 mDNS 或 IS-AT 回复信息的一部分被接收，会安排一个退避算法在 sessionless signal 之后，如 [Sessionless signal fetch backoff algorithm][sls-fetch-backoff-algorithm] 所述。
 
-The steps to fetch sessionless signals follow.
+以下是获取 sessionless signal 的步骤。
 
-1. The consumer SLS module joins a session with the sessionless 
-signal advertised name and known SLS port (port=100). 
-2. The consumer sends one of the signals defined in the 
-org.alljoyn.sl (`RequestSignals()`, `RequestRange()`, or `RequestRangeMatch()`)  
-to the provider over established session to fetch sessionless signals. 
-3. The provider receives the request signal, sends the requested 
-sessionless signals and leaves the session.  
+1. 消费者 SLS 模块通过 sessionless signal 广播名和已知 SLS 端口（端口号 ＝ 100）加入一个会话。
+2. 消费者通过已建立的会话向提供者发送一个 org.alljoyn.sl (`RequestSignals()`, `RequestRange()`, or `RequestRangeMatch()`) 中定义的信号，以获取 sessionless signal。
+3. 提供者收到请求信号，发送要求的 sessionless signal 并离开会话。
 
-For details of which signals the provider sends from its cache 
-to the consumer, see the definition of these signals in 
-[org.alljoyn.sl interface][org-alljoyn-sl-interface]. 
+关于提供者从它的缓存向消费者发送何种信号，可以在 [org.alljoyn.sl interface][org-alljoyn-sl-interface] 查询这些信号的定义。
 
-The consumer receives the sessionless signals, and filters and 
-routes them according to its match rules. The consumer SLS module 
-maintains the information about the match rules applied and change_id 
-fetched from the provider for future sessionless signal fetches.
+消费者接收 sessionless signal，根据匹配规则筛选和转发这些信号。消费者 SLS 模块保留从提供者处获得的有关匹配规则和 change_id 的信息，以便将来 sessionless signal 的获取。
 
-#### Sessionless signal fetch backoff algorithm
+#### sessionless signal 获取的退避算法
 
-After determining that it needs to fetch sessionless signals 
-from a given provider as per the logic described above, the 
-consumer SLS module attempts a join session with the producer 
-to fetch sessionless signals. If the consumer's first join session 
-attempt fails, it follows a backoff based retry logic to do 
-the join session for the sessionless signal fetch from the 
-provider. The SLS fetch logic adds random delays at different 
-consumers to ensure that consumer requests for sessionless 
-signals fetch are distributed over time for a given provider. 
+按照上文所述，在确定需要获取从一个给定的提供者处获取 sessionless signal 后，消费者 SLS 模块尝试加入提供者的会话以获取 sessionless signal。如果消费者首次加入会话的尝试失败，它会跟随一个基于退避方式的重试逻辑，再次加入会话，以从提供者处获取信息。SLS 获取逻辑在不同消费者间加入随即延迟，保证消费者获取 sessionless signal 的请求对于某个给定提供者方面能在时间上分离开。
 
-The Consumer SLS module follows a mix of linear plus exponential 
-backoff retries for sessionless signals fetch. It supports a 
-hybrid of first few linear backoff retries followed by some 
-exponential backoff retries. The transition point between the
-linear and exponential backoff is configurable. The backoff 
-interval is capped off to a maximum configurable value. 
-Retries are performed for a total retry period R. Once the 
-max backoff interval is reached, retries continue with the 
-constant retry period (set to max backoff interval) until the
-total retry period R is elapsed.
+消费者 SLS 模块跟随一个对于 sessionless signal 获取的线性加指数退避尝试次数的混合结果。它支持最初的少量线性退避尝试与后序的指数线性退避的混合。从线性到指数退避尝试的分界点是可调节的。退避间隔被调节到和配置的最大值。重试次数算作一个总重试时间 R。当到达最大退避间隔时，会继续尝试一段时间（由最大退避间隔设定）直到总重试时间 R 结束。
 
-The following configuration parameters have been added in 
-the router config file:
-* Linear to Exponential Transition Point (k) - Specifies the 
-retry attempt after which backoff should become exponential.
-* Max Backoff Interval Factor (c) - Specifies the multiplication 
-factor for T (initial backoff time) to generate the max backoff interval.
-* Total Retry Period (R) - Specifies the total time period (in seconds) 
-for which SLS fetch retry must be attempted.
+下列配置参数已被加入路由配置文件：
+* 线性到指数的转折点（k) - 指定退避会变为指数的重试次数。
+* 最大退避间隔的因数 (c) - 指定 T（初始的退避时间） 的乘法因数，生成最大的退避间隔。
+* 总尝试时常 (R) - 指定 SLS 获取重试次数的总时长（以秒为单位）。
 
-The following figure shows an example SLS retry schedule with 
-SLS retries happening at T, 2T, 3T, 4T, 8T, 16T, 32T, 32T, 32T,....
+下图展示了 SLS 重试的例子，按计划 SLS 重试发生在 T, 2T, 3T, 4T, 8T, 16T, 32T, 32T, 32T,....
 
 ![sls-fetch-backoff-schedule-example][sls-fetch-backoff-schedule-example]
 
-**Figure:** SLS fetch backoff schedule example
+**图:** SLS 获取退避的方式示例
 
-For every SLS retry attempt, the join session with the producer 
-is delayed randomly between [0, retry interval] to make sure 
-Consumer requests are distributed over time. For example in 
-the figure above:
-* The Consumer join session for 4th SLS fetch retry 
-will be randomly delayed between [0, 4T] interval. 
-* The Consumer join session for nth SLS fetch retry will 
-be randomly delayed between [0,16T] interval.
+对于每次 SLS 重试，加入提供者的会话会被随机地延迟 [0, 重试间隔]，以保证消费者的要求在时间上被分隔开。上图中的例子可以说明：
+* 通过第四次 SLS 获取重试加入会话的消费者将会被随机延迟 [0, 4T] 个间隔。
+* 通过第 n 次 SLS 获取重试加入会话的消费者将会被随机延迟 [0, 16T] 个间隔。
 
-For the SLS fetch triggered as a result of solicited mDNS 
-discovery responses, the join session request is not delayed 
-randomly. In this case, the join session for SLS fetch is 
-done immediately. The AllJoyn router will serialize such an SLS 
-fetch if the max connections limit on the Consumer is reached.
+因为 SLS 获取会被经过请求的 mDNS 发现应答所触发，加入会话请求不会被随机延迟。在这种情况下，为了 SLS 获取而加入会话会被立即执行。如果达到了消费者的最大连接限制，AllJoyn 路由器将会序列化这样的 SLS 获取。
 
-## Sessionless signal message sequences (prior to the 14.06 release)
+## Sessionless signal 信息序列 (在 14.06 版本之前)
 
 Since the sessionless logic has changed quite a bit in the 
 14.06 release, separate SLS message sequences are captured 
 prior to the 14.06 release and starting from the 14.06 release.  
+由于 sessionless 的逻辑在 14.06 版本中出现了很大变化，分离的 SLS 信息序列在 14.06 之前被捕获，并从 14.06 版本开始。
 
-The following use cases detail sessionless signal logic 
-scenarios prior to the 14.06 release:
+以下内容以实际案例的方式详细展示了 14.06 版本之前的 sessionless signal 逻辑环境：
 
-* First sessionless signal delivery
-* Another AddMatch done by the same app
-* Another app requests sessionless signals
+* 第一个 sessionless signal 送达
+* 同一个应用程序完成了另一个 AddMatch
+* 另一个应用程序请求 sessionless signal
 
-### First sessionless signal delivery
+### 第一个 sessionless signal 送达
 
-The following figure shows the message flow for the use 
-case for sending and receiving the first sessionless signal 
-on the provider and consumer, respectively.
+下图展示了实际情况中分别在提供者和消费者处发送和接受第一个 sesssionless signal 的信息流。
 
-**NOTE:** The sessionless signal change_id is not carried in any 
+**注意:** The sessionless signal change_id is not carried in any 
 of the sessionless signal messages. However, the provider 
 AllJoyn router logic ensures that it only sends sessionless 
 signal messages up to the change_id that was discovered by 
@@ -280,6 +231,7 @@ it uses the sessionless signal well-known name discovered
 from the IS-AT message. The change_id included in that well-known 
 name provides the upper limit for the change_id for sending 
 sessionless signals to the consumer. 
+sessionless signal change_id 不包含在任何 sessionless signal 信息中。
 
 A similar message flow is applicable for the use case when a 
 subsequent sessionless signal is delivered. The main difference 
