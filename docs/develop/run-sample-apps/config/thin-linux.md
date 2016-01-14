@@ -1,13 +1,12 @@
-# Running Config Sample - Thin Linux
+# 运行 Config 样例 - Thin Linux
 
-## Prerequisites
+## 前提条件
 * [Build the thin Linux samples][build-thin-linux]
-* [Build the AllJoyn&trade; router][build-linux]. AllJoyn thin 
-  apps require an AllJoyn router to connect to in order to function properly.
+* [Build the AllJoyn&trade; router][build-linux].  AllJoyn 精简应用程序需要一个可以连接的 AllJoyn 路由来正常工作。
 
-## Run Config Sample
+## 运行 Config Sample
 
-1. Launch the AllJoyn daemon using the config file to allow thin apps to connect.
+1. 使用配置文件运行 AllJoyn daemon，使精简应用程序可以连接。
   
   ```sh
   # <TARGET CPU> can be either x86_64, x86, or whatever value you set for CPU= when running SCons.
@@ -20,14 +19,14 @@
   ./alljoyn-daemon &
   ```
 
-2. Launch the Config Sample (in a new terminal)
+2. 运行 Config Sample (在新的命令行中)
   
   ```sh
   cd $AJ_ROOT/services/sample_apps/build
   ./ConfigSample
   ```
 
-3. Use one of the following Config client apps to interact with the Config service.
+3. 使用下列中的一个 Config client 应用程序与 Config service 进行交互。
 
   * [iOS Config Sample][ios_config_sample]
   * [Android Config Sample][android_config_sample]
