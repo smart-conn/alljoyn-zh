@@ -1,10 +1,10 @@
-# Linux - Running Config Sample Apps
+# Linux - 运行 Config 实例应用程序
 
-##Running Linux ConfigClient, ConfigService Apps 
+##运行 Linux ConfigClient, ConfigService 应用程序 
 
-### Prerequisites
+### 前提条件
 
-Open two terminal windows. In each, navigate to the AllJoyn root dir, then:
+打开两个命令行窗口。全部切换至 AllJoyn 根目录，随后：
 
 ```sh
 export AJ_ROOT=`pwd`
@@ -15,17 +15,17 @@ export TARGET_CPU=x86
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/config/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/services_common/lib:$LD_LIBRARY_PATH
 ```
 
-### Run the ConfigService Sample App
+### 运行 ConfigService 样例应用程序
 
-In one of the terminal windows, run `ConfigService`:
+在一方的命令行窗口中运行  `ConfigService`:
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/config/bin/ConfigService --config-file=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/config/bin/ConfigService.conf
 ```
 
-### Run the ConfigClient Sample App
+### 运行e ConfigClient 样例应用程序
 
-In the other terminal window, run `ConfigClient`:
+在另一方的命令行窗口中运行 `ConfigClient`:
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/config/bin/ConfigClient
