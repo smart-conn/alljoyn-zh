@@ -1,34 +1,27 @@
-# Android - Config Sample Apps
+# Android - 配置应用程序样例
 
-## Running Android ConfigClientSample
-The Android ConfigClientSample provides a sample Android 
-implementation of an app that uses the Config client.
+## 运行 Android ConfigClientSample
+Android ConfigClientSample 提供了一个使用 Config 客户端的 Android 应用程序的实现方法。
 
-1. Load ConfigClientSample.apk, and start app `Config Client`.
+1. 载入 ConfigClientSample.apk, 然后运行 `Config Client` 应用程序。
 
   ![][1.StartScreen]
 
-2. Connect a second device, running an app which implements 
-the Config service, to the same network that the first 
-device is connected to. (You can use the AboutConfOnbServer.apk 
-in the Onboarding SDK.)
+2. 连接第二个设备，运行实现了 Config 服务的应用程序，与第一个设备需在同一个网络内。(你可以使用 Onboarding SDK 中的AboutConfOnbServer.apk).
 
-3. On the first device, in the `Config Client` app, 
-press the **Connect to AllJoyn** button, and press **OK**.
+3. 在第一个设备的 `Config Client` 应用程序中, 按下 **Connect to AllJoyn** 按钮, 然后按下 **OK**.
 
   ![][2.PressedConnectToAllJoynButton]
 
-4. In the device list of the `Config Client` app, the 
-friendly name of the app from the second device should show up.
+4. 在 `Config Client` 应用程序的设备列表中, 友好名称会出现第二个设备的应用程序名。
 
   ![][3.DeviceListShowsAnAppSupportingConfigService]
 
-5. Select the device list entry to configure the second 
-device's app that implements the Config service.
+5. 进入设备列表并选择设备，由此可以配置实现 Config 服务的第二个设备的应用程序。
 
   ![][4.SelectDeviceShowConfigurableFields]
 
-6. Change the desired fields, check the appropriate 
+6. 按自己的意图改变, 检查检验盒之后即可点击 **Save**。配置改变应该已经被使用。
 checkboxes, and press **Save**. The config changes should now be applied.
 
   ![][5.ModifyName]

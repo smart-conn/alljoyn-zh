@@ -1,75 +1,48 @@
-# Running Config Sample App - iOS
+# 运行 Config 样例应用程序 - iOS
 
-## Prerequisites
+## 前提条件
 
-Follow steps in the [Building - iOS OS X section][build-ios-osx] 
-to build and install the Config sample app on an iOS device.
+根据 [Building - iOS OS X section][build-ios-osx] 上的指导在 iOS 设备上搭建并安装 Config 样例应用程序。
 
-You can use the Configuration service framework sample app 
-to act as a Config Client, a Config Server, or both a Config Client 
-and a Config Server simultaneously. In Client mode, you will 
-be able to see any nearby applications that support the Config 
-service and interact with them. In Server mode, the app will 
-act as a Config Server, allowing other nearby applications 
-to interact with it via a Config Client. If you run the app 
-as both a client and a server, you will be able to interact 
-with the Config server running in the app through the Config 
-client that is also running in the app. This allows for development 
-and testing using just a single device.
+你可以使用 Configuration 服务框架样例应用程序来作为一个 Config Client，一个 Config Server，或者同时作为 Config Client 和 Config Server. 在
+Client 模式中，你可以发现附近支持 Config 服务的任何应用程序，并与他们交互。在 Server 模式中，应用程序会作为一个 Config Server，其他附近的应
+用程序可以通过 Config Client 来与他交互。如果你的应用程序作为 Client 和 Server 同时运行，你将可以通过运行在你应用程序中的 Config Client 和
+同运行在你的应用程序中的 Client Server 交互。此功能实现了仅使用一个设备就可完成开发和调试的功能。
 
-Alternately, run the app as a client on one device, and as a server on another device.
+除此之外，还可以在一设备上运行应用程序作为 client，在另一设备上运行应用程序作为 server. 
 
-**NOTE:** If you are running the client and server on separate devices, 
-both devices must be on the same Wi-Fi network.
+**NOTE:** 在使用两台设备分别作 client 和 server 时，两设备需处于同一个 Wi-Fi 网络中。
 
-## Run the Configuration service sample app as a Client
-1. Launch the Configuration service sample app on your iOS device.
+## 运行 Configuration service 样例应用程序作为 Client 
+1. 在 iOS 设备上运行 Configuration service 样例应用程序。
   ![][config-client-1]
-2. Press the **Connect to AllJoyn** button.
+2. 按下 **Connect to AllJoyn** 按钮。
   ![][config-client-2]
-3. The application is now running in Client mode. In the list 
-area below the Disconnect from AllJoyn button, any nearby 
-applications that have been discovered via the About feature 
-that also support the Configuration service framework are listed.
+3. 应用程序现在以 Client 模式运行。在 Disconnect from AllJoyn 按钮下放的列表区域中会显示同时支持 Configuration 服务框架的，通过 About 功能
+被发现的附近的应用程序。
   ![][config-client-3]  
-   **NOTE:** If there are not any nearby devices running the 
-  Configuration service framework, follow the steps in 
-  [Run the Configuration service sample app as a Server][run-config-sample-app-as-server] 
-  to run the application simultaneously as a Config Server. 
-  This will allow you to interact with the Config Server running 
-  in the app through the Config Client that is also running in the app.
-4. To interact with a Config Server, select one from the list 
-of nearby applications that have been discovered.
-5. Choose an option from the pop-up that appears:
+   **NOTE:** 如果没有附近设备运行 Configuration 服务框架，请参阅  [Run the Configuration service sample app as a Server][run-config-sample-app-as-server] 中的步骤，将应用程序同时作为一个 Config Server 运行。借此你可以使用运行在应用程序上的 Config Client 和 Config Server 来完成交互。
+4. 若要与 Config Server 交互, 首先在列表中选择一个已经被发现的附近应用程序。
+5. 在弹出的窗口中选择一个选项
     ![][config-client-4]
-  * __Show Announce__: This will allow you to view the About 
-  announcement that was received from the nearby application.
+  * __Show Announce__: 此项使你可以观看从附近设备接收的 About Announcement.
     ![][config-client-5]
-  * __About__: This will show the full set of information 
-  retrieved by the About Client from the nearby application.
+  * __About__: 此项可以显示通过 About Client 检索到的附近应用程序的全套信息
     ![][config-client-6]
-  * __Config__: Here, you can view the information provided by 
-  the Config Client that it has retrieved from the Config Server 
-  running in the nearby application. 
-    * You can also use the Config Client to interact with and 
-    configure different options provided by the Config Server 
-    instance. For example, if you change the DeviceName field, 
-    and then use the **Back** button to return to the main view 
-    that displays nearby applications, you will notice the new device name is listed.
+  * __Config__: 在这里，你可以观看由 Config Client 提供的从 运行在附近应用程序中的  Client Server 中检索到的信息。
+  * 你还可以使用 Config Client 来与 Config Server 实例进行交互，并修改他所提供的不同配置选项。例如，如果你修改了 DeviceName 字段，并使用了 **Back** 按钮返回到显示附近应用程序的主视图，你将注意到列表中已将设备名更新。
     ![][config-client-7]
     ![][config-client-8]
     ![][config-client-9]
 
-## Run the Configuration service sample app as a Server
+## 运行 Configuration service 样例应用程序作为 Server
 
-1. Launch the Configuration service sample app on your iOS device.
+1. 在 iOS 设备上运行 Configuration service 样例应用程序。
   ![][config-client-1]
-2. At the bottom of the screen, press the **Start Service** button.
-3. The application is now running in Server mode.
+2. 在屏幕底部, 按下 **Start Service** 按钮。
+3. 应用程序现在以 Server 模式运行。
   ![][config-service-1]
-   **NOTE:** To interact with the Config Server, either run 
-   the sample app as a Config Client on the same device or on 
-   a different device, as detailed in 
+   **NOTE:** 若要与 Config Client 交互, 需要在本设备或者另一设备上运行一个作为 Config Client 的样例应用程序，参见：
    [Run the Configuration service sample app as a Client][run-config-sample-app-as-client].
 
 

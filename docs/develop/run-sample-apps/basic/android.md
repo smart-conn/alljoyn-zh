@@ -51,3 +51,4 @@ Android 聊天应用程序展示了如何使用 AllJoyn&trade; 框架实现聊�
 [4.ChooseChannelToJoin]: /files/develop/run-sample-apps/android-chat-sample/4.ChooseChannelToJoin.png
 [5.ChannelJoined]: /files/develop/run-sample-apps/android-chat-sample/5.ChannelJoined.png
 [6.SendMessages]: /files/develop/run-sample-apps/android-chat-sample/6.SendMessages.png
+
