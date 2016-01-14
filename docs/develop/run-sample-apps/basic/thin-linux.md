@@ -3,7 +3,7 @@
 ## 前提条件
 
 * [Build the thin Linux samples][build-thin-linux]
-* [Build the AllJoyn&trade; router][build-linux]. AllJoyn 精简应用程序需要一个可以连接到的 AllJoyn 路由来完成正常功能。
+* [Build the AllJoyn&trade; router][build-linux]. AllJoyn 精简应用程序需要一个可以连接的 AllJoyn 路由来正常工作。
 
 ## 运行 Basic Client 和 Service
 
