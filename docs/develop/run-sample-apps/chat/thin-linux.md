@@ -1,13 +1,13 @@
-# Running Chat Sample - Thin Linux
+# 运行聊天样例应用程序 - Thin Linux
 
-### Prerequisites
+### 前提条件
 * [Build the thin Linux samples][build-thin-linux]
 * [Build the AllJoyn&trade; router][build-linux]. AllJoyn thin 
   apps require an AllJoyn router to connect to in order to function properly.
 
-### Run Chat
+### 运行聊天
 
-1. Launch the AllJoyn daemon using the config file to allow thin apps to connect.
+1. 使用配置文件运行 AllJoyn daemon， 使精简应用程序可以连接。
 
   ```
   # <TARGET CPU> can be either x86_64, x86, or whatever value you set for CPU= when running SCons.
@@ -20,14 +20,14 @@
   ./alljoyn-daemon &
   ```
 
-2. Launch chat (in a new terminal).
+2. 运行聊天 (在新的命令行中).
 
   ```
   cd $AJ_ROOT/core/ajtcl/samples/basic
   ./chat
   ```
 
-The output from chat_client should look like this:
+chat_client 的输出应为如下所示：
 
 ```
 <node name="/chatService">
