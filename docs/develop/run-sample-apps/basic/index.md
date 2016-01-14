@@ -1,15 +1,12 @@
 # Running the Basic Sample
 
-The Basic sample application provides the ability to execute a concatenate method - cat.
+Basic sample 应用程序提供了执行相连方法的功能 - cat.
 
-The Service application is designed to advertise a well-known name: "org.alljoyn.Bus.sample".
-It will accept sessions on the session port 25.
+服务器应用程序可以推广一个 well-known name: "org.alljoyn.Bus.sample". 这将能接受25号会话端口中的会话。
 
-The Client application is designed to discover the well-known name: "org.alljoyn.Bus.sample".
-It will then join a session on the session port 25.  Depending on the platform, 
-the experience is slightly different, but each Client implementation will call the "cat" Bus Method.
+客户端应用程序可以发现一个 well-known name："org.alljoyn.Bus.sample". 他将接入在25号会话端口中的会话。对于不同的平台，体验会有所不同，但是每一个 Client 端实现都会调用 'cat' 总线方法。
 
-The Basic application interface is as follows:
+基本的应用程序接口如下所示：
 
 ```xml
 <node name="/sample">
@@ -23,7 +20,7 @@ The Basic application interface is as follows:
 </node>
 ```
 
-The sample can be run on the following platforms:
+此实例可以在以下操作系统中运行。
 * [Android][android]
 * [Linux][linux]
 * [iOS/OSX][ios-osx]
