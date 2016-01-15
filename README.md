@@ -1,5 +1,15 @@
 # alljoyn-zh
 
+## 0115 待审阅文章
+
+* [ ] [docs/develop/run-sample-apps/controlpanel/index.md](docs/develop/run-sample-apps/controlpanel/index.md)
+* [ ] [docs/develop/run-sample-apps/controlpanel/ios-osx.md](docs/develop/run-sample-apps/controlpanel/ios-osx.md)
+* [ ] [docs/develop/run-sample-apps/controlpanel/linux.md](docs/develop/run-sample-apps/controlpanel/linux.md)
+* [ ] [docs/develop/run-sample-apps/controlpanel/thin-linux.md](docs/develop/run-sample-apps/controlpanel/thin-linux.md)
+* [ ] [docs/develop/run-sample-apps/notification/android.md](docs/develop/run-sample-apps/notification/android.md)
+* [ ] [docs/develop/run-sample-apps/notification/index.md](docs/develop/run-sample-apps/notification/index.md)
+* [ ] [docs/develop/run-sample-apps/notification/ios-osx.md](docs/develop/run-sample-apps/notification/ios-osx.md)
+
 ## 0114 待审阅文章
 
 * [ ] [docs/develop/run-sample-apps/basic/index.md](docs/develop/run-sample-apps/basic/index.md)
