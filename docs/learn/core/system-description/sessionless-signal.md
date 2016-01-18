@@ -313,142 +313,74 @@ key. Both use cases are captured accordingly:这个情况定义了当第一个 A
 8. 提供者应用程序有一个 sessionless signal 需要发送。它调用 BusObject Signal(...) call，发送一条 AllJoyn SIGNAL 信息包含一个值为 true 的 sessionless 标志。
 9. SIGNAL 信号从应用程序发送至 AllJoyn 路由
 10. 提供者 AllJoyn 路由在 sessionless signal 缓存存储信号。
-11. The provider AllJoyn router generates the following:
-   * A well-known name for the sessionless signal of the format 
-   "org.alljoyn.sl.y<GUID>.x<change_id>" with the latest change_id. 
-   * A second well-known name for the sessionless signal of 
-   the format "<INTERFACE>.y<GUID>.x<change_id>" with the 
-   latest change_id associated with signals generated 
-   by the given <INTERFACE>.
-12. The provider AllJoyn router invokes the RequestName 
-and AdvertiseName method calls to request and advertise these names. 
+11. 提供者 AllJoyn 路由生成以下内容：
+   * 一个以 "org.alljoyn.sl.y<GUID>.x<change_id>" 格式，包含最新 change_id 的针对 sessionless signal 的 well-known 名称。
+   * 第二个包含最新 change_id 的针对 sessionless signal 的 well-known 名称，这个  change_id 与给定 <INTERFACE> 生成的信号相关。
+12. 提供者 AllJoyn 路由调用 RequestName 和 AdvertiseName 方法以请求和广告这些名称。
 13. The provider AllJoyn router sends out a Name Service 
 response messages to advertise these sessionless signal 
-well-known names using NGNS.
-14. The consumer AllJoyn router receives the Name Service 
-response messages which pass the prefix matching for "org.alljoyn.sl." 
-or "<INTERFACE>.y<GUID>.x<change_id>". A FoundAdvertisedName 
-signal gets generated for the advertisements.
-15. The consumer determines that it needs to fetch sessionless 
-signals from the provider, based on the received sessionless 
-signal advertised name, change_id comparison, and current 
-set of match rules as per logic described in [Consumer fetches 
-sessionless signals from a provider][consumer-fetches-sls-from-provider]. 
-16. The consumer AllJoyn router invokes JoinSessionAsync 
-method call to start a session with the provider AllJoyn router. 
-It specifies the sessionless signal well-known name and 
-sessionless session port among other parameters.
-   This initiates a session attachment flow at the AllJoyn 
-   router level between the consumer and provider. 
-17. Once the session is established, the consumer AllJoyn 
-router sends the RequestRangeMatch signal to request the 
-latest set of sessionless signals from the provider device. 
-This signal includes last acquired change_id for the GUID 
-of provider AllJoyn router, and the match rules that have 
-not yet been applied to the provider GUID.
-18. The provider AllJoyn router sends the AllJoyn SIGNAL 
-messages for all sessionless signals added that pass the 
-match rules in the range provided in the RequestRangeMatch signal.
-19. Once all SIGNAL messages have been sent, the provider 
-AllJoyn router initiates LeaveSession for the connected session. 
-This triggers sending a DetachSession SIGNAL message to the 
-consumer AllJoyn router. 
-20. After receiving the DetachSession signal, the consumer 
-AllJoyn router knows that it has received all new sessionless 
-signals from the provider AllJoyn router. It then updates its 
-change_id for that GUID to the latest received change_id 
-from the advertisement and also updates status for match 
-rules which have been applied to that provider. 
-21. The consumer AllJoyn router sends SIGNAL messages to the 
-AllJoyn core library via callback. The AllJoyn core library 
-in turn calls the registered signal handler for the sessionless signal. 
+well-known names using NGNS.提供者路由发送一个 Name Servie 回应信息以使用 NGNS 广告这些 sessionless signal well-known 名称。
+14. 消费者 AllJoyn 路由接受其前缀符合 "org.alljoyn.sl." 或 "<INTERFACE>.y<GUID>.x<change_id>" 的 Name Service 回应信息。为广告生成一个 FoundAdvertisedName 信号。
+15. 消费者基于接收到的 sessionless signal 广告名称、change_id 比较和在 [Consumer fetches 
+sessionless signals from a provider][consumer-fetches-sls-from-provider] 提到的目前的匹配规则决定是否在提供者处获取 sessionless signal。
+16. 消费者 AllJoyn 路由调用 JoinSessionAsync 方法开启一个与提供者 AllJoyn 路由间的会话。在参数中，它指定了 sessionless signal well-known 名称和无会话会话端口。这在 AllJoyn 路由级别的消费者和提供者之前建立了一个参与会话流。
+17. 一旦建立了会话，消费者 AllJoyn 路由发送 RequestRangeMatch 信号以从提供者设备请求最新的一组 sessionless signal。该信号包含最新为提供者 AllJoyn 路由的 GUID 获得的 change_id，并且匹配规则尚未被应用在提供者 GUID 上。
+18. 提供者 AllJoyn 路由向所有在 RequestRangeMatch 区间内的 sessionless signal 发送 AllJoyn SIGNAL 信息。
+19. 一旦所有 SIGNAL 信息被发送，提供者 AllJoyn 路由为已连接的会话生成 LeaveSession。这个触发器向连接的 AllJoyn 路由发送一个 DetachSession SIGNAL 信息。
+20. 在收到 DetachSession 信号后，消费者 AllJoyn 路由知道它已经从提供者 Alljoyn 路由处获取了全部的 sessoinless signal。随后他会更新自己 GUID 的 change_id 至最新从广告接收到的版本，并且针对已应用在提供者的匹配规则更新状态。
+21. 消费者 AllJoyn 路由通过回调向 AllJoyn 核心资源库发送 SIGNAL 信息。AllJoyn 核心资源库依次调用已注册的针对 sessionless signal 的信号处理器。
 
-#### AddMatch includes the 'implements' key
+#### AddMatch 包含 'implements' 键
 
-The following figure shows the message flow for sending and 
-receiving of the first sessionless signal for the use case 
-when AddMatch includes one or more 'implements' key/value pair. 
+下图展示了发送和接受第一个 sessionless signal 的信息流，这适用于 AddMatch 包含一个或多个 'implements' 键／值 对的使用场景。
 
-**NOTE:** Currently, the 'implements' key only applies to the 
-Announcement sessionless signal. As a result, the AddMatch 
-in this case must include "interface=org.alljoyn.About", 
-which is the interface that emits the Announcement signal.
+**注意:** 目前，'implements' 键只应用与 Annoucement sessionless signal。作为结果，在这种情况下的 AddMatch 必需包含发送 Annoucement signal 的接口的 "interface=org.alljoyn.About"。
 
-The AllJoyn router initiates interface name discovery via 
-NGNS to find providers which implements the specified interfaces. 
-Once those providers are discovered, the consumer AllJoyn router 
-fetches the Announcement signals from those providers.
+AllJoyn 路由通过 NGNS 启动接口名称发现，以发现提供了指定接口的提供者。一旦发现了提供者，消费者 AllJoyn 路由获取从那些提供者发送的 Annoucement 信号。
 
 ![first-sls-delivery-implements-addmatch][first-sls-delivery-implements-addmatch]
 
-**Figure:** First sessionless signal delivery (with implements' key in AddMatch)
+**图:** 首个 sessionless signal 送达（在 AddMatch 中有 implements 的键）
 
-### Sessionless signal delivery between a new consumer and a legacy provider
+### 新版消费者和旧版提供者之间的 sessionless signal 传递。
 
-The following figure shows the message flow when a new consumer 
-(14.06 release or later) received sessionless signals from a 
-legacy provider (prior to the 14.06 release).
+下图展示了当一个新版消费者（14.06 版本或后续版本）从一个旧版（14.06 版本之前）提供者处收到 sessionless signal 的信息流。
 
 ![sls-logic-new-consumer-legacy-provider][sls-logic-new-consumer-legacy-provider]
 
-**Figure:** Sessionless signal logic between new consumer and legacy provider
+**图:** 新版消费者与旧版提供者之间 sessionless signal 的逻辑
 
-### Sessionless signal delivery between a legacy consumer and a new provider
+### 旧版消费者与新版提供者之间 sessionless signal 传递
 
-The following figure shows the message flow when a legacy consumer 
-(prior to the 14.06 release) is receiving sessionless signals 
-from a new provider (14.06 release or later).
+下图展示了当一个旧版消费者（14.06 版本之前）接收到从一个新版提供者（14.06 版本和后续版本）发出到 sessionless signal 时的信息流。
 
 ![sls-logic-legacy-consumer-new-provider][sls-logic-legacy-consumer-new-provider]
 
-**Figure:** Sessionless signal logic between legacy consumer and new provider
+**图:** 旧版消费者和新版提供者之间的 sessionless signal 逻辑。
 
-### Subsequent AddMatch done by an app 
+### 应用程序完成的后续 AddMatch
 
-After the first AddMatch call to the AllJoyn router, applications 
-can subsequently invoke other AddMatch calls to add more 
-match rules for sessionless signals. 
+当 AllJoyn 路由调用了首个 AddMatch 后，应用程序能够继续调用其他的 AddMatch，为 sessionless signal 加入更多的匹配规则。
 
-Starting from the 14.06 release, whenever an AddMatch call 
-is invoked by any app, the SLS module takes steps to trigger 
-fetch for sessionless signal messages. The logic is quite 
-similar to the first sessionless signal delivery use case 
-in [First sessionless signal delivery][first-sessionless-signal-delivery]. 
-The additional step is to fetch sessionless signal messages 
-from existing providers that match the specified filtering 
-criteria for sessionless signals.
+从 14.06 版本起，无论合适任何应用程序调用了 AddMatch，SLS 模块会被触发，开始获取 sessionless signal 信息。这样的逻辑与 [First sessionless signal delivery][first-sessionless-signal-delivery] 中叙述的获取首个 sessionless signal 的场景很相似。加入的步骤用于从已存在的提供者处获取 sessionless signal 信息，这些提供者都必须符合的针对 sessionless signal 的筛选标准。
 
-The consumer SLS module remembers the sessionless signal 
-advertised name it has received from each provider. For the 
-new AddMatch rule that doesn't include implements key, the 
-consumer uses the match rule to find matching providers among 
-existing providers and fetches sessionless signals from those providers.
+消费者 SLS 模块会记录从每个提供者处收到的 sessionless signal 广告名。针对不包含 implements 键的 AddMatch 规则，消费者使用匹配规则在已有的提供者中选择匹配的提供者，并且从它们那里接收 sessionless signal。
 
-The consumer SLS module performs the following steps.
+消费者 SLS 模块执行以下步骤：
 
-1. Perform interface name discovery for providers for 
-any new 'implements' key/value pair specified in AddMatch. 
-Fetch the sessionless signals from the discovered providers.
-2. Perform name-based discovery for "<INTERFACE>.sl" for any 
-new interface value specified in AddMatch, for which discovery 
-was not already done. Fetch the sessionless signals from 
-the discovered providers.
-3. Fetch the sessionless signals from the already known providers 
-if the sessionless signal name received from these providers 
-match the filtering criteria specified in match rule.
+1. 执行接口名称发现，寻找符合 AddMatch 中指定的键／值对的提供者。从这些发现的提供者处获取 sessionless signal。
+2. 执行基于名称的发现，寻找符合 AddMatch 指定的新接口值的 "<INTERFACE>.sl"，为了未完成的发现。从发现的提供者处获取 sessionless signal。
+3. 如果从这些提供者处获取的 sessionless signal 符合匹配规则中指定的筛选标准，那么就从这些已知的提供者处获取 sessionless signal。
 
-## org.alljoyn.sl interface
+## org.alljoyn.sl 接口
 
-The org.alljoyn.sl interface is the AllJoyn interface between 
-two AllJoyn routers used to enable the exchange of sessionless 
-signals. [org.alljoyn.sl interface signals][org-alljoyn-sl-interface-signals] 
-lists the org.alljoyn.sl interface signals.
+org.alljoyn.sl 接口是 AllJoyn 路由用于交换 sessionless signal 的 AllJoyn 接口。[org.alljoyn.sl interface signals][org-alljoyn-sl-interface-signals] 中列出了 org.alljoyn.sl 接口信号。
 
-### org.alljoyn.sl interface signals
+### org.alljoyn.sl 接口信号
 
-| Signal name | Description |
+| 信号名称 | 描述 |
 |---|---|
-| RequestSignals | Requests sessionless signals associated with change_ids in the range [fromId, currentChangeId], where currentChangeId is the most recently advertised change_id of the provider. |
+| RequestSignals | 请求关于在 [fromId, currentChangeId] 区间内 change_id 的 sessionless signal，在这个区间中的 currentChangeId 是提供者最新广告的 change_id。 |
 | RequestRange | <p>A signal for requesting sessionless signals associated with change_ids in the range [fromId, toId).</p><p>**NOTE:** The "toId" is exclusive so a consumer should set toId=<change_id_value>+1 if it wants to get SLS up to the change_id_value.</p><p>This signal appeared in version 6 of the AllJoyn protocol.</p> |
 | RequestRangeMatch | <p>A signal for requesting sessionless signals associated with change_ids in the range [fromId, toId) that match any of the provided match rules.</p><p>The "toId" is exclusive in this signal too.</p><p>This signal appeared in version 10 of the AllJoyn protocol (associated with the 14.06 release).</p> |
 
