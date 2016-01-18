@@ -381,29 +381,29 @@ org.alljoyn.sl 接口是 AllJoyn 路由用于交换 sessionless signal 的 AllJo
 | 信号名称 | 描述 |
 |---|---|
 | RequestSignals | 请求关于在 [fromId, currentChangeId] 区间内 change_id 的 sessionless signal，在这个区间中的 currentChangeId 是提供者最新广告的 change_id。 |
-| RequestRange | <p>A signal for requesting sessionless signals associated with change_ids in the range [fromId, toId).</p><p>**NOTE:** The "toId" is exclusive so a consumer should set toId=<change_id_value>+1 if it wants to get SLS up to the change_id_value.</p><p>This signal appeared in version 6 of the AllJoyn protocol.</p> |
-| RequestRangeMatch | <p>A signal for requesting sessionless signals associated with change_ids in the range [fromId, toId) that match any of the provided match rules.</p><p>The "toId" is exclusive in this signal too.</p><p>This signal appeared in version 10 of the AllJoyn protocol (associated with the 14.06 release).</p> |
+| RequestRange | <p>一个请求 sessionless signal 的信号，其 change_id 在[fromId, toId]内。</p><p>**注意:** "toId" 是排它的，如果消费者希望在 change_id 值上获得 SLS，应该设置 toId=<change_id_value>+1</p><p>这个信号出现在 AllJoyn 协议的版本 6 中</p> |
+| RequestRangeMatch | <p>一个请求 sessionless signal 的信号，其 change_id 在[fromId, toId]内,并且匹配任意一条匹配规则</p><p>"toId" 也是一个排它信号。</p><p>这个信号出现在 AllJoyn 协议的版本 10 中 (有关 14.06 版本).</p> |
 
-### org.alljoyn.sl.RequestSignals parameters
+### org.alljoyn.sl.RequestSignals 参数
 
-| Parameter name | Description |
+| 参数名称 | 描述 |
 |---|---|
-| UINT32 fromId | Start of change_id range. | 
+| UINT32 fromId | change_id 范围的开始 | 
 
-### org.alljoyn.sl.RequestRange parameters
+### org.alljoyn.sl.RequestRange 参数
 
-| Parameter name | Description |
+| 参数名称 | 描述 |
 |---|---|
-| UINT32 fromId	| Start of change_id range. | 
-| UINT32 toId | End of change_id range. |
+| UINT32 fromId	| change_id 范围的开始 | 
+| UINT32 toId | change_id 范围的结束 |
 
-### org.alljoyn.sl.RequestRangeMatch parameters
+### org.alljoyn.sl.RequestRangeMatch 参数
 
-| Parameter name | Description |
+| 参数名称 | 描述 |
 |---|---|
-| UINT32 fromId | Start of change_id range | 
-| UINT32 toId | End of change_id range | 
-| ARRAY of STRING matchRules | Match rules to apply to the range.| 
+| UINT32 fromId | change_id 范围的开始 | 
+| UINT32 toId | change_id 范围的结束 | 
+| ARRAY of STRING matchRules | 应用于范围的匹配规则| 
 
 
 
