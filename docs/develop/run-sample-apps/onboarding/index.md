@@ -1,21 +1,14 @@
-# Running The Onboarding Samples 
+# 运行  Onboarding 样例 
 
-There are two types of Onboarding sample applications, an 
-Onboarder and an Onboardee. The [Onboarding service framework][learn_onboarding] 
-is both a definition of how a Wi-Fi Radio will function on a 
-device and the AllJoyn&trade; interface used to communicate.
+此处有两种 Onboarding 样例应用程序, Onboarder 和 Onboardee.  [Onboarding service framework][learn_onboarding] 定义了 Wi-Fi Radio 在设备上的
+运转方式以及使用 AllJoyn&trade; 接口的沟通方式。
 
-An Onboardee application is responsible for starting up 
-as an Access Point (AP) and offering up that it supports 
-the Onboarding service framework via [About Announcements][learn_about]. 
-Once provided a set of user-provided AP credentials, the application 
-will stop advertising an AP and connect using the provided credentials.
+Onboardee 应用程序负责开启一个 Access Point(AP),并提供通过 [About Announcements][learn_about] 实现的所支持的 Onboarding 服务框架。一旦提供
+了一系列的 AP 证书，此应用程序将停止推广 AP ，并使用给定的证书连接。
 
-An application that provides the Onboarder side of the service 
-is responsible for using the Onboarding interface to transmit 
-AP credentials that the Onboardee application should connect to.
+提供 Onboarder 服务的一方应用程序应负责使用 Onboarding 接口来传输 Onboardee 应用程序应连接的 AP 设置信息。
 
-The Onboarding interface is defined as follows:
+Onboarding 接口的定义如下所示:
 
 ```xml
 <node>
@@ -46,10 +39,10 @@ The Onboarding interface is defined as follows:
 </node>
 ```
 
-Onboarder samples are available for Android and iOS.
-Onboardee samples are available for Android.
+Onboarder 样例已支持 Android 和 iOS.
+Onboardee 样例支持 Android.
 
-The samples can be run on the following platforms:
+这些样例可在以下平台运行：
 - [Android][android]
 - [Linux][linux]
 - [iOS/OSX][ios-osx]
