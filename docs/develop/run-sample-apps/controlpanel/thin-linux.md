@@ -1,13 +1,12 @@
-# Running Control Panel Sample - Thin Linux
+# 运行控制面板样例 - Thin Linux
 
-## Prerequisites
+## 前提条件
 * [Build the thin Linux samples][build-thin-linux]
-* [Build the AllJoyn&trade; router][build-linux]. AllJoyn thin 
-  apps require an AllJoyn router to connect to in order to function properly.
+* [Build the AllJoyn&trade; router][build-linux]. AllJoyn 精简应用程序需要一个可以连接的 AllJoyn 路由来正常工作。
 
-## Run Controllee Sample
+## 运行被控制方样例
 
-1. Launch the AllJoyn daemon using the config file to allow thin apps to connect.
+1. 使用配置文件运行 AllJoyn daemon， 使精简应用程序可以连接。
 
   ```sh
   # <TARGET CPU> can be either x86_64, x86, or whatever value you set for CPU= when running SCons.
@@ -20,14 +19,14 @@
   ./alljoyn-daemon &
    ```
 
-2. Launch the Controllee Sample (in a new terminal).
+2. 运行被控制方应用程序 (在另一个命令行中)。
 
   ```sh
   cd $AJ_ROOT/services/sample_apps/build
   ./ControlleeSample
   ```
-
-3. Use one of the following Controller apps to interact with the Controllee:
+  
+3. 使用下列控制方之一与被控制方进行交互：
   * [iOS Controller][ios_controller]
   * [Android Controller][android_controller]
 

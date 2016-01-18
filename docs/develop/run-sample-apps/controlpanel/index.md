@@ -1,23 +1,16 @@
-# Running The Control Panel Samples
+# 运行控制面板样例
 
-There are two Control Panel sample applications, a ‘Controller’ 
-and a ‘Controllable’.  The [Control Panel service framework][learn_control] 
-is a collection of many interfaces and a definition of object path 
-where the interfaces are placed.
+此处有两个控制面板样例， ‘Controller’ 和 ‘Controllable’. [Control Panel service framework][learn_control] 是一个众多接口和存放接口的对象路
+径定义的集合。
 
-When an application uses the [Control Panel service][learn_control] 
-to be a Controllable device, it uses the service APIs which wrap up 
-an AllJoyn&trade; feature called [Introspection][learn_introspect].  
-The service provides an [Adaptive UI Layer][learn_control] that 
-is responsible for creating platform widgets that are rendered on a screen.
+当某一应用程序使用 [Control Panel service][learn_control] 作为一个可控设备时，他会使用包含了 AllJoyn&trade; 被称作  [Introspection][learn_introspect] 功能的服务 API. 此服务提供负责创建被渲染到屏幕上的平台组件的 [Adaptive UI Layer][learn_control] 功能。
 
-When an application uses the Controller side of the 
-[Control Panel service framework][learn_control], it offers 
-up capabilities such that any application can control some 
-set of functionality. It allows for an OEM to leverage the 
-developer's ecosystem and build applications that interact with a product.
+当某一应用程序使用 [Control Panel service framework][learn_control] 作为一个控制方设备时, 他会提供可以使任何应用程序都能控制一些功能集合的
+功能。OEM 可以利用此功能影响开发者的生态系统，并搭建可以与产品交互的应用程序。
 
-The ControlPanel interfaces are defined as follows:
+
+
+ControlPanel 接口的定义如下所示：
 
 ```xml
 **NOTE:** The interfaces below are also available as secure interfaces
@@ -100,11 +93,11 @@ The ControlPanel interfaces are defined as follows:
 </interface>
 ```
 
-Controller samples are available for Android, iOS, and Linux.
+Controllable 样例支持在 Android, iOS, 和 Linux 上可用。
 
-Controllable samples are available for Linux and Thin Linux.
+Controllable 样例已经在 Linux 和 Thin Linux 上可用。
 
-The samples can be run on the following platforms:
+这些样例可以在以下应用程序中运行。
 - [Android][android]
 - [Linux][linux]
 - [iOS/OS X][ios-osx]

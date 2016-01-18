@@ -1,79 +1,64 @@
-# Android - Onboarding Sample Apps
+# Android - Onboarding 样例应用程序
 
-## Running Android Sample OnboardingServer
+## 运行 Android OnboardingServer 样例
 
-The Android OnboardingServer provides a sample Android 
-implementation of an app that uses the Onboarding server, 
-to allow the device to be onboarded by another device's app 
-using the Onboarding client.
 
-1. On the device to be onboarded, first set up your Wi-Fi hotspot settings. 
-Under **Settings** > **Wireless & networks**, select **Tethering & portable hotspot**. 
-By default on some devices, this will be an open AP named "AndroidAP".
+Android OnboardingServer 提供了使用 Onboarding 服务的一个 Android 样例实现应用程序。设备可以被另一个使用 Onboarding 客户端的设备所载入。
+
+1. 在需要被载入的设备上, 首先设置好 Wi-Fi hotspot.  在 **Settings** > **Wireless & networks** 中, 选择 **Tethering & portable hotspot**. 
+在一些设备上, 此项会默认是一个名为 "AndroidAP" 的开放式 AP.
 
   ![][1.TetheringAndPortableHotspot]
 
-2. Configure your Wi-Fi hotspot settings.
+2. 配置你的 Wi-Fi hotspot 设置。
 
   ![][2.SetUpWiFiHotspot]
 
-3. Load AboutConfOnbServer.apk, and start app `Onboarding Server`. 
-You should see Wi-Fi hotspot notification bar icon pop up along 
-with the text "Tethering or hotspot active". This device is now 
-ready to be onboarded.
+3. 载入 AboutConfOnbServer.apk, 随后启动 `Onboarding Server`应用程序。你会看到 Wi-Fi hotspot 通知栏图标弹出带有 "Tethering or hotspot active" 字样的通知。此设备已准备好被载入。
+
 
   ![][3.StartAppEnableHotspot]
 
 
-## Running Android Sample OnboardingClient
-The Android OnboardingClient provides a sample Android 
-implementation of an app that uses the Onboarding client, 
-to allow the app to onboard another device.
+## 运行 Android OnboardingClient 样例应用程序。 OnboardingClient 提供了使用 Onboarding 服务的一个 Android 样例实现应用程序。设备可以使用 Onboarding 客户端将另一个设备载入。
 
-1. Load OnboardingSampleClient.apk, and start app `Onboarding Client`.
+1. 运行 OnboardingSampleClient.apk, 然后启动 `Onboarding Client` 应用程序。
 
   ![][1.StartScreen]
 
-2. Press `Scan WIFI networks`.
+2. 按下 `Scan WIFI networks`.
 
   ![][2.ScanNetworks]
   ![][3.NetworkList]
 
-3. Select the Wi-Fi hotspot you configured on the device running 
-the `Onboarding Server`, and enter a password if needed, then press **OK**.
+3. 选择在运行`Onboarding Server` 的设备上配置好的 Wi-Fi hotspot，如果需要可以键入密码，然后按下 **OK**. 
 
   ![][4.EnterAccessPointPasswordIfNeeded]
 
-4. Press the **Connect to AllJoyn** button, then press **OK** in 
-the popup dialog - 'realm name' here is not important.
+4. 按下 **Connect to AllJoyn** 按钮, 然后在弹出的对话框中按下 **OK** ，此处的'realm name' 无关紧要。
 
   ![][5.ChooseNetwork]
   ![][6.PressedConnectToAllJoyn]
 
-5. A list of AllJoyn apps will be displayed. Long press on the `Hello` app, 
-and select the **Onboarding** option.
+5. 然后会显示一个 AllJoyn 应用程序列表。长按 `Hello` 应用程序，并选择 **Onboarding** 选项。
 
   ![][7.DeviceList]
   ![][8.LongPressOnDevice]
 
-6. Enter the access point info for the network that is being onboarded to.
+6. 输入正在被载入到的网络接入点信息。
 
   ![][9.SelectOnboarding]
   ![][10.EnterAccessPointInfoToOnboardTo]
 
-7. Press **Configure** to configure the device with the access point info.
+7. 按下 **Configure** ，确认设备和接入点信息。
 
   ![][11.PressConfigure]
 
-8. Press **Connect** to have the device connect with the configured AP information.
+8. 按下 **Connect** ，使设备与配置好的 AP 信息连接。 
 
   ![][12.PressConnect]
 
-9. If properly configured, the __other__ device running the 
-`Onboarding Server` will be onboarded to the AP, after which 
-the Wi-Fi hotspot notification bar icon disappears and the Wi-Fi 
-icon appears in the notification bar.
-
+9. 如果设置正确,  __other__ 在 `Onboarding Server` 上运行的应用程序将会被载入到 AP, 在这之后，相应图标会出现在通知栏里。
   ![][4.OnboardedSuccessfully]
 
 [1.TetheringAndPortableHotspot]: /files/develop/run-sample-apps/android-onboardingserver-sample/1.TetheringAndPortableHotspot.png

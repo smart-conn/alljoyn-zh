@@ -1,29 +1,25 @@
-# Android - Notification Sample Apps
+# Android - 提醒应用程序样例
 
-## Running Android NotificationServiceUISample
-The Android NotificationServiceUISample provides a sample 
-Android implementation of an app that uses the Notification 
-service framework, which allows a user to both send and receive notifications.
+## 运行 Android NotificationServiceUISample
+Android NotificationServiceUISample 为使用了可以让用户收发提醒的Notification服务框架的应用程序的实现提供了一个简单样例。
 
-1. On two or more devices, load the NotificationServiceUISample.apk, 
-and start app `NotificationService UI Sample`.
+1. 在两个或更多设备上，载入 .apk,随后启动  `NotificationService UI Sample`应用程序。
 
   ![][1.StartScreen]
 
-2. Check the **Consumer** checkbox for those app instances you want to receive notifications.
+2. 检查你想要接收提醒的那些应用程序实例的 **Consumer** 检验栏。
 
   ![][2.CheckConsumerCheckbox]
 
-3. Check the **Producer** checkbox for those app instances to which you want to send notifications.
+3. 检查你想要发送提醒的那些应用程序实例的 **Producer**  检验栏。
 
   ![][3.CheckProducerCheckbox]
 
-4. In an app instance with **Producer** checked, enter a message and press **Send**.
+4. 在一个已经检查过 **Producer** 的应用程序实例中，键入一条消息然后按下 **Send**.
 
   ![][4.ProducerSendsHelloWorld]
 
-5. All app instances with **Consumer** checked will receive and 
-display the notification text and message type.
+5. 所有已经检查过 **Consumer** 的应用程序实例都会收到并显示提醒信息和消息类型。
 
   ![][5.ConsumerReceivesHelloWorld]
 

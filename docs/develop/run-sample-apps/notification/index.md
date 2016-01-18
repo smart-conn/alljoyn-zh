@@ -1,21 +1,14 @@
-# Running The Notification Samples
+# 运行提醒实例
 
-There are two types of Notification sample applications, 
-a Producer and a Consumer. The power of the [Notification service framework][learn_notif] 
-is its simplicity and ability to allow devices to "talk" 
-to end users to provide meaningful information.
+此处有两种提醒应用程序用例，Producer 和 Consumer. [Notification service framework][learn_notif] 的强大之处就在于他的简洁性以及允许设备与终
+端用户沟通、获取有价值的信息。
 
-The Notification Producer side of an application is responsible 
-for sending a [sessionless signal][sessionless_signal] that contains 
-a small amount of text with some optional values.  This text is 
-intended to be rendered on any device that contains the Consumer 
-side of the Notification service.
+Provider 应用程序一方负责发送包含带有可选值的少量文本的 [非会话信号][sessionless_signal]. 此文本将试图被任何带有提醒服务 Consumer 端的设备
+渲染。
 
-The Notification Consumer side of an application is responsible 
-for registering to receive the [sessionless signal][sessionless_signal] 
-from any application that supports the Producer side of the Notification service.
+Consumer 应用程序一方负责注册并接收来此任何支持提醒服务 Producer 端的设备发出的 [非会话信号][sessionless_signal] 。
 
-The Notification interface is defined as follows:
+提醒接口的定义如下所示：
 
 ```xml
 <node>
@@ -37,7 +30,7 @@ The Notification interface is defined as follows:
 </node>
 ```
 
-The samples can be run on the following platforms:
+此样例可在如下平台上运行：
 - [Android][android]
 - [Linux][linux]
 - [iOS/OSX][ios-osx]
