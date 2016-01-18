@@ -66,7 +66,7 @@
   当:
   
   * GUID 是 AllJoyn 路由的 GUID。
-  * change_id 是 缓存中最大的 change_id。
+  * change_id 是无会话信号缓存中最大的 change_id。
 
 自 14.06 版本的 AllJoyn 起，SLS 模块要求和广播以下无会话信号的 well-known name：
 
@@ -115,7 +115,7 @@
 
 ![consumer-logic-sessionless-providers-1406][consumer-logic-sessionless-providers-1406]
 
-**图:** 发现 sessionless 提供者的消费者逻辑（14.06 AllJoyn 版本中引入）
+**图:** 发现无会话信号提供者的消费者逻辑（14.06 AllJoyn 版本中引入）
 
 如果 AddMatch 包含 "interface" 键但不包含 "implements" 键，SLS 模块使用基于名称的方式发现匹配规则中指定的 "<interface>.sl." 的名称前缀。
 
@@ -125,7 +125,7 @@
 
 ### 消费者从提供者处获取无会话信号
 
-在发现一个提供者后，消费者 SLS 模块根据消费者的匹配规则和提供者广告中的 change_id，决定它是否需要从提供者处获取无会话信号。消费者 SLS 模块始终跟随最后一个 change_id，为了得到其通过 广播名称发现的提供者 GUID。Sessionless signal 的获取逻辑和消费者对于每个提供者维持的状态，在 14.06 版本中都经过了修改。获取逻辑功能的区别如下：
+在发现一个提供者后，消费者 SLS 模块根据消费者的匹配规则和提供者广告中的 change_id，决定它是否需要从提供者处获取无会话信号。消费者 SLS 模块始终跟随最后一个 change_id，为了得到其通过 广播名称发现的提供者 GUID。无会话信号的获取逻辑和消费者对于每个提供者维持的状态，在 14.06 版本中都经过了修改。获取逻辑功能的区别如下：
 
 * 在 14.06 之前的版本中，消费者 SLS 模块保留了 <Provider GUID, last acquired change_id> 列表信息来发现提供者。当从提供者处接收到任何更新的 change_id 时，消费者 SLS 模块会获取，其中 change_id 是 广播名称中的一部分。
 * 自 14.06 版本起，能够从一个给定的提供者处获取多个无会话信号广告名称。除此之外，相关的 change_id 能够根据每个 广告名称的不同而不同。消费者 SLS 模块为发现的提供者保留了 <Provider GUID, SLS name, change_id> 列表。它也会保持对应用于给定提供者的匹配规则的跟踪。
@@ -288,7 +288,7 @@
 
 #### AddMatch 不包含 "implements" 键
 
-下图展示在 AddMatch 不包含 "implements" 键/值 对的情况下，发送和接受首无会话信号的信息流。
+下图展示在 AddMatch 不包含 "implements" 键/值对的情况下，发送和接受首无会话信号的信息流。
 
 ![first-sls-delivery-no-implements-addmatch][first-sls-delivery-no-implements-addmatch]
 
