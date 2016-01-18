@@ -1,13 +1,12 @@
-# Running Notification Sample - Thin Linux
+# 运行提醒样例 - Thin Linux
 
-## Prerequisites
-* [Build the thin Linux samples][build-thin-linux]
-* [Build the AllJoyn&trade; router][build-linux]. AllJoyn thin 
-  apps require an AllJoyn router to connect to in order to function properly.
+## 前提条件
+* [Build the thin Linux samples][build-thin-linux] 
+* [Build the AllJoyn&trade; router][build-linux]. AllJoyn 精简应用程序需要一个可以连接的 AllJoyn 路由来正常工作。
 
-## Run Notification Producer and Consumer
+## 运行 Notification Producer 和 Consumer
 
-1. Launch the AllJoyn daemon using the config file to allow thin apps to connect.
+1. 使用配置文件运行 AllJoyn daemon， 使精简应用程序可以连接。
 
    ```sh
    # <TARGET CPU> can be either x86_64, x86, or whatever value you set for CPU= when running SCons.
@@ -20,21 +19,21 @@
     ./alljoyn-daemon &
     ```
 
-3. Launch NotificationConsumerSample (in a new terminal).
+3. 运行 NotificationConsumerSample (在新的命令行中)。
 
    ```sh
    cd $AJ_ROOT/services/sample_apps/build/
    ./NotificationConsumerSample
    ```
 
-4. Launch NotificationProducerSample (in a new terminal).
+4. 运行 NotificationProducerSample (在新的命令行中)。
 
    ```sh
    cd $AJ_ROOT/services/sample_apps/build/
    ./NotificationProducerSample
    ``` 
 
-The output from NotificationProducerSample should look like this:
+NotificationProducerSample 的输出应为如下所示：
 
 ```
 ./NotificationProducerSample 
@@ -56,7 +55,7 @@ Connected to Routing Node with BusUniqueName=:yEmGBABV.3
 AllJoyn disconnect
 ```
 
-The output from NotificationConsumerSample should look like this:
+NotificationConsumerSample 的输出应为如下所示：
 
 ```
 ./NotificationConsumerSample 
