@@ -12,11 +12,9 @@
 
 1. 在你的 iOS设备上安装控制面板应用程序样例。
 2. 点击 Connect to AllJoyn 按钮。
-3. 在弹出的窗口中设定应用程序 About 功能的名字。可以使用默认的 org.alljoyn.BusNode.aboutClient，也可自定义。
-
-应用程序现在正在以控制方模式运行。在 Disconnect from AllJoyn 按钮下放的列表区域中，你将会看到已经通过 About 功能发现的支持控制面板服务框架
-的正在作为被控制方的附近应用程序。
-
+3. 在弹出的窗口中设定应用程序 About 功能的名字。可以使用默认的 org.alljoyn.BusNode.aboutClient，也可自定义。应用程序现在正在以控制方模式运
+行。在 Disconnect from AllJoyn 按钮下放的列表区域中，你将会看到已经通过 About 功能发现的支持控制面板服务框架的正在作为被控制方的附近应用程
+序。
 4. 若要与被控制方交互，需从列表中选择一个已被发现的附近应用程序。
 5. 在弹出的对话框中选择一个选项：
   * Show Announce: 用以观测从附近应用程序接收到的 About announcement.
