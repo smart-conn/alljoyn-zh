@@ -1,27 +1,16 @@
-# Running the Observer Sample
+# 运行 Observer 样例
 
-The Observer sample illustrates how to use the Observer API (introduced in
-AllJoyn R15.04) for easy object discovery and session management.
+Observer 样例说明了用于简易对象发现和会话管理的 Observer API （在 AllJoyn R15.04 中引入）的使用方式。
 
-The sample is a simulation of a rudimentary home security system. Our
-hypothetical security system monitors all doors in your house, and lets you
-know in real time whether they're open or closed, and who passes through a
-door. In addition, it allows for the remote opening and closing of doors.
+此样例模拟了一个基本的家用安全系统。我们假想的安全系统会监视家中所有的房门，实时显示门的开关状态，以及谁通过了某扇门。此外，此喜用还支持远程开关门操作。
 
-The Service part of the sample (`door_provider`) is the security system itself
-that publishes the state of the doors. It does not make use of the Observer API
-because the Observer is a Client-side concept, but it does illustrate how to
-expose objects on the AllJoyn bus in such a way that they can easily be
-discovered and accessed by an Observer.
+此样例的服务部分(`door_provider`)就是公开门的状态的安全系统自身。他并不使用 Observer API，因为此 Observer 是一个客户方的概念，因此，他旨在
+说明如何在 AllJoyn 总线上暴露对象才能使得他们被 Observer 便利地发现并访问。
 
-The Client part of the sample (`door_consumer`) is a simple monitoring user
-interface through which the user can monitor the state of the doors, and
-remotely open or close doors. It makes use of the Observer to discover all doors
-(i.e., all bus objects implementing the `com.example.Door` interface), and of
-the `ProxyBusObject::RegisterPropertiesChangedListener` mechanism to keep track
-of the current state of the discovered doors.
+此样例的服务部分(`door_consumer`) 是一个简易的监视器用户接口，通过此监视器用户可以查看所有门的状态，并远程进行开关操作。他通过使用 Observer 来发现所有的门（实现了 `com.example.Door` 接口的所有总线对象），同时使用 `ProxyBusObject::RegisterPropertiesChangedListener` 机制来与被发现
+的门保持同步。
 
-The data model for the security system is as follows:
+此安全系统的数据模型如下所示：
 
 ```xml
 <node>
@@ -48,8 +37,7 @@ The data model for the security system is as follows:
   </interface>
 </node>
 ```
-
-The sample can be run on the following platforms/language bindings:
+此样例可以在以下平台/语言联编中使用：
 
 * C++ (Linux/Windows/Mac OS X)
 * C (Linux/Windows/Mac OS X)
@@ -58,23 +46,15 @@ The sample can be run on the following platforms/language bindings:
 
 ## C++
 
-For C++, the Service and Client portions of the sample are implemented as
-separate applications: `door_provider` and `door_consumer`.
+在使用 C++ 时,  样例的 Service 部分和 Client 部分分别由 `door_provider` 和 `door_consumer` 两个不同的应用程序实现。
 
-### Prerequisites
+### 前提条件
 
-The samples are command-line applications. Hence, you'll need to open a command
-prompt to start the samples. On Linux, use your favorite terminal emulator. On
-Windows, use Command Prompt, on Mac OS X, use Terminal.app.
+样例是命令行应用程序。因此，你将要打开命令提示符来运行样例。在 Linux 中，可使用你最喜欢的命令行编译器。在 Windows 中，使用命令提示符，在 Mac OS X中，使用 Terminal.app.
 
-The sample applications are located in a subdirectory of the path where you
-built or installed AllJoyn: `build/<os>/<cpu>/<variant>/dist/cpp/bin/samples/`,
-where `<os>` is your operating system (`linux`, `darwin`, `win7`), `<cpu>`
-is your processor type (typically `x86` or `x86_64`), and `<variant>` is either
-`debug` or `release`.
+样例应用程序位于你搭建或安装 AllJoyn 地址的子目录中：`build/<os>/<cpu>/<variant>/dist/cpp/bin/samples/`，`<os>` 指示你的操作系统 (`linux`, `darwin`, `win7`), `<cpu>` 指示你的处理器类型( 常见的是 `x86` 或 `x86_64`), `<variant>`不是 `debug` 就是  `release`.
 
-Specifically for Linux, you need to tell the operating system where to find the
-AllJoyn shared libraries:
+针对 Linux 的特殊性，你需要告诉操作系统在哪里可以找到 AllJoyn的分享库。
 
 ```sh
 AJ_ROOT=~/allseen/core/alljoyn    # the path where you downloaded the
@@ -85,27 +65,22 @@ VARIANT=debug                     # debug or release
 export LD_LIBRARY_PATH=$AJ_ROOT/build/$OS/$TARGET_CPU/$VARIANT/dist/cpp/lib:$LD_LIBRARY_PATH
 ```
 
-This step should not be necessary on Windows or Mac OS X.
+对于 Windows 或者 Mac OS X, 此步骤无关紧要。
 
 ### Running `door_provider`
 
-Start the application:
+运行应用程序：
 
 ```sh
 cd $AJ_ROOT/build/$OS/$TARGET_CPU/$VARIANT/dist/cpp/bin/samples
 ./door_provider frontdoor backdoor garage cellar
 ```
 
-This will emulate a security system that monitors four doors (the front door,
-the back door, the garage door and the cellar door). You can start multiple
-`door_provider` instances concurrently if you wish.
+这里模拟一个监控四扇门（前，后门，车库门和地下室门）的安全系统。如果你愿意，你可以同时运行多个 `door_provider` 实例。
 
-You will be dropped into a primitive command line user interface where you can
-issue simulation comands. To keep the interface simple, the application
-continuously cycles through all doors it maintains, and you cannot choose which
-door will be the subject of your next simulation command.
+你将会被置入一个原始的命令行用户接口当中，在这里你可以发布模拟命令。为了保持接口的简洁，应用程序在所有被维护的门之间保持循环，所以你将不能选择下一次模拟命令时被控制的门。
 
-The following commands are supported:
+下面列出了所支持的命令：
 
 ```
     q         quit
@@ -117,20 +92,17 @@ The following commands are supported:
     h         show this help message
 ```
 
-The changes to the door state that you trigger from the `door_provider`
-application should be reflected in all running `door_consumer` instances.
+由你通过 `door_provider` 应用程序触发的门状态改变应被反映到所有正在运行的 `door_consumer` 实例上。
 
-### Running `door_consumer`
-Start the application:
+### 运行 `door_consumer`
+运行应用程序：
 
 ```sh
 cd $AJ_ROOT/build/$OS/$TARGET_CPU/$VARIANT/dist/cpp/bin/samples
 ./door_consumer
 ```
 
-The application will monitor the state of all doors that are published on the
-bus, and will print notifications whenever doors appear, disappear, or change
-state. In addition, you can perform the following actions:
+此应用程序将会监控公开到总线上的所有门的状态，并会打印出不论何时出现的包括门出现，消失，或者状态变化的所有提醒。此外，你还可以执行以下操作：
 
 ```
     q             quit
@@ -141,6 +113,7 @@ state. In addition, you can perform the following actions:
     h             display this help message
 ```
 
+如果你需要，可以同时开启多个 `door_consumer` 实例。这些实例都需要反映被 `door_provider` 
 You can start multiple `door_consumer` instances simultaneously if you wish.
 They should all reflect the same state for all doors published by all
 `door_provider` instances in your network.
@@ -195,62 +168,42 @@ log messages are:
   * `Door event: FrontDoor: Method Open is called`
   * `Incoming event: FrontDoor opened`
 
-### Service Functionality
+### 服务功能 
 
-The sample application is also capable of acting as a publisher of doors on the
-bus. To create a locally hosted door, select "Create Door" from the application
-menu. Once you provide a name, the door will be published on the bus. Once it is
-published, the application's Observer will discover it and the door will be
-added to the list of discovered doors on the main screen.
+此样例应用程序也可以用作在总线上的门的发布者。为了创建一个本地主机的门，在应用程序菜单中选择 "Create Door" . 一旦提供了名字，此门将会公布在
+总线上。一旦公布，此应用程序的 Observer 将会发现他，此门将被添加到主屏幕上的已发现门列表中。
 
-From there on out, the locally hosted door is treated exactly the same as a
-remote door: all manipulations are performed on the proxy object provided by the
-Observer, rather than on the bus object directly. In this way, the Observer
-makes it possible for applications to treat locally hosted objects exactly the
-same as remote objects. This is a significant simplification of the application
-logic for certain classes of applications.
 
-To remove a locally hosted door from the bus, select "Delete Door" from the
-application menu.
+从那时起，对待本地主机的门和对待远端门会变得相同：都由 Observer 提供的代理对象处理，而不是直接在总线对象操作。使用这种方式 Observer 可做到
+像控制远程对象一样对待本机对象。对于某类应用程序，这会是一个关于应用程序逻辑的显著优化。
+
+若要从总线上移除一个本地门，在应用程序菜单中选择 "Delete Door".
+
+
 
 ## Objective-C (iOS)
 
-The Observer sample for iOS incorporates both Service and Client aspects in
-a single application. You can use the application to publish virtual doors on
-the bus, and you can use it to observe (and manipulate) all doors that are
-published on the network (both the ones you are publishing yourself, and those
-that are published by other instances of the Observer sample).
+用于 iOS 的 Observer 样例在一个应用程序中集合了服务端和客户端两个方面。你可以使用应用程序在总线上公布虚拟门，还可以使用应用程序观察（操作）
+公布在网络上的所有门（包括你自己公布的，也包括其他 Observer 实例公布的门）。
 
-### Prerequisites
+
+### 前提条件
 
 * [Build the sample][build-ios-osx]
-* Install and run the sample on an iOS device
-* Make sure the device is connected to the same network as the other devices
-on which you are running observer samples
+* 在 iOS 设备上安装并运行应用程序
+* 确保此设备和你运行 Observer 样例的设备处于同一网络中。
 
-### Running the sample
+### 运行样例
 
-The main view of the application is a Table View listing all the doors that
-have been discovered (both the ones that are published locally, and those that
-are published by other observer samples). A check mark next to a door indicates
-that it's currently open. If no check mark is shown, the door is closed.
+此应用程序的主视图是一个列出了所有已被发现的门的图表（包括本地公布的门，也包括其他 Observer 实例公布的门）。门旁边的对勾符号指示此门目前已
+打开，如果没有对勾符号则表示门关闭。
 
-To open or close a door, tap on the door in the list of observed doors. The
-actual method that is called on the door depends on its current state: if it
-is open, it will be closed and the other way around.
+若要打开或关闭一扇门，可在已观察的门列表上点击一扇门。具体被调用的函数取决于此门目前所处的状态：如果他目前正开着，他将被关闭，反之亦然。
 
-To publish a door, tap the Add button (+) on the bar, type in a location for
-the door and tap Save. The door should now appear in the list of observed
-doors. The sample application does not allow you to remove, or change the
-location, of a door you've published. The door will be removed from the bus when
-you close the sample application.
+若要公布一扇门，点击工具条上的 Add 按钮(+)，键入门的位置然后点击 Save. 随后门就会出现在已发现门的列表上。此样例应用程序不允许移除或改变已公
+布的门的位置。在样例应用程序关闭之后，门会被移除出总线。
 
-Note that the sample application does not treat the doors it itself publishes on
-the bus any different from doors published by remote peers. The door appears in
-the Table View because it has been discovered by the sample application's
-Observer, and when you tap it, the `Open` and `Close` methods are invoked on a
-proxy object, not on the bus object directly. This illustrates that an Observer
-allows you to treat locally hosted objects in the exact same way as remote
-objects, which reduces application complexity.
+请注意，此样例应用程序在对待自己公布的门上与对待其他远端用户发布的门没有任何区别。出现在列表视图上的门都是已经被样例应用程序的 observer 发现，当你点击门时，`Open` 和 `Close` 方法会在一个代理对象上被调用，而不是在总线对象上直接被调用。这说明了 Observer 允许你使用与对待远程对
+象完全相同的方法对待本地对象，这降低了应用程序的复杂度。
 
 [build-ios-osx]: /develop/building/ios-osx
