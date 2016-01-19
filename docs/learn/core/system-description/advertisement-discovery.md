@@ -85,12 +85,12 @@ well-known name 相匹配。
 
 在基于 Name 发现的场景中捕捉了下列用例：
 
-* Discovery when IP connectivity is already established 
-* Discovery over unreliable network
-* Discovery when IP connectivity is established late
-* Well-known name lost due to loss of IP connectivity 
-* Provider cancels well-known name advertisement
-* Consumer cancels discovery for well-known name
+* 在 IP 连接已经建立好时发现
+* 不可靠的网络环境下的发现
+* IP 连接建立延迟的发现
+* IP 连接丢失导致的 WKN 丢失
+* 提供方取消推广 well-known name
+* 使用方取消发现 well-known name
 
 #### 在 IP 连接已经建立好时发现
 
@@ -142,41 +142,33 @@ well-known name 相匹配。
 
 **Figure:** 提供方取消推广 well-known name
 
-##### Consumer cancels discovery for well-known name
-The following figure shows the message sequence for the 
-scenario when a consumer application cancels discovery for a well-known name.
+##### 使用方取消发现 well-known name
+
+下图展示了在使用方应用程序取消了对 well-known name 的发现的场景中，AllJoyn 服务 well-known name 的消息序列。
 
 ![consumer-cancels-wkn-discovery][consumer-cancels-wkn-discovery]
 
-**Figure:** Consumer cancels discovery for well-known name
+**Figure:** 使用方取消发现 well-known name
 
-#### Message structure
+#### 消息结构
 
-As described above, the Name Service supports IS-AT and 
-WHO-HAS messages. These messages get embedded in a higher-level 
-Name Service message which provides the flexibility to include 
-both IS-AT and WHO-HAS messages in the same Name Service message. 
-This can be useful if an AllJoyn application acts as both provider 
-(advertising a well-known name) and a consumer (looking to 
-discover a well-known name). 
+如前所述，Name 服务支持 IS-AT 和 WHO-HAS 消息。这些消息在一个更高层级的 Name 服务消息中被嵌入，将 Name 服务消息可以将 IS-AT 和 WHO-HAS 消息纳入同一个 Name 服务消息中，从而提供了灵活性。当 AllJoyn 应用程序同时作为提供方（推广 well-known name） 和使用方（发现 well-known name）时，这将会非常有用。
 
-The following figure shows the Name Service message structure. 
-[Name Service message structure fields][name-service-message-structure-fields] 
-defines the message structure fields.
+下图展示了 Name 服务的消息结构。[Name Service message structure fields][name-service-message-structure-fields] 定义了消息结构字段。
 
 ![name-service-message-structure][name-service-message-structure]
 
-**Figure:** Name service message structure
+**Figure:** Name 服务消息结构
 
-##### Name Service message structure fields
+##### Name 服务消息结构字段
 
-| Field | Description |
+| 字段 | 描述 |
 |---|---|
-| Sver | Version of the latest implemented the AllJoyn discovery protocol for the sender. |
-| MVer | Version of Name Service message. |
-| QCount | Number of WHO-HAS question messages that follow the header. |
-| ACount | Number of IS-AT answer messages that follow the header. |
-| Timer | <p>Count (in seconds) for which included IS-AT answer should be considered valid.</p><p>This field should be set based on the following:</p><ul><li>Adv_Validity_Period for a well-known name advertisement that is valid for a default period of time.</li></ul><ul><li>Adv_Infinite_Validity_Value for a well-known name advertisement that is valid "forever", or at least until withdrawn. A zero in this field means that the sending AllJoyn router is withdrawing the advertisements.</li></ul> |
+| Sver | 发送端最新实现的 AllJoyn 发现协议的版本。|
+| MVer | Name 服务消息的版本。|
+| QCount | 跟随头文件的 WHO-HAS 问题消息的个数。|
+| ACount | 跟随头文件的 IS-AT 应答消息的个数。|
+| Timer | <p>计算 (以秒计算) 哪些 IS-AT 应答应被认为有效。</p><p>此字段应根据下列参数设定：</p><ul><li>Adv_Validity_Period 被推广的 well-known name 默认的有效期限。</li></ul><ul><li>Adv_Infinite_Validity_Value for a well-known name advertisement that is valid "forever", or at least until withdrawn. A zero in this field means that the sending AllJoyn router is withdrawing the advertisements.</li></ul> |
 
 ##### IS-AT message
 
