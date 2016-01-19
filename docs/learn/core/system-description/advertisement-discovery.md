@@ -1,54 +1,34 @@
-# Advertisement and Discovery
+# 推广和发现
 
-## Overview
+## 概述
 
-The AllJoyn&trade; system supports a mechanism for providers to advertise 
-their services over the AllJoyn network, and for consumers to 
-discover these services for consumption. AllJoyn supports 
-discovery over multiple underlying access networks such as Wi-Fi. 
-The AllJoyn discovery protocol makes use of IP multicast over 
-Wi-Fi for advertisement and discovery. The details of discovery 
-over underlying networks are hidden from the AllJoyn applications.
+AllJoyn&trade; 系统支持一种可被提供者用于通过 AllJoyn 网络推广服务，同时也可被消费者用于发现并消费这些服务的机制。AllJoyn 支持跨越多种底层
+接入网（例如 Wi-Fi）的发现机制。AllJoyn 发现协议的推广和发现功能使用了通过 Wi-Fi 的 IP 多播。发现机制的细节将会对 AllJoyn 应用程序隐藏。
 
-The AllJoyn router supports transport-specific discovery for 
-Wi-Fi using the IP transport.
+AllJoyn 路由支持为了使用 IP 传输的 Wi-Fi 的指定传输方式的发现机制。
 
-Applications can use one of the following methods to advertise 
-and discover services over the AllJoyn framework, detailed in 
-subsequent sections of this chapter:
+应用程序可以用下列方法中的一种，实现在 AllJoyn 框架上的推广和发现服务。细节讨论在此章节后面的部分。
 
-* Name-based discovery: Service advertisement and discovery 
-occurs either using a well-known name or unique name.
-* Announcement-based discovery: Service advertisement 
-and discovery occurs using AllJoyn interface names.
+* 基于 Name: 服务的推广和发现使用一个 well-known name 或者唯一识别符。
+* 基于 Announcement: 服务的推广和发现使用一个 well-known name 或者唯一识别符。 
 
-### Discovery enhancements in the 14.06 release
+### 14.06 版本中关于发现功能的增强
 
-The AllJoyn discovery feature was enhanced in the 14.06 
-release to enable the discovery of devices/apps that support 
-a certain set of interfaces in a more efficient way (NGNS, 
-defined earlier). NGNS supports an mDNS-based discovery 
-protocol that enables specifying AllJoyn interfaces in an 
-over-the-wire discovery message. In addition, the mDNS-based 
-protocol is designed to provide discovery responses over unicast 
-to improve performance of the discovery protocol and minimize 
-overall multicast traffic generated durign the AllJoyn discovery process. 
+AllJoyn 发现功能在 14.06 版本中有所提升，支持了通过一种更为便捷的方法（NGNS，之前定义的）来发现支持一系列接口的的设备/应用程序。 NGNS 支持
+基于 m-DNS 的发现协议，可以在一个 over-the-wire 发现消息中指定 AllJoyn 接口。另外，基于 mDNS 的协议可以提供通过单播的发现回应，以提升发现
+协议的性能，将 AllJoyn 发现进程中生成的多播交通总流量降至最低。
 
-The presence detection mechanism for AllJoyn devices/apps was 
-enhanced by adding an explicit mDNS-based ping() message that 
-is sent over unicast to determine if the remote endpoint is 
-still alive. The ping() mechanism is driven by the application 
-based on application logic.
+通过加入一个通过单播发送的明确的基于 mDNS 的 ping() 消息用来判断远端端点是否活动，目前用于 AllJoyn 设备/应用程序的的探测机制已经被加强。此
+ping() 机制由基于自身逻辑的应用程序所驱动。
 
-This chapter first describes the legacy AllJoyn discovery 
-(prior to the 14.06 release), followed by NGNS-based discovery 
-and presence as described in [NGNS message sequences][ngns-message-sequences].
+此章节首先描述了 AllJoyn 历史版本的发现机制（14.06版本之前），随后介绍了基于 NGNS 的发现机制以及当前的发现机制，参见 [NGNS 消息序列
+][ngns-message-sequences].
 
-## Legacy name-based discovery
+## 基于 name 的历史版本发现机制
 
-This section captures design for the legacy name-based 
-discovery supported prior to the 14.06 release.
+此章节捕捉了14.06版本之前的历史版本中基于 name 的发现机制设计。
 
+AllJoyn 路由支持一个 Name 服务，从而实现了基于 name 的服务发现模式。Name 服务支持一个用于通过基于 IP 接入网的发现的基于 UDP 的协议（包括 Wi-Fi）.
 The AllJoyn router supports a Name Service to enable the 
 name-based service discovery. The Name Service supports a 
 UDP-based protocol for discovery over IP-based access networks 
