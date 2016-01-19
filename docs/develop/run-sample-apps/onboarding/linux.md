@@ -1,10 +1,10 @@
-# Linux - Running Onboarding Sample Apps
+# Linux - 运行 Onboarding 样例应用程序
 
-## Running OnboardingClient and OnboardingService Apps
+## 运行 OnboardingClient 和 OnboardingService 应用程序
 
-### Prerequisites
+### 前提条件
 
-Open two terminal windows. In each, navigate to the AllJoyn&trade; root dir, then:
+打开两个命令行窗口，每一个都切换到 AllJoyn&trade; 根目录，然后：
 
 ```sh
 export AJ_ROOT=`pwd`
@@ -15,24 +15,22 @@ export TARGET_CPU=x86
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/onboarding/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/config/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/services_common/lib:$LD_LIBRARY_PATH
 ```
 
-### Run the OnboardingService Sample App
+### 运行 OnboardingService 样例应用程序
 
-In one of the terminal windows, run `OnboardingService`:
+在一方的命令行窗口中运行 `OnboardingService`:
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/onboarding/bin/OnboardingService
 ```
 
-**NOTE:** The `OnboardingService` sample app is just a shell implementation - 
-no onboarding actually occurs!
+**NOTE:** 此 `OnboardingService` 样例应用程序只是一个命令行实现 - 没有具体的 onboarding 发生。
 
-### Run the OnboardingClient Sample App
+### 运行 OnboardingClient 样例应用程序
 
-In the other terminal window, run `OnboardingClient`:
+在另一方的命令行窗口中运行 `OnboardingClient`:
 
 ```sh
 $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/onboarding/bin/OnboardingClient
 ```
 
-NOTE: The `OnboardingClient` sample app uses hard-coded Onboarding 
-values (for example, SSID, passcode, authtype).
+NOTE: 此 `OnboardingClient` 样例应用程序使用了硬编码的 onboarding 值（例如 SSID，密码，authtype）.

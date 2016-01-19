@@ -1,68 +1,38 @@
-# Advertisement and Discovery
+# 推广和发现
 
-## Overview
+## 概述
 
-The AllJoyn&trade; system supports a mechanism for providers to advertise 
-their services over the AllJoyn network, and for consumers to 
-discover these services for consumption. AllJoyn supports 
-discovery over multiple underlying access networks such as Wi-Fi. 
-The AllJoyn discovery protocol makes use of IP multicast over 
-Wi-Fi for advertisement and discovery. The details of discovery 
-over underlying networks are hidden from the AllJoyn applications.
+AllJoyn&trade; 系统支持一种可被提供者用于通过 AllJoyn 网络推广服务，同时也可被消费者用于发现并消费这些服务的机制。AllJoyn 支持跨越多种底层
+接入网（例如 Wi-Fi）的发现机制。AllJoyn 发现协议的推广和发现功能使用了通过 Wi-Fi 的 IP 多播。发现机制的细节将会对 AllJoyn 应用程序隐藏。
 
-The AllJoyn router supports transport-specific discovery for 
-Wi-Fi using the IP transport.
+AllJoyn 路由支持为了使用 IP 传输的 Wi-Fi 的指定传输方式的发现机制。
 
-Applications can use one of the following methods to advertise 
-and discover services over the AllJoyn framework, detailed in 
-subsequent sections of this chapter:
+应用程序可以用下列方法中的一种，实现在 AllJoyn 框架上的推广和发现服务。细节讨论在此章节后面的部分。
 
-* Name-based discovery: Service advertisement and discovery 
-occurs either using a well-known name or unique name.
-* Announcement-based discovery: Service advertisement 
-and discovery occurs using AllJoyn interface names.
+* 基于 Name: 服务的推广和发现使用一个 well-known name 或者唯一识别符。
+* 基于 Announcement: 服务的推广和发现使用一个 well-known name 或者唯一识别符。 
 
-### Discovery enhancements in the 14.06 release
+### 14.06 版本中关于发现功能的增强
 
-The AllJoyn discovery feature was enhanced in the 14.06 
-release to enable the discovery of devices/apps that support 
-a certain set of interfaces in a more efficient way (NGNS, 
-defined earlier). NGNS supports an mDNS-based discovery 
-protocol that enables specifying AllJoyn interfaces in an 
-over-the-wire discovery message. In addition, the mDNS-based 
-protocol is designed to provide discovery responses over unicast 
-to improve performance of the discovery protocol and minimize 
-overall multicast traffic generated durign the AllJoyn discovery process. 
+AllJoyn 发现功能在 14.06 版本中有所提升，支持了通过一种更为便捷的方法（NGNS，之前定义的）来发现支持一系列接口的的设备/应用程序。 NGNS 支持
+基于 m-DNS 的发现协议，可以在一个 over-the-wire 发现消息中指定 AllJoyn 接口。另外，基于 mDNS 的协议可以提供通过单播的发现回应，以提升发现
+协议的性能，将 AllJoyn 发现进程中生成的多播交通总流量降至最低。
 
-The presence detection mechanism for AllJoyn devices/apps was 
-enhanced by adding an explicit mDNS-based ping() message that 
-is sent over unicast to determine if the remote endpoint is 
-still alive. The ping() mechanism is driven by the application 
-based on application logic.
+通过加入一个通过单播发送的明确的基于 mDNS 的 ping() 消息用来判断远端端点是否活动，目前用于 AllJoyn 设备/应用程序的的探测机制已经被加强。此
+ping() 机制由基于自身逻辑的应用程序所驱动。
 
-This chapter first describes the legacy AllJoyn discovery 
-(prior to the 14.06 release), followed by NGNS-based discovery 
-and presence as described in [NGNS message sequences][ngns-message-sequences].
+此章节首先描述了 AllJoyn 历史版本的发现机制（14.06版本之前），随后介绍了基于 NGNS 的发现机制以及当前的发现机制，参见 [NGNS 消息序列
+][ngns-message-sequences].
 
-## Legacy name-based discovery
+## 基于 name 的历史版本发现机制
 
-This section captures design for the legacy name-based 
-discovery supported prior to the 14.06 release.
+此章节捕捉了14.06版本之前的历史版本中基于 name 的发现机制设计。
 
-The AllJoyn router supports a Name Service to enable the 
-name-based service discovery. The Name Service supports a 
-UDP-based protocol for discovery over IP-based access networks 
-(including Wi-Fi). Name-based discovery APIs are exposed 
-through the AllJoyn Core Library.
+AllJoyn 路由支持一个 Name 服务，从而实现了基于 name 的服务发现模式。Name 服务支持一个基于 UDP 的协议，用于完成通过基于 IP 的接入网（包括 Wi-Fi）的发现工作。基于 Name 的发现的 API 通过 AllJoyn 核心库被暴露。
 
-The Name Service supports IS-AT and WHO-HAS protocol messages, 
-which are described below. These protocol messages carry well-known 
-names to be advertised and discovered, respectively. These protocol 
-messages are multicast over the AllJoyn proximal network (local subnets) 
-over IANA-registered IP multicast groups and port number as 
-listed in [IANA-registered multicast addresses for the AllJoyn framework][iana-multicast-addresses].
+Name 服务支持 IS-AT 和 WHO-HAS 协议消息，在下面会有他们的描述。这些协议消息携带者将会被推广和发现的 well-known names. 协议消息通过 AllJoyn 近端网络（本地子网）被多播，使用了 IANA-registered IP 多播组以及如下所示的端口名 [IANA-registered multicast addresses for the AllJoyn framework][iana-multicast-addresses].
 
-### IANA-registered multicast addresses for the AllJoyn framework
+### 用于 AllJoyn 框架的 IANA-registered 多播地址 
 
 | Address | Port |
 |---|---|
@@ -70,186 +40,135 @@ listed in [IANA-registered multicast addresses for the AllJoyn framework][iana-m
 | IPv6 Multicast group address	| FF0X::13A |
 | Multicast port number | 9956 |
 
-The following figure captures the high-level architecture 
-for the name-based discovery, showing the Name Service 
-generating IS-AT and WHO-HAS messages for service discovery.
+下图捕捉了基于 name 发现机制的高层结构，展示了 Name 服务生成 IS-AT 和 WHO-HAS 消息的过程。
 
 ![name-based-discovery-arch][name-based-discovery-arch]
 
-**Figure:** Name-based discovery architecture
+**Figure:** 基于 Name 的发现架构
 
 ## IS-AT
 
-The IS-AT message advertises AllJoyn services using the well-known 
-name or the unique name. A single IS-AT message can include a 
-list of one or more well-known names or unique names for 
-advertisement. The IS-AT message specifies a validity period 
-for the well-known name advertisement indicated by the Adv_Validity_Period 
-config parameter.
+IS-AT 消息通过 well-known name 或者唯一识别符来推广 AllJoyn 服务。一条 IS-AT 消息可以包括包含一个或多个用于推广的 well-known names 或者唯一
+识别符的列表。IS-AT 消息通过 Adv_Validity_Period 配置参数为 well-known name 推广指定了一个有效周期。
 
-The AllJoyn router at the provider device send out IS-AT 
-message periodically over IP multicast to advertise the 
-set of services it supports. The periodicity is defined by 
-the Adv_Msg_Retransmit_Interval period which is a configurable 
-parameter on the provider.
+提供方设备上的 AllJoyn 路由通过 IP 多播周期性地发送 IS-AT 消息，用来推广自己所支持的服务。此周期由提供方上的 Adv_Msg_Retransmit_Interval 可配置参数定义。
 
-The IS-AT message can also be sent out in response to a 
-received WHO-HAS message that is looking for that advertised 
-service. This is so that the consumer device can be immediately 
-notified of the service to minimize the discovery time.
+IS-AT 消息也可以作为收到的正在寻找服务的 WHO-HAS 消息的回复被发出。借此机制，使用方设备可以被直接提醒，从而最大限度减少了发现过程的时间。
 
 ### WHO-HAS
 
-The WHO-HAS message discovers one or more AllJoyn services 
-using the well-known name or the unique name. Similar to IS-AT, 
-a WHO-HAS message can include a list of one or more well-known 
-names or unique names for discovery. The WHO-HAS message can 
-also include a well-known name prefix (instead of the complete 
-well-known name) that gets matched against the well-known name 
-being advertised in the IS-AT message. 
+WHO-HAS 消息可使用 well-known name 或者唯一识别符发现一个或多个 AllJoyn 服务。与 IS-AT 类似，一条 WHO-HAS 消息也包含带有一个或多个用于发现 的 well-known name 或者唯一识别符。WHO-HAS 消息也可以包含一个 well-known name 前缀（取代复杂的 well-known name），可与 IS-AT 消息中所推广的
+well-known name 相匹配。
 
-For example, the well-known name prefix "org.alljyon.chat" in 
-the WHO-HAS message match with the well-known name 
-"org.alljoyn.chat._123456.Joe" being advertised in the IS-AT message.
+例如，WHO-HAS 消息中的 well-known name 前缀 "org.alljyon.chat" 可以与 IS-AT 消息中推广的 "org.alljoyn.chat._123456.Joe" well-known name 相匹配。
 
-When a consumer device wants to discover a service, it sends 
-out the WHO-HAS message over IP multicast. The WHO-HAS message 
-is repeated few times to account for the possibility of a collision 
-on the Wi-Fi network that can result in dropping of the multicast packet.
+当使用方设备试图发现一个服务时，他会通过 IP 多播发送出 WHO-HAS 消息。此 WHO-HAS 消息将被重复几次，一定概率上引起 Wi-Fi 网络中 collision 的
+出现，从而导致多播包数量的减少。
 
-The following parameters determine the transmission of the WHO-HAS message:
+下列参数决定了 WHO-HAS 消息的传输模式：
 
 * Disc_Msg_Number_Of_Retries
 * Disc_Msg_Retry_Interval
 
-The WHO-HAS message is resent for Disc_Msg_Number_Of_Retries 
-times at every Disc_Msg_Retry_Interval after the first transmission 
-of the message. In response to the WHO-HAS message, a consumer 
-can get an IS-AT message advertising the requested service from the provider.
+在第一次传输后，每一个 Disc_Msg_Retry_Interval 内 WHO-HAS 消息都会被重新发送 Disc_Msg_Number_Of_Retries 次。作为 WHO-HAS 消息的回应，使用方
+可以获取一条由提供方发来的推广了被请求的服务的 IS-AT 消息。
 
-### Consumer behavior
+### 使用方行为
 
-The following figure captures the consumer side AllJoyn router 
-behavior for name-based discovery.
+下图展示了基于 name 发现机制中使用方 AllJoyn 路由的行为：
 
 ![consumer-router-discovery-behavior][consumer-router-discovery-behavior]
 
-**Figure:** Consumer AllJoyn router discovery behavior
+**Figure:** 使用方 AllJoyn 路由发现行为
 
-### Message sequence
+### 消息序列
 
-The following use cases are captured AllJoyn name-based discovery scenarios:
+在基于 Name 发现的场景中捕捉了下列用例：
 
-* Discovery when IP connectivity is already established 
-* Discovery over unreliable network
-* Discovery when IP connectivity is established late
-* Well-known name lost due to loss of IP connectivity 
-* Provider cancels well-known name advertisement
-* Consumer cancels discovery for well-known name
+* 在 IP 连接已经建立好时发现
+* 不可靠的网络环境下的发现
+* IP 连接建立延迟的发现
+* IP 连接丢失导致的 WKN 丢失
+* 提供方取消推广 well-known name
+* 使用方取消发现 well-known name
 
-#### Discovery when IP connectivity is already established
+#### 在 IP 连接已经建立好时发现
 
-The following figure shows the message sequence for a typical 
-discovery scenario of an AllJoyn service well-known name. 
-In this case, the provider and consumer devices already have 
-IP connectivity established between them. The first WHO-HAS 
-message delivered over IP multicast reaches the provider device 
-which immediately responds with an IS-AT message.
+下图展示了一个在典型的发现场景中的 AllJoyn 服务 well-known name 的消息序列。在此例中，提供方和使用方设备已经建立了 IP 连接。第一条 WHO-HAS
+消息通过 IP 多播已经被传输到提供方设备上，提供方设备随即回复了一条 IS-AT 消息。
 
 ![typical-discovery-wkn][typical-discovery-wkn]
 
-**Figure:** Typical discovery of a well-known name
+**Figure:** 典型的 well-known name 发现
 
-#### Discovery over unreliable network
+#### 不可靠的网络环境下的发现
 
-The following figure shows the message sequence for the 
-discovery scenario of an AllJoyn service's well-known name 
-when the underlying network drops some of the multicast 
-WHO-HAS messages. In this case, the WHO-HAS retry mechanism 
-kicks in and the message is retried based on Disc_Msg_Number_Of_Retries 
-and Disc_Msg_Retry_Interval parameters.
+下图展示了在一个底层网络漏掉了一些多播的 WHO-HAS 消息的发现场景中，AllJoyn 服务 well-known name 的消息序列。在这种情况下，WHO-HAS retry 机
+制将被触发，消息将根据 Disc_Msg_Number_Of_Retries 和 Disc_Msg_Retry_Interval parameters 两参数来执行重发操作。
 
-![discovery-unreliable-network][discovery-unreliable-network]
+![不可靠网络环境下的发现][discovery-unreliable-network]
 
-**Figure:** Discovery over unreliable network
+**Figure:** 不可靠的网络环境下的发现
 
-#### Discovery when IP connectivity is established late
+#### IP 连接建立延迟的发现
 
-The following figure shows the message sequence for the 
-discovery scenario when the consumer device gets connected 
-to the Access Point (AP) in the AllJoyn proximal network late, 
-after it has completed transmission of set of WHO-HAS messages. 
-This can happen when the consumer device just joins a new 
-AllJoyn proximal network. The subsequent IS-AT message is 
-received by the consumer AllJoyn router and results in 
-FoundAdvertiseName for the requested well-known name.
+下图展示了在使用方发送完 WHO-HAS 消息之后，连接到 AllJoyn 的近端网络 AP 已延迟的场景中，AllJoyn 服务 well-known name 的消息序列。这种情况在
+使用方设备刚刚进入一个新的 AllJoyn 近端网络时可能会发生。子网的 IS-AT 消息已经被使用方的 AllJoyn 路由接收到，并导致了被请求 well-known name
+的 FoundAdvertiseName.
+
+
 
 ![discovery-late-ip-connectivity][discovery-late-ip-connectivity]
 
-**Figure:** Discovery when IP connectivity is established late
+**Figure:** IP 连接建立延迟的发现
 
-#### WKN lost due to loss of IP connectivity
+#### IP 连接丢失导致的 WKN 丢失。
 
-The following figure shows the message sequence for the 
-scenario when the discovered well-known name gets lost due 
-to the consumer losing IP connectivity with the AllJoyn 
-proximal network. This can happen when a consumer device 
-leaves the AllJoyn proximal network. 
+下图展示了在使用方丢失与 AllJoyn 近端网络热点的 IP 连接所导致的 well-known name 丢失的场景中，AllJoyn 服务 well-known name 的消息序列。在使
+用方设备离开 AllJoyn 近端网络时可能会发生这种情况。
 
-If the consumer's AllJoyn router does not receive any IS-AT 
-messages for a given well-known name for the Adv_Validity_period 
-time duration, it declares that well-known name to be lost and 
-initiates a LostAdvertiseName for that well-known name.
+如果使用方的 AllJoyn 路由在 Adv_Validity_period 时间内没有收到任何给定 well-known name 的 IS-AT 消息，他将宣布 well-known name 丢失，并生成
+一个针对此 well-known name 的 LostAdvertiseName.
 
 ![wkn-lost-ip-connectivity][wkn-lost-ip-connectivity]
 
-**Figure:** Well-known name lost due to loss of IP connectivity
+**Figure:** IP 连接丢失导致的 WKN 丢失
 
-#### Provider cancels well-known name advertisement
+#### 提供方取消推广 well-known name
 
-The following figure shows the message sequence for the scenario 
-when a provider application cancels the advertisement for a 
-previously advertised well-known name.
+下图展示了在提供方应用程序取消了对之前的一个 well-known name 的推广的场景中，AllJoyn 服务 well-known name 的消息序列。
 
 ![provider-cancels-wkn-advertisement][provider-cancels-wkn-advertisement]
 
-**Figure:** Provider cancels well-known name advertisement
+**Figure:** 提供方取消推广 well-known name
 
-##### Consumer cancels discovery for well-known name
-The following figure shows the message sequence for the 
-scenario when a consumer application cancels discovery for a well-known name.
+##### 使用方取消发现 well-known name
+
+下图展示了在使用方应用程序取消了对 well-known name 的发现的场景中，AllJoyn 服务 well-known name 的消息序列。
 
 ![consumer-cancels-wkn-discovery][consumer-cancels-wkn-discovery]
 
-**Figure:** Consumer cancels discovery for well-known name
+**Figure:** 使用方取消发现 well-known name
 
-#### Message structure
+#### 消息结构
 
-As described above, the Name Service supports IS-AT and 
-WHO-HAS messages. These messages get embedded in a higher-level 
-Name Service message which provides the flexibility to include 
-both IS-AT and WHO-HAS messages in the same Name Service message. 
-This can be useful if an AllJoyn application acts as both provider 
-(advertising a well-known name) and a consumer (looking to 
-discover a well-known name). 
+如前所述，Name 服务支持 IS-AT 和 WHO-HAS 消息。这些消息在一个更高层级的 Name 服务消息中被嵌入，将 Name 服务消息可以将 IS-AT 和 WHO-HAS 消息纳入同一个 Name 服务消息中，从而提供了灵活性。当 AllJoyn 应用程序同时作为提供方（推广 well-known name） 和使用方（发现 well-known name）时，这将会非常有用。
 
-The following figure shows the Name Service message structure. 
-[Name Service message structure fields][name-service-message-structure-fields] 
-defines the message structure fields.
+下图展示了 Name 服务的消息结构。[Name Service message structure fields][name-service-message-structure-fields] 定义了消息结构字段。
 
 ![name-service-message-structure][name-service-message-structure]
 
-**Figure:** Name service message structure
+**Figure:** Name 服务消息结构
 
-##### Name Service message structure fields
+##### Name 服务消息结构字段
 
-| Field | Description |
+| 字段 | 描述 |
 |---|---|
-| Sver | Version of the latest implemented the AllJoyn discovery protocol for the sender. |
-| MVer | Version of Name Service message. |
-| QCount | Number of WHO-HAS question messages that follow the header. |
-| ACount | Number of IS-AT answer messages that follow the header. |
-| Timer | <p>Count (in seconds) for which included IS-AT answer should be considered valid.</p><p>This field should be set based on the following:</p><ul><li>Adv_Validity_Period for a well-known name advertisement that is valid for a default period of time.</li></ul><ul><li>Adv_Infinite_Validity_Value for a well-known name advertisement that is valid "forever", or at least until withdrawn. A zero in this field means that the sending AllJoyn router is withdrawing the advertisements.</li></ul> |
+| Sver | 发送端最新实现的 AllJoyn 发现协议的版本。|
+| MVer | Name 服务消息的版本。|
+| QCount | 跟随头文件的 WHO-HAS 问题消息的个数。|
+| ACount | 跟随头文件的 IS-AT 应答消息的个数。|
+| Timer | <p>计算 (以秒计算) 哪些 IS-AT 应答应被认为有效。</p><p>此字段应根据下列参数设定：</p><ul><li>Adv_Validity_Period 被推广的 well-known name 默认的有效期限。</li></ul><ul><li>Adv_Infinite_Validity_Value for a well-known name advertisement that is valid "forever", or at least until withdrawn. A zero in this field means that the sending AllJoyn router is withdrawing the advertisements.</li></ul> |
 
 ##### IS-AT message
 
