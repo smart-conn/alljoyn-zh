@@ -1,5 +1,14 @@
 # alljoyn-zh
 
+## 0119 待审阅文章
+
+* [ ] [docs/develop/run-sample-apps/onboarding/linux.md](docs/develop/run-sample-apps/onboarding/linux.md)
+* [ ] [docs/develop/run-sample-apps/test/index.md](docs/develop/run-sample-apps/test/index.md)
+* [ ] [docs/develop/run-sample-apps/test/sessions.md](docs/develop/run-sample-apps/test/sessions.md)
+* [ ] [docs/develop/run-sample-apps/index.md](docs/develop/run-sample-apps/index.md)
+* [ ] [docs/learn/core/about-announcement/interface.md](docs/learn/core/about-announcement/interface.md)
+* [ ] [docs/learn/core/system-description/advertisement-discovery.md](docs/learn/core/system-description/advertisement-discovery.md)
+
 ## 0118 待审阅文章
 
 * [ ] [docs/learn/core/system-description/sessionless-signal.md](docs/learn/core/system-description/sessionless-signal.md)
