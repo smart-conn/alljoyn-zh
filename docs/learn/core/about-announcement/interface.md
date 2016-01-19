@@ -1,78 +1,54 @@
-# About Feature Interface Definitions About功能接口定于
+# About功能接口定义
 
-## Release History 发布历史
+## 发布历史
 
-To access a previous version of this document, click the release version link below.
 点击下方发行版本连接来获取该文档的历史版本。
 
-|Release version | Date | What changed |
+|版本号 | 日期 | What changed |
 |---|---|---|
 |[14.02][about-14.02] | 2/28/2014 | 首个 About 接口被加入|
 |14.06 | 6/30/2014 | 无更新。 |
-|14.06 Update 1 | 9/29/2014 | <ul><li>更新了文档标题和 Overview 的章节标题。(从规范改成定义)</li><li为了方便版本追踪，在文档标题中加入版本号。</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.在Definition Overview中加入一个说明来提出 AllSeen Alliance Compliance Certification。</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.添加一个强制列，用来存放支持AllSeen Alliance Compliance and Certification 程序的方法和信号参数</li></ul> |
-|14.12 | 12/17/2014 | <ul><li>把 DeviceName 从要求改成了不要求</li><li>加入了一个指定 AppID 必须为 RFC 4122 中指定的 128－bit UUID 的验证</li><li>使对于方法和信号的要求更加明确</li><li>Icon interface was added. The icon interface has been part of AllJoyn&trade; and the About Feature since 14.02; however, the interface definition documentation was not added until 14.12.引入图标接口。图标接口已经是 AllJoyn&trade; 和 14.02 版本之后的 About 功能的一部分。然而，直到 14.12版本，它的接口定义文档才被加入。</li></ul> |
+|14.06 Update 1 | 9/29/2014 | <ul><li>更新了文档标题和 Overview 的章节标题。(从规范改成定义)</li><li为了方便版本追踪，在文档标题中加入版本号。</li><li>在Definition Overview中加入一个说明来提出 AllSeen Alliance Compliance Certification。</li><li>添加一个强制列，用来存放支持AllSeen Alliance Compliance and Certification 程序的方法和信号参数</li></ul> |
+|14.12 | 12/17/2014 | <ul><li>把 DeviceName 从要求改成了不要求</li><li>加入了一个指定 AppID 必须为 RFC 4122 中指定的 128－bit UUID 的验证</li><li>使对于方法和信号的要求更加明确</li><li>引入图标接口。图标接口已经是 AllJoyn&trade; 和 14.02 版本之后的 About 功能的一部分。然而，直到 14.12版本，它的接口定义文档才被加入。</li></ul> |
 
 ## Definition Overview
 
-The About interface is to be implemented by an application 
-on a target device. This interface allows the app to advertise 
-itself so other apps can discover it. The following figure 
-illustrates the relationship between a client app and a service app.
 About 接口是由应用在目标设备上执行。此接口允许应用程序发出广播，使其他应用程序可以发现它。下图说明了客户端应用和服务应用之间的关系。
 
 ![about-arch][about-arch]
 
 **Figure:** 在AllJoyn&trade; 架构内的 About 功能结构。
 
-**NOTE:** All methods and signals are considered mandatory to 
-support the AllSeen Alliance Compliance and Certification program. 
-**注意:** 所有方法和信号都被认为强制支持AllSeen Alliance Compliance and Certification program. 
-## Discovery 发现
+**NOTE:**  所有方法和信号都被认为强制支持AllSeen Alliance Compliance and Certification program. 
 
-A client can discover the app via an announcement which is a 
-sessionless signal containing the basic app information like 
-app name, device name, manufacturer, and model number. The 
-announcement also contains the list of object paths and service 
-framework interfaces to allow the client to determine whether 
-the app provides functionality of interest.
+## 发现
+
 客户端可以通过 annoucement 发现应用程序。annoucement 是一种包含了如应用名称，设备名称，制造商和型号的一种 sessionless signal。annoucement 也包含了对象路径和服务架构接口的列表，这些内容使得客户端能够确定应用程序是否提供了感兴趣的功能。
 
-In addition to the sessionless announcement, the About interface 
-also provides the
-on-demand method calls to retrieve all the available metadata 
-about the app that are not sessionless announcement  published in the announcement.
+
 除了 sessionless announcement 之外，About 接口也提供了基于需求的方法调用，以检索程序的可用元数据。这些元数据不是在 annoucement 中公开发布的 sessionless annoucement。
 
-## Discovery Call Flows 
+## 发现流程
 
-### Typical discovery flow 典型 discovery flow
+###  典型的发现流程
 
-The following figure illustrates a typical call flow for a client 
-to discover a service app. The client merely relies on the 
-sessionless announcement to decide whether to connect to the 
-service app to use its service framework offering.
 下图展示了客户端发现服务应用程序的典型 call flow。客户端仅仅依靠 sessionless announcemnt 就可以判断出是否连接某一服务应用程序并使用它所以提供的服务架构。
 
 ![about-typical-discovery][about-typical-discovery]
 
-**图:** 典型 discovery flow (客户端发现服务应用程序)
+**图:** 典型发现流程 (客户端发现服务应用程序)
 
-### Nontypical discovery flow 非典型 discovery flow
+### 非典型发现流程
 
-The following figure illustrates a call flow for a client to 
-discover a service app and make a request for more detailed information.
-下图展示了客户端发现一个服务应用程序并且要求更多详细信息的 call flow。
+下图展示了客户端发现一个服务应用程序并且要求更多详细信息的流程。
 
 ![about-nontypical-discovery][about-nontypical-discovery]
 
-**图:** Nontypical discovery call flow 非典型 discovery call flow
+**图:** 非典型流程
 
-## Error Handling 错误处理
+## 错误处理
 
-The method calls in the About interface will use the AllJoyn 
-error message handling feature (ER_BUS_REPLY_IS_ERROR_MESSAGE) 
-to set the error name and error message.
-About 接口中的方法调用需要用到 AllJoyn 错误处理功能来设置错误名称和错误信息。
+About 接口中的方法调用需要用到 AllJoyn 错误处理功能 (ER_BUS_REPLY_IS_ERROR_MESSAGE) 来设置错误名称和错误信息。
 
 | 错误名称 | 错误信息 |
 |---|---|
@@ -92,26 +68,24 @@ About 接口中的方法调用需要用到 AllJoyn 错误处理功能来设置�
 
 ### Methods 方法
 
-The following methods are exposed by a BusObject that implements 
-the `org.alljoyn.About` interface.
 以下 methods 由提供 `org.alljoyn.About` 接口的 BusObject 发布。
 
 
 #### `a{sv} GetAboutData('s')`
 
-**Message arguments** **Message 参数** 
+**Message 参数** 
 
 |Argument | 参数名称 | 签名 | 有效值 | 描述 |
 |:---:|---|:---:|---|---|
 | 0 | `languageTag` | `s` | IETF language tags specified by [RFC 5646](http://tools.ietf.org/html/rfc5646). | 所需语言 |
 
-**Reply arguments** **Reply 参数**
+**Reply 参数**
 
 |Argument | Parameter name | Return signature | Description |
 |:---:|---|:---:|---|
 | 0 | `AboutData` | `a{sv}` | 可用的元数据字段的字典。如果不指定语言标签， (如, ""), 将返回基于默认语言的元数据字段。|
 
-**Error reply** **Error 回复**
+**Error 回复**
 
 |Error | 描述 |
 |---|---|
@@ -119,16 +93,11 @@ the `org.alljoyn.About` interface.
 
 **Description** **描述**
 
-Retrieve the list of available AboutData fields based on the language tag. see [About data interface fields][about-data-interface-fields]
-检索可用的基于语言标签的 AboutData 字段列表。
+基于语言标签检索 AboutData 可用的字段列表。参见 [About data interface fields][about-data-interface-fields]
 
-##### About data interface fields About 数据接口字段
+##### 数据接口字段
 
-The following table lists the names of the metadata fields. 
-The fields with a yes value in the Announced column will also 
-be published via the Announce signal. See [Signals][signals] 
-for more information.
-下表列出了元数据字段的名称。在 Annouced 栏值为 yes 的字段，也会被 Announce 信号公开发布。
+下表列出了元数据字段的名称。在 Annouced 栏值为 yes 的字段，也会被 Announce 信号公开发布。具体信息参见 [信号][signals].
 
 | 字段名称| 是否强制 | 是否本地化 | 签名 | 描述 |
 |---|:---:|:---:|:---:|:---:|---|
@@ -149,16 +118,16 @@ for more information.
 
 #### `a(oas) GetObjectDescription()`
 
-**Message arguments** **Message 参数**
+**Message 参数**
 None.
 
-**Reply arguments** **Reply 参数**
+**Reply 参数**
 
 |argument | 参数名 | 返回签名 | 描述 |
 |:---:|---|:---:|---|
 | 0 | `objectDescription` | `a(oas)` |  返回对象路径的列表和每个对象提供的支持接口列表。|
 
-**Description** **描述**
+**描述**
 
 检索对象路径和每个对象提供的接口列表。
 
@@ -173,7 +142,7 @@ The following signals are emitted by a BusObject that implements the
 Announce signal is a Sessionless signal
 Announce signal 是 Sessionless signal。
 
-**Message arguments** **Message 参数** 
+**Message 参数** 
 
 |Argument | 参数名| 签名 | 有效值 | 描述 |
 |:---:|---|:---:|---|---|
@@ -227,19 +196,18 @@ Announce signal 是 Sessionless signal。
 
 #### `s GetUrl()`
 
-**Message arguments** **Message 参数**
+**Message 参数**
 
-None.无。
+无。
 
-**Reply arguments** **Reply 参数**
+**Reply 参数**
 
 |Argument | 参数名称 | 返回签名| 描述 |
 |:---:|---|:---:|---|
 | 0 | `url` | `s` | 当图标保存在云上时的 URl。 |
 
-**Description** **描述** 
+**描述** 
 
-Retrieve the URL of the icon if the icon is hosted on the cloud.
 检索当图标保存在云上时的 URL。
 
 #### `ay GetContent()`
@@ -250,9 +218,9 @@ Retrieve the URL of the icon if the icon is hosted on the cloud.
 
 ### Signals
 
-None.无。
+无。
 
-## AllJoyn Introspection XML
+## AllJoyn 内省 XML
 
 ```xml
 <node name="/About/DeviceIcon"
