@@ -168,290 +168,211 @@ well-known name 相匹配。
 | MVer | Name 服务消息的版本。|
 | QCount | 跟随头文件的 WHO-HAS 问题消息的个数。|
 | ACount | 跟随头文件的 IS-AT 应答消息的个数。|
-| Timer | <p>计算 (以秒计算) 哪些 IS-AT 应答应被认为有效。</p><p>此字段应根据下列参数设定：</p><ul><li>Adv_Validity_Period 被推广的 well-known name 默认的有效期限。</li></ul><ul><li>Adv_Infinite_Validity_Value for a well-known name advertisement that is valid "forever", or at least until withdrawn. A zero in this field means that the sending AllJoyn router is withdrawing the advertisements.</li></ul> |
+| Timer | <p>计算 (以秒计算) 哪些 IS-AT 应答应被认为有效。</p><p>此字段应根据下列参数设定：</p><ul><li>Adv_Validity_Period 被推广的 well-known name 默认的有效期限。</li></ul><ul><li>Adv_Infinite_Validity_Value 指示着一个永久有效的 well-known name 推广，或者至少在被回收前
+有效。如果此项为0，则指示着发送方的 AllJoyn 路由正在回收此推广。</li></ul> |
 
-##### IS-AT message
+##### IS-AT 消息
 
-The following figure shows version 1 of the IS-AT message. 
+下图展示了 IS-AT 消息的第一版
 
-[IS-AT message format version 1 fields][is-at-message-format-v1-fields] 
-defines the IS-AT message fields
+[IS-AT message format version 1 fields][is-at-message-format-v1-fields]  定义了 IS-AT 消息字段。
 
 ![is-at-message-format-v1][is-at-message-format-v1]
 
-**Figure:** IS-AT message format (version 1)
+**Figure:** IS-AT 消息格式 (版本 1)
 
-##### IS-AT message format version 1 fields
+##### IS-AT 消息格式版本 1 字段
 
-| Field | Description |
+| 字段 | 描述 |
 |---|---|
-| R4 Bit | If set to '1', the R4 bit indicates that the IPv4 endpoint (IP address and port) of a reliable transport (TCP) is present. |
-| U4 Bit | If set to '1', the U4 bit indicates that the IPv4 endpoint (IP address and port) of an unreliable transport (UDP) is present. |
-| R6 Bit | If set to '1', the R6 bit indicates that the IPv6 endpoint (IP address and port) of a reliable transport (TCP) is present. |
-| U6 Bit | If set to '1', the U6 bit indicates that the IPv6 endpoint (IP address and port) of an unreliable transport (UDP) is present. |
-| C Bit | If set to '1', the C bit indicates that the list of StringData records is a complete list of all well-known names exported by the responding AllJoyn router. |
-| G Bit | If set to '1', the G bit indicates that a variable length daemon GUID string is present. |
-| M | Message type of the IS-AT message. Defined to be '01' (1) for IS-AT. |
-| Count | Number of StringData items that are included in the IS-AT message. |
-| TransportMask | Bit mask of transport identifiers that indicates which AllJoyn transport is making the advertisement. |
-| StringData | Describes a single AllJoyn well-known name being advertised. |
+| R4 Bit | 如果设置为 '1',  R4 bit 指示着将会呈现一个端点使用 IPv4 （IP 地址和端口号）的可靠传输（TCP）. |
+| U4 Bit | 如果设置为 '1',  U4 bit 指示着将会呈现一个端点使用 IPv4 （IP 地址和端口号）的不可靠传输（UDP）. |
+| R6 Bit | 如果设置为 '1',  R6 bit 指示着将会呈现一个端点使用 IPv6 （IP 地址和端口号）的可靠传输（TCP）. |
+| U6 Bit | 如果设置为 '1',  U4 bit 指示着将会呈现一个端点使用 IPv6 （IP 地址和端口号）的不可靠传输（UDP）. |
+| C Bit | 如果设置为 '1', C bit 指示着 StringData 记录列表是一个由所有被回应方 AllJoyn 路由输出的 well-known names 构成的完整列表。|
+| G Bit | 如果设置为 '1', G bit 指示着将会呈现一个可变长度的 daemon GUID 字符串。 |
+| M | 指示 IS-AT 消息的类型。对于 IS-AT，此项被定义为 '01' (1) 。|
+| Count | IS-AT 消息中所包含的 StringData 项目的个数。 |
+| TransportMask | 传送提示符的比特掩码，指示着哪一个 AllJoyn 传输正在执行推送。 |
+| StringData | 描述一个正在被推广的 AllJoyn well-known name. |
 
-##### WHO-HAS message
+##### WHO-HAS 消息
 
-The following figure shows version 1 of the WHO-HAS message. 
+下图展示了 WHO-HAS 消息的第一版
 
-[WHO-HAS message format version 1 fields][who-has-message-format-fields] defines the 
-WHO-HAS message fields.
+
+[WHO-HAS message format version 1 fields][who-has-message-format-fields] 定义了 WHO-HAS 消息的字段
 
 ![who-has-message-format-v1][who-has-message-format-v1]
 
-**Figure:** WHO-HAS message format (version 1)
+**Figure:** WHO-HAS 消息格式 (版本 1)
 
-##### WHO-HAS message format version 1 fields
+##### WHO-HAS 版本 1 消息格式字段
 
-| Field | Description |
+| 字段 | 描述 |
 |---|---|
-| Reserved | Reserved bits. |
-| M | Message type of the WHO-HAS message.  Defined to be '10' (2) for WHO-HAS. |
-| Count | Number of StringData items that are included in the WHO-HAS message. |
-| StringData | Describes a single AllJoyn well-known name that the consumer AllJoyn router is interested in. |
+| Reserved | 保留位 |
+| M | WHO-HAS 消息的类型。  对于 WHO-HAS 此项被定义为 '10' (2) 。|
+| Count | WHO-HAS 消息中所包含的 StringData 项目的个数。|
+| StringData | 描述使用方 AllJoyn 路由感兴趣的一个 AllJoyn well-known name.|
 
-### Legacy announcement-based discovery
+### 历史版本的 announcement-based 发现
 
-This section captures design for the legacy announcement-based 
-discovery supported prior to the 14.06 release.
+此章描述了14.06及以前历史版本中关于基于 announcment 的发现的设计。
 
-In the announcement-based discovery, the provider device 
-announces the set of AllJoyn interfaces supported via an 
-announcement broadcast signal. The consumer device interested 
-in making use of the AllJoyn services opts to receive these 
-broadcast announcement messages from providers to discover 
-the interfaces for the supported AllJoyn services. 
+在基于 announcement 的发现中，提供方设备通过一个 announcment 广播信号来宣布被支持的 AllJoyn 接口。对使用 AllJoyn 服务有兴趣的使用方设备可以
+选择接受这些来自提供方的广播 announcement 消息，以发现被支持的 AllJoyn 服务的接口。
 
-The Announcement message is generated by the About feature 
-and is delivered as an AllJoyn sessionless signal using the 
-sessionless signal mechanism provided by the AllJoyn router 
-(detailed [Sessionless Signal][sessionless-signal]). The sessionless signal module makes 
-use of the AllJoyn name service messages (IS-AT and WHO-HAS) 
-to notify the consumer of new signals using a specially 
-formatted well-known name for the sessionless signal. Once the 
-consumer AllJoyn router discovers the sessionless signal's 
-well-known name, it connects back to the provider over an 
-AllJoyn session to fetch the service announcement message 
-from the provider device.
+Announcment 消息又 About 功能生成，并使用 AllJoyn 路由提供的非会话信号机制（详见 [Sessionless Signal][sessionless-signal]）被当作一个 AllJoyn 非会话信号发送。此非会话信号模型使用 AllJoyn name 服务消息（IS-AT 和 WHO-HAS），和为非会话信号指定格式的 well-known names 对使用方 作出有新信号的提醒。一旦使用方的 AllJoyn 路由发现了此非会话信号的 well-known name, 他将会通过 AllJoyn 会话连接到此提供方，并获取提供方设备
+的服务宣布消息。
 
-The following figure captures the high-level architecture 
-for the announcement-based discovery process.
+下图展示了基于 announcement 的发现进程的高层结构。
 
 ![announcement-service-discovery-arch][announcement-service-discovery-arch]
 
-**Figure:** Announcement-based service discovery architecture
+**Figure:** 基于 announcement 的服务发现结构
 
-The Announcement message is sent as a sessionless signal 
-from the provider app to the AllJoyn router, and gets cached 
-in the sessionless signal cache. The sessionless signal module 
-generates a specially formatted well-known name for the 
-sessionless signal as shown below (see details in [Sessionless Signal][sessionless-signal]):
+Announcement 消息被作为一个非会话信号从提供方应用程序发送到 AllJoyn 路由，并在非会话信号缓存中被缓存。此非会话信号模块会为非会话信号生成一
+个特定格式的 well-known name，如下所示（详见[Sessionless Signal][sessionless-signal]）：
 
 ```
 SLS WKN format: org.alljoyn.sl.x<GUID>.x<change_id>
 ```
 
-The sessionless signal module interacts with the Name Service 
-to send an IS-AT message for that well-known name. The AllJoyn 
-router on the consumer side is looking to discover this well-known 
-name. Upon receiving the IS-AT message, the sessionless signal 
-module on the consumer side connects back to the sessionless 
-signal module on the provider via an AllJoyn session and fetches 
-the Announcement message which then gets delivered to the consumer app.
+此非会话信号模块与 Name 服务进行交互，发送给定 well-known name 的 IS-AT 消息。在使用方上的 AllJoyn 路由开始对此 well-known name 进行发现。
+根据收到的 IS-AT 消息，在使用方上的非会话信号会通过 AllJoyn 会话连接到提供方的非会话信号模块上，并接收 Announcement 消息，这些 Announcenemt
+消息随后会被送至使用方应用程序。
 
-#### Message sequence
 
-The following figure shows the message sequence for the announcement-based discovery.
+#### 消息序列
+
+下图展示了基于 Announcement 发现中的消息序列
 
 ![announcement-service-discovery][announcement-service-discovery]
 
-**Figure:** Announcement-based service discovery message sequence
+**Figure:** 基于 Announcement 发现中的消息序列
 
-#### Announcement message
+#### Announcement 消息
 
-The Announcement message provides a list of object paths for 
-objects implemented by the AllJoyn application and AllJoyn 
-interfaces supported by each of those objects. The AllJoyn 
-application controls which objects get announced in the Announcement message. 
+此 Announcement 消息提供一个对象路径的列表，来自被 AllJoyn 应用程序所实现的对象和这些对象支持的接口。此 AllJoyn 应用程序决定在 Announcement
+消息中有哪些对象被宣布。
 
-The Announcement message also contains additional About fields 
-describing information about the application and the device. 
-See the About HLD for Announcement message details.
+此 Announcementt 消息还包含用于描述应用程序和设备信息的附加 About 字段。详情参见 About HLD. 
 
-### Legacy AllJoyn discovery configuration parameters
+### 历史版本的 AllJoyn 发现功能的配置参数
 
-[AllJoyn discovery configuration parameters][alljoyn-discovery-config-params] captures 
-configuration parameter for legacy AllJoyn discovery.
+[AllJoyn discovery configuration parameters][alljoyn-discovery-config-params] 展示了历史 AllJoyn 发现过程中的配置参数。
 
-**NOTE:** Implementation may use different names for these parameters.
+**NOTE:** 具体实现中这些参数可能有不同的名字。
 
-#### AllJoyn discovery configuration parameters
+#### AllJoyn 发现配置参数
 
-| Parameter | Default value | Range | Description |
+| Parameter | 默认值 | 范围 | 描述 |
 |---|---|---|---|
-| Adv_Validity_Period | 120 seconds | TBD | Validity period used for IS-AT advertisements. |
-| Adv_Infinite_Validity_Value | 255 | TBD | Time value for indicating that an advertisement is valid forever. |
-| Adv_Msg_Retransmit_Interval |	40 seconds | TBD | Interval in seconds for sending out IS-AT messages. |
-| Disc_Msg_Number_Of_Retries | 2 | TBD | Number of times the WHO-HAS message is sent after the first transmission. |
-| Disc_Msg_Retry_Interval | 5 seconds | TBD | Interval in seconds between retries of the WHO-HAS message. |
+| Adv_Validity_Period | 120 seconds | TBD | IS-AT 推广的有效时限。 |
+| Adv_Infinite_Validity_Value | 255 | TBD | 此值指示一个永久有效的推广消息。 |
+| Adv_Msg_Retransmit_Interval |	40 seconds | TBD | 发送 IS-AT 消息的间歇时间（以秒计算）。 |
+| Disc_Msg_Number_Of_Retries | 2 | TBD | 第一次传输之后，WHO-HAS 消息被发送的次数。 |
+| Disc_Msg_Retry_Interval | 5 seconds | TBD | 重新发送 WHO-HAS 消息的等待时间（以秒计算）。 |
 
-### Next-generation name service
+### 下一代 Name 服务
 
-The Next-Generation Name Service (NGNS) is implemented in the 
-14.06 release and offers considerable performance enhancements 
-for discovery and presence features offered by the AllJoyn platform, 
-detailed in the subsequent relevant sections. 
+下一代 Name 服务（NGNS）在14.06之后的版本中被实现，在 AllJoyn 平台提供的发现和 presence 功能方面带来了明显的性能提升，下文有详细说明。
 
-The following figure shows the high-level architecture for NGNS.
+下图展示了 NGNS 的高层结构。
 
 ![ngns-high-level-arch][ngns-high-level-arch]
 
-**Figure:** NGNS high-level architecture
+**Figure:** NGNS 高层结构
 
-The architecture shows main logical components related 
-to NGNS. The enhanced discovery and presence functionality 
-are exposed via new APIs as part of the AllJoyn core library. 
-The About functionality is included in the AllJoyn core library, 
-and enables an AllJoyn app to send Announcement sessionless signals. 
-The sessionless signal module caches the Announcement signal. 
-The NGNS module uses information in the Announcement signal 
-to answer interface-based discovery queries received from consumer apps.
+此结构展示了关于 NGNS 的主要逻辑组件。增强版的发现和 presence 功能通过新的 API 被暴露，并作为 AllJoyn 核心库的一部分。About 功能也被包含在
+核心库中，并允许 AllJoyn 应用程序发送 Announcement 非会话信号。非会话信号模块将 Announcement 信号缓存。NGNS 模块使用 Announcement 信号的信
+息来应答从使用方应用程序发来的基于接口的发现请求。
 
-#### Discovery
+#### 发现
 
-The AllJoyn framework offers name-based discovery or announcement-based 
-discovery as mentioned earlier in this chapter. NGNS supports 
-the following discovery mechanisms:
+如上文所述，AllJoyn 框架提供基于 name 的发现或基于 announcement 的发现。NGNS 支持下列发现机制：
 
-* NGNS supports name-based discovery. Although there is no change 
-at the API level, the discovery utilizes DNS service discovery 
-framework over mDNS. NGNS sends out legacy (pre-14.06 release) 
-discovery messages as per the configuration setting in the 
-AllJoyn router config file for compatibility.
-* NGNS supports a more efficient announcement-based discovery 
-process by allowing a consumer application to query for a set 
-of AllJoyn interfaces. Prior to the 14.06 release, the consumer 
-application had to create match rules to receive all Announce 
-signals (transmitted as sessionless signals), and parse through 
-the set of AllJoyn interfaces that the provider application is 
-announcing prior to making a determination if any interfaces of 
-interest are provided. While this mechanism is more powerful 
-than the well-known name-based mechanism, it was not efficient. 
-The NGNS feature allows a consumer application to query for 
-the set of AllJoyn interfaces, and only the provider applications 
-that make use of those interfaces answer the query.
+* NGNS 支持基于 name 的发现。尽管在 API 层并无变化，此发现机制使用通过 mDNS 的 DNS 服务发现框架。NGNS 根据 AllJoyn 路由中的配置文件发送历史
+版本的（14.06以前的版本）发现消息，以实现兼容。 
+* NGNS 支持一套更有效的基于 announcement 的发现进程，支持使用方应用程序向多个 AllJoyn 接口发送请求。在14.06版本之前，使用方不得不创建匹配规
+则以接收所有的 Announce 信号（作为非会话信号被传输），并在作出哪些自己感兴趣的接口被提供的决定之前将提供方应用程序宣布的所有 AllJoyn 接口解
+析。此机制虽然比基于 well-known name 的机制更加强大，但不够有效率。NGNS 功能运行一个使用方应用程序向多个 AllJoyn 接口发出请求，只有使用同样
+接口的提供方应用程序需要应答。
 
-#### Presence detection
 
-Prior to the 14.06 release, presence (or absence) detection 
-was based on three successive IS-AT messages missing for a 
-given name (well-known or unique name) by the consumer application. 
-The time taken for this detection was deterministic (3*40 sec = 120 sec). 
+#### 存在检测
 
-The use of NGNS in the 14.06 release introduces an efficient 
-consumer application-driven presence detection that makes use 
-of unicast messaging. Once a name has been discovered, the 
-consumer application can invoke the new Presence API and determine 
-the presence state. Since each application has its own logic 
-regarding times and events triggering presence detection, NGNS 
-provides the API and leaves the triggering logic for the application to drive.
+在 14.06 版本以前，存在（或者缺席）检测使用的机制通过由使用方应用程序指定 name （well-known name 或唯一识别符）的三条连续的 IS-AT 消息丢失
+来判断的。这种检测所花费的时间是固定的（3*40 sec = 120 sec）.
 
-#### NGNS design aspects
+在 14.06 版本中使用的 NGNS 机制引入了一套更有效率的存在检测机制，此机制由使用方应用程序驱动，并使用了单播消息。一旦 name 已经被发现，使用方
+应用程序即可调用新的 Presence API 并判断存在状态。由于每个应用程序在存在检测被触发的时间和事件方面都有自己的逻辑，NGNS 仅仅提供了 API，将具
+体的触发逻辑留给应用程序驱动。
 
-The following sections detail the design aspects of the NGNS feature.
+#### NGNS 设计层面
 
-##### Usage of mDNS
+下文详细说明了 NGNS 功能的设计层面信息。
 
-The 14.02 discovery protocol is based on AllJoyn-specific 
-UDP messages over the AllJoyn-assigned multicast IP address. 
-This design can limit discoverability (IP routers can block 
-AllJoyn-assigned multicast IP address and/or port numbers) 
-in the field. To address this issue, the 14.06 discovery 
-protocol is based on multicast DNS (mDNS) that uses IANA-assigned 
-multicast IP address and port numbers.
+##### mDNS 的使用
 
-##### Multicast IP addresses and port numbers used by NGNS
+14.02版本的发现协议是基于通过 AllJoyn 分配的多播 IP 地址发送的 AllJoyn 指定的 UDP 消息的。这种设计限制了可被发现性（IP 路由可能会屏蔽由
+ALlJoyn 分配的多播 IP 地址或者/以及端口号）。为了解决该问题，14.06版本的发现协议使用了通过 IANA 分配的多播 IP 地址和端口号发送的 mDNS.
 
-| Address | Value |
+##### NGNS 使用的多播 IP 地址和端口号
+
+| 地址 | 值 |
 |---|---|
-| IPv4 Multicast group address | 224.0.0.251 |
-| IPv6 Multicast group address | FF02::FB |
-| Multicast port number | 5353 |
+| IPv4 多播组播地址 | 224.0.0.251 |
+| IPv6 多播组播地址 | FF02::FB |
+| 多播端口号 | 5353 |
 
-Furthermore, mDNS already supports the following features 
-that are utilized by the AllJoyn discovery protocol:
+此外，mDNS 已经支持以下被 AllJoyn 发现协议所使用的功能：
 
-* Solicit unicast responses
-* Send query message using unicast
-* Send unsolicited responses from the responder
+* 征求单播响应
+* 使用单播发送请求消息
+* 回应方发送主动相应
 
-This constitutes version 2 of the discovery protocol. 
-The version number is set in the pv field of the "sender-info" 
-TXT record in the additional section of the mDNS query and response.
+这些功能构成了发现协议的第二版本。版本号被写在 "sender-info" 文本记录 中的 pv 字段，位于 mDNS 请求和应答的附加章节中。
 
-**NOTE:** The 14.02 Name Service implementation uses version 0 and 1 
-of the discovery protocol. 
 
-##### Usage of DNS-SD 
+**NOTE:** 14.02 Name 服务实现使用了发现协议的第0版和第1版。
 
-The 14.06 discovery design is based on [RFC 6763](http://tools.ietf.org/html/rfc6763). 
+##### DNS-SD 的使用 
 
-A client discovers the list of available instances of a given 
-service name (as registered with IANA, e.g., alljoyn is a 
-registered service name) using a query for a DNSPTR record 
-with a name of the form:
+14.06 版本的设计是基于 [RFC 6763](http://tools.ietf.org/html/rfc6763). 
+
+客户端使用一个对 DNSPTR 记录的请求来完成对一个给定服务 name（与在 IANA 注册的相同，例如 AllJoyn 就是一个已注册的服务名）的可用实例列表的发 现，此 name 有如下格式：
 
 ```
 "<Service>.<Domain>" [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). 
 ```
 
-The result of this PTR lookup for the name "<Service>.<Domain>" 
-is a set of zero or more PTR records giving Service Instance Names of the form:
+对于 name "<Service>.<Domain>" 的 PTR查找结果是一系类的0，或者是多个有以下形式的 Service Instance Names 的 PTR 记录：
 
 ```
 Service Instance Name = <Instance>.<Service>.<Domain>
 ```
 
-In addition to that service instance, the DNS-SD responder sends 
-DNS SRV [RFC 2782](https://www.ietf.org/rfc/rfc2782.txt) and DNS TXT 
-[RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) record. 
-The SRV and TXT records have a name of the form:
+此外，对于此服务实例，DNS-SD 回应方发送 DNA SRV [RFC 2782](https://www.ietf.org/rfc/rfc2782.txt)和 DNS TXT [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) 记录。SRV 和 TXT 记录都有以下形式的名字：
 
 ```
 "<Instance>.<Service>.<Domain>"
 ```
 
-The SRV record gives the target host and port where the service 
-instance can be reached. The DNS TXT record of the same name 
-gives additional information about this instance, in a 
-structured form using key/value pairs.
+SRV 记录给出了服务实例可以到达的目标主机和端口号。有同样名字的 DNS TXT 记录给出了此实例的详细信息，在一个使用 key/value 对儿的结构中。
 
-In addition to the service discovery framework specified in 
-[RFC 6763](http://tools.ietf.org/html/rfc6763), 
-the NGNS discovery protocol sends DNS TXT records in the 
-Additional section of the DNS-SD query to optimize the 
-discovery scope without requiring further negotiation by 
-establishing an AllJoyn session with the provider application.  
-The same feature is utilized in other use cases, such as sending 
-sender-information or presence-related information. The DNS-SD 
-message format is described in detail in [DNS-SD message format][dns-sd-message-format].
+除了在 [RFC 6763](http://tools.ietf.org/html/rfc6763) 中指定的服务发现框架中，NGNS 发现协议还在 DNS-SD 请求的附加部分中发送 DNS TXT 记录，
+优化了发现范围，而无需通过建立与提供方应用程序的 AllJoyn 会话完成的进一步协商。其他用例中也用了同样的功能，例如发送发送者信息，或者与存在
+有关的信息。DNS-SD 消息的细节描述请参见：[DNS-SD message format][dns-sd-message-format].
 
-##### Design considerations for Wi-Fi
+##### 用于 Wi-Fi 的设计中的考虑 
 
-It is well known that the multicast success rate over Wi-Fi 
-is not optimal and in some cases it is substantially degraded. 
-As per the Wi-Fi specification, each station is allowed to 
-go into sleep state and wake up periodically. The wake-up 
-interval is provisioned at the device and is supposed to 
-be a factor of the time interval used by the AP to schedule 
-the multicast traffic. 
+众所周知，通过 Wi-Fi 多播的成功率还有待改善，在某些情况中甚至更糟。根据 Wi-Fi 的规范，每一个站点都被允许周期性的进入睡眠状态和唤醒。唤醒的
+周期又设备提供，应该是 AP 使用的协调多播流量时间区间的因数。
 
+AP 会将收到的多播数据缓存，并根据由 DTIM （Delivery Traffic Indication Message） 决定的时间区间来安排这些数据的发送。在现实中，根据观察，唤
+醒区间
 The AP buffers the incoming multicast data and schedules it 
 based on the time interval determined by the DTIM (Delivery Traffic 
 Indication Message) interval. In reality, it has been observed 
