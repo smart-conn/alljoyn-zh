@@ -205,6 +205,7 @@ sense of a Posix thread join operation). The Endpoint is then
 unregistered from the AllJoyn Router. When the threading-related 
 resources in an endpoint are cleaned up, the endpoint enters the 
 DONE state at which time it can be removed from the system and deleted.
+当线程要求支持一个新建的或经过认证的正在运行的 TCP 终点，该终点进入 STARTED 状态。在此状态下，TCP 终点被注册至路由，因此数据可以通过终点传输。
 
 ##### TCP Endpoint authentication phase
 
