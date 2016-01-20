@@ -147,34 +147,32 @@ TCP Transport 用于 Windows 系统，在核心资源库与预装 AllJoyn 路由
 | 系统标准 | TCP 传输方式 | UDP 传输方式 | 描述 |
 |---|---|---|---|
 | 支持的连接数量 | 少于平均值 | 高 | 由于大量使用文件描述符，TCP 传输方式不支持大量同时进行的连接。UDP 传输方式对于多个连接，只是用单个文件描述符，所以它能够支持大量同时发生的连接，不会达到文件描述符系统上线。 |
-| 内存占用 | 中等 | 高 | Since UDP Transport has to provide the reliability support, it requires much higher memory usage. |
-| TTL-based Message Expiration | Not possible | Supported | UDP Transport uses the AllJoyn Reliable Datagram Protocol (ARDP), which supports TTL-based message expiration. |
-| Types of Data Transfer | Performs best for bulk data transfer | Performs best for intermittent short data transfer | Default socket buffers for Layer 4 TCP connections are typically much larger than those for UDP connections. As a result, TCP performs much better for bulk data transfer. |
+| 内存占用 | 中等 | 高 | 由于 UDP 传输方式提供了可靠性支持，所以它需要更大的内存。 |
+| 基于 TTL 的信息过期 | 不可能 | 支持 | UDP 传输方式使用支持基于 TTL 信息过期机制的 AllJoyn 可靠数据报协议 (ARDP)|
+| 数据传输的类型 | 在大容量数据传输时表现最好 | 在间歇性短数据传输时表现最好 | 第四层 TCP 连接的默认 socket 缓冲区通常比 UDP 连接大得多。所以，TCP 在大容量数据传输时表现得更好。|
 
-The following table captures some of the use case scenarios with the 
-preferred transport selection between TCP Transport and UDP Transport, 
-based on trade-offs outlined in [Performance of AllJoyn TCP Transport versus UDP Transport][performance-of-alljoyn-tcp-vs-udp]. 
+下表展示了不同应用场景中，基于 [Performance of AllJoyn TCP Transport versus UDP Transport][performance-of-alljoyn-tcp-vs-udp] 所属的利弊关系，TCP 和 UDP 传输方式的取舍。
 
-#### AllJoyn use cases showing TCP vs UDP Transport selection
+#### 不同使用场景中，TCP 和 UDP 传输方式的选择。
 
-| Use Cases | TCP Transport | UDP Transport |
+| 使用场景 | TCP 传输方式 | UDP 传输方式 |
 |---|:---:|:---:|
-| Dominant traffic is method calls | X | |
-| Dominant traffic is bulk data transfer | X | |
-| AllJoyn messages have TTL associated | | X |
-| Large number of simultaneous sessions with intermittent RPC calls | | X |
-| Very dirty RF conditions | X | |
+| 主要传输方法调用 | X | |
+| 主要传输大容量数据 | X | |
+| AllJoyn 信息与 TTL 相关 | | X |
+| 伴随间歇性 RPC 调用的大量并发会话 | | X |
+| 高度污染的 RF 环境 | X | |
 
-Details on AllJoyn TCP Transport and UDP Transport are 
-captured in the following sections.
+ 以下章节具体描述 AllJoyn TCP 和 UDP 传输方式的细节。
 
-### TCP Transport mechanism
+### TCP 传输机制
 
 As mentioned previously, the AllJoyn TCP Transport takes its name 
 from the TCP/IP layer 4 transport mechanism it uses. Since TCP 
 provides a reliable data stream guarantee, the TCP Transport 
 must only provide enough mechanism to translate AllJoyn messages 
 to and from byte streams.  
+如前文所述，AllJoyn TCP 传输方式从它使用的 TCP/IP 第四次层传输机制中获取名称。由于 TCP 提供了一个可靠的数据流保障，TCP 传输方式必须提供从比特流翻译信息并发送至比特流的机制。
 
 #### TCP Transport data plane architecture
 
