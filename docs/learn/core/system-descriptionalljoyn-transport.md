@@ -167,52 +167,30 @@ TCP Transport 用于 Windows 系统，在核心资源库与预装 AllJoyn 路由
 
 ### TCP 传输机制
 
-As mentioned previously, the AllJoyn TCP Transport takes its name 
-from the TCP/IP layer 4 transport mechanism it uses. Since TCP 
-provides a reliable data stream guarantee, the TCP Transport 
-must only provide enough mechanism to translate AllJoyn messages 
-to and from byte streams.  
 如前文所述，AllJoyn TCP 传输方式从它使用的 TCP/IP 第四次层传输机制中获取名称。由于 TCP 提供了一个可靠的数据流保障，TCP 传输方式必须提供从比特流翻译信息并发送至比特流的机制。
 
-#### TCP Transport data plane architecture
+#### TCP 传输方式数据层结构
 
 Each connection that uses the TCP Transport has an associated TCP Endpoint, 
-TCP Stream, and TCP socket as shown in the following figure. 
+TCP Stream, and TCP socket as shown in the following figure. 如图，每个使用 TCP 传输方式的连接都有相关的 TCP 终点、TCP 流和 TCP socket。
 
 ![tcp-transport-data-plane-internal-architecture][tcp-transport-data-plane-internal-architecture]
 
-**Figure:** TCP transport data plane internal architecture
+**图:** TCP transport data plane internal architecture TCP 传输数据层内部结构
 
-The routing functionality of a Routing Node connects to a TCP Endpoint, 
-which represents a Remote Endpoint for a TCP Transport connection. 
-The TCP Endpoint translates AllJoyn messages to and from the 
-byte-stream representation using a TCP Stream component. 
-TCP Stream delivers and received data over a TCP socket.
+路由节点的路由功能连接至一个 TCP 终点，这代表了一个针对 TCP 传输方式连接的远程终点。TCP 终点使用 TCP 串流组件从比特流翻译信息并发送至比特流。TCP 流通过 TCP socket 接收和发送数据。
 
-#### TCP endpoint lifecycle
+#### TCP 终点生命周期
 
-A TCP Endpoint goes through multiple states in the overall 
-lifecycle of the Endpoint. The states and transitions for the
-TCP Endpoint are shown in the following figure. 
+TCP 终点在整个生命周期中经历多个状态。这些 TCP 终点的状态和变化在下图中呈现。
 
 ![tcp-endpoint-lifecycle-states][tcp-endpoint-lifecycle-states]
 
-**Figure:** TCP endpoint lifecycle states
+**图:** TCP 终点生命周期的状态
 
-TCP Endpoints are created either as a result of an active 
-connection request or an incoming call for a passive connection. 
-The TCP Endpoint maintains information about whether the 
-precipitating event was an active or passive connection. 
+TCP 终点既可能是一个活动连接请求的结果，也可能是一个被动连接的传入呼叫。TCP 终点包含关于这些突发事件属于活动连接或是被动连接的信息。
 
-A TCP Endpoint follows the basic lifetime of an AllJoyn Thread.
-It is first created in the INITIALIZED state. Prior to being used 
-in the AllJoyn system, a TCP Endpoint must be authenticated.  
-This is a done as a separate step and is discussed in
-[TCP Endpoint authentication phase][tcp-endpoint-auth-phase]. 
-If the authentication succeeds, the TCP Endpoint thread is asked 
-to start running, at which point it enters the STARTING state. 
-If the authentication fails, the TCP Endpoint transitions into the 
-FAILED state and is then ready for cleanup.
+TCP 终点遵循 AllJoyn 线程的基本生命周期。它首先在 INITIALIZED 状态中生成。在 TCP 终点使用与 AllJoyn 系统之前，必须先将其认证。这是一个独立的步骤，在 [TCP Endpoint authentication phase][tcp-endpoint-auth-phase] 中具体说明。如果认证成功，TCP 终点线程被要求启动，同时进入 STARTING 状态。如果认证失败，TCP 终点转换为 FAILED 状态，并准备好被清理。
 
 As soon as the Thread(s) required to support a newly created 
 and authenticated TCP Endpoint is actually running, the Endpoint 
