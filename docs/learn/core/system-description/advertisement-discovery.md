@@ -377,234 +377,165 @@ AP 会将收到的多播数据缓存，并根据由 DTIM （Delivery Traffic Ind
 
 ###### 传送计划
 
-此多播
-The multicast schedule was designed to support devices that 
-wake up to process multicast packets in the multiple of DTIM 
-interval. Although the schedule backs off exponentially, 
-each multicast message is repeated twice to improve reliability 
-of multicast messages with devices that wake up every third 
-DTIM interval (a very typical case). 
+此多播方案为在多个 DTIM 区间中唤醒并处理多播包的设备提供支持。尽管此方案是指数后退的，每一条消息都会被重复两遍，以提升在每三个 DTIM 区
+间唤醒一次（很典型的例子）的设备上的多播消息的可靠性。
 
-The schedule sends query messages at the following times: 
-0, 1, 3, 9, and 27 seconds. At each transmit time trigger, 
-a total of three messages (original plus two repeats 100 msec apart) 
-are sent. This is referred to as burst in the call flows. 
-As far as the message recipient is concerned, a response 
-to the first successfully received message in a burst is 
-sent and all subsequent messages that are part of the same burst are ignored. 
+此方案在下列时间点发送请求消息：0, 1, 3, 9, 和 27 秒。每一次传输触发时，一共有三条消息（原始消息和两条分隔100毫秒的重复）被发送。这种
+模式在呼叫流程图中被称为 burst. 就消息接收方而言，他只需要对 burst 中第一个成功接收到的消息发送回复，余下的消息将被忽略。
 
-###### Minimize multicast and maximize unicast transmissions
+###### 最小多播与最大单播传输
 
-Another design aspect is to send multicast messages to initiate 
-queries but rely on unicast responses for replies and presence 
-detection. The DNS allows unicast responses to be solicited 
-in the mDNS query, and the discovery protocol utilizes that 
-feature. This is indicated in the top bit of the qclass field 
-of the DNS message header [RFC 6762](http://tools.ietf.org/html/rfc6762).
+这里考虑另一个设计层面：使用多播消息来初始化请求，但使用单播来完成回复以及存在检测。DNS 允许 mDNS 请求中的单播回应被请求，发现协议使用
+了此功能。在 DNS 消息头文件的 qclass 字段的首位上有关于此功能的标识 [RFC 6762](http://tools.ietf.org/html/rfc6762).
 
-##### Discovery and Presence API snapshot
+##### 发现并呈现 API 快照
 
-[Discovery and Presence APIs related to discovery scenarios][discovery-presence-apis]
-lists the Discovery and Presence APIs offered by the AllJoyn 
-system and maps them to discovery scenarios. The main paradigm 
-is that discovery and presence are driven by the consumer application.
+[Discovery and Presence APIs related to discovery scenarios][discovery-presence-apis] 列出了 AllJoyn 系统提供的发现与呈现 APIs 的功能
+并将它们映射到了发现场景中。主要的范例是由使用方应用程序主导的发现和呈现功能。
 
-##### Discovery and Presence APIs related to discovery scenarios
+##### 与发现场景有关的发现并呈现 API 功能
 
-| Discovery scenario | API |
+| 发现场景 | API |
 |---|---|
-| Consumer application Name query | `FindAdvertisedName()` |
-| Consumer application gets notified about discovery or loss of an advertised name | <ul><li>`FoundAdvertisedName()`</li><li>`LostAdvertisedName()`</li></ul> |
-| Consumer application cancelling the Name query | `CancelFindAdvertisedName()` |
-| Provider application advertising a name | `AdvertiseName()` |
-| Providing application canceling advertising a name | `CancelAdvertiseName()` | 
-| Provider application sending an Announcement message | `Announce()` | 
-| Consumer application queries for set of AllJoyn interfaces | `RegisterAnnounceHandler()` |
-| Consumer application cancels a query for set of AllJoyn interfaces | `UnregisterAnnounceHandler()` |
-| Consumer application queries for presence | `Ping()` |
+| 使用方应用程序请求 Name | `FindAdvertisedName()` |
+| 使用方应用程序收到推广名发现或丢失的通知 | <ul><li>`FoundAdvertisedName()`</li><li>`LostAdvertisedName()`</li></ul> |
+| 使用方应用程序取消了 Name 请求 | `CancelFindAdvertisedName()` |
+| 提供方应用程序推广 Name | `AdvertiseName()` |
+| 提供方应用程序取消了 Name 推广 | `CancelAdvertiseName()` | 
+| 提供方应用程序发送一个 Announcement 消息 | `Announce()` | 
+| 使用方应用程序请求一系列的接口 | `RegisterAnnounceHandler()` |
+| 使用方应用程序取消对一系列的接口的请求 | `UnregisterAnnounceHandler()` |
+| 使用方应用程序探测对方是否存在| `Ping()` |
 
-###### Discovery APIs that trigger DNS-SD multicast messages
+###### 触发 DNS-SD 多播消息的 API 发现。
 
-Some of the discovery scenarios trigger multicast messaging. 
-The APIs that trigger multicast messaging are: `FindAdvertisedName()`, 
-`CancelAdvertiseName()`, `AdvertiseName()`, `Announce()`, and `RegisterAnnounceHandler()`.
+一些发现场景会触发多播消息。触发多播消息的 API 包括：`FindAdvertisedName()`, `CancelAdvertiseName()`, `AdvertiseName()`, `Announce()`, 和 `RegisterAnnounceHandler()`.
 
-Some key aspects of the multicast transmission are listed below:
+一些多播传输的关键方面在下文列出。
 
-* DNS-SD query issued over mDNS multicast address 
-* Transmission schedule as per [Transmission schedule][transmission-schedule]
-* Name Service messages sent depending on the LegacyNS flag 
-setting in the Router config file
-* Legacy Name Service WHO-HAS and mDNS messages follow the 
-same transmission schedule.
+* 通过 mDNS 多播的 mDNS 请求。
+* 根据 [Transmission schedule][transmission-schedule] 的传输方案。
+* 根据在路由的配置文件中设置的 LegacyNS 旗发送 Name 服务消息。
+* 历史版本 Name 服务中跟随同一传送方案的 WHO-HAS 和 mDNS 消息。
 
-##### Backward compatibility
+##### 向下兼容性
 
-NGNS is designed to meet the following backward compatibility requirements:
+NGNS 在设计中包括了向下兼容的要求：
 
-* Support all existing 14.02 APIs
-* Support all legacy (version 0 and 1) NS discovery packet formats
-* Send equivalent 14.02 discovery message over the wire 
-whenever the corresponding DNS-SD message is being sent 
-(provided the LegacyNS flag is set to true)
-* Replies with 14.02 response message upon receipt of a 
-14.02 query message provided the supported version (SVer) 
-field indicates that querier doesn't support NGNS. If the 
-querier supports NGNS as indicated by the supported version, 
-then NGNS waits for the DNS-SD messages to arrive.
+* 支持所有现存的 14.02 APIs
+* 支持所有历史版本的 (版本 0 和 1) NS 发现包格式。 
+* 在任何有 DNS-SD 消息被发送的时候都发送一个等价的 14.02 发现消息 (带有设定为 true 的LegacyNS 标识)。
+* 在请求消息的所支持版本（SVer）字段中指示此请求不支持 NGNS 的情况下，使用14.02版本的消息进行回应。如果请求方在所支持版本中声明了对 NGNS 的支持，NGNS 则会等待 DNS-SD 消息的到来。
 
-The AllJoyn router configuration file adds a LegacyNS flag 
-to enable legacy discovery behavior. By default, the legacy behavior is enabled.
+AllJoyn 路由配置文件也添加了一项 LegacyNS 标识，以实现发现老版本的功能。Legacy 行为是默认使用的。
 
-### NGNS message sequences 
+### NGNS 消息序列
 
-This section captures message sequences for NGNS.
+此部分捕捉了 NGNS 的消息序列。
 
-#### Name-based discovery
+#### 基于 name的发现
 
-This section captures messages sequences for NGNS name-based discovery scenarios.
+此部分描述了 NGNS 基于 name 发现的场景中的消息序列。
 
-##### NGNS consumer app with NGNS provider app
+##### NGNS 使用方应用程序和提供方应用程序
 
-In this scenario, the consumer application's AllJoyn router 
-has disabled the legacy behavior, i.e., no Name Service 
-messages are being sent by the consumer application. 
+在这一场景中，使用方应用程序的 AllJoyn 路由禁用了历史版本行为的功能，因此使用方应用程序不会发出 Name Service 消息。
 
-This message sequence assumes that the provider application 
-is already on the AllJoyn network. 
+这里的消息序列假定提供方的应用程序已经处在 AllJoyn 网络上。
 
-The main steps for the message sequence are described below.
+消息序列的几个主要步骤的描述如下。
 
-1. The message flow is initiated by the consumer application 
-invoking FindAdvertisedName().
-2. NGNS sends DNS-SD based query messages over mDNS.
-3. Any provider application that matches the name being 
-searched responds via the DNS-SD response message over 
-unicast to the consumer application.
+1. 使用方应用程序通过调用 FindAdvertisedName() 来初始化消息流。
+2. NGNS 通过 mDNS 发送基于 DNS-SD 的请求消息。
+3. 任何与被搜索的 name 匹配的提供方应用程序将会通过 DNS-SD，以单播的形式向使用方应用程序回复消息。
 
 ![ngns-discovery-consumer-app-provider][ngns-discovery-consumer-app-provider]
 
-**Figure:** NGNS name-based discovery between consumer app and provider
+**Figure:** NGNS 基于 name 的发现
 
-##### NGNS consumer app with NGNS and Name Service provider apps
+##### NGNS 使用方应用程序与 NGNS 提供方应用程序
 
-This message sequence assumes the following:
+此消息序列作出以下假设：
 
-* The consumer application's AllJoyn router has enabled the 
-legacy Name Service behavior.
-* The provider applications are already on the AllJoyn network. 
+* 使用方应用程序的 AllJoyn 路由已经开启了历史版本 Name 服务行为模式。
+* 提供方应用程序已经连接到 AllJoyn 网络。
 
-The main steps for the message sequence are described below.
+消息序列的主要步骤如下所述：
 
-1. The message flow is initiated by the consumer application 
-invoking `FindAdvertisedName()`.
-2. The NGNS sends DNS-SD based query messages over mDNS as 
-well as the legacy WHO-HAS message.
-3. Any AllJoyn provider application that matches the name 
-being searched responds via a DNS-SD response message over unicast
-4. Any legacy (14.02) provider application also responds 
-via an IS-AT message if there is a match for the name being 
-discovered in the WHO-HAS message.
+1. 使用方应用程序通过调用 FindAdvertisedName() 来初始化消息流。
+2. NGNS 通过 mDNS 发送基于 DNS-SD 的请求消息，同时也发送历史版本的 WHO-HAS 消息。
+3. 任何与被搜索的 name 匹配的提供方应用程序将会通过 DNS-SD，以单播的形式向使用方应用程序回复消息。
+4. 与 WHO-HAS 中的 name 相匹配的任何历史版本的提供方 (14.02版本) 也会通过一个 IS-AT 消息发出回应。
 
 ![ngns-discovery-ngns-name-service-provider-apps][ngns-discovery-ngns-name-service-provider-apps]
 
-**Figure:** NGNS name-based discovery (NGNS and Name Service provider apps)
+**Figure:** NGNS 基于 name 的发现 (NGNS 以及 Name 服务的提供方应用程序)
 
-##### FindAdvertisedName pending; provider apps arrive later
+##### FindAdvertisedName 挂起; 提供方应用程序迟到
 
-This message sequence assumes the following:
+此消息序列作出以下假设：
 
-* The consumer application's AllJoyn router has enabled the 
-legacy Name Service behavior. 
-* The provider applications are not on the AllJoyn network 
-at the time of initial query. 
+* 使用方应用程序的 AllJoyn 路由已经开启了历史版本 Name 服务行为模式。
+* 发起请求的时刻，提供方应用程序未连接到 AllJoyn 网络。
 
-The main steps for the message sequence are described below.
+消息序列的主要步骤如下所述：
 
-1. The message flow is initiated by the consumer application 
-invoking `FindAdvertisedName()`.
-2. The NGNS sends DNS-SD based query messages over mDNS, as 
-well as legacy Name Service messages.
-3. The query schedule for mDNS messages and WHO-HAS messages expires
-4. Upon joining the AllJoyn network, the NGNS provider app 
-sends unsolicited DNS-SD response messages and advertises names via IS-AT messages.
-5. Upon joining the AllJoyn network, the Name Service provider 
-application sends IS-AT messages.
-6. The consumer AllJoyn router performs the following tasks:
-  1. It consumes the Name Service and NGNS messages.
-  2. It filters the names being advertised.
-  3. It sends `FoundAdvertisedName()` only if there is a match.
+1. 使用方应用程序通过调用 FindAdvertisedName() 来初始化消息流。
+2. NGNS 通过 mDNS 发送基于 DNS-SD 的请求消息，同时也发送历史版本的 WHO-HAS 消息。
+3. mDNS 消息和 WHO-HAS 消息的请求调度已过期。
+4. 在加入 AllJoyn 网络时，NGNS 提供方应用程序通过 IS-AT 消息发出主动的 DNS-SD 回应消息并推
+5. 在加入 AllJoyn 网络时, name 服务提供方应用程序发送 IS-AT 消息。
+6. 使用方 AllJoyn 路由执行以下任务：
+  1. 使用 Name 服务以及 NGNS 消息。
+  2. 过滤出被推广的 names.
+  3. 如有匹配成功，则发出 `FoundAdvertisedName()` 消息。
 
 
 ![find-advertised-name-api-called-provider-arrives-later][find-advertised-name-api-called-provider-arrives-later]
 
-**Figure:** FindAdvertisedName API called; provider arrives later
+**Figure:** FindAdvertisedName API 被调用; 提供方迟到
 
-#### Interface names discovery
+#### 发现接口名
 
-##### NGNS consumer app and NGNS provider app
+##### NGNS 使用方应用程序和 NGNS 提供方应用程序
 
-This message sequence assumes the following:
+此消息序列作出以下假设：
 
-* The provider application is already on the AllJoyn network. 
-* The legacy Name Service behavior is turned off on the consumer AllJoyn router. 
+* 提供方应用程序已经连接到 AllJoyn 网络。
+* 使用方应用程序的 AllJoyn 路由关闭了历史版本 Name 服务行为模式。
 
-The main steps for the message sequence are described below.
+消息序列的主要步骤如下所述：
 
-1. The message flow is initiated by the consumer application 
-registering the announce handler (by calling RegisterAnnounceHandler) 
-and providing a set of AllJoyn interfaces. This triggers the 
-discovery for provider applications that implement those interfaces. 
-2. The NGNS sends DNS-SD based query messages over mDNS and 
-populates the search TXT record in the Additional section 
-based on the AllJoyn interfaces being discovered.
-3. Any AllJoyn provider application that provides the 
-AllJoyn interfaces being discovered sends the DNS-SD 
-response message and includes the sessionless signal 
-well-known name corresponding to the About Announce signal. 
-   Note that this message is sent over unicast
-4. The consumer application immediately initiates a 
-sessionless signal fetch to retrieve the Announce signal.
+1. 使用方应用程序通过注册 announce handler（调用 RegisterAnnounceHandler ）来初始化消息流。这将触发实现了那些接口的提供方的发现进程。
+2. NGNS 通过 mDNS 发送基于 DNS-SD 的请求消息，并根据被发现的 AllJoyn 接口，将搜索 TXT 记录放置在附加的区域中。
+3. 任何提供了被发现的 AllJoyn 接口的 AllJoyn 提供方应用程序都要发送 DNS-SD 消息作出回应，并将与 Abount Announce 信号相对应的 well-known name 非会话信号包括在内。
+   注意，此消息将通过单播发送。
+4. 使用方应用程序即刻初始化一个用于接收并取回 Announce 信号的非会话信号。
 
 ![alljoyn-interface-query-ngns-consumer-provider-apps][alljoyn-interface-query-ngns-consumer-provider-apps]
 
-**Figure:** AllJoyn interface query (NGNS consumer app and NGNS provider app)
+**Figure:** AllJoyn 接口请求 (NGNS 使用方应用程序和 NGNS 提供方应用程序)
 
-##### NGNS consumer app; NGNS and Name Service provider app
+##### NGNS 使用方和提供方应用程序
 
-This message sequence is an extension of the call flow in 
-[NGNS consumer app and NGNS provider app][ngns-consumer-provider-apps] 
-with the legacy Name Service behavior being enabled. 
+此消息序列作为呼叫流程的一个延伸 [NGNS consumer app and NGNS provider app][ngns-consumer-provider-apps]，并伴随着历史版本 Name 服务模
+式开启。
 
-Although the interface-based query is a 14.06 feature, it 
-has been designed such that legacy Name Service provider 
-applications can participate in the discovery process. 
-This is enabled by sending WHO-HAS message with WKN=org.alljoyn.sl. 
+尽管基于接口的请求是一个14.06版本的功能，她还是在设计中加入了可以使历史版本 Name 服务提供方应用程序可以加入到发现进程的功能。通过发送
+WKN=org.alljoyn.sl 的 WHO-HAS 消息可以开启此功能。
 
-This message sequence assumes that the provider application 
-is already on the AllJoyn network. 
+此消息序列假设提供方应用程序已经连接到 AllJoyn 网络。
 
-The main steps for the message sequence are described below:
-1. The message flow is initiated by the consumer application 
-registering the announce handler (by calling RegisterAnnounceHandler) 
-and providing a set of AllJoyn interfaces for discovery.
-2. The NGNS sends DNS-SD based query messages over mDNS, 
-and populates the search TXT record in the Additional section 
-based on the AllJoyn interfaces being discovered.
-3. The NGNS sends WHO-HAS discovery messages with WKN=org.alljoyn.sl.
-4. Any NGNS provider application that provides the AllJoyn 
-interfaces being discovered sends the DNS-SD response message 
-and includes the sessionless signal well-known name corresponding 
-to the About Announce signal. 
-   Note that this message is sent over unicast.
-5. The consumer application immediately initiates a sessionless 
-signal fetch to retrieve the Announce signal.
-6. Any legacy provider application sends an IS-AT message with 
-the sessionless signal well-known name if there are any 
-sessionless signals in the sessionless signal cache.
-7. The consumer application immediately initiates sessionless 
-signal fetch and filters the Announce signals that provide the 
-AllJoyn interfaces being discovered.
+消息序列的主要步骤如下所述：
+
+1. 使用方应用程序通过注册 announce handler（调用 RegisterAnnounceHandler ），并提供一系列用于发现的 AllJoyn 接口来初始化消息流。
+2. NGNS 通过 mDNS 发送基于 DNS-SD 的请求消息，并根据被发现的 AllJoyn 接口，将搜索 TXT 记录放置在附加的区域中。
+3. NGNS 发送 WKN=org.alljoyn.sl 的 WHO-HAS 发现消息。
+4. 任何提供了被发现的 AllJoyn 接口的 AllJoyn 提供方应用程序都要发送 DNS-SD 消息作出回应，并将与 Abount Announce 信号相对应的 well-known name 非会话信号包括在内。
+   注意，此消息将通过单播发送。
+5. 使用方应用程序即刻初始化一个用于接收并取回 Announce 信号的非会话信号。
+6. 若非会话信号缓存中存在非会话信号，任何历史版本的提供方应用程序都会发送一条带有非会话信号 well-known name 的 IS-AT 消息。
+7. 使用方应用程序即刻初始化一个用于接收并取回提供 AllJoyn 被发现的接口的 Announce 信号的非会话信号。
 
 ![interface-query-ngns-consumer-app-ngns-ns-provider-apps][interface-query-ngns-consumer-app-ngns-ns-provider-apps]
 
