@@ -342,7 +342,7 @@ ALlJoyn 分配的多播 IP 地址或者/以及端口号）。为了解决该问�
 
 14.06 版本的设计是基于 [RFC 6763](http://tools.ietf.org/html/rfc6763). 
 
-客户端使用一个对 DNSPTR 记录的请求来完成对一个给定服务 name（与在 IANA 注册的相同，例如 AllJoyn 就是一个已注册的服务名）的可用实例列表的发 现，此 name 有如下格式：
+客户端使用一个对 DNSPTR 记录的请求来完成对一个给定服务 name（与在 IANA 注册的相同，例如 AllJoyn 就是一个已注册的服务名）的可用实例列表 的发现，此 name 有如下格式：
 
 ```
 "<Service>.<Domain>" [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). 
@@ -368,24 +368,16 @@ SRV 记录给出了服务实例可以到达的目标主机和端口号。有同�
 
 ##### 用于 Wi-Fi 的设计中的考虑 
 
-众所周知，通过 Wi-Fi 多播的成功率还有待改善，在某些情况中甚至更糟。根据 Wi-Fi 的规范，每一个站点都被允许周期性的进入睡眠状态和唤醒。唤醒的
-周期又设备提供，应该是 AP 使用的协调多播流量时间区间的因数。
+众所周知，通过 Wi-Fi 多播的成功率还有待改善，在某些情况中甚至更糟。根据 Wi-Fi 的规范，每一个站点都被允许周期性的进入睡眠状态和唤醒。唤醒的周期由设备提供，应该是 AP 使用的协调多播流量时间区间的因数。
 
-AP 会将收到的多播数据缓存，并根据由 DTIM （Delivery Traffic Indication Message） 决定的时间区间来安排这些数据的发送。在现实中，根据观察，唤
-醒区间
-The AP buffers the incoming multicast data and schedules it 
-based on the time interval determined by the DTIM (Delivery Traffic 
-Indication Message) interval. In reality, it has been observed 
-that the wake-up interval is set to multiples of the DTIM value 
-(typically 1, 3, or 10). This implies that the device might 
-miss the multicast data. Since this is a realistic scenario, 
-the AllJoyn discovery protocol was designed to handle this 
-scenario in a robust fashion. 
+AP 会将收到的多播数据缓存，并根据由 DTIM （Delivery Traffic Indication Message） 决定的时间区间来安排这些数据的发送。在现实中，根据观察，唤醒区间会被设置为 DTIM 值（常常是1,3或10） 的倍数。这样的实现方式使设备有可能
+错过多播数据。由于这是一个真实的场景，AllJoyn 发现的协议的设计使用了稳健的方式来处理问题。
 
-Specifically, the design principles captured in sections below are adopted.
+具体的，被使用的设计准则如下文描述。
 
-###### Transmission schedule
+###### 传送计划
 
+此多播
 The multicast schedule was designed to support devices that 
 wake up to process multicast packets in the multiple of DTIM 
 interval. Although the schedule backs off exponentially, 
