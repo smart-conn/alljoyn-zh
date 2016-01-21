@@ -539,36 +539,25 @@ WKN=org.alljoyn.sl 的 WHO-HAS 消息可以开启此功能。
 
 ![interface-query-ngns-consumer-app-ngns-ns-provider-apps][interface-query-ngns-consumer-app-ngns-ns-provider-apps]
 
-**Figure:** Interface query (NGNS consumer app; NGNS and Name Service provider apps)
+**Figure:** 接口请求 (NGNS 使用方应用程序和 NGNS 提供方应用程序)
 
-##### Pending AllJoyn interface names query; provider apps arrive later
+##### AllJoyn 接口 Name 请求被挂起; 提供方应用程序迟到
 
-This message sequence describes the scenario when there is 
-a pending query (i.e., the transmission schedule has expired) 
-but the Announce signal handler is still registered. 
+此消息序列描述一个请求被挂起的场景（例如，传输已经过期，但 Announce 信号处理程序仍被注册。）
 
-The main steps for the message sequence are described below:
-1. The message sequence is initiated by the consumer application 
-registering the announce handler (by calling RegisterAnnounceHandler) 
-and providing a set of AllJoyn interfaces for discovery.
-2. The NGNS sends DNS-SD based query messages over mDNS, and 
-populates the search TXT record in the Additional section based 
-on the AllJoyn interfaces being discovered.
-3. The NGNS sends WHO-HAS discovery messages with WKN=org.alljoyn.sl.
-4. The query schedule for mDNS messages and WHO-HAS message expires
-5. Upon arrival of the provider application on the AllJoyn 
-network, the NGNS sends unsolicited DNS-SD response messages 
-with the sessionless signal well-known names and also advertises 
-the sessionless signal well-known names via IS-AT messages.
-6. Upon joining the AllJoyn network, the Name Service provider 
-application advertises the sessionless signal well-known name via IS-AT messages.
-7. The consumer AllJoyn router fetches the sessionless signals 
-from the provider apps and performs filtering; the Announce 
-signal is sent to the consumer application if there is a match.
+此消息序列的主要步骤如下所述:
+
+1. 使用方应用程序通过注册 announce handler（调用 RegisterAnnounceHandler），并提供一系列用于发现的 AllJoyn 接口。
+2. NGNS 通过 mDNS 发送基于 DNS-SD 的请求消息，并根据被发现的 AllJoyn 接口，将搜索 TXT 记录放置在附加的区域中。
+3. NGNS 发送 WKN=org.alljoyn.sl 的 WHO-HAS 发现消息。
+4. mDNS 消息和 WHO-HAS 消息的请求调度已过期。
+5. 在提供方应用程序到达 AllJoyn 网络时，NGNS 使用 IS-AT 消息发送带有非会话信号 well-known names 的主动 DNS-SD 回应消息。
+6. 在加入 AllJoyn 网络时，Name 服务提供方应用程序通过 IS-AT 消息推广非会话信号的 well-known names.
+7. 使用方 AllJoyn 路由器从提供方应用程序接收此非会话信号，并执行过滤操作；如果发现匹配则发送 Announce 信号到使用方应用程序。
 
 ![pending-interface-query-ngns-consumer-app-ngns-ns-provider-apps][pending-interface-query-ngns-consumer-app-ngns-ns-provider-apps]
 
-**Figure:** Pending AllJoyn interface query (NGNS consumer app, NGNS and Name Service provider apps)
+**Figure:** 挂起 AllJoyn 接口请求 (NGNS consumer app, NGNS and Name Service provider apps)
 
 #### Cancel advertisement
 
