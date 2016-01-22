@@ -252,64 +252,26 @@ in the following figure.
 
 ![ardp-state-machine][ardp-state-machine]
 
-**Figure:** ARDP state machine
+**图:** ARDP 状态设备
 
-As in TCP, connections may be started actively or passively.  
-An active, or outgoing connection begins by creating a UDP Endpoint 
-and transitioning it to the ACTIVE state. The endpoint provides 
-an "introduction" Message and passes it to ARDP, which responds 
-by creating a connection, adding the "introduction" to a SYN 
-packet and sending it. After sending the SYN packet, the local 
-ARDP connection enters the SYN-SENT state. The remote ARDP which 
-is in the LISTEN state, receives the SYN and calls back into the 
-UDP Transport, providing the "introduction" and notifying 
-that a connection request has been received. If the UDP Transport 
-determines that a connection should not be undertaken, ARDP 
-is notified and sends an RST pack to abort the connection.  
+如 TCP 一样，连接既可以是主动的，也可以是被动的。在主动情况下，同构建立一个 UDP 终点并把它转换为 ACTIVE 状态发出一个连接。终点提供了 “introduction” 信息，并把它传送至 ARDP，ARDP 通过建立一个连接，把 “introduction” 加入 SYN 包并发送的方式做出应答。当 SYN 包被发送后，本地 ARDP 连接进入 SYN-SENT 状态。在 LISTEN 状态的远程 ARDP，接收到 SYN，并且返回至 UDP 传输方式，提供 "introduction" 并且发出一个连接请求已被接收的通知。如果 UDP 传输方式决定某个连接不应该存在，就会通知 ARDP，ARDP 就会发送一个 RST 包来取消连接。
 
-If the UDP Transport determines that the connection should be 
-brought up, it creates a new UDP Endpoint in PASSIVE state and 
-responds to the ARDP callback with its own "introduction response".
-The passive side then enters the UDP Endpoint PASSIVE state 
-and the ARDP sends the "introduction response" back to the 
-active side in a SYN+ACK packet. When the active side receives 
-the SYN-ACK packet, the ARDP state machine sends the final 
-ACK packet, transitions to OPEN state and notifies the UDP Endpoint 
-which, in turn, transitions to STARTED state. The active side 
-is then ready to send and receive data. When the passive side 
-receives the final ACK packet, its three-way handshake is complete.  
+如果 UDP 传输方式决定了使用某个连接，它会简历一个新 UDP 终点，并使其进入 PASSIVE 状态，并且使用它本身的 "introduction response" 回复 ARDP callback。被动方随后进入 UDP 终点 PASSIVE 状态并且 ARDP 在 SYN+ACK 包中发送 "introduction response" 返回至主动端。当主动端收到了 ACK 包，将转换为 STARTED 状态。主动端就为发送和接收数据做好了准备。当被动端接收到了最终 ACK 包，它的三步握手就完成了。
 
-It transitions into the OPEN state and notifies the UDP Endpoint 
-which transitions into the STARTED state. At this point, 
-both sides are ready to send and receive data.
+他转换至 OPEN 状态并且通知转换为 STARTED 状态的 UDP 终点。此时，两端都准备好发送和接收数据了。
 
-Since it is possible that a failure happens somewhere in the 
-exchange between the local UDP Endpoint, the local ARDP, the 
-remote ARDP and the remote UDP Endpoint, both sides have 
-watchdog timers that abort the process if it does not complete 
-in a timely manner.
+由于在本地 UDP 终点、本地 ARDP、远程 ARDP 和 远程 UDP 终点 之间传递信息可能出现失败。两端都装有看门狗计时器，能够及时地中止进程。
 
-As described above, there is no orderly shutdown of connections 
-in the ARDP. This is accomplished in the UDP Endpoint state machine.
-Transitions out of ARDP OPEN state are done by receiving or sending 
-RST packets. To avoid problems with reuse of ARDP ports, a 
-CLOSE_WAIT state is implemented similar to that of TCP.
+如上文所述，在 ARDP 中关闭连接没有先后顺序。这是在 UDP 终点状态设备中完成的。通过接收或发送 RST 包从 ARDP OPEN 状态转换至别的状态。为了避免 ARDP 端口重复使用的问题，提供了一个 CLOSE_WAIT 状态，与 TCP 中的类似。
 
-#### ARDP packet format
+#### ARDP packet format ARDP 包格式
 
-Details of the ARDP packet formats are available in RFC 908 and RFC 1151.
-Extensions to support granularity of AllJoyn Message instead of 
-UDP Datagrams and also dropping of in-flight Messages based on 
-TTL expiration required changing SYN and DATA packet formats.
+ARDP 包格式的细节在 RFC 908 和 RFC 1151 提到。为了支持 AllJoyn 信息间隔的扩展而不是使用 UDP数据报，并且删除基于 TTL 超时的途中信息，需要改变 SYN 和 DATA 包的格式。
 
-The following table shows the ARDP SYN packet format. 
-A delayed ACK timeout was added to support functionality 
-similar to delayed ACK as used in TCP. A variable length data 
-and an associated Data Length field was also added. The 
-SYN+ACK packet is returned in this format, but with the ACK bit set.
+下表展示了 ARDP SYN 包的个是。一个延迟 ACK 超时加入了支持功能，类似于 TCP 中使用的延迟 ACK。长度变量的数据和相关数据长度字段也加入其中。SYN + ACK 数据包返回此格式，但包含 ACK 位。
 
-#### ARDP SYN Packet Format
-| Fields |
+#### ARDP SYN 包格式
+| 字段 |
 |:---:|
 | FLAGS (8 bits) / Header Length (8 bits) |
 | Source Port (16 bits) |
@@ -322,22 +284,9 @@ SYN+ACK packet is returned in this format, but with the ACK bit set.
 | Delayed ACK Timeout (32 bits) |
 | Data (variable length) |
 
-The following table shows the ARDP DATA packet format. 
-The format is substantially similar to that described by 
-RFC 908 and RFC 1151, but several fields were added to 
-support new features. Since ARDP is designed to support 
-sending and receiving AllJoyn Messages, which can span 
-three 65535-byte UDP datagrams, the concept of a Message 
-fragment was added. This necessitated adding a fragment count 
-field and a start-of-message sequence number to identify 
-the sequence number corresponding to the first UDP datagram 
-in an AllJoyn Message. A Time-to-Live field was also added 
-to support expiring AllJoyn Messages with a finite time to live; 
-and in order to coordinate expiration of Messages, which 
-may be in the process of being retransmitted, the Acknowledge-Next 
-field was added.
+下图展示了 ARDP DATA 包的格式。该格式基本上与 RFC 908 和 RFC 1151 中描述的相同。由于 ARDP 是用来支持发送和接收 AllJoyn 信息的，它可以跨越了三个 65535 字节 UDP 数据报，所以加入了信息片段的概念。加入一个片段计数字段和启动消息序列号，会根据 一条 AllJoyn 信息中的首个 UDP 数据报识别序列号。Time-to-Live 字段也被加入，使 AllJoyn 信息获得一个存活时间；为了配合传输信息信息的过期机制，加入了 Acknowledge-Next 字段。
 
-#### ARDP data packet format
+#### ARDP 数据包格式
 
 | Fields |
 |:---:|
@@ -357,11 +306,9 @@ field was added.
 
 #### UDP transport configuration
 
-ARDP is a flexible protocol, and so there are a number of 
-configurable parameters used. These parameters are settable via 
-the AllJoyn Router configuration file.
+ARDP 是一个弹性协议，使用了很多的可配置参数。这些参数可通过 AllJoyn 路由配置文件进行修改。
 
-| Parameter name | Description | Default value |
+| 参数名 | 描述 | 默认值 |
 |---|---|:---:|
 | udp_connect_timeout | When an initial ARDP connection is attempted, the precipitating SYN packet may be lost. If, after some time, the foreign host does not respond, the connection must be attempted again. This value is the time period that ARDP waits before attempting to resend the SYN packet. | 1000 msec |
 | udp_connect_retries | When an initial ARDP connection is attempted, the precipitating SYN packet may be lost. If, after some time, the foreign host does not respond, the connection must be attempted again. This value is the number of times that ARDP will try to resent SYN packet before giving up. | 10 |
@@ -391,30 +338,13 @@ the UDP Transport through their respective control planes.
 the details on the legacy Name Service and Next-Generation Name Service
 (NGNS) used for adverisement and discovery in the AllJoyn system,
 
-### Transport selection at the AllJoyn Router
+### AllJoyn 路由选择传输方式
 
-For discovery, if an application selects a specific transport 
-(TCP Transport or UDP Transport), then the `FoundAdvertisedName()` 
-callback is only sent for that transport. Also, as mentioned earlier, 
-an app can indicate which specific transport to be used to 
-establish a session, and the AllJoyn router will attempt to 
-perform session setup only over the specified AllJoyn transport.
+在发现中，如果一个应用程序选择某个特定的传输方式（TCP 或 UDP），那么  `FoundAdvertisedName()` 仅已选定的传输方式发送。同样的，如上文所述，一个应用程序可以指定建立会话的传输方式，并且 AllJoyn 路由将仅在指定的 AllJoyn 传输方式下尝试建立连接。
 
-If an app does not indicate a specific AllJoyn transport for 
-discovery or session setup, the AllJoyn router behavior is to 
-give preference to UDP Transport. This behavior is mainly motivated 
-by the fact that UDP Transport requires much smaller file descriptor 
-resources which becomes an issue with TCP Transport as the number 
-of connections grows. 
+如果应用程序没有指定用于发现或建立会话的 AllJoyn 传输方式， AllJoyn 路由会更倾向于使用 UDP 传输方式。这是因为 UDP 传输方式占用更小的文件描述符资源。而在 TCP 方式下，特别是在连接数不断增长时，将会遭遇许多麻烦。
 
-For discovery, if an app does not indicate a specific AllJoyn transport 
-(that is, TRANSPORT_ANY is specified), the `FoundAdvertisedName()` 
-callback is sent for both UDP Transport and TCP Transport, with the 
-callback for UDP Transport sent first. Similarly for session setup, 
-if TRANSPORT_ANY was indicated by the app, the AllJoyn router 
-will establish session over UDP Transport if it is available 
-at both endpoints of the connection. If the UDP Transport is not 
-available, then session setup will be done over TCP Transport. 
+在发现中，如果一个应用程序没有指定 AllJoyn 传输方式（也就是说，指定为 TRANSPORT_ANY），`FoundAdvertisedName()`  会以 TCP 和 UDP 两种方式同时发出，UDP 方式会稍快发出。对于会话建立，情况类似。如果应用程序指定为 TRANSPORT_ANY， AllJoyn 会在两段都允许的情况下使用 UDP 传输方式。如果不允许使用 UDP 传输方式，就会使用 TCP 传输方式建立会话。
 
 
 
