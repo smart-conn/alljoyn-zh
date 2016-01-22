@@ -559,87 +559,62 @@ WKN=org.alljoyn.sl 的 WHO-HAS 消息可以开启此功能。
 
 **Figure:** 挂起 AllJoyn 接口请求 (NGNS consumer app, NGNS and Name Service provider apps)
 
-#### Cancel advertisement
+#### 取消推广
 
-##### NGNS provider app, NGNS and Name Service consumer apps
+##### NGNS 提供方应用程序, NGNS 以及 Name 服务的使用方应用程序
 
-The main steps for the message sequence are described below.
+此消息序列的主要步骤如下所示：
 
-1. The provider application calls CancelAdvertiseName().
-2. The NGNS sends both IS-AT and DNS-SD response message. 
-Note that advertise TXT record in the mDNS message has TTL set to 0.
-3. The consumer application receives LostAdvertisedName() 
-upon receipt of the cancel advertisement discovery message.
+1. 使用方应用程序调用 CancelAdvertiseName().
+2. NGNS 发送 IS-AT 和 DNS-SD 回应消息。 
+mDNS 消息中的 TXT 记录已将 TTL 设定为 0.
+3. 使用方应用程序在接收到取消推广发现消息之后立即收到 LostAdvertisedName().
 
 ![cancel-advertised-name-ngns-consumer-app-ngns-ns-provider-apps][cancel-advertised-name-ngns-consumer-app-ngns-ns-provider-apps]
 
-**Figure:** Cancel advertised name (NGNS consumer app, NGNS and Name Service provider apps)
+**Figure:** 取消推广 Name (NGNS 使用方应用程序, NGNS 以及 Name 服务提供方应用程序)
 
-#### Presence
+#### 存在
 
-##### NGNS consumer app and NGNS provider app
+##### NGNS 使用方应用程序以及 NGNS 提供方应用程序
 
-Two modes of the Presence API is supported:  synchronous and asynchronous mode.  
-From the perspective of wire protocol, the message sequence is identical.
+这里支持两种 Presence API: 同步模式和非同步模式。从有线协议的角度来看，这两种模式的参数序列是相同的。
 
-In the 14.02 release, presence is validated by the receipt 
-of the IS-AT messages for a name; and three successive losses 
-of IS-AT messages trigger a LostAdvertisedName() to the consumer 
-application. Since the delay was not tolerable for most 
-applications, the presence was redesigned in the 14.06 
-release. A consumer application can initiate the presence 
-of a name that was previously discovered using the newly 
-introduced Ping API. 
+在14.02版本中，存在检测是通过接收给定 name 的 IS-AT 消息收据来完成的；连续丢失的三个 IS-AT 消息会触发使用方应用程序上的 LostAdvertisedName(). 由于大多数应用程序都是不能容忍延迟存在的，存在检测功能在14.06版本中被重新设计。使用方应用程序可以使用新引入的 Ping API 对一个之前发现过的 name 初始化一个存在检测。
 
-* If the discovered name is connected to a 14.06 AllJoyn router, 
-the presence message sequence is initiated. 
-* If the discovered name is connected to a 14.02 AllJoyn router, 
-the API invocation returns an error.
 
-The main steps for the message sequence are described below.
-1. The consumer application initiates a presence check for 
-the name by invoking the Ping API.
-2. The AllJoyn router returns the unimplemented error code 
-if the name being pinged is connected to a 14.02 AllJoyn 
-router at the time of discovery; else, the message sequence continues.
-3. If there is an entry for the name in the AllJoyn routing 
-table, then mDNS message is sent over unicast to check the presence state.
-4. Upon receipt of the mDNS message, the AllJoyn router checks 
-the presence state for the name and sends an mDNS response 
-message over unicast. The presence check is performed using D-Bus Ping method call.
+* 如果被发现的 name 被连接到一个 14.06 AllJoyn 路由，则会初始化一个存在检测消息序列。
+* 如果被发现的 name 被连接到一个 14.02 AllJoyn 路由，API 的调用将返回一个错误。
+
+此消息序列的主要步骤如下所述。
+1. 使用方应用程序通过调用 Ping API 来初始化对一个 name 的存在检测。
+2. 在发现时，如果被 ping 的 name 被连接到 14.02版本 AllJoyn 路由，此路由将会返回一个未实现错误代码；其他情况下，消息序列继续。
+3. 如果在 AllJoyn 路由表中发生了该 name 的进入，mDNS 消息将被通过单播发送，以检测存在状态。
+4. AllJoyn 路由在接收到 mDNS 消息后，立即检测该 name 的存在状态，并通过单播发送一个 mDNS 回应消息。存在检测调用了 D-Bus Ping 方法。
 
 ![ping-api-over-ngns-ngns-consumer-provider-apps][ping-api-over-ngns-ngns-consumer-provider-apps]
 
-**Figure:** Ping API called by consumer application over NGNS (NGNS consumer app and NGNS provider app)
+**Figure:** 使用方应用程序通过 NGNS 调用 Ping API (NGNS 使用方应用程序以及 NGNS 开发方应用程序)
 
-##### Legacy presence with NGNS consumer app and Name Service provider app
+##### NGNS 使用方应用程序和 Name 服务提供方应用程序的历史版本的存在检测 
 
-If a name that was discovered is connected to a 14.02 
-AllJoyn router, the new Ping API message sequence is not 
-supported. If the Ping API returns not implemented error code, 
-the consumer application must issue `FindAdvertisedName()` 
-with the discovered name so that presence for that name can be initiated.
+如果被发现的 name 被连接到 14.02 版本的 AllJoyn 路由，将不会支持新引入的 Ping API 消息序列。如果 Ping API 返回了未实现错误代码，此使用
+方应用程序必须提供带有被发现 name 的 `FindAdvertisedName()`，以便初始化针对此 name 的存在检测。 
 
 ![revert-legacy-presence-ngns-consumer-app-ns-provider-app][revert-legacy-presence-ngns-consumer-app-ns-provider-app]
 
-**Figure:** Reverting to legacy presence (NGNS consumer app and Name Service provider app)
+**Figure:** 转换到历史版本的存在检测 (NGNS 使用方应用程序和 Name Service 提供方应用程序)。
 
-### DNS-SD message format
+### DNS-SD 消息格式
 
-See [Usage of DNS-SD ][dns-sd-usage] for information on how the 
-AllJoyn framework makes use of the DNS-SD protocol. 
-The AllJoyn discovery process is based on the DNS-SD and the 
-message format is captured below. 
+关于 AllJoyn 框架使用 DNS-SD 协议的据图信息，参见 [Usage of DNS-SD ][dns-sd-usage]. AllJoyn 发现过程是基于 DNS-SD 的，消息格式如下：
 
-**NOTE:** <guid> in the resource records refers to the AllJoyn 
-router'\'s GUID. In addition, the presence of specific records 
-in a given message is specified in the NGNS message sequences 
-capture above while the tables below show all the possible 
-records types that can be present in the query or response messages:
+**NOTE:** 源文件记录中的 <guid> 指 AllJoyn router'\'s GUID. 另外，在一条给定消息中的一个特定记录的存在是被声明与 NGNS 消息序列中的。下
+方列表展示了可以被呈现在请求或回应消息中的所有可能的记录类型：
 
-#### DNS-SD query
+#### DNS-SD 请求
 
-##### DNS-SD query: question format
+##### DNS-SD 请求: 问题格式
 
 | Name | Type | Record-specific data |
 |---|:---:|---|
