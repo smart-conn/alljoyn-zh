@@ -240,19 +240,9 @@ UDP 终点通过一个如下图所示定义明确的生命周期。
 
 **注意:** 与 TCP 不同，在 ARDP 中没有四步骤结束握手的方式 —— 这是由 UDP 传输状态的设备中会话层所处理的。 
 
-Once all data is transferred and acknowledged, a transition is 
-made back to the STOPPING state. In STOPPING state, the various 
-threads are notified that the endpoint is closing down. Once the 
-threads are verified as having left, the endpoint transitions 
-into the JOINING state. This is where resources are freed and 
-any threads that may have been associated to the endpoint are 
-joined (in the sense of a Posix thread join operation). The last 
-part of the resource management is to unregister the endpoint 
-from the Routing Node. When this is complete, the endpoint enters the 
-DONE state and becomes ready for deletion by the endpoint management function.
-当所有数据都被传输网称并且公布后，状态会重新会到 STOPPING。
+当所有数据都被传输网称并且公布后，状态会重新会到 STOPPING。在 STOPPING 模式下，不同的线程被告知终点已被关闭。当线程被验证为已退出的状态，终点转换为 JOINING 状态。在这个状态下，资源被释放，任何关于这个终点的线程都被加入（类似于 Posix 线程的加入操作）。资源管理的最后一个部分是从路由节点注销终点。当这个步骤完成时，终点进入 DONE 状态，并且准备好被终点管理功能删除。
 
-#### ARDP state machine
+#### ARDP state machine ARDP 状态设备
 
 The ARDP is a close relative of RDP which is documented in RFC-908 (version 1)
 and RFC-1151 (version 2). At the heart of the ARDP is the ARDP 
