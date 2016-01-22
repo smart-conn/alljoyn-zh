@@ -40,9 +40,8 @@ AllJoyn 会话被建立之后，使用方应用程序已经建立了可以与提
 * 一个使用方应用程序可以加入一个，或由相同或不同的提供方应用程序发起的多个 AllJoyn 会话中。
 * 使用方应用程序创建一个或多个代理对象，没一个需要通信的远端服务对象都需要一个代理对象。
 * 代理对象是所需远端服务的一个本地代表。
-* The service object path, unique name of the provider app 
-and sessionId information are provided to create a proxy object. 
-* To receive signals from the provider app, consumer app 
+* 创建代理对象需要提供服务的对象路径，提供方应用程序的唯一识别符以及会话 ID 信息。
+* 使用方应用程序需向 AllJoyn 路由注册指定的信号处理器To receive signals from the provider app, consumer app 
 registers specific signal handlers with the AllJoyn router 
 for signal names specified in the service object. 
 * When a particular signal is received, specified signal 
