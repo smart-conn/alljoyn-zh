@@ -616,63 +616,61 @@ mDNS 消息中的 TXT 记录已将 TTL 设定为 0.
 
 ##### DNS-SD 请求: 问题格式
 
-| Name | Type | Record-specific data |
+| Name | 类型 | 记录中的数据 |
 |---|:---:|---|
-| <ul><li>alljoyn._udp.local.</li><li>alljoyn._tcp.local.</li></ul> | PTR | <p>The service name is alljoyn as allocated through IANA.</p><p>In the 14.06 release, the protocol used in the service description is TCP. When UDP transport is supported in future, the protocol for service name will be UDP.</p><p>The discovery scope is the local network.</p> |
+| <ul><li>alljoyn._udp.local.</li><li>alljoyn._tcp.local.</li></ul> | PTR | <p>服务名是 AllJoyn，由 IANA 分配。</p><p>在 14.06 版本 版本中使用了 TCP 作为服务描述协议。当未来支持 UDP 传输时，此协议将会是 UDP 的。</p><p>发现的范围限于本地网络。|
 
-##### DNS-SD query: Additional section
+##### DNS-SD 请求: 附加部分
 
-| Name | Type | Record-specific data |
+| Name | 类型 | 记录中的数据 |
 |---|:---:|---|
-| search.<guid>.local. | TXT | <p>Captures the well-known names or interfaces that are being searched. The key notation is as follows:</p><ul><li>txtvrs=0; this represents version of the TXT record.</li><li>n_1, n_2, etc., if multiple well-known names are present, they are logically ANDed; n_# is the key for well-known names.</li><li>i_1, i_2, etc., if multiple interface names are being queried. If multiple interface names are present, they are logically ANDed; i_# is the key for interface names.</li><li>Since the APIs for name-based and interface-based query are different, the search record has either name keys or interface keys.</li></ul><p>If the consumer application intends to perform logical OR operation for interface names, it must call the discovery API with interface name multiple times.</p><p>Example:  i_1 = org.alljoyn.About</p> |
-| sender-info.<guid>.local. | TXT | <p>Captures additional data regarding the sender of the message. The following keys are sent:</p><ul><li>txtvrs=0; represents the version of the TXT record.</li><li>pv (protocol version):  represents the discovery protocol version.</li><li>IPv4 and UDPv4 address: represents the IPv4 address and UDP port.</li><li>bid (burst identifier): represents the burst identifier.</li></ul> | 
-| ping.<guid>.local. | TXT | <p>Captures the names that are being pinged by the consumer application. The key notation is as follows:</p><ul><li>txtvrs=0; represents version of the TXT record.</li><li>n= the well-known name or the unique name.</li></ul><p>Only one key can be present in the ping record.</p>
+| search.<guid>.local. | TXT | <p>捕捉被搜索的 well-known names 或接口。核心概念如下所示： </p><ul><li>txtvrs=0; 这代表了 TXT 的版本。 </li><li>n_1, n_2, etc., 如果有多个 well-known names 呈现，在逻辑上他们将会被执行 AND 运算; n_# 是 well-known names 的 key.</li><li>i_1, i_2, etc., 如有多个接口名被请求，或多个接口名被呈现，在逻辑上他们会被执行 AND 运算；i_# 是接口名的keys</li><li>由于
+基于 name 的请求和基于接口的请求两者的 API 不一样，搜索记录将会记录 name keys 或者接口 keys. </li></ul><p>如果使用方应用程序打算执行
+接口名的逻辑 OR 操作，必须使用接口名和次数调用发现 API.</p><p>Example:  i_1 = org.alljoyn.About</p> |
+| sender-info.<guid>.local. | TXT | <p>捕捉了指示消息发送方的附加数据。下面列出的 keys 会被发送：</p><ul><li>txtvrs=0; 这代表了 TXT 的版本。</li><li>pv (protocol version):  代表发现协议的编号 </li><li>IPv4 and UDPv4 address: 代表 IPv4 地址及 UDP 端口号。</li><li>bid (burst identifier): 代表 burst 识别符.</li></ul> | 
+| ping.<guid>.local. | TXT | <p>代表被使用方应用程序调用的 names.关键符号如下：</p><ul><li>txtvrs=0; 这代表了 TXT 的版本。</li><li>n=  well-known name 或唯一识别。.</li></ul><p>Only 在 ping 记录中，key 可以被呈现 </p>
 
-#### DNS-SD response
+#### DNS-SD 回应
 
-##### DNS-SD response message: Answer section
+##### DNS-SD 回应消息: 回答部分：
 
-| Name | Type | Record-specific data |
+| Name | 类型 | 记录中的数据 |
 |---|:---:|---|
 | _alljoyn._tcp.local. | PTR | <guid>._alljoyn._tcp.local. |
-| <guid>._alljoyn._tcp.local. | TXT | <p>txtvrs=0</p><p>Except for text record version, there is no additional record.</p> |
-| <guid>._alljoyn._tcp.local. | SRV | <p>port, <guid>.local</p><p>port represents TCP port number used for the router-router connection.</p> |
+| <guid>._alljoyn._tcp.local. | TXT | <p>txtvrs=0</p><p>除文本记录版本外，不存在附加记录。</p> |
+| <guid>._alljoyn._tcp.local. | SRV | <p>port, <guid>.local</p><p>port 代表用于路由之间连接的 TCP 端口号。</p> |
 
-##### DNS-SD response message: Additional section
+##### DNS-SD 回应消息: 附加部分
 
-| Name | Type | Record-specific data |
+| Name | 类型 | 记录中的数据 |
 |---|:---:|---|
-| advertise.<guid>.local. | TXT | <p>Captures the well-known names that the provider application is advertising.The key notation is as follows:</p><p>n_1, n_2, etc., if multiple well-known names are being advertised; n_# is the key for well-known names.</p><p>For interface query response, the sessionless signal well-known name that is advertised is as follows:</p><p>n_1=org.alljoyn.About.sl.y<guid>.x<latest change_id></p> |
-| sender-info.<guid>.local. | TXT | <p>Captures additional data regarding the sender of the message. The following keys are sent:</p><ul><li>txtvrs=0; represents version of the TXT record.</li><li>pv (protocol version):  represents the discovery protocol version.</li><li>IPv4 and UDPv4 address: represents the IPv4 address and UDP port.</li><li>bid (burst identifier): represents the burst identifier.</li></ul> |
-| Ping-reply.<guid>.local. | TXT | <p>Captures the names that are being pinged by the consumer application. The key notation is as follows:</p><ul><li>txtvrs=0; represents version of the TXT record.</li><li>n= well-known name or unique name.</li><li>replycode = reply code as returned by the router.</li></ul> |
-| <guid>.local | A | This resource record sends IPv4 address. It is present in response messages for discovery. |
+| advertise.<guid>.local. | TXT | <p>捕捉提供方应用程序正在推广的 well-known names. 关键符号如下所示：</p><p>n_1, n_2, etc., 如果有多
+个 well-known names 正在被推广; n_# 是 well-known names 的 key.</p><p>对于接口请求的响应, 被推广的非会话信号 well-known name 如下所示:</p><p>n_1=org.alljoyn.About.sl.y<guid>.x<latest change_id></p> |
+| sender-info.<guid>.local. | TXT | <p>捕捉了指示消息发送方的附加数据，下列 keys 将被发送: </p><ul><li>txtvrs=0; 这代表了 TXT 的版本。</li><li>pv (protocol version):  代表发现协议的编号。</li><li>IPv4 and UDPv4 address: 代表 IPv4 和 UDP 端口号。</li><li>bid (burst identifier): 代表 burst 指示符。</li></ul> |
+| Ping-reply.<guid>.local. | TXT | <p>捕捉正在被使用方应用程序 ping 的 names. 关键概念如下：</p><ul><li>txtvrs=0; 这代表了 TXT 的版本。</li><li>n= well-known name or unique name.</li><li>replycode = 路由发回去的返回代码。</li></ul> |
+| <guid>.local | A | 此资源记录发送 IPv4 address. 由应答消息这种方式被呈现。 |
 
-#### NGNS configuration parameters
-
-| Parameter | Default value | Range | Description |
+#### NGNS 
+| 参数 | 默认 | 范围 | 描述 |
 |---|---|---|---|
-| EnableLegacyNS | true | boolean | Specifies the backward compatibility behavior with respect to legacy Name Service. |
+| EnableLegacyNS | true | boolean | 声明相对于历史版本 Name 服务的向后兼容性。 |
 
-### Discovery usage guidelines
+### Discovery 使用指南
 
-Although the AllJoyn system supports both the name-based and 
-announcement-based discovery, the preferred and recommended 
-method for discovering services in an AllJoyn IoE network 
-is the announcement-based discovery.
+尽管 AllJoyn 系统对基于 Name 和基于 Announcement 的发现都有支持，在 AllJoyn IoE 网络中发现服务的方式还是偏好并推荐基于 Announcement 的发现方式。
 
-The name-based service discovery process can be used for 
-app-to-app based discovery, where both provider and consumer 
-applications are aware of the well-known name. This discovery 
-process is also used for sessionless signals and to discover 
-the AllJoyn router for the thin app. 
+基于 Name 的发现过程可被用于应用程序到应用程序的发现，提供方和使用方两方都知晓 well-known names. 这种发现过程也可被用于非会话信号，以
+及精简应用程序发现 AllJoyn 路由的过程。
+
 [AllJoyn discovery method usage guidelines][discovery-method-usage-guidelines] 
 summarizes usage guidelines for the two AllJoyn discovery methods.
 
-#### AllJoyn discovery method usage guidelines
+#### AllJoyn 发现方法使用指南
 
-| Name-based discovery usage | Announcement-based discovery usage |
+| 使用基于 Name 的发现 | 使用基于 Announcement 的发现 |
 |---|---|
-| <ul><li>App-to-app discovery</li><li>Sessionless signals</li><li>AllJoyn router discovery for thin apps</li></ul> | AllJoyn service interfaces discovery on the AllJoyn network. |
+| <ul><li>应用程序到应用程序的发现</li><li>非会话信号</li><li>用于精简应用程序的 AllJoyn 路由发现</li></ul> | 在 AllJoyn 网络上的服务
+接口发现。|
 
 
 
