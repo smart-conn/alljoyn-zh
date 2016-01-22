@@ -1,15 +1,9 @@
-# Data Exchange
+# 数据交换
 
-## Overview
+## 概览
 
-The AllJoyn&trade; provider application implements one or more service 
-objects that provide service functionality. These service objects 
-implement one or more Bus interfaces which support methods, signals, 
-and/or properties as interface members. AllJoyn applications can 
-exchange data using these interface members. An AllJoyn session 
-must be established to exchange data between provider and consumer 
-applications except when sending sessionless signals 
-(see [Sessionless Signal][sessionless-signal]). 
+AllJoyn&trade; 提供方应用程序实现一个或多个提供服务功能的服务对象。这些服务对象又会实现一个或多个支持将方法，信号，以及/或者属性作为接口成员的总线接口。AllJoyn 应用程序可以使用这些接口成员来进行数据交换。除非会话信号以外，提供方和使用方应用程序之间的数据交换必须通过建立 AllJoyn 会话来完成。
+(参见[Sessionless Signal][sessionless-signal]). 
 
 **NOTE:** AllJoyn service objects are not tied to any specific 
 AllJoyn session. Any service object can be accessed over any AllJoyn session.
