@@ -5,60 +5,41 @@
 AllJoyn&trade; 提供方应用程序实现一个或多个提供服务功能的服务对象。这些服务对象又会实现一个或多个支持将方法，信号，以及/或者属性作为接口成员的总线接口。AllJoyn 应用程序可以使用这些接口成员来进行数据交换。除非会话信号以外，提供方和使用方应用程序之间的数据交换必须通过建立 AllJoyn 会话来完成。
 (参见[Sessionless Signal][sessionless-signal]). 
 
-**NOTE:** AllJoyn service objects are not tied to any specific 
-AllJoyn session. Any service object can be accessed over any AllJoyn session.
+**NOTE:** AllJoyn 服务对象不被绑定到任何 AllJoyn 会话。任何服务对象都可以通过任意 AllJoyn 会话被访问。
 
-The following figure shows the functional architecture for 
-the provider application. 
+下图展示了提供方应用程序的功能性结构。
 
 ![provider-functional-arch][provider-functional-arch]
 
-**Figure:** Provider functional architecture
+**Figure:** 提供方功能性结构
 
-Aspects about the architecture follow.
+结构所遵循的方面：
 
-* Each service object has an associated object path which app 
-may decide to announce as part of About feature's announcement signal. 
-* A provider device can host one or more AllJoyn sessions. 
-* The provider app maintains distinct session port and a 
-session Id for each hosted session among other parameters. 
-* The provider application endpoint connected to the AllJoyn 
-router has one associated unique name and one or more well-known 
-names advertised by the application. 
-* The AllJoyn router maintains session related state information. 
+* 每一个服务对象都有一条相关的对象路径，应用程序可以决定是否将此路径作为 About 功能中的 Announcement 信号的一部分公布。
+* 一个提供方设备可以主持一个或多个 AllJoyn 会话。
+* 提供方应用程序为每一个自己主持的会话保留一个唯一的会话端口和会话 ID，以及其他参数。
+* 连接到 AllJoyn 路由的提供方应用程序的终端有一个相关的唯一标识符，以及一个或多个通过应用程序推广的 well-known names.
+* AllJoyn 路由保留与会话相关的状态信息。 
 
-This information is used to perform sessionId-based routing 
-for AllJoyn messages. 
+此信息被用于为 AllJoyn 消息提供基于会话 ID 的路由功能。
 
-Once a session is established, the provider application can 
-communicate with consumer apps via interface methods and 
-properties when invoked by the consumer side. The provider 
-app can also send signals specified in the bus interfaces 
-to send data to consumer apps.
+一旦会话被建立，提供方应用程序可以通过被使用方调用的接口方法和属性与使用方应用程序进行通信。提供方应用程序也可发送在总线接口中声明了的信号，以向使用方应用程序发送数据。
 
-After an AllJoyn session is established, the consumer application 
-has the connection established to exchange data with the provider 
-app. The consumer app in a session can invoke methods and properties 
-on the remote service objects, or can opt to receive signals 
-emitted by the provider app. A ProxyBusObject is needed to 
-exchange data via methods and properties. A signal handler 
-is needed to receive signal data from the provider app.
+AllJoyn 会话被建立之后，使用方应用程序已经建立了可以与提供方应用程序交换数据的连接。处于一个会话中的使用方应用程序可以调用远端服务对象上的方法和属性，也可选择性地接收提供方应用程序发送的信号。通过方法和属性交换数据需要一个 ProxyBusObject.从提供方应用程序接收信号需要一
+个信号处理器。
 
-The following figure shows the functional architecture for 
-the consumer application. 
+下图展示了使用方应用程序的功能性结构。
+
 
 ![consumer-functional-arch][consumer-functional-arch]
 
-**Figure:** Consumer functional architecture
+**Figure:** 使用方功能性结构
 
-Aspects of this architecture follow.
+结构所遵循的方面：
 
-* A consumer app can join one or more AllJoyn sessions which 
-can be with the same or different provider apps. 
-* The consumer app creates one or more proxy objects, one 
-for each remote service object it wants to communicate with. 
-* A proxy object is a local representation of the desired 
-remote service object on the provider app. 
+* 一个使用方应用程序可以加入一个，或由相同或不同的提供方应用程序发起的多个 AllJoyn 会话中。
+* 使用方应用程序创建一个或多个代理对象，没一个需要通信的远端服务对象都需要一个代理对象。
+* 代理对象是所需远端服务的一个本地代表。
 * The service object path, unique name of the provider app 
 and sessionId information are provided to create a proxy object. 
 * To receive signals from the provider app, consumer app 
