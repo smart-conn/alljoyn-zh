@@ -192,94 +192,41 @@ TCP 终点既可能是一个活动连接请求的结果，也可能是一个被�
 
 TCP 终点遵循 AllJoyn 线程的基本生命周期。它首先在 INITIALIZED 状态中生成。在 TCP 终点使用与 AllJoyn 系统之前，必须先将其认证。这是一个独立的步骤，在 [TCP Endpoint authentication phase][tcp-endpoint-auth-phase] 中具体说明。如果认证成功，TCP 终点线程被要求启动，同时进入 STARTING 状态。如果认证失败，TCP 终点转换为 FAILED 状态，并准备好被清理。
 
-As soon as the Thread(s) required to support a newly created 
-and authenticated TCP Endpoint is actually running, the Endpoint 
-enters the STARTED state. In this state, the TCP Endpoint is 
-registered with the Router and therefore data can be transferred 
-through the Endpoint. Once the connection is no longer needed, 
-the Endpoint method `Stop()` is called, and the Endpoint enters 
-the STOPPING state. Once all threads which may be running in 
-the Endpoint have exited, the Endpoint enters into a JOINING state, 
-where any threads associated with the Endpoint are joined (in the
-sense of a Posix thread join operation). The Endpoint is then 
-unregistered from the AllJoyn Router. When the threading-related 
-resources in an endpoint are cleaned up, the endpoint enters the 
-DONE state at which time it can be removed from the system and deleted.
-当线程要求支持一个新建的或经过认证的正在运行的 TCP 终点，该终点进入 STARTED 状态。在此状态下，TCP 终点被注册至路由，因此数据可以通过终点传输。
+当线程要求支持一个新建的或经过认证的正在运行的 TCP 终点，该终点进入 STARTED 状态。在此状态下，TCP 终点被注册至路由，因此数据可以通过终点传输。当不再需要这个连接时，就会调用终点方法 `Stop()`，那么终点将进入 STOPPING 状态。当终点中所有的线程都退出后，终点进入 JOINING 状态，这个状态下任何相关的线程都能够加入（类似于 Posix 线程加入的操作）。终点随后会从 AllJoyn 路由中注销。当终点里与线程相关的资源被清除后，终点进入 DONE 状态，在这个状态下它能够从系统中被移除和删除。
 
-##### TCP Endpoint authentication phase
+##### TCP Endpoint authentication phase TCP 终点验证步骤
 
-As mentioned above, TCP Endpoints must transition through an 
-authentication phase that is required to complete before Messages 
-are allowed to be transferred though the endpoint.This 
-authentication phase is handled by a separate thread, and is shown
-in the following figure. The authentication process is begun when 
-the TCP Endpoint enters the INTIALIZED state.
+如上文所述，TCP 终点在允许信息通过之前，必须完成一个验证步骤。这个验证步骤由一个单独的线程处理，在下图中展示。验证进程在 TCP 终点进入 INTIALIZED 阶段时启动。
 
 ![tcp-endpoint-auth-states][tcp-endpoint-auth-states]
 
-**Figure:** TCP endpoint authentication states
+**图:** TCP 终点验证状态
 
-TCP Endpoint authentication uses the Simple Authentication and 
-Security Layer (SASL) framework "ANONYMOUS" mechanism. 
-While in the actual AUTHENTICATING state, the TCP Stream 
-runs in a string-transfer mode in order to transfer the 
-SASL challenges and responses. If the SASL exchange fails, 
-authentication transitions to the FAILED state which, in turn, 
-drives the TCP Endpoint state to change to FAILED.
+TCP 终点验证使用 Simple Authentication and Security Layer (SASL) 架构的 "ANONYMOUS" 机制。实际上在 AUTHENTICATING 状态中，TCP 流为了传输 SASL 挑战和应答，运行在字符串传输模式中。如果 SASL 交换失败，验证转换到 FAILED 状态，这就导致了 TCP 终点进入 FAILED 状态。
 
-If the SASL exchange succeeds, authentication transitions to 
-the SUCCEEDED state and this, in turn, drives the TCP Endpoint 
-to transition to the STARTING state. When the TCP Endpoint 
-transitions to STARTED state the associated TCP Stream will 
-make a mode switch and begin sending and receiving AllJoyn Messages 
-instead of text strings. 
+如果 SASL 交换成功，认证转换到 SUCCEEDED 状态，这会使 TCP 终点转换为 STARTING 状态。当 TCP 终点转换为 STARTED 状态，相关的 TCP 流会进行模式转换，并开始发送和接收 AllJoyn 信息，停止发送和接收文本字符串。
 
-As soon as the FAILED or SUCCEEDED determination is made, 
-and the appropriate Endpoint lifetime actions are taken, 
-the endpoint authentication thread exits and causes the 
-authentication machine transition to DONE.
+一旦做出了 FAILED 或 SUCCEEDED 的决定，就会生成一个适当的终点生存周期，退出终点认证和认证机制的转变都会导致终点的结束。
  
-### UDP Transport mechanism
+### UDP 传输机制
 
-The AllJoyn UDP Transport, as its name implies, uses the 
-UDP/IP protocol to move AllJoyn Messages from one host to 
-another. Since UDP does not provide a reliability guarantee, 
-the UDP Transport must provide some mechanism to provide a 
-reliable Message delivery guarantee.  The UDP Transport uses 
-the AllJoyn Reliable Datagram Protocol (ARDP) to provide 
-reliable delivery of messages. ARDP is based loosely on 
-the Reliable Data Protocol (RDP) as appears in RFC 908 (version 1) 
-and RFC 1151 (version 2).
+ALlJoyn UDP 传输机制，顾名思义，使用 UDP/IP 协议从一端向另一端转移 AllJoyn 信息。由于 UDP 不提供可靠性的保障，UDP 传输方式必须提供一种保障信息送达的机制。UDP 传输方式使用 AllJoyn Reliable Datagram Protocol (ARDP) 提供信息送达保障。 ARDP 大致上基于 Reliable Data Protocol (RDP)，如 RFC 908 (版本 1) 和 RFC 1151 (版本 2) 中所体现的一样。
 
-#### UDP Transport data plane architecture
+####  UDP 传输数据层结构
 
-Architecturally, the UDP Transport can be split into two 
-large components: the routing functionality of a Router Node 
-connects to a so-called UDP Endpoint, and the networking functionality 
-of the UDP Transport that is accessed through ARDP.
+结构上说，UDP 传输方式可被分为两大组件；路由节点连接到所谓 UDP 终点的路由功能，可通过 ARDP 访问的 UDP 传输方式的网络功能。
 
-The UDP Endpoint is the primary data plane interface between 
-the Routing Node and the UDP Transport. From the Routing Node 
-point of view, each UDP Transport connection is represented by 
-a UDP Endpoint. Each UDP Endpoint has an associated ARDP stream 
-that converts AllJoyn messages to ARDP datagrams. The UDP Transport 
-data plane architecture is captured in the following figure.
+UDP 终点事路由节点与 UDP 传输方式之间的基础数据层接口。从路由节点的角度来看，每个 UDP 传输连接都是一个 UDP 终点的代表。每个 UDP 终点有一个相关的 ARDP 流，它能把 AllJoyn 信息转换为 ARDP 数据包。下图展示了 UDP 传输方式数据层结构。
 
 ![udp-transport-data-plane-internal-architecture][udp-transport-data-plane-internal-architecture]
  
-**Figure:** UDP transport data plane internal architecture
+**图:** UDP 传输方式数据层内部结构
 
-The ARDP Stream component converts from the notion of a 
-Message stream to a stream of datagrams and, in turn, talks 
-to an ARDP Connection. The ARDP Connection provides the 
-end-to-end state information required to establish the reliability 
-guarantees, and talks to a single UDP socket that is shared 
-among the various ARDP connections managed by the UDP Transport.
+ARDP 流组件从信息流的概念转换成了数据包流，与 ARDP 连接进行会话。ARDP 连接提供了端到端状态信息，使可靠性得到了保障，并且能够与独立的通过各种由 UDP 传输方式管理的 ARDP 连接分享的 UDP socket 进行会话。
 
-#### UDP Endpoint lifecycle
+#### UDP Endpoint lifecycle UDP 终点生命周期
 
-UDP Endpoints go through a well-defined lifecycle as shown in the following figure.
+UDP 终点通过一个如下图所示定义明确的生命周期。
 
 ![udp-endpoint-lifecycle][udp-endpoint-lifecycle]
 
