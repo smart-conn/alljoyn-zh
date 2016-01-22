@@ -1,5 +1,9 @@
 # alljoyn-zh
 
+# 0122 待审阅文章
+
+* [ ] [docs/learn/core/system-descriptionalljoyn-transport.md](docs/learn/core/system-descriptionalljoyn-transport.md)
+
 ## 0119 待审阅文章
 
 * [ ] [docs/develop/run-sample-apps/onboarding/linux.md](docs/develop/run-sample-apps/onboarding/linux.md)
