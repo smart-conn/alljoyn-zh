@@ -230,37 +230,15 @@ UDP 终点通过一个如下图所示定义明确的生命周期。
 
 ![udp-endpoint-lifecycle][udp-endpoint-lifecycle]
 
-**Figure:** UDP endpoint lifecycle
+**图:** UDP 终点生命周期
 
-Endpoints are constructed because of either an Active or a 
-Passive connection request. Similar to the TCP concept, 
-an Active connection is an outgoing connection that is actively 
-started on the local side. A Passive connection is an incoming 
-connection that was actively started on the remote side. 
-The ARDP protocol has a three-way handshake similar to that
-provided by RDP and TCP. The entity that issues the SYN request 
-enters into ACTIVE state and the entity which responds with a 
-SYN+ACK enters into PASSIVE state.
+终点既适用于主动连接请求，也适用于被动连接请求。与 TCP 概念相似，主动连接是从本地发出的连接。被动连接是传入的，从远程发出的连接。ARDP 协议有一个三步握手的机制，与 RDP 和 TCP 提供的类似。发出 SYN 请求的实体进入 ACTIVE 状态，使用 SYN+ACK 回应的实体进入 PASSIVE 状态。
 
-Unlike TCP and RDP, ARDP provides additional information as 
-data in the SYN and SYN+ACK packets. During the SYN, SYN+ACK, 
-ACK exchange (happening in ACTIVE and PASSIVE states), the involved 
-endpoints are authenticating and identifying themselves to their 
-remote counterparts. Once this phase has completed, the endpoints 
-enter the STARTED state when the endpoint is registered with the 
-Routing Node as being ready. The STARTED state is one in which 
-AllJoyn Messages may be sent and received.
+与 TCP 和 RDP 不同，ARDP 提供了额外的信息，如 SYN 和 SYN+ACK 包中的数据。在 SYN，SYN+ACK，ACK 交换（发生在 ACTIVE 和 PASSIVE 状态）期间，包含的终点与它们的远程部分进行认证和识别。当这个步骤完成时，并且终点注册的远程节点进入待命状态时，该终点进入 STARTED 状态。在 STARTED 状态下，AllJoyn 信息可以被发送和接受。
 
-Eventually, a connection may be stopped either as a result of a local 
-or remote disconnect event. A disconnect is initiated by the Routing 
-function making a `Stop()` call into the UDP Endpoint. This causes 
-a state transition from STARTED to STOPPING. For a local disconnect 
-event, an immediate transition is made to the WAITING state. 
-This allows all queued and in-flight Messages to be sent to the 
-remote side before an ARDP Disconnect is executed. 
+最后，本地和远程方面都可以调用断开连接的事件来终止连接。路由通过向 UDP 终点发送一个 `Stop()` 命令来断开连接。这会导致状态由 STARTED 进入 STOPPING。在本地断连情况下，会立刻进入 WAITING 状态。该状态下允许在 ARDP 断连被执行前，所有在排队的或在途中的信息被发送至远程端。
 
-**NOTE:** Unlike TCP, there is no four-way ending handshake in ARDP - 
-this is handled at the Session level in the UDP Transport state machine.  
+**注意:** 与 TCP 不同，在 ARDP 中没有四步骤结束握手的方式 —— 这是由 UDP 传输状态的设备中会话层所处理的。 
 
 Once all data is transferred and acknowledged, a transition is 
 made back to the STOPPING state. In STOPPING state, the various 
@@ -272,6 +250,7 @@ joined (in the sense of a Posix thread join operation). The last
 part of the resource management is to unregister the endpoint 
 from the Routing Node. When this is complete, the endpoint enters the 
 DONE state and becomes ready for deletion by the endpoint management function.
+当所有数据都被传输网称并且公布后，状态会重新会到 STOPPING。
 
 #### ARDP state machine
 
