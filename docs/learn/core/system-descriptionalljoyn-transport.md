@@ -1,184 +1,79 @@
-# AllJoyn&trade; Transport
+# AllJoyn&trade; 传输方式
 
-## Overview 概览
+## 概览
 
-AllJoyn Transport is an abstraction for a concrete mechanism 
-that is used to move AllJoyn Messages (corresponding to a 
-method call, method reply, a property get/set or a signal) 
-between AllJoyn applications.
 AllJoyn Transport 是一种具体机制的概念。这个机制用于在 AllJoyn 应用之间传递 AllJoyn Messsages（根据方法调用，方法答复，属性获取/设置或信号）。
 
-The AllJoyn Transport provides the following fundamental 
-pieces of functionality:AllJoyn Tranport 提供了以下基础功能：
-* The ability to create and destroy connections between 
-AllJoyn applications (through AllJoyn routers) and between 
-AllJoyn applications and routers.在 AllJoyn 应用（通过 AllJoyn 路由）之间和在 AllJoyn 应用和程序之间建立和摧毁连接。
-* The ability to reliably send and receive AllJoyn Messages 
-between AllJoyn applications and routers.  在 AllJoyn 应用和路由之间可靠地发送和接收 AllJoyn Messages。
-* Optionally, to provide advertisement and discovery services 
-appropriate to the underlying network technology.可选地，提供适用于底层网络技术的广告和发现服务。
+AllJoyn Tranport 提供了以下基础功能：
+* 在 AllJoyn 应用（通过 AllJoyn 路由）之间和在 AllJoyn 应用和程序之间建立和摧毁连接。
+* 在 AllJoyn 应用和路由之间可靠地发送和接收 AllJoyn Messages。
+* 可选地，提供适用于底层网络技术的广告和发现服务。
 
-The AllJoyn Transport supports connections establishment and 
-delivering messages over multiple underlying physical transport 
-layers including TCP, UDP and local UNIX transport. A complete 
-list of underlying transports supported by the AllJoyn Transport 
-is captured in [AllJoyn TransportMask definition][alljoyn-transportmask-definition].
-An application can specify which underlying transport to be 
-used for connection establishment and message delivery.
 AllJoyn Transport 支持在多种底层物理网络层，包括 TCP、UDP 和 本地 UNIX 传输中建立连接和传递信息。AllJoyn Transport 支持的完整底层传输列表收录在 [AllJoyn TransportMask definition][alljoyn-transportmask-definition]。应用程序能够指定运行在何种用于建立连接和传递信息的底层传输方式中。
 
-Based on the type of connection endpoints, AllJoyn Transport functionality can be 
-divided into the following categories:根据连接终点的类型划分， AllJoyn Transport 功能可被分围以下几个类型：
-* **Local AllJoyn Transports**: Local AllJoyn Transports are designed 
-to essentially provide communication between Core Library 
-and associated AllJoyn Router. This supports connection establishment 
-and message routing between Application and the Router. Details 
-on Local Transports are captured in [Local AllJoyn Transports][local-alljoyn-transports].Local AllJoyn Transports 主要负责提供核心资源库与 AllJoyn 路由之间的通信。它支持应用和路由之间连接的建立和信息转发。关于此种 Local Transports 的详细信息，收录在 [Local AllJoyn Transports][local-alljoyn-transports]。
-* **Bus-to-Bus AllJoyn Transports**: These AllJoyn Transports enable 
-connection establishment and message routing between AllJoyn 
-routers. Details on Bus-to-Bus Transports are captured in 
-[Bus-to-Bus AllJoyn Transports][b2b-alljoyn-transports].该类型的 AllJoyn Transports 支持 AllJoyn 路由之间连接建立和信息转发。关于此种 Local Transports 的详细信息，收录在 [Bus-to-Bus AllJoyn Transports][b2b-alljoyn-transports]。
+根据连接终点的类型划分， AllJoyn Transport 功能可被分围以下几个类型：
+* **Local AllJoyn Transports**: Local AllJoyn Transports 主要负责提供核心资源库与 AllJoyn 路由之间的通信。它支持应用和路由之间连接的建立和信息转发。关于此种 Local Transports 的详细信息，收录在 [Local AllJoyn Transports][local-alljoyn-transports]。
+* **Bus-to-Bus AllJoyn Transports**: 该类型的 AllJoyn Transports 支持 AllJoyn 路由之间连接建立和信息转发。关于此种 Local Transports 的详细信息，收录在 [Bus-to-Bus AllJoyn Transports][b2b-alljoyn-transports]。
 
-## Endpoints usage in AllJoyn Transports
+## AllJoyn Transports 中终点的使用方法
 
-As mentioned in [AllJoyn endpoints][alljoyn-endpoints], the 
-AllJoyn Transport uses endpoints to establish connections 
-and route messages across applications and routers. An AllJoyn 
-Endpoint is analogous to a socket endpoint as used in socket 
-programming. An AllJoyn Endpoint is one side of an AllJoyn communication 
-link. The AllJoyn communication link could be between an Application 
-and an AllJoyn router, or it could be between two AllJoyn routers. 
 如 [AllJoyn endpoints][alljoyn-endpoints] 所述，AllJoyn Transport 使用终点建立连接并在应用和路由之间转发信息。AllJoyn Endpoint 类似与 socket 编程中的 socket endpoint。AllJoyn Endpoint 是 AllJoyn 通信连接中的一侧。AllJoyn 通信连接可以建立在一个应用与一个路由之间，或者建立在两个路由之间。
 
-The broad classification of endpoints in the AllJoyn system are listed below:下面列出了 AllJoyn 系统中的终点的一般分类：
-* **Local Endpoint**: A local endpoint represents a connection 
-to self. It is used in the Core Library to provide a connection 
-to the application itself and used in the AllJoyn Router to 
-provide connection to the router itself. A local endpoint 
-represents a connection within the same process.本地重点代表了一个指向自己的连接。在核心资源库中，它路由和应用用来建立指向自己的连接。本地终点表示在同一进程内的连接。
-* **Remote Endpoint**: A remote endpoint represents a connection 
-between the application and the AllJoyn router. Messages destined 
-to an applications get routed to its remote endpoint. A specialized 
-type of remote endpoint called "Bus-to-Bus" endpoint represents 
-connection between two AllJoyn Routers. A remote endpoint represents 
-a connection between two processes.远程终点代表应用和路由之间的连接。发往应用程序的消息路由到其远程终点。一种特别的远程终点的类型称为 “Bus-to-Bus” 终点，表示两个路由之间的连接。远程终点表示两个进程之间连接。
+下面列出了 AllJoyn 系统中的终点的一般分类：
+* **Local Endpoint**: 本地终点代表了一个指向自己的连接。在核心资源库中，它路由和应用用来建立指向自己的连接。本地终点表示在同一进程内的连接。
+* **Remote Endpoint**: 远程终点代表应用和路由之间的连接。发往应用程序的消息路由到其远程终点。一种特别的远程终点的类型称为 “Bus-to-Bus” 终点，表示两个路由之间的连接。远程终点表示两个进程之间连接。
 
-The following figure shows the concepts of local and remote endpoints. 下图展示了本地终点和远程终点的概念。
+下图展示了本地终点和远程终点的概念。
 
 ![local-remote-endpoints][local-remote-endpoints]
 
 **图:** 本地和远程终点
 
-The figure illustrates a hypothetical connection between an AllJoyn application 
-and a preinstalled Router. The AllJoyn application talks to a Core Library 
-that provides the gateway to the larger AllJoyn distributed bus.  
-The Core Library has two main connections: the connection to the 
-application, which is provided through what is called the Local Endpoint, 
-and the connection to the Router, which is represented by a Remote Endpoint.
 图片表明了 AllJoyn 应用与预装路由之间的假想连接。AllJoyn 应用与核心资源库进行会话，把网关提供给更广的分布式总线。核心资源库有两个主要连接：一是应用之间的连接，由 Local Endpoint 提供 ；二是与路由之间的连接（代表了远程 Remote Endpoint）。
 
-The AllJoyn Router also has a corresponding Remote Endpoint to represent 
-the endpoint of the communication link with the Core Library for routing 
-messages. The Local endpoint within the AllJoyn Router represents a 
-connection to the router for routing control messages destined for the router. 
 AllJoyn 路由有相应的远程终点代表与用于转发信息的核心资源库相连连接的终点。AllJoyn 路由内的 本地终点表示一个连接到路由器上的路由发送到路由器的控制消息。
 
-Multiple applications can connect to a single AllJoyn Router in a 
-distributed bus architecture. An AllJoyn router maintains a remote 
-endpoint to each connected application as shown in the following
-figure (AllJoyn router wiht multiple remote endpoints). 
 多个程序能够在一个分布式总线结构中连接同一个 AllJoyn 路由。AllJoyn 路由为每一个连接的程序提供了一个远程终点，如下图所示 (AllJoyn router wiht multiple remote endpoints)。
 
 ![alljoyn-router-multiple-remote-endpoints][alljoyn-router-multiple-remote-endpoints]
 
-**图:** AllJoyn router with multiple remote endpoints
+**图:** 有多个远程终点的 AllJoyn 路由
 
-Both the Core Library and the router maintain remote endpoints, 
-however they differ in terms of message routing functionality - 
-an AllJoyn Router can move (route) messages between Remote Endpoints, 
-whereas a Core Library only moves messages between exactly 
-one Local and exactly one Remote Endpoint. 
 核心资源库和路由都提供远程终点，然而他们在信息转发功能方面有所不同-AllJoyn 路由能在终点之间转发信息，然而核心资源库仅能在特定一组本地和远程终点之间转发信息。
 
-The AllJoyn system supports a fully distributed bus configuration, 
-where a router communicates with other routers to join bus segments 
-into a single distributed AllJoyn bus as shown in the following figure. 
 AllJoyn 系统支持完全分布式的总线配置，具体表现为一个路由通过与其它路由的连接，加入一个单一分布式 AllJoyn 总线的总线段，如图所示：
 
 
 ![alljoyn-distributed-bus-b2b-endpoints][alljoyn-distributed-bus-b2b-endpoints]
 
-**图:** AllJoyn distributed bus with bus-to-bus endpoints 包含 bus-to-but 终点的 AllJoyn 分布式总线
+**图:** 包含 bus-to-but 终点的 AllJoyn 分布式总线
 
-In this figure, one bus segment comprising an AllJoyn Router and 
-two Applications is shown in the top half. Another bus segment, 
-also with an AllJoyn Router and two Applications, is shown in the 
-bottom half of the figure. 
 如图，在图片的上半部分展示了一个包含一个 AllJoyn 路由和两个应用程序的总线段。在图片的下半部分，同样有一个包含一个 AllJoyn 路由和两个应用程序的总线段。
 
-The two bus segments are connected together via remote endpoints 
-called Bus-to-Bus Endpoints. Each router maintains a Bus-to-Bus Endpoint 
-for every other router it is connected to. In the figure, 
-One Bus-to-Bus Endpoint represents the connection to the upper 
-Routing Node and another Bus-to-Bus Endpoint represents the 
-connection to the lower Routing Node. 
 这两个总线段通过称为 Bus-to-Bus 的远程终点相连。每个路由为它所连接的路由提供了一个 Bus-to-Bus Endpoint。在图中，一个 Bus-to-Bus Endpoint 表示于上方 Routing Node 的连接，另一个 Bus-to-Bus Endpoint 表示与下方Routing Node 的连接。
  
-The Remote Endpoints are paired with an underlying communication 
-mechanism as part of the associated AllJoyn Transport. For example, 
-the Bus-to-Bus Endpoints in the Routing Nodes may be managed by 
-the TCP Transport or the UDP Transport, which also handles the 
-details of moving Messages from one end (Endpoint) of the implied 
-connection to another.
 Remote Endpoints 通过 AllJoyn Transport 相关的底层通讯机制进行配对。举例说明， Routing Nodes 中的 Bus-to-Bus Endpoints 可能通过 TCP Transport 或者 UDP Transport 控制，它们同时也控制了从一段（Endpoint）到另一段的连接中传递 Messages 的细节。
 
-In the case of the Remote Endpoints that connect the Core Library 
-to the AllJoyn Router, the underlying communication mechanism 
-could be different based on host environments. For example, a 
-UNIX domain sockets implementation is used on Linux systems, 
-while a TCP implementation is used on Windows systems.
 在核心资源库与 AllJoyn 路由之间通过 Remote Endpoints 连接的情况下，底层通信机制可能根据主机环境的不同而有所区别。举例说明，Linux 系统中使用 UNIX domain sockets 工具，然而 Windows 系统中使用 TCP 工具。
 
-### Thin Core Library Endpoints 精简资源库终点
+### 精简资源库终点
 
-The Thin Core Library (TCL) makes use of the TCP Transport, 
-however its implementation is quite different than the regular 
-TCP Transport connection between a Core Library and AllJoyn Router.  
 精简资源库 (TCL) 使用 TCP 传输，但它的实现与一般的核心资源库与 AllJoyn 路由之间的 TCP 传输有所不同。
 
-On the TCL, there is no explicit breaking out of a Remote Endpoint 
-and a Local Endpoint. The TCL provides minimal implementation of the 
-functionality required to connect and communicate with the 
-TCP Remote Endpoint at the Alljoyn Router hosted on another 
-AllJoyn device. 
 在 TCL 中，没有明确的远程终点和本地终点。TCL 提供了与另一台 AllJoyn 设备上的 AllJoyn 路由上的 TCP 远程节点连接并通信的最小功能实现。
 
-On the Routing Node side, a Thin Library device connects as 
-if it was any local Core Library connecting using a local 
-TCP loopback connection. 
 在 Routing Node 侧，精简资源库设备连接方式，就像使用本地 TCP 回环连接的本地核心资源库。
 
-**注意:** This is how Bus Attachments connect to Routing Nodes in 
-the Windows environment. The TCP transport is used for the 
-connection, but the data does not actually travel across the 
-network; but rather is "looped back" and sent back up the 
-networking stack before being sent out on a connected IP network.
-这是 Windows 环境下，Bus Attachments 连接 Routing Nodes 的方式。TCP 传输用于连接，但是数据实际上不通过网络传输；而是在被发送到某个已连接的 IP 网络之前，被回环并发送至网络堆栈。
+**注意:** 这是 Windows 环境下，Bus Attachments 连接 Routing Nodes 的方式。TCP 传输用于连接，但是数据实际上不通过网络传输；而是在被发送到某个已连接的 IP 网络之前，被回环并发送至网络堆栈。
 
-The Thin Library Endpoint usage is captured in the following figure.下图展示了精简资源库终点的使用方式。
+下图展示了精简资源库终点的使用方式。
 
 ![thin-core-library-endpoint][thin-core-library-endpoint]
  
-**图:** Thin Core Library Endpoint 精简资源库终点
+**图:** 精简资源库终点
 
-## AllJoyn Transport in Networking Model
+## 网络模型中的 AllJoyn Transport
 
-Although the primary task of an AllJoyn transport is to 
-transport, or move, AllJoyn Messages from one endpoint to another, 
-it is important to distinguish the AllJoyn Transport from the 
-concept of transport layer (layer 4) in the International 
-Standards Organization Open Systems Interconnection (ISO/OSI) 
-7-layer model.
 尽管 AllJoyn 传输的基本任务是从一个终点向另一个终点传输或转移 AllJoyn Messages，但是也须要区别 AllJoyn Transport 与  International Standards Organization Open Systems Interconnection (ISO/OSI) 7-layer model 中传输层（第四层）的概念。
 
 The following figure shows where AllJoyn Transports fit in the 
@@ -188,39 +83,19 @@ The following figure shows where AllJoyn Transports fit in the
 
 **图:** 七层 ISO/OSI 模型中的 AllJoyn Transport
 
-Underneath the Application Logic, there exists an AllJoyn Message 
-layer which is responsible for marshaling and unmarshaling of 
-AllJoyn messages (Signals and Method Calls). This layer can be 
-thought of as residing in the presentation layer (layer 6) 
-of the ISO/OSI model. 
 在应用程序逻辑之下，有一个负责封包和解包 AllJoyn 信息（信号和方法调用）的 AllJoyn Message 层。该层可被视为位于 ISO/OSI 模型的表现层。
 
-These AllJoyn messages are routed to their intended destination 
-by the AllJoyn Transport layer. Since the AllJoyn Transport layer 
-manages connections across applications and AllJoyn routers in 
-the network, it can be thought of corresponding to the session 
-layer (layer 5) of the ISO/OSI model. AllJoyn Transports make 
-use of layer 4 transports like TCP or UDP in order to manage 
-the actual movement of AllJoyn messages between various network entities.
 AllJoyn 信息通过 AllJoyn Transport 层被路由至目的地。由于 AllJoyn Transport 层控制应用程序和 AllJoyn 路由之间的连接，所以它可以被相应地视为 ISO/OSI 模型中的会话层（第五层）。AllJoyn Tranport 使用第四层的传输方式，如 TCP 或 UDP，以便管理不同网络实体间 AllJoyn 信息的实际传输。
 
-Since an AllJoyn Transport encapsulates the functions of moving 
-data sequences, establishing connections, advertisement and discovery, 
-there are separate AllJoyn Transports for separate underlying 
-transport mechanisms. 由于 AllJoyn Transport 包含了转移数据序列、建立连接、广告和发现功能，针对不同的底层传输机制，有不同的 AllJoyn Transports。
-* The AllJoyn TCP Transport uses TCP/IP as the mechanism for moving data. AllJoyn TCP Transport 使用 TCP/IP 机制传输数据。
-* The AllJoyn UDP Transport uses UDP/IP as the mechanism for moving data. AllJoyn UCP Transport 使用 UCP/IP 机制传输数据。
-* The AllJoyn Bluetooth (BT) Transport does the same for Bluetooth 
-connections.AllJoyn Bluetooth (BT) Transport 使用相同的方式进行蓝牙连接。
-* The AllJoyn Local Transport uses UNIX domain sockets.  AllJoyn Local Transport 使用  UNIX domain sockets。
+由于 AllJoyn Transport 包含了转移数据序列、建立连接、广告和发现功能，针对不同的底层传输机制，有不同的 AllJoyn Transports。
+* AllJoyn TCP Transport 使用 TCP/IP 机制传输数据。
+* AllJoyn UCP Transport 使用 UCP/IP 机制传输数据。
+* AllJoyn Bluetooth (BT) Transport 使用相同的方式进行蓝牙连接。
+* AllJoyn Local Transport 使用  UNIX domain sockets。
 
-The name given to an AllJoyn transport typically echoes the method 
-used in the underlying OSI layer 4 mechanism.  AllJoyn 传输方式的命名通畅参照其使用的底层 OSI 四层机制中的方法。
+AllJoyn 传输方式的命名通常参照其使用的底层 OSI 四层机制中的方法。
 
-An AllJoyn applications may select the AllJoyn Transport that 
-is actually used by choosing one or more TransportMask bits 
-in the appropriate AllJoyn APIs. The currently available 
-TransportMask bits are shown in the following table. AllJoyn 应用程序可能会选择 AllJoyn Transport，通过在适当的 AllJoyn API 中选择一个或多个 TransportMask 位来实现。目前支持的 TransportMask 位在展示在下表中：
+AllJoyn 应用程序可能会选择 AllJoyn Transport，通过在适当的 AllJoyn API 中选择一个或多个 TransportMask 位来实现。目前支持的 TransportMask 位在展示在下表中：
 
 
 #### AllJoyn TransportMask definition
@@ -235,32 +110,13 @@ TransportMask bits are shown in the following table. AllJoyn 应用程序可能�
 | TRANSPORT_IP           | 0x0104 | 允许系统选择使用 TCP 或是 UDP。 |
 | TRANSPORT_ANY          | 0x0105 | 允许系统选择任意适当的传输工具。|
 
-If an AllJoyn application desires to only use TCP as the 
-underlying layer 4 mechanism, it can do so by specifying 
-TRANSPORT_TCP in advertisement, discovery and Session join 
-and bind options. If an application desires only that an 
-IP-based transport be used, it can specify TRANSPORT_IP and 
-allow the AllJoyn system to select between TCP and UDP, for example.  
 如果 AllJoyn 应用程序希望只使用 TCP 作为第四层传输机制，它可以在广播、发现、加入会话、绑定选项中指定为 TRANSPORT_TCP。如果应用程序只希望使用基于 IP 的传输方式，它可以设定为 TRANSPORT_IP，使 AllJoyn 系统从 TCP 和 UDP 中选择。
 
-Each transport establishes and maintains connectivity based 
-on the underlying physical transport it supports. Based on the 
-type of underlying physical transport, the actual connectivity 
-between two nodes in an AllJoyn network can be either single-hop 
-or multi-hop. An AllJoyn distributed bus is basically an overlay 
-network whose topology does not necessarily map directly to the 
-topology of the underlying network. If an application has no 
-preference, it can provide TRANSPORT_ANY and allow the AllJoyn system 
-to determine which transport to use.
 每种传输方式根据其基于的底层物理传输方式建立和保持连接。根据底层物理传输方式的不同，在一个 AllJoyn 网络中两个节点间的实际连接可以是单跳或多跳的。AllJoyn 分布式总线基本上是一种覆盖网络，它的拓扑结构不需要直接映射到底层网络的拓扑结构。如果某个应用程序没有偏好，它可以设为 TRANSPORT_ANY 并且允许 AllJoyn 系统决定使用何种传输方式。
 
-## Local AllJoyn Transports 本地 AllJoyn 传输方式
+## 本地 AllJoyn 传输方式
 
-AllJoyn Local Transports is a broad grouping of AllJoyn Transports 
-that are designed to essentially provide communication between the
-Core Library and their associated AllJoyn Routers. The following 
-Local Transports are used in the AllJoyn system:
-AllJoyn Local Transports 是被设计主要用于提供核心资源库和它们的 AllJoyn 路由之间连接的一组 AllJoyn Transports。
+AllJoyn Local Transports 是被设计主要用于提供核心资源库和它们的 AllJoyn 路由之间连接的一组 AllJoyn Transports：
 
 * Null Transport
 * UNIX Domain Socket Transport
@@ -268,266 +124,125 @@ AllJoyn Local Transports 是被设计主要用于提供核心资源库和它们�
 
 ### Null Transport
 
-The simplest of the local transports is the Null Transport. 
-This transport is designed to provide a connection between a 
-Core Library and a Bundled Router, both of which reside in 
-a common process. One endpoint of the Null Transport is directly 
-tied to the other side via function calls. There is really 
-no Transport in the communication path between the Core Library 
-and router in this case, the link is "jumpered" together 
-using a direct function call interface.
 最简单的本地传输方式是 Null Transport。设计这种传输方式用于提供核心资源库与绑定路由之间的连接，它们都在常规进程内运行。根据功能调用。一个 Null Transport 的终点直接通过方法调用连接到另一侧。在这种情况下，实际上核心资源库与路由之间的连接路径并没有 Transport，连接通过一种称之为接口的直接方式连接在了一起。
 
 ### UNIX Domain Sockets Transport
 
-The UNIX Domain Sockets Transport is used in Posix systems 
-to provide an inter-process connection (IPC) between a Core Library 
-and a preinstalled AllJoyn Router. Since this is a local transport, 
-there is no requirement to support multiple endpoints, or to 
-advertise and discover. The implementation of this local transport 
-is split across the Core Library and the AllJoyn Router.
-Posix 系统采用 The UNIX Domain Sockets Transport 为 核心资源库和预装 AllJoyn 路由之间提供了一个进程间的连接（IPC）。由于是一种本地传输方式，不需要支持多终点，广播和发现。
+Posix 系统采用 The UNIX Domain Sockets Transport 为 核心资源库和预装 AllJoyn 路由之间提供了一个进程间的连接（IPC）。由于是一种本地传输方式，不需要支持多终点，广播和发现。此种传播方式以分离的形式在核心资源库与 AllJoyn 路由之间实现。
 
 ### TCP Transport
 
-The TCP Transport is used in Windows systems to provide an 
-inter-process connection between a Core Library and a 
-preinstalled AllJoyn Router. Since there is no requirement 
-to support multiple endpoints, nor to advertise and discover, 
-the implementation of the TCP Transport for the Core Library 
-is considerably simplified when compared to the Bus-to-Bus 
-version of the TCP Transport. For a discussion on the details 
-of the TCP Transport, see [TCP Transport mechanism][tcp-transport-mechanism].
+TCP Transport 用于 Windows 系统，在核心资源库与预装 AllJoyn 路由之间提供一个进程间的连接。由于不需要支持多终点，也不需要广告和发现功能，针对核心资源库的 TCP Transport 相较于 TCP Transport 的总线到总线版本，要简化许多。查看 [TCP Transport mechanism][tcp-transport-mechanism] 了解更多关于 TCP Transport 的细节。
 	
-## Bus-to-Bus AllJoyn Transports
+## 总线到总线 AllJoyn Transport
 
-The Bus-to-Bus AllJoyn Transports enable connection establishment 
-and message routing between AllJoyn routers. The most commonly used 
-Bus-to-Bus transports in the AllJoyn system are based on the 
-underlying IP-based transport mechanisms. These include TCP Transport 
-and UDP Transport.  
+总线到总线 AllJoyn Transport 实现了在 AllJoyn 路由之间建立连接、转发信息。AllJoyn 系统中最常见的总线到总线传输方式是基于 IP 传输的机制。这包含了 TCP Transport 和 UDP transport。
 
-As mentioned earlier, an application can specify which 
-AllJoyn Transport should be used for connection setup and 
-message delivery. If not specified by the App, AllJoyn router 
-makes a selection for the transport to be used. Both TCP Transport 
-and UDP Transport are effective AllJoyn Transports. There are many
-trade-offs which can be considered when making a selection between 
-the two. In general the times at which one would prefer to use the 
-AllJoyn TCP Transport or the AllJoyn UDP Transport can be loosely 
-modeled on when one might prefer TCP/IP over UDP/IP. 
+如上文所述，一个应用程序能够指定用于建立连接和传输信息的 AllJoyn 传输方式。如果应用程序没有指定，AllJoyn 路由器会选择用于传输的方式。TCP 传输方式和 UDP 传输方式都是有效的 AllJoyn 传输方式。在这两种传输方式中做出选择时，需要权衡利弊。一般来说，使用 TCP 或 UDP 传输方式次数的多少，取决于使用者对它们的喜爱程度。
 
-The following table summarizes the performance of AllJoyn TCP Transport 
-and AllJoyn UDP Transport by comparing certain system criteria.
+下表总结了在不同系统标准下，AllJoyn TCP 和 UDP 传输方式性能上的差异。
 
-#### Performance of AllJoyn TCP Transport versus UDP Transport
+#### TCP 和 UDP 传输方式的性能对比
 
-|System Criteria | TCP Transport | UDP Transport | Description |
+| 系统标准 | TCP 传输方式 | UDP 传输方式 | 描述 |
 |---|---|---|---|
-| Number of Connections Supported | Low to medium | High | Due to high file descriptor usage, TCP Transport cannot support a very large number of simultaneous connections. UDP Transport uses only a single file descriptor for multiple connections, so it can support large number of simultaneous connections without reaching file descriptors system limit. |
-| Memory Usage | Moderate | High | Since UDP Transport has to provide the reliability support, it requires much higher memory usage. |
-| TTL-based Message Expiration | Not possible | Supported | UDP Transport uses the AllJoyn Reliable Datagram Protocol (ARDP), which supports TTL-based message expiration. |
-| Types of Data Transfer | Performs best for bulk data transfer | Performs best for intermittent short data transfer | Default socket buffers for Layer 4 TCP connections are typically much larger than those for UDP connections. As a result, TCP performs much better for bulk data transfer. |
+| 支持的连接数量 | 少于平均值 | 高 | 由于大量使用文件描述符，TCP 传输方式不支持大量同时进行的连接。UDP 传输方式对于多个连接，只是用单个文件描述符，所以它能够支持大量同时发生的连接，不会达到文件描述符系统上线。 |
+| 内存占用 | 中等 | 高 | 由于 UDP 传输方式提供了可靠性支持，所以它需要更大的内存。 |
+| 基于 TTL 的信息过期 | 不可能 | 支持 | UDP 传输方式使用支持基于 TTL 信息过期机制的 AllJoyn 可靠数据报协议 (ARDP)|
+| 数据传输的类型 | 在大容量数据传输时表现最好 | 在间歇性短数据传输时表现最好 | 第四层 TCP 连接的默认 socket 缓冲区通常比 UDP 连接大得多。所以，TCP 在大容量数据传输时表现得更好。|
 
-The following table captures some of the use case scenarios with the 
-preferred transport selection between TCP Transport and UDP Transport, 
-based on trade-offs outlined in [Performance of AllJoyn TCP Transport versus UDP Transport][performance-of-alljoyn-tcp-vs-udp]. 
+下表展示了不同应用场景中，基于 [Performance of AllJoyn TCP Transport versus UDP Transport][performance-of-alljoyn-tcp-vs-udp] 所属的利弊关系，TCP 和 UDP 传输方式的取舍。
 
-#### AllJoyn use cases showing TCP vs UDP Transport selection
+#### 不同使用场景中，TCP 和 UDP 传输方式的选择。
 
-| Use Cases | TCP Transport | UDP Transport |
+| 使用场景 | TCP 传输方式 | UDP 传输方式 |
 |---|:---:|:---:|
-| Dominant traffic is method calls | X | |
-| Dominant traffic is bulk data transfer | X | |
-| AllJoyn messages have TTL associated | | X |
-| Large number of simultaneous sessions with intermittent RPC calls | | X |
-| Very dirty RF conditions | X | |
+| 主要传输方法调用 | X | |
+| 主要传输大容量数据 | X | |
+| AllJoyn 信息与 TTL 相关 | | X |
+| 伴随间歇性 RPC 调用的大量并发会话 | | X |
+| 高度污染的 RF 环境 | X | |
 
-Details on AllJoyn TCP Transport and UDP Transport are 
-captured in the following sections.
+ 以下章节具体描述 AllJoyn TCP 和 UDP 传输方式的细节。
 
-### TCP Transport mechanism
+### TCP 传输机制
 
-As mentioned previously, the AllJoyn TCP Transport takes its name 
-from the TCP/IP layer 4 transport mechanism it uses. Since TCP 
-provides a reliable data stream guarantee, the TCP Transport 
-must only provide enough mechanism to translate AllJoyn messages 
-to and from byte streams.  
+如前文所述，AllJoyn TCP 传输方式从它使用的 TCP/IP 第四次层传输机制中获取名称。由于 TCP 提供了一个可靠的数据流保障，TCP 传输方式必须提供从比特流翻译信息并发送至比特流的机制。
 
-#### TCP Transport data plane architecture
+#### TCP 传输方式数据层结构
 
 Each connection that uses the TCP Transport has an associated TCP Endpoint, 
-TCP Stream, and TCP socket as shown in the following figure. 
+TCP Stream, and TCP socket as shown in the following figure. 如图，每个使用 TCP 传输方式的连接都有相关的 TCP 终点、TCP 流和 TCP socket。
 
 ![tcp-transport-data-plane-internal-architecture][tcp-transport-data-plane-internal-architecture]
 
-**Figure:** TCP transport data plane internal architecture
+**图:** TCP transport data plane internal architecture TCP 传输数据层内部结构
 
-The routing functionality of a Routing Node connects to a TCP Endpoint, 
-which represents a Remote Endpoint for a TCP Transport connection. 
-The TCP Endpoint translates AllJoyn messages to and from the 
-byte-stream representation using a TCP Stream component. 
-TCP Stream delivers and received data over a TCP socket.
+路由节点的路由功能连接至一个 TCP 终点，这代表了一个针对 TCP 传输方式连接的远程终点。TCP 终点使用 TCP 串流组件从比特流翻译信息并发送至比特流。TCP 流通过 TCP socket 接收和发送数据。
 
-#### TCP endpoint lifecycle
+#### TCP 终点生命周期
 
-A TCP Endpoint goes through multiple states in the overall 
-lifecycle of the Endpoint. The states and transitions for the
-TCP Endpoint are shown in the following figure. 
+TCP 终点在整个生命周期中经历多个状态。这些 TCP 终点的状态和变化在下图中呈现。
 
 ![tcp-endpoint-lifecycle-states][tcp-endpoint-lifecycle-states]
 
-**Figure:** TCP endpoint lifecycle states
+**图:** TCP 终点生命周期的状态
 
-TCP Endpoints are created either as a result of an active 
-connection request or an incoming call for a passive connection. 
-The TCP Endpoint maintains information about whether the 
-precipitating event was an active or passive connection. 
+TCP 终点既可能是一个活动连接请求的结果，也可能是一个被动连接的传入呼叫。TCP 终点包含关于这些突发事件属于活动连接或是被动连接的信息。
 
-A TCP Endpoint follows the basic lifetime of an AllJoyn Thread.
-It is first created in the INITIALIZED state. Prior to being used 
-in the AllJoyn system, a TCP Endpoint must be authenticated.  
-This is a done as a separate step and is discussed in
-[TCP Endpoint authentication phase][tcp-endpoint-auth-phase]. 
-If the authentication succeeds, the TCP Endpoint thread is asked 
-to start running, at which point it enters the STARTING state. 
-If the authentication fails, the TCP Endpoint transitions into the 
-FAILED state and is then ready for cleanup.
+TCP 终点遵循 AllJoyn 线程的基本生命周期。它首先在 INITIALIZED 状态中生成。在 TCP 终点使用与 AllJoyn 系统之前，必须先将其认证。这是一个独立的步骤，在 [TCP Endpoint authentication phase][tcp-endpoint-auth-phase] 中具体说明。如果认证成功，TCP 终点线程被要求启动，同时进入 STARTING 状态。如果认证失败，TCP 终点转换为 FAILED 状态，并准备好被清理。
 
-As soon as the Thread(s) required to support a newly created 
-and authenticated TCP Endpoint is actually running, the Endpoint 
-enters the STARTED state. In this state, the TCP Endpoint is 
-registered with the Router and therefore data can be transferred 
-through the Endpoint. Once the connection is no longer needed, 
-the Endpoint method `Stop()` is called, and the Endpoint enters 
-the STOPPING state. Once all threads which may be running in 
-the Endpoint have exited, the Endpoint enters into a JOINING state, 
-where any threads associated with the Endpoint are joined (in the
-sense of a Posix thread join operation). The Endpoint is then 
-unregistered from the AllJoyn Router. When the threading-related 
-resources in an endpoint are cleaned up, the endpoint enters the 
-DONE state at which time it can be removed from the system and deleted.
+当线程要求支持一个新建的或经过认证的正在运行的 TCP 终点，该终点进入 STARTED 状态。在此状态下，TCP 终点被注册至路由，因此数据可以通过终点传输。当不再需要这个连接时，就会调用终点方法 `Stop()`，那么终点将进入 STOPPING 状态。当终点中所有的线程都退出后，终点进入 JOINING 状态，这个状态下任何相关的线程都能够加入（类似于 Posix 线程加入的操作）。终点随后会从 AllJoyn 路由中注销。当终点里与线程相关的资源被清除后，终点进入 DONE 状态，在这个状态下它能够从系统中被移除和删除。
 
-##### TCP Endpoint authentication phase
+##### TCP Endpoint authentication phase TCP 终点验证步骤
 
-As mentioned above, TCP Endpoints must transition through an 
-authentication phase that is required to complete before Messages 
-are allowed to be transferred though the endpoint.This 
-authentication phase is handled by a separate thread, and is shown
-in the following figure. The authentication process is begun when 
-the TCP Endpoint enters the INTIALIZED state.
+如上文所述，TCP 终点在允许信息通过之前，必须完成一个验证步骤。这个验证步骤由一个单独的线程处理，在下图中展示。验证进程在 TCP 终点进入 INTIALIZED 阶段时启动。
 
 ![tcp-endpoint-auth-states][tcp-endpoint-auth-states]
 
-**Figure:** TCP endpoint authentication states
+**图:** TCP 终点验证状态
 
-TCP Endpoint authentication uses the Simple Authentication and 
-Security Layer (SASL) framework "ANONYMOUS" mechanism. 
-While in the actual AUTHENTICATING state, the TCP Stream 
-runs in a string-transfer mode in order to transfer the 
-SASL challenges and responses. If the SASL exchange fails, 
-authentication transitions to the FAILED state which, in turn, 
-drives the TCP Endpoint state to change to FAILED.
+TCP 终点验证使用 Simple Authentication and Security Layer (SASL) 架构的 "ANONYMOUS" 机制。实际上在 AUTHENTICATING 状态中，TCP 流为了传输 SASL 挑战和应答，运行在字符串传输模式中。如果 SASL 交换失败，验证转换到 FAILED 状态，这就导致了 TCP 终点进入 FAILED 状态。
 
-If the SASL exchange succeeds, authentication transitions to 
-the SUCCEEDED state and this, in turn, drives the TCP Endpoint 
-to transition to the STARTING state. When the TCP Endpoint 
-transitions to STARTED state the associated TCP Stream will 
-make a mode switch and begin sending and receiving AllJoyn Messages 
-instead of text strings. 
+如果 SASL 交换成功，认证转换到 SUCCEEDED 状态，这会使 TCP 终点转换为 STARTING 状态。当 TCP 终点转换为 STARTED 状态，相关的 TCP 流会进行模式转换，并开始发送和接收 AllJoyn 信息，停止发送和接收文本字符串。
 
-As soon as the FAILED or SUCCEEDED determination is made, 
-and the appropriate Endpoint lifetime actions are taken, 
-the endpoint authentication thread exits and causes the 
-authentication machine transition to DONE.
+一旦做出了 FAILED 或 SUCCEEDED 的决定，就会生成一个适当的终点生存周期，退出终点认证和认证机制的转变都会导致终点的结束。
  
-### UDP Transport mechanism
+### UDP 传输机制
 
-The AllJoyn UDP Transport, as its name implies, uses the 
-UDP/IP protocol to move AllJoyn Messages from one host to 
-another. Since UDP does not provide a reliability guarantee, 
-the UDP Transport must provide some mechanism to provide a 
-reliable Message delivery guarantee.  The UDP Transport uses 
-the AllJoyn Reliable Datagram Protocol (ARDP) to provide 
-reliable delivery of messages. ARDP is based loosely on 
-the Reliable Data Protocol (RDP) as appears in RFC 908 (version 1) 
-and RFC 1151 (version 2).
+ALlJoyn UDP 传输机制，顾名思义，使用 UDP/IP 协议从一端向另一端转移 AllJoyn 信息。由于 UDP 不提供可靠性的保障，UDP 传输方式必须提供一种保障信息送达的机制。UDP 传输方式使用 AllJoyn Reliable Datagram Protocol (ARDP) 提供信息送达保障。 ARDP 大致上基于 Reliable Data Protocol (RDP)，如 RFC 908 (版本 1) 和 RFC 1151 (版本 2) 中所体现的一样。
 
-#### UDP Transport data plane architecture
+####  UDP 传输数据层结构
 
-Architecturally, the UDP Transport can be split into two 
-large components: the routing functionality of a Router Node 
-connects to a so-called UDP Endpoint, and the networking functionality 
-of the UDP Transport that is accessed through ARDP.
+结构上说，UDP 传输方式可被分为两大组件；路由节点连接到所谓 UDP 终点的路由功能，可通过 ARDP 访问的 UDP 传输方式的网络功能。
 
-The UDP Endpoint is the primary data plane interface between 
-the Routing Node and the UDP Transport. From the Routing Node 
-point of view, each UDP Transport connection is represented by 
-a UDP Endpoint. Each UDP Endpoint has an associated ARDP stream 
-that converts AllJoyn messages to ARDP datagrams. The UDP Transport 
-data plane architecture is captured in the following figure.
+UDP 终点事路由节点与 UDP 传输方式之间的基础数据层接口。从路由节点的角度来看，每个 UDP 传输连接都是一个 UDP 终点的代表。每个 UDP 终点有一个相关的 ARDP 流，它能把 AllJoyn 信息转换为 ARDP 数据包。下图展示了 UDP 传输方式数据层结构。
 
 ![udp-transport-data-plane-internal-architecture][udp-transport-data-plane-internal-architecture]
  
-**Figure:** UDP transport data plane internal architecture
+**图:** UDP 传输方式数据层内部结构
 
-The ARDP Stream component converts from the notion of a 
-Message stream to a stream of datagrams and, in turn, talks 
-to an ARDP Connection. The ARDP Connection provides the 
-end-to-end state information required to establish the reliability 
-guarantees, and talks to a single UDP socket that is shared 
-among the various ARDP connections managed by the UDP Transport.
+ARDP 流组件从信息流的概念转换成了数据包流，与 ARDP 连接进行会话。ARDP 连接提供了端到端状态信息，使可靠性得到了保障，并且能够与独立的通过各种由 UDP 传输方式管理的 ARDP 连接分享的 UDP socket 进行会话。
 
-#### UDP Endpoint lifecycle
+#### UDP Endpoint lifecycle UDP 终点生命周期
 
-UDP Endpoints go through a well-defined lifecycle as shown in the following figure.
+UDP 终点通过一个如下图所示定义明确的生命周期。
 
 ![udp-endpoint-lifecycle][udp-endpoint-lifecycle]
 
-**Figure:** UDP endpoint lifecycle
+**图:** UDP 终点生命周期
 
-Endpoints are constructed because of either an Active or a 
-Passive connection request. Similar to the TCP concept, 
-an Active connection is an outgoing connection that is actively 
-started on the local side. A Passive connection is an incoming 
-connection that was actively started on the remote side. 
-The ARDP protocol has a three-way handshake similar to that
-provided by RDP and TCP. The entity that issues the SYN request 
-enters into ACTIVE state and the entity which responds with a 
-SYN+ACK enters into PASSIVE state.
+终点既适用于主动连接请求，也适用于被动连接请求。与 TCP 概念相似，主动连接是从本地发出的连接。被动连接是传入的，从远程发出的连接。ARDP 协议有一个三步握手的机制，与 RDP 和 TCP 提供的类似。发出 SYN 请求的实体进入 ACTIVE 状态，使用 SYN+ACK 回应的实体进入 PASSIVE 状态。
 
-Unlike TCP and RDP, ARDP provides additional information as 
-data in the SYN and SYN+ACK packets. During the SYN, SYN+ACK, 
-ACK exchange (happening in ACTIVE and PASSIVE states), the involved 
-endpoints are authenticating and identifying themselves to their 
-remote counterparts. Once this phase has completed, the endpoints 
-enter the STARTED state when the endpoint is registered with the 
-Routing Node as being ready. The STARTED state is one in which 
-AllJoyn Messages may be sent and received.
+与 TCP 和 RDP 不同，ARDP 提供了额外的信息，如 SYN 和 SYN+ACK 包中的数据。在 SYN，SYN+ACK，ACK 交换（发生在 ACTIVE 和 PASSIVE 状态）期间，包含的终点与它们的远程部分进行认证和识别。当这个步骤完成时，并且终点注册的远程节点进入待命状态时，该终点进入 STARTED 状态。在 STARTED 状态下，AllJoyn 信息可以被发送和接受。
 
-Eventually, a connection may be stopped either as a result of a local 
-or remote disconnect event. A disconnect is initiated by the Routing 
-function making a `Stop()` call into the UDP Endpoint. This causes 
-a state transition from STARTED to STOPPING. For a local disconnect 
-event, an immediate transition is made to the WAITING state. 
-This allows all queued and in-flight Messages to be sent to the 
-remote side before an ARDP Disconnect is executed. 
+最后，本地和远程方面都可以调用断开连接的事件来终止连接。路由通过向 UDP 终点发送一个 `Stop()` 命令来断开连接。这会导致状态由 STARTED 进入 STOPPING。在本地断连情况下，会立刻进入 WAITING 状态。该状态下允许在 ARDP 断连被执行前，所有在排队的或在途中的信息被发送至远程端。
 
-**NOTE:** Unlike TCP, there is no four-way ending handshake in ARDP - 
-this is handled at the Session level in the UDP Transport state machine.  
+**注意:** 与 TCP 不同，在 ARDP 中没有四步骤结束握手的方式 —— 这是由 UDP 传输状态的设备中会话层所处理的。 
 
-Once all data is transferred and acknowledged, a transition is 
-made back to the STOPPING state. In STOPPING state, the various 
-threads are notified that the endpoint is closing down. Once the 
-threads are verified as having left, the endpoint transitions 
-into the JOINING state. This is where resources are freed and 
-any threads that may have been associated to the endpoint are 
-joined (in the sense of a Posix thread join operation). The last 
-part of the resource management is to unregister the endpoint 
-from the Routing Node. When this is complete, the endpoint enters the 
-DONE state and becomes ready for deletion by the endpoint management function.
+当所有数据都被传输网称并且公布后，状态会重新会到 STOPPING。在 STOPPING 模式下，不同的线程被告知终点已被关闭。当线程被验证为已退出的状态，终点转换为 JOINING 状态。在这个状态下，资源被释放，任何关于这个终点的线程都被加入（类似于 Posix 线程的加入操作）。资源管理的最后一个部分是从路由节点注销终点。当这个步骤完成时，终点进入 DONE 状态，并且准备好被终点管理功能删除。
 
-#### ARDP state machine
+#### ARDP state machine ARDP 状态设备
 
 The ARDP is a close relative of RDP which is documented in RFC-908 (version 1)
 and RFC-1151 (version 2). At the heart of the ARDP is the ARDP 
@@ -537,64 +252,26 @@ in the following figure.
 
 ![ardp-state-machine][ardp-state-machine]
 
-**Figure:** ARDP state machine
+**图:** ARDP 状态设备
 
-As in TCP, connections may be started actively or passively.  
-An active, or outgoing connection begins by creating a UDP Endpoint 
-and transitioning it to the ACTIVE state. The endpoint provides 
-an "introduction" Message and passes it to ARDP, which responds 
-by creating a connection, adding the "introduction" to a SYN 
-packet and sending it. After sending the SYN packet, the local 
-ARDP connection enters the SYN-SENT state. The remote ARDP which 
-is in the LISTEN state, receives the SYN and calls back into the 
-UDP Transport, providing the "introduction" and notifying 
-that a connection request has been received. If the UDP Transport 
-determines that a connection should not be undertaken, ARDP 
-is notified and sends an RST pack to abort the connection.  
+如 TCP 一样，连接既可以是主动的，也可以是被动的。在主动情况下，同构建立一个 UDP 终点并把它转换为 ACTIVE 状态发出一个连接。终点提供了 “introduction” 信息，并把它传送至 ARDP，ARDP 通过建立一个连接，把 “introduction” 加入 SYN 包并发送的方式做出应答。当 SYN 包被发送后，本地 ARDP 连接进入 SYN-SENT 状态。在 LISTEN 状态的远程 ARDP，接收到 SYN，并且返回至 UDP 传输方式，提供 "introduction" 并且发出一个连接请求已被接收的通知。如果 UDP 传输方式决定某个连接不应该存在，就会通知 ARDP，ARDP 就会发送一个 RST 包来取消连接。
 
-If the UDP Transport determines that the connection should be 
-brought up, it creates a new UDP Endpoint in PASSIVE state and 
-responds to the ARDP callback with its own "introduction response".
-The passive side then enters the UDP Endpoint PASSIVE state 
-and the ARDP sends the "introduction response" back to the 
-active side in a SYN+ACK packet. When the active side receives 
-the SYN-ACK packet, the ARDP state machine sends the final 
-ACK packet, transitions to OPEN state and notifies the UDP Endpoint 
-which, in turn, transitions to STARTED state. The active side 
-is then ready to send and receive data. When the passive side 
-receives the final ACK packet, its three-way handshake is complete.  
+如果 UDP 传输方式决定了使用某个连接，它会简历一个新 UDP 终点，并使其进入 PASSIVE 状态，并且使用它本身的 "introduction response" 回复 ARDP callback。被动方随后进入 UDP 终点 PASSIVE 状态并且 ARDP 在 SYN+ACK 包中发送 "introduction response" 返回至主动端。当主动端收到了 ACK 包，将转换为 STARTED 状态。主动端就为发送和接收数据做好了准备。当被动端接收到了最终 ACK 包，它的三步握手就完成了。
 
-It transitions into the OPEN state and notifies the UDP Endpoint 
-which transitions into the STARTED state. At this point, 
-both sides are ready to send and receive data.
+他转换至 OPEN 状态并且通知转换为 STARTED 状态的 UDP 终点。此时，两端都准备好发送和接收数据了。
 
-Since it is possible that a failure happens somewhere in the 
-exchange between the local UDP Endpoint, the local ARDP, the 
-remote ARDP and the remote UDP Endpoint, both sides have 
-watchdog timers that abort the process if it does not complete 
-in a timely manner.
+由于在本地 UDP 终点、本地 ARDP、远程 ARDP 和 远程 UDP 终点 之间传递信息可能出现失败。两端都装有看门狗计时器，能够及时地中止进程。
 
-As described above, there is no orderly shutdown of connections 
-in the ARDP. This is accomplished in the UDP Endpoint state machine.
-Transitions out of ARDP OPEN state are done by receiving or sending 
-RST packets. To avoid problems with reuse of ARDP ports, a 
-CLOSE_WAIT state is implemented similar to that of TCP.
+如上文所述，在 ARDP 中关闭连接没有先后顺序。这是在 UDP 终点状态设备中完成的。通过接收或发送 RST 包从 ARDP OPEN 状态转换至别的状态。为了避免 ARDP 端口重复使用的问题，提供了一个 CLOSE_WAIT 状态，与 TCP 中的类似。
 
-#### ARDP packet format
+#### ARDP packet format ARDP 包格式
 
-Details of the ARDP packet formats are available in RFC 908 and RFC 1151.
-Extensions to support granularity of AllJoyn Message instead of 
-UDP Datagrams and also dropping of in-flight Messages based on 
-TTL expiration required changing SYN and DATA packet formats.
+ARDP 包格式的细节在 RFC 908 和 RFC 1151 提到。为了支持 AllJoyn 信息间隔的扩展而不是使用 UDP数据报，并且删除基于 TTL 超时的途中信息，需要改变 SYN 和 DATA 包的格式。
 
-The following table shows the ARDP SYN packet format. 
-A delayed ACK timeout was added to support functionality 
-similar to delayed ACK as used in TCP. A variable length data 
-and an associated Data Length field was also added. The 
-SYN+ACK packet is returned in this format, but with the ACK bit set.
+下表展示了 ARDP SYN 包的个是。一个延迟 ACK 超时加入了支持功能，类似于 TCP 中使用的延迟 ACK。长度变量的数据和相关数据长度字段也加入其中。SYN + ACK 数据包返回此格式，但包含 ACK 位。
 
-#### ARDP SYN Packet Format
-| Fields |
+#### ARDP SYN 包格式
+| 字段 |
 |:---:|
 | FLAGS (8 bits) / Header Length (8 bits) |
 | Source Port (16 bits) |
@@ -607,22 +284,9 @@ SYN+ACK packet is returned in this format, but with the ACK bit set.
 | Delayed ACK Timeout (32 bits) |
 | Data (variable length) |
 
-The following table shows the ARDP DATA packet format. 
-The format is substantially similar to that described by 
-RFC 908 and RFC 1151, but several fields were added to 
-support new features. Since ARDP is designed to support 
-sending and receiving AllJoyn Messages, which can span 
-three 65535-byte UDP datagrams, the concept of a Message 
-fragment was added. This necessitated adding a fragment count 
-field and a start-of-message sequence number to identify 
-the sequence number corresponding to the first UDP datagram 
-in an AllJoyn Message. A Time-to-Live field was also added 
-to support expiring AllJoyn Messages with a finite time to live; 
-and in order to coordinate expiration of Messages, which 
-may be in the process of being retransmitted, the Acknowledge-Next 
-field was added.
+下图展示了 ARDP DATA 包的格式。该格式基本上与 RFC 908 和 RFC 1151 中描述的相同。由于 ARDP 是用来支持发送和接收 AllJoyn 信息的，它可以跨越了三个 65535 字节 UDP 数据报，所以加入了信息片段的概念。加入一个片段计数字段和启动消息序列号，会根据 一条 AllJoyn 信息中的首个 UDP 数据报识别序列号。Time-to-Live 字段也被加入，使 AllJoyn 信息获得一个存活时间；为了配合传输信息信息的过期机制，加入了 Acknowledge-Next 字段。
 
-#### ARDP data packet format
+#### ARDP 数据包格式
 
 | Fields |
 |:---:|
@@ -640,66 +304,37 @@ field was added.
 | Extended ACK Bitmask (variable length) |
 | Data (variable length) |
 
-#### UDP transport configuration
+#### UDP 传输方式配置
 
-ARDP is a flexible protocol, and so there are a number of 
-configurable parameters used. These parameters are settable via 
-the AllJoyn Router configuration file.
+ARDP 是一个弹性协议，使用了很多的可配置参数。这些参数可通过 AllJoyn 路由配置文件进行修改。
 
-| Parameter name | Description | Default value |
+| 参数名 | 描述 | 默认值 |
 |---|---|:---:|
-| udp_connect_timeout | When an initial ARDP connection is attempted, the precipitating SYN packet may be lost. If, after some time, the foreign host does not respond, the connection must be attempted again. This value is the time period that ARDP waits before attempting to resend the SYN packet. | 1000 msec |
-| udp_connect_retries | When an initial ARDP connection is attempted, the precipitating SYN packet may be lost. If, after some time, the foreign host does not respond, the connection must be attempted again. This value is the number of times that ARDP will try to resent SYN packet before giving up. | 10 |
-| udp_initial_data_timeout | When a data ARDP segment is sent, an RTO timer is started that determines when to resend the segment if an acknowledgment is not received. ARDP performs adaptive SRTT and RTO estimation using the TCP algorithm from RFC 6298. This parameter defines an initial RTO value which is used for a data segment only when no RTT estimates are available. | 1000 msec |
-| udp_total_data_retry_timeout | The overall time period for which a data segment should be retried before giving up and disconnecting the associated ARDP connection. | 10000 msec |
-| udp_min_data_retries | The minimum number of times a given ARDP data segment will be retransmitted. A data segment might be transmitted for more number of times than this value over the udp_total_data_retry_period. | 5 |
-| udp_persist_interval | When the advertised window size on the foreign host goes to zero, it stops the (local) sender from transmitting data until the window becomes nonzero. Since ARDP does not reliably send ACK packets, it is possible to lose an ACK packet that reopens the window. In that case, the local and foreign sides could deadlock: the foreign side to receive data and the sender waiting for an ACK with a new window size. ARDP supports sending zero window probes (NUL packet) if it does not get update to the window after receiving a zero window ACK. The zero window probes are sent following an exponential backoff schedule. This parameter defines initial persist interval used as first timeout for the zero window schedule. | 1000 msec |
-| udp_total_app_timeout | The overall time period for which zero window probes should be sent before the associated ARDP connection is declared broken. | 30000 msec |
-| udp_link_timeout | ARDP is very interested in quickly determining when a link has gone down, idle or not. The idea is to guarantee that some data is present on the link at least once over a given interval. This may be data, ACK for that data, or a special NUL keep-alive packet.This parameter provides the default overall timeout period during which a broken link for a connection must be detected. A link timeout is used to compute the keep-alive interval for sending periodic keep-alive probes. This value is used only if the link timeout was not set by the app, otherwise the link timeout from the app is used. | 30000 msec |
-| udp_keepalive_retries | Provides the total number of times keep-alive probes will be sent before declaring the link as broken and terminating the ARDP connection. | 5 |
-| udp_fast_retransmit_ack_counter | Similar to TCP, ARDP supports fast retransmission of segments based on the out-or-order EACKs (Enhanced ACKs) received. This value defines how many out-of-order EACKs should be received before ARDP performs the retransmission. A segment is fast retransmitted only once. | 1 |
-| udp_timewait_timer | Amount of time that a connection should remain in the RDP Close_Wait state, to ensure that all outstanding packets that might be wandering around the network have died out for that connection. This behavior ensures that the port pair defining the ARDP connection cannot be reused for twice the expected lifetime of a datagram and therefore datagrams from an earlier incarnation of a connection cannot interfere with a current connection. | 1000 msec |
-| udp_segbmax | Maximum size of an ARDP segment as negotiated during connection setup. Since ARDP runs on top of UDP, this is determined based on the max UDP packet size. Since the maximum datagram size in UDP is 65535 bytes, the most efficient / maximum ARDP message size is the maximum size of UDP packet. Larger-sized AllJoyn messages are fragmented into the multiple segments required to carry those messages. | 65507 |
-| udp_segmax | Maximum number of outstanding ARDP segments the receiver is willing to accept as negotiated during connection setup. This value governs how many segments can be in the flight and hence impacts the overall achieved throughput. The SEGMAX unit is ARDP segments. ARDP supports flow control through dynamic windowing in the message header. When data is received by ARDP and "checked in" to the ARDP receive queue, it is immediately acknowledged, but the receive window is decremented by 1. It is only when a datagram is delivered to the app, that the datagram is removed from the receive buffer and the receive window is incremented by 1. | 50 |
+| udp_connect_timeout | 当首个 ARDP 连接尝试时， SYN 包可能会丢失。如果丢失，一段时间过后，远端不会回应，必须重新尝试建立连接。这个值代表了 ARDP 准备再次发送 SYN 包前的等待时间。 | 1000 msec |
+| udp_connect_retries | 当首个 ARDP 连接尝试时，SYN 包可能丢失。如果丢失，一段时间后，远端不会回应，必须重新尝试建立连接。这个只代表了 ARDP 重新发送 SYN 包的尝试次数。 | 10 |
+| udp_initial_data_timeout | 当一个数据 ARDP 段被发送后，RTO 计时器启动，它决定了在确定未收到该端数据后，何时重新发送。ARDP 使用 RFC 6298 中 TCP 算法中的 SRTT 和 RTO 估计。这个参数决定了当 RTT 估计失效时，该段数据 RTO 的初始值。 | 1000 msec |
+| udp_total_data_retry_timeout | 在放弃重试并断开相关 ARDP 连接之前，某个数据段总共的尝试次数。 | 10000 msec |
+| udp_min_data_retries | 给定 ARDP 数据段最小重试次数。在 udp_total_data_retry_period 允许的范围内，可以重试多于该值的次数。 | 5 |
+| udp_persist_interval | When the advertised window size on the foreign host goes to zero, it stops the (local) sender from transmitting data until the window becomes nonzero. Since ARDP does not reliably send ACK packets, it is possible to lose an ACK packet that reopens the window. In that case, the local and foreign sides could deadlock: the foreign side to receive data and the sender waiting for an ACK with a new window size. ARDP supports sending zero window probes (NUL packet) if it does not get update to the window after receiving a zero window ACK. The zero window probes are sent following an exponential backoff schedule. This parameter defines initial persist interval used as first timeout for the zero window schedule.当广播的窗口大小在远端变为了 0，它会停止（本地）发送者传输数据知道窗口值不再为 0.由于 ARDP 不能十分可靠滴发送 ACK 包，可能会丢失 ACK 包，导致窗口重新打开。在这种情况下，本地和远端可能会进入一个死循环：远端要接收数据，发送者等待一个携带新窗口大小的 ACK。如果 ARDP 在接收到 0 窗口 ACK后 window 值并没有更新，ARDP 支持发送 0 窗口探测（空数据包）。0 窗口探测信号后会跟随一个指数退避列表。该参数决定了初始间隔，用于 0 窗口列表的首个超时时间。 | 1000 msec |
+| udp_total_app_timeout | 在相关 ARDP 宣布连接失败之前，发送 0 窗口探测的总时长。| 30000 msec |
+| udp_link_timeout | ARDP 十分乐意判断一个连接失效、空闲的时间。这个想法用于保证某些数据在连接中，至少经过一次间隔。它可以是数据、数据的 ACK 或者特殊的空白保持活动包。某个连接超时时长用于计算用于发送周期保持活动探测的保持活动间隔。该参数提供了一个断开连接被必须被发现的时间的默认总时常。该值仅在应用程序没有设定连接超时时长的情况下使用，否则使用应用程序规定的超时时长。 | 30000 msec |
+| udp_keepalive_retries | Provides the total number of times keep-alive probes will be sent before declaring the link as broken and terminating the ARDP connection.规定了在确定连接已经失效并且终止 ARDP 连接之前，保持活动探测发送的总数 | 5 |
+| udp_fast_retransmit_ack_counter | Similar to TCP, ARDP supports fast retransmission of segments based on the out-or-order EACKs (Enhanced ACKs) received. This value defines how many out-of-order EACKs should be received before ARDP performs the retransmission. A segment is fast retransmitted only once.与 TCP 相似，ARDP 支持基于接收到的出错 EACKs (Enhanced ACKs)的段落重传。该值决定了在 ARDP 重传前应该接收出错 EACKs 数量。 | 1 |
+| udp_timewait_timer | 某个连接应该保持在 RDP Close_Wait 状态的时长，因为有些发出的包可能在网络中在网络中徘徊，直到失效。这个参数保证了定义 ARDP 连接的某个端口对在给定时间内不会被第二次使用，防止之前残留的信号与当前信号产生冲突。  | 1000 msec |
+| udp_segbmax |在连接建立阶段 ARDP 段落的最大容量。由于 ARDP 在 UDP 顶端运行，该值由最大 UDP 包的容量而定。由于 UDP 中最大数据报的容量使 65535 字节，最有效／最大 ARDP 信息的大小就是最大 UDP 包的大小。| 65507 |
+| udp_segmax | Maximum number of outstanding ARDP segments the receiver is willing to accept as negotiated during connection setup. This value governs how many segments can be in the flight and hence impacts the overall achieved throughput. The SEGMAX unit is ARDP segments. ARDP supports flow control through dynamic windowing in the message header. When data is received by ARDP and "checked in" to the ARDP receive queue, it is immediately acknowledged, but the receive window is decremented by 1. It is only when a datagram is delivered to the app, that the datagram is removed from the receive buffer and the receive window is incremented by 1.在建立连接阶段接受者愿意接受的最大 ARDP。该值管理了在传输中的最多段落数，并且因此会影响整体实现的吞吐量。SEGMAX 的单位是 ARDP 段。ARDP 支持通过信息头部的动态窗口来控制流量。当数据被 ARDP 接收并且在 ARDP 接收队列中登记，他会被立刻广播，但接收窗口以 1 为单位递减。只有当数据报被传输至应用后，数据包才会从接收缓存中移除，同时，接受窗口以 1 为单位递增。 | 50 |
 
-### Name Service usage by the AllJoyn Transport
+### AllJoyn 传输方式使用的名称服务
 
-Both the TCP Transport and the UDP Transport provide the same 
-advertisement and discovery capabilities. Both of these transports 
-use the IP multicast-based Name Service as their advertisement 
-and discovery mechanism. The Name Service uses the underlying 
-IP (UDP) multicast to accomplish advertisement and discovery 
-functions. The Name Service is implemented in the Routing Node 
-as a singleton and is accessed by both the TCP Transport and 
-the UDP Transport through their respective control planes. 
-[Advertisement and Discovery][advertisement-discovery] captures
-the details on the legacy Name Service and Next-Generation Name Service
-(NGNS) used for adverisement and discovery in the AllJoyn system,
+TCP 和 UDP 传输方式都提供了相同的广告和发现的功能。两种传输方式在广播和发现机制中都采用了基于多拨的 IP 名称服务。名称服务使用底层 IP （UDP） 多拨完成广播和发现功能。名称服务在路由节点中以独立形式存在，可以通过 TCP 和 UDP 传输方式的不同控制层使用。[Advertisement and Discovery][advertisement-discovery] 展示了 AllJoyn 系统中用于广播和发现的老版本名称服务和下一代名称服务 (NGNS) 的详细内容。
 
-### Transport selection at the AllJoyn Router
+### AllJoyn 路由选择传输方式
 
-For discovery, if an application selects a specific transport 
-(TCP Transport or UDP Transport), then the `FoundAdvertisedName()` 
-callback is only sent for that transport. Also, as mentioned earlier, 
-an app can indicate which specific transport to be used to 
-establish a session, and the AllJoyn router will attempt to 
-perform session setup only over the specified AllJoyn transport.
+在发现中，如果一个应用程序选择某个特定的传输方式（TCP 或 UDP），那么  `FoundAdvertisedName()` 仅已选定的传输方式发送。同样的，如上文所述，一个应用程序可以指定建立会话的传输方式，并且 AllJoyn 路由将仅在指定的 AllJoyn 传输方式下尝试建立连接。
 
-If an app does not indicate a specific AllJoyn transport for 
-discovery or session setup, the AllJoyn router behavior is to 
-give preference to UDP Transport. This behavior is mainly motivated 
-by the fact that UDP Transport requires much smaller file descriptor 
-resources which becomes an issue with TCP Transport as the number 
-of connections grows. 
+如果应用程序没有指定用于发现或建立会话的 AllJoyn 传输方式， AllJoyn 路由会更倾向于使用 UDP 传输方式。这是因为 UDP 传输方式占用更小的文件描述符资源。而在 TCP 方式下，特别是在连接数不断增长时，将会遭遇许多麻烦。
 
-For discovery, if an app does not indicate a specific AllJoyn transport 
-(that is, TRANSPORT_ANY is specified), the `FoundAdvertisedName()` 
-callback is sent for both UDP Transport and TCP Transport, with the 
-callback for UDP Transport sent first. Similarly for session setup, 
-if TRANSPORT_ANY was indicated by the app, the AllJoyn router 
-will establish session over UDP Transport if it is available 
-at both endpoints of the connection. If the UDP Transport is not 
-available, then session setup will be done over TCP Transport. 
+在发现中，如果一个应用程序没有指定 AllJoyn 传输方式（也就是说，指定为 TRANSPORT_ANY），`FoundAdvertisedName()`  会以 TCP 和 UDP 两种方式同时发出，UDP 方式会稍快发出。对于会话建立，情况类似。如果应用程序指定为 TRANSPORT_ANY， AllJoyn 会在两段都允许的情况下使用 UDP 传输方式。如果不允许使用 UDP 传输方式，就会使用 TCP 传输方式建立会话。
 
 
 
