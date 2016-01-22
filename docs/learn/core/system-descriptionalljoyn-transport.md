@@ -1,4 +1,4 @@
-# AllJoyn&trade; Transport
+# AllJoyn&trade; 传输方式
 
 ## 概览
 
@@ -304,39 +304,29 @@ ARDP 包格式的细节在 RFC 908 和 RFC 1151 提到。为了支持 AllJoyn �
 | Extended ACK Bitmask (variable length) |
 | Data (variable length) |
 
-#### UDP transport configuration
+#### UDP 传输方式配置
 
 ARDP 是一个弹性协议，使用了很多的可配置参数。这些参数可通过 AllJoyn 路由配置文件进行修改。
 
 | 参数名 | 描述 | 默认值 |
 |---|---|:---:|
-| udp_connect_timeout | When an initial ARDP connection is attempted, the precipitating SYN packet may be lost. If, after some time, the foreign host does not respond, the connection must be attempted again. This value is the time period that ARDP waits before attempting to resend the SYN packet. | 1000 msec |
-| udp_connect_retries | When an initial ARDP connection is attempted, the precipitating SYN packet may be lost. If, after some time, the foreign host does not respond, the connection must be attempted again. This value is the number of times that ARDP will try to resent SYN packet before giving up. | 10 |
-| udp_initial_data_timeout | When a data ARDP segment is sent, an RTO timer is started that determines when to resend the segment if an acknowledgment is not received. ARDP performs adaptive SRTT and RTO estimation using the TCP algorithm from RFC 6298. This parameter defines an initial RTO value which is used for a data segment only when no RTT estimates are available. | 1000 msec |
-| udp_total_data_retry_timeout | The overall time period for which a data segment should be retried before giving up and disconnecting the associated ARDP connection. | 10000 msec |
-| udp_min_data_retries | The minimum number of times a given ARDP data segment will be retransmitted. A data segment might be transmitted for more number of times than this value over the udp_total_data_retry_period. | 5 |
-| udp_persist_interval | When the advertised window size on the foreign host goes to zero, it stops the (local) sender from transmitting data until the window becomes nonzero. Since ARDP does not reliably send ACK packets, it is possible to lose an ACK packet that reopens the window. In that case, the local and foreign sides could deadlock: the foreign side to receive data and the sender waiting for an ACK with a new window size. ARDP supports sending zero window probes (NUL packet) if it does not get update to the window after receiving a zero window ACK. The zero window probes are sent following an exponential backoff schedule. This parameter defines initial persist interval used as first timeout for the zero window schedule. | 1000 msec |
-| udp_total_app_timeout | The overall time period for which zero window probes should be sent before the associated ARDP connection is declared broken. | 30000 msec |
-| udp_link_timeout | ARDP is very interested in quickly determining when a link has gone down, idle or not. The idea is to guarantee that some data is present on the link at least once over a given interval. This may be data, ACK for that data, or a special NUL keep-alive packet.This parameter provides the default overall timeout period during which a broken link for a connection must be detected. A link timeout is used to compute the keep-alive interval for sending periodic keep-alive probes. This value is used only if the link timeout was not set by the app, otherwise the link timeout from the app is used. | 30000 msec |
-| udp_keepalive_retries | Provides the total number of times keep-alive probes will be sent before declaring the link as broken and terminating the ARDP connection. | 5 |
-| udp_fast_retransmit_ack_counter | Similar to TCP, ARDP supports fast retransmission of segments based on the out-or-order EACKs (Enhanced ACKs) received. This value defines how many out-of-order EACKs should be received before ARDP performs the retransmission. A segment is fast retransmitted only once. | 1 |
-| udp_timewait_timer | Amount of time that a connection should remain in the RDP Close_Wait state, to ensure that all outstanding packets that might be wandering around the network have died out for that connection. This behavior ensures that the port pair defining the ARDP connection cannot be reused for twice the expected lifetime of a datagram and therefore datagrams from an earlier incarnation of a connection cannot interfere with a current connection. | 1000 msec |
-| udp_segbmax | Maximum size of an ARDP segment as negotiated during connection setup. Since ARDP runs on top of UDP, this is determined based on the max UDP packet size. Since the maximum datagram size in UDP is 65535 bytes, the most efficient / maximum ARDP message size is the maximum size of UDP packet. Larger-sized AllJoyn messages are fragmented into the multiple segments required to carry those messages. | 65507 |
-| udp_segmax | Maximum number of outstanding ARDP segments the receiver is willing to accept as negotiated during connection setup. This value governs how many segments can be in the flight and hence impacts the overall achieved throughput. The SEGMAX unit is ARDP segments. ARDP supports flow control through dynamic windowing in the message header. When data is received by ARDP and "checked in" to the ARDP receive queue, it is immediately acknowledged, but the receive window is decremented by 1. It is only when a datagram is delivered to the app, that the datagram is removed from the receive buffer and the receive window is incremented by 1. | 50 |
+| udp_connect_timeout | 当首个 ARDP 连接尝试时， SYN 包可能会丢失。如果丢失，一段时间过后，远端不会回应，必须重新尝试建立连接。这个值代表了 ARDP 准备再次发送 SYN 包前的等待时间。 | 1000 msec |
+| udp_connect_retries | 当首个 ARDP 连接尝试时，SYN 包可能丢失。如果丢失，一段时间后，远端不会回应，必须重新尝试建立连接。这个只代表了 ARDP 重新发送 SYN 包的尝试次数。 | 10 |
+| udp_initial_data_timeout | 当一个数据 ARDP 段被发送后，RTO 计时器启动，它决定了在确定未收到该端数据后，何时重新发送。ARDP 使用 RFC 6298 中 TCP 算法中的 SRTT 和 RTO 估计。这个参数决定了当 RTT 估计失效时，该段数据 RTO 的初始值。 | 1000 msec |
+| udp_total_data_retry_timeout | 在放弃重试并断开相关 ARDP 连接之前，某个数据段总共的尝试次数。 | 10000 msec |
+| udp_min_data_retries | 给定 ARDP 数据段最小重试次数。在 udp_total_data_retry_period 允许的范围内，可以重试多于该值的次数。 | 5 |
+| udp_persist_interval | When the advertised window size on the foreign host goes to zero, it stops the (local) sender from transmitting data until the window becomes nonzero. Since ARDP does not reliably send ACK packets, it is possible to lose an ACK packet that reopens the window. In that case, the local and foreign sides could deadlock: the foreign side to receive data and the sender waiting for an ACK with a new window size. ARDP supports sending zero window probes (NUL packet) if it does not get update to the window after receiving a zero window ACK. The zero window probes are sent following an exponential backoff schedule. This parameter defines initial persist interval used as first timeout for the zero window schedule.当广播的窗口大小在远端变为了 0，它会停止（本地）发送者传输数据知道窗口值不再为 0.由于 ARDP 不能十分可靠滴发送 ACK 包，可能会丢失 ACK 包，导致窗口重新打开。在这种情况下，本地和远端可能会进入一个死循环：远端要接收数据，发送者等待一个携带新窗口大小的 ACK。如果 ARDP 在接收到 0 窗口 ACK后 window 值并没有更新，ARDP 支持发送 0 窗口探测（空数据包）。0 窗口探测信号后会跟随一个指数退避列表。该参数决定了初始间隔，用于 0 窗口列表的首个超时时间。 | 1000 msec |
+| udp_total_app_timeout | 在相关 ARDP 宣布连接失败之前，发送 0 窗口探测的总时长。| 30000 msec |
+| udp_link_timeout | ARDP 十分乐意判断一个连接失效、空闲的时间。这个想法用于保证某些数据在连接中，至少经过一次间隔。它可以是数据、数据的 ACK 或者特殊的空白保持活动包。某个连接超时时长用于计算用于发送周期保持活动探测的保持活动间隔。该参数提供了一个断开连接被必须被发现的时间的默认总时常。该值仅在应用程序没有设定连接超时时长的情况下使用，否则使用应用程序规定的超时时长。 | 30000 msec |
+| udp_keepalive_retries | Provides the total number of times keep-alive probes will be sent before declaring the link as broken and terminating the ARDP connection.规定了在确定连接已经失效并且终止 ARDP 连接之前，保持活动探测发送的总数 | 5 |
+| udp_fast_retransmit_ack_counter | Similar to TCP, ARDP supports fast retransmission of segments based on the out-or-order EACKs (Enhanced ACKs) received. This value defines how many out-of-order EACKs should be received before ARDP performs the retransmission. A segment is fast retransmitted only once.与 TCP 相似，ARDP 支持基于接收到的出错 EACKs (Enhanced ACKs)的段落重传。该值决定了在 ARDP 重传前应该接收出错 EACKs 数量。 | 1 |
+| udp_timewait_timer | 某个连接应该保持在 RDP Close_Wait 状态的时长，因为有些发出的包可能在网络中在网络中徘徊，直到失效。这个参数保证了定义 ARDP 连接的某个端口对在给定时间内不会被第二次使用，防止之前残留的信号与当前信号产生冲突。  | 1000 msec |
+| udp_segbmax |在连接建立阶段 ARDP 段落的最大容量。由于 ARDP 在 UDP 顶端运行，该值由最大 UDP 包的容量而定。由于 UDP 中最大数据报的容量使 65535 字节，最有效／最大 ARDP 信息的大小就是最大 UDP 包的大小。| 65507 |
+| udp_segmax | Maximum number of outstanding ARDP segments the receiver is willing to accept as negotiated during connection setup. This value governs how many segments can be in the flight and hence impacts the overall achieved throughput. The SEGMAX unit is ARDP segments. ARDP supports flow control through dynamic windowing in the message header. When data is received by ARDP and "checked in" to the ARDP receive queue, it is immediately acknowledged, but the receive window is decremented by 1. It is only when a datagram is delivered to the app, that the datagram is removed from the receive buffer and the receive window is incremented by 1.在建立连接阶段接受者愿意接受的最大 ARDP。该值管理了在传输中的最多段落数，并且因此会影响整体实现的吞吐量。SEGMAX 的单位是 ARDP 段。ARDP 支持通过信息头部的动态窗口来控制流量。当数据被 ARDP 接收并且在 ARDP 接收队列中登记，他会被立刻广播，但接收窗口以 1 为单位递减。只有当数据报被传输至应用后，数据包才会从接收缓存中移除，同时，接受窗口以 1 为单位递增。 | 50 |
 
-### Name Service usage by the AllJoyn Transport
+### AllJoyn 传输方式使用的名称服务
 
-Both the TCP Transport and the UDP Transport provide the same 
-advertisement and discovery capabilities. Both of these transports 
-use the IP multicast-based Name Service as their advertisement 
-and discovery mechanism. The Name Service uses the underlying 
-IP (UDP) multicast to accomplish advertisement and discovery 
-functions. The Name Service is implemented in the Routing Node 
-as a singleton and is accessed by both the TCP Transport and 
-the UDP Transport through their respective control planes. 
-[Advertisement and Discovery][advertisement-discovery] captures
-the details on the legacy Name Service and Next-Generation Name Service
-(NGNS) used for adverisement and discovery in the AllJoyn system,
+TCP 和 UDP 传输方式都提供了相同的广告和发现的功能。两种传输方式在广播和发现机制中都采用了基于多拨的 IP 名称服务。名称服务使用底层 IP （UDP） 多拨完成广播和发现功能。名称服务在路由节点中以独立形式存在，可以通过 TCP 和 UDP 传输方式的不同控制层使用。[Advertisement and Discovery][advertisement-discovery] 展示了 AllJoyn 系统中用于广播和发现的老版本名称服务和下一代名称服务 (NGNS) 的详细内容。
 
 ### AllJoyn 路由选择传输方式
 
