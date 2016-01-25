@@ -41,265 +41,128 @@ AllJoyn 会话被建立之后，使用方应用程序已经建立了可以与提
 * 使用方应用程序创建一个或多个代理对象，没一个需要通信的远端服务对象都需要一个代理对象。
 * 代理对象是所需远端服务的一个本地代表。
 * 创建代理对象需要提供服务的对象路径，提供方应用程序的唯一识别符以及会话 ID 信息。
-* 使用方应用程序需向 AllJoyn 路由注册指定的信号处理器To receive signals from the provider app, consumer app 
-registers specific signal handlers with the AllJoyn router 
-for signal names specified in the service object. 
-* When a particular signal is received, specified signal 
-handler gets invoked.
-* The consumer application endpoint connected to the AllJoyn 
-router has one associated unique name. 
-* The AllJoyn router maintains session-related state information 
-for the joined sessions. This information is used to perform 
-sessionId based routing for AllJoyn messages.
+* 对于一个服务器对象中指定的信号名，使用方应用程序需向 AllJoyn 路由注册指定的信号处理器，以接收提供方的信号。 
+* 当一个特定的信号被接收后，指定的信号处理器会被调用。
+* 连接到 AllJoyn 路由的使用方应用程序端点有一个相关的唯一名称。
+* AllJoyn 路由会保存与参与的会话有关的状态信息。此信息被用来路由基于 sessionID 的消息。
 
-## Data exchange via methods
+## 通过方法交换数据
 
-The following use cases illustrate data exchange via method calls:
+下列用例表达了通过方法调用完成的数据交换啊过程。
 
-* Provider app sending a reply
-* Provider app not sending a reply
+* 提供方应用程序发送一条回复。
+* 提供方应用程序没有发送一条回复。
 
-### Provider app sending a reply
+### 提供方应用程序发送一条回复
 
-The following figure captures the message flow for the scenario 
-when a consumer app remotely invokes a method call on the 
-provider app to exchange data. A METHOD_RETURN reply message 
-is sent back to the consumer app.
+下图展示了在一个使用方远程调用提供方应用程序上的方法，实现数据交换的场景中的消息流。一个 METHOD_RETURN 回复消息将发送回使用方应用程序。
 
 ![data-exchange-method-calls-reply-sent][data-exchange-method-calls-reply-sent]
 
-**Figure:** Data exchange via method calls (reply sent)
+**Figure:** 通过方法调用的数据交换 (reply sent)
 
-The message flow steps are described below.
+消息流的描述如下：
 
-1. Both the provider and consumer apps connect to the AllJoyn 
-router and perform advertisement and discovery steps to 
-discover desired services.
-2. The provider app registers its service objects with the 
-AllJoyn core library. This step is needed to expose service 
-objects to remote nodes on the network. The AllJoyn core library 
-adds a MethodHandler for all the methods associated with a 
-given service object.
-3. The provider app binds a session port with the AllJoyn 
-router via the AllJoyn core library's BindSessionPort API. 
-This call specifies a session port, session options and a 
-SessionPortListener for the session.
-4. The provider and consumer apps perform AllJoyn service 
-advertisement and discovery to discover the service offered 
-by the provider app.
-5. The consumer app establishes an AllJoyn session with the 
-provider app over the bound session port. Now there is a 
-session connection established between provider and consumer 
-app to exchange data.
-6. The consumer app creates a proxyBusObect via the AllJoyn 
-core library's GetProxyBusObjcet API. The app specifies unique 
-name of provider app, object path for the service object, 
-sessionId, and list of BusInterfaces to which the proxy 
-object should respond.
-7. The consumer app gets the BusInterface from the created 
-proxy object and calls a method on this BusInterface. 
-The app provides input parameters for the method.
-8. The ProxyBusObject:MethodCall method is called, which 
-generates an AllJoyn METHOD_CALL message for the method call.
-9. The proxy object sends the generated METHOD_CALL message 
-to the AllJoyn router.
-10. The AllJoyn router receives the message and determines 
-where this message needs to be routed based on the 
-session ID/destination information included in the message. 
-In this case, the message needs to be routed to remote 
-AllJoyn router endpoint at the provider.
-11. The AllJoyn router sends the METHOD_CALL message to the 
-remote AllJoyn router over the established session connection. 
-The METHOD_CALL message includes a serial number, service 
-objectPath, interfaceName in the service object, member name 
-(method name) within the interfaceName, sessionId, and sender 
-unique name as part of the header fields of the message. 
-The method input parameters are included as part of the message body.
-12. The provider AllJoyn router receives the METHOD_CALL 
-message. It determines where this message needs to be 
-routed based on the session ID/destination information. 
-In this case, the message needs to be routed to the AllJoyn 
-core library app endpoint. 
-13. The AllJoyn router sends the METHOD_CALL message to 
-the AllJoyn core library endpoint. 
-14. The AllJoyn core library invokes the registered MethodHandler 
-for the method call member specified in the received message. 
-The MethodHandler invokes the actual method call with the 
-BusInterface of the service object and receives the method 
-response. It generates a METHOD_RETURN message for the method 
-reply and sends to the AllJoyn router. 
-15. The AllJoyn router receives the METHOD_RETURN message 
-and determines where this message needs to be routed based 
-on session ID/destination information included in the message. 
-In this case, the message needs to be routed to the remote 
-AllJoyn router endpoint at the consumer.
-   * The provider AllJoyn router sends the METHOD_RETURN 
-   message to the remote AllJoyn router over established 
-   session connection. The METHOD_RETURN message includes a 
-   reply serial number (serial number of the associated METHOD_CALL 
-   message), sessionId, and sender's unique name as part of 
-   message header fields.  Any output parameters for the 
-   METHOD_RETURN message is specified as part of the message body.
-  * The consumer AllJoyn router receives the METHOD_RETURN 
-  message. It determines where this message needs to be routed 
-  based on the session ID/destination information. In this case, 
-  the message needs to be routed to the app endpoint.
-  * The AllJoyn router sends the METHOD_RETURN message to the 
-  application's endpoint with output parameters as the response 
-  to the original METHOD_CALL message. If the METHOD_CALL message 
-  was sent asynchronously, a ReplyHandler gets registered which 
-  is invoked when the METHOD_RETURN message is received.
+1. 提供方和使用方的应用程序都需要连接到 AllJoyn 路由，并且执行推广与发现过程，以便发现所需要的服务。
+2. 提供方应用程序向 AllJoyn 核心库注册自己的服务对象，以便向网络上的远程节点暴露服务对象。AllJoyn 核心库对所有与给定服务对象有关的方法添加
+一个 MethodHandler.
+3. 提供方应用程序将 AllJoyn 路由与一个会话端口通过 AllJoyn 核心库中的 BindSessionPort API 绑定。此调用将会指定一个会话端口，会话选项，以及
+一个针对此会话的 SessionPortListner.
+4. 提供方与使用方应用程序执行 AllJoyn 服务推广与服务发现，以便发现提供方提供的服务。
+5. 使用方应用程序通过绑定的会话端口与提供方应用程序建立一个 AllJoyn 会话。到此为止，在使用方和提供方之间已经有一条建立好的会话。
+6. 使用方应用程序通过 AllJoyn 核心库中的 GetProxyBusObject API 创建一个 proxyBusObject. 此应用程序向提供方应用程序指定一个唯一识别符，向服
+务对象指定一个对象路径，会话 ID 以及代理对象应当回应的 BusInterfaces 列表。
+7. 使用方应用程序由已创建的代理对象获得 BusInterface, 并调用此 BusInterface 上的一个方法。此应用程序向此方法提供输入参数。
+8. ProxyBusObject:MethodCall 方法被调用，可以为方法调用生成一个 AllJoyn METHOD_CALL 消息。
+9. 代理对象向 AllJoyn 路由发送生成的 METHOD_CALL 消息。
+10. AllJoyn 路由收到了消息，并根据消息中的会话 ID/ 目的地信息决定消息应该被路由到哪里。在本例中，消息需要被路由到在提供方上的远端 AllJoyn 路由端点。
+11. AllJoyn 路由通过已建立的会话连接向远端的 AllJoyn 路由发送 METHOD_CALL 消息。METHOD_CALL 消息包括一个序列号，在 interfaceName 范围中的
+会员名（方法名），以及发送方的唯一识别符，作为消息的头文件。
+12. 提供方的 AllJoyn 路由接收到了 METHOD_CALL 消息。这里根据会话 ID 和目的地信息决定了消息将要被路由到的地点，在本例中，消息需要被路由到 AllJoyn 核心库应用程序的端点。
+13. AllJoyn 路由向 AllJoyn 核心库端点发送 METHOD_CALL.
+14. AllJoyn 核心库对在接收到的消息中被声明的方法调用成员调用已注册的 MethodHandler. MethodHandler 调用存在于这些对象中的 BusInterface 中的 实体方法，并接收方法的回应。随后他生成一个 METHOD_RETURN 消息作为方法的回应，并发送到 AllJoyn 路由。
+15. AllJoyn 路由接收到 METHOD_RETURN 消息，并根据消息中包含的会话 ID / 目的地信息决定消息应该被路由到哪里。在此例中，消息需要被路由到使用方
+的远端 AllJoyn 路由器端点。
+  * 提供方路由器向远端的 AllJoyn 路由器通过已建立的会话连接发送 METHOD_RETURN 消息。此消息包括一个回复的序列号（与 METHOD_CALL 相关联），
+   会话 ID 以及发送方的唯一识别符，作为消息头字段的一部分。任何由 METHOD_RETURN 输出的参数都在消息 body 中被声明。  
+  * 使用方 AllJoyn 路由接收到 METHOD_RETURN 消息，并根据消息中的会话 ID/ 目的地信息决定消息应该被路由到哪里。在本例中，消息需要被路由到应用 程序的端点。
+  * AllJoyn 路由向应用程序的端点发送带有输出参数的 METHOD_RETURN 消息，作为原始 METHOD_CALL 消息的响应。如果 METHOD_CALL 消息是异步发送的，
+  在 METHOD_RETURN 消息被接收时被调用的 ReplyHandler 将会被注册。
 
-### Provider app not sending a reply
+### 提供方应用程序没有发送回复
 
-When defining an interface definition, the provider can annotate 
-some methods that are not returning any output parameters as 
-NO_REPLY_EXPECTED. For such methods, the provider app will not 
-be sending any METHOD_RETURN message back to the consumer. 
-When invoking such a method, the consumer should set the NO_REPLY_EXPECTED 
-flag to indicate to the AllJoyn core library that it does 
-not need to start a timer and wait for a reply from the provider.
+在定义接口的定义时，提供方可以对不返回任何输出参数的方法添加 NO_REPLY_EXPECTED 的注释。对于这些方法，提供方应用程序不会向使用方应用程序发送
+METHOD_RETURN 消息。在这些方法被调用时，使用方应标明 NO_REPLY_EXPECTED 标识，以便向 AllJoyn 核心库指明不需要计时并等待回复。
 
-The following figure shows the message flow for the scenario 
-when a method is invoked with the NO_REPLY_EXPECTED flag set, 
-and no reply is sent by the provider app.
+下图展示了当一个带有 NO_REPLY_EXPECTED 标识的方法被调用，提供方应用程序不发送回复的场景中的消息流程。
+
 
 ![data-exchange-method-calls-reply-not-sent][data-exchange-method-calls-reply-not-sent]
 
-**Figure:** Data exchange via method calls (reply not sent)
+**Figure:** 方法调用时的数据交换 (无回复)
 
-Most of the message flow steps are similar to the reply sent 
-message flow returning a method reply. The following captures 
-the distinguishing steps with respect to that flow.
+大多数返回方法回复的消息流都与发送回复的消息流类似。下图描述了两者的区别。
 
-1. When defining a service interface, provider app annotates 
-one or more methods in the interface as NO_REPLY_EXPECTED. 
-The service object implementing the service interface gets 
-registered with the AllJoyn core library.
-2. On the consumer side, when that method call is invoked 
-via ProxyObject interfaces, the consumer sets the NO_REPLY_EXPECTED 
-flag. This indicates to the AllJoyn core library that it does 
-not need to start a timer and wait for a reply from the provider.
-3. The METHOD_CALL message reaches the provider app and the 
-associated method gets invoked. Since the method was annotated 
-with NO_REPLY_EXPECTED, the provider app does not generate any reply.
+1. 在定义一个服务接口时，提供方应用程序会将一个或多个方法注释为 NO_REPLY_EXPECTED. 实现服务接口的服务对象在 AllJoyn 核心库中被注册。
+2. 在使用方一边，当方法通过 ProxyObject 接口被调用，使用方会设置 NO_REPLY_EXPECTED 标识，指示 AllJoyn 核心库无需计时并等待回复。
+3. METHOD_CALL 消息到达提供方应用程序，相关方法被调用。由于方法被注释了 NO_REPLY_EXPECTED，提供方应用程序不会生成回复。
 
-## Data exchange via signals
+## 通过信号的数据交换
 
-The following figure captures the message flow for the scenario 
-when consumer app registers to receive signals from the provider 
-app to exchange data. 
+下图描述了使用方应用程序注册并从提供方应用程序接收信号以交换数据场景中的消息流。
+
 
 ![data-exchange-signals][data-exchange-signals]
 
-**Figure:** Data exchange via signals
+**Figure:** 通过信号的数据交换
 
-A signal gets forwarded to all participants in a session if 
-only sessionId is specified in the header (no destination field). 
+只要 sessionID 已被 header（无 destination 字段） 声明，信号会被发送到会话中所有的参与方。
 
-If a specific destination is specified in the header field, 
-then the signal is only sent to that participant.
+如果 header 字段中已经指明了一个特定的参与者地址，则信号只会被送往该参与者。
 
-The message flow steps are described below.
+消息流如下：
+1. 提供方和使用方的应用程序都需要连接到 AllJoyn 路由，并且执行推广与发现过程，以便发现所需要的服务。
+2. 提供方应用程序向 AllJoyn 核心库注册自己的服务对象，以便向网络上的远程节点暴露服务对象。AllJoyn 核心库对所有与给定服务对象有关的方法添加
+一个 MethodHandler.
+3. 提供方应用程序将 AllJoyn 路由与一个会话端口通过 AllJoyn 核心库中的 BindSessionPort API 绑定。此调用将会指定一个会话端口，会话选项，以及
+一个针对此会话的 SessionPortListner.
+4. 提供方与使用方应用程序执行 AllJoyn 服务推广与服务发现，以便发现提供方提供的服务。
+5. 使用方应用程序通过绑定的会话端口与提供方应用程序建立一个 AllJoyn 会话。到此为止，在使用方和提供方之间已经有一条建立好的会话。
+6. 使用方应用程序通过调用 AllJoyn 核心库中的 RegisterSignalHandler API 注册一个用于接收提供方服务对象发出的特定信号的信号处理器。应用程序为
+接口声明了接口名，包括信号，信号名，接收信号的对象的对象路径，信号处理器方法，以及信号发射源的源对象路径。
+7. AllJoyn 核心库调用一个 AllJoyn 路由的 AddMatch 方法，以将接收信号规则注册。此规则声明了 type=signal, 接口名，信号成员名，以及生成信号的
+对象的源对象路径。
+8. 当提供方应用程序有信号需要发送时，他会调用 BusObject Signal(...)，并声明所有的信号参数。此调用会生成一个 AllJoyn SIGNAL 信号。
+9. SIGNAL 信号被发送到 AllJoyn 路由。
+10. AllJoyn 路由接收到 SIGNAL 消息，并根据消息中的会话 ID/ 目的地信息决定消息应该被路由到哪里。在本例中，消息需要被路由到在使用方上的远端 AllJoyn 路由端点。
+11. 使用方 AllJoyn 路由接收到信号，并根据注册的匹配规则将信号过滤。在本例中，该信号符合匹配规则。AllJoyn 路由将接收到的 SIGNAL 消息发送到
+AllJoyn 核心库应用程序端点。
+12. 对于传递接受到的消息参数的信号，AllJoyn 核心库调用注册的信号处理器。 
 
-1. Both the provider and consumer apps connect to the AllJoyn 
-router and perform advertisement and discovery steps to 
-discover desired services.
-2. The provider app registers its service objects with the 
-AllJoyn core library. This step is needed to expose service 
-objects to remote nodes on the network. The AllJoyn core 
-library adds a MethodHandler for all the methods associated 
-with a given service object.
-3. The provider app binds a session port with the AllJoyn 
-router via the AllJoyn core library's BindSessionPort API. 
-This call specifies a session port, session options, and a 
-SessionPortListener for the session.
-4. The provider and consumer apps perform AllJoyn service 
-advertisement and discovery to discover the service offered 
-by the provider app.
-5. The consumer app establishes an AllJoyn session with 
-the provider app over the bound session port. Now there 
-is a session connection established between provider and 
-consumer app to exchange data.
-6. The consumer app registers a signal handler for receiving 
-specific signal from the provider side service object by 
-invoking RegisterSignalHandler API with the AllJoyn core library. 
-The app specifies the interface name for the interface which 
-includes the signal, name of the signal, object path for 
-the object receiving the signal, signal handler method, 
-and source object path for signal emitter.
-7. The AllJoyn core library invokes an AddMatch call with 
-the AllJoyn router to register the rule to receive this signal. 
-This rule specifies type=signal, interface name, signal 
-member name, and source object path for the object generating the signal.
-8. When the provider app has the signal to send, it invokes 
-the BusObject Signal(...) call specifying all the signal 
-parameters. This call generates an AllJoyn SIGNAL message. 
-9. The SIGNAL message gets sent to the AllJoyn router. 
-10. The AllJoyn router receives the SIGNAL message and 
-determines where this message needs to be routed based 
-on the session ID/destination information included in the 
-message. In this case, the message needs to be routed to 
-remote AllJoyn router endpoint at the consumer.
-11. The consumer AllJoyn router receives the signal and 
-filters it based on registered match rules. In this case, 
-the signal matches the registered rule. The AllJoyn router 
-sends the received SIGNAL message to the AllJoyn core library app endpoint.
-12. The AllJoyn core library calls the registered signal 
-handler for the signal passing the received signal message parameters. 
+## 通过属性的数据交换
 
-## Data exchange via property
+提供方与使用方应用程序可以通过定义在服务对象 BusInterfaces 中的属性成员来实现数据交换。一个属性成员有预先获得并设定好的方法调用，以获取属性
+值，为属性设定一个特定的值。使用方应用程序可以调用这些，并设置对于这些属性的方法调用，以便交换数据。
 
-The provider and consumer apps can exchange data via property 
-members defined in the BusInterfaces of the service object. 
-A property member has predefined get and set method calls 
-to get the value of the property and to set a specific value 
-on the property. The consumer app can invoke these get and 
-set method calls for the property to exchange data. 
+若想调用这些属性方法，关于方法的消息流细节参见 [Data exchange via methods][data-exchange-via-methods].
 
-To invoke these property methods, the message flow detailed 
-for method calls in [Data exchange via methods][data-exchange-via-methods] applies.
+## 信号与 (无回应的方法调用)
 
-## Signal versus (method call without reply)
+理解信号与无回应的方法调用之间的区别很重要。在两个概念中，信号消息都是由源被发送出去的；但是他们是有很大不同的。最主要的区别之一是：两者是
+发送到不同的方向的。SIGNAL 消息由提供方应用程序发出，而 METHOD_CALL 消息由使用方应用程序发出。除此之外，SIGNAL 信号在发送时，可选择发送到一 个或者多个目的地，但是 METHOD_CALL 消息只能发到一个单个的目的地。
 
-It is good to understand the difference between a signal and 
-method call without a reply. In both cases, a single message 
-is sent from the source; however, these are quite different. 
-One of the main differences is that they are sent in different 
-directions. A SIGNAL message is emitted by the provider app, 
-whereas a METHOD_CALL message is sent by the consumer app. 
-In addition, a SIGNAL message can be sent to be received by 
-either a single destination or by multiple destinations, 
-whereas the METHOD_CALL message is always sent to a single destination.
 
-## Match rules
+## 匹配规则
 
-The AllJoyn framework supports D-Bus match rules for the consumer 
-application to request and receive specific set of messages. 
-Match rules describe the messages that should be sent to a 
-consumer app based on the contents of the message. Match rules 
-are typically used to receive a specific set of signal messages. 
-Consumer apps can ask to receive specific set of signals from 
-the AllJoyn router by specifying filtering/matching rules for signals. 
+AllJoyn 框架支持 D-Bus 匹配规则，使用方可以请求并接收特定种类的消息。匹配规则描述了根据消息内容，消息应该被送往哪些使用方应用程序的规则。匹配规则常常被用于接收一个特定的信号消息集。使用方应用程序可以通过定义信号的过滤/匹配规则来向 AllJoyn 路由请求接收特定集合的信号。
 
-Signals that are sent to a specific destination do not need 
-to match the consumer's match rule. Instead, match rules are 
-applied to signals which are not sent to a specific destination; 
-they are meant to be received by multiple endpoints. These 
-include broadcast signals, sessionless signals and session-specific 
-signals sent to multiple participants in the session. 
-Such signals get forwarded to only those consumer applications 
-that have a suitable match rule. This avoids unnecessary waking 
-up and processing for signals at the consumer applications.
+送往特定目的地的信号不需要与使用方的匹配规则相匹配。相反的，匹配规则被用于在发送时没有指明目的地的信号；他们有意被多个端点接收。这些信号包括广播信号，非会话信号以及在会话中被送往多个参与方的指定会话信号。这些信号只会被送往有相宜的匹配规则的使用方应用程序。这避免了不必要的唤醒
+以及使用方应用程序端处理信号的操作。
 
-Consumer applications can add a match rule by using the AddMatch 
-method exposed by the AllJoyn router. Match rules are specified 
-as a string of comma-separated key/value pairs. Excluding a key 
-from the rule indicates a wildcard match, e.g., excluding the 
-member key from a match rule but adding a sender lets all 
-messages from that sender through. 
+使用方应用程序可以通过使用由 AllJoyn 路由暴露的 AddMatch 方法来添加一条匹配规则。匹配规则由一个以逗号分隔的 key/value 对字符串构成。将 key
+从规则中去掉将指示着一个万用字符，例如，将成员的 key 从匹配规则中去掉并加入一个发送方，将会使来自此发送方的所有消息通过。
 
-For example:
+例如：
 
 ```c
 Match Rule = 
@@ -307,23 +170,21 @@ Match Rule =
 member='Foo',path='/bar/foo',destination=':452345.34'"
 ```
 
-The AllJoyn framework supports a subset of D-Bus match rules 
-as captured in [Match rule keys supported by the AllJoyn framework][match-rule-keys]. 
+AllJoyn 框架支持一个 D-Bus 匹配规则的子集，参见 [Match rule keys supported by the AllJoyn framework][match-rule-keys]. 
 
-**NOTE:** The AllJoyn does not support D-Bus specified arg[0,1...N], 
-arg[0,1,...N]path, arg0namespace and eavesdrop='true' in match rules.
+**NOTE:** AllJoyn 不支持 D-Bus 匹配规则中定义的 arg[0,1...N], arg[0,1,...N]路径, arg0namespace 以及 eavesdrop='true'.
 
-### Match rule keys supported by the AllJoyn framework
+### AllJoyn 框架中支持的匹配规则中的 keys
 
-| Match key | Possible values | Description |
+| Match key | 值 | 描述 |
 |---|---|---|
-| type | <ul><li>signal</li><li>method_call</li><li>method_return</li><li>error</li></ul> | Match on the message type. An example of a type match is type='signal'. |
-| sender | A well-known name or unique name | Match messages sent by a particular sender. An example of a sender match is sender='org.alljoyn.Refrigerator'. |
-| interface | An interface name | Match messages sent over or to a particular interface. An example of an interface match is interface='org.alljoyn.Refrigerator'. If a message omits the interface header, it must not match any rule that specifies this key. |
-| member | Any valid method or signal name | Matches messages which have the give method or signal name. An example of a member match is member='NameOwnerChanged'. |
-| path | An object path | Matches messages which are sent from or to the given object. An example of a path match is path='/org/alljoyn/Refrigerator'. |
-| path_namespace | An object path | <p>Matches messages which are sent from or to an object for which the object path is either the given value, or that value followed by one or more path components.</p><p>For example, path_namespace='/com/example/foo' would match signals sent by /com/example/foo or by /com/example/foo/bar, but not by /com/example/foobar.</p><p>Using both path and path_namespace in the same match rule is not allowed.</p> |
-| destination | A unique name | Matches messages which are being sent to the given unique name. An example of a destination match is destination=':100.2'. |
+| type | <ul><li>signal</li><li>method_call</li><li>method_return</li><li>error</li></ul> | 匹配消息类型。例如 type='signal'. |
+| sender | 一个 well-known name 或者唯一识别符 | 匹配一个指定的发送方。例如 sender='org.alljoyn.Refrigerator'. |
+| interface | 一个接口名 | 匹配一个发送消息经过或到达的指定接口，例如 interface='org.alljoyn.Refrigerator'. 如果一条消息省略了接口 header， 他将不得匹配任何声明了此 key 的规则。 |
+| member | 任何有效的方法或信号名 | 匹配有给定方法或信号名的信号。例如 member='NameOwnerChanged'. |
+| path | 一条对象路径 | 匹配发送或来自给定对象的消息。例如 path='/org/alljoyn/Refrigerator'. |
+| path_namespace | 一条对象路径 | <p>匹配发送或来自一个路径为一个给定值或者一个值伴随一个或多个路径组件的对象路径的消息。例如 path_namespace='/com/example/foo' 将会匹配来自 /com/example/foo 或者 /com/example/foo/bar 的消息, 但不会匹配来自 /com/example/foobar 的消息.</p><p>不允许在一条匹配规则中同时使用路径和路径_命名空间的组合。</p> |
+| destination | 一个唯一识别符 | 匹配发送到给定唯一识别符的消息。例如 destination=':100.2'. |
 
 An application can add multiple match rules for signals with the 
 AllJoyn router. In this case, the app is essentially requesting 
