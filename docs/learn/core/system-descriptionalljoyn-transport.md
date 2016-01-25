@@ -39,7 +39,7 @@ AllJoyn 路由有相应的远程终点代表与用于转发信息的核心资源
 
 **图:** 有多个远程终点的 AllJoyn 路由
 
-核心资源库和路由都提供远程终点，然而他们在信息转发功能方面有所不同-AllJoyn 路由能在终点之间转发信息，然而核心资源库仅能在特定一组本地和远程终点之间转发信息。
+核心资源库和路由都提供远程终点，然而他们在信息转发功能方面有所不同 —— AllJoyn 路由能在终点之间转发信息，然而核心资源库仅能在特定一组本地和远程终点之间转发信息。
 
 AllJoyn 系统支持完全分布式的总线配置，具体表现为一个路由通过与其它路由的连接，加入一个单一分布式 AllJoyn 总线的总线段，如图所示：
 
@@ -50,7 +50,7 @@ AllJoyn 系统支持完全分布式的总线配置，具体表现为一个路由
 
 如图，在图片的上半部分展示了一个包含一个 AllJoyn 路由和两个应用程序的总线段。在图片的下半部分，同样有一个包含一个 AllJoyn 路由和两个应用程序的总线段。
 
-这两个总线段通过称为 Bus-to-Bus 的远程终点相连。每个路由为它所连接的路由提供了一个 Bus-to-Bus Endpoint。在图中，一个 Bus-to-Bus Endpoint 表示于上方 Routing Node 的连接，另一个 Bus-to-Bus Endpoint 表示与下方Routing Node 的连接。
+这两个总线段通过称为 Bus-to-Bus 的远程终点相连。每个路由为它所连接的路由提供了一个 Bus-to-Bus Endpoint。在图中，一个 Bus-to-Bus Endpoint 表示于上方 Routing Node 的连接，另一个 Bus-to-Bus Endpoint 表示与下方 Routing Node 的连接。
  
 Remote Endpoints 通过 AllJoyn Transport 相关的底层通讯机制进行配对。举例说明， Routing Nodes 中的 Bus-to-Bus Endpoints 可能通过 TCP Transport 或者 UDP Transport 控制，它们同时也控制了从一段（Endpoint）到另一段的连接中传递 Messages 的细节。
 
@@ -76,8 +76,7 @@ Remote Endpoints 通过 AllJoyn Transport 相关的底层通讯机制进行配�
 
 尽管 AllJoyn 传输的基本任务是从一个终点向另一个终点传输或转移 AllJoyn Messages，但是也须要区别 AllJoyn Transport 与  International Standards Organization Open Systems Interconnection (ISO/OSI) 7-layer model 中传输层（第四层）的概念。
 
-The following figure shows where AllJoyn Transports fit in the 
-7-layer ISO/OSI model. 下图展示了在 七层 ISO/OSI 模型概念中，AllJoyn Transport 的位置。
+下图展示了在 七层 ISO/OSI 模型概念中，AllJoyn Transport 的位置。
 
 ![alljoyn-osi-seven-layer-arch][alljoyn-osi-seven-layer-arch]
 
@@ -128,7 +127,7 @@ AllJoyn Local Transports 是被设计主要用于提供核心资源库和它们�
 
 ### UNIX Domain Sockets Transport
 
-Posix 系统采用 The UNIX Domain Sockets Transport 为 核心资源库和预装 AllJoyn 路由之间提供了一个进程间的连接（IPC）。由于是一种本地传输方式，不需要支持多终点，广播和发现。此种传播方式以分离的形式在核心资源库与 AllJoyn 路由之间实现。
+Posix 系统采用 The UNIX Domain Sockets Transport 为核心资源库和预装 AllJoyn 路由之间提供了一个进程间的连接（IPC）。由于是一种本地传输方式，不需要支持多终点，广播和发现。此种传播方式以分离的形式在核心资源库与 AllJoyn 路由之间实现。
 
 ### TCP Transport
 
@@ -171,12 +170,11 @@ TCP Transport 用于 Windows 系统，在核心资源库与预装 AllJoyn 路由
 
 #### TCP 传输方式数据层结构
 
-Each connection that uses the TCP Transport has an associated TCP Endpoint, 
-TCP Stream, and TCP socket as shown in the following figure. 如图，每个使用 TCP 传输方式的连接都有相关的 TCP 终点、TCP 流和 TCP socket。
+如图，每个使用 TCP 传输方式的连接都有相关的 TCP 终点、TCP 流和 TCP socket。
 
 ![tcp-transport-data-plane-internal-architecture][tcp-transport-data-plane-internal-architecture]
 
-**图:** TCP transport data plane internal architecture TCP 传输数据层内部结构
+**图:** TCP 传输数据层内部结构
 
 路由节点的路由功能连接至一个 TCP 终点，这代表了一个针对 TCP 传输方式连接的远程终点。TCP 终点使用 TCP 串流组件从比特流翻译信息并发送至比特流。TCP 流通过 TCP socket 接收和发送数据。
 
@@ -194,7 +192,7 @@ TCP 终点遵循 AllJoyn 线程的基本生命周期。它首先在 INITIALIZED 
 
 当线程要求支持一个新建的或经过认证的正在运行的 TCP 终点，该终点进入 STARTED 状态。在此状态下，TCP 终点被注册至路由，因此数据可以通过终点传输。当不再需要这个连接时，就会调用终点方法 `Stop()`，那么终点将进入 STOPPING 状态。当终点中所有的线程都退出后，终点进入 JOINING 状态，这个状态下任何相关的线程都能够加入（类似于 Posix 线程加入的操作）。终点随后会从 AllJoyn 路由中注销。当终点里与线程相关的资源被清除后，终点进入 DONE 状态，在这个状态下它能够从系统中被移除和删除。
 
-##### TCP Endpoint authentication phase TCP 终点验证步骤
+##### TCP 终点验证步骤
 
 如上文所述，TCP 终点在允许信息通过之前，必须完成一个验证步骤。这个验证步骤由一个单独的线程处理，在下图中展示。验证进程在 TCP 终点进入 INTIALIZED 阶段时启动。
 
@@ -216,7 +214,7 @@ ALlJoyn UDP 传输机制，顾名思义，使用 UDP/IP 协议从一端向另一
 
 结构上说，UDP 传输方式可被分为两大组件；路由节点连接到所谓 UDP 终点的路由功能，可通过 ARDP 访问的 UDP 传输方式的网络功能。
 
-UDP 终点事路由节点与 UDP 传输方式之间的基础数据层接口。从路由节点的角度来看，每个 UDP 传输连接都是一个 UDP 终点的代表。每个 UDP 终点有一个相关的 ARDP 流，它能把 AllJoyn 信息转换为 ARDP 数据包。下图展示了 UDP 传输方式数据层结构。
+UDP 终点是路由节点与 UDP 传输方式之间的基础数据层接口。从路由节点的角度来看，每个 UDP 传输连接都是一个 UDP 终点的代表。每个 UDP 终点有一个相关的 ARDP 流，它能把 AllJoyn 信息转换为 ARDP 数据包。下图展示了 UDP 传输方式数据层结构。
 
 ![udp-transport-data-plane-internal-architecture][udp-transport-data-plane-internal-architecture]
  
@@ -244,11 +242,7 @@ UDP 终点通过一个如下图所示定义明确的生命周期。
 
 #### ARDP state machine ARDP 状态设备
 
-The ARDP is a close relative of RDP which is documented in RFC-908 (version 1)
-and RFC-1151 (version 2). At the heart of the ARDP is the ARDP 
-connection state machine. Although similar to the TCP state machine, 
-the ARDP machine is simpler, requiring only six states as shown 
-in the following figure.
+如 RFC-908 (version 1) 和 RFC-1151 (version 2) 中所述，ARDP 与 RDP 十分相似。在 ARDP 的核心是 ARDP 连接状态设备。尽管 与 TCP 状态设备很相似，但 ARDP 设备更加简单，只提供下图中所展示的六个状态。
 
 ![ardp-state-machine][ardp-state-machine]
 
@@ -260,11 +254,11 @@ in the following figure.
 
 他转换至 OPEN 状态并且通知转换为 STARTED 状态的 UDP 终点。此时，两端都准备好发送和接收数据了。
 
-由于在本地 UDP 终点、本地 ARDP、远程 ARDP 和 远程 UDP 终点 之间传递信息可能出现失败。两端都装有看门狗计时器，能够及时地中止进程。
+由于在本地 UDP 终点、本地 ARDP、远程 ARDP 和 远程 UDP 终点之间传递信息可能出现失败。两端都装有看门狗计时器，能够及时地中止进程。
 
 如上文所述，在 ARDP 中关闭连接没有先后顺序。这是在 UDP 终点状态设备中完成的。通过接收或发送 RST 包从 ARDP OPEN 状态转换至别的状态。为了避免 ARDP 端口重复使用的问题，提供了一个 CLOSE_WAIT 状态，与 TCP 中的类似。
 
-#### ARDP packet format ARDP 包格式
+#### ARDP 包格式
 
 ARDP 包格式的细节在 RFC 908 和 RFC 1151 提到。为了支持 AllJoyn 信息间隔的扩展而不是使用 UDP数据报，并且删除基于 TTL 超时的途中信息，需要改变 SYN 和 DATA 包的格式。
 
@@ -315,14 +309,14 @@ ARDP 是一个弹性协议，使用了很多的可配置参数。这些参数可
 | udp_initial_data_timeout | 当一个数据 ARDP 段被发送后，RTO 计时器启动，它决定了在确定未收到该端数据后，何时重新发送。ARDP 使用 RFC 6298 中 TCP 算法中的 SRTT 和 RTO 估计。这个参数决定了当 RTT 估计失效时，该段数据 RTO 的初始值。 | 1000 msec |
 | udp_total_data_retry_timeout | 在放弃重试并断开相关 ARDP 连接之前，某个数据段总共的尝试次数。 | 10000 msec |
 | udp_min_data_retries | 给定 ARDP 数据段最小重试次数。在 udp_total_data_retry_period 允许的范围内，可以重试多于该值的次数。 | 5 |
-| udp_persist_interval | When the advertised window size on the foreign host goes to zero, it stops the (local) sender from transmitting data until the window becomes nonzero. Since ARDP does not reliably send ACK packets, it is possible to lose an ACK packet that reopens the window. In that case, the local and foreign sides could deadlock: the foreign side to receive data and the sender waiting for an ACK with a new window size. ARDP supports sending zero window probes (NUL packet) if it does not get update to the window after receiving a zero window ACK. The zero window probes are sent following an exponential backoff schedule. This parameter defines initial persist interval used as first timeout for the zero window schedule.当广播的窗口大小在远端变为了 0，它会停止（本地）发送者传输数据知道窗口值不再为 0.由于 ARDP 不能十分可靠滴发送 ACK 包，可能会丢失 ACK 包，导致窗口重新打开。在这种情况下，本地和远端可能会进入一个死循环：远端要接收数据，发送者等待一个携带新窗口大小的 ACK。如果 ARDP 在接收到 0 窗口 ACK后 window 值并没有更新，ARDP 支持发送 0 窗口探测（空数据包）。0 窗口探测信号后会跟随一个指数退避列表。该参数决定了初始间隔，用于 0 窗口列表的首个超时时间。 | 1000 msec |
+| udp_persist_interval | 当广播的窗口大小在远端变为了 0，它会停止（本地）发送者传输数据知道窗口值不再为 0.由于 ARDP 不能十分可靠地发送 ACK 包，可能会丢失 ACK 包，导致窗口重新打开。在这种情况下，本地和远端可能会进入一个死循环：远端要接收数据，发送者等待一个携带新窗口大小的 ACK。如果 ARDP 在接收到 0 窗口 ACK后 window 值并没有更新，ARDP 支持发送 0 窗口探测（空数据包）。0 窗口探测信号后会跟随一个指数退避列表。该参数决定了初始间隔，用于 0 窗口列表的首个超时时间。 | 1000 msec |
 | udp_total_app_timeout | 在相关 ARDP 宣布连接失败之前，发送 0 窗口探测的总时长。| 30000 msec |
 | udp_link_timeout | ARDP 十分乐意判断一个连接失效、空闲的时间。这个想法用于保证某些数据在连接中，至少经过一次间隔。它可以是数据、数据的 ACK 或者特殊的空白保持活动包。某个连接超时时长用于计算用于发送周期保持活动探测的保持活动间隔。该参数提供了一个断开连接被必须被发现的时间的默认总时常。该值仅在应用程序没有设定连接超时时长的情况下使用，否则使用应用程序规定的超时时长。 | 30000 msec |
-| udp_keepalive_retries | Provides the total number of times keep-alive probes will be sent before declaring the link as broken and terminating the ARDP connection.规定了在确定连接已经失效并且终止 ARDP 连接之前，保持活动探测发送的总数 | 5 |
-| udp_fast_retransmit_ack_counter | Similar to TCP, ARDP supports fast retransmission of segments based on the out-or-order EACKs (Enhanced ACKs) received. This value defines how many out-of-order EACKs should be received before ARDP performs the retransmission. A segment is fast retransmitted only once.与 TCP 相似，ARDP 支持基于接收到的出错 EACKs (Enhanced ACKs)的段落重传。该值决定了在 ARDP 重传前应该接收出错 EACKs 数量。 | 1 |
+| udp_keepalive_retries | 规定了在确定连接已经失效并且终止 ARDP 连接之前，保持活动探测发送的总数 | 5 |
+| udp_fast_retransmit_ack_counter | 与 TCP 相似，ARDP 支持基于接收到的出错 EACKs (Enhanced ACKs)的段落重传。该值决定了在 ARDP 重传前应该接收出错 EACKs 数量。 | 1 |
 | udp_timewait_timer | 某个连接应该保持在 RDP Close_Wait 状态的时长，因为有些发出的包可能在网络中在网络中徘徊，直到失效。这个参数保证了定义 ARDP 连接的某个端口对在给定时间内不会被第二次使用，防止之前残留的信号与当前信号产生冲突。  | 1000 msec |
 | udp_segbmax |在连接建立阶段 ARDP 段落的最大容量。由于 ARDP 在 UDP 顶端运行，该值由最大 UDP 包的容量而定。由于 UDP 中最大数据报的容量使 65535 字节，最有效／最大 ARDP 信息的大小就是最大 UDP 包的大小。| 65507 |
-| udp_segmax | Maximum number of outstanding ARDP segments the receiver is willing to accept as negotiated during connection setup. This value governs how many segments can be in the flight and hence impacts the overall achieved throughput. The SEGMAX unit is ARDP segments. ARDP supports flow control through dynamic windowing in the message header. When data is received by ARDP and "checked in" to the ARDP receive queue, it is immediately acknowledged, but the receive window is decremented by 1. It is only when a datagram is delivered to the app, that the datagram is removed from the receive buffer and the receive window is incremented by 1.在建立连接阶段接受者愿意接受的最大 ARDP。该值管理了在传输中的最多段落数，并且因此会影响整体实现的吞吐量。SEGMAX 的单位是 ARDP 段。ARDP 支持通过信息头部的动态窗口来控制流量。当数据被 ARDP 接收并且在 ARDP 接收队列中登记，他会被立刻广播，但接收窗口以 1 为单位递减。只有当数据报被传输至应用后，数据包才会从接收缓存中移除，同时，接受窗口以 1 为单位递增。 | 50 |
+| udp_segmax | 在建立连接阶段接受者愿意接受的最大 ARDP。该值管理了在传输中的最多段落数，并且因此会影响整体实现的吞吐量。SEGMAX 的单位是 ARDP 段。ARDP 支持通过信息头部的动态窗口来控制流量。当数据被 ARDP 接收并且在 ARDP 接收队列中登记，他会被立刻广播，但接收窗口以 1 为单位递减。只有当数据报被传输至应用后，数据包才会从接收缓存中移除，同时，接受窗口以 1 为单位递增。 | 50 |
 
 ### AllJoyn 传输方式使用的名称服务
 
