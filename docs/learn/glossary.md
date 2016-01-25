@@ -104,7 +104,7 @@ AllJoyn 软件包
 
 ### Announcement
 
-一种 sessionless signal，内容包含了用于发现的公开服务接口和元数据。
+一种无会话信号，内容包含了用于发现的公开服务接口和元数据。
 
 [了解更多][about]
 
@@ -173,7 +173,7 @@ AllJoyn 网络中的 AllJoyn 应用程序消费服务。
 
 ### Control Panel
 
-Widgets的集合，使用户可以与设备进行互动。一个控制面板由一个控制者定义并发布；并且被受控者发现和显示。设备可以超过一个，可以被定义为支持某种语言。
+Widgets的集合，使用户可以与设备进行互动。一个控制面板由一个控制者定义并发布；并且被受控者发现和显示。设备数量可以超过一个，可以被定义为支持某种语言。
 
 [了解更多][controlpanel]
 
@@ -324,6 +324,7 @@ Onboarding 服务架构的一种工具。它开放了 OnboradingData，允许设
 （根据 thin app document）一种为服务架构保留默认值和运行时的属性值的模块。
 
 该模块保留的值以 AboutData 的形式返回，这时 AboutData 已经与 ConfigData 的值合并了。
+
 ### Proximal network
 
 不包含云服务的网络
@@ -361,7 +362,7 @@ AllJoyn 应用程序用于相互鉴权并相互传递加密数据的一种架构
 
 ### Sessionless signal
 
-一种广播的 AllJoyn 信号，可以被所有在最终用户家庭网络（如 Wi-Fi 网络）中监听的设备接收到。Sessionless sigal 会在网络中持续广播，直到 time-to-live (TTL) 时间超时。About 功能通过 sessionless signal 的方式在 Wi-Fi 网络中发送 Annoucement。
+一种广播的 AllJoyn 信号，可以被所有在最终用户家庭网络（如 Wi-Fi 网络）中监听的设备接收到。Sessionless signal 会在网络中持续广播，直到 time-to-live (TTL) 时间超时。About 功能通过 sessionless signal 的方式在 Wi-Fi 网络中发送 Annoucement。
 
 [了解更多][sessionless-signal]
 
