@@ -4,7 +4,7 @@
 
 * [Onboarding][onboarding]. 规定了将新设备接入 Wi-Fi 网络的统一方式。
 
-* [Configuration][configuration]. A允许用户配置某一应用或设备的特定属性，如它的友好名称。
+* [Configuration][configuration]. 允许用户配置某一应用或设备的特定属性，如它的友好名称。
 
 * [Notification][notification]. 提供在 AllJoyn&trade 中设备间收发基于文本的通知信息的功能。
 

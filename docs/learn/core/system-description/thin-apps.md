@@ -6,7 +6,7 @@ AllJoyn 系统旨在实现夸 AllJoyn 设备的功能控制。AllJoyn 标准内�
 
 另一方案，单一目的的 AllJoyn 设备通常拥有一套嵌入式系统。该系统运行在提供某种特定功能的微控制器上。这些嵌入式系统为了降低设备的成本和缩减设备的体积，通常采用削减内存，降低处理速度，限制电源功率，删除周边设备和用户接口等方法。AllJoyn 精简内核为嵌入式系统设备提供了良好的 AllJoyn 分布式编程环境。
 
-AJTCL 为嵌入式微控制器程序提供了一种轻量级的核心 AllJoyn 功能的实现方案。嵌入式 AllJoyn 设备（精简 AllJoyn 设备）只包含一个采用 AJTCL 的精简 AllJoyn 程序，鉴于有限的资源环境，并不包含 AllJoyn 路由组件。它向 AllJoyn 临域网络内的某一标准 AllJoyn 设备借用其 AllJoyn 路由，并利用它实现 AllJoyn 核心功能，如 advertisement 和信息转发。AllJoyn 精简应用程序完全兼容与临域网络内的标准 AllJoyn 应用程序进行互操作。实际上，远程控制程序甚至不知道另一侧与正自己进行会话的是一个精简 AllJoyn 应用程序。
+AJTCL 为嵌入式微控制器程序提供了一种轻量级的核心 AllJoyn 功能的实现方案。嵌入式 AllJoyn 设备（精简 AllJoyn 设备）只包含一个采用 AJTCL 的精简 AllJoyn 程序，鉴于有限的资源环境，并不包含 AllJoyn 路由组件。它向 AllJoyn 临域网络内的某一标准 AllJoyn 设备借用其 AllJoyn 路由，并利用它实现 AllJoyn 核心功能，如广告和信息转发。AllJoyn 精简应用程序完全兼容与临域网络内的标准 AllJoyn 应用程序进行互操作。实际上，远程控制程序甚至不知道另一侧与正自己进行会话的是一个精简 AllJoyn 应用程序。
 
 
 下图展示了精简应用程序适配整个 AllJoyn 分布式系统的联系结构。
@@ -15,7 +15,7 @@ AJTCL 为嵌入式微控制器程序提供了一种轻量级的核心 AllJoyn �
 
 **图:** 精简应用程序联系结构
 
-该图展示了两个 AllJoyn 设备（device 3 和 device 4），它们各自安装了一个 AllJoyn 精简应用程序。基于 AJTCL 建立的精简应用程序通过与一个标准 AllJoyn 设备上的路由（如安装在 Wi-Fi Access Point 上的 AllJoyn 路由）与分布式 AllJoyn 总线建立连接。AJTCL 使用 AllJoyn 的 advertisement 和 discovery 服务，通过 BusNode well-known name 发现 AllJoyn 路由。
+该图展示了两个 AllJoyn 设备（device 3 和 device 4），它们各自安装了一个 AllJoyn 精简应用程序。基于 AJTCL 建立的精简应用程序通过与一个标准 AllJoyn 设备上的路由（如安装在 Wi-Fi Access Point 上的 AllJoyn 路由）与分布式 AllJoyn 总线建立连接。AJTCL 使用 AllJoyn 的广告和发现服务，通过 BusNode well-known name 发现 AllJoyn 路由。
 
 **注意:** 多个精简应用程序可连接到单个指定 AllJoyn 路由。
 
@@ -36,7 +36,7 @@ AJTCL 包含了上图中所示支持的功能中比较重要的几个功能模�
 * Marshaling 模块为 AllJoyn 信息提供了封送和逆封送功能，并把这些信息转发到连接的 AllJoyn 路由上。
 * App Authentication 模块为精简应用程序与远程 AllJoyn 应用程序之间提供了应用级别的身份验证和安全保护。在 14.06 版本之前，AJTCL 采用的是 ALLJOYN_PIN_KEYX 验证机制。14.06 版本以及其后续版本，都采用了一套全新的如 [App layer authentication][app-layer-auth] 所述的基于Elliptic Curve Diffie-Hellman Ephemeral (ECDHE)的验证机制。
 
-##AJTCL 与 AllJoyn 路由的连接
+## AJTCL 与 AllJoyn 路由的连接
 
 在启动时，精简应用程序启动 discovery 进程，与另一个标准 AllJoyn 设备上的 AllJoyn 路由建立连接。这个过程通过 name-based discovery 机制实现。
 
@@ -51,7 +51,7 @@ AllJoyn 路由限制了 AllJoyn 网络中同时存在的精简应用程序连接
 
 AJTCL 与 AllJoyn 路由之间的连接过程分为以下几个阶段：
 
-* 发现阶段：AJTCL 通过 BusNode name-based discovery 机制发现 AllJoyn 临域网络内的的 AllJoyn 路由。发现的超时时常通过调用 `FindBusAndConnect()` API 进行设定。自 14.12 版本开始，AJTCL 加入了 mDNS-based discovery 方式进行 AllJoyn 路由发现。下文使用 pre-14.12 TCL 和 14.12 TCL 表述这两个阶段。AJTCl 为 BusNode well-known name 发送一个 WHO-HAS 消息，其后跟随一个退避列表。IS-AT 消息由广告 BusNode Name 的 AllJoyn 路由通过单播方式发送到 AJTCL。
+* 发现阶段：AJTCL 通过 BusNode name-based discovery 机制发现 AllJoyn 临域网络内的的 AllJoyn 路由。发现的超时时长通过调用 `FindBusAndConnect()` API 进行设定。自 14.12 版本开始，AJTCL 加入了 mDNS-based discovery 方式进行 AllJoyn 路由发现。下文使用 pre-14.12 TCL 和 14.12 TCL 表述这两个阶段。AJTCl 为 BusNode well-known name 发送一个 WHO-HAS 消息，其后跟随一个退避列表。IS-AT 消息由广告 BusNode Name 的 AllJoyn 路由通过单播方式发送到 AJTCL。
 * 连接阶段：AJTCL 通过从 discovery response 中获得的详细信息建立与 AllJoyn 路由之间的 TCP 连接。
 * 身份认证阶段：AJTCL 通过 SASL 匿名身份认证开始使用 AllJoyn 路由的服务。
 
@@ -126,7 +126,7 @@ Discovery response（无论 mDNS response 或是 IS-AT message）通过广告 Bu
 
 2. AJTCL 至少花费 5 秒的时间接受 discovery 回应。每一个接受的回应的过程，都与上述 ‘ajpv’ 键－值对相关，同时黑名单也对这个过程有效。当等待时间结束，AJTCL 将选择期间接收的路由 rank 最高的一个进行连接。如果 rank 值相同，或者 discovery 回应中不包含 rank， AJTCL 将在路由中随机选择一个并连接。
 
-### Router blacklisting 路由黑名单
+### 路由黑名单
 
 自 15.04 版本以来，AllJoyn 引入了路由黑名单功能。此功能使得 AJTCL 能够追踪不兼容的路由，并避免再次连接它们。为了追踪不兼容路由（根据建立情况决定），建立了黑名单。黑名单确保在名单内的 discovery 回应被忽略。
 
@@ -137,7 +137,7 @@ Discovery response（无论 mDNS response 或是 IS-AT message）通过广告 Bu
 
 下表展示了 14.02 和 14.06 版本中 AJTCL 和 AllJoyn 路由之间的兼容性
 
-#### AJTCL and AllJoyn router compatibility
+#### AJTCL 和 AllJoyn 路由之间的兼容性
 
 | AJTCL / Router | 14.02 (AJTCL auth enabled) | 14.06 (AJTCL auth disabled) | 14.06 |
 |---|---|---|---|
@@ -168,12 +168,13 @@ AJTCL 为以下核心 AJ 功能提供支持：
 * 服务的发现和广告：支持老版本和新版本的 Name Service。
 * About 广告
 * 会话建立
-* Sessionless signals 
+* 无会话信号
 * 应用层认证
 * AJTCl 提供应用层认证。使得精简应用程序实现安全接口，并访问其它 AllJoyn 提供者的安全接口。
 * 14.06 版本(查阅 [App layer authentication][app-layer-auth])中支持新的身份验证方案
 
 通过绑定应用程序指定的资源库，精简应用程序也能够包含已有 AllJoyn 服务架构的功能。
+
 ## 应用层认证
 
 AJTCL 为精简应用程序提供了应用层认证，使其可以部署和访问安全 AllJoyn 服务。14.06 版本之前的应用层认证会有所不同，下文重点介绍 14.06 版本和以后版本的认证方式。

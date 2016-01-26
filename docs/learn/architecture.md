@@ -2,7 +2,7 @@
 
 ## 网络结构
 
-AllJoyn&trade;架构在本地网络上运行，使设备和应用程序能够发送通知并且发现彼此。本章解释了 Alljoyn 的网络结构和不同 AllJoyn 组件之间的关系。
+AllJoyn&trade; 架构在本地网络上运行，使设备和应用程序能够发送通知并且发现彼此。本章解释了 AllJoyn 的网络结构和不同 AllJoyn 组件之间的关系。
 
 
 ### 应用和路由
@@ -23,6 +23,7 @@ AllJoyn&trade;架构在本地网络上运行，使设备和应用程序能够发
 AllJoyn 架构在本地网络上运行。目前它支持 Wi-Fi, Ethernet, serial, 和 Power Line (PLC)。不过由于 AllJoyn 软件是协议不相关的，并且 AllJoyn 系统是在不断完善的开源工程。在未来，将会加入更多的传输方式。
 
 除此之外，使用桥程序，可以将 AllJoyn 架构与其他类型的系统互联，如 Zigbee, Z-wave 和云。实际上，有一个工作组正在负责向标准 AllJoyn 服务中加入一个[网关代理][gateway-agent]。
+
 ##  软件结构
 
 AllJoyn 架构包含了 Alljoyn 应用和 AllJoyn 路由。
@@ -46,7 +47,7 @@ AllJoyn 核心资源库提供了与 AllJoyn 网络互联的最低级别的 API�
 
 * 通知和发现
 * 建立会话
-* 接口定义的方法、 属性和信号
+* 接口定义的方法、属性和信号
 * 对象的创建和处理
 开发人员使用这些 API 来实现 AllJoyn 服务架构，或建立专用接口。
 
@@ -89,7 +90,7 @@ AllJoyn 架构提供了两种版本选择：
 
 通常，建议使用AllJoyn 服务架构 API 来编写应用程序，这样便于与使用相同服务架构的设备相兼容。只有使用 AllSeen 工作组开发的 AllJoyn 服务框架编写的应用程序才能与 Allseen 生态系统中的其他应用或设备相兼容。
 
-如果应用希望推出它们自己的服务，可以通过直接向 AllJoyn 核心API 编程来实现。如果这样做，建议遵守 Events and Actions 规则以实现应用与其他 AllJoyn 设备间的临时通信。
+如果应用希望推出它们自己的服务，可以通过直接向 AllJoyn 核心 API 编程来实现。如果这样做，建议遵守 Events and Actions 规则以实现应用与其他 AllJoyn 设备间的临时通信。
 
 应用程序可以同时使用服务架构与核心 API。
 
