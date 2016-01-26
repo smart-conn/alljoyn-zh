@@ -14,5 +14,3 @@ open-source project.
 
 [learn]: /learn
 [develop]: /develop
-
-
