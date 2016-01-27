@@ -44,11 +44,11 @@ AllJoyn 会话被建立之后，使用方应用程序已经建立了可以与提
 * 对于一个服务器对象中指定的信号名，使用方应用程序需向 AllJoyn 路由注册指定的信号处理器，以接收提供方的信号。 
 * 当一个特定的信号被接收后，指定的信号处理器会被调用。
 * 连接到 AllJoyn 路由的使用方应用程序端点有一个相关的唯一名称。
-* AllJoyn 路由会保存与参与的会话有关的状态信息。此信息被用来路由基于 sessionID 的消息。
+* AllJoyn 路由会保存与参与的会话有关的状态信息。此信息被用于传送基于 sessionID 的消息。
 
 ## 通过方法交换数据
 
-下列用例表达了通过方法调用完成的数据交换啊过程。
+下列用例表达了通过方法调用完成的数据交换的过程。
 
 * 提供方应用程序发送一条回复。
 * 提供方应用程序没有发送一条回复。
@@ -186,143 +186,115 @@ AllJoyn 框架支持一个 D-Bus 匹配规则的子集，参见 [Match rule keys
 | path_namespace | 一条对象路径 | <p>匹配发送或来自一个路径为一个给定值或者一个值伴随一个或多个路径组件的对象路径的消息。例如 path_namespace='/com/example/foo' 将会匹配来自 /com/example/foo 或者 /com/example/foo/bar 的消息, 但不会匹配来自 /com/example/foobar 的消息.</p><p>不允许在一条匹配规则中同时使用路径和路径_命名空间的组合。</p> |
 | destination | 一个唯一识别符 | 匹配发送到给定唯一识别符的消息。例如 destination=':100.2'. |
 
-An application can add multiple match rules for signals with the 
-AllJoyn router. In this case, the app is essentially requesting 
-to get signal messages based on multiple filtering criteria, and 
-all match rules are applicable. As a result, the signal messages 
-get sent to the app if they matches any of the specified match rules. 
+应用程序可以对 AllJoyn 路由的信号添加多个匹配规则。在此例中，应用程序正在请求根据多个过滤条件获取信号，并且所有的匹配规则都使用。这样的结果是，符合指定的匹配规则的消息都会被发送到应用程序。例如，如果存在一个只能匹配一小部分信号的更加限定性的
 
-The AllJoyn router sends a union of messages to the app that 
-matches with the specified rules. For example, if there is a 
-more restrictive rule that matches a small set of signals, 
-and there is another less restrictive rule that matches a 
-larger superset of signals, the AllJoyn router always sends 
-the larger superset of signals to the app.
+AllJoyn 路由发送一个与指定规则相匹配的消息集合到应用程序。例如，如果存在一个只能匹配一小部分信号的更加限定性的规则，同时又存在一个可以匹配多一些消息的相对小限定性的规则，AllJoyn 路由总是会向应用程序发送大一些的扩展集信号。
 
-## Type system 
 
-The AllJoyn framework uses the D-Bus protocol type system 
-which allows values of various types to be serialized in a 
-standard way into a sequence of bytes referred to as the 
-wire format. Converting values from some other representation 
-into the wire format is called marshaling, and converting it 
-back from the wire format is called unmarshaling. 
+## 类型系统
 
-The AllJoyn framework uses D-Bus marshaling format.
+AllJoyn 框架使用了 D-Bus 协议的类型系统，允许将多种类型通过一种标准的方法连载成一个字节的序列，称作 wire fomat（有线格式）. 将其他表达方式
+的值转换成 wire fomat 的过程被称为 marshaling（编组），而反向的转换被称为 unmarshaling（反编组）。
 
-### Type signatures
+AllJoyn 框架使用 D-Bus 的编组格式。
 
-The AllJoyn framework uses the same type signatures that 
-are used by the D-Bus protocol. The type signature is made 
-up of type codes. The type code is an ASCII character that 
-represents a standard data type. 
+### 类型签名
 
-#### Data types supported by the AllJoyn framework
+AllJoyn 框架使用了与 D-Bus 协议相同的类型签名。这种类型签名由类型代码构成。类型代码是一个代表着一种标准数据类型的 ASCII 字符、
 
-| Conventional name | Code | ASCII | Description |
+#### AllJoyn 框架支持的数据类型：
+
+| 通用名  | 代码 | ASCII | 描述 |
 |---|---|---|---|
-| INVALID | 0 | NUL | Not a valid type code, used to terminate signatures. |
-| BYTE | 121 | 'y' | 8-bit unsigned integer. |
-| BOOLEAN | 98 | 'b' | Boolean value, 0 is FALSE and 1 is TRUE. Everything else is invalid. |
-| INT16 | 110 | 'n' | 16-bit signed integer. |
-| UINT16 | 113 | 'q' | 16-bit unsigned integer. |
-| INT32 | 105 | 'i' | 32-bit signed integer. |
-| UINT32 | 117 | 'u' | 32-bit unsigned integer. |
-| UINT64 | 120 | 'x' | 64-bit signed integer. |
-| DOUBLE | 100 | 'd' | IEEE 754 double. |
-| STRING | 115 | 's' | UTF-8 string (must be valid UTF-8). Must be null terminated and contain no other null bytes. |
-| OBJECT_PATH | 111 | 'o' | Name of an object instance. |
-| SIGNATURE | 103 | 'g' | A type signature. |
-| ARRAY	| 97 | 'a' | Array |
-| STRUCT | 114, 40, 41 | 'r', '(', ')' | Struct |
-| VARIANT | 118 | 'v' | Variant type (the type of the value is part of the value itself). |
-| DICT_ENTRY | 101, 123, 125 | 'e','{','}' | Entry in a dict or map (array of key-value pairs). |
+| INVALID | 0 | NUL | 不是一个有效的编码，将会使用终止签名。 |
+| BYTE | 121 | 'y' | 8-bit 无符号整形数。|
+| BOOLEAN | 98 | 'b' | 布尔值, 0 代表 FALSE, 1 代表 TRUE. 其他值被视为无效。|
+| INT16 | 110 | 'n' | 16-bit 有符号整形数。|
+| UINT16 | 113 | 'q' | 16-bit 无符号整形数。 |
+| INT32 | 105 | 'i' | 32-bit 有符号整形数。 |
+| UINT32 | 117 | 'u' | 32-bit 无符号的整形数。 |
+| UINT64 | 120 | 'x' | 64-bit 有符号的整形数。 |
+| DOUBLE | 100 | 'd' | IEEE 754 双精度浮点。 |
+| STRING | 115 | 's' | UTF-8 字符串 (必须是合法的 UTF-8). 必须是空值终止的，并且不含其它的空字节。 |
+| OBJECT_PATH | 111 | 'o' | 对象实例的名称 |
+| SIGNATURE | 103 | 'g' | 一个类型签名 |
+| ARRAY	| 97 | 'a' | 数组 |
+| STRUCT | 114, 40, 41 | 'r', '(', ')' | 结构体 |
+| VARIANT | 118 | 'v' | 可变类型 (值的类型是值本身的一部分)。 |
+| DICT_ENTRY | 101, 123, 125 | 'e','{','}' | 进入一个 dict 或者 map ( key-value 对组成的数组)。 |
 
-Four of the types are container types: STRUCT, ARRAY, VARIANT, 
-and DICT_ENTRY. All other types are common basic data types. 
-When specifying a STRUCT or DICT_ENTRY, 'r' and 'e' should 
-not be used. Instead, ASCII characters '(', ')', '{', and '}' 
-should be used to mark the beginning and ending of a container.
+四种类型是容器类型:STRUCT, ARRAY, VARIANT, 和 DICT_ENTRY. 其它的所有类型都是常见的基础数据类型。当声明一个 STRUCT 或者 DICT_ENTRY 时，不可
+使用 'r' 和 'e'. 应该使用 ASCII 字符 '(', ')', '{', 以及 '}' 标记容器的开始和结束。
 
-## Message format
+## 消息格式
 
-The AllJoyn framework uses the D-Bus message format and 
-extends it with additional header flags and header fields 
-for AllJoyn messages. The AllJoyn message format is used 
-to send messages between AllJoyn routers as well as between 
-the application and the AllJoyn router.
+AllJoyn 框架使用 D-Bus 消息格式，并对其做出了扩展，加入了头文件标识以及 AllJoyn 消息的头文件字段。AllJoyn 消息格式被用于在 AllJoyn 路由之间
+以及应用程序和 AllJoyn 路由之间发送消息。
 
-Method calls, method replies and signal messages get encapsulated 
-in AllJoyn message format. D-Bus defined METHOD_CALL, METHOD_RETURN 
-and SIGNAL messages are used (with AllJoyn enhancements) for 
-transporting these messages respectively. In case of error 
-scenarios, an ERROR message is returned in reply to a method 
-call (instead of METHOD_RETURN). 
+方法调用，方法回复以及信号消息都使用 AllJoyn 消息格式封装。D-Bus 定义的METHOD_CALL, METHOD_RETURN 以及 SIGNAL 信号分别被用于（针对 AllJoyn 增强）传输这些消息。如果发生了错误，ERROR 消息将被返回，作为方法调用的回复（代替 METHOD_RETURN）.
 
-An AllJoyn message consists of a header and a body. 
-The following figure shows the AllJoyn message format. 
-Definitions for each message format field are provided in subsequent tables.
+一条 AllJoyn 消息由头文件和正文组成。下图展示了 AllJoyn 消息格式。下列图表中有对每一个消息格式字段的定义。
 
 ![alljoyn-message-format][alljoyn-message-format]
 
-**Figure:** AllJoyn message format
+**Figure:** AllJoyn 消息格式
 
-### Message format fields supported by the AllJoyn framework
+### AllJoyn 框架支持的消息格式字段
 
-| Field name | Description |
+| 字段名 | 描述 |
 |---|---|
-| Endianness Flag | Endianness of the message. ASCII 'l' for little-endian or ASCII 'B' for big-endian. Both header and body are in this endianness. |
-| Message Type | Type of message. This field is set per the definitions specified in [Message Type definitions][message-type-definitions]. |
-| Header Flags | <p>Provides any applicable flags for the message. This field is bitwise OR of flags. Unknown flags must be ignored.</p><p>This is set per the definitions specified in [Header Flag definitions][header-flag-definitions].</p> |
-| Major Protocol Version | AllJoyn major protocol version for the sending application of this message. |
-| Message Body Length | Length (in bytes) of the message body, starting from the end of the header. |
-| Serial Number | Serial number of this message. This is assigned by the sender and used as a cookie by the sender to identify the reply corresponding to this request. This must not be zero. |
-| List of Header Fields | <p>This specifies an array of zero or more header fields where each field is a 1-byte field code followed by a field value.  This is represented as ARRAY of STRUCT of (BYTE, VARIANT). A header must contain the required header fields for its message type, and zero or more of any optional header fields. Implementations must ignore fields they do not understand.</p><p>The AllJoyn framework has extended the list of D-Bus defined header fields. [Header Fields definitions][header-fields-definitions] lists all the header fields supported by AllJoyn and mandatory/optional requirement for these fields for different message types.</p> |
+| 字节序标识 | 消息的字节序。 ASCII 'l' 代表小尾数， ASCII 'B' 代表大尾数。头与正文都依照此字节序。 |
+| 消息类型 | 消息的类型。此字段根据 [Message Type definitions][message-type-definitions] 中的说明设置。 |
+| 头文件标识 | <p>提供任何消息可用的标识。此字段由标识的按位或组成。位置的标识会被忽略。</p><p>此字段根据 [Header Flag definitions][header-flag-definitions] 中的说明设置。</p> |
+| 主要协议版本 | 向应用程序发送消息的 AllJoyn 主要协议版本。 |
+| 消息正文长度 | 消息正文的长度 (按 bytes 计算), 从 header 的最后一位开始计算。|
+| 序列号 | 此消息的序列号。由发送方分配并缓存，用于识别对应该请求的回应。不可以是 0. |
+| 头文件字段的列表 | <p>此处指定了0个或多个头文件字段的数组，每一个字段是一个 1-byte 字段代码以及一个字段值。 由(BYTE, VARIANT) 组成 的结构数组表示。 A header must contain the required header fields for its message type, and zero or more of any optional header fields. Implementations must ignore fields they do not understand.</p><p>The AllJoyn framework has extended the list of D-Bus defined header fields. [Header Fields definitions][header-fields-definitions] lists all the header fields supported by AllJoyn and mandatory/optional requirement for these fields for different message types.</p> |
 | Message Body | Body of the message. The content of message body is interpreted based on SIGNATURE header field. |
 
-### Message Type definitions
+### 消息类型的定义
 
-| Name | Value | Description |
+| Name | 值 | 描述 |
 |---|:---:|---|
-| INVALID | 0 | An invalid type |
-| METHOD_CALL | 1 | Method call |
-| METHOD_RETURN | 2 | Method reply with returned data |
-| ERROR | 3 | Error reply |
-| SIGNAL | 4 | Signal emission |
+| INVALID | 0 | 无效类型 |
+| METHOD_CALL | 1 | 方法调用 |
+| METHOD_RETURN | 2 | 有返回数据的方法回复 |
+| ERROR | 3 | 错误回复 |
+| SIGNAL | 4 | 发出信号 |
 
-### Header Flag definitions
+### 头文件标识的定义
 
-| Name | Value | Description |
+| Name | 值 | 描述 |
 |---|:---:|---|
-| NO_REPLY_EXPECTED | 0x01 | <p>Indicates that no reply (method_return or error) is expected for the Method Call. The reply can be omitted as an optimization.</p><p>**NOTE:** The provider app can still send back a reply despite this flag.</p> |
-| AUTO_START | 0x02 | <p>Indicates a request to start the service if not running. It is up to the AllJoyn core to honor this or not.</p><p>**NOTE:** This flag is currently not supported.</p> |
-| ALLOW_REMOTE_MSG | 0x04 | Indicates that messages from remote hosts should be allowed (valid only in Hello message sent from app to the AllJoyn core). If set by the app, the AllJoyn core allows messages from remote apps/hosts to be sent to the application. |
-| (Reserved) | 0x08 | Reserved/Unused |
-| SESSIONLESS | 0x10 | Indicates a sessionless signal message |
-| GLOBAL_BROADCAST | 0x20 | Indicates a global (bus-to-bus) broadcast signal. Applicable for signal only when SESSION_ID=0. If set, the associated signal gets delivered to all the nodes connected over any session in the proximal network. |
-| COMPRESSED | 0x40 | Indicates that the AllJoyn message header is compressed. |
-| ENCRYPTED | 0x80 | Indicates that the AllJoyn message body is encrypted. |
+| NO_REPLY_EXPECTED | 0x01 | <p>指示方法调用不期望任何回复 (method_return 或 error). 此回复可作为优化被发出。</p><p>**NOTE:** 即便此标识存在，提供方应用程序仍然可以返回一个回应。</p> |
+| AUTO_START | 0x02 | <p>指示一个开始服务的请求，如果该服务还未运行。是否兑现由 AllJoyn 核心决定。</p><p>**NOTE:** 暂不支持此标识。</p> |
+| ALLOW_REMOTE_MSG | 0x04 | 指示来自远端主机的消息应被允许 (只针对应用程序向 AllJoyn 核心发送的 Hello message 有效)。如果由应用程序设置，AllJoyn 核心将允许来自远端应用程序/主机的消息被发送到应用程序。|
+| (Reserved) | 0x08 | 保留/未使用 |
+| SESSIONLESS | 0x10 | 指示一个非会话信号消息。 |
+| GLOBAL_BROADCAST | 0x20 | 指示一个全局的 (总线到总线的) 广播消息。仅对 SESSION_ID=0 的信号适用。如果设置了此标识，相关的信号将会通过近端网络中的任何会话发送到所有连接的节点。|
+| COMPRESSED | 0x40 | 指示着 AllJoyn 消息头被压缩。|
+| ENCRYPTED | 0x80 | 指示着 AllJoyn 消息正文被加密。|
 
-### Header Fields definitions
-
-| Name | Field code | Type | Required in | Description |
+### 头文件字段定义
+‘
+| Name | 字段代码 | 类型 | 需要出现的位置 | 描述 |
 |---|:---:|:---:|---|---|
-| INVALID | 0 | N/A | Not allowed | Not a valid field name (error if it appears in a message). |
-| PATH | 1 | OBJECT_PATH | <ul><li>METHOD_CALL</li><li>SIGNAL</li></ul> | Path of the object to send a method call to or path of the object a signal is emitted from. |
-| INTERFACE | 2 | STRING | <ul><li>METHOD_CALL</li><li>SIGNAL</li></ul> | Interface to invoke a method call on, or the interface that a signal is emitted from. |
-| MEMBER | 3 | STRING | <ul><li>METHOD_CALL</li><li>SIGNAL</li></ul> | The member, either the method name or signal name. |
-| ERROR_NAME | 4 | STRING | ERROR | Name of the error that occurred, for error messages. |
-| REPLY_SERIAL | 5 | UINT32 | <ul><li>ERROR</li><li>METHOD_RETURN</li></ul> | Serial number of the message this message is a reply to. |
-| DESTINATION | 6 | STRING | <ul><li>Optional for SIGNAL</li><li>Required for all other messages</li></ul> | The unique name of the connection this message is intended for. |
-| SENDER | 7 | STRING | Required in all messages | The unique name of the sending connection. The message bus fills in this field. |
-| SIGNATURE | 8 | SIGNATURE | optional | <p>The data type signature of the message body. This is specified using D-Bus data type system.</p><p>If omitted, it is assumed to be the empty signature implying that the body must be of 0-length.</p> |
-| N/A | 9 | N/A | N/A | Unused |
-| TIMESTAMP | 10 | UINT32 | optional | Timestamp when the message was packaged. |
-| TIME_TO_LIVE | 11 | UINT16 | <p>optional</p><p>If not specified, TTL is assumed to be infinite.</p> | <p>TTL associated with the message. A message gets discarded by the AllJoyn router when the TTL expires.</p><ul><li>For sessionless signal, the TTL value is specified in seconds.</li><li>For other messages, the TTL value is specified in msec.</li></ul> |
-| COMPRESSION_TOKEN | 12 | UINT32 | optional | Token generated for the messages with header compression on. |
-| SESSION_ID | 13 | UINT32 | optional | <p>Session ID for the session over which this message is being sent.</p><p>If missing, it is assumed to be 0.</p> |
+| INVALID | 0 | N/A | 不允许 | 无效的名称 (如果出现在消息中，会引发错误)。 |
+| PATH | 1 | OBJECT_PATH | <ul><li>METHOD_CALL</li><li>SIGNAL</li></ul> | 发送方法调用或发出信号的对象路径。|
+| INTERFACE | 2 | STRING | <ul><li>METHOD_CALL</li><li>SIGNAL</li></ul> | 调用方法的接口，或者发出信号的接口。|
+| MEMBER | 3 | STRING | <ul><li>METHOD_CALL</li><li>SIGNAL</li></ul> | 成员，方法名或信号名。 |
+| ERROR_NAME | 4 | STRING | ERROR | 发生的错误的名称，用于错误消息。 |
+| REPLY_SERIAL | 5 | UINT32 | <ul><li>ERROR</li><li>METHOD_RETURN</li></ul> | 该消息所回复的消息的序列号。 |
+| DESTINATION | 6 | STRING | <ul><li>Optional for SIGNAL</li><li>用于所有其他的消息</li></ul> | 此消息准备发送到的连接的唯一识别符。 |
+| SENDER | 7 | STRING | 所有消息使用 | 发送连接的唯一识别符，消息总线填充在此字段。  |
+| SIGNATURE | 8 | SIGNATURE | 可选 | <p>消息正文的数据类型签名。使用 D-Bus 数据类型系统声明。</p><p>如果发出，则假设此处是一个空的签名，也 就是说正文的长度为0. |
+| N/A | 9 | N/A | N/A | 未使用 |
+| TIMESTAMP | 10 | UINT32 | 可选 | 消息封装时的时间戳。 |
+| TIME_TO_LIVE | 11 | UINT16 | <p>可选</p><p>如果未声明，TTL 被假设为无限。</p> | <p>TTL 与消息相关，当 TTL 过期时消息会被丢弃。 </p><ul><li>对于非会话信号，TTL 值以秒声明。</li><li>对于其他消息，TTL 值以毫秒声明。</li></ul> |
+| COMPRESSION_TOKEN | 12 | UINT32 | 可选 | 消息头压缩时生成的 token. |
+| SESSION_ID | 13 | UINT32 | 可选 | <p>此消息被发送的会话的会话 ID.</p><p>如果丢失，则被假设为 0.|
 
-## Message routing
+## 消息路由
 
 The AllJoyn system supports routing logic to route the following 
 categories of messages:
