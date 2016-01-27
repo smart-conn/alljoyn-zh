@@ -13,7 +13,7 @@ The AllJoyn&trade; Audio 服务架构是一种使用了 AllJoyn 架构，实现�
 ## 工作方式
 Audio Service 架构使用软件架构中的标准化接口将 PCM 数据转移到每一个设备中。当 PCM 数据通过 AllJoyn 信号被发送后，Source 会形成一个端到端的会话。连接所有希望发送音频的 Sink。它将会在每一个会话中发送一个包含音频数据块和时间戳的信号。时间戳用于提供一种简单的同步多个扬声器的功能。
 
-在能够发送音频之前，Source 必须首先告知 Sink 它希望发送的音频的细节信息。Source 负责获取除 FIFO 大小以外每个 Sink 的容量。Source 随后会重新填满 FIFO 并且随着乐曲的播放，开始发送更多数据快的进程。
+在能够发送音频之前，Source 必须首先告知 Sink 它希望发送的音频的细节信息。Source 负责获取除 FIFO 大小以外每个 Sink 的容量。Source 随后会重新填满 FIFO 并且随着乐曲的播放，开始发送更多数据块的进程。
 
 媒体和音量控制使用不同 AllJoyn Interface 功能控制不同的部分。举例说明，在 Sink 中的音量控制通过可读／写的 AllJoyn Property 控制当前音量，声音范围通过定义最大、最小和单位值的结构来表示。
 

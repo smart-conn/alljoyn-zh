@@ -32,7 +32,7 @@ AllJoyn&trade; 开发环境的建立要求：
 使用 Homebrew 在您的 OS X 系统中部署 SCons、git 和 uncrustify
 
 1. 打开浏览器并导航至 http://mxcl.github.com/homebrew/。
-2. Download Homebrew.下载 Homebrew。
+2. 下载 Homebrew。
 3. 导航至 https://github.com/mxcl/homebrew/wiki/installation，参考指导进行安装。
 
 ### SCons
@@ -136,7 +136,7 @@ OpenSSL 是一个提供 Secure Sockets Layer (SSL v2/v3) 和 Transport Layer Sec
    https://github.com/sqlcipher/openssl-xcode/
 
 4. 导航至 OpenSSL 源文件的顶级目录（如  `/Development/openssl/openssl-1.0.1`），并把您从 GitHub 下载的 openssl.xcodeproj 文件夹拷贝至此文件夹。
-5. 在 Xcode 中 打开 openssl.xcodeproj。
+5. 在 Xcode 中打开 openssl.xcodeproj。
 
  请遵守以下要求：
 
@@ -145,10 +145,10 @@ OpenSSL 是一个提供 Secure Sockets Layer (SSL v2/v3) 和 Transport Layer Sec
   * 'Build Active Architecture Only = No'
 
 
-6.  在 Xcod 中，对于每一个您 iOS 工程中需要的配置 (debug|release）和平台 (iphoneos|iphonesimulator) 的组合，建立加密目标。通过选择 **Product > Build For > (您需要的配置)** 实现。
-7. 在顶级目录下建立一个名为 **build** 的文件夹。 打开 步骤 2 中建立的 OpenSSL 文件夹 （如 `/Development/openssl/openssl-1.0.1/build`）。
+6.  在 Xcode 中，对于每一个您 iOS 工程中需要的配置 (debug|release）和平台 (iphoneos|iphonesimulator) 的组合，建立加密目标。通过选择 **Product > Build For > (您需要的配置)** 实现。
+7. 在顶级目录下建立一个名为 **build** 的文件夹。 打开步骤 2 中建立的 OpenSSL 文件夹 （如 `/Development/openssl/openssl-1.0.1/build`）。
 8. 找到您 OpenSSl 生成文件夹的位置（以 Debug-iphoneos 为例），是 /Users/<your username>/Library/Developer/Xcode/DerivedData/XXXXXXXXXXXXX-openssl/Build/Products folder。把所有 <configuration>-<platform> 文件夹，如 like Debug-iphoneos，拷贝至步骤 7 中建立的生成文件夹。
-   
+
    ```sh
    openssl-1.0.1c build
    Debug-iphoneos ibssl.a libcrypto.a
@@ -181,7 +181,7 @@ OpenSSL 是一个提供 Secure Sockets Layer (SSL v2/v3) 和 Transport Layer Sec
    或者
    2. 打开 Xcode，选择**File > Open**,选择` <alljoyn root directory>/alljoyn_objc/alljoyn_darwin.xcodeproj` 文件。
 2. 如其它 Xcode 工程一样，通过选择 active Scheme 来控制建立哪个版本的 AllJoyn 架构。有针对 OS X 和 iOS AllJoyn 架构的 scheme。Active scheme 由 Xcode 用户界面左上角的选择框进行控制。
-3. 点击 active shceme 的选择框，您可以看到位 Xcode 工程配置的不同 sheme 的菜单，您可以通过选择 scheme 决定构建的平台。举例说明，当您再 iOS 上建立 AllJoyn 架构时，您应选择 iOS Device, iPad Simulator, or iPhone simulator 平台进行建设。
+3. 点击 active scheme 的选择框，您可以看到位 Xcode 工程配置的不同 scheme 的菜单，您可以通过选择 scheme 决定构建的平台。举例说明，当您再 iOS 上建立 AllJoyn 架构时，您应选择 iOS Device, iPad Simulator, or iPhone simulator 平台进行建设。
 4. 当您选定了 scheme 和进行建设的平台后，从 Xcode 菜单中选择 **Product > Build** 建设 AllJoyn 架构。建设完毕后，您的二进制代码将被保存在以下目录：
 
    ```sh

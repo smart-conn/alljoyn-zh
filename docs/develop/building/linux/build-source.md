@@ -69,7 +69,7 @@ $ sudo apt-get install git-core
 
 ## Repo
 
-Repo 是用于管理多个 git 工程的工具。Alljoyn 源代码以一系列 git 工程的形式存储，可以通过使用 [Google's repo tool](http://source.android.com/source/version-control.html) 单独或批量克隆。此工具不是必需的，但强烈建议使用。
+Repo 是用于管理多个 git 工程的工具。AllJoyn 源代码以一系列 git 工程的形式存储，可以通过使用 [Google's repo tool](http://source.android.com/source/version-control.html) 单独或批量克隆。此工具不是必需的，但强烈建议使用。
 
 1. 打开一个终端窗口并且执行以下命令安装 curl：
 
@@ -84,7 +84,7 @@ Repo 是用于管理多个 git 工程的工具。Alljoyn 源代码以一系列 g
   ~/bin/repo
   ```
 
-3. 将 repo 拷贝至/usr/local/bin 并执行以下命令使其可执行：
+3. 将 repo 拷贝至 /usr/local/bin 并执行以下命令使其可执行：
 
   ```sh
   $ sudo cp repo /usr/local/bin
@@ -195,7 +195,7 @@ $ sudo apt-get install texlive
       $ sudo apt-get install sun-java6-jdk
    ```
 
-2. 安装 junit 3.8或更新版本（需要使用 junit 构建 AllJoyn Java 绑定）
+2. 安装 junit 3.8 或更新版本（需要使用 junit 构建 AllJoyn Java 绑定）
    1. 导航至 (https://github.com/junit-team/junit/wiki/Download-and-Install)。
    2. 下载 jar 文件 "junit-4.9.jar"。
    3. 从下载文件夹将其拷贝至 usr/share/java/junit-4.9。
@@ -453,10 +453,8 @@ $ scons CRYPTO=openssl
 
 ## PolicyDB 选项
 
-AllJoyn v14.06 提供了一项新功能。它可以作为一个转发信息的 防火墙／筛选器 被编译进 AllJoyn 路由。POLICYDB 选项决定了此项功能是否被加入。该选项可以被设置为 on 或者 off。
+AllJoyn v14.06 提供了一项新功能。它可以作为一个转发信息的防火墙／筛选器 被编译进 AllJoyn 路由。POLICYDB 选项决定了此项功能是否被加入。该选项可以被设置为 on 或者 off。
 
-The default policy rules are for the AllJoyn router to behave as
-though PolicyDB is excluded. The default is to not include PolicyDB.
 AllJoyn 路由的默认规则不包含 PolicyDB。默认情况下，不包含 PolicyDB。
 
 示例：
