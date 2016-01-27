@@ -126,7 +126,7 @@ Apache Ant 是一个 Java 库，也是一个用于构建软件的命令行工具
    1. 如果在 User 变量下没有 'PATH'，点击 **New**。
       1. 键入 PATH 作为变量名。
       2. 将下列路径加入 %PATH% 变量，使用分号隔开（根据需求，加入每一个项目的路径，以交代安装位置）
-      
+
       ```bat
       C:\Python27;C:\Python27\Scripts;C:\Program Files\doxygen\bin;
       C:\Program Files\Git\cmd;C:\uncrustify-0.61-win32
@@ -205,17 +205,17 @@ uncrustify 0.61
 2. 做一个与 AllJoyn 工程相关的 Git 库的克隆。
 
    ```bat
-   c:\allseen\core\alljoyn> git clone 
+   c:\allseen\core\alljoyn> git clone
    https://git.allseenalliance.org/gerrit/core/alljoyn.git
    ```
 
 ### 使用 msysgit 时遇到的 CRLF 问题。
 
-如果您检查了库，mysysgit 会发现关于行尾标志的问题。这个从 Linux 和 Windows 之间不断反复造成的问题，因为 Windows 中的换行符 是 CRSL，而 Linux 中的仅仅是 CR。Mysysgit 回报告一个刚被检查完成的文件再次被修改，并不允许您从库中提取，检查甚至融合文件。目前的解决办法是让 git 忽略 CRLF 问题，使用以下命令：
+如果您检查了库，mysysgit 会发现关于行尾标志的问题。这个从 Linux 和 Windows 之间不断反复造成的问题，因为 Windows 中的换行符是 CRSL，而 Linux 中的仅仅是 CR。Mysysgit 回报告一个刚被检查完成的文件再次被修改，并不允许您从库中提取，检查甚至融合文件。目前的解决办法是让 git 忽略 CRLF 问题，使用以下命令：
 
 ```bat
 git config core.autocrlf false
-``` 
+```
 
 ## 建立 AllJoyn 架构
 
@@ -282,7 +282,7 @@ set CLASSPATH="C:\junit\junit-4.11.jar"
 
 ```bat
 scons OS=win7 CPU=x86_64 VARIANT=release MSVC_VERSION=12.0 BINDINGS=core,java
-``` 
+```
 
 ### 空白选项
 
@@ -313,7 +313,7 @@ Ws 选项的值为：
 生成 HTML 版本的 API 文档。这是 www.allseenalliance.org 采用的方式。可以在 `<allseen\core\alljoyn>\alljoyn_core\docs\html\index.html` 找到生成文档。
 * pdf- 生成 PDF 格式的文档。如果您未能生成 HTML 格式的文档，PDF 格式也不能生成。可以在 `<allseen\core\alljoyn>\alljoyn_core\docs\html\refman.pdf` 找到生成文档。
 * dev - 为这个那个 AllJoyn 代码库生成 HTMl 代码，不仅仅是 public APIs。当 Doxygen 运行该命令，它将生成许多警告，并且会生成仅能在 AllJoyn 代码内部生成（不在任何其它工程中）的方法和功能。此选项针对开发 AllJoyn 代码的人，并不适用于基于 AllJoyn 架构开发应用的人。生成文档将会覆盖 HTML 选项生成的文档。
- 
+
 示例：
 
 ```bat
@@ -336,13 +336,13 @@ scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 DOCS=html BINDINGS=cpp,java
 ### 建立 C++ 单元测试
 
 AllJoyn 架构内建了一套使用 Google test 代码构建的基本的单元测试。为了构建测试单元，您必须指定 googletest 中 Google Test 源代码的位置。使用 `GTEST_DIR` 选项指定 Google Test 源代码的位置。
- 
+
 示例：
 
 ```bat
 scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 GTEST_DIR=c:\gtest\gtest-1.7.0
 BINDINGS=cpp
-``` 
+```
 
 ### 验证 AllJoyn 工程被正确建立
 
@@ -361,14 +361,14 @@ BINDINGS=cpp
    AllJoyn Library version: v3.2.0
    AllJoyn Library build info: Alljoyn Library v3.2.0 (Built Fri Jan 18 16:50:19 UTC
    2013)
-   Interface Created. BusAttachment started. 
-   Initialized winsock 
+   Interface Created. BusAttachment started.
+   Initialized winsock
    Using BundledRouter
-   AllJoyn Daemon GUID = e467f6278e751dda9ebe877c612e66a0 (adsdErTQ) 
+   AllJoyn Daemon GUID = e467f6278e751dda9ebe877c612e66a0 (adsdErTQ)
    BusAttchement connected to tcp:addr=127.0.0.1,port=9956
    BusListener Registered.
-   FoundAdvertisedName(name=org.alljoyn.Bus.sample, prefix=org.alljoyn.Bus.sample) 
-   NameOwnerChanged: name=org.alljoyn.Bus.sample, oldOwner=<none>, 
+   FoundAdvertisedName(name=org.alljoyn.Bus.sample, prefix=org.alljoyn.Bus.sample)
+   NameOwnerChanged: name=org.alljoyn.Bus.sample, oldOwner=<none>,
    newOwner=:5xRgxpvD.2
    JoinSession SUCCESS (Session id=500568462)
    org.alljoyn.Bus.sample.cat ( path=/sample) returned "Hello World!"
@@ -396,7 +396,6 @@ build\{OS}\{CPU}\{VARIANT}\test\cpp\bin\cmtest.exe
 Ajtest 可执行文件测试 alljoyn_core 中的代码。为了测试的顺利运行，必须运行 AllJoyn 路由。目前，`ajtest` 功能有限。它不能测试总线与总线之间的通信（如 设备到设备）
 
 
-Run ajtest as follows:
 执行以下代码运行 ajtest：
 
 ```bat

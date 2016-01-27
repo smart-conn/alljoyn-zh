@@ -1,914 +1,498 @@
-# AllJoyn&trade; System Description
+# AllJoyn&trade; 系统描述
 
-## Release history
+## 发布历史
 
-| Release version | Date | What changed |
+| 发布版本 | 日期 | 改变内容 |
 |---|---|---|
-| 14.06 | 9/26/2014 | Initial release |
-| 14.12 | 12/17/2014 | <p>Updates for new functionality added in 14.12 release:</p><ul><li>UDP Transport design</li><li>TCP vs UDP Transport selection logic at the router</li><li>mDNS-based discovery for the router at the TCL</li><li>Updates to SLS fetch backoff design to support linear+exponential backoff</li><li>Router Probing mechanism to detect missing applications</li><li>Router logic to detect and disconnect slow reader nodes</li></ul><p>Other updates:</p><ul><li>Endpoints usage by AllJoyn Transport</li><li>TCP Transport data plane architecture and state machine</li><li>AllJoyn Protocol Version mapping for different releases</li><li>Link timeout mechanism between routers to detect missing routers</li></ul>|
-| 15.04 | 4/29/2015 | <p>Updates In Thin Apps section related to:</p><ul><li>Security and adding description of Router Selection</li><li>Some general clean up including fixing typos and readability and consistency changes</li></ul><p>Other changes:</p><ul><li>General cleanup</li><li>Removed references to RSA and PIN authe mechanisms as they are not longer supported</li>|
+| 14.06 | 9/26/2014 | 初版 |
+| 14.12 | 12/17/2014 | <p>14.12中加入的新功能:</p><ul><li>UDP 传输设计</li><li>路由端的 TCP vs UDP 选择逻辑</li><li>基于 mDNS 的 TCL 路由发现机制 TCL</li><li>更新了 SLS fetch backoff 设计以支持线性+指数性 backoff</li><li>加入路由探测机制以探测失踪的应用程序</li><li>加入可以检测并断开读取速度慢的节点的路有逻辑</li></ul><p>其他更新:</p><ul><li>Endpoints 对 AllJoyn 的传输可用</li><li>TCP 传输的数据平面模型以及状态机</li><li>AllJoyn 协议版本与不同发布的对应 </li><li>路由间的连接超时机制以检测失踪路由</li></ul>|
+| 15.04 | 4/29/2015 | <p>在 Thin Apps 部分中有关于如下功能的更新:</p><ul><li>安全性以及对路由选择添加描述</li><li>修复错字增强可读性和一致性的常规清理</li></ul><p>其他更新:</p><ul><li>常规清理</li><li>去掉了对 RSA 和 PIN认证机制的引用由于他们将不被支持</li>|
 
-This section describes in detail how AllJoyn works at the system level.
+此部分详细描述了 AllJoyn 在系统层中的工作方式
 
-## System Overview
+## 系统概览
 
-### IoE overview
+### 概览
+物联网（IoE）是一个令人兴奋的愿景，他承诺将人与物或物与物以各种方式连接在一起；这将会创造新的容量和丰富的体验，并将使我们的生活更简单。 IoE 承诺将把人，进程，数据以及物品汇聚到一起，给网络化的连接带来前所未有的相关性及价值，将信息转化成行动，并带来之前从未实现过的能力。
 
-The Internet of Everything (IoE) is an exciting vision which 
-promises to connect people with things and things with each 
-other in ways; this will create new capabilities and richer 
-experiences and overall make our life simpler. IoE promises 
-to bring people, process, data, and things together to make 
-networked connections more relevant and valuable than ever 
-before, turning information into actions and enabling capabilities 
-never possible before. 
 
-IoE will result in smart things or devices at homes, offices, 
-cars, streets, airports, malls etc. and these devices will work 
-together to provide contextual and real time experiences to users. 
-The IoE devices nearby each other will form proximal IoE networks, 
-e.g., at home, in the car, or in one's office. The IoE vision will 
-enable internetworking among multiple proximal IoE networks.
+IoE 将会为住宅，办公室，汽车，街道，机场以及购物中心等等带来智能物品和智能设备。这些设备将为用户提供实时的情景体验。距离相近的 IoE 设备将组
+建近端 IoE 网络，例如，在住宅内，在车里或者在办公室里。IoE 的愿景是实现多个 IoE 近端网络的互连互通。
 
-It is worthwhile to draw a comparison between Internet today and 
-Internet of Everything. The Internet today consists of millions of 
-registered top-level domains names centrally managed by the Internet 
-Assigned Numbers Authority (IANA). Discovery of these domains happen 
-through a hierarchical lookup via the Domain Name System (DNS). 
-In an IoE network, there will be potentially tens of billions of 
-IoE devices. It would be impossible to manage registration for 
-all of these devices via a central entity from a scalability 
-perspective. Also, in an IoE network, proximity-based interactions 
-among devices reduces latency as well as the need for each device 
-to connect directly to the Internet. So, the discovery should happen 
-automatically based on proximity criteria.  Security and privacy 
-issues become even more important in an IoE network where more 
-and more personal and home devices expose interfaces for connection 
-and control.
+对比现今存在的因特网以及物联网可以发现很多有趣的事。现今的因特网由受因特网编号管理局 (IANA) 集中管理的数百万已注册的高层域名构成。域名的发
+现可由通过域名系统（DNS）进行按层次查找完成。在 IoE 网络中，会存在潜在的数百亿 IoE 设备。由可测量性的角度看，想要试图通过一个中央实体对 IoE
+设备注册进行管理是不太可能的。并且在 IoE 网络中，基于邻近域的设备间交互减少了延迟，并且不需要将每个设备都直连到因特网。因此，物联网的发现机
+制应该是基于邻域标准自动触发的。由于越来越多的个人及家庭设备会将接口暴露给物联网用于连接及控制，安全性和隐私性变得尤为重要。
 
-The following figure shows an example IoE network with multiple 
-proximal IoE networks interconnected with each other via the Internet. 
+下图展示了多个通过因特网互相连接的邻域 IoE 网络的一个实例。
 
 ![ioe-network-example][ioe-network-example]
 
-**Figure:** IoE network example
+**Figure:** IoE 网络实例
 
-Smart devices within each IoE proximal network can dynamically 
-discover and communicate with each other over direct peer-to-peer 
-connection. For cases where some of these devices are behind NAT, 
-they can discover each other via some cloud-based discovery 
-services. The cloud-based discovery can also be used for 
-discovery and connection among IoE devices in different IoE proximal 
-networks. The overall IoE network can have additional cloud-based 
-services to provide specific functionality, e.g., remote home 
-automation, remote diagnostics/maintenance, data collection/reporting, etc. 
-The IoE network can also integrate with some of the existing cloud-based 
-services, e.g., integration with Facebook or Twitter for device status updates.
+通过直接的点对点连接，IoE 邻域网络中的智能设备可以做到对其他设备的动态发现和通信。对于某些使用网络地址转换的设备，他们可以通过基于云的发现服务来发现对方。基于云的发现服务也可以被用于不同的 IoE 邻域网络内 IoE 设备的发现和连接。综合 IoE 网络可能会有附加的用来提供特殊功能的基于云
+的服务，例如，远程住宅自动化，远程诊断/保养，数据收集/报告等等。IoE 网络还可以将一些现存的基于云的服务集成进来，例如将 Facebook 或 Twitter 集成到设备状态更新中。
 
-In any IoE network, interoperability among devices within and across 
-IoE proximal networks is of utmost importance to enable a rich, 
-scalable IoE ecosystem of applications and services for these devices. 
-Any IoE system must consider specific key design aspects including 
-device advertisement and discovery, mobility and dynamic IoE network 
-management, security and privacy, interoperability across multiple 
-bearers/OS, lightweight solution to support thin/dumb device, 
-extensibility and overall scalability. For an IoE system to be 
-truly adapted and successful, it must be open and provide a 
-horizontal solution that can be used across different vertical 
-use cases. 
+在任何 IoE 网络中，内在或夸 IoE 邻域网中设备的协同互用性对提供丰富的，可扩展的，为设备提供服务及应用程序的 IoE 生态系统至关重要。在设计 IoE
+系统时，一定要考虑一些特定的关键设计层面，包括设备的广播及发现，移动性和动态 IoE 网络管理，安全性和隐私性，跨载体/操作系统的协同互用
+性，用以支持瘦终端/哑终端的轻量化解决方案，可延展性以及总体可测量性。一个成功的 IoE 系统必须是开放的，并提供可用于跨越不同垂直用例的水平化
+解决方案。
 
-The AllJoyn system aims to address these key design aspects. 
-It provides an open-source software framework to enable proximity-based, 
-peer-to-peer, bearer-agnostic networking among IoE devices. 
-The AllJoyn system provides a way for devices and applications 
-to advertise and discover each other using peer-to-peer protocol 
-within a proximal network.
+AllJoyn 系统专注于这些核心设计层面。此系统提供开源的软件框架，可实现基于邻近域的，点对点的，承载无关的 IoE 设备网络化。AllJoyn 系统为设备及
+应用程序提供了可以通过使用点对点协议在邻近域网络内广播并发现对方的方式。
 
-The AllJoyn open-source software system provides a framework for 
-enabling communication among IoE devices across heterogeneous 
-distributed systems. The AllJoyn system is a proximity-based, 
-peer-to-peer communication platform for devices in a distributed 
-system. It does not require a centralized server for communication 
-across such devices. AllJoyn-enabled devices run one or more AllJoyn 
-applications and form a peer-to-peer AllJoyn network. The AllJoyn 
-system is a distributed software platform which enables applications 
-running on IoE devices to advertise, discover and connect to each 
-other for making use of services offered on these devices. 
-The AllJoyn framework enables these applications to expose 
-their functionality over the network via discoverable APIs 
-which are the contracts that define the functionality provided 
-by the application.  
+AllJoyn 开源软件系统提供了可以完成夸异构分布式系统的 IoE 设备间通信的框架。AllJoyn 是一个基于邻近域的点对点通信平台，面向在分布式系统中的设
+备。他不需要使用集中式的服务器来完成通信。支持 AllJoyn 的设备运行一个或多个 AllJoyn 应用程序，并形成点对点的 AllJoyn 网络。AllJoyn 系统是分
+布式的软件平台，支持运行在 IoE 设备上的应用程序推广，发现服务，以及连接到其他设备以使用其他设备提供的服务。AllJoyn 框架使这些应用程序可以通
+过可被发现的 API 来暴露自己的功能，这些 API 是定义应用程序所提供的功能的契约。
 
-In the proximal AllJoyn network, AllJoyn applications installed 
-on IoE devices are peers to each other. An AllJoyn-enabled 
-application can play the role of a provider, a consumer or 
-both depending upon the service model. Provider applications 
-implement services and advertise them over the AllJoyn network. 
-Consumer applications interested in these services discover 
-them via the AllJoyn network. Consumer applications then 
-connect to provider applications to make use of these services 
-as desired. An AllJoyn application can act as both provider and 
-consumer at the same time. This means that the app can advertise 
-a certain set of services it supports, and can also discover 
-and make use of services provided by other apps in the 
-proximal AllJoyn network.
+在邻近域 AllJoyn 网络中， 安装在 IoE 设备上的 AllJoyn 应用程序们互为 peers. 一个支持 AllJoyn 的应用程序可以作为一个供应方，消费方，或者既是
+供应方也是消费方，这取决于服务模型。供应方的应用程序实现服务，并将它们通过 AllJoyn 网络推广。对这些服务有兴趣的消费方应用程序就可以连接到供
+应方应用程序并根据自己的喜好使用服务。一个 AllJoyn 的应用程序可以同时扮演供应方和消费方的角色。这意味着该应用程序可以广播某一套他所支持的服
+务，也可以发现并利用其它在邻近域中的应用程序所提供的各种服务。
 
-The following figure shows an AllJoyn network with 4 devices. 
+下图展示了有4台设备的 AllJoyn 网络
 
 ![alljoyn-network][alljoyn-network]
 
-**Figure:** AllJoyn network
+**Figure:** AllJoyn 网络
 
-Device 1 and Device 2 have only Provider applications providing 
-AllJoyn services. Device 3 has only consumer applications consuming 
-services from other provider devices. Device 4 has an application 
-that acts as both provider and consumer. The application on 
-Device 4 consumes services from the application on Device 2. 
-It also provides services which get consumed by applications 
-on Device 3. Arrow directions are from provider to consumer 
-indicating consumption of services.
+设备1和设备2只有提供 AllJoyn 服务的供应方应用程序。设备3只有使用其它设备服务的消费方应用程序。设备4的应用程序可以同时充当供应方和消费方。设备4上的应用程序使用设备2的应用程序所提供的服务。同时他提供的服务还被设备3上的应用程序所使用。箭头的方向从供应方指向消费方，指示着服务的消费。
 
-The AllJoyn framework establishes an underlying bus architecture 
-for communication among IoE devices. AllJoyn applications on 
-IoE devices connect and communicate to each other via the 
-AllJoyn Bus. The AllJoyn bus provides a framework for applications 
-to expose their services to other AllJoyn applications. The AllJoyn 
-bus provides a platform- and radio-link agnostic transport mechanism 
-for applications on IoE devices to send notifications or exchange 
-data. The AllJoyn bus takes care of adapting to an underlying 
-physical network-specific transport. 
+AllJoyn 框架为 IoE 设备之间的通信建立了一个底层总线结构。在 IoE 设备上的 AllJoyn 应用程序 通过 AllJoyn 总线与其他应用程序连接并通信。
+AllJoyn 总线为在 IoE 设备上的应用程序提供了可以发送通知或者交换数据的平台以及无线链路无关的传输机制。AllJoyn 总线负责处理与底层物理的特定网
+络传输相配饰的工作。
 
-Each AllJoyn app connects to a local AllJoyn bus. One or more 
-applications can connect to a given local AllJoyn bus. AllJoyn 
-bus enables attached AllJoyn applications to advertise, discover, 
-and communicate with other. AllJoyn buses on multiple devices 
-communicate with each other using underlying network technology 
-such as Wi-Fi.
+每一个 AllJoyn 的应用程序都连接到本地的 AllJoyn 总线。一个给定的本地 AllJoyn 总线可以连接一个或者多个应用程序。AllJoyn 总线使附着在它上面的
+应用程序可以完成广播服务，发现服务以及互相通信的功能。在多个设备上的 AllJoyn 总线用类似 Wi-Fi 的底层网络技术来互相通信。
 
-The AllJoyn framework's open-source implementation provides an 
-ecosystem where various parties can contribute by adding new 
-features and enhancements to the AllJoyn system. It supports 
-OS independence via an OS abstraction layer allowing the AllJoyn 
-framework and its applications to run on multiple OS platforms. 
-The AllJoyn framework supports most standard Linux distributions, 
-Android 2.3 and later, common versions of Microsoft Windows OS, 
-Apple iOS, Mac OS X and embedded OSs such as OpenWRT and 
-RTOSs like ThreadX.
+AllJoyn 平台的开源实现方式提供了一个生态系统，诸多用户可以通过添加新功能及增强功能来为 AllJoyn 生态系统做贡献。此系统支持通过 OS 抽象层实现
+的操作系统无关性，使得 AllJoyn 框架以及应用程序可以在多种操作平台上运行。AllJoyn框架支持大多数的标准 Linux 发行版，Android2.3 及后续版本，
+常见的 Microsoft Windows 操作系统，Apple iOS, Mac OS X, 嵌入式的诸如 OpenWRT 的操作系统以及类似 ThreadX 的实时操作系统。
 
-The AllJoyn framework also supports multiple programming 
-languages for writing applications and services for IoE 
-devices, which enable a wide ecosystem for developing AllJoyn 
-applications and services. The AllJoyn framework currently, 
-supports C, C++, Java, C#, JavaScript, and Objective-C.
+AllJoyn 框架同时也支持多种用于为 IoE设备开发应用程序及服务的编程语言，这丰富了开发 AllJoyn 应用及服务的生态系统。 AllJoyn 框架目前支持C, C++, Java, C#, JavaScript, 以及 Objective-C.
 
-### The AllJoyn system and D-bus specification
 
-The AllJoyn system implements a largely compatible version 
-of the D-Bus over-the-wire protocol and conforms to many of 
-the naming conventions and guidelines in the D-Bus specification. 
-The AllJoyn system has extended and significantly enhanced D-Bus 
-message bus to support a distributed bus scenario. The AllJoyn 
-system makes use of the D-Bus specification as follows: 
+### AllJoyn 系统以及 D-bus 规范
 
-* It uses the D-Bus data type system and D-Bus marshaling format. 
-* It implements an enhanced version of the D-Bus over-the-wire 
-protocol by adding new flags and headers (detailed in [Message 
-format][message-format]). 
-* It uses D-Bus naming guidelines for naming well-known names 
-(Service names), interface names, interface member names 
-(methods, signals and properties) and object path names.
-* It uses a D-Bus defined Simple Authentication and Security 
-Layer (SASL) framework for application layer authentication 
-between AllJoyn-enabled applications. It supports authentication 
-mechanisms beyond what are defines by the D-Bus specification.
+AllJoyn系统
 
-The D-Bus specification can be found at (http://dbus.freedesktop.org/doc/dbus-specification.html).
+AllJoyn 实现了一个广泛兼容的 D-Bus over-the-wire 协议，并遵守在 D-Bus 规范中的众多命名习俗和指导原则。AllJoyn 延展并显著强化了 D-Bus 消息
+总线，以支持分布式总线的场景。AllJoyn 系统使用按照下文描述的 D-Bus 规范：
 
-### AllJoyn system key concepts
+* 使用 D-Bus 的数据类型系统以及序列化格式
+* 通过添加 flags 以及 headers（具体细节请参阅[Message format][message-format]）实现增强版的 D-Bus over-the-wire 协议。
+* 对 well-known names （服务器），接口，接口成员（方法，信号以及属性）以及对象路径的命名使用 D-Bus 的命名原则。
+* 使用 D-Bus 定义的简单认证与安全层（SASL）框架完成应用程序层中支持 AllJoyn 应用程序间的认证。并支持不限于由 D-Bus 规范定义的多种认证机制。
 
-As previously stated, the AllJoyn framework provides an underlying 
-bus architecture for applications to advertise, discover, and 
-make use of each other's functionality. To achieve this, the 
-AllJoyn framework provides an object-oriented software framework 
-for applications to interact with each other. 
+D-Bus 规范请参阅以下网址： (http://dbus.freedesktop.org/doc/dbus-specification.html).
 
-#### AllJoyn router
+### AllJoyn 系统的关键概念
 
-The AllJoyn Router component provides core functionality of 
-the AllJoyn system, including peer-to-peer advertisement/discovery, 
-connection establishment, broadcast signaling and control/data 
-messages routing. The AllJoyn router implements software bus 
-functionality and an application connects to this bus to avail 
-core functions of the AllJoyn framework. Each instance of the 
-AllJoyn router has an associated globally unique identifier (GUID) 
-which is self-assigned. Currently, this GUID is not persisted, 
-so a new GUID is assigned whenever the AllJoyn router starts up.
-An AllJoyn router can be either bundled with each application 
-(bundled model), or can be shared across multiple applications 
-(standalone model) on the device as shown below.
+如之前所述，AllJoyn 框架为应用程序提供可以推广和发现服务，以及使用其他应用程序提供的功能的底层总线结构。为了实现此结构，AllJoyn 框架提供了
+一个可供应用程序交互的面向对象的软件框架。
+
+#### AllJoyn 路由
+
+AllJoyn 路由组件为 AllJoyn 系统提供核心功能，包括点对点推广/发现，建立连接，广播信号以及控制/投递数据消息。AllJoyn 路由通过实现软件总线功能
+以及到应用程序的连接使 AllJoyn 框架的核心功能受益。每一个 AllJoyn 路由的实例都有一个自行分配的全球唯一标识符（GUID）。此 GUID 并不是持久有
+效的，每当 AllJoyn 路由启动时都会被分配一个新的 GUID. AllJoyn 路由可以是捆绑在每一个应用程序上的（捆绑模式），也可以是被众多应用程序所分享
+的（独立模型），如下图所示。
+
 
 ![alljoyn-bundled-standalone-router-examples][alljoyn-bundled-standalone-router-examples]
 
-**Figure:** AllJoyn bundled and standalone router examples
+**Figure:** AllJoyn 捆绑式以及独立式 router 举例
 
-An AllJoyn router has an associated AllJoyn protocol version 
-that defines the set of functionality it supports. This protocol 
-version is exchanged between AllJoyn routers on an AllJoyn 
-network when they establish connection with each other as 
-part of AllJoyn session establishment. 
+AllJoyn 路由有定义了被支持功能集合的相关 AllJoyn 协议译本。在连接建立后，此协议会在 AllJoyn 网络上的 AllJoyn 路由之间交换，作为建立 AllJoyn
+会话的一部分。
 
-#### AllJoyn bus
+#### AllJoyn 总线
 
-An AllJoyn router provides software bus functionality where 
-one or more applications can connect to it to exchange messages. 
-AllJoyn router instances on a device form a logical AllJoyn 
-bus local to the device as shown below. 
+AllJoyn 路由提供了软件总线功能，借助此功能一个或多个应用程序可以与总线建立连接并交换消息。在设备上的 AllJoyn 路由实例建立本地的 AllJoyn 逻 辑总线，如下图所示。
 
 ![logical-router-bus-mapping][logical-router-bus-mapping]
 
-**Figure:** Logical mapping of AllJoyn router to AllJoyn bus
+**Figure:** AllJoyn 路由到 AllJoyn 总线的映射转换
 
-The logical AllJoyn bus maps to a single AllJoyn router in two cases:  
+AllJoyn 逻辑总线映射到一个单独的 AllJoyn 路由有以下两种情况：
 
-* Bundled deployment model with only one app on the device, 
-shown as UC2. 
-* Standalone deployment model with one or more apps on the device, 
-shown as UC3. 
+* 设备上只有一个应用程序的捆绑部署模型，如 UC2 所示。
+* 设备上有一个或多个应用程序的独立部署模型，如 UC3 所示。
 
-The logical AllJoyn bus maps to multiple AllJoyn router instances 
-in the bundled deployment model with multiple apps on the device, 
-shown as UC1.
+在设备上有多个应用程序的捆绑部署模型中，AllJoyn 逻辑总线映射到多个 AllJoyn 路由实例的情况请参阅 UC1.
 
-**NOTE:*8 The AllJoyn router and AllJoyn bus terminology are used 
-interchangeably in this document as these refer to same set of 
-bus functionality provided by the AllJoyn system.
+**NOTE:*8 在此文档中，AllJoyn 路由与 AllJoyn 总线这两个术语是可以相互替换的，他们指代着一个由 AllJoyn 系统提供的相同集合的总线功能。
 
-The following figure shows a simplistic view of the local 
-AllJoyn bus on two different devices with multiple applications 
-connecting to the bus. 
+下图是在有多个应用程序连接到总线的两个不同设备上的 AllJoyn 本地总线的简化视图。
 
 ![alljoyn-bus][alljoyn-bus]
 
-**Figure:** AllJoyn bus
+**Figure:** AllJoyn 总线
 
-The AllJoyn bus provides a medium for communication between 
-apps connected to the bus. AllJoyn buses on multiple devices 
-communicate with each other using the underlying network 
-technology such as Wi-Fi.
+AllJoyn 总线为连接到总线的应用程序之间通信提供了一个媒介。在多个设备上的 AllJoyn 总线通过类似 Wi-Fi 的底层网络技术实现通信。
 
-Multiple instances of AllJoyn buses across multiple devices 
-form a logical distributed AllJoyn software bus as shown below.
+下图展示了由跨越多个设备的多个 AllJoyn 总线实例所构成的逻辑分布式 AllJoyn 软件总线:
 
 ![distributed-alljoyn-bus][distributed-alljoyn-bus]
 
-**Figure:** Distributed AllJoyn bus
+**Figure:** 分布式 AllJoyn 总线
 
-The distributed AllJoyn bus hides all the communication 
-link details from the applications running on multiple devices. 
-To an application connected to the AllJoyn bus, a remote application 
-running on another device looks like an app that is local to 
-the device. AllJoyn distributed bus provides a fast lightweight 
-way to move messages across the distributed system.
+分布式 AllJoyn 总线隐藏了所有运行在多个设备上的应用程序中的通信链路细节。对于连接到 AllJoyn 总线的一个应用程序来说，运行在另一个设备上的远
+端应用程序看起来就像在这个设备本地的一个应用程序一样。AllJoyn 分布式总线为在分布式系统上传送消息提供了一个快速且轻量化的方式。
 
-#### AllJoyn service
+#### AllJoyn 服务
 
-As described earlier, provider AllJoyn applications provide 
-services that can be consumed by other applications in the 
-AllJoyn network. For example, a TV may provide a picture rendering 
-service to display pictures from another AllJoyn device 
-(e.g., smartphone). An AllJoyn Service is a notional/logical 
-concept and is defined by one or more AllJoyn interfaces (described 
-in [AllJoyn interfaces][alljoyn-interfaces]) which expose 
-service functionality to consumers. 
+如前所述，在 AllJoyn 网络中，供应方应用程序提供可被 AllJoyn 网络中其他应用程序所使用的服务。例如，一台电视可以提供图像渲染功能，从而显示另
+一个设备（例如智能手机）上的图片。AllJoyn 服务是一个理论的/逻辑的概念，由向消费方暴露服务功能的一个或多个 AllJoyn 接口（详细描述请参阅
+[AllJoyn interfaces][alljoyn-interfaces]）定义。
 
-An AllJoyn application can act as both provider and consumer 
-by providing and consuming AllJoyn services at the same time.
+AllJoyn 应用程序可以同时提供并消费 AllJoyn 服务，也就是说 AllJoyn 应用程序可以同时扮演供应方和消费方。
 
-#### Unique name
-
-Each AllJoyn application connects to a single AllJoyn router. 
-To enable addressing for individual applications, an AllJoyn 
-router assigns a unique name to each connecting application. 
-The unique name uses AllJoyn router GUID as the prefix. It 
-follows the format below:
+#### 唯一标识
+每一个 AllJoyn 应用程序都连接到一个单一的 AllJoyn 路由。为了实现对每一个独立应用程序的寻址，AllJoyn 路由会为每一个连接在其上的应用程序分配
+一个唯一标识符。此唯一标示符使用 AllJoyn 路由的 GUID 作前缀，并遵循如下格式：
 
 ```
 Unique Name = ":"<AJ router GUID>"."<Seq #>
 ```
 
-**NOTE:** The ":<AJ router GUID>.1" unique name is always given 
-to the AllJoyn router local endpoint.
+**NOTE:** ":<AJ router GUID>.1" 标识符会一直被分配给 AllJoyn 路由的本地终点。
 
-The following figure shows the unique name assignment for three connected 
-apps to an AllJoyn bus by a single AllJoyn router with GUID=100. 
+下图展示了一个 GUID=100的单一 AllJoyn 路由为三个连接到 AllJoyn 总线的应用程序分配唯一标识符的过程：
 
 ![uniquename-assignment-1][uniquename-assignment-1]
 
-**Figure:** AllJoyn unique name assignment 1 (multiple apps connected to single AllJoyn router)
+**Figure:** AllJoyn 唯一标识符分配1 (多个应用程序连接到单一 AllJoyn 路由)
+ 
+此场景描述了有多个 AllJoyn 应用程序的设备连接到一个单一 AllJoyn 路由的情况。
 
-This scenario illustrates a device with multiple AllJoyn 
-applications connected to a single AllJoyn router. It is 
-expected that a large number of AllJoyn-enabled devices 
-will be single-purpose devices (e.g., refrigerator, oven, 
-light bulb, etc.), and will have only one application residing 
-on the device and connecting to the AllJoyn bus. However, there 
-can be devices where a single instance of an AllJoyn router will 
-support multiple applications, such as a TV.
+我们期望大多数支持 AllJoyn 的设备都是单一目的设备（例如，冰箱，烤箱，照明灯泡等等），并只有一个连接到 AllJoyn 总线的应用程序在其上。但是也
+会有 AllJoyn 路由单一实例支持多个应用程序的设备，比如电视。
 
-The following fiture shows the unique name assignment for AllJoyn 
-apps with multiple instances of an AllJoyn router forming an 
-AllJoyn bus. 
+下图展示了组成 AllJoyn 总线并在 AllJoyn 路由上有多个实例的 AllJoyn 应用程序的独立标识分配过程：
+
 
 ![uniquename-assignment-2][uniquename-assignment-2]
 
-**Figure:** AllJoyn unique name assignment 2 (each app has instance of AllJoyn router)
+**Figure:** AllJoyn 唯一标识符分配2 (每个应用程序都有 AllJoyn 路由的实例）。
 
-**NOTE:** The GUID part in each unique name is different and 
-corresponds to the GUID for the associated AllJoyn router. 
 
-The following figure shows the unique name assignment for 
-AllJoyn apps on two different devices connected over a 
-distributed AllJoyn bus.
+**NOTE:** 每个唯一标识的 GUID 部分都是不同的，他们与相关联的 AllJoyn 路由上的 GUID 相同
+
+下图展示了通过分布式 AllJoyn 总线连接的两个不同设备上应用程序的独立标识分配过程：
 
 ![uniquename-assignment-3][uniquename-assignment-3]
 
-**Figure:** AllJoyn unique name assignment 3 (AllJoyn apps on two devices connected over distributed AllJoyn bus)
+**Figure:** AllJoyn 唯一标识符分配3 (通过分布式 AllJoyn 总线连接的两个设备上的应用程序)。
 
 #### Well-known name
 
-An AllJoyn application can decide to use well-known names for 
-its services. A well-known name is a consistent way to refer 
-to a service (or collection of services) offered over the 
-AllJoyn bus. An app can use a single well-known name for all 
-the services it offers, or it can use multiple well-known names 
-across these services. 
+AllJoyn 应用程序可以决定为他的服务使用 well-known names.  well-known names 是由 AllJoyn 总线提供的可以持续地查阅到服务（或一系列服务）的方
+法。应用程序可以对其所提供的所有服务使用单一的 well-known name，也可以对这些服务使用多个 well-known names.
 
-An application can request use of one or more well-known names 
-from the AllJoyn bus for services it provides. If the requested 
-well-known name is not already in use, exclusive use of that 
-well-known name is granted to the application. This ensures 
-that well-known names represent unique addresses on the AllJoyn 
-bus at any point. The well-known name uniqueness is guaranteed 
-only within the local AllJoyn bus. Global uniqueness for a 
-well-known name should be achieved by adapting certain naming 
-guidelines and format.
+应用程序可以为他的服务向 AllJoyn 总线申请一个或多个 well-known names. 如果被申请的 well-known names 尚未被使用，申请使用的应用程序将会被授
+予独家使用权。该操作确保了 well-known names 在任何时候都可以代表唯一的地址。此唯一性仅在本地的 AllJoyn 总线内存在。若要实现 well-known names 的全局唯一性，需使用特定的命名规范及格式。
 
-The AllJoyn well-known name follows the reverse domain name 
-format. There can be multiple instances of a given application 
-on a distributed AllJoyn bus, for example, the same refrigerator 
-application running on two different refrigerators from the same 
-vendor in the proximal network (one in the kitchen and one in 
-the basement). To distinguish multiple instances of a given 
-app on the AllJoyn bus, the well-known name should have a 
-unique app specific identifier as a suffix, e.g., a GUID 
-identifying the app instance. 
+AllJoyn 的 well-known name 使用翻转的域名作为标准格式。在分布式 AllJoyn 总线上的给定应用程序可以用多个实例，例如，在邻域网中（一个在厨房， 另一个在地下室），由同一个供货商提供的两个不同冰箱上面运行的相同的冰箱应用程序。为了分辨在 AllJoyn 总线上一个给定应用程序的多个实例，需要给
+well-known name 加上声明应用程序的标签作后缀，例如，区别应用程序实例的 GUID.
 
-The AllJoyn well-known name (WKN) follows the D-Bus specification 
-guidelines for naming and has following format:
+AllJoyn 的 well-known name 遵守 D-Bus 规范中的命名原则，其格式如下所示：
 
 ```
 WKN = <reverse domain style name for service/app>"."<app instance GUID>
 ```
-
-For example, a refrigerator service can use the following 
-well-known name:
+例如，一个冰箱服务可以使用如下的 well-known name:
 
 ```
 com.alljoyn.Refrigerator.12345678
 ```
 
-#### AllJoyn object
+#### AllJoyn 对象
 
-AllJoyn applications implement one or more AllJoyn objects 
-to support AllJoyn services functionality. These AllJoyn objects 
-are called service objects and are advertised over the AllJoyn 
-bus. Other AllJoyn applications can discover these objects from 
-the AllJoyn bus and access them remotely to consume services provided 
-by them. 
+为了支持 AllJoyn 的服务功能，AllJoyn 应用程序可以实现一个或多个 AllJoyn 对象。这些 AllJoyn 对象被称为服务对象，并通过 AllJoyn 总线被推广。
+其他的 AllJoyn 应用程序可以通过 AllJoyn 总线发现这些对象，并对他们进行远程访问，消费他们提供的服务。
 
-A consumer application accesses an AllJoyn service object 
-through a proxy object. A proxy object is a local representation 
-of a remote service object that is accessed through the AllJoyn bus. 
+消费方应用程序通过一个代理对象来访问 AllJoyn 的服务对象。代理对象是远端服务对象的本地代表，通过 AllJoyn 总线被访问。
 
-The following figure shows the distinction between the AllJoyn 
-service object and proxy object.
+下图展示了 AllJoyn 服务对象与代理对象之间的区别。
 
 ![alljoyn-service-object-proxy-object][alljoyn-service-object-proxy-object]
 
-**Figure:** AllJoyn service object and AllJoyn proxy object
+**Figure:** AllJoyn 服务对象和代理对象
 
-Each AllJoyn service object instance has an associated object 
-path that uniquely identifies that object instance. This object 
-path gets assigned when a service object gets created on the 
-provider. The proxy object requires an object path to establish 
-communication with the remote service object. The object path 
-scope is within a given application, so object paths must be 
-unique only with the associated application implementing the 
-objects. Hence, object path naming does not need to follow 
-reverse domain naming convention, and it can be of any form 
-chosen by the application. 
+每一个服务对象实例都有对应的可以唯一指认出此实例的对象路径。在供应方创建服务对象时，对象路径即被分配。代理对象需要对象路径来建立与远端服务
+对象的通信。对象路径仅在给定的应用程序内有效，因此只有在实现对象的应用程序内，对象路径才有唯一性。所以对象路径的命名不需要遵守翻转域名命名转换规则，而可以由应用程序随意选择。
 
-The object path naming also adheres to the D-Bus specification 
-naming guidelines. An example object path for the service 
-object implemented by a refrigerator can be:
+对象路径的命名仍然遵循 D-Bus 规范的命名原则。一个由冰箱实现的服务对象的对象路径可以是如下表达：
 
 ```
 /MyApp/Refrigerator
 ```
 
-#### AllJoyn interfaces
+#### AllJoyn 接口
 
-Each AllJoyn object exposes its functionality over the AllJoyn 
-bus through one or more AllJoyn interfaces. An AllJoyn interface 
-defines a contract for communication between an entity implementing 
-the interface specification and other entities interested in 
-making use of the services provided by the interface. The AllJoyn 
-interfaces are candidates for standardization to enable interoperability 
-among AllJoyn enabled IoE devices.
+每一个 AllJoyn 对象经过一个或多个 AllJoyn 接口向 AllJoyn 总线显示他的功能。AllJoyn 接口定义了实现接口规范的实体与其他对此接口提供的服务有兴
+趣的其他实体之间的通信协议。AllJoyn 接口作为标准化的候选人，使支持 AllJoyn 的 IoE设备间能够互用。
 
-An AllJoyn interface can include one or more of following 
-types of members:
+AllJoyn 接口可以包含以下一种或者几种类型的成员：
 
-* Methods: A method is a function call that typically takes 
-a set of inputs, performs some processing using the inputs, 
-and typically returns one or more outputs reflecting the results 
-of the processing operation. Note that it is not mandatory for 
-methods to have input and/or output parameters. It is also not 
-mandatory for methods to have a reply.
-* Signals: A signal is an asynchronous notification that is 
-generated by a service to notify one or more remote peers of 
-an event or state change. Signals can be delivered over an
-already-established peer-to-peer AllJoyn connection (AllJoyn session), 
-or they can be broadcast globally to all AllJoyn peers over 
-the distributed AllJoyn bus. Signals can be of three types: 
-  * Session-specific signals: These signals get delivered to 
-  one or more peers connected over a given AllJoyn session 
-  in the proximal network. If a destination is specified, 
-  the signal is delivered to only that destination node connected 
-  over the AllJoyn session. If no destination is specified, 
-  the signal gets delivered to all nodes connected over the 
-  given session except the node that generated the signal. 
-  If the session is a multi-point session, such a signal 
-  is sent over multicast to all the other participants. 
-  * Session broadcast signals: These signals get delivered 
-  to all the nodes connected via any AllJoyn session in 
-  the proximal network. 
-  * Sessionless signals: These signals get delivered to all 
-  the nodes in a proximal network that have expressed interest 
-  in receiving sessionless signals. Nodes do not need to be 
-  connected over an AllJoyn session to receive such signals. 
-  Sessionless signals are essentially broadcast signals independent 
-  of a session connection.
-* Properties: A property is a variable that holds values and 
-it may be read-only, read-write or write-only.
+* 方法: 方法就是一个函数的调用，伴随一系列的输入，并对输入进行处理，通常会返回一个或多个反应处理结果的输出。请注意，方法并不是强制包含输入和（或）输出的，方法也不被强制给予回应。
+ 
 
-Every AllJoyn interface has a globally unique interface name 
-that identifies the grouping of methods, signals, and properties 
-provided by that interface. The AllJoyn interface name gets 
-defined as part of standardizing the interface. Similar to 
-the well-known name, the AllJoyn interface name also follows 
-reverse domain name format and D-Bus specification naming guidelines.
+* 信号: 信号是由服务生成的一个异步提醒，用来向一个或多个远端 peers 告知事件或状态的变化。 信号可以由已建立完成的对等网络 AllJoyn 连接（ AllJoyn 会话。也可以通过分布式 AllJoyn 总线被广播到全局所有的 AllJoyn peers. 信号有三种类型：
 
-For example, a refrigerator could support the following standard 
-AllJoyn refrigerator interface. 
+  * 指定会话的信号：这些信号被传输到一个或多个连接到邻域网中给定的 AllJoyn 会话的 peers. 如果目的地已写明，信号将只会被传输到那个通过 AllJoyn 会话连接的目的地节点。如果没有声明目的地，信号会被传输到除生成该信号的节点之外的通过给定会话连接的所有节点。如果会话是多端的，这种信号则会通过多播传送到其他所有的参与者。
+
+  * 会话广播信号：这些信号被送往所有通过任意 AllJoyn 会话连接的的节点
+
+  * 非会话信号: 这些信号被送往在邻域网中所有对接收非会话信号表示出兴趣的节点。在接收这种信号时，节点不需要通过 AllJoyn 会话建立连接。非会话
+  信号本质上就是独立于会话连接的广播信号。
+
+* 属性: 属性是一个有值的变量，他可以是只读的，可读写的，或者只写的。
+每一个 AllJoyn 接口都有一个全局唯一的接口名，用于识别由此接口提供的方法，信号以及属性群。AllJoyn 接口名的定义是接口标准化的一部分。与 well-known name 类似，AllJoyn 接口名也遵循域名反转规则以及 D-Bus 规范的命名原则。
+
+例如，一台冰箱可能支持一下标准的 AllJoyn 冰箱接口：
 
 ```
 org.alljoyn.Refrigerator
 ```
 
-#### AllJoyn core library
+#### AllJoyn 核心库
 
-The AllJoyn Core Library exposes AllJoyn bus functionality to 
-AllJoyn applications. Each application links with a single 
-instance of AllJoyn core library to connect with the AllJoyn 
-bus. The AllJoyn core library acts as an application's gateway 
-for peer-to-peer communications with other remote AllJoyn apps. 
-It can be used to connect to the bus, to advertise services, 
-to discover services, to establish connection with remote peer, 
-to consume services, and many other AllJoyn functions. An 
-application registers its objects with the AllJoyn core library 
-to advertise these over the AllJoyn bus.
+AllJoyn 核心库将 AllJoyn 总线功能展示给 AllJoyn 应用程序。 每一个应用程序都关联到一个单一的 AllJoyn 核心库实例上，以便与 AllJoyn 总线建立连
+接。AllJoyn 核心库在应用程序与远端 AllJoyn 应用程序点对点通信时扮演了网关的角色。他可被用于连接到总线，推广并发现服务，建立到远端 peer 的连
+接，消费服务，以及许多其他的 AllJoyn 功能。应用程序向 AllJoyn 核心库注册它的对象，以便将其推广到 AllJoyn 总线。
 
-The following figure shows three apps connecting to a given 
-AllJoyn bus via the AllJoyn core Library. 
+下图展示了三个应用程序通过 AllJoyn 核心库连接到一个给定 AllJoyn 总线的过程：
 
 ![alljoyn-core-library][alljoyn-core-library]
 
-**Figure:** AllJoyn core library
+**Figure:** AllJoyn 核心库
 
-An AllJoyn core library can be a Standard Core Library (SCL), 
-developed for use by AllJoyn standard applications or a 
-Thin Core Library (TCL) developed for use by AllJoyn thin 
-applications. Most of the system design in the document 
-is described using standard core library deployment. 
-For thin core library design details, see [Thin Apps][thin-apps].
+AllJoyn 核心库可以是为标准 AllJoyn 应用程序设计的标准核心库（SCL），也可以是为精简 AllJoyn 应用程序设计的精简核心库（TCL）。在本文档中，大
+多数的系统设计都是又标准核心库描述的。更多关于精简核心库的设计细节，请查阅 [Thin Apps][thin-apps].
 
-#### About feature
+#### “About” 功能
 
-The AllJoyn framework supports the About feature as part 
-of the AJ Core Library. The About feature enables an application 
-to expose key information about itself including app name, app 
-identifier, device name, device identifier and a list of AllJoyn 
-interfaces supported by the app among other details. This 
-feature is supported by org.alljoyn.About interface implemented 
-by the org.alljoyn.About object.
+“About” 功能在 AllJoyn 框架中作为核心库的一部分被支持。“About”功能使应用程序可以展示关于自身的关键信息，包括应用程序名，应用程序识别符，设备名，设备识别符，被支持的 AllJoyn 接口列表以及其他信息。此功能由被 org.alljoyn.About object 对象实现的 org.alljoyn.About 接口支持。
 
-An application advertises key information about itself via an 
-Announce signal defined by the About interface. This signal is 
-sent as a sessionless signal on the proximal AllJoyn network. 
-Any AllJoyn applications interested in discovering services 
-via the AllJoyn interfaces make use of the Announce signal 
-for discovery. The About feature also provides a mechanism 
-to fetch application data via a direct method call. See the 
-[About HLD] for design details on the About feature.
+应用程序通过一个由“ About ”接口定义的 Announce 信号来展示自己的关键信息。此信号在邻域 AllJoyn 网络中被当作非会话信号发送。任何对发现服务有
+兴趣的应用程序都可以使用 Announce 信号用于发现。“About” 功能同时也提供通过直接调用方法来获取应用程序信息的机制。关于 “About” 功能的技术细节
+请参阅[About HLD]
 
-#### AllJoyn endpoints
 
-AllJoyn applications exchange data in the form of D-Bus 
-formatted messages. These messages specify source and destination 
-as Endpoints. An AllJoyn Endpoint represents one side of an 
-AllJoyn communication link.Endpoints are used to route 
-messages to appropriate destinations. 
+#### AllJoyn 端点
 
-Both the Core Library and AllJoyn Router maintain endpoints 
-to enable message routing. The Core Library maintains the 
-following endpoints:
-* **Local Endpoint**: The local endpoint within the 
-Core Library represents a connection to the attached application. 
-* **Remote Endpoint**: The remote endpoint within the 
-Core Library represents the connection to the AllJoyn 
-router.This is applicable only for the case when AllJoyn 
-router is not bundled.
+AllJoyn 应用程序使用 D-Bus 格式的消息来交换信息。这些消息会指明原地址和目的地当作端点。一个 AllJoyn 端点代表着一条 AllJoyn 通信链路的一边。
+端点被用于将消息路由到正确的目的地。
 
-An endpoint maintained by the AllJoyn router is uniquely 
-identified by a unique name assigned to it.The AllJoyn 
-router supports the following endpoints:
+端点由核心库以及 AllJoyn 路由维护，以实现消息路由。以下端点由核心库维护：
 
-* **Local Endpoint**: A local endpoint is an endpoint within the 
-AllJoyn router itself. It identifies a connection to self 
-and is used to exchange AllJoyn control messages between 
-AllJoyn routers. This is the first endpoint which gets assigned 
-and always has the unique name ":<AJ router GUID>.1"
-* **Remote Endpoint**: A remote endpoint identifies the connection 
-between the application and the AllJoyn router. Messages destined 
-to applications get routed to app endpoints.
-* **Bus-to-Bus Endpoint**: A Bus-to-Bus (B2B) endpoint is a 
-specialized kind of remote endpoint that identifies 
-the connection between two AllJoyn routers. This endpoint 
-is used as next hop to route messages between AllJoyn routers.
+* **Local Endpoint**: 在核心库内部的本地端点代表着到附属应用程序的连接。
 
-A routing table is maintained at the AllJoyn router that is 
-responsible for routing messages to different types of endpoints. 
-Control messages between two AllJoyn routers (e.g., AttachSession 
-message) get routed to the local endpoint. AllJoyn messages 
-between two applications get routed to app endpoints. These 
-messages will have app endpoints as source and destination 
-within the message. B2B endpoints are used as the next hop 
-when routing messages (app-directed or control messages) 
-between two AllJoyn routers. 
+* **Remote Endpoint**: 在核心库内的远程端点代表着到 AllJoyn 路由的连接。仅当 AllJoyn 路由为非捆绑式时此端点才有效。
+
+由 AllJoyn 路由维护的端点被分配给他的唯一标识所唯一确定。以下端点被 AllJoyn 路由维护：
+
+* **Local Endpoint**: 本地端点是在 AllJoyn 路由内部的端点。他定义了到路由本身的连接，被用于在 AllJoyn 路由间交换 AllJoyn 控制信息。第一个端
+点常常被分配":<AJ router GUID>.1"这个标识符
+
+* **Remote Endpoint**: 远程端点定义了在应用程序与 AllJoyn 路由器之间的连接。以应用程序为目的地的消息会被路由到应用程序端点。
+
+* **Bus-to-Bus Endpoint**: 总线到总线 (B2B) 端点是定义了两个 AllJoyn 路由之间连接的一类特殊的远程端点。在 AllJoyn 路由器交换消息时，此端点
+被当作路由消息的下一跳。 
+
+AllJoyn 路由会保留一张路由表，以便将消息路由到不同类型的端点。两个 AllJoyn 路由之间的控制消息（如 AttachSession 消息）会被路由到本地端点。
+两应用程序之间的 AllJoyn 消息会被路由到应用程序端点。这些消息将会把应用程序端点当作原地址和目的地。B2B 端点在两 AllJoyn 路由交换消息（app-
+directed 或者控制消息）时会作为下一跳。
+
+下图展示了 AllJoyn 系统中不同类型的端点。
 
 The following figure shows different endpoints in the AllJoyn system.
 
 ![alljoyn-endpoints][alljoyn-endpoints]
 
-**Figure:** AllJoyn endpoints
+**Figure:** AllJoyn 端点
 
-#### Introspection
+#### 自省性
 
-The AllJoyn system supports D-Bus defined introspection 
-feature that enables AllJoyn objects to be introspected at 
-runtime, returning introspection XML describing that object. 
-The object should implement org.freedesktop.DBus.Introspectable 
-interface. This interface has an Introspect method that can be 
-called to retrieve introspection XML for the object.
+AllJoyn 系统支持由 D-Bus 定义的自省功能，使 AllJoyn 对象可以在运行时进行自省，返回描述该对象的自省 XML.该对象应实现 org.freedesktop.DBus.Introspectable 接口。此接口中含有可以取回该对象自省 XML 的方法。
 
-#### AllJoyn entity relationship
 
-It is useful and important to understand how different high-level 
-AllJoyn entities relate to each other. 
+#### AllJoyn 实体关系
 
-The following figure captures the relationship between various 
-high-level AllJoyn entities including device, application, 
-objects, interfaces, and interface members. 
+知晓高层 AllJoyn 实体之间的联系是很重要，很有帮助的。
+
+下图捕获了众多高层 AllJoyn 实体，包括设备，应用程序，对象，接口以及接口成员之间的关系。
 
 ![alljoyn-entity-relationship][alljoyn-entity-relationship]
 
-**Figure:** AllJoyn entity relationship
+**Figure:** AllJoyn 实体关系
 
-An AllJoyn-enabled device can support one or more AllJoyn 
-applications. Each AllJoyn application supports one or more 
-AllJoyn objects that implement desired application functionality. 
-Application functionality can include providing AllJoyn 
-services or consuming AllJoyn services, or both. Accordingly, 
-objects supported by the AllJoyn application can be service 
-objects, proxy objects, or combination of both. A service 
-object exposes its functionality via one or more AllJoyn 
-interfaces. Each AllJoyn interface can support one or more 
-of methods, signals, and properties.
+支持 AllJoyn 的设备可以支持一个或多个 AllJoyn 应用程序。每一个 AllJoyn 应用程序支持一个或多个实现所需应用程序功能的 AllJoyn 对象。应用程序
+功能可以包括提供或消费 AllJoyn 服务，或即提供也消费。相应的，被 AllJoyn 应用程序所支持的对象可以是服务对象，代理对象，或二者的结合体。服务
+对象将自己的功能通过一个或多个 AllJoyn 接口展示。每一个 AllJoyn 接口可以支持一个或多个方法，信号，以及属性。
 
-An AllJoyn service is implemented by one or more AllJoyn 
-service objects. An AllJoyn service object can implement 
-functionality for one or more AllJoyn services. Hence, AllJoyn 
-service and AllJoyn service object have an n:n relationship as 
-captured in the following figure.
+AllJoyn 服务由一个或多个 AllJoyn 服务对象实现。AllJoyn 服务对象可以为一个或多个 AllJoyn 服务实现功能。因此，AllJoyn 服务与 AllJoyn 服务对象
+有如下图所示的 n:n 关系：
 
 ![alljoyn-service-service-object-relationship][alljoyn-service-service-object-relationship]
 
-**Figure:** AllJoyn service and AllJoyn service object relationship
+**Figure:** AllJoyn 服务与 AllJoyn 服务对象之间的关系
 
-### AllJoyn services
+### AllJoyn 服务
 
-An AllJoyn application can support one or more service frameworks 
-and some application layer services.
+一个 AllJoyn 应用程序可以支持一个或多个服务框架以及一些应用层的服务。
 
-#### AllJoyn service framework
+#### AllJoyn 服务框架
 
-AllJoyn service frameworks provide some of the core and 
-fundamental functionality developed as enablers for higher-layer 
-application services. Service frameworks sit on top of the AllJoyn 
-router and provide APIs to application developers to invoke their 
-functionality. Initial AllJoyn service frameworks include 
-Configuration service framework, Onboarding service framework, 
-Notification service framework, and Control Panel service framework. 
+AllJoyn 服务框架为高层的应用程序服务提供一些作为 enablers 被开发的，核心的，基础的功能。服务框架位于 AllJoyn 路由的上面，为应用程序开发者提
+供可以调用其功能的 APIs. 最初的 AllJoyn 服务框架包括 Configuration 服务框架，Onboarding 服务框架，Notification 服务框架以及 Control Panel 服务框架。
+. 
+**NOTE:** 服务框架也会被称作基础服务。
 
-**NOTE:** Service frameworks are also referred to as base services.
 
-Example: a refrigerator application can make use of the Onboarding 
-service framework to onboard a refrigerator to a home network 
-and send out notifications to user devices using the Notification 
-service framework.
 
-#### Application layer service
+例如: 一个冰箱可以使用 OnBoarding 服务框架来将冰箱登入到家庭网络中，并通过 Notification 服务框架对用户设备发送提醒。
 
-An application layer service is an app-specific service provided 
-by the AllJoyn application to achieve desired application 
-layer functionality. These application layer services can 
-make use of service frameworks to achieve their functionality.
+#### 应用层服务
+应用层服务是由 AllJoyn 应用程序提供的针对应用程序的服务，用来完成所期望的应用层功能。这些应用层服务可以通过使用服务框架来实现他们的功能。
 
-Example: a refrigerator application can offer an application 
-layer service to change refrigerator and freezer temperature. 
-This service can make use of the Notification service framework 
-to send out a notification when the temperature setting goes 
-out of a specified range to notify the user.
+例如：一个冰箱应用程序可以提供一个调节冷藏及冷冻温度的应用层服务。此服务可以在温度设置超出给定范围的时候使用 Notification 服务框架向用户发
+松通知。
 
-### AllJoyn transport
+### AllJoyn 传输
+AllJoyn 传输是一个虚拟概念，他实现了通过 AllJoyn 路由，在 AllJoyn 应用程序中建立通信以及传送消息的功能。AllJoyn 传输逻辑因此会支持在多个底
+层物理传输，包括 TCP 传输，UDP 传输以及本地传输（例如 UNIX 域套接字 ）之间的消息传送。
 
-The AllJoyn Transport is an abstract concept that enables 
-connection setup and message routing across AllJoyn applications 
-via AllJoyn routers. The AllJoyn transport logic in turn 
-supports transmitting messages over multiple underlying 
-physical transports including TCP transport, UDP transport 
-and Local Transport (e.g., UNIX domain sockets).
+AllJoyn 的传输逻辑根据应用程序所指定的传输列表投递广播与发现消息。类似的，AllJoyn 传输同样基于应用程序的传输选择来建立会话，以及多底层平台
+传输的消息路由。由 AllJoyn 传输所支持的底层传输在 TransportMask 中定义，具体请参见 [AllJoyn Transport in Networking  Model][alljoyn-transport-in-networking-model].
 
-The AllJoyn transport logic delivers the advertisement and 
-discovery messages based on specified list of transports by 
-the app.  Similarly, the AllJoyn transport enables session 
-establishment and message routing over multiple underlying 
-transports based on transport selection made by the application. 
-The set of underlying transports supported by the AllJoyn 
-transport is specified by a TransportMask as captured in 
-[AllJoyn Transport in Networking Model][alljoyn-transport-in-networking-model].
-If an app does not specify any transport(s), the AllJoyn 
-transport value defaults to TRANSPORT_ANY.
+如果应用程序并没有指定任何的传输方式， AllJoyn 传输值默认为 TRANSPORT_ANY.
 
-See [AllJoyn Transport][alljoyn-transport-section] for more information.
+具体信息参见 [AllJoyn Transport][alljoyn-transport-section].
 
-### Advertisement and discovery 
+### 推广与发现
 
-The AllJoyn framework provides a means for applications to 
-advertise and discover AllJoyn services. The AllJoyn discovery 
-protocol manages the dynamic nature of services coming in 
-and going out of the proximal AllJoyn network and notifies 
-AllJoyn applications of the same. The AllJoyn framework 
-leverages an underlying transport-specific mechanism to 
-optimize the discovery process. The AllJoyn framework makes 
-use of IP multicast over Wi-Fi for service advertisement and 
-discovery. The details of underlying mechanism are hidden 
-from the AllJoyn applications.
+AllJoyn 为应用程序提供了可以推广发现 AllJoyn 服务的方法。AllJoyn 发现协议负责管理进入并离开 AllJoyn 邻域网络服务的动力性，并对 AllJoyn 应用
+程序发出响应的提醒。AllJoyn 框架使用了指定底层传输机制以优化发现服务的进程。AllJoyn 框架使用了 IP 多播，通过 Wi-Fi 实现了服务推广与发现。关
+于底层机制的细节对 AllJoyn 应用程序隐藏。
 
-The following sections details the ways that applications 
-can use to advertise and discover services over the AllJoyn framework.
+以下章节叙述了应用程序在 AllJoyn 框架上使用推广及发现服务的具体方法。
 
-#### Name-based discovery
+#### 基于名字的发现
 
-In the name-based discovery, advertisement and discovery 
-typically happens using a well-known name. In this approach, 
-the unique name can also be used for discovery per an application's 
-discretion (e.g., if a well-known name was not assigned). 
-A provider application advertises supported well-known names 
-over the proximal AllJoyn network leveraging the underlying 
-transport specific mechanism (IP multicast over Wi-Fi). 
-These well-known names get advertised as part of an advertisement 
-message generated by the AllJoyn router. 
+在基于名字的发现中，推广及发现通常会使用 well-known name. 在这种方法中，根据应用程序的自主选择（例如，well-known name 没有被分配），唯一标 识符也可以被用作发现服务。
 
-A consumer application interested in a given well-known name 
-can ask the AllJoyn router to begin discovering that name. 
-When the provider app advertising that name comes in the 
-proximity, the AllJoyn router receives the corresponding 
-advertisement. The AllJoyn router then sends a service discovery 
-notification to the application for the well-known name.
+供应方应用程序将他所支持的 wel-known names 通过邻域 AllJoyn 网络对特定底层传输机制的影响（通过 Wi-Fi 的 IP 多播）进行推广。这些 well-known names 作为由 AllJoyn 路由生成的推广消息的一部分被推广出去。
 
-The advertisement message carries connectivity information 
-back to the provider app. After discovery, the consumer app 
-can request AllJoyn router to establish a connection with 
-the discovered provider app for consuming the service. 
-The AllJoyn router uses the connectivity information to 
-connect back to the provider app.
+对给定 well-known name 有兴趣的消费方应用程序可以请求 AllJoyn 路由开始寻找发现该服务名。当该名字被供应方应用程序广播入邻域网，AllJoyn 路由
+会受到对应的推广。AllJoyn 路由于是向之前指定 well-known name 的应用程序发送一个服务发现通知。
 
-#### Announcement-based discovery
+推广信息携带着连通性信息返回到提供方的应用程序。在发现过程之后，消费方应用程序可以向 AllJoyn 路由申请与被发现的供应方应用程序建立连接，以便
 
-Since AllJoyn services are ultimately implemented by one or 
-more interfaces, service discovery can be achieved by discovering 
-associated AllJoyn interfaces. In the announcement-based discovery, 
-advertisement and discovery happens using AllJoyn interface names. 
-This mechanism is intended to be used by devices to advertise 
-their capabilities.
 
-The provider application creates a service announcement message 
-specifying a list of AllJoyn interfaces supported by that 
-application. The service announcement message is delivered 
-as a broadcast signal message using sessionless signaling 
-mechanism (described in detail in [Sessionless Signal][sessionless-signal-section]).
+#### 基于通告的发现
 
-Consumer applications interested in making use of AllJoyn 
-services look for these broadcast service announcement messages 
-by specifically registering its interest in receiving these 
-announcements with AllJoyn router. When the consumer device 
-is in the proximity of a provider, it receives the service 
-announcement that contains the AllJoyn interfaces supported 
-by the provider.
+所有的 AllJoyn 服务最终都是由一个或多个接口实现的，基于这个原因，发现服务可以由发现相关的 AllJoyn 接口来完成。在基于通告的发现中，推广与发
+现过程都使用接口名。该机制打算被用于设备对自己能力的推广。
 
-The AllJoyn router maintains connectivity information to 
-connect back to the provider from which the service announcement 
-message was received. After discovery, the consumer app can 
-request the AllJoyn router to establish a connection with 
-the provider app that supports the desired interfaces for 
-consuming the service. The AllJoyn router uses connectivity 
-information to connect back to the provider app.
+供应方应用程序创建一个服务公告消息，此消息会列出被该应用所支持的 AllJoyn 接口。服务通告由广播信号的方式被发出，使用非会话信号机制（参见 [Sessionless Signal][sessionless-signal-section]）。 
 
-#### Discovery enhancements in the 14.06 release
+对使用 AllJoyn 服务有兴趣的消费方应用程序可以通过在接收来自 AllJoyn 路由的通告消息时声明他的兴趣来查找这些被广播的服务。当消费方的设备处于
+供应方设备的邻域内时，他会接收包含有受供应方支持的 AllJoyn 接口信息的服务公告。
 
-The AllJoyn discovery feature was enhanced in the 14.06 
-release to enable the discovery of devices/apps that support 
-a certain set of interfaces in a more efficient way. The 
-enhanced discovery is referred to as Next-Generation Name 
-Service (NGNS). NGNS supports a multicast DNS (mDNS)-based 
-discovery protocol that enables specifying AllJoyn interfaces 
-in an over-the-wire discovery message. In addition, the mDNS-based 
-protocol is designed to provide discovery responses over unicast 
-to improve performance of the discovery protocol and minimize 
-overall multicast traffic generated during the AllJoyn discovery process. 
+AllJoyn 路由保有连接信息，以便连接回发送服务通告信息的供应方。在发现过程后，消费方应用程序可以向 AllJoyn 路由申请建立支持到所需接口的供应方
+应用程序的连接，以便使用服务。AllJoyn 路由使用连接性信息以便连接回供应方应用程序。
 
-The presence detection mechanism for AllJoyn devices/apps 
-has been enhanced by adding an explicit mDNS-based ping() 
-message that is sent over unicast to determine if the remote 
-endpoint is still alive. The ping() mechanism is driven by 
-the application based on application logic.
 
-### AllJoyn session
 
-Once a client discovers an AllJoyn service of interest, 
-it must connect with the service in order to consume that 
-service (except for the Notification service framework, 
-which relies completely on sessionless signals). Connecting 
-with a service involves establishing an AllJoyn session with 
-that service. A session is a flow-controlled data connection 
-between a consumer and provider, and as such allows the client 
-to communicate with the service. 
+#### 14.06版本中增强的发现机制
 
-A provider app advertising a service binds a session port with 
-the AllJoyn bus and listens for clients to join the session. 
-The action of binding and listening makes the provider the 
-session host. The session port is typically known ahead of 
-time to both the consumer and the provider app. In the case 
-of announcement-based discovery, the session port is discovered 
-via the Announcement message. After discovering a particular 
-service, the consumer app requests the AllJoyn router to 
-join the session with the remote service (making it a session 
-joiner) by specifying the session port and service's unique 
-name/well-known name. After this, the AllJoyn router takes 
-care of establishing the session between the consumer and 
-the provider apps. 
+在14.06版本中，AllJoyn 发现机制被增强，以便使对支持一系列接口的设备/应用程序的发现更加有效率。此增强的发现机制被称为 Next-Generation Name 
+Service (NGNS). NGNS 支持基于 DNS 多播 （mDNS）的发现协议，支持在一个 over-the-wire 发现消息中指定 AllJoyn 接口。此外，基于 mDNS 的协议还可
+提供通过单播的发现响应功能，以提升发现协议的性能，并将在 AllJoyn 发现过程中总体的多播通信流量降到最小。
 
-Each session has a unique session identifier assigned by the 
-provider app (session host). An AllJoyn session can be one 
-of the following:
+AllJoyn 设备/应用程序中的存在检测机制已经通过添加一个明确的基于 mDNS 的 ping() 消息, 此 ping 消息通过单播被发送，用于探测远程端点是否可用。
+ping() 机制由基于应用程序逻辑的应用程序所驱动。
 
-* Point-to-point session: A session with only two participants-the 
-session host and the session joiner. 
-* Multi-point session: A session with multiple participants-a 
-single session host and multiple session joiners.
 
-After session establishment, the consumer application must 
-create a proxy object to interact with the provider app. The 
-proxy object should be initialized with a session ID and the 
-remote service object path. Once complete, the consumer app 
-can now interact with the remote service object via this proxy object.
+### AllJoyn 会话
+一旦用户发现感兴趣的 AllJoyn 服务，他必须与此服务建立连接才能使用该服务（完全依赖于非会话的信号的 Notification 服务除外）。连接到服务包括
+与该服务建立一个 AllJoyn 会话。会话是一个建立在使用者和提供者之间的流量受控的数据连接，并因此使得使用者可以与服务器通信。
 
-### Sessionless signals
+推广服务的提供方应用程序将 AllJoyn 总线与会话端口绑定，并监听用户是否进入会话。绑定与监听的动作使得供应方成为了会话的主机。一般情况下提供方和使用方的应用程序都会提前知道端口号。在 announcement-based 发现中，端口号是由通告消息( Announcement message )被发现的。在发现特定的服务之
+后，消费方应用程序会通过指定会话端口以及服务的唯一识别符/well-known name 来请求 AllJoyn 路由进入与远端服务的会话（把他变成一个 session joiner）。在这之后，AllJoyn 路由负责照看使用方与提供方应用程序之间的会话。
 
-The AllJoyn framework provides a mechanism to broadcast signals 
-over the proximal AllJoyn network. A broadcast signal does 
-not require any application layer session to be established 
-for delivering the signal. Such signals are referred to as 
-sessionless signals and are broadcast using a sessionless 
-signaling mechanism supported by the AllJoyn router. 
+每个会话都有一个唯一的会话识别符，由提供方的应用程序（会话主机）所分配。一个 AllJoyn 会话可以是一下的一种：
 
+
+* 点对点的会话：只有两个参与者的会话-会话主机以及会话参与者。
+* 多放对话：有多个参与者的会话-一个单一的会话主机以及多个会话参与者。
+
+会话建立完成后，消费方应用程序必须创建一个代理对象与提供方应用程序交互。此代理对象需要一个会话 ID 和远端服务的对象路径来初始化。一旦完成，
+使用方应用程序可以通过这个代理对象来与远端服务对象建立联系。
+
+
+
+### 非会话信号
+
+AllJoyn 框架提供了可以将信号广播在邻近域网络上。广播信号的建立不需要任何应用层会话。这类信号被称为非会话信号，由被 AllJoyn 路由支持的非会话 的信号机制所广播。
+
+非会话信号的投递有以下两个过程
 The delivery of sessionless signals is done as a two-step process. 
 
-1. The provider device (sessionless signal emitter) advertises 
-that there are sessionless signals to receive. 
-2. Any consumer devices wishing to receive a sessionless 
-signal will connect with the provider device to retrieve new signals. 
+1. 供应方设备（非会话信号发射端）发出存在等待接收的非会话信号的推广。
+2. 任何希望接收非会话信号的设备将与供应方连接，并接收新信号。
 
-Using the sessionless signal mechanism, a provider application 
-can send broadcast signals to the AllJoyn router. The AllJoyn 
-router maintains a cache for these signals. The content of the 
-sessionless signal cache is versioned. The AllJoyn router sends 
-out a sessionless signal advertisement message notifying other 
-devices of new signals at the provider device. The sessionless 
-signal advertisement message includes a sessionless signal-specific 
-well-known name specifying the version of the sessionless signal cache. 
+使用非会话信号机制，供应方应用程序可以向 AllJoyn 路由发送广播信号。AllJoyn 路由将这些信号缓存。这些非会话信号的内容将被分成各个版本。 AllJoyn 路由发出一个提醒其他设备在供应方有新消息的信号推广消息。此非会话信号推广消息包括一个非会话的指定信号的 well-known name, 声明该非
+会话信号缓存的版本。
 
-The consumer app interested in receiving the sessionless signal 
-performs discovery for the sessionless signal-specific well-known 
-name. The AllJoyn bus on the consumer maintains the latest sessionless 
-signal version it has received from each of the provider AllJoyn router. 
-If it detects a sessionless signal advertisement with an updated 
-sessionless signal version, it will fetch new set of sessionless 
-signals and deliver them to the interested consumer applications.
+对接收非会话信号有兴趣的消费方应用程序针对非会话信号指定信号的 well-known name 执行发现行为。在使用端的 AllJoyn 总线会保持已经从每一个供应
+方 AllJoyn 路由接收到的最新的非会话信号。如果他探测到伴随着更新过的非会话信号版本到来的非会话信号推广，他将接收新的非会话信号并将它们送到感
+兴趣的使用方应用程序。
 
-#### Sessionless signal enhancement in the 14.06 release
 
-The sessionless signal feature was enhanced in the 14.06 release 
-to enable a consumer application to request sessionless signals 
-from provider applications that support certain desired AllJoyn 
-interfaces. The following sessionless signal enhancements were made:
+#### 14.06版本中对非会话信号的增强
 
-* The sessionless signal advertised name was enhanced to add 
-<INTERFACE> information from the header of the sessionless signal. 
-Consumers use this to fetch sessionless signals only from those 
-providers that are emitting signals from the <INTERFACE> it 
-is interested in. A separate sessionless signal name is advertised 
-one for each unique interface in the sessionless signal cache.
-* A mechanism was added for the consumer app to indicate receiving 
-Announce sessionless signal only from applications implementing 
-certain AllJoyn interfaces.
+非会话信号功能在14.06版本中被增强，以便使使用方应用程序可以向支持所需的 AllJoyn 接口的供应方请求非会话信号。对非会话信号的增强如下：
 
-Sessionless signals are only fetched from those providers that 
-support desired interfaces. This improves the overall performance 
-of the sessionless signal feature.
+* 非会话信号被推广时的名字被增强，可以在非会话消息的头部增加 <INTERFACE> 信息。使用者可以根据自己感兴趣的 <INTERFACE> 名来选择收取相应的
+提供者的非会话信号。每一个在非会话信号缓存中的接口都会被推广一个单独的非会话信号名。
 
-### Thin apps
 
-An AllJoyn Thin App is designed for use in embedded devices 
-such as sensors. These types of embedded devices are optimized 
-for a specific set of functions and are constrained in energy, 
-memory and computing power. An AllJoyn thin app is designed to 
-bring the benefits of the AllJoyn framework to embedded systems. 
-The thin app is designed to have a very small memory footprint. 
+* 加入了新机制：使用者端的应用程序可以指明只接收实现了一定种类的 AllJoyn 接口发出的 Announce 非会话信号。
 
-A thin AllJoyn device makes use of lightweight thin application 
-code along with the AllJoyn Thin Core Library (AJTCL) running 
-on the device. It does not have an AllJoyn router running on 
-that device. As a result, the thin app must use an AllJoyn 
-router running on another AllJoyn-enabled device, essentially 
-borrowing the AllJoyn router functionality running on that device. 
+仅当非会话信号是由支持所需要接口的供应方发出时，才会被收取。
 
-At startup, the thin application discovers and connects with 
-an AllJoyn router running on another AllJoyn-enabled device. 
-From that point onwards, the thin app uses that AllJoyn router 
-for accomplishing core AllJoyn functionality including service 
-advertisement/discovery, session establishment, signal 
-delivery, etc. If a thin app is not able to connect to previously 
-discovered AllJoyn router, it attempts to discover another 
-AllJoyn router to connect to.
 
-An AllJoyn thin app is fully interoperable with an AllJoyn 
-standard application. It uses same set of over-the-wire protocols 
-as a standard AllJoyn app. This ensures compatibility between 
-the thin app and standard apps. An AllJoyn standard app communicating 
-with a thin app will not know that it is talking to a thin app 
-and vice versa. However, there are some message size constraints 
-that apply to the thin app based on available RAM size.
+### 精简应用程序
 
-### AllJoyn protocol version
+AllJoyn 的就及应用程序被用于嵌入式设备中，例如传感器。针对一些特定的功能，这些嵌入式设备被优化，并被限制了功率，内存以及运算能力。AllJoyn 精简应用程序的设计宗旨是将 AllJoyn 框架的优势带入到嵌入式系统中。精简应用程序的内存占有普遍很小。
 
-Functionality implemented by the AllJoyn Router is versioned through an AllJoyn
-Protocol Version (AJPV) field. The following table shows the AJPV for various
-AllJoyn releases; unless otherwise noted the AJPV for the major release version
-applies to all the patch release versions as well. The AJPV is exchanged
-between routers as part of the BusHello messaging during the AllJoyn session
-establishment and between the leaf and routing node when the leaf node connects
-to the router. This field is used by the core libraries to identify
-compatibility with the router, and specifically by thin apps to determine
-whether or not to connect to a particular router or keep searching for another
-one.  It is also used by the router to determine if functionality is available
-at the leaf (e.g. self-join, SessionLostWithReason, etc.)
+AllJoyn 精简设备的使用
+精简设备使用轻量化的精简应用代码以及 AllJoyn 精简内核库 （AJTCL）.这些设备上没有 AllJoyn 路由。因此，精简应用程序必须使用运行在其他支持 AllJoyn 设备上的 AllJoyn 路由，本质上就是借用其他设备的 AllJoyn 路由功能。
 
-** Table: ** AllJoyn Release to Protocol Version mapping
+在启动时，精简应用程序发现并连接到运行在另一个支持 AllJoyn 设备上的 AllJoyn 路由。从此刻开始，此精简应用程序就使用该 AllJoyn 路由完成 AllJoyn 的核心功能，包括服务的推广/发现，建立会话，传递信号等等。如果一个精简应用程序不能连接到之前发现的 AllJoyn 路由，他讲尝试发现另一个
+可连接的 AllJoyn 路由。
 
-| &#160; Release version &#160; | &#160; AJPV &#160; |
+AllJoyn 的精简应用程序可以和 AllJoyn 的标准应用程序完全兼容。他们使用相同的 over-the-wire 协议。这保障了精简应用程序与标准应用程序之间的兼
+容性。AllJoyn 的标准应用程序在与 AllJoyn 的精简应用程序通话时，并不会知道对方是精简的，反之亦然。但是对于精简应用程序会有针对消息大小的一些
+限制，这取决于可使用的 RAM 容量。
+
+
+### AllJoyn 协议版本
+
+通过 AllJoyn 路由实现的功能会通过一个 AllJoyn 协议版本字段（AJPV）进行版本分类。下表真实了不同 AllJoyn 发布版本的 AJPV；除非另行通知，主发
+行版本的 AJPV 也被使用到所有补丁版本。AJPV 作为 BusHello 消息的一部分，在 AllJoyn 会话建立时的路由之间和在叶节点连接到路由时的叶节点和路由
+节点之间被交换。这个字段被核心库用于识别对其他路由的兼容性，并特定的被精简应用程序用来决定是否连接到一个特定路由，或继续搜索。它同样被其他
+路由用于决定叶节点的功能是否可用（例如自我加入，SessionLostWithReason 等等）
+
+
+** Table: ** AllJoyn 版本对协议映射表
+
+| &#160; 发布版本 &#160; | &#160; AJPV &#160; |
 |:------------------------------:|:-----------------:|
 |        legacy 03.04.06         |        9          |
 |        v14.02                  |        9          |

@@ -1,53 +1,43 @@
 # Android - Core Sample Apps
 
-## Running Android SimpleClient, SimpleService Apps
+## 运行 Android SimpleClient, SimpleService 应用程序
 
-The Android SimpleClient and SimpleService provide a simple 
-example of how a client app and a service app can be implemented. 
-The SimpleService listens for connections, the SimpleClient joins 
-the SimpleService session, and text sent from the SimpleClient to 
-the SimpleService via a BusMethod invoked on a SimpleService 
-BusObject is displayed in both apps.
+Android SimpleClient 和 SimpleService 为解释客户端和服务器端应用程序的实现原理提供了一个简单的例子。SimpleService 监听连接，SimpleClient 加入 SimpleService 发起的会话，通过被 SimpleService 调用的 BusMethod 文本可以从 SimpleClient 被发送到 SimpleService. 两方应用程序中都会显示 BusObjects.
 
-1. Connect device A and device B to the same network.
-2. Load SimpleClient.apk onto device A, and start app "Simple Client".
+
+1. 将设备 A 与设备 B 连接到同一个网络中。
+2. 在设备 A 中载入 SimpleClient.apk，并启动 "Simple Client" 应用程序。
   ![][1.SimpleClientWaitingForSimpleService]
-3. Load SimpleService.apk onto device B, and start app "Simple Service". 
-The "Simple Service" will simply show a blank screen when started.
-4. The SimpleClient will join the session of the SimpleService, 
-after which the SimpleClient will show the below.
+3. 在设备 B 中载入 SimpleService.apk，并启动 "Simple Service" 应用程序。 "Simple Service" 在启动时会呈现一个空白屏幕。
+4. SimpleClient 会加入 SimpleService 发起的会话,  在这之后 SimpleClient 会有如下显示：
   ![][2.SimpleClientConnected]
-5. Enter text in the "Simple Client" and press **Enter** to have the 
-text sent and returned by the "Simple Service", and displayed 
-on-screen for both apps.
+5. 在 "Simple Client" 中键入文本并按下 **Enter**，文本会被发送到 "Simple Service" 并获得返回值，下图展示了两个应用程序的界面。 
   ![][3.SimpleClientSentAndReceivedMessage]
 
-## Running Android Chat App
+## 运行 Android 聊天应用程序
 
-The Android Chat app shows how a chat room can be implemented using 
-the AllJoyn&trade; framework, where an app first creates and joins 
-a session, after which one or more other apps later join the same session.
+Android 聊天应用程序展示了如何使用 AllJoyn&trade; 框架实现聊天室功能。在此场景中，一应用程序首先创建并加入一个会话，之后会有更多的应用程序
+加入此会话。
 
-1. Connect all devices to the same network.
-2. Load Chat.apk onto devices, and start app "AllJoyn Chat Sample for Android".
-4. Create and start a channel on the first device.
-      * Select the right tab (with a "+" on it).
+
+1. 将所有设备连接到同一个网络中。
+2. 将 Chat.apk 载入到各设备，随后启动 "AllJoyn Chat Sample for Android" 应用程序。
+3. 在第一个设备上创建并开始一个信道。
+      * 选择正确的标签 (带有 "+" 符号的那一个).
   ![][1.SetUpChannel]
-      * Create a channel via the **Set Channel Name** button - enter a channel name when prompted.
+      * 通过 **Set Channel Name** 按钮创建信道 - 在有提醒时输入一个信道名。
   ![][2.SetChannelName]
-      * Press the **Start Channel** button.
+      * 按下 **Start Channel** 按钮。
   ![][3.StartChannel]
-5. Join the channel on the first device.
-      * Press the left tab.
-      * Press the **Join Channel** button, and choose the channel that was created above.
+4. 加入第一个设备所在的信道。
+      * 点击左边的标签。
+      * 按下 **Join Channel** 按钮，选择那个刚刚被创建的信道。
   ![][4.ChooseChannelToJoin]
   ![][5.ChannelJoined]
-6. Join the channel on other device(s).
-      * Press the left tab.
-      * Press the **Join Channel** button, and choose the channel that was created above.
-7. Enter text in the "Enter message here" text box, and hit enter to chat between devices. 
-In the message history, the Bus Attachment's Unique name will be displayed 
-alongside text from the "other" device(s), or "Me" will displayed alongside text from "this" device.
+5. 加入在其他设备上信道。
+      * 点击左边的标签。
+      * 按下 **Join Channel** 按钮， 选择上面刚刚创建的那个信道。
+6. 在 "Enter message here" 文本框中输入字符，然后按下 enter 键与其他人聊天。在消息历史中，从"其他“设备发来的消息的左边栏会显示对应总线附件 的唯一识别符，来自本设备的消息则会显示 “Me”.
   ![][6.SendMessages]
 
 
@@ -61,3 +51,4 @@ alongside text from the "other" device(s), or "Me" will displayed alongside text
 [4.ChooseChannelToJoin]: /files/develop/run-sample-apps/android-chat-sample/4.ChooseChannelToJoin.png
 [5.ChannelJoined]: /files/develop/run-sample-apps/android-chat-sample/5.ChannelJoined.png
 [6.SendMessages]: /files/develop/run-sample-apps/android-chat-sample/6.SendMessages.png
+

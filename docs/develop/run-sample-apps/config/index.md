@@ -1,21 +1,16 @@
-# Running The Configuration Samples
+# 运行 Configuration 样例
 
-There are two Configuration sample applications, a Config Client and a Config Service.
+此处有两个 Configuration 样例应用程序,  Config Client 和 Config Service.
 
-The [Configuration service][learn_config] provides a means to 
-expose and configure device-specific values such as a device 
-passcode and a device name, in addition to device-specific 
-methods such as restarting the device or performing a factory 
-reset of the device. 
+[Configuration service][learn_config] 为暴露和配置指定设备的值（例如设备密码和设备名）提供了一种方法，同时还有一系列的指定设备的方法，例如
+重新启动设备或者回复出厂设置。
 
-The role of an application that uses the Config service is 
-to accept the incoming requests to provide configuration 
-information or make changes to the configuration values.
+使用 Config Service 的应用程序的功能是，接收发进来的请求并提供配置信息，或者对配置值做出修改。
 
-The role of an applicaton that uses the Config client allows 
-an end user to control values that an OEM has offered up for changes.
+使用 Config Client 的应用程序的功能是，使用户可以修改 OEM 允许修改的控制值。
 
-The Config interface is defined as follows: 
+
+Config 接口的定义如下所示：
 
 ```xml
 <node name="/Config">
@@ -47,7 +42,7 @@ The Config interface is defined as follows:
 </node>
 ```
 
-The samples can be run on the following platforms:
+此样例可在以下平台上运行：
 - [Android][android]
 - [Linux][linux]
 - [iOS/OSX][ios-osx]

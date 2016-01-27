@@ -1,17 +1,17 @@
 # Building iOS/OS X
 
-Note, some of the paths below will need to be adjusted based on the version downloaded
+请注意，根据您的下载版本，以下路径可能需要调整。
 
-## Setup
+## 设置
 
-1. [Download][downlod] the following iOS SDKs:
+1. [下载][downlod] 以下 iOS SDKs:
      * Core SDK (release)
      * Onboarding SDK
      * Configuration SDK
      * Notification SDK
      * Control Panel SDK
 
-2. Extract the downloaded packages and setup the directory structure:
+2. 提取下载文件并设置目录结构：
 
 ```sh
 mkdir alljoyn-ios
@@ -24,7 +24,7 @@ unzip alljoyn-notification-service-framework-14.06.00-ios-sdk-rel.zip
 unzip alljoyn-onboarding-service-framework-14.06.00-ios-sdk-rel.zip
 ```
 
-#### Set up OpenSSL dependencies
+#### 设置 OpenSSL 附件
 
 ```sh
 cd <parent directory of alljoyn-ios>
@@ -46,7 +46,7 @@ popd
 popd
 ```
 
-#### Define environment variables
+#### 定义环境变量
 
 ```sh
 cd alljoyn-ios
@@ -55,9 +55,8 @@ cd services
 launchctl setenv ALLSEEN_BASE_SERVICES_ROOT `pwd`
 ```
 
-## Build the samples
-Open each of the following sample iOS applications in Xcode and build
-them by selecting __Project > Build__ from the Xcode menu.
+## 搭建样例
+在 Xcode 中打开下列每一个样例 iOS 应用程序，通过在 Xcode 中选择 __Project > Build__  来搭建这些应用程序。
 
 * alljoyn-ios/core/alljoyn/alljoyn_objc/samples/iOS/
 * alljoyn-ios/core/alljoyn/services/about/ios/samples/
@@ -66,64 +65,60 @@ them by selecting __Project > Build__ from the Xcode menu.
 * alljoyn-ios/services/alljoyn-notification-14.06.00-rel/objc/samples/
 * alljoyn-ios/services/alljoyn-onboarding-14.06.00-rel/objc/samples/
 
-### Install samples on an iOS device
-Make sure you have an iOS device connected to your computer, then use
-Xcode to __Run__ the desired sample application. This will install
-the application onto your device.
+### 在 iOS 设备上安装样例
+请先确保您的 iOS 设备已经连接到电脑，然后使用 Xcode __Run__ 所需的样例应用程序。这将会把应用程序安装到您的设备上。
 
-**TIP:** This command can also be used to build a sample application from a terminal
+**TIP:** 此命令同样适用于在一个终端上搭建一个样例应用程序。
 
 <!-- QUESTION FOR WAYNE: Need to insert command -->
 <!-- TODO - insert scons command here -->
 
-## Add the AllJoyn&trade; framework to an iOS application
+## 向 iOS 应用程序添加 AllJoyn&trade; 框架。 
 
-1. Make sure you know the location of the AllJoyn SDK folder.
-The AllJoyn SDK folder contains your build, services, and alljoyn_objc folders.
-2. Open Xcode, open your project, and select the root of the tree in
-Project Navigator. Then select the app's target under __Targets__.
+1. 请确保您知晓 AllJoyn SDK 所在的文件夹位置。AllJoyn SDK 文件夹包含您的搭建，服务以及 alljoyn_objc 文件夹。
+2. 打开 XCode, 然后打开您的项目，在项目导航（Project Navigator）中找到树的跟节点，然后在 __Targets__ 下选择目标应用程序。
 
-#### Add the AllJoyn Core library and dependencies:
+#### 添加 AllJoyn 核心库和附件。
 
-1. Select the __Building Settings__ tab for the app target. Click the __All__ option at the top of the list.
-2. At the top of the Build Settings list, click __Architectures__ and then select __Standard architectures (armv7, armv7s)__.
-3. Set __Build Active Architecture only__ to __Yes__.
-4. Scroll down to the Linking section, and set __Other Linker Flags__ to the following:
+1. 对应用程序目标选 __Building Settings__ 标签， 点击在列表顶部的 __All__ 选项。 
+2. 在 Build Settings 列表的顶部, 点击 __Architectures__ ，然后选择 __Standard architectures (armv7, armv7s)__.
+3. 将 __Build Active Architecture only__ 设置为 __Yes__.
+4. 下滑到 linking 选项, 将  __Other Linker Flags__ to the fol 按照如下所示调整:
 
   `-lalljoyn -lajrouter -lBundledRouter.o -lssl -lcrypto`
-5. Scroll down to the list of settings until see the __Search Paths__ group.
-6. Double-click the __Header Search Paths__ field and enter the following:
+5. 下滑设置列表，直到看到 __Search Paths__  小组。
+6. 双击 __Header Search Paths__ 字段并输入如下命令： 
 
   `$(ALLJOYN_ROOT)/core/alljoyn/build/darwin/arm/$(PLATFORM_NAME)/$(CONFIGURATION)/dist/cpp/inc`
   `$(ALLJOYN_ROOT)/core/alljoyn/alljoyn_objc/AllJoynFramework/AllJoynFramework/`
 
-7.  Double-click the __Library Search Paths__ field and enter the following:
+7.  双击 __Library Search Paths__ 字段并输入如下命令: 
 
   `$(ALLJOYN_ROOT)/core/alljoyn/build/darwin/$(CURRENT_ARCH)/$(PLATFORM_NAME)/$(CONFIGURATION)/dist/cpp/lib`
   `$(OPENSSL_ROOT)/build/$(CONFIGURATION)-$(PLATFORM_NAME)`
 
-8.  Look through the Build Settings table until you see the __Apple LLVM 5.0 - Language - C++__ group and set the following:
+8.  查阅 Build Settings 表，直到发现 __Apple LLVM 5.0 - Language - C++__ 群组，并按照以下设置：
   * __Enable C++ Exceptions__ to __No__.
   * __Enable C++ Runtime Types__ to __No__.
   *	__C++ Language Dialect__ to __Compiler Default__.
 
-9.  Look through the Build Settings table until you see the __Apple LLVM 5.0 - Custom
-Compiler Flags__ group and set the following:
+9.  查阅 Build Settings 表，直到发现 __Apple LLVM 5.0 - Custom
+编译 Flags__ group 并作出如下设置：
   * Enter the following in the __Other C Flags__ field for Debug field:
 
       `-DQCC_OS_GROUP_POSIX -DQCC_OS_DARWIN`
 
-  * Enter the following in the __Other C Flags__ field for Release field:
+  * 在 __Other C Flags__ 字段中输入以下命令:
 
       `-DNS_BLOCK_ASSERTIONS=1 -DQCC_OS_GROUP_POSIX -DQCC_OS_DARWIN`
 
-10.  Look through the Build Settings table until you see the __Apple LLVM 5.0 - Language__ group and set the following:
+10.  查阅 Build Settings 表，直到发现 __Apple LLVM 5.0 - Language__ 群组，设置如下：
   * __C Language Dialect__ to __Compiler Default__.
   * __Compile Sources As__ to __Objective-C++__.
-11.  Select the __Build Phases__ tab.
-12.  Expand the __Link Binary With Libraries__ group and click the + sign at the lower left corner. A dialog will appear.
-  1. Select the SystemConfiguration.framework file.
-  2.  Click the + button again and add the following libraries to link against, if not already included:
+11. 选择 __Build Phases__ 标签。
+12.  展开 __Link Binary With Libraries__ 群组，并点击在左下角的 + 符号。将会出现一个对话。 
+  1. 选择 SystemConfiguration.framework 文件。
+  2. 再一次点击 '+' 按钮，将下列库添加到 link against, 如已被包括则忽略。
     * libstdc++.6.0.9.dylib
     * libstdc++.6.dylib
     * libstdc++.dylib
@@ -131,11 +126,11 @@ Compiler Flags__ group and set the following:
     * libc++.1.dylib
     * libc++.dylib
 
-#### Add the service frameworks
-1. Select the __Build Phases__ tab for the app target. Click the __All__ option at the top of the list.
-2. Under __Link Binary with Libraries__, click on the '+' button, choose __Add Other...__, and add the following:
+#### 添加服务架构
+1. 在目标应用程序中选择 __Build Phases__ 标签。点击在列表顶端的 __All__ 选项。
+2. 在 __Link Binary with Libraries__ 库中, 点击 '+' 按钮, 选择 __Add Other...__, 并添加以下条目：
 
-  __General libs__ (needed by all apps using one or more service frameworks):
+  __General libs__ (所有使用一个或多个服务框架的应用程序都要安装):
   * alljoyn-ios/services/<alljoyn-service-framework>/cpp/lib/
     * liballjoyn_services_common_cpp.a
     * liballjoyn_about_cpp.a

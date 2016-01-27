@@ -1,4 +1,4 @@
-# Building Thin - Windows 在精简 Windows 中建立
+# 在精简 Windows 中建立
 
 ## 安装
 1. 安装针对 Windows 的 Python v2.6/2.7（不支持 Python 3.0）

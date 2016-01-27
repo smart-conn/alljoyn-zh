@@ -1,11 +1,11 @@
-# Windows - Running About Sample Apps
+# Windows - 运行 About Sample 应用程序
 
-## Running Windows AboutClient and AboutService Apps
+## 运行 Windows AboutClient 以及 AboutService 应用程序
 ###Precompiled .exe
-The AllJoyn&trade; Standard Library Windows SDK includes a precompiled set of binaries.
+AllJoyn&trade; 标准库 Windows SDK 包含一系列预编译的二进制码。
 
 ####Service
-Open a Command Terminal window.
+打开一个命令行窗口
 
 ```sh
 cd <root AllJoyn SDK folder in your file system>
@@ -13,10 +13,10 @@ cd cpp\bin\samples
 AboutService.exe
 ```
 
-**NOTE:** The application just runs and will print information when an AboutClient connects.
+**NOTE:** 应用程序运行。在有 AboutClient 连接时，将会打印相关信息。
 
 ####Client
-Open a Command Terminal window.
+打开一个命令行窗口
 
 ```sh
 cd <root AllJoyn SDK folder in your file system>
@@ -24,16 +24,13 @@ cd cpp\bin\samples
 AboutClient.exe
 ```
 
-**NOTE:** The application searches for any instance of AboutService that is announcing
-the `com.example.about.feature.interface.sample` it will connect to the service
-and call all the methods specified in the About Interface and the Echo method
-specified in the `com.example.about.feature.interface.sample` interface.
+**NOTE:** 此应用程序会搜索任何宣布了 `com.example.about.feature.interface.sample` 接口的 AboutService 实例。他将会连接到该服务，并调用由 About  接口指定的所有方法以及由 `com.example.about.feature.interface.sample` 接口指定的 Echo 方法。
 
 
-## Run Legacy AboutService and AboutClient Apps
+## 运行早期版本的 AboutService 和 AboutClient 应用程序
 
 ####Service
-Open a Command Terminal window.
+打开一个命令行窗口。
 
 ```sh
 cd <root AllJoyn SDK folder in your file system>
@@ -41,10 +38,10 @@ cd cpp\bin\samples
 AboutService_legacy.exe
 ```
 
-**NOTE:** The application just runs and will print information when an AboutClient connects.
+**NOTE:** 应用程序运行。在有 AboutClient 连接时，将会打印相关信息。
 
 ####Client
-Open a Command Terminal window.
+打开一个命令行窗口。
 
 ```sh
 cd <root AllJoyn SDK folder in your file system>
@@ -52,7 +49,4 @@ cd cpp\bin\samples
 AboutClient_legacy.exe
 ```
 
-**NOTE:** The application searches for any instance of AboutService that is announcing
-the `org.alljoyn.About` and `org.alljoyn.Icon` it will connect to the service
-and call all the methods specified in the About Interface and the the About Icon
-interface.
+**NOTE:** 此应用程序会搜索任何宣布了 `org.alljoyn.About` 和 `org.alljoyn.Icon` 接口的 AboutService 实例。他将会连接到该服务，并调用由 About Interface 和 About Icon 接口所定义的所有方法。

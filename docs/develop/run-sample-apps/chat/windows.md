@@ -1,33 +1,30 @@
-# Windows - Chat Sample App
+# Windows - 聊天样例应用程序
 
-## Running basic_client and basic_service
+## 运行 basic_client 和 basic_service
 
 ### Precompiled .exe
 
-Inside the AllJoyn&trade; Standard Library Windows SDK, there exists a precompiled set of binaries.
+AllJoyn&trade; Standard Library Windows SDK 中包含一个预编译的二进制码集合。
 
-1. Open a Command Terminal window.
-2. CD to the root AllJoyn SDK folder in your file system.
-3. CD to the cpp/bin/samples folder.
-4. Run chat using the following startup options:
+1. 打开一个命令行窗口。
+2. 切换到文件系统的 AllJoyn SDK 根目录。
+3. 切换到 cpp/bin/samples 文件夹。
+4. 使用下列启动参数运行：
    Chat client:
        chat.exe -j training
    Chat host
        chat.exe -s training
-5. Once you are joined, any text entered will be sent to the other 
-applications upon pressing **Enter**.
+5. 一旦你加入聊天，任何键入的文本都会在按下 **Enter** 后被发送到其他应用程序。
 
 ###Visual Studio
 
-**NOTE:** Unless you make a modification to the source code, this 
-sample will not run using the play command. It requires startup 
-arguments as stated above.
+**NOTE:** 除非你对源代码进行修改，此用例不会使用 play 命令运行。启动参数必须按照上文所述设置。
 
-1. Open the Visual Studio Basic project file.
-2. Right-click on the project you wish to run and select **Set as StartUpProject**. 
-3. Make a modification in chat.cc inside the ParseCommandLine method to avoid supplying a command line startup argument.
-4. From the top menu options select **Debug**>**Start Debugging**.
-    1. If the menu toolbar is visible, you can also press the green Play button.
-    2. The keyboard F5 key can also work, unless you have changed this shortcut.
-5. The console will appear using the hard-coded values entered in step 3.
-6. Run the chat application per the precompiled .exe instructions, or use another platform.
+1. 打开 visual studio 的 Basic project 文件。
+2. 右击你想要运行的项目，选择 **Set as StartUpProject**. 
+3. 修改在 ParseCommandLine 方法中的 chat.cc 以避免传入命令行启动参数。 
+4. 在菜单选项上方，选择 **Debug**>**Start Debugging**.
+    1. 如果菜单工具栏可见，你也可以按绿色的 Play 按钮完成上述操作。
+    2. 键盘上的 F5 键也可起作用，除非你已经改变了此快捷键。
+5. 控制台会出现，并使用步骤3中设置的硬编码值。
+6. 根据预编译的 .exeRun 说明来运行聊天应用程序，或者使用其它平台。 

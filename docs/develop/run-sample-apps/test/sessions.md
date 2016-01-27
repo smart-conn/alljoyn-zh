@@ -1,21 +1,22 @@
-# Running the Sessions Application
+# 运行会话应用程序
 
-The Sessions application is a valuable testing tool. This application allows for command line inputs that can help a developer ensure that they have the basics set up in an AllJoyn&trade; application.
+会话应用程序是一个很有价值的测试工具。此应用程序支持命令行输入，帮助开发者确保某个 AllJoyn&trade; 应用程序的基本启动。
 
-This application is supported on the following platforms:
+
+此应用程序支持一下平台：
 * Linux
 * Windows
 * Android
 * OS X
 
-The Sessions application is found inside the build dist folder under:
+会话应用程序位于 build dist 文件夹内部：
 
 '''sh
 <build dist folder>/cpp/bin/<sessions or session.exe>
 '''
 
-## Usage
-Regardless of the platform, when the application runs, you can use the following commands:
+## 用途
+不论运行在哪个平台，当应用程序运行时你都可以使用下列命令：
 ```
 debug <module_name> <level>                                   - Set debug level for a module
 requestname <name>                                            - Request a well-known name
@@ -46,27 +47,24 @@ ping <name>                                                   - Ping a name
 exit                                                          - Exit this program
 ```
 
-##Examples
-###Simulate a client
-Perform the following steps to verify application is advertising and has bound a session.
+##示例
+###模拟一个客户端
+执行下列操作，验证该应用程序正在推广并已经绑定了一个会话。
 
-Assume that an application has been written that uses the AllJoyn framework but there are problems discovering on other applications. The Sessions application can help isolate where the issue exists.
+假设，一个应用程序已经被写入 AllJoyn 框架，但在发现其他应用程序的功能上还有缺陷。会话应用程序可以将存在缺陷的部分隔离。
 
-1. Start the Sessions application.
-    **NOTE:** Platform must be connected to the same network as the AllJoyn application you wish to debug.
-2. Type 'find <prefix>', where <prefix> is the start of the well-known name that should be advertised.
-    Typing 'find org.alljoyn' when running the Basic Service would show the following:
+1. 启动会话应用程序
+    **NOTE:** 平台与需要被 debug 的应用程序需在同一网络中。
+2. 键入 'find <prefix>',  <prefix> 是本应被推广的 well-known name 的开头。键入 'find org.alljoyn' ，运行时， Basic Service 会有如下显示：
     `FoundAdvertisedName name=org.alljoyn.Bus.sample namePrefix=org.alljoyn`
-3. Try and join the session by typing 'join org.alljoyn.Bus.sample 25'.  You should see this:
+3. 键入 'join org.alljoyn.Bus.sample 25'，尝试加入会话。  你将看到以下信息：
     `JoinSession(org.alljoyn.Bus.sample, 25, ...) succeeded with id = 186166334`
 
-###Simulate a Service
-Perform the following steps to set up an application that binds 
-a session and advertises a well-known name.
-1. Start the Sessions application.
-2. Type 'bind 123'.
-3. Type 'requestname org.allseen.test'.
-4. Type 'advertise org.allseen.test'.
-**NOTE:** Open a new session application in a separate terminal 
-and verify per steps in Simulate a client: 'find org.alljoyn.test', 
-then 'join org.alljoyn.test 123'
+###模拟一个服务
+执行以下操作，建立一个绑定了会话并推广 well-known name 的应用程序。
+1. 运行会话应用程序。
+2. 键入 'bind 123'.
+3. 键入 'requestname org.allseen.test'.
+4. 键入 'advertise org.allseen.test'.
+**NOTE:** 在模拟一个客户端时，需要在另一个命令行窗口中打开一个新的会话应用程序，并验证模拟一个客户端 'find org.alljoyn.test' 中的每个步骤，
+然后执行 'join org.alljoyn.test 123'.

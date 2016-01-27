@@ -32,7 +32,7 @@ AllJoyn.js 本身建立在 AllJoyn 精简客户端的顶端。控制台应用程
 
 [这里](https://allseenalliance.org/developers/develop/building/thin-linux) 提供了获取 Think Client 源的指导。
 
-注意: Use version 15.04b or later of the AllJoyn Thin Client 使用 15.04b 或之后版本的 AllJon Thin Client
+注意: 使用 15.04b 或之后版本的 AllJon Thin Client
 
 ```
 git checkout RB15.04

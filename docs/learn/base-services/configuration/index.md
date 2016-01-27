@@ -4,7 +4,7 @@ Configuration Service 提供了配置设备的功能。如配置设备的名称�
 
 ## 概念和术语
 
-Two roles exist:有两个角色：
+有两个角色：
 * **Config Server**. Config Server 运行在被配置的设备上，这些设备提供 Configuration 服务。
 
 * **Config Client**. Config Client 运行在设备或应用程序上，用于配置远程设备。
