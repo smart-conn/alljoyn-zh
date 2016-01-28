@@ -317,140 +317,95 @@ AllJoyn routing table = List (session Id, List (destination app endpoint,
 next hop B2B endpoint))
 ```
 
-**NOTE:** 一个指定目的地的端点可以使用不同的 sessionID 进入一个 AllJoyn 路由多次。在这里，如果没有多条到远程目的地的可行路径，
-。A given destination endpoint can appear multiple times 
-as part of different sessionId entries in an AllJoyn routing 
-table. In this case, if there are multiple possible paths to a 
-remote destination, different bus-to-bus endpoints can be used 
-for the same destination as part of different sessionId entries. 
+**NOTE:** 一个指定目的地的端点可以使用不同的 sessionID 进入一个 AllJoyn 路由多次。在这里，如果有多条到远程目的地的可行路径，则可以对同一个
+目的地使用不同的总线到总线的端点，作为不同的 sessionID 进入的一部分。
 
-When selecting a route, sessionId is used first to find a 
-matching entry in the routing table. Destination field is used 
-next to select a bus-to-bus endpoint (for remote destinations). 
+当选择路由时，sessionID 会被首先用于在路由表中寻找进入。目的地字段随后被用于选择一个总线对总线的端点（用于远端目的地）。
 
-The following figure shows a deployment with two devices having 
-an AllJoyn session established between them. All four apps 
-are part of the session.
+下图展示了一个两个设备之间建立一个 AllJoyn 会话的部署方式。所有的四个应用程序都是会话的一部分。
+
 
 ![alljoyn-routing-example][alljoyn-routing-example]
 
-**Figure:** AllJoyn routing example
+**Figure:** AllJoyn 路由实例
 
-The AllJoyn router on each of the device maintains a routing 
-table. [Sample routing table on provider device][sample-routing-table-on-provider-device] and
-[Sample routing table on consumer device][sample-routing-table-on-consumer-device] show sample
-AllJoyn routing tables maintained on the provider and consumer 
-AllJoyn routers, respectively.
+每一个设备上的 AllJoyn 路由都维护一张路由表。[Sample routing table on provider device][sample-routing-table-on-provider-device] 和
+[Sample routing table on consumer device][sample-routing-table-on-consumer-device] 分别对应着提供方和使用方 AllJoyn 路由上维护的路由表。
 
-#### Sample routing table on provider device
 
-| Session ID | Destination (app endpoint) | Next hop (B2B endpoint) |
+#### 提供方设备上的路由表样例
+
+| 会话 ID | 目的地 (应用程序端点) | 下一跳 (B2B 端点) |
 |---|---|---|
-| 10 | App1 Endpoint (:100.2) | N/A |
-| | App 2 Endpoint (:100.3) | N/A |
-| | App 3 Endpoint (:200.2) | B2B Endpoint (:100.4) |
-| | App 4 Endpoint (:200.3) | B2B Endpoint (:100.4) |
+| 10 | App1 端点 (:100.2) | N/A |
+| | App 2 端点 (:100.3) | N/A |
+| | App 3 端点 (:200.2) | B2B 端点 (:100.4) |
+| | App 4 端点 (:200.3) | B2B 端点 (:100.4) |
 
 #### Sample routing table on consumer device
 
-| Session ID | Destination (app endpoint) | Next hop (B2B endpoint) |
+| 会话 ID | 目的地 (应用程序端点) | 下一跳 (B2B 端点) |
 |---|---|---|
-| 10 | App1 Endpoint (:100.2) | B2B Endpoint (:100.4) |
-| | App 2 Endpoint (:100.3) | B2B Endpoint (:100.4) |
-| | App 3 Endpoint (:200.2) | N/A |
-| | App 4 Endpoint (:200.3) | N/A |
+| 10 | App1 端点 (:100.2) | B2B 端点 (:100.4) |
+| | App 2 端点 (:100.3) | B2B 端点 (:100.4) |
+| | App 3 端点 (:200.2) | N/A |
+| | App 4 端点 (:200.3) | N/A |
 
-#### Routing table formation
+#### 路由表信息
 
-Routing tables are formed based on the bus-to-bus endpoint 
-information included in the AttachSession method call. When 
-an AllJoyn router receives an AttachSession call, it can be 
-from an app trying to form a new session or from a new member 
-being added to an existing session. 
+路由表是根据包括在 AtttachSession 方法调用中的总线对总线端点信息建立的。当一个 AllJoyn 路由收到 AttachSession 调用时，他可以在应用程序方试
+图建立一个新回话，或者在一个新成员方被加入到一个现有的会话。
 
-* AttachSession for a new session: In this case, the AllJoyn 
-router sends an Accept session to the app. (Currently, the 
-single-hop use case is captured.)  If the session is accepted, 
-it creates a new sessionId. It then adds an entry for that 
-sessionId in the routing table with the two participants 
-as destinations and bus-to-bus endpoint received in the AttachSession 
-as next hop for the remote app endpoint.
-* AttachSession from an added member: In this case, the session 
-is a multi-point session and the AllJoyn router already has an 
-entry for the associated sessionId in the routing table. 
-The member from where the AttachSession is received gets added 
-as a new destination with the bus-to-bus endpoint in the 
-AttachSession as next hop.
 
-#### Routing logic
+* AttachSession 用于新回话: 本案例中，AllJoyn 路由向应用程序发送一个 Accept 会话。（目前，single-hop 用例被捕捉。）如果会话被接受，他将创建
+一个新的 sessionID. 随后在路由表中添加一个针对此 sessionID 的进入，将两个参与方作为目的地，将从 AttachSession 收到的总线对总线端点作为远端
+应用程序的下一跳。
 
-As described above, the sessionId from the message (if present) 
-is used first to find a matching sessionId entry in the routing 
-table. Next, the destination field (if present) is used to find 
-a matching destination entry to perform the routing. 
+* 来此被添加成员的 AttachSession: 本案例中，会话是一个多方会话，AllJoyn 路由在路由表中以及有了针对相关 sessionID 的进入。接收 AttachSession
+的成员作为一个新的目的地被添加，总线对总线端点作为远端应用程序的下一跳。
 
-The following sections capture the routing logic for different use cases.
 
-##### Routing based on sessionId and destination field
+#### 路由逻辑
 
-If an app-directed message has a non-zero sessionId as well 
-as destination fields, the AllJoyn router first finds that 
-sessionId entry in the routing table and then finds the 
-destination entry within that sessionId for the message destination. 
+按照上文描述，消息中的 sessionID（如果存在）被首先用于在路由表中寻找一个匹配的 sessionID 进入。随后，目的地字段（如果存在）被用于寻找一个
+可以执行转发的匹配的目的地进入。
 
-* If the destination was a remote endpoint, then the message gets 
-sent to the bus-to-bus endpoint specified for that destination in 
-the routing table. 
-* If the destination is locally attached to the AllJoyn router, 
-the message gets directly sent over the local bus connection to 
-that destination.
+以下部分描述了不同用例中的转发逻辑。
 
-##### Routing based on sessionId field only
+##### 根据 sessionId 和目的地字段的路由逻辑
 
-If an app-directed message only has a sessionId but no destination 
-field, the message gets forwarded to all the destination endpoints 
-in that session. The AllJoyn router finds the matching sessionId 
-entry in the routing table and send the message to all the destinations 
-listed for that session, except the one which sent the message. 
-* For remote app endpoints in the session, the message gets 
-forwarded to associated bus-to-bus endpoint from the routing table. 
-* For locally attached app endpoints in the session, the AllJoyn 
-router directly forwards message to those app endpoints over 
-the local bus connection. 
+如果一条应用导向的消息有一个不为零的会话 ID 以及目的地字段，AllJoyn 路由首先在路由表中找到会话 ID 进入，随后在此消息目的地的会话 ID 之内找
+到目的地进入。
 
-##### Routing for sessionId=0
+* 如果目的地是一个远程端点，消息会被发送到路由表中针对此目的地指定的总线对总线端点。
+* 如果目的地是本地依附在 AllJoyn 路由上的，此消息通过本地总线连接被直接发送到该目的地。
 
-An app-directed message can specify a sessionId=0 or, if no 
-sessionId field is included, the AllJoyn router assumes sessionId 
-to be 0. The sessionId field value can be zero for any message type. 
-For METHOD_CALL, METHOD_RETURN and ERROR messages, the only 
-requirement is that the destination field must be specified.  
+##### 仅根据会话 ID 字段的路由逻辑
 
-For messages with sessionId=0 (or no specified sessionId), 
-if a destination field is specified, the AllJoyn router selects 
-any available route from the routing table (from any of the 
-session entry containing that destination) and forwards the 
-message over the bus-to-bus endpoint for that route.
+如果一条应用导向的消息只有一个会话 ID 而没有目的地字段，此消息会被发送到会话中的所有目的地端点。AllJoyn 路由在路由表中找出与会话 ID 匹配的
+进入并将消息发送到针对此会话列出的除消息发送方的所有目的地。
 
-For SIGNAL messages with sessionId=0 (or no specified sessionId), 
-the destination field does not need to be present. In this case, 
-the AllJoyn router looks at the GLOBAL_BROADCAST flag in the message 
-to determine how that SIGNAL message should be routed per logic below: 
+* 对于会话中的远端应用程序端点，此消息会根据路由表被发送到相关的总线对总线端点。
+* 对于本地依附在 AllJoyn 路由上的应用程序，此消息通过本地总线连接被直接发送到该目的地。
 
-* GLOBAL_BROADCAST Flag set: The SIGNAL message should be globally 
-broadcast to all connected endpoints over any session. The Destination 
-field is not looked at when routing such a signal message. The AllJoyn 
-router sends this message to all destination endpoints from the 
-routing table across all sessionIds. 
-* For remote destinations, the SIGNAL message gets forwarded to 
-the associated bus-to-bus endpoint. 
-* For locally connected destination, the message gets forwarded 
-directly to the app endpoint over local bus connection.
-* GLOBAL_BROADCAST Flag not set: The SIGNAL message should be 
-sent over all the locally attached app endpoints. The AllJoyn 
-router forwards the message to all of the locally connected 
-app endpoint over local bus connection.
+##### sessionId=0 时的路由逻辑
 
+一条应用导向的消息可以声明 sessionID=0，并且当 sessionID 字段没有被包括时，AllJoyn 路由也假设 sessionID 为0. 对于任何种类的消息 sessionID 
+字段都可以为0. 对于 METHOD_CALL, METHOD_RETURN 和 ERROR 消息，仅要求目的地字段被声明。
+
+对于 sessionID=0 （或为声明） 的消息，如果目的地字段被声明，AllJoyn 路由则会从路由表中（从任何包含此目的地的会话进入中）选择任何可用的转发
+并将消息通过针对此转发的总线对总线端点发送。
+
+对于 sessionID=0 的 SIGNAL 消息（或未声明 sessionID），目的地字段不需要被呈现。在这种情况下，AllJoyn 路由会查看消息中的 GLOBAL_BROADCAST 标
+识，根据下面的逻辑决定如何转发此 SIGNAL 消息：
+
+* 已设置 GLOBAL_BROADCAST 标识: 此 SIGNAL 信号应被全局广播到通过任何会话连接的任何已连接的端点。在转发此类消息时，目的地字段将被忽略。AllJoyn 
+路由将通过路由表中所有会话 ID 发送此消息到所有目的地的端点。
+
+* 对于远端目的地，SIGNAL 信号将被发送到相关的总线对总线端点。
+* 对于本地连接的目的地，此消息通过本地总线连接被直接发送到应用程序端点。
+* GLOBAL_BROADCAST 标识 未设置: 此 SIGNAL 信号应发送到所有本地附属的应用程序端点上。AllJoyn 路由将此消息通过本地总线连接发送到所有本地连接
+的应用程序端点。 
 
 
 [sessionless-signal]: /learn/core/system-description/sessionless-signal
@@ -469,4 +424,3 @@ app endpoint over local bus connection.
 [data-exchange-signals]: /files/learn/system-desc/data-exchange-signals.png
 [alljoyn-message-format]: /files/learn/system-desc/alljoyn-message-format.png
 [alljoyn-routing-example]: /files/learn/system-desc/alljoyn-routing-example.png
-
