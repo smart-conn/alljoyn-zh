@@ -246,7 +246,7 @@ AllJoyn 框架实现了 D-Bus SASL 交换协议 [D-Bus Specification](http://dbu
 
 下面描述了消息流的步骤。
 
-1. The consumer app generates a 28 bytes client random string c_rand.
+1. 使用方应用程序生成一个 28 bytes 的客户端随机字符创 c_rand.
 2. The consumer (client) app generates an AuthChallenge METHOD_CALL
 message and passes "AUTH ALLJOYN_SRP_KEYX &lt;c_rand&gt;" as parameter
 in that message. The consumer app sends the method call to the
