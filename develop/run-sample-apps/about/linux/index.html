@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,11 +2127,11 @@
     <div class="col-md-8" role="main">
 
 <h1 id="linux-running-about-sample-apps">Linux - Running About Sample Apps</h1>
-<h2 id="running-linux-aboutclient-and-aboutservice-apps">Running Linux AboutClient and AboutService Apps</h2>
-<h3 id="prerequisites">Prerequisites</h3>
+<h2 id="linux-aboutclient-aboutservice">运行 Linux AboutClient 和 AboutService 应用程序</h2>
+<h3 id="_1">前提条件</h3>
 <ol>
-<li>Open two terminal windows.</li>
-<li>In each, navigate to the AllJoyn&trade; root dir, then:</li>
+<li>打开两个命令行窗口。</li>
+<li>每一个都切换到 AllJoyn&trade; 根目录（root dir）, 然后:</li>
 </ol>
 <pre><code class="sh">export AJ_ROOT=`pwd`
 
@@ -2141,22 +2141,20 @@ export TARGET_CPU=x86
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$LD_LIBRARY_PATH
 </code></pre>
 
-<h3 id="run-the-aboutservice-sample-app">Run the AboutService Sample App</h3>
-<p>In one of the terminal windows, run <code>AboutService</code>:</p>
+<h3 id="aboutservice-sample">运行 AboutService Sample 应用程序</h3>
+<p>在其中一个命令行中，运行 <code>AboutService</code>:</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/AboutService
 </code></pre>
 
-<p><strong>NOTE:</strong> The application just runs and will print information when an AboutClient connects.</p>
-<h3 id="run-the-aboutclient-sample-app">Run the AboutClient Sample App</h3>
-<p>In the other terminal window, run <code>AboutClient</code>:</p>
+<p><strong>NOTE:</strong> 应用程序已经运行，在有 AboutClient 连接上时将会打印相关信息。</p>
+<h3 id="aboutclient-sample-app">运行 AboutClient Sample App</h3>
+<p>在另一个命令行中，运行 <code>AboutClient</code>:</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/AboutClient
 </code></pre>
 
-<p><strong>NOTE:</strong> The application searches for any instance of AboutService that is announcing
-the <code>com.example.about.feature.interface.sample</code> it will connect to the service
-and call all the methods specified in the About Interface and the Echo method
-specified in the <code>com.example.about.feature.interface.sample</code> interface.</p>
-<h2 id="run-legacy-aboutservice-and-aboutclient-apps">Run Legacy AboutService and AboutClient Apps</h2>
+<p><strong>NOTE:</strong> 此应用程序会搜索任何正在宣布 <code>com.example.about.feature.interface.sample</code> 接口的 AboutService 实例。他将会连接到该服务，并调用
+About Interface 中所定义的所有方法，以及由 <code>com.example.about.feature.interface.sample</code> 接口所定义的 Echo 方法。</p>
+<h2 id="legacy-aboutservice-legacy-aboutclient">运行 Legacy AboutService 和 Legacy AboutClient 应用程序。</h2>
 <pre><code class="sh">export AJ_ROOT=`pwd`
 
 # &lt;TARGET CPU&gt; can be either x86_64, x86, or whatever value you set for &quot;CPU=&quot; when running SCons.
@@ -2165,47 +2163,44 @@ export TARGET_CPU=x86
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$LD_LIBRARY_PATH
 </code></pre>
 
-<p>Depending on the version of the AllJoyn SDK the location of the Legacy sample
-apps may be in a different location. If the dist directory contains a subdirectory
-named <code>about</code> you may need to add the about folder to the LD_LIBRARY_PATH</p>
+<p>由于 AllJoyn SDK 的版本差异，存储 Legacy 示例应用程序的地址也会有所不同。如果分发目录包含一个名为 <code>about</code> 的子目录，您需要将此 about 文件夹
+添加到 LD_LIBRARY_PATH.</p>
 <pre><code class="sh">export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/lib:$LD_LIBRARY_PATH
 </code></pre>
 
-<h3 id="run-the-aboutservice-sample-app_1">Run the AboutService Sample App</h3>
-<p>In one of the terminal windows, run <code>AboutService</code>:</p>
+<h3 id="aboutservice-sample-app">运行 AboutService Sample App</h3>
+<p>在一个命令行窗口中，运行 <code>AboutService</code>:</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/AboutService_legacy
 </code></pre>
 
-<p>Depending on the version of the AllJoyn SDK, the location of the Legacy sample
-apps may have moved. If the dist directory contains a subdirectory
-named <code>about</code>, you may need to run the sample for the different location</p>
+<p>由于 AllJoyn SDK 的版本差异，存储 Legacy 示例应用程序的地址可能已经改变。如果分发目录包含一个名为 <code>about</code> 的子目录，您需要在另一个位置运行
+该示例。</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/bin/AboutService
 </code></pre>
 
-<p><strong>NOTE:</strong> The application just runs and will print information when an AboutClient connects.</p>
-<h3 id="run-the-aboutclient-sample-app_1">Run the AboutClient Sample App</h3>
-<p>In the other terminal window, run <code>AboutClient</code>:</p>
+<p><strong>NOTE:</strong> 应用程序已经运行，在有 AboutClient 连接上时将会打印相关信息。</p>
+<h3 id="aboutclient-sample-app_1">运行 AboutClient Sample App</h3>
+<p>在另一个命令行窗口中运行 <code>AboutClient</code>:</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/AboutClient_legacy
 </code></pre>
 
-<p>Depending on the version of the AllJoyn SDK, the location of the Legacy sample
-apps may have moved. If the dist directory contains a subdirectory
-named <code>about</code>, you may need to run the sample for the different location</p>
+<p>由于 AllJoyn SDK 的版本差异，存储 Legacy 示例应用程序的地址可能已经改变。如果分发目录包含一个名为 <code>about</code> 的子目录，您需要在另一个位置运行
+该示例。</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/bin/AboutClient
 </code></pre>
 
-<p><strong>NOTE:</strong> The application searches for any instance of AboutService that is announcing
-the <code>org.alljoyn.About</code> and <code>org.alljoyn.Icon</code> it will connect to the service
-and call all the methods specified in the About Interface and the the About Icon
-interface.</p></div>
+<p>此应用程序会搜索任何正在宣布 <code>com.example.about.feature.interface.sample</code> 接口的 AboutService 实例。他将会连接到该服务，并调用
+About Interface 中所定义的所有方法，以及由 <code>com.example.about.feature.interface.sample</code> 接口所定义的 Echo 方法。</p>
+<p><strong>NOTE:</strong> 此应用程序会搜索任何正在宣布 <code>org.alljoyn.About</code> 以及 <code>org.alljoyn.Icon</code> 接口的 AboutService 实例。他将会连接到该服务，并调用
+About Interface 以及 About Icon interface 中所定义的所有方法。</p></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
       <li class="main active"><a href="#linux-running-about-sample-apps">Linux - Running About Sample Apps</a></li>
       
-        <li><a href="#running-linux-aboutclient-and-aboutservice-apps">Running Linux AboutClient and AboutService Apps</a></li>
+        <li><a href="#linux-aboutclient-aboutservice">运行 Linux AboutClient 和 AboutService 应用程序</a></li>
       
-        <li><a href="#run-legacy-aboutservice-and-aboutclient-apps">Run Legacy AboutService and AboutClient Apps</a></li>
+        <li><a href="#legacy-aboutservice-legacy-aboutclient">运行 Legacy AboutService 和 Legacy AboutClient 应用程序。</a></li>
       
     
   </ul>

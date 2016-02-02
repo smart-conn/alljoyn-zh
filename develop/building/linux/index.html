@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,23 +2127,22 @@
     <div class="col-md-8" role="main">
 
 <h1 id="building-linux">Building Linux</h1>
-<h2 id="setup">Setup</h2>
-<p><strong>NOTE:</strong> The installation commands below refer specifically to
-Debian/Ubuntu Linux. Equivalent commands are available for other distributions of Linux.</p>
+<h2 id="_1">设置</h2>
+<p><strong>NOTE:</strong> 下列安装命令是针对 Debian/Ubuntu Linux 系统的。 对应其他 Linux 版本的安装命令也有提供。</p>
 <ul>
-<li>Build tools and libs</li>
+<li>搭建工具和库</li>
 </ul>
 <pre><code class="sh">sudo apt-get install build-essential libgtk2.0-dev libssl-dev xsltproc ia32-libs libxml2-dev libcap-dev
 </code></pre>
 
 <ul>
-<li>Install Python v2.6/2.7 (Python v3.0 is not compatible and will cause errors)</li>
+<li>安装 Python v2.6/2.7 (不兼容 Python v3.0, 会引发错误。)</li>
 </ul>
 <pre><code class="sh">sudo apt-get install python
 </code></pre>
 
 <ul>
-<li>Install SCons v2.0</li>
+<li>安装 SCons v2.0</li>
 </ul>
 <pre><code class="sh">sudo apt-get install scons
 </code></pre>
@@ -2155,8 +2154,7 @@ Debian/Ubuntu Linux. Equivalent commands are available for other distributions o
 </code></pre>
 
 <ul>
-<li>Download the <a href="https://allseenalliance.org/framework/download">AllJoyn Source zip</a> and extract source. The tree
-  should look like below. Note, extra directories may exist.</li>
+<li>下载 <a href="https://allseenalliance.org/framework/download">AllJoyn Source zip</a> 并提取源代码。此树应为如下所示。可能会存在更多的目录。</li>
 </ul>
 <pre><code class="sh">root-source-dir/
     core/
@@ -2167,22 +2165,21 @@ Debian/Ubuntu Linux. Equivalent commands are available for other distributions o
         base_tcl/
 </code></pre>
 
-<h2 id="build-samples">Build Samples</h2>
+<h2 id="_2">搭建样例</h2>
 <pre><code class="sh">cd &lt;root dir of source&gt;/core/alljoyn
 scons BINDINGS=cpp WS=off BT=off ICE=off SERVICES=&quot;about,notification,controlpanel,config,onboarding,sample_apps&quot;
 </code></pre>
 
-<h2 id="build-ac-server-sample">Build AC Server Sample</h2>
-<p>The AC Server Sample app uses all of the base services to simulate
-an AC device.</p>
+<h2 id="ac">搭建 AC 服务器 样例</h2>
+<p>AC 服务器样例应用程序使用全部的基础服务来模拟一个 AC 设备。</p>
 <pre><code class="sh"># Note, exclude the &quot;base&quot; dir for pre-14.06 source
 cd $AJ_ROOT/services/base/sample_apps
 scons BINDINGS=cpp WS=off ALL=1
 </code></pre>
 
-<h2 id="add-the-alljoyn-framework-to-an-existing-app">Add the AllJoyn&trade; framework to an existing app</h2>
+<h2 id="alljoyn">向现存的应用程序添加一个 AllJoyn&trade; 框架。</h2>
 <ul>
-<li>Setup</li>
+<li>设置</li>
 </ul>
 <pre><code class="sh">  export AJ_ROOT=~/alljoyn
 
@@ -2191,7 +2188,7 @@ scons BINDINGS=cpp WS=off ALL=1
 </code></pre>
 
 <ul>
-<li>Add header include directories</li>
+<li>添加 header （包括目录）</li>
 </ul>
 <pre><code class="sh">export CXXFLAGS=&quot;$CXXFLAGS \
     -I$AJ_DIST/cpp/inc \
@@ -2204,7 +2201,7 @@ scons BINDINGS=cpp WS=off ALL=1
 </code></pre>
 
 <ul>
-<li>Configure linker to include required libs</li>
+<li>配置连接器，以纳入所需要的库</li>
 </ul>
 <pre><code class="sh">export LDFLAGS=&quot;$LDFLAGS \
     -L$AJ_DIST/cpp/lib \
@@ -2218,13 +2215,13 @@ scons BINDINGS=cpp WS=off ALL=1
     
       <li class="main active"><a href="#building-linux">Building Linux</a></li>
       
-        <li><a href="#setup">Setup</a></li>
+        <li><a href="#_1">设置</a></li>
       
-        <li><a href="#build-samples">Build Samples</a></li>
+        <li><a href="#_2">搭建样例</a></li>
       
-        <li><a href="#build-ac-server-sample">Build AC Server Sample</a></li>
+        <li><a href="#ac">搭建 AC 服务器 样例</a></li>
       
-        <li><a href="#add-the-alljoyn-framework-to-an-existing-app">Add the AllJoyn&trade; framework to an existing app</a></li>
+        <li><a href="#alljoyn">向现存的应用程序添加一个 AllJoyn&trade; 框架。</a></li>
       
     
   </ul>

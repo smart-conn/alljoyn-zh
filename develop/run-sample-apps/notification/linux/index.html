@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2126,10 +2126,10 @@
 </div></div>
     <div class="col-md-8" role="main">
 
-<h1 id="linux-running-notification-sample-apps">Linux - Running Notification Sample Apps</h1>
-<h2 id="running-consumerservice-and-producerbasic-sample-apps">Running ConsumerService and ProducerBasic Sample Apps</h2>
-<h3 id="prerequisites">Prerequisites</h3>
-<p>Open two terminal windows. In each, navigate to the AllJoyn&trade; root dir, then:</p>
+<h1 id="linux-">Linux - 运行提醒应用程序样例</h1>
+<h2 id="consumerservice-producerbasic">运行 ConsumerService 和 ProducerBasic 应用程序样例</h2>
+<h3 id="_1">前提条件</h3>
+<p>打开两个命令行窗口。每一个都切换到 AllJoyn&trade; 根目录，然后：</p>
 <pre><code class="sh">export AJ_ROOT=`pwd`
 
 # &lt;TARGET CPU&gt; can be either x86_64, x86, or whatever value you set for &quot;CPU=&quot; when running SCons.
@@ -2138,21 +2138,21 @@ export TARGET_CPU=x86
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/notification/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/services_common/lib:$LD_LIBRARY_PATH
 </code></pre>
 
-<h3 id="run-the-consumerservice-sample-app">Run the ConsumerService Sample App</h3>
-<p>In one of the terminal windows, run <code>ConsumerService</code>:</p>
+<h3 id="consumerservice">运行 ConsumerService 应用程序样例</h3>
+<p>在一个命令行窗口中运行 <code>ConsumerService</code>:</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/notification/bin/ConsumerService
 </code></pre>
 
-<h3 id="run-the-producerbasic-sample-app">Run the ProducerBasic Sample App</h3>
-<p>In the other terminal window, run <code>ProducerBasic</code>:</p>
+<h3 id="producerbasic">运行 ProducerBasic 应用程序样例</h3>
+<p>在另一个命令行窗口中运行 <code>ProducerBasic</code>:</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/notification/bin/ProducerBasic
 </code></pre></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
-      <li class="main active"><a href="#linux-running-notification-sample-apps">Linux - Running Notification Sample Apps</a></li>
+      <li class="main active"><a href="#linux-">Linux - 运行提醒应用程序样例</a></li>
       
-        <li><a href="#running-consumerservice-and-producerbasic-sample-apps">Running ConsumerService and ProducerBasic Sample Apps</a></li>
+        <li><a href="#consumerservice-producerbasic">运行 ConsumerService 和 ProducerBasic 应用程序样例</a></li>
       
     
   </ul>

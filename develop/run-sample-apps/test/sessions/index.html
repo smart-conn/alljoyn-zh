@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2126,19 +2126,19 @@
 </div></div>
     <div class="col-md-8" role="main">
 
-<h1 id="running-the-sessions-application">Running the Sessions Application</h1>
-<p>The Sessions application is a valuable testing tool. This application allows for command line inputs that can help a developer ensure that they have the basics set up in an AllJoyn&trade; application.</p>
-<p>This application is supported on the following platforms:
+<h1 id="_1">运行会话应用程序</h1>
+<p>会话应用程序是一个很有价值的测试工具。此应用程序支持命令行输入，帮助开发者确保某个 AllJoyn&trade; 应用程序的基本启动。</p>
+<p>此应用程序支持一下平台：
 <em> Linux
 </em> Windows
 <em> Android
 </em> OS X</p>
-<p>The Sessions application is found inside the build dist folder under:</p>
+<p>会话应用程序位于 build dist 文件夹内部：</p>
 <p>'''sh
 <build dist folder>/cpp/bin/<sessions or session.exe>
 '''</p>
-<h2 id="usage">Usage</h2>
-<p>Regardless of the platform, when the application runs, you can use the following commands:</p>
+<h2 id="_2">用途</h2>
+<p>不论运行在哪个平台，当应用程序运行时你都可以使用下列命令：</p>
 <pre><code>debug &lt;module_name&gt; &lt;level&gt;                                   - Set debug level for a module
 requestname &lt;name&gt;                                            - Request a well-known name
 releasename &lt;name&gt;                                            - Release a well-known name
@@ -2168,37 +2168,34 @@ ping &lt;name&gt;                                                   - Ping a nam
 exit                                                          - Exit this program
 </code></pre>
 
-<h2 id="examples">Examples</h2>
-<h3 id="simulate-a-client">Simulate a client</h3>
-<p>Perform the following steps to verify application is advertising and has bound a session.</p>
-<p>Assume that an application has been written that uses the AllJoyn framework but there are problems discovering on other applications. The Sessions application can help isolate where the issue exists.</p>
+<h2 id="_3">示例</h2>
+<h3 id="_4">模拟一个客户端</h3>
+<p>执行下列操作，验证该应用程序正在推广并已经绑定了一个会话。</p>
+<p>假设，一个应用程序已经被写入 AllJoyn 框架，但在发现其他应用程序的功能上还有缺陷。会话应用程序可以将存在缺陷的部分隔离。</p>
 <ol>
-<li>Start the Sessions application.
-    <strong>NOTE:</strong> Platform must be connected to the same network as the AllJoyn application you wish to debug.</li>
-<li>Type 'find <prefix>', where <prefix> is the start of the well-known name that should be advertised.
-    Typing 'find org.alljoyn' when running the Basic Service would show the following:
+<li>启动会话应用程序
+    <strong>NOTE:</strong> 平台与需要被 debug 的应用程序需在同一网络中。</li>
+<li>键入 'find <prefix>',  <prefix> 是本应被推广的 well-known name 的开头。键入 'find org.alljoyn' ，运行时， Basic Service 会有如下显示：
     <code>FoundAdvertisedName name=org.alljoyn.Bus.sample namePrefix=org.alljoyn</code></li>
-<li>Try and join the session by typing 'join org.alljoyn.Bus.sample 25'.  You should see this:
+<li>键入 'join org.alljoyn.Bus.sample 25'，尝试加入会话。  你将看到以下信息：
     <code>JoinSession(org.alljoyn.Bus.sample, 25, ...) succeeded with id = 186166334</code></li>
 </ol>
-<h3 id="simulate-a-service">Simulate a Service</h3>
-<p>Perform the following steps to set up an application that binds 
-a session and advertises a well-known name.
-1. Start the Sessions application.
-2. Type 'bind 123'.
-3. Type 'requestname org.allseen.test'.
-4. Type 'advertise org.allseen.test'.
-<strong>NOTE:</strong> Open a new session application in a separate terminal 
-and verify per steps in Simulate a client: 'find org.alljoyn.test', 
-then 'join org.alljoyn.test 123'</p></div>
+<h3 id="_5">模拟一个服务</h3>
+<p>执行以下操作，建立一个绑定了会话并推广 well-known name 的应用程序。
+1. 运行会话应用程序。
+2. 键入 'bind 123'.
+3. 键入 'requestname org.allseen.test'.
+4. 键入 'advertise org.allseen.test'.
+<strong>NOTE:</strong> 在模拟一个客户端时，需要在另一个命令行窗口中打开一个新的会话应用程序，并验证模拟一个客户端 'find org.alljoyn.test' 中的每个步骤，
+然后执行 'join org.alljoyn.test 123'.</p></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
-      <li class="main active"><a href="#running-the-sessions-application">Running the Sessions Application</a></li>
+      <li class="main active"><a href="#_1">运行会话应用程序</a></li>
       
-        <li><a href="#usage">Usage</a></li>
+        <li><a href="#_2">用途</a></li>
       
-        <li><a href="#examples">Examples</a></li>
+        <li><a href="#_3">示例</a></li>
       
     
   </ul>

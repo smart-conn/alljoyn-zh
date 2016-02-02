@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2126,22 +2126,13 @@
 </div></div>
     <div class="col-md-8" role="main">
 
-<h1 id="running-the-control-panel-samples">Running The Control Panel Samples</h1>
-<p>There are two Control Panel sample applications, a ‘Controller’ 
-and a ‘Controllable’.  The <a href="../../../learn/base-services/controlpanel">Control Panel service framework</a> 
-is a collection of many interfaces and a definition of object path 
-where the interfaces are placed.</p>
-<p>When an application uses the <a href="../../../learn/base-services/controlpanel">Control Panel service</a> 
-to be a Controllable device, it uses the service APIs which wrap up 
-an AllJoyn&trade; feature called <a href="../../../learn/core#introspection">Introspection</a>.<br />
-The service provides an <a href="../../../learn/base-services/controlpanel">Adaptive UI Layer</a> that 
-is responsible for creating platform widgets that are rendered on a screen.</p>
-<p>When an application uses the Controller side of the 
-<a href="../../../learn/base-services/controlpanel">Control Panel service framework</a>, it offers 
-up capabilities such that any application can control some 
-set of functionality. It allows for an OEM to leverage the 
-developer's ecosystem and build applications that interact with a product.</p>
-<p>The ControlPanel interfaces are defined as follows:</p>
+<h1 id="_1">运行控制面板样例</h1>
+<p>此处有两个控制面板样例， ‘Controller’ 和 ‘Controllable’. <a href="../../../learn/base-services/controlpanel">Control Panel service framework</a> 是一个众多接口和存放接口的对象路
+径定义的集合。</p>
+<p>当某一应用程序使用 <a href="../../../learn/base-services/controlpanel">Control Panel service</a> 作为一个可控设备时，他会使用包含了 AllJoyn&trade; 被称作  <a href="../../../learn/core#introspection">Introspection</a> 功能的服务 API. 此服务提供负责创建被渲染到屏幕上的平台组件的 <a href="../../../learn/base-services/controlpanel">Adaptive UI Layer</a> 功能。</p>
+<p>当某一应用程序使用 <a href="../../../learn/base-services/controlpanel">Control Panel service framework</a> 作为一个控制方设备时, 他会提供可以使任何应用程序都能控制一些功能集合的
+功能。OEM 可以利用此功能影响开发者的生态系统，并搭建可以与产品交互的应用程序。</p>
+<p>ControlPanel 接口的定义如下所示：</p>
 <pre><code class="xml">**NOTE:** The interfaces below are also available as secure interfaces
 
 &lt;interface name=&quot;org.alljoyn.ControlPanel.ControlPanel&quot;&gt;
@@ -2222,9 +2213,9 @@ developer's ecosystem and build applications that interact with a product.</p>
 &lt;/interface&gt;
 </code></pre>
 
-<p>Controller samples are available for Android, iOS, and Linux.</p>
-<p>Controllable samples are available for Linux and Thin Linux.</p>
-<p>The samples can be run on the following platforms:
+<p>Controllable 样例支持在 Android, iOS, 和 Linux 上可用。</p>
+<p>Controllable 样例已经在 Linux 和 Thin Linux 上可用。</p>
+<p>这些样例可以在以下应用程序中运行。
 - <a href="../../../develop/run-sample-apps/controlpanel/android">Android</a>
 - <a href="../../../develop/run-sample-apps/controlpanel/linux">Linux</a>
 - <a href="../../../develop/run-sample-apps/controlpanel/ios-osx">iOS/OS X</a>
@@ -2232,7 +2223,7 @@ developer's ecosystem and build applications that interact with a product.</p>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
-      <li class="main active"><a href="#running-the-control-panel-samples">Running The Control Panel Samples</a></li>
+      <li class="main active"><a href="#_1">运行控制面板样例</a></li>
       
     
   </ul>

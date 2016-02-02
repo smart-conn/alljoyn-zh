@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,15 +2127,14 @@
     <div class="col-md-8" role="main">
 
 <h1 id="running-ac-server-sample-thin-linux">Running AC Server Sample - Thin Linux</h1>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="_1">前提条件</h2>
 <ul>
 <li><a href="../../../../develop/building/thin-linux">Build the thin Linux samples</a></li>
-<li><a href="../../../../develop/building/linux">Build the AllJoyn&trade; router</a>. AllJoyn thin 
-  apps require an AllJoyn router to connect to in order to function properly.</li>
+<li><a href="../../../../develop/building/linux">Build the AllJoyn&trade; router</a>. AllJoyn 精简应用程序小需要一个可连接的 AllJoyn 路由，以便正常工作。</li>
 </ul>
-<h3 id="run-ac-server-sample">Run AC Server Sample</h3>
+<h3 id="ac">运行 AC 服务器样例应用程序</h3>
 <ol>
-<li>Launch the AllJoyn router to allow thin apps to connect.</li>
+<li>运行 AllJoyn 路由，使得精简应用程序可以连接。</li>
 </ol>
 <p>```sh
   # <TARGET CPU> can be either x86_64, x86, or whatever value you set for CPU= when running SCons.
@@ -2146,14 +2145,15 @@
 <p>./alljoyn-daemon &amp;
   ```</p>
 <ol>
-<li>Launch the AC Server Sample (in a new terminal).</li>
+<li>运行 AC 服务器端示例 (在新的窗口中).
+ (in a new terminal).</li>
 </ol>
 <p><code>sh
   cd $AJ_ROOT/services/sample_apps/ACServerSample/build
   ./ACServerSample</code></p>
 <ol>
 <li>Use the following apps to interact with the different services 
-provided by the AC Server Sample:</li>
+provided by the AC Server Sample:使用下列应用程序与由 AC 服务器示例所提供的不同服务进行交互。</li>
 <li>About<ul>
 <li><a href="../../../../develop/run-sample-apps/about/ios-osx">iOS About Sample</a></li>
 <li><a href="../../../../develop/run-sample-apps/about/linux">Linux About Client Sample</a></li>
@@ -2173,7 +2173,7 @@ provided by the AC Server Sample:</li>
     
       <li class="main active"><a href="#running-ac-server-sample-thin-linux">Running AC Server Sample - Thin Linux</a></li>
       
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#_1">前提条件</a></li>
       
     
   </ul>

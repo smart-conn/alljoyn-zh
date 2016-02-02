@@ -1,0 +1,2580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+  <title>System descriptionalljoyn transport - SmartConn</title>
+
+  <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+  <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+  <link href="../../../css/highlight.css" rel="stylesheet">
+  <link href="../../../css/base.css" rel="stylesheet">
+  <link href="../../../css/smartconn.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+
+  
+</head>
+
+<body>
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+
+    <!-- Collapsed navigation -->
+    <div class="navbar-header">
+      <!-- Expander button -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- Main title -->
+      <a class="navbar-brand" href="/">SmartConn</a>
+    </div>
+
+    <!-- Expanded navigation -->
+    <div class="navbar-collapse collapse">
+      <!-- Main navigation -->
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="../../..">Docs</a>
+        </li>
+      </ul>
+
+      <!-- Search, Navigation and Repo links -->
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        <!-- user -->
+        <li><a href="#">My Apps</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="col-md-3"><div class="bs-sidebar hidden-print" role="complementary">
+  <ul class="nav bs-sidenav">
+    
+      
+  
+
+    
+      
+  <li class="">
+    
+      
+        <a href="../../../ambassadors/">Ambassadors</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+    
+      
+  <li class="">
+    
+      
+        <a href="../../../develop/">Develop</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/api-guide/">Api guide</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+    
+      
+    
+      
+        <a href="../../../develop/api-guide/about/">About</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/about/c-thin/">C thin</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/about/cpp-legacy/">Cpp legacy</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/about/cpp/">Cpp</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/about/java-legacy/">Java legacy</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/about/java/">Java</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/about/objc-legacy/">Objc legacy</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/about/objc/">Objc</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/api-guide/audio-streaming/">Audio streaming</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/audio-streaming/cpp/">Cpp</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+    
+      
+        <a href="../../../develop/api-guide/config/">Config</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/config/c-thin/">C thin</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/config/cpp/">Cpp</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/config/java/">Java</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/config/objc/">Objc</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+    
+      
+        <a href="../../../develop/api-guide/controlpanel/">Controlpanel</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/controlpanel/c-thin/">C thin</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/controlpanel/cpp/">Cpp</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/controlpanel/java/">Java</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/controlpanel/objc/">Objc</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/api-guide/core/">Core</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/core/alljoyn-transports-best-practices/">Alljoyn transports best practices</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/core/java/">Java</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/core/objc/">Objc</a>
+    </li>
+  
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/api-guide/core/auto-ping/">Auto ping</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/api-guide/core/observer/">Observer</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/api-guide/core/propcache/">Propcache</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/api-guide/events-and-actions/">Events and actions</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+    
+      
+        <a href="../../../develop/api-guide/notification/">Notification</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/notification/c-thin/">C thin</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/notification/cpp/">Cpp</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/notification/java/">Java</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/notification/objc/">Objc</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/api-guide/onboarding/">Onboarding</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/onboarding/java/">Java</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/api-guide/onboarding/objc/">Objc</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/api-reference/">Api reference</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/ask/">Ask</a>
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/ask/popular/">Popular</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/building/">Building</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/building/thin-linux/">Thin linux</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/building/thin-windows/">Thin windows</a>
+    </li>
+  
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/building/alljoyn-js/">Alljoyn js</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/building/android/">Android</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/building/android/build-source/">Build source</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/building/ios-osx/">Ios osx</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/building/ios-osx/build-source/">Build source</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/building/linux/">Linux</a>
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/building/linux/build-source/">Build source</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/building/linux/openwrt/">Openwrt</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/building/windows/">Windows</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/building/windows/build-source/">Build source</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/debug/">Debug</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/debug/common-issues/">Common issues</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/run-sample-apps/">Run sample apps</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/run-sample-apps/about/">About</a>
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/about/ios-osx/">Ios osx</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/about/linux/">Linux</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/about/windows/">Windows</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/run-sample-apps/acserver/">Acserver</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/acserver/linux/">Linux</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/acserver/thin-linux/">Thin linux</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/run-sample-apps/alljoyn-js/">Alljoyn js</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/run-sample-apps/basic/">Basic</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/basic/android/">Android</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/basic/ios-osx/">Ios osx</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/basic/linux/">Linux</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/basic/thin-linux/">Thin linux</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/basic/thin-windows/">Thin windows</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/basic/windows/">Windows</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/run-sample-apps/chat/">Chat</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/chat/android/">Android</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/chat/ios-osx/">Ios osx</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/chat/linux/">Linux</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/chat/thin-linux/">Thin linux</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/chat/windows/">Windows</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/run-sample-apps/config/">Config</a>
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/config/android/">Android</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/config/ios-osx/">Ios osx</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/config/linux/">Linux</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/config/thin-linux/">Thin linux</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/run-sample-apps/controlpanel/">Controlpanel</a>
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/controlpanel/android/">Android</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/controlpanel/ios-osx/">Ios osx</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/controlpanel/linux/">Linux</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/controlpanel/thin-linux/">Thin linux</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/run-sample-apps/notification/">Notification</a>
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/notification/android/">Android</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/notification/ios-osx/">Ios osx</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/notification/linux/">Linux</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/notification/thin-linux/">Thin linux</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/run-sample-apps/observer/">Observer</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/run-sample-apps/onboarding/">Onboarding</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/onboarding/android/">Android</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/onboarding/ios-osx/">Ios osx</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/onboarding/linux/">Linux</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/run-sample-apps/test/">Test</a>
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/run-sample-apps/test/sessions/">Sessions</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../../../develop/tutorial/">Tutorial</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/tutorial/arduino-and-gt202/">Arduino and gt202</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/tutorial/ios/">Ios</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/tutorial/thin-app/">Thin app</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../develop/tutorial/videos/">Videos</a>
+    </li>
+  
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../../develop/tutorial/core/">Core</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+      </div>
+    </ul>
+  </li>
+
+    
+      
+  <li class="active">
+    
+      
+    
+      
+    
+      
+        <a href="../../">Learn</a>
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../../architecture/">Architecture</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../glossary/">Glossary</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../use-cases/">Use cases</a>
+    </li>
+  
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../base-services/">Base services</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../base-services/audiostreaming/">Audiostreaming</a>
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../base-services/audiostreaming/interface/">Interface</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../base-services/configuration/">Configuration</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../base-services/configuration/interface-14-02/">Interface 14 02</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../base-services/configuration/interface/">Interface</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../base-services/controlpanel/">Controlpanel</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../base-services/controlpanel/interface-14-02/">Interface 14 02</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../base-services/controlpanel/interface/">Interface</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../base-services/notification/">Notification</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../base-services/notification/interface-14-02/">Interface 14 02</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../base-services/notification/interface/">Interface</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../../base-services/onboarding/">Onboarding</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../base-services/onboarding/interface-14-02/">Interface 14 02</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../base-services/onboarding/interface/">Interface</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="active">
+    
+      
+    
+      
+        <a href="../">Core</a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../events-and-actions/">Events and actions</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="active">
+      <a href="./">System descriptionalljoyn transport</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../thin-core/">Thin core</a>
+    </li>
+  
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../about-announcement/">About announcement</a>
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../about-announcement/interface-14-02/">Interface 14 02</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../about-announcement/interface/">Interface</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+        <a href="../rn_config/">Rn config</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+        <a href="../security2_0/">Security2 0</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../security2_0/hld/">Hld</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+          
+  <li class="">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a href="../system-description/">System description</a>
+      
+    
+      
+    
+      
+    
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+    <li class="">
+      <a href="../system-description/advertisement-discovery/">Advertisement discovery</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../system-description/alljoyn-security/">Alljoyn security</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../system-description/alljoyn-session/">Alljoyn session</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../system-description/data-exchange/">Data exchange</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../system-description/events-actions/">Events actions</a>
+    </li>
+  
+
+        
+          
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../system-description/sessionless-signal/">Sessionless signal</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../system-description/system-architecture/">System architecture</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../system-description/thin-apps/">Thin apps</a>
+    </li>
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+      </div>
+    </ul>
+  </li>
+
+        
+      </div>
+    </ul>
+  </li>
+
+    
+      
+  <li class="">
+    
+      
+        <a href="../../../project-lifecycle/">Project lifecycle</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+    
+      
+  <li class="">
+    
+      
+        <a href="../../../supported-platforms/">Supported platforms</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+    
+      
+  <li class="">
+    
+      
+        <a href="../../../user-groups/">User groups</a>
+      
+    
+    <ul>
+      <div>
+        
+          
+  
+
+        
+      </div>
+    </ul>
+  </li>
+
+    
+  </ul>
+</div></div>
+    <div class="col-md-8" role="main">
+
+<h1 id="alljoyn">AllJoyn&trade; 传输方式</h1>
+<h2 id="_1">概览</h2>
+<p>AllJoyn Transport 是一种具体机制的概念。这个机制用于在 AllJoyn 应用之间传递 AllJoyn Messsages（根据方法调用，方法答复，属性获取/设置或信号）。</p>
+<p>AllJoyn Tranport 提供了以下基础功能：
+<em> 在 AllJoyn 应用（通过 AllJoyn 路由）之间和在 AllJoyn 应用和程序之间建立和摧毁连接。
+</em> 在 AllJoyn 应用和路由之间可靠地发送和接收 AllJoyn Messages。
+* 可选地，提供适用于底层网络技术的广告和发现服务。</p>
+<p>AllJoyn Transport 支持在多种底层物理网络层，包括 TCP、UDP 和 本地 UNIX 传输中建立连接和传递信息。AllJoyn Transport 支持的完整底层传输列表收录在 <a href="#alljoyn-transportmask-definition">AllJoyn TransportMask definition</a>。应用程序能够指定运行在何种用于建立连接和传递信息的底层传输方式中。</p>
+<p>根据连接终点的类型划分， AllJoyn Transport 功能可被分围以下几个类型：
+<em> <strong>Local AllJoyn Transports</strong>: Local AllJoyn Transports 主要负责提供核心资源库与 AllJoyn 路由之间的通信。它支持应用和路由之间连接的建立和信息转发。关于此种 Local Transports 的详细信息，收录在 <a href="#local-alljoyn-transports">Local AllJoyn Transports</a>。
+</em> <strong>Bus-to-Bus AllJoyn Transports</strong>: 该类型的 AllJoyn Transports 支持 AllJoyn 路由之间连接建立和信息转发。关于此种 Local Transports 的详细信息，收录在 <a href="#bus-to-bus-alljoyn-transports">Bus-to-Bus AllJoyn Transports</a>。</p>
+<h2 id="alljoyn-transports">AllJoyn Transports 中终点的使用方法</h2>
+<p>如 <a href="../../../learn/core/system-description#alljoyn-endpoints">AllJoyn endpoints</a> 所述，AllJoyn Transport 使用终点建立连接并在应用和路由之间转发信息。AllJoyn Endpoint 类似与 socket 编程中的 socket endpoint。AllJoyn Endpoint 是 AllJoyn 通信连接中的一侧。AllJoyn 通信连接可以建立在一个应用与一个路由之间，或者建立在两个路由之间。</p>
+<p>下面列出了 AllJoyn 系统中的终点的一般分类：
+<em> <strong>Local Endpoint</strong>: 本地终点代表了一个指向自己的连接。在核心资源库中，它路由和应用用来建立指向自己的连接。本地终点表示在同一进程内的连接。
+</em> <strong>Remote Endpoint</strong>: 远程终点代表应用和路由之间的连接。发往应用程序的消息路由到其远程终点。一种特别的远程终点的类型称为 “Bus-to-Bus” 终点，表示两个路由之间的连接。远程终点表示两个进程之间连接。</p>
+<p>下图展示了本地终点和远程终点的概念。</p>
+<p><img alt="local-remote-endpoints" src="../../../files/learn/system-desc/local-remote-endpoints.png" /></p>
+<p><strong>图:</strong> 本地和远程终点</p>
+<p>图片表明了 AllJoyn 应用与预装路由之间的假想连接。AllJoyn 应用与核心资源库进行会话，把网关提供给更广的分布式总线。核心资源库有两个主要连接：一是应用之间的连接，由 Local Endpoint 提供 ；二是与路由之间的连接（代表了远程 Remote Endpoint）。</p>
+<p>AllJoyn 路由有相应的远程终点代表与用于转发信息的核心资源库相连连接的终点。AllJoyn 路由内的 本地终点表示一个连接到路由器上的路由发送到路由器的控制消息。</p>
+<p>多个程序能够在一个分布式总线结构中连接同一个 AllJoyn 路由。AllJoyn 路由为每一个连接的程序提供了一个远程终点，如下图所示 (AllJoyn router wiht multiple remote endpoints)。</p>
+<p><img alt="alljoyn-router-multiple-remote-endpoints" src="../../../files/learn/system-desc/alljoyn-router-multiple-remote-endpoints.png" /></p>
+<p><strong>图:</strong> 有多个远程终点的 AllJoyn 路由</p>
+<p>核心资源库和路由都提供远程终点，然而他们在信息转发功能方面有所不同 —— AllJoyn 路由能在终点之间转发信息，然而核心资源库仅能在特定一组本地和远程终点之间转发信息。</p>
+<p>AllJoyn 系统支持完全分布式的总线配置，具体表现为一个路由通过与其它路由的连接，加入一个单一分布式 AllJoyn 总线的总线段，如图所示：</p>
+<p><img alt="alljoyn-distributed-bus-b2b-endpoints" src="../../../files/learn/system-desc/alljoyn-distributed-bus-b2b-endpoints.png" /></p>
+<p><strong>图:</strong> 包含 bus-to-but 终点的 AllJoyn 分布式总线</p>
+<p>如图，在图片的上半部分展示了一个包含一个 AllJoyn 路由和两个应用程序的总线段。在图片的下半部分，同样有一个包含一个 AllJoyn 路由和两个应用程序的总线段。</p>
+<p>这两个总线段通过称为 Bus-to-Bus 的远程终点相连。每个路由为它所连接的路由提供了一个 Bus-to-Bus Endpoint。在图中，一个 Bus-to-Bus Endpoint 表示于上方 Routing Node 的连接，另一个 Bus-to-Bus Endpoint 表示与下方 Routing Node 的连接。</p>
+<p>Remote Endpoints 通过 AllJoyn Transport 相关的底层通讯机制进行配对。举例说明， Routing Nodes 中的 Bus-to-Bus Endpoints 可能通过 TCP Transport 或者 UDP Transport 控制，它们同时也控制了从一段（Endpoint）到另一段的连接中传递 Messages 的细节。</p>
+<p>在核心资源库与 AllJoyn 路由之间通过 Remote Endpoints 连接的情况下，底层通信机制可能根据主机环境的不同而有所区别。举例说明，Linux 系统中使用 UNIX domain sockets 工具，然而 Windows 系统中使用 TCP 工具。</p>
+<h3 id="_2">精简资源库终点</h3>
+<p>精简资源库 (TCL) 使用 TCP 传输，但它的实现与一般的核心资源库与 AllJoyn 路由之间的 TCP 传输有所不同。</p>
+<p>在 TCL 中，没有明确的远程终点和本地终点。TCL 提供了与另一台 AllJoyn 设备上的 AllJoyn 路由上的 TCP 远程节点连接并通信的最小功能实现。</p>
+<p>在 Routing Node 侧，精简资源库设备连接方式，就像使用本地 TCP 回环连接的本地核心资源库。</p>
+<p><strong>注意:</strong> 这是 Windows 环境下，Bus Attachments 连接 Routing Nodes 的方式。TCP 传输用于连接，但是数据实际上不通过网络传输；而是在被发送到某个已连接的 IP 网络之前，被回环并发送至网络堆栈。</p>
+<p>下图展示了精简资源库终点的使用方式。</p>
+<p><img alt="thin-core-library-endpoint" src="../../../files/learn/system-desc/thin-core-library-endpoint.png" /></p>
+<p><strong>图:</strong> 精简资源库终点</p>
+<h2 id="alljoyn-transport">网络模型中的 AllJoyn Transport</h2>
+<p>尽管 AllJoyn 传输的基本任务是从一个终点向另一个终点传输或转移 AllJoyn Messages，但是也须要区别 AllJoyn Transport 与  International Standards Organization Open Systems Interconnection (ISO/OSI) 7-layer model 中传输层（第四层）的概念。</p>
+<p>下图展示了在 七层 ISO/OSI 模型概念中，AllJoyn Transport 的位置。</p>
+<p><img alt="alljoyn-osi-seven-layer-arch" src="../../../files/learn/system-desc/alljoyn-osi-seven-layer-arch.png" /></p>
+<p><strong>图:</strong> 七层 ISO/OSI 模型中的 AllJoyn Transport</p>
+<p>在应用程序逻辑之下，有一个负责封包和解包 AllJoyn 信息（信号和方法调用）的 AllJoyn Message 层。该层可被视为位于 ISO/OSI 模型的表现层。</p>
+<p>AllJoyn 信息通过 AllJoyn Transport 层被路由至目的地。由于 AllJoyn Transport 层控制应用程序和 AllJoyn 路由之间的连接，所以它可以被相应地视为 ISO/OSI 模型中的会话层（第五层）。AllJoyn Tranport 使用第四层的传输方式，如 TCP 或 UDP，以便管理不同网络实体间 AllJoyn 信息的实际传输。</p>
+<p>由于 AllJoyn Transport 包含了转移数据序列、建立连接、广告和发现功能，针对不同的底层传输机制，有不同的 AllJoyn Transports。
+<em> AllJoyn TCP Transport 使用 TCP/IP 机制传输数据。
+</em> AllJoyn UCP Transport 使用 UCP/IP 机制传输数据。
+<em> AllJoyn Bluetooth (BT) Transport 使用相同的方式进行蓝牙连接。
+</em> AllJoyn Local Transport 使用  UNIX domain sockets。</p>
+<p>AllJoyn 传输方式的命名通常参照其使用的底层 OSI 四层机制中的方法。</p>
+<p>AllJoyn 应用程序可能会选择 AllJoyn Transport，通过在适当的 AllJoyn API 中选择一个或多个 TransportMask 位来实现。目前支持的 TransportMask 位在展示在下表中：</p>
+<h4 id="alljoyn-transportmask-definition">AllJoyn TransportMask definition</h4>
+<table>
+<thead>
+<tr>
+<th>Transport name</th>
+<th align="center">值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRANSPORT_NONE</td>
+<td align="center">0x0000</td>
+<td>无传输。</td>
+</tr>
+<tr>
+<td>TRANSPORT_LOCAL</td>
+<td align="center">0x0001</td>
+<td>本地传输。</td>
+</tr>
+<tr>
+<td>TRANSPORT_TCP</td>
+<td align="center">0x0004</td>
+<td>Transport 使用 TCP 作为底层传输机制。</td>
+</tr>
+<tr>
+<td>TRANSPORT_UDP</td>
+<td align="center">0x0100</td>
+<td>Transport 使用 UDP 作为底层传输机制。</td>
+</tr>
+<tr>
+<td>TRANSPORT_EXPERIMENTAL</td>
+<td align="center">0x8000</td>
+<td>选择一个 release-specific 实验性传输方式。</td>
+</tr>
+<tr>
+<td>TRANSPORT_IP</td>
+<td align="center">0x0104</td>
+<td>允许系统选择使用 TCP 或是 UDP。</td>
+</tr>
+<tr>
+<td>TRANSPORT_ANY</td>
+<td align="center">0x0105</td>
+<td>允许系统选择任意适当的传输工具。</td>
+</tr>
+</tbody>
+</table>
+<p>如果 AllJoyn 应用程序希望只使用 TCP 作为第四层传输机制，它可以在广播、发现、加入会话、绑定选项中指定为 TRANSPORT_TCP。如果应用程序只希望使用基于 IP 的传输方式，它可以设定为 TRANSPORT_IP，使 AllJoyn 系统从 TCP 和 UDP 中选择。</p>
+<p>每种传输方式根据其基于的底层物理传输方式建立和保持连接。根据底层物理传输方式的不同，在一个 AllJoyn 网络中两个节点间的实际连接可以是单跳或多跳的。AllJoyn 分布式总线基本上是一种覆盖网络，它的拓扑结构不需要直接映射到底层网络的拓扑结构。如果某个应用程序没有偏好，它可以设为 TRANSPORT_ANY 并且允许 AllJoyn 系统决定使用何种传输方式。</p>
+<h2 id="alljoyn_1">本地 AllJoyn 传输方式</h2>
+<p>AllJoyn Local Transports 是被设计主要用于提供核心资源库和它们的 AllJoyn 路由之间连接的一组 AllJoyn Transports：</p>
+<ul>
+<li>Null Transport</li>
+<li>UNIX Domain Socket Transport</li>
+<li>TCP Transport</li>
+</ul>
+<h3 id="null-transport">Null Transport</h3>
+<p>最简单的本地传输方式是 Null Transport。设计这种传输方式用于提供核心资源库与绑定路由之间的连接，它们都在常规进程内运行。根据功能调用。一个 Null Transport 的终点直接通过方法调用连接到另一侧。在这种情况下，实际上核心资源库与路由之间的连接路径并没有 Transport，连接通过一种称之为接口的直接方式连接在了一起。</p>
+<h3 id="unix-domain-sockets-transport">UNIX Domain Sockets Transport</h3>
+<p>Posix 系统采用 The UNIX Domain Sockets Transport 为核心资源库和预装 AllJoyn 路由之间提供了一个进程间的连接（IPC）。由于是一种本地传输方式，不需要支持多终点，广播和发现。此种传播方式以分离的形式在核心资源库与 AllJoyn 路由之间实现。</p>
+<h3 id="tcp-transport">TCP Transport</h3>
+<p>TCP Transport 用于 Windows 系统，在核心资源库与预装 AllJoyn 路由之间提供一个进程间的连接。由于不需要支持多终点，也不需要广告和发现功能，针对核心资源库的 TCP Transport 相较于 TCP Transport 的总线到总线版本，要简化许多。查看 <a href="#tcp-transport-mechanism">TCP Transport mechanism</a> 了解更多关于 TCP Transport 的细节。</p>
+<h2 id="alljoyn-transport_1">总线到总线 AllJoyn Transport</h2>
+<p>总线到总线 AllJoyn Transport 实现了在 AllJoyn 路由之间建立连接、转发信息。AllJoyn 系统中最常见的总线到总线传输方式是基于 IP 传输的机制。这包含了 TCP Transport 和 UDP transport。</p>
+<p>如上文所述，一个应用程序能够指定用于建立连接和传输信息的 AllJoyn 传输方式。如果应用程序没有指定，AllJoyn 路由器会选择用于传输的方式。TCP 传输方式和 UDP 传输方式都是有效的 AllJoyn 传输方式。在这两种传输方式中做出选择时，需要权衡利弊。一般来说，使用 TCP 或 UDP 传输方式次数的多少，取决于使用者对它们的喜爱程度。</p>
+<p>下表总结了在不同系统标准下，AllJoyn TCP 和 UDP 传输方式性能上的差异。</p>
+<h4 id="tcp-udp">TCP 和 UDP 传输方式的性能对比</h4>
+<table>
+<thead>
+<tr>
+<th>系统标准</th>
+<th>TCP 传输方式</th>
+<th>UDP 传输方式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>支持的连接数量</td>
+<td>少于平均值</td>
+<td>高</td>
+<td>由于大量使用文件描述符，TCP 传输方式不支持大量同时进行的连接。UDP 传输方式对于多个连接，只是用单个文件描述符，所以它能够支持大量同时发生的连接，不会达到文件描述符系统上线。</td>
+</tr>
+<tr>
+<td>内存占用</td>
+<td>中等</td>
+<td>高</td>
+<td>由于 UDP 传输方式提供了可靠性支持，所以它需要更大的内存。</td>
+</tr>
+<tr>
+<td>基于 TTL 的信息过期</td>
+<td>不可能</td>
+<td>支持</td>
+<td>UDP 传输方式使用支持基于 TTL 信息过期机制的 AllJoyn 可靠数据报协议 (ARDP)</td>
+</tr>
+<tr>
+<td>数据传输的类型</td>
+<td>在大容量数据传输时表现最好</td>
+<td>在间歇性短数据传输时表现最好</td>
+<td>第四层 TCP 连接的默认 socket 缓冲区通常比 UDP 连接大得多。所以，TCP 在大容量数据传输时表现得更好。</td>
+</tr>
+</tbody>
+</table>
+<p>下表展示了不同应用场景中，基于 <a href="#performance-of-alljoyn-tcp-transport-versus-udp-transport">Performance of AllJoyn TCP Transport versus UDP Transport</a> 所属的利弊关系，TCP 和 UDP 传输方式的取舍。</p>
+<h4 id="tcp-udp_1">不同使用场景中，TCP 和 UDP 传输方式的选择。</h4>
+<table>
+<thead>
+<tr>
+<th>使用场景</th>
+<th align="center">TCP 传输方式</th>
+<th align="center">UDP 传输方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要传输方法调用</td>
+<td align="center">X</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>主要传输大容量数据</td>
+<td align="center">X</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>AllJoyn 信息与 TTL 相关</td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>伴随间歇性 RPC 调用的大量并发会话</td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>高度污染的 RF 环境</td>
+<td align="center">X</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>以下章节具体描述 AllJoyn TCP 和 UDP 传输方式的细节。</p>
+<h3 id="tcp">TCP 传输机制</h3>
+<p>如前文所述，AllJoyn TCP 传输方式从它使用的 TCP/IP 第四次层传输机制中获取名称。由于 TCP 提供了一个可靠的数据流保障，TCP 传输方式必须提供从比特流翻译信息并发送至比特流的机制。</p>
+<h4 id="tcp_1">TCP 传输方式数据层结构</h4>
+<p>如图，每个使用 TCP 传输方式的连接都有相关的 TCP 终点、TCP 流和 TCP socket。</p>
+<p><img alt="tcp-transport-data-plane-internal-architecture" src="../../../files/learn/system-desc/tcp-transport-data-plane-internal-architecture.png" /></p>
+<p><strong>图:</strong> TCP 传输数据层内部结构</p>
+<p>路由节点的路由功能连接至一个 TCP 终点，这代表了一个针对 TCP 传输方式连接的远程终点。TCP 终点使用 TCP 串流组件从比特流翻译信息并发送至比特流。TCP 流通过 TCP socket 接收和发送数据。</p>
+<h4 id="tcp_2">TCP 终点生命周期</h4>
+<p>TCP 终点在整个生命周期中经历多个状态。这些 TCP 终点的状态和变化在下图中呈现。</p>
+<p><img alt="tcp-endpoint-lifecycle-states" src="../../../files/learn/system-desc/tcp-endpoint-lifecycle-states.png" /></p>
+<p><strong>图:</strong> TCP 终点生命周期的状态</p>
+<p>TCP 终点既可能是一个活动连接请求的结果，也可能是一个被动连接的传入呼叫。TCP 终点包含关于这些突发事件属于活动连接或是被动连接的信息。</p>
+<p>TCP 终点遵循 AllJoyn 线程的基本生命周期。它首先在 INITIALIZED 状态中生成。在 TCP 终点使用与 AllJoyn 系统之前，必须先将其认证。这是一个独立的步骤，在 <a href="#tcp-endpoint-authentication-phase">TCP Endpoint authentication phase</a> 中具体说明。如果认证成功，TCP 终点线程被要求启动，同时进入 STARTING 状态。如果认证失败，TCP 终点转换为 FAILED 状态，并准备好被清理。</p>
+<p>当线程要求支持一个新建的或经过认证的正在运行的 TCP 终点，该终点进入 STARTED 状态。在此状态下，TCP 终点被注册至路由，因此数据可以通过终点传输。当不再需要这个连接时，就会调用终点方法 <code>Stop()</code>，那么终点将进入 STOPPING 状态。当终点中所有的线程都退出后，终点进入 JOINING 状态，这个状态下任何相关的线程都能够加入（类似于 Posix 线程加入的操作）。终点随后会从 AllJoyn 路由中注销。当终点里与线程相关的资源被清除后，终点进入 DONE 状态，在这个状态下它能够从系统中被移除和删除。</p>
+<h5 id="tcp_3">TCP 终点验证步骤</h5>
+<p>如上文所述，TCP 终点在允许信息通过之前，必须完成一个验证步骤。这个验证步骤由一个单独的线程处理，在下图中展示。验证进程在 TCP 终点进入 INTIALIZED 阶段时启动。</p>
+<p><img alt="tcp-endpoint-auth-states" src="../../../files/learn/system-desc/tcp-endpoint-auth-states.png" /></p>
+<p><strong>图:</strong> TCP 终点验证状态</p>
+<p>TCP 终点验证使用 Simple Authentication and Security Layer (SASL) 架构的 "ANONYMOUS" 机制。实际上在 AUTHENTICATING 状态中，TCP 流为了传输 SASL 挑战和应答，运行在字符串传输模式中。如果 SASL 交换失败，验证转换到 FAILED 状态，这就导致了 TCP 终点进入 FAILED 状态。</p>
+<p>如果 SASL 交换成功，认证转换到 SUCCEEDED 状态，这会使 TCP 终点转换为 STARTING 状态。当 TCP 终点转换为 STARTED 状态，相关的 TCP 流会进行模式转换，并开始发送和接收 AllJoyn 信息，停止发送和接收文本字符串。</p>
+<p>一旦做出了 FAILED 或 SUCCEEDED 的决定，就会生成一个适当的终点生存周期，退出终点认证和认证机制的转变都会导致终点的结束。</p>
+<h3 id="udp">UDP 传输机制</h3>
+<p>ALlJoyn UDP 传输机制，顾名思义，使用 UDP/IP 协议从一端向另一端转移 AllJoyn 信息。由于 UDP 不提供可靠性的保障，UDP 传输方式必须提供一种保障信息送达的机制。UDP 传输方式使用 AllJoyn Reliable Datagram Protocol (ARDP) 提供信息送达保障。 ARDP 大致上基于 Reliable Data Protocol (RDP)，如 RFC 908 (版本 1) 和 RFC 1151 (版本 2) 中所体现的一样。</p>
+<h4 id="udp_1">UDP 传输数据层结构</h4>
+<p>结构上说，UDP 传输方式可被分为两大组件；路由节点连接到所谓 UDP 终点的路由功能，可通过 ARDP 访问的 UDP 传输方式的网络功能。</p>
+<p>UDP 终点是路由节点与 UDP 传输方式之间的基础数据层接口。从路由节点的角度来看，每个 UDP 传输连接都是一个 UDP 终点的代表。每个 UDP 终点有一个相关的 ARDP 流，它能把 AllJoyn 信息转换为 ARDP 数据包。下图展示了 UDP 传输方式数据层结构。</p>
+<p><img alt="udp-transport-data-plane-internal-architecture" src="../../../files/learn/system-desc/udp-transport-data-plane-internal-architecture.png" /></p>
+<p><strong>图:</strong> UDP 传输方式数据层内部结构</p>
+<p>ARDP 流组件从信息流的概念转换成了数据包流，与 ARDP 连接进行会话。ARDP 连接提供了端到端状态信息，使可靠性得到了保障，并且能够与独立的通过各种由 UDP 传输方式管理的 ARDP 连接分享的 UDP socket 进行会话。</p>
+<h4 id="udp-endpoint-lifecycle-udp">UDP Endpoint lifecycle UDP 终点生命周期</h4>
+<p>UDP 终点通过一个如下图所示定义明确的生命周期。</p>
+<p><img alt="udp-endpoint-lifecycle" src="../../../files/learn/system-desc/udp-endpoint-lifecycle.png" /></p>
+<p><strong>图:</strong> UDP 终点生命周期</p>
+<p>终点既适用于主动连接请求，也适用于被动连接请求。与 TCP 概念相似，主动连接是从本地发出的连接。被动连接是传入的，从远程发出的连接。ARDP 协议有一个三步握手的机制，与 RDP 和 TCP 提供的类似。发出 SYN 请求的实体进入 ACTIVE 状态，使用 SYN+ACK 回应的实体进入 PASSIVE 状态。</p>
+<p>与 TCP 和 RDP 不同，ARDP 提供了额外的信息，如 SYN 和 SYN+ACK 包中的数据。在 SYN，SYN+ACK，ACK 交换（发生在 ACTIVE 和 PASSIVE 状态）期间，包含的终点与它们的远程部分进行认证和识别。当这个步骤完成时，并且终点注册的远程节点进入待命状态时，该终点进入 STARTED 状态。在 STARTED 状态下，AllJoyn 信息可以被发送和接受。</p>
+<p>最后，本地和远程方面都可以调用断开连接的事件来终止连接。路由通过向 UDP 终点发送一个 <code>Stop()</code> 命令来断开连接。这会导致状态由 STARTED 进入 STOPPING。在本地断连情况下，会立刻进入 WAITING 状态。该状态下允许在 ARDP 断连被执行前，所有在排队的或在途中的信息被发送至远程端。</p>
+<p><strong>注意:</strong> 与 TCP 不同，在 ARDP 中没有四步骤结束握手的方式 —— 这是由 UDP 传输状态的设备中会话层所处理的。 </p>
+<p>当所有数据都被传输网称并且公布后，状态会重新会到 STOPPING。在 STOPPING 模式下，不同的线程被告知终点已被关闭。当线程被验证为已退出的状态，终点转换为 JOINING 状态。在这个状态下，资源被释放，任何关于这个终点的线程都被加入（类似于 Posix 线程的加入操作）。资源管理的最后一个部分是从路由节点注销终点。当这个步骤完成时，终点进入 DONE 状态，并且准备好被终点管理功能删除。</p>
+<h4 id="ardp-state-machine-ardp">ARDP state machine ARDP 状态设备</h4>
+<p>如 RFC-908 (version 1) 和 RFC-1151 (version 2) 中所述，ARDP 与 RDP 十分相似。在 ARDP 的核心是 ARDP 连接状态设备。尽管 与 TCP 状态设备很相似，但 ARDP 设备更加简单，只提供下图中所展示的六个状态。</p>
+<p><img alt="ardp-state-machine" src="../../../files/learn/system-desc/ardp-state-machine.png" /></p>
+<p><strong>图:</strong> ARDP 状态设备</p>
+<p>如 TCP 一样，连接既可以是主动的，也可以是被动的。在主动情况下，同构建立一个 UDP 终点并把它转换为 ACTIVE 状态发出一个连接。终点提供了 “introduction” 信息，并把它传送至 ARDP，ARDP 通过建立一个连接，把 “introduction” 加入 SYN 包并发送的方式做出应答。当 SYN 包被发送后，本地 ARDP 连接进入 SYN-SENT 状态。在 LISTEN 状态的远程 ARDP，接收到 SYN，并且返回至 UDP 传输方式，提供 "introduction" 并且发出一个连接请求已被接收的通知。如果 UDP 传输方式决定某个连接不应该存在，就会通知 ARDP，ARDP 就会发送一个 RST 包来取消连接。</p>
+<p>如果 UDP 传输方式决定了使用某个连接，它会简历一个新 UDP 终点，并使其进入 PASSIVE 状态，并且使用它本身的 "introduction response" 回复 ARDP callback。被动方随后进入 UDP 终点 PASSIVE 状态并且 ARDP 在 SYN+ACK 包中发送 "introduction response" 返回至主动端。当主动端收到了 ACK 包，将转换为 STARTED 状态。主动端就为发送和接收数据做好了准备。当被动端接收到了最终 ACK 包，它的三步握手就完成了。</p>
+<p>他转换至 OPEN 状态并且通知转换为 STARTED 状态的 UDP 终点。此时，两端都准备好发送和接收数据了。</p>
+<p>由于在本地 UDP 终点、本地 ARDP、远程 ARDP 和 远程 UDP 终点之间传递信息可能出现失败。两端都装有看门狗计时器，能够及时地中止进程。</p>
+<p>如上文所述，在 ARDP 中关闭连接没有先后顺序。这是在 UDP 终点状态设备中完成的。通过接收或发送 RST 包从 ARDP OPEN 状态转换至别的状态。为了避免 ARDP 端口重复使用的问题，提供了一个 CLOSE_WAIT 状态，与 TCP 中的类似。</p>
+<h4 id="ardp">ARDP 包格式</h4>
+<p>ARDP 包格式的细节在 RFC 908 和 RFC 1151 提到。为了支持 AllJoyn 信息间隔的扩展而不是使用 UDP数据报，并且删除基于 TTL 超时的途中信息，需要改变 SYN 和 DATA 包的格式。</p>
+<p>下表展示了 ARDP SYN 包的个是。一个延迟 ACK 超时加入了支持功能，类似于 TCP 中使用的延迟 ACK。长度变量的数据和相关数据长度字段也加入其中。SYN + ACK 数据包返回此格式，但包含 ACK 位。</p>
+<h4 id="ardp-syn">ARDP SYN 包格式</h4>
+<table>
+<thead>
+<tr>
+<th align="center">字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">FLAGS (8 bits) / Header Length (8 bits)</td>
+</tr>
+<tr>
+<td align="center">Source Port (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Destination Port (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Data Length (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Initial Sequence (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Acknowledgement (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Local Receive Window Size (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Maximum Size of Receivable Datagram (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Delayed ACK Timeout (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Data (variable length)</td>
+</tr>
+</tbody>
+</table>
+<p>下图展示了 ARDP DATA 包的格式。该格式基本上与 RFC 908 和 RFC 1151 中描述的相同。由于 ARDP 是用来支持发送和接收 AllJoyn 信息的，它可以跨越了三个 65535 字节 UDP 数据报，所以加入了信息片段的概念。加入一个片段计数字段和启动消息序列号，会根据 一条 AllJoyn 信息中的首个 UDP 数据报识别序列号。Time-to-Live 字段也被加入，使 AllJoyn 信息获得一个存活时间；为了配合传输信息信息的过期机制，加入了 Acknowledge-Next 字段。</p>
+<h4 id="ardp_1">ARDP 数据包格式</h4>
+<table>
+<thead>
+<tr>
+<th align="center">Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">FLAGS (8 bits) / Header Length (8 bits)</td>
+</tr>
+<tr>
+<td align="center">Source Port (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Destination Port (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Data Length (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Sequence Number of Current Segment (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Acknowledge Number of Last In-Sequence Segment (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Time to Live (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Last Consumed Sequence Number (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Acknowledge-Next (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Start-of-Message Sequence (32 bits)</td>
+</tr>
+<tr>
+<td align="center">Fragment Count (16 bits)</td>
+</tr>
+<tr>
+<td align="center">Extended ACK Bitmask (variable length)</td>
+</tr>
+<tr>
+<td align="center">Data (variable length)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="udp_2">UDP 传输方式配置</h4>
+<p>ARDP 是一个弹性协议，使用了很多的可配置参数。这些参数可通过 AllJoyn 路由配置文件进行修改。</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>udp_connect_timeout</td>
+<td>当首个 ARDP 连接尝试时， SYN 包可能会丢失。如果丢失，一段时间过后，远端不会回应，必须重新尝试建立连接。这个值代表了 ARDP 准备再次发送 SYN 包前的等待时间。</td>
+<td align="center">1000 msec</td>
+</tr>
+<tr>
+<td>udp_connect_retries</td>
+<td>当首个 ARDP 连接尝试时，SYN 包可能丢失。如果丢失，一段时间后，远端不会回应，必须重新尝试建立连接。这个只代表了 ARDP 重新发送 SYN 包的尝试次数。</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td>udp_initial_data_timeout</td>
+<td>当一个数据 ARDP 段被发送后，RTO 计时器启动，它决定了在确定未收到该端数据后，何时重新发送。ARDP 使用 RFC 6298 中 TCP 算法中的 SRTT 和 RTO 估计。这个参数决定了当 RTT 估计失效时，该段数据 RTO 的初始值。</td>
+<td align="center">1000 msec</td>
+</tr>
+<tr>
+<td>udp_total_data_retry_timeout</td>
+<td>在放弃重试并断开相关 ARDP 连接之前，某个数据段总共的尝试次数。</td>
+<td align="center">10000 msec</td>
+</tr>
+<tr>
+<td>udp_min_data_retries</td>
+<td>给定 ARDP 数据段最小重试次数。在 udp_total_data_retry_period 允许的范围内，可以重试多于该值的次数。</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td>udp_persist_interval</td>
+<td>当广播的窗口大小在远端变为了 0，它会停止（本地）发送者传输数据知道窗口值不再为 0.由于 ARDP 不能十分可靠地发送 ACK 包，可能会丢失 ACK 包，导致窗口重新打开。在这种情况下，本地和远端可能会进入一个死循环：远端要接收数据，发送者等待一个携带新窗口大小的 ACK。如果 ARDP 在接收到 0 窗口 ACK后 window 值并没有更新，ARDP 支持发送 0 窗口探测（空数据包）。0 窗口探测信号后会跟随一个指数退避列表。该参数决定了初始间隔，用于 0 窗口列表的首个超时时间。</td>
+<td align="center">1000 msec</td>
+</tr>
+<tr>
+<td>udp_total_app_timeout</td>
+<td>在相关 ARDP 宣布连接失败之前，发送 0 窗口探测的总时长。</td>
+<td align="center">30000 msec</td>
+</tr>
+<tr>
+<td>udp_link_timeout</td>
+<td>ARDP 十分乐意判断一个连接失效、空闲的时间。这个想法用于保证某些数据在连接中，至少经过一次间隔。它可以是数据、数据的 ACK 或者特殊的空白保持活动包。某个连接超时时长用于计算用于发送周期保持活动探测的保持活动间隔。该参数提供了一个断开连接被必须被发现的时间的默认总时常。该值仅在应用程序没有设定连接超时时长的情况下使用，否则使用应用程序规定的超时时长。</td>
+<td align="center">30000 msec</td>
+</tr>
+<tr>
+<td>udp_keepalive_retries</td>
+<td>规定了在确定连接已经失效并且终止 ARDP 连接之前，保持活动探测发送的总数</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td>udp_fast_retransmit_ack_counter</td>
+<td>与 TCP 相似，ARDP 支持基于接收到的出错 EACKs (Enhanced ACKs)的段落重传。该值决定了在 ARDP 重传前应该接收出错 EACKs 数量。</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td>udp_timewait_timer</td>
+<td>某个连接应该保持在 RDP Close_Wait 状态的时长，因为有些发出的包可能在网络中在网络中徘徊，直到失效。这个参数保证了定义 ARDP 连接的某个端口对在给定时间内不会被第二次使用，防止之前残留的信号与当前信号产生冲突。</td>
+<td align="center">1000 msec</td>
+</tr>
+<tr>
+<td>udp_segbmax</td>
+<td>在连接建立阶段 ARDP 段落的最大容量。由于 ARDP 在 UDP 顶端运行，该值由最大 UDP 包的容量而定。由于 UDP 中最大数据报的容量使 65535 字节，最有效／最大 ARDP 信息的大小就是最大 UDP 包的大小。</td>
+<td align="center">65507</td>
+</tr>
+<tr>
+<td>udp_segmax</td>
+<td>在建立连接阶段接受者愿意接受的最大 ARDP。该值管理了在传输中的最多段落数，并且因此会影响整体实现的吞吐量。SEGMAX 的单位是 ARDP 段。ARDP 支持通过信息头部的动态窗口来控制流量。当数据被 ARDP 接收并且在 ARDP 接收队列中登记，他会被立刻广播，但接收窗口以 1 为单位递减。只有当数据报被传输至应用后，数据包才会从接收缓存中移除，同时，接受窗口以 1 为单位递增。</td>
+<td align="center">50</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alljoyn_2">AllJoyn 传输方式使用的名称服务</h3>
+<p>TCP 和 UDP 传输方式都提供了相同的广告和发现的功能。两种传输方式在广播和发现机制中都采用了基于多拨的 IP 名称服务。名称服务使用底层 IP （UDP） 多拨完成广播和发现功能。名称服务在路由节点中以独立形式存在，可以通过 TCP 和 UDP 传输方式的不同控制层使用。[Advertisement and Discovery][advertisement-discovery] 展示了 AllJoyn 系统中用于广播和发现的老版本名称服务和下一代名称服务 (NGNS) 的详细内容。</p>
+<h3 id="alljoyn_3">AllJoyn 路由选择传输方式</h3>
+<p>在发现中，如果一个应用程序选择某个特定的传输方式（TCP 或 UDP），那么  <code>FoundAdvertisedName()</code> 仅已选定的传输方式发送。同样的，如上文所述，一个应用程序可以指定建立会话的传输方式，并且 AllJoyn 路由将仅在指定的 AllJoyn 传输方式下尝试建立连接。</p>
+<p>如果应用程序没有指定用于发现或建立会话的 AllJoyn 传输方式， AllJoyn 路由会更倾向于使用 UDP 传输方式。这是因为 UDP 传输方式占用更小的文件描述符资源。而在 TCP 方式下，特别是在连接数不断增长时，将会遭遇许多麻烦。</p>
+<p>在发现中，如果一个应用程序没有指定 AllJoyn 传输方式（也就是说，指定为 TRANSPORT_ANY），<code>FoundAdvertisedName()</code>  会以 TCP 和 UDP 两种方式同时发出，UDP 方式会稍快发出。对于会话建立，情况类似。如果应用程序指定为 TRANSPORT_ANY， AllJoyn 会在两段都允许的情况下使用 UDP 传输方式。如果不允许使用 UDP 传输方式，就会使用 TCP 传输方式建立会话。</p></div>
+    <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
+  <ul class="nav bs-sidenav">
+    
+      <li class="main active"><a href="#alljoyn">AllJoyn&trade; 传输方式</a></li>
+      
+        <li><a href="#_1">概览</a></li>
+      
+        <li><a href="#alljoyn-transports">AllJoyn Transports 中终点的使用方法</a></li>
+      
+        <li><a href="#alljoyn-transport">网络模型中的 AllJoyn Transport</a></li>
+      
+        <li><a href="#alljoyn_1">本地 AllJoyn 传输方式</a></li>
+      
+        <li><a href="#alljoyn-transport_1">总线到总线 AllJoyn Transport</a></li>
+      
+    
+  </ul>
+</div></div>
+  </div>
+
+  <footer class="col-md-12">
+    <hr>
+    
+    <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+  </footer>
+
+  <script src="../../../js/jquery-1.10.2.min.js"></script>
+  <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+  <script src="../../../js/highlight.pack.js"></script>
+  <script src="../../../js/base.js"></script>
+</body>
+</html>

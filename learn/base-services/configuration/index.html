@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,54 +2127,43 @@
     <div class="col-md-8" role="main">
 
 <h1 id="configuration-service">Configuration Service</h1>
-<p>The Configuration Service provides an ability to
-configure a device, like its device name or passcode.</p>
-<h2 id="concepts-and-terminology">Concepts and Terminology</h2>
-<p>Two roles exist:
-* <strong>Config Server</strong>. This runs on the device that is being configured,
-  the device that is offering the Configuration service.</p>
+<p>Configuration Service 提供了配置设备的功能。如配置设备的名称和密码。</p>
+<h2 id="_1">概念和术语</h2>
+<p>有两个角色：
+* <strong>Config Server</strong>. Config Server 运行在被配置的设备上，这些设备提供 Configuration 服务。</p>
 <ul>
-<li><strong>Config Client</strong>. This runs on the device or app that is used to
-  configure a remote device.</li>
+<li><strong>Config Client</strong>. Config Client 运行在设备或应用程序上，用于配置远程设备。</li>
 </ul>
-<p>The following configurations can be configured:</p>
+<p>有以下几个可配置项：</p>
 <ul>
 <li>
-<p><strong>Factory Reset</strong>. Restores the device to its original
-  factory settings. All configurable data is restored;
-  if the device supports the Onboarding service, then
-  the device will enter its original offboarded state.</p>
+<p><strong>Factory Reset</strong>. 将设备恢复至原生出厂设置。所有配置数据将被还原；如果设备支持 Onboarding 服务，那么设备将会进入它原本的 offboarded 区域。</p>
 </li>
 <li>
-<p><strong>Set Passcode</strong>. Sets the device's passcode, which
-  is used when accessing secure interfaces.</p>
+<p><strong>Set Passcode</strong>. 设置设备的密码，用于连接安全端口。</p>
 </li>
 <li>
-<p><strong>Default Language</strong>. Sets the default language used
-  by the device if a specific language is not requested.</p>
+<p><strong>Default Language</strong>. 在没有指定语言的情况下，设置设备的默认语言。</p>
 </li>
 <li>
-<p><strong>Device Name</strong>. Sets the device's name.</p>
+<p><strong>Device Name</strong>. 设置设备名称。</p>
 </li>
 </ul>
-<p>The Configuration Service exposes a simple secured
-interface to provide this service. See the
-<a href="../../../learn/base-services/configuration/interface">Configuration Interface Definition</a>
-for more details.</p>
-<h2 id="learn-more">Learn More</h2>
+<p>Configuration Service 在一个简单的安全端口中提供服务。查看 <a href="../../../learn/base-services/configuration/interface">Configuration Interface Definition</a> 获取更多信息。</p>
+<h2 id="_2">了解更多</h2>
 <ul>
-<li><a href="../../../learn/base-services/configuration/interface">Learn more about the Configuration Interface Definition</a></li>
-<li><a href="https://allseenalliance.org/framework/download">Download the SDK</a> and <a href="../../../develop/building">build</a></li>
-<li><a href="../../../develop/api-guide/config">Learn more about the Configuration APIs</a></li>
+<li><a href="../../../learn/base-services/configuration/interface">了解更多关于 Configuration Interface Definition</a></li>
+<li><a href="https://allseenalliance.org/framework/download">下载 SDK</a> 和 <a href="../../../develop/building">build</a></li>
+<li><a href="../../../develop/api-guide/config">了解更多关于 Configuration APIs</a></li>
 </ul></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
       <li class="main active"><a href="#configuration-service">Configuration Service</a></li>
       
-        <li><a href="#concepts-and-terminology">Concepts and Terminology</a></li>
+        <li><a href="#_1">概念和术语</a></li>
       
-        <li><a href="#learn-more">Learn More</a></li>
+        <li><a href="#_2">了解更多</a></li>
       
     
   </ul>

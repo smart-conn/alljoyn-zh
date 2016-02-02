@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2126,65 +2126,43 @@
 </div></div>
     <div class="col-md-8" role="main">
 
-<h1 id="running-the-control-panel-sample-app-ios">Running the Control Panel Sample App - iOS</h1>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>Follow steps in the <a href="../../../../develop/building/ios-osx">Building - iOS OS X section</a> 
-to build and install the Control Panel sample app on an iOS device.</p>
-<p>The Control Panel service sample app functions as the 
-Controller side of the Control Panel service framework. 
-At this time, there is not an iOS Controllee sample application. 
-In order to have a Controllee to interact with, follow the instructions 
-in [Run a Controllee][run-controllee] to set up and run a sample 
-Controllee application on a Linux machine. Make sure the Linux 
-machine and the iOS device are on the same network.</p>
-<h2 id="run-the-control-panel-sample-app">Run the Control Panel Sample App</h2>
+<h1 id="-ios">运行控制面板样例应用程序 - iOS</h1>
+<h2 id="_1">前提条件</h2>
+<p>按照 <a href="../../../../develop/building/ios-osx">Building - iOS OS X section</a> 中的说明在 iOS 设备上搭建并安装控制面板样例应用程序。</p>
+<p>控制面板服务样例应用程序扮演着控制面板服务框架中的控制方。此时，并不存在 iOS 被控制方应用程序样例。为了获得可以交互的被控制方，需按照
+[Run a Controllee][run-controllee] 中的说明，在一台 Linux 机器上建立并运行一个被控制方应用程序。此 Linux 机器需与控制方 iOS 设备处于同一网
+络当中。</p>
+<h2 id="_2">运行控制面板样例应用程序</h2>
 <ol>
-<li>Launch the Control Panel sample app on your iOS device.</li>
-<li>Click the Connect to AllJoyn button.</li>
-<li>In the pop-up that appears, set the name to be used by the 
-About feature in the application. You can use the default of 
-org.alljoyn.BusNode.aboutClient, or enter your own.</li>
-</ol>
-<p>The application is now running as a Controller. In the list 
-area below the Disconnect from AllJoyn button, you will see 
-any nearby applications that have been discovered via About 
-that support the Control Panel service framework and are acting as a Controllee.</p>
-<ol>
-<li>To interact with a Controllee, select one from the list 
-of nearby applications that have been discovered.</li>
-<li>Choose an option from the pop-up that appears:</li>
-<li>Show Announce: This will allow you to view the About announcement 
-  that was received from the nearby application.</li>
-<li>About: This will show the full set of information retrieved 
-  by the About Client from the nearby application.</li>
-<li>Control Panel: You can use the Control Panel Controller 
-  to interact with the control panel(s) exposed by the Controllee. <ul>
-<li>After selecting this option, click the <strong>Language</strong> button 
-in the upper right-hand corner of the screen and enter 
-one of the available languages into the text field. 
-For example, enter "en" to see the English version of the control panel.</li>
-<li>Once you have chosen a control panel and a language, 
-the data for the corresponding control panel is displayed. 
-At the current time, there is not a Widget Rendering Library 
-that is available for iOS. Therefore, the control panel is 
-shown as a series of items that display the data and properties for each control.</li>
+<li>在你的 iOS设备上安装控制面板应用程序样例。</li>
+<li>点击 Connect to AllJoyn 按钮。</li>
+<li>在弹出的窗口中设定应用程序 About 功能的名字。可以使用默认的 org.alljoyn.BusNode.aboutClient，也可自定义。应用程序现在正在以控制方模式运
+行。在 Disconnect from AllJoyn 按钮下放的列表区域中，你将会看到已经通过 About 功能发现的支持控制面板服务框架的正在作为被控制方的附近应用程
+序。</li>
+<li>若要与被控制方交互，需从列表中选择一个已被发现的附近应用程序。</li>
+<li>在弹出的对话框中选择一个选项：</li>
+<li>Show Announce: 用以观测从附近应用程序接收到的 About announcement.</li>
+<li>About: 展示由 About Client 从附近应用程序取回来的所有信息。</li>
+<li>Control Panel: 使用控制方 Control Panel 可以与被控制方暴露的控制面板进行交互。<ul>
+<li>选择此选项之后，点击屏幕右上角的 <strong>Language</strong> 按钮并键入一种被支持的语言到文本框中。例如，键入 "en" 可以观看控制面板的英语版本。</li>
+<li>一旦你选择了控制面板并指定了语言，相关控制面板的数据会用所指定的语言被显示。截止到此时，并没有可用于 iOS 的组件渲染库。因此，控制面板
+的显示方式是一系列的条目，包括每一个控制对象的数据和属性。</li>
 </ul>
 </li>
 </ol>
-<h2 id="run-a-controllee">Run a Controllee</h2>
-<p>Follow the instructions in the <a href="../../../../develop/run-sample-apps/controlpanel/linux">Running - Linux section</a> 
-to build and run the Controllee sample app. This will allow you 
-to run the ControlPanelService Controllee sample on a Linux machine.</p></div>
+<h2 id="_3">运行被控制方应用程序</h2>
+<p>按照 <a href="../../../../develop/run-sample-apps/controlpanel/linux">Running - Linux section</a> 的说明搭建并运行被控制方应用程序。由此你可以在一台 Linux 机器上运行 ControlPanelService 被控制方
+样例应用程序。</p></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
-      <li class="main active"><a href="#running-the-control-panel-sample-app-ios">Running the Control Panel Sample App - iOS</a></li>
+      <li class="main active"><a href="#-ios">运行控制面板样例应用程序 - iOS</a></li>
       
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#_1">前提条件</a></li>
       
-        <li><a href="#run-the-control-panel-sample-app">Run the Control Panel Sample App</a></li>
+        <li><a href="#_2">运行控制面板样例应用程序</a></li>
       
-        <li><a href="#run-a-controllee">Run a Controllee</a></li>
+        <li><a href="#_3">运行被控制方应用程序</a></li>
       
     
   </ul>

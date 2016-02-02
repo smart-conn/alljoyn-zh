@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,131 +2127,86 @@
     <div class="col-md-8" role="main">
 
 <h1 id="build-from-source-android">Build From Source - Android</h1>
-<h2 id="prerequisites">Prerequisites 必备条件</h2>
+<h2 id="_1">前提条件</h2>
 <ul>
 <li>
-<p>The following content uses many terms and concepts that are described in the
-<a href="../../../../learn/core/standard-core">Introduction to the AllJoyn Framework</a>.
-Therefore, it is strongly recommended that you read the Introduction content first.
-以下内容使用了大量 <a href="../../../../learn/core/standard-core">Introduction to the AllJoyn Framework</a> 中提到的术语和概念。因此，我们强烈建议您首先阅读介绍内容。</p>
+<p>以下内容涉及到很多在 <a href="../../../../learn/core/standard-core">Introduction to the AllJoyn Framework</a> 中所描述的概念和术语，因此我们强烈建议您首先阅读 Introduction 当中的内容。</p>
 </li>
 <li>
-<p>Before proceeding with development, make sure that you have set up the development
-environment as described here for <a href="../../../../develop/building/windows/build-source">Windows</a> or
-for <a href="../../../../develop/building/linux/build-source">Linux</a>.
-在开始开发之前，请确保按照<a href="../../../../develop/building/windows/build-source">Windows</a> 或
-针对 <a href="../../../../develop/building/linux/build-source">Linux</a> 建立了开发环境。</p>
+<p>在进行开发之前，请确认您已设置好开发环境。参见<a href="../../../../develop/building/windows/build-source">Windows</a> 或 <a href="../../../../develop/building/linux/build-source">Linux</a>.</p>
 </li>
 </ul>
-<h2 id="setting-up-the-programming-environment">Setting Up the Programming Environment 建立编程环境</h2>
-<p>This section explains how to set up the programming environment
-for developing AllJoyn&trade;-enabled Android applications.
-It covers the following topics:
-该章节解释了如何为开发 AllJoyn&trade; Android 应用程序建立编程环境。
-包含了以下几点：</p>
+<h2 id="_2">设置编译环境</h2>
+<p>此章节解释了如何设置可用于开发适用于 AllJoyn&trade; 的 Android 应用程序的编译环境。此章节包含以下主题：</p>
 <ul>
-<li>Install the Android SDK and NDK 安装 Android SDK 和 NDK</li>
-<li>Install an IDE 安装一个 IDE</li>
+<li>安装 Android SDK 和 NDK</li>
+<li>安装一个 IDE</li>
 </ul>
-<p><strong>注意:</strong> The procedures described in this section require the
-specified tool versions. 这一节中描述的流程要求使用指定的工具版本。</p>
-<h3 id="installing-the-android-sdk-android-sdk">Installing the Android SDK 安装 Android SDK</h3>
-<p>The Android software development kit (SDK) provides the
-tools needed for building Android applications and transferring
-applications to or from an Android device. The 'adb' tool is used to:
-Android 软件开发工具包（SDK）为建立 Android 应用程序提供了工具；也为从某个 Android 设备接收或发出应用程序提供工具。</p>
+<p><strong>NOTE:</strong> 此章节描述的设置过程需要指定的工具版本。</p>
+<h3 id="android-sdk">安装 Android SDK</h3>
+<p>Android 软件开发包 (SDK) 为开发 Android 应用程序以及 Android 设备发送/接收应用程序提供了必备的工具。'adb'工具被用于：</p>
 <ul>
-<li>Transfer/pull files to/from the phone 从手机发送／接收文件。</li>
-<li>Run the AllJoyn standalone router 运行 AllJoyn 独立路由</li>
-<li>Install/uninstall applications 安装／卸载 应用程序</li>
+<li>向手机端传输文件及从手机端获取文件。</li>
+<li>运行 ALlJoyn 独立路由。</li>
+<li>安装/卸载应用程序。</li>
 </ul>
-<p>For AllJoyn v15.04, download Android SDK version r20 or later from the
-following location:
-针对 AllJoyn v15.04，从以下地址下载 Android SDk r20 或后续版本：</p>
+<p>对于 v15.04版本的 AllJoyn, 可由以下地址下载 r20 或更晚版本的 Android SDK:</p>
 <p>http://developer.android.com/sdk/index.html</p>
-<p>Earlier versions of AllJoyn can work with older versions of the Android
-SDK. Please refer to documentation for your version of AllJoyn if you
-require an older Android SDK.
-更早版本的 AllJoyn 能兼容早起版本的 Android SDK。如果你需要使用早期版本的 Android SDK，请参考对应版本的 AllJoyn 文档。</p>
-<p>Install the SDK by following the directions given here:
-通过以下链接安装 SDK。</p>
+<p>新版本的 Android SDK 会兼容早起版本的 AllJoyn. 如果您需要新版本的 Android SDK 请参阅对应 AllJoyn 版本的说明文档。</p>
+<p>安装 SDK 的步骤如下：</p>
 <p>http://developer.android.com/sdk/installing/index.html</p>
-<p>The SDK requires certain software packages
-to be pre-installed on your system. For more information,
-see the following location:
-SDK 需要在系统中预装特定的软件包。欲知详情，请查看以下地址：</p>
+<p>安装 SDK 需要在您的系统中预装特定的软件包。详细信息请参见以下链接：</p>
 <p>http://developer.android.com/sdk/requirements.html</p>
-<p>After installing the SDK, you must install the Android platform
-support packages you wish to use. See:
-SDK 安装完毕后，您需要安装想要使用的 Android 平台支持包。查看：</p>
+<p>在 SDK 安装完毕后，您必须安装您希望使用的 Android 平台支持包。参见：</p>
 <p>http://developer.android.com/sdk/installing/adding-packages.html</p>
-<p>The AllJoyn v15.04 framework uses Android API levels 16 to 22.
-Note that installing these packages may take some time.
-AllJoyn v15.04 架构使用 16 至 22 级的 Android API。注意，安装这些包需要花费一些时间。</p>
-<h3 id="installing-the-android-ndk-android-ndk">Installing the Android NDK 安装 Android NDK</h3>
-<p>The Android native development kit (NDK) enables developers
-to build Java native libraries (JNI libraries) which can be
-called from Android (Java) applications. Android NDK is
-required only to write Java native libraries. The Android NDK
-is not required to use the Android Java bindings, but is
-required to build AllJoyn.
-Android 本地环境包（NDK）使开发者能够建立 JAVA 本地资源库（JNI libraries），可以通过 Android（Java）应用程序调用它们。仅在写入 Java 本地资源库时需要用到 Android NDK。当使用 Android 与 JAVA 绑定时，不需要 Android NDK，但在建立 AllJoyn 时需要使用 Android NDK。</p>
-<p>The main tool used from the Android NDK is 'ndk-build', which
-is used to build the native library of the JNI application.
-Android NDK 中使用最多的工具是 'ndk-build'。它用于建立 JNI 应用程序的本地资源库。</p>
-<p>To run Android JNI applications using AllJoyn 15.04, install any
-NDK version 9d or above from http://developer.android.com/tools/sdk/ndk/index.html .
-为了运行使用 AllJoyn 15.04 的 Android JNI 应用程序，需要安装任意高于 9d 版本的 NDK，地址：http://developer.android.com/tools/sdk/ndk/index.html。</p>
-<p>Install the NDK by following the directions given on the download page.
-按照下载页面的提示安装 NDK。</p>
-<p>To run, the NDK requires that the following software packages
-are pre-installed on your system:
-NDK 需要在系统中预装以下软件包才能运行。</p>
+<p>AllJoyn v15.04版本架构使用16到22 levels 的 Android API. 注意，安装这些软件包会花费一些时间。</p>
+<h3 id="android-ndk">安装 Android NDK</h3>
+<p>Android 原生开发工具包（NDK）使开发者可以建造可由 Android（Java）应用程序调用的 Jave 原生库（JNI Libraries）. 只有编写 Java 原生库时才会需
+要 Android NDK. Android NDK 不要求使用 Android Java 绑定，但搭建 AllJoyn 则要求此绑定。</p>
+<p>Android NDK 中的主要工具是'ndk-build',用来搭建 JNI 应用程序的原生库。</p>
+<p>如需在15.04版本的 AllJoyn 上运行 Android JNI 应用程序，可以从 http://developer.android.com/tools/sdk/ndk/index.html 安装 9d 以及任意之前版 本的 NDK.</p>
+<p>安装 NDK 可参考下载页中的指导。</p>
+<p>为了顺利运行，NDK 要求以下软件包已预先安装到您的系统：</p>
 <ul>
-<li>Latest Android SDK (including all dependencies) 最新的Android SDK （包括所有依赖）</li>
-<li>GNU Make 3.81 or later GNU Make 3.81 或更高版本</li>
-<li>Recent version of awk (GNU awk or nawk) 最新版本的 awk （GNU awk 或 nawk）</li>
+<li>最新的 Android SDK (包含所有附属)</li>
+<li>GNU Make 3.81版本或更新。</li>
+<li>近期版本的 awk (GNU awk 或者 nawk)</li>
 </ul>
-<p>For more information, see the NDK download page.
-欲知详情，查看 NDK 下载页面。</p>
+<p>更多信息请参阅 NDK 的下载页。</p>
 <h3 id="android-ides">Android IDEs</h3>
-<p>Instructions and downloads for Android integrated development
-environments are available here:
-Android 集成开发环境的指导和下载：</p>
+<p>Android 集成开发环境的指导和下载可由如下链接获得：</p>
 <p>http://developer.android.com/sdk/installing/index.html</p>
-<h3 id="downloading-the-openssl-header-files-and-library-optional-openssl">Downloading the OpenSSL header files and library (optional) 下载 OpenSSL 头文件和资源库（可选）</h3>
+<h3 id="openssl">下载 OpenSSL 头文件以及库（可选）</h3>
 <p>The AllJoyn framework optionally uses the OpenSSL crypto library.
 AllJoyn 15.04 and later have built-in crypto functions, but
-may be built with OpenSSL if needed.
-AllJoyn 架构可选择性地使用 OpenSSL 加密库。AllJoyn 15.04 和后续版本拥有内建加密库，但也可以根据需要使用 OpenSSL。</p>
+may be built with OpenSSL if needed.</p>
 <p>If you build AllJoyn in the OpenSSL configuration, the prebuilt
 libcrypto library is needed to link AllJoyn applications.
 It can be downloaded directly from the Android device or
 emulator into the lib folder of the AllJoyn distribution.
 Attach the device (or launch the Android emulator), then
-run the following commands:
-如果您在 OpenSSL 配置中建立 AllJoyn，预构建的加密资源库需要连接到 AllJoyn 应用程序。它可以被直接从 Android 设备下载，或者从 AllJoyn 分布的模拟器的 lib 文件夹中获得。连接设备（或者打开 Android 模拟器），执行以下指令：</p>
+run the following commands:</p>
 <pre><code class="sh">cd &lt;alljoyn_dir&gt;/lib
 adb pull /system/lib/libcrypto.so libcrypto.so
 </code></pre>
 
-<p>The above command means: 以上命令表示：</p>
-<p>adb pull <location of the file on the phone that you want to pull 您想得到的文件在手机中的位置>
+<p>The above command means:</p>
+<p>adb pull <location of the file on the phone that you want to pull>
 <destination on your machine where you want to store the pulled
-file with the name that you want 在您的设备中，希望存储获得的文件的位置和名称></p>
+file with the name that you want></p>
 <p>The library can also be built from the Android source repository.
 For details on building the Android source tree, see the
-Android source repository web site:
-资源库也可以通过 Android 资源库建立。了解更多关于建立 Android 资源树，查看 Android 资源库网站：</p>
+Android source repository web site:</p>
 <p>http://source.android.com/source/building.html</p>
 <p>IMPORTANT: Be sure you pull the <code>libcrypto.so</code>
-library from the version of Android you are building for.
-重要：务必为您所搭建的 Android 版本从资源库中获取 <code>libcrypto.so</code></p>
-<h2 id="building-alljoyn-from-source-for-android-android-alljoyn">Building AllJoyn from Source for Android 通过 Android 核心建立 AllJoyn</h2>
-<p>For most developers, the SDK package available to download from https://allseenalliance.org/developers/download is sufficient for developing Android applications using AllJoyn. However, if you wish to obtain and compile AllJoyn from source, follow the directions in this section.</p>
-<p>对于大部分开发者，从 https://allseenalliance.org/developers/download 下载的 SDK 包足够开发使用 AllJoyn 的 Android 应用程序。当然，如果您希望从源代码获取和编译 AllJoyn，请跟随本章节的指导：</p>
-<p>To compile AllJoyn from source, the following items are required:
-为了从源代码编译 AllJoyn，需要以下几个工具：</p>
+library from the version of Android you are building for.</p>
+<h2 id="building-alljoyn-from-source-for-android">Building AllJoyn from Source for Android</h2>
+<p>For most developers, the SDK package available to download
+from https://allseenalliance.org/developers/download
+is sufficient for developing Android applications using AllJoyn.
+However, if you wish to obtain and compile AllJoyn from source,
+follow the directions in this section.</p>
+<p>To compile AllJoyn from source, the following items are required:</p>
 <ul>
 <li>Android SDK</li>
 <li>Android NDK</li>
@@ -2259,37 +2214,29 @@ library from the version of Android you are building for.
 <li>Android source</li>
 </ul>
 <p>Instructions for obtaining the Android SDK, Android NDK, and IDEs
-are in <a href="#setting-up-the-programming-environment">Setting Up the Programming Environment</a>.
-关于获取 Android SDK、Android NDK 和 IDEs 的指导，请参阅 <a href="#setting-up-the-programming-environment">Setting Up the Programming Environment</a>。</p>
-<h3 id="the-android-source-android">The Android source Android 源代码</h3>
+are in <a href="#setting-up-the-programming-environment">Setting Up the Programming Environment</a>.</p>
+<h3 id="the-android-source">The Android source</h3>
 <p>The Android source (http://source.android.com) is required
 for building Android targets using OpenSSL. Google has detailed
-instructions for downloading and building Android source.
-需要使用 Android 源代码建立使用 OpenSSL 的 Android target。Google 提供了下载和建立 Android 源代码的详细指导：</p>
+instructions for downloading and building Android source.</p>
 <p>For a list of system requirements and instructions for obtaining
-the required tools, see http://source.android.com/source/initializing.html
-系统需求列表和获得相关工具的指导，查看 http://source.android.com/source/initializing.html。</p>
+the required tools, see http://source.android.com/source/initializing.html</p>
 <p>For instructions on obtaining the Android Source Tree,
-see http://source.android.com/source/downloading.html
-获取 Android Source Tree 的指导，查看 http://source.android.com/source/downloading.html。</p>
+see http://source.android.com/source/downloading.html</p>
 <p>When running the repo init command specify the branch name for
 the Android release you are targeting. Branch names are listed at
-http://source.android.com/source/build-numbers.html#source-code-tags-and-builds
-当使用 repo init 命令指定您所需 Android 版本的分支名称时，查看 http://source.android.com/source/build-numbers.html#source-code-tags-and-builds 获取分支名称。</p>
+http://source.android.com/source/build-numbers.html#source-code-tags-and-builds</p>
 <p>For instructions on building and running the build source, see
-http://source.android.com/source/building.html
-有关生成和运行生成源的说明，查看 http://source.android.com/source/building.html</p>
+http://source.android.com/source/building.html</p>
 <ul>
-<li>Build the "generic" version of Android.生成"通用"版本的 Android</li>
-<li>There is no need to run the code. Only the build libraries 
-that are not available in the NDK are used. 不需要运行代码。使用仅在 NDK 中不可用的生成库。</li>
+<li>Build the "generic" version of Android.</li>
+<li>There is no need to run the code. Only the build libraries
+that are not available in the NDK are used.</li>
 </ul>
-<h3 id="obtaining-the-alljoyn-source-alljoyn">Obtaining the AllJoyn source 获取 AllJoyn 源</h3>
+<h3 id="obtaining-the-alljoyn-source">Obtaining the AllJoyn source</h3>
 <p>If you followed the instructions in <a href="#the-android-source">The Android source</a>,
 you should have the repo tool and git installed on your system.
-Enter the following commands to get the AllJoyn source:
-如果您按照 <a href="#the-android-source">The Android source</a> 的指导进行操作，您的系统中应装有 repo 工具和 git。
-输入以下代码以获取 AllJoyn 源。</p>
+Enter the following commands to get the AllJoyn source:</p>
 <pre><code class="sh">$ mkdir $HOME/alljoyn # for example
 $ cd $HOME/alljoyn
 $ repo init -u git://github.com/alljoyn/manifest.git
@@ -2297,23 +2244,21 @@ $ repo sync
 $ repo start master --all
 </code></pre>
 
-<h3 id="building-the-alljoyn-framework-for-android-android-alljoyn">Building the AllJoyn framework for Android 为 Android 建立 AllJoyn 架构</h3>
+<h3 id="building-the-alljoyn-framework-for-android">Building the AllJoyn framework for Android</h3>
 <p>At this point. you have all of the files and programs required
 to build the AllJoyn framework for Android. The following commands assume
 you have installed the Android NDK at <code>/usr/local/android-ndk-r9d</code>,
 you have downloaded and built the Android source, and it is
 located in <code>$HOME/android-platform</code>.</p>
-<p>此时，您拥有为 Android 建立 AllJoyn 架构所需的全部文件和程序。下述指令建立在您已经在 <code>/usr/local/android-ndk-r9d</code> 安装 Android NDK，并下载和在 <code>$HOME/android-platform</code> 建立了 Android 源。</p>
 <p>Use the following commands to build the AllJoyn framework for Android using
-builtin crypto:
-对于采用内置加密的 Android，使用下述命令建立 AllJoyn 架构。</p>
+builtin crypto:</p>
 <pre><code class="sh">$ export JAVA_HOME=&quot;/usr/lib/jvm/java-6-sun&quot; # or java-5-sun
 $ export CLASSPATH=&quot;/usr/share/java/junit.jar&quot;
 $ scons OS=android CPU=arm CRYPTO=builtin ANDROID_NDK=/usr/local/android-ndk-r9b
    ANDROID_SRC=$HOME/android-platform WS=off
 </code></pre>
 
-<p>To build using OpenSSL crypto functions: 对于采用 OpenSSL 加密的，使用下述方法：</p>
+<p>To build using OpenSSL crypto functions:</p>
 <pre><code class="sh">$ export JAVA_HOME=&quot;/usr/lib/jvm/java-6-sun&quot; # or java-5-sun
 $ export CLASSPATH=&quot;/usr/share/java/junit.jar&quot;
 $ scons OS=android CPU=arm CRYPTO=openssl ANDROID_NDK=/usr/local/android-ndk-r9b
@@ -2325,18 +2270,17 @@ additional tools during the build process. For example, the
 AllJoyn framework can use Uncrustify to check white space
 compliance and Doxygen for producing API documentation for
 the C++ APIs. See <a href="../../../../develop/building/linux/build-source">Configuring the Build Environment (Linux Platform)</a>
-for detailed instructions for installing these two tools.
-允许指定 AllJoyn 架构在构建过程中使用额外工具。如使用 Uncrustify 对空格进行排版或使用 Doxygen 为 C++ API 生成文档。查看<a href="../../../../develop/building/linux/build-source">Configuring the Build Environment (Linux Platform)</a> 获取更多关于安装这两个工具的详细指导。</p></div>
+for detailed instructions for installing these two tools.</p></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
       <li class="main active"><a href="#build-from-source-android">Build From Source - Android</a></li>
       
-        <li><a href="#prerequisites">Prerequisites 必备条件</a></li>
+        <li><a href="#_1">前提条件</a></li>
       
-        <li><a href="#setting-up-the-programming-environment">Setting Up the Programming Environment 建立编程环境</a></li>
+        <li><a href="#_2">设置编译环境</a></li>
       
-        <li><a href="#building-alljoyn-from-source-for-android-android-alljoyn">Building AllJoyn from Source for Android 通过 Android 核心建立 AllJoyn</a></li>
+        <li><a href="#building-alljoyn-from-source-for-android">Building AllJoyn from Source for Android</a></li>
       
     
   </ul>

@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2126,10 +2126,10 @@
 </div></div>
     <div class="col-md-8" role="main">
 
-<h1 id="linux-running-onboarding-sample-apps">Linux - Running Onboarding Sample Apps</h1>
-<h2 id="running-onboardingclient-and-onboardingservice-apps">Running OnboardingClient and OnboardingService Apps</h2>
-<h3 id="prerequisites">Prerequisites</h3>
-<p>Open two terminal windows. In each, navigate to the AllJoyn&trade; root dir, then:</p>
+<h1 id="linux-onboarding">Linux - 运行 Onboarding 样例应用程序</h1>
+<h2 id="onboardingclient-onboardingservice">运行 OnboardingClient 和 OnboardingService 应用程序</h2>
+<h3 id="_1">前提条件</h3>
+<p>打开两个命令行窗口，每一个都切换到 AllJoyn&trade; 根目录，然后：</p>
 <pre><code class="sh">export AJ_ROOT=`pwd`
 
 # &lt;TARGET CPU&gt; can be either x86_64, x86, or whatever value you set for &quot;CPU=&quot; when running SCons.
@@ -2138,26 +2138,24 @@ export TARGET_CPU=x86
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/onboarding/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/config/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/services_common/lib:$LD_LIBRARY_PATH
 </code></pre>
 
-<h3 id="run-the-onboardingservice-sample-app">Run the OnboardingService Sample App</h3>
-<p>In one of the terminal windows, run <code>OnboardingService</code>:</p>
+<h3 id="onboardingservice">运行 OnboardingService 样例应用程序</h3>
+<p>在一方的命令行窗口中运行 <code>OnboardingService</code>:</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/onboarding/bin/OnboardingService
 </code></pre>
 
-<p><strong>NOTE:</strong> The <code>OnboardingService</code> sample app is just a shell implementation - 
-no onboarding actually occurs!</p>
-<h3 id="run-the-onboardingclient-sample-app">Run the OnboardingClient Sample App</h3>
-<p>In the other terminal window, run <code>OnboardingClient</code>:</p>
+<p><strong>NOTE:</strong> 此 <code>OnboardingService</code> 样例应用程序只是一个命令行实现 - 没有具体的 onboarding 发生。</p>
+<h3 id="onboardingclient">运行 OnboardingClient 样例应用程序</h3>
+<p>在另一方的命令行窗口中运行 <code>OnboardingClient</code>:</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/onboarding/bin/OnboardingClient
 </code></pre>
 
-<p>NOTE: The <code>OnboardingClient</code> sample app uses hard-coded Onboarding 
-values (for example, SSID, passcode, authtype).</p></div>
+<p>NOTE: 此 <code>OnboardingClient</code> 样例应用程序使用了硬编码的 onboarding 值（例如 SSID，密码，authtype）.</p></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
-      <li class="main active"><a href="#linux-running-onboarding-sample-apps">Linux - Running Onboarding Sample Apps</a></li>
+      <li class="main active"><a href="#linux-onboarding">Linux - 运行 Onboarding 样例应用程序</a></li>
       
-        <li><a href="#running-onboardingclient-and-onboardingservice-apps">Running OnboardingClient and OnboardingService Apps</a></li>
+        <li><a href="#onboardingclient-onboardingservice">运行 OnboardingClient 和 OnboardingService 应用程序</a></li>
       
     
   </ul>

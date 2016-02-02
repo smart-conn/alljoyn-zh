@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,48 +2127,50 @@
     <div class="col-md-8" role="main">
 
 <h1 id="windows-basic-sample-app">Windows - Basic Sample App</h1>
-<h2 id="running-basic_client-and-basic_service">Running basic_client and basic_service</h2>
+<h2 id="basic_client-basic_service">运行 basic_client 和 basic_service</h2>
 <h3 id="precompiled-exe">Precompiled .exe</h3>
-<p>The AllJoyn&trade; Standard Library Windows SDK includes a precompiled set of binaries.</p>
+<p>AllJoyn&trade; Standard Library Windows SDK 包含一个预编译的二进制码集合。 </p>
 <h4 id="service">Service</h4>
 <ol>
-<li>Open a Command Terminal window.</li>
-<li>CD to the root AllJoyn SDK folder in your file system.</li>
-<li>CD to the cpp/bin/samples folder.</li>
+<li>打开一个命令行窗口。</li>
+<li>切换到你的文件系统的 AllJoyn SDK 根目录。</li>
+<li>切换到 cpp/bin/samples 文件夹。.</li>
 <li>
-<p>Run basic_service:</p>
+<p>运行 basic_service:</p>
 <p>basic_service</p>
 </li>
 </ol>
-<p><strong>NOTE:</strong> The application just runs and will print information when a basic client connects.</p>
+<p><strong>NOTE:</strong> 应用程序正在运行，将会在有 basic client 连接的时候打印信息。</p>
 <h4 id="client">Client</h4>
 <ol>
-<li>Open a Command Terminal window.</li>
-<li>CD to the root AllJoyn SDK folder in your file system.</li>
-<li>CD to the cpp/bin/samples folder.</li>
-<li>Run basic_client:
-    basic_client</li>
+<li>打开一个命令行窗口。</li>
+<li>切换到你的文件系统的 AllJoyn SDK 根目录。</li>
+<li>切换到 cpp/bin/samples 文件夹。.</li>
+<li>
+<p>运行 basic_client:</p>
+<p>basic_client</p>
+</li>
 </ol>
-<p><strong>NOTE:</strong> The application will exit after finding a service, executing the cat method, then exits.</p>
+<p><strong>NOTE:</strong> 应用程序会在找到服务并执行 cat 方法后自动退出。</p>
 <h3 id="visual-studio">Visual Studio</h3>
-<p>The Basic sample applications are merged into a single Visual Studio project. 
-You can either run the counterpart of the .exe files mentioned above, 
-or create a new Visual Studio project that includes just the sample you wish to debug.
-1. Open the visual studio basic project file.
-2. Right click on the project you wish to run and select <strong>Set as StartUpProject</strong>.
-3. From the top menu options. select <strong>Debug</strong> &gt; <strong>Start Debugging</strong>.
-    1. If the menu toolbar is visible, you can also press the green Play button.
-    2. The keyboard F5 key can also work, unless you have changed this shortcut.
-4. A command prompt will open and you will see the output.</p>
-<p><strong>NOTE:</strong> The basic_client application will exit after finding a 
-service and executing the cat command.  Set breakpoints if you 
-wish to follow the application flow.</p></div>
+<p>Basic sample 应用程序们被合并到一个 Visual Studio 项目里。你可以运行上面提及的对应的 .exe 文件，也可以创建一个新的包含所需要 debug 的samples 的 Visual Studio 项目。</p>
+<ol>
+<li>打开 visual studio 的 basic project 文件.</li>
+<li>右击你想要运行的项目，选择 <strong>Set as StartUpProject</strong>.</li>
+<li>在菜单选项上方，选择 <strong>Debug</strong> &gt; <strong>Start Debugging</strong>.<ol>
+<li>如果菜单工具栏可见，你也可以按绿色的 Play 按钮。</li>
+<li>键盘上的 F5 键也可起作用，除非你已经改变了此快捷键。 </li>
+</ol>
+</li>
+<li>会有一个命令提示符出现，你将会看到结果。</li>
+</ol>
+<p><strong>NOTE:</strong> Basic_client 应用程序会在找到服务并执行 cat 命令后自动退出。如果你希望追踪此应用程序的flow，则需要设置 breakpoints. </p></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
       <li class="main active"><a href="#windows-basic-sample-app">Windows - Basic Sample App</a></li>
       
-        <li><a href="#running-basic_client-and-basic_service">Running basic_client and basic_service</a></li>
+        <li><a href="#basic_client-basic_service">运行 basic_client 和 basic_service</a></li>
       
     
   </ul>

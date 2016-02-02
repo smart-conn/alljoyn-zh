@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2126,14 +2126,12 @@
 </div></div>
     <div class="col-md-8" role="main">
 
-<h1 id="linux-chat-sample-app">Linux - Chat Sample App</h1>
-<h2 id="running-linux-chat-app">Running Linux Chat App</h2>
-<p>The Linux Chat App shows how a chat room can be implemented 
-using the AllJoyn&trade; framework, where an app first creates 
-and joins a session (with the <code>-s</code> flag), after which one or 
-more apps later join the same session (with the <code>-j</code> flag).</p>
-<h3 id="prerequisites">Prerequisites</h3>
-<p>Open two terminal windows. In each, navigate to the AllJoyn root dir, then:</p>
+<h1 id="linux-">Linux - 聊天应用程序样例</h1>
+<h2 id="linux">运行 Linux 聊天应用程序</h2>
+<p>Linux 聊天应用程序解释了如何用  AllJoyn&trade; 框架实现的实现一个聊天室，在这里第一个应用程序创建并加入一个会话（带有 <code>-s</code> 标识），之后可以
+有更多的应用程序加入此会话（带有<code>-s</code> 标识）。</p>
+<h3 id="_1">前提条件</h3>
+<p>打开两个命令行窗口。全部切换到 AllJoyn 根目录，随后:</p>
 <pre><code class="sh">export AJ_ROOT=`pwd`
 
 # &amp;lt;TARGET CPU&amp;gt; can be either x86_64, x86, or whatever value you set for &quot;CPU=&quot; when running SCons.
@@ -2142,29 +2140,26 @@ export TARGET_CPU=x86
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$LD_LIBRARY_PATH
 </code></pre>
 
-<h3 id="run-the-linux-chat-sample-app">Run the Linux Chat Sample App</h3>
+<h3 id="linux_1">运行 Linux 聊天样例应用程序</h3>
 <ol>
-<li>In one of the terminal windows, run the chat app passing it a 
-chat room name with the <code>-s</code> flag to set up and join a chat room:</li>
+<li>在一方命令行窗口中运行聊天应用程序，并传入一个带有 <code>-s</code> 标识的聊天室名，以建立并加入一个聊天室。</li>
 </ol>
 <p><code>sh
    $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/chat -s mychannel</code></p>
 <ol>
-<li>In the other terminal window, run the chat app using the <code>-j</code> 
-flag with the same chat room name to join the same chat room:</li>
+<li>在另一方命令行窗口中运行聊天应用程序，并传入带有 <code>-j</code> 标签的与前一应用程序使用的相同的聊天室名，以加入该聊天室。</li>
 </ol>
 <p><code>sh
    $AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/bin/samples/chat -j mychannel</code></p>
 <ol>
-<li>Text typed into one chat window will appear in the other 
-chat window, accompanied by the BusAttachment's Unique Name.</li>
+<li>在一方聊天窗口键入的文本会出现在另一方聊天窗口中，并伴随着 BusAttachment 的唯一识别符。</li>
 </ol></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
-      <li class="main active"><a href="#linux-chat-sample-app">Linux - Chat Sample App</a></li>
+      <li class="main active"><a href="#linux-">Linux - 聊天应用程序样例</a></li>
       
-        <li><a href="#running-linux-chat-app">Running Linux Chat App</a></li>
+        <li><a href="#linux">运行 Linux 聊天应用程序</a></li>
       
     
   </ul>

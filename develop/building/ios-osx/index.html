@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,11 +2127,11 @@
     <div class="col-md-8" role="main">
 
 <h1 id="building-iosos-x">Building iOS/OS X</h1>
-<p>Note, some of the paths below will need to be adjusted based on the version downloaded</p>
-<h2 id="setup">Setup</h2>
+<p>请注意，根据您的下载版本，以下路径可能需要调整。</p>
+<h2 id="_1">设置</h2>
 <ol>
 <li>
-<p><a href="https://allseenalliance.org/framework/download">Download</a>[downlod] the following iOS SDKs:</p>
+<p>[下载][downlod] 以下 iOS SDKs:</p>
 <ul>
 <li>Core SDK (release)</li>
 <li>Onboarding SDK</li>
@@ -2141,7 +2141,7 @@
 </ul>
 </li>
 <li>
-<p>Extract the downloaded packages and setup the directory structure:</p>
+<p>提取下载文件并设置目录结构：</p>
 </li>
 </ol>
 <pre><code class="sh">mkdir alljoyn-ios
@@ -2154,7 +2154,7 @@ unzip alljoyn-notification-service-framework-14.06.00-ios-sdk-rel.zip
 unzip alljoyn-onboarding-service-framework-14.06.00-ios-sdk-rel.zip
 </code></pre>
 
-<h4 id="set-up-openssl-dependencies">Set up OpenSSL dependencies</h4>
+<h4 id="openssl">设置 OpenSSL 附件</h4>
 <pre><code class="sh">cd &lt;parent directory of alljoyn-ios&gt;
 pushd alljoyn-ios
 git clone git://git.openssl.org/openssl.git
@@ -2174,16 +2174,15 @@ popd
 popd
 </code></pre>
 
-<h4 id="define-environment-variables">Define environment variables</h4>
+<h4 id="_2">定义环境变量</h4>
 <pre><code class="sh">cd alljoyn-ios
 launchctl setenv ALLJOYN_SDK_ROOT `pwd`
 cd services
 launchctl setenv ALLSEEN_BASE_SERVICES_ROOT `pwd`
 </code></pre>
 
-<h2 id="build-the-samples">Build the samples</h2>
-<p>Open each of the following sample iOS applications in Xcode and build
-them by selecting <strong>Project &gt; Build</strong> from the Xcode menu.</p>
+<h2 id="_3">搭建样例</h2>
+<p>在 Xcode 中打开下列每一个样例 iOS 应用程序，通过在 Xcode 中选择 <strong>Project &gt; Build</strong>  来搭建这些应用程序。</p>
 <ul>
 <li>alljoyn-ios/core/alljoyn/alljoyn_objc/samples/iOS/</li>
 <li>alljoyn-ios/core/alljoyn/services/about/ios/samples/</li>
@@ -2192,67 +2191,63 @@ them by selecting <strong>Project &gt; Build</strong> from the Xcode menu.</p>
 <li>alljoyn-ios/services/alljoyn-notification-14.06.00-rel/objc/samples/</li>
 <li>alljoyn-ios/services/alljoyn-onboarding-14.06.00-rel/objc/samples/</li>
 </ul>
-<h3 id="install-samples-on-an-ios-device">Install samples on an iOS device</h3>
-<p>Make sure you have an iOS device connected to your computer, then use
-Xcode to <strong>Run</strong> the desired sample application. This will install
-the application onto your device.</p>
-<p><strong>TIP:</strong> This command can also be used to build a sample application from a terminal</p>
+<h3 id="ios">在 iOS 设备上安装样例</h3>
+<p>请先确保您的 iOS 设备已经连接到电脑，然后使用 Xcode <strong>Run</strong> 所需的样例应用程序。这将会把应用程序安装到您的设备上。</p>
+<p><strong>TIP:</strong> 此命令同样适用于在一个终端上搭建一个样例应用程序。</p>
 <!-- QUESTION FOR WAYNE: Need to insert command -->
 
 <!-- TODO - insert scons command here -->
 
-<h2 id="add-the-alljoyn-framework-to-an-ios-application">Add the AllJoyn&trade; framework to an iOS application</h2>
+<h2 id="ios-alljoyn">向 iOS 应用程序添加 AllJoyn&trade; 框架。</h2>
 <ol>
-<li>Make sure you know the location of the AllJoyn SDK folder.
-The AllJoyn SDK folder contains your build, services, and alljoyn_objc folders.</li>
-<li>Open Xcode, open your project, and select the root of the tree in
-Project Navigator. Then select the app's target under <strong>Targets</strong>.</li>
+<li>请确保您知晓 AllJoyn SDK 所在的文件夹位置。AllJoyn SDK 文件夹包含您的搭建，服务以及 alljoyn_objc 文件夹。</li>
+<li>打开 XCode, 然后打开您的项目，在项目导航（Project Navigator）中找到树的跟节点，然后在 <strong>Targets</strong> 下选择目标应用程序。</li>
 </ol>
-<h4 id="add-the-alljoyn-core-library-and-dependencies">Add the AllJoyn Core library and dependencies:</h4>
+<h4 id="alljoyn">添加 AllJoyn 核心库和附件。</h4>
 <ol>
-<li>Select the <strong>Building Settings</strong> tab for the app target. Click the <strong>All</strong> option at the top of the list.</li>
-<li>At the top of the Build Settings list, click <strong>Architectures</strong> and then select <strong>Standard architectures (armv7, armv7s)</strong>.</li>
-<li>Set <strong>Build Active Architecture only</strong> to <strong>Yes</strong>.</li>
-<li>Scroll down to the Linking section, and set <strong>Other Linker Flags</strong> to the following:</li>
+<li>对应用程序目标选 <strong>Building Settings</strong> 标签， 点击在列表顶部的 <strong>All</strong> 选项。 </li>
+<li>在 Build Settings 列表的顶部, 点击 <strong>Architectures</strong> ，然后选择 <strong>Standard architectures (armv7, armv7s)</strong>.</li>
+<li>将 <strong>Build Active Architecture only</strong> 设置为 <strong>Yes</strong>.</li>
+<li>下滑到 linking 选项, 将  <strong>Other Linker Flags</strong> to the fol 按照如下所示调整:</li>
 </ol>
 <p><code>-lalljoyn -lajrouter -lBundledRouter.o -lssl -lcrypto</code>
-5. Scroll down to the list of settings until see the <strong>Search Paths</strong> group.
-6. Double-click the <strong>Header Search Paths</strong> field and enter the following:</p>
+5. 下滑设置列表，直到看到 <strong>Search Paths</strong>  小组。
+6. 双击 <strong>Header Search Paths</strong> 字段并输入如下命令： </p>
 <p><code>$(ALLJOYN_ROOT)/core/alljoyn/build/darwin/arm/$(PLATFORM_NAME)/$(CONFIGURATION)/dist/cpp/inc</code>
   <code>$(ALLJOYN_ROOT)/core/alljoyn/alljoyn_objc/AllJoynFramework/AllJoynFramework/</code></p>
 <ol>
-<li>Double-click the <strong>Library Search Paths</strong> field and enter the following:</li>
+<li>双击 <strong>Library Search Paths</strong> 字段并输入如下命令: </li>
 </ol>
 <p><code>$(ALLJOYN_ROOT)/core/alljoyn/build/darwin/$(CURRENT_ARCH)/$(PLATFORM_NAME)/$(CONFIGURATION)/dist/cpp/lib</code>
   <code>$(OPENSSL_ROOT)/build/$(CONFIGURATION)-$(PLATFORM_NAME)</code></p>
 <ol>
-<li>Look through the Build Settings table until you see the <strong>Apple LLVM 5.0 - Language - C++</strong> group and set the following:</li>
+<li>查阅 Build Settings 表，直到发现 <strong>Apple LLVM 5.0 - Language - C++</strong> 群组，并按照以下设置：</li>
 <li><strong>Enable C++ Exceptions</strong> to <strong>No</strong>.</li>
 <li><strong>Enable C++ Runtime Types</strong> to <strong>No</strong>.</li>
 <li>
 <p><strong>C++ Language Dialect</strong> to <strong>Compiler Default</strong>.</p>
 </li>
 <li>
-<p>Look through the Build Settings table until you see the <strong>Apple LLVM 5.0 - Custom
-Compiler Flags</strong> group and set the following:</p>
+<p>查阅 Build Settings 表，直到发现 <strong>Apple LLVM 5.0 - Custom
+编译 Flags</strong> group 并作出如下设置：</p>
 </li>
 <li>
 <p>Enter the following in the <strong>Other C Flags</strong> field for Debug field:</p>
 <p><code>-DQCC_OS_GROUP_POSIX -DQCC_OS_DARWIN</code></p>
 </li>
 <li>
-<p>Enter the following in the <strong>Other C Flags</strong> field for Release field:</p>
+<p>在 <strong>Other C Flags</strong> 字段中输入以下命令:</p>
 <p><code>-DNS_BLOCK_ASSERTIONS=1 -DQCC_OS_GROUP_POSIX -DQCC_OS_DARWIN</code></p>
 </li>
 <li>
-<p>Look through the Build Settings table until you see the <strong>Apple LLVM 5.0 - Language</strong> group and set the following:</p>
+<p>查阅 Build Settings 表，直到发现 <strong>Apple LLVM 5.0 - Language</strong> 群组，设置如下：</p>
 </li>
 <li><strong>C Language Dialect</strong> to <strong>Compiler Default</strong>.</li>
 <li><strong>Compile Sources As</strong> to <strong>Objective-C++</strong>.</li>
-<li>Select the <strong>Build Phases</strong> tab.</li>
-<li>Expand the <strong>Link Binary With Libraries</strong> group and click the + sign at the lower left corner. A dialog will appear.</li>
-<li>Select the SystemConfiguration.framework file.</li>
-<li>Click the + button again and add the following libraries to link against, if not already included:<ul>
+<li>选择 <strong>Build Phases</strong> 标签。</li>
+<li>展开 <strong>Link Binary With Libraries</strong> 群组，并点击在左下角的 + 符号。将会出现一个对话。 </li>
+<li>选择 SystemConfiguration.framework 文件。</li>
+<li>再一次点击 '+' 按钮，将下列库添加到 link against, 如已被包括则忽略。<ul>
 <li>libstdc++.6.0.9.dylib</li>
 <li>libstdc++.6.dylib</li>
 <li>libstdc++.dylib</li>
@@ -2262,12 +2257,12 @@ Compiler Flags</strong> group and set the following:</p>
 </ul>
 </li>
 </ol>
-<h4 id="add-the-service-frameworks">Add the service frameworks</h4>
+<h4 id="_4">添加服务架构</h4>
 <ol>
-<li>Select the <strong>Build Phases</strong> tab for the app target. Click the <strong>All</strong> option at the top of the list.</li>
-<li>Under <strong>Link Binary with Libraries</strong>, click on the '+' button, choose <strong>Add Other...</strong>, and add the following:</li>
+<li>在目标应用程序中选择 <strong>Build Phases</strong> 标签。点击在列表顶端的 <strong>All</strong> 选项。</li>
+<li>在 <strong>Link Binary with Libraries</strong> 库中, 点击 '+' 按钮, 选择 <strong>Add Other...</strong>, 并添加以下条目：</li>
 </ol>
-<p><strong>General libs</strong> (needed by all apps using one or more service frameworks):
+<p><strong>General libs</strong> (所有使用一个或多个服务框架的应用程序都要安装):
   * alljoyn-ios/services/<alljoyn-service-framework>/cpp/lib/
     * liballjoyn_services_common_cpp.a
     * liballjoyn_about_cpp.a
@@ -2300,11 +2295,11 @@ Compiler Flags</strong> group and set the following:</p>
     
       <li class="main active"><a href="#building-iosos-x">Building iOS/OS X</a></li>
       
-        <li><a href="#setup">Setup</a></li>
+        <li><a href="#_1">设置</a></li>
       
-        <li><a href="#build-the-samples">Build the samples</a></li>
+        <li><a href="#_3">搭建样例</a></li>
       
-        <li><a href="#add-the-alljoyn-framework-to-an-ios-application">Add the AllJoyn&trade; framework to an iOS application</a></li>
+        <li><a href="#ios-alljoyn">向 iOS 应用程序添加 AllJoyn&trade; 框架。</a></li>
       
     
   </ul>

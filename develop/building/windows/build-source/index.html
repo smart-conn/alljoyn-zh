@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,182 +2127,153 @@
     <div class="col-md-8" role="main">
 
 <h1 id="building-from-source-on-windows">Building from Source on Windows</h1>
-<h2 id="configuring-a-windows-specific-environment">Configuring a Windows-Specific Environment</h2>
-<p>It is recommended to note the install location of each tool 
-discussed in this section to complete the system configuration.</p>
-<h3 id="microsoft-visual-studio-2012-2013-or-2015">Microsoft Visual Studio 2012, 2013, or 2015</h3>
-<p>You should have at least one version of Microsoft Visual Studio 
-installed on your system. Visual Studio 2010 is no longer officially
-supported.</p>
+<h2 id="windows">配置 Windows 指定环境</h2>
+<p>建议您注意本章完成系统配置过程中提及的每一个工具的安装位置。</p>
+<h3 id="microsoft-visual-studio-20122013-2015">Microsoft Visual Studio 2012、2013 或 2015</h3>
+<p>您的系统中应至少安装一个版本的 Microsoft Visual Studio。官方已不支持 Visual Studio 2010。</p>
 <h3 id="python-2710-for-windows">Python 2.7.10 for Windows</h3>
-<p><strong>NOTE:</strong> Python 2.7.9 may also be used. Use the 32-bit version of 
-Python even if you are building the AllJoyn&trade; framework for a 64-bit architecture.</p>
+<p><strong>注意:</strong> 也可以使用 Python 2.7.9。即使在一个 64 位结构中建立 AllJoyn&trade; 架构，也应当使用 32 位版本的 Python。</p>
 <ol>
-<li>Open a browser and navigate to http://www.python.org/download/.</li>
-<li>From the Python web page, select <strong>Python 2.7.10 Windows Installer (32-bit)</strong>.</li>
-<li>Click <strong>Run</strong> and <strong>Run</strong> again. The Python setup wizard appears.</li>
-<li>Click <strong>Finish</strong>, <strong>Yes</strong>, and <strong>Finish</strong> again.</li>
+<li>打开浏览器并导航至 http://www.python.org/download/。</li>
+<li>在 Python 网页中，选择 <strong>Python 2.7.10 Windows Installer (32-bit)</strong>。</li>
+<li>点击 <strong>Run</strong> 两次。显示 Python 安装向导。</li>
+<li>依次点击 <strong>Finish</strong>、<strong>Yes</strong> 和 <strong>Finish</strong> 。</li>
 </ol>
 <h3 id="scons-234-for-windows">SCons 2.3.4 for Windows</h3>
-<p><strong>NOTE:</strong> SCons 1.3.0 may also be used.</p>
+<p><strong>注意:</strong> 也可以使用 SCons 1.3.0。</p>
 <ol>
-<li>Open a browser and navigate to http://www.scons.org.</li>
-<li>From the SCons web page, under 'Scons 2.3.4 is available', click the <strong>download page</strong> link.</li>
-<li>Select "Download scons-2.3.4-setup.exe", and click <strong>Run</strong> and <strong>Run</strong> again. The setup wizard appears.</li>
-<li>Proceed through the wizard steps to complete the SCons installation.</li>
+<li>打开浏览器并导航至 http://www.scons.org。</li>
+<li>在 SCons 网页中，在 'Scons 2.3.4 is available' 字样下，点击 <strong>download page</strong> 链接。</li>
+<li>选择 "Download scons-2.3.4-setup.exe"，并点击两次 <strong>Run</strong>。</li>
+<li>按照安装向导的流程完成 SCons 的安装。</li>
 </ol>
 <h3 id="msysgit-version-195-for-windows">Msysgit version 1.9.5 for Windows</h3>
 <ol>
-<li>Open a browser and navigate to http://code.google.com/p/msysgit/downloads/list.</li>
-<li>From the msysgit web page, click the most recent version of git Installer for Windows.</li>
-<li>Download the file, click Run and Run again. The setup wizard appears.</li>
-<li>Proceed through the wizard steps to complete the git installation.</li>
+<li>打开浏览器并导航至 http://code.google.com/p/msysgit/downloads/list。</li>
+<li>在 msygit 网页中，点击针对 Windows 的最新版本 git Installer。</li>
+<li>下载文件，点击两次 Run。出现安装向导</li>
+<li>按照安装向导的流程完成 git 的安装。</li>
 </ol>
 <h3 id="uncrustify-version-061-for-windows">Uncrustify version 0.61 for Windows</h3>
-<p>Uncrustify is a formatting tool for source code.</p>
+<p>Uncrustify 是一种针对源代码的格式工具。</p>
 <ol>
-<li>Open a browser and navigate to 
-http://sourceforge.net/projects/uncrustify/files/uncrustify/uncrustify-0.61/.</li>
-<li>From the Uncrustify Code Beautifier web page, click <strong>uncrustify-0.61.3-gf65394e-win32.zip</strong>.</li>
-<li>Download <code>uncrustify-0.61.3-gf6594e-win32.zip</code> and unzip.</li>
-<li>Move the contents to <code>C:\uncrustify-0.61-win32</code>.</li>
+<li>打开浏览器并导航至 http://sourceforge.net/projects/uncrustify/files/uncrustify/uncrustify-0.61/。</li>
+<li>在 Uncrustify Code Beautifier 页面中，点击 <strong>uncrustify-0.61.3-gf65394e-win32.zip</strong>。</li>
+<li>下载 <code>uncrustify-0.61.3-gf6594e-win32.zip</code> 并解压缩。</li>
+<li>把内容移动至 <code>C:\uncrustify-0.61-win32</code>。</li>
 </ol>
 <h3 id="doxygen-for-windows">Doxygen for Windows</h3>
-<p>Doxygen generates documentation from source code. This tool is 
-optional, but is required for creating documentation.</p>
+<p>Doxygen 为源代码生成文档。此工具是可选工具，但需要使用它建立文档。</p>
 <ol>
-<li>Open a browser and navigate to
-http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc.</li>
-<li>From the Doxygen web page, under <strong>Doxygen source and binary releases</strong> 
-and <strong>Windows XP/Vista/7</strong>, select <strong>http</strong>, click <strong>Run</strong>, 
-then <strong>Yes</strong>. The setup wizard appears.</li>
-<li>Proceed through the wizard steps to complete the Doxygen installation.</li>
+<li>打开浏览器并导航至 http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc。</li>
+<li>在 Doxygen 页面中，在 <strong>Doxygen source and binary releases</strong> 和 <strong>Windows XP/Vista/7</strong> 字样下方，选择 <strong>http</strong>，点击 <strong>Run</strong>,再点击<strong>Yes</strong>。出现安装向导。</li>
+<li>按照安装向导的流程完成 Doxygen 的安装。</li>
 </ol>
 <h3 id="graphviz-2301-for-windows">Graphviz 2.30.1 for Windows</h3>
-<p>Graph visualization is a way of representing structural 
-information as diagrams of abstract graphs and networks. 
-This tool is optional, but is required for creating documentation.</p>
+<p>Graph 视图化是一种以抽象的图像和网络形成的图示表示结构信息的方式。</p>
 <ol>
-<li>Open a browser and navigate to http://www.graphviz.org/Download_windows.php</li>
-<li>From the download to Windows, click <strong>graphviz-2.30.1.msi</strong> and then <strong>Run</strong>.</li>
-<li>Click <strong>Run</strong> again. The setup wizard appears.</li>
-<li>Proceed through the wizard steps to complete the Graphviz installation.</li>
+<li>打开浏览器并导航至 http://www.graphviz.org/Download_windows.php</li>
+<li>选择针对 Windows 的下载，点击 <strong>graphviz-2.30.1.msi</strong>，随后点击<strong>Run</strong>。</li>
+<li>再次点击 <strong>Run</strong>。显示安装向导。</li>
+<li>按照安装向导的流程完成 Graphviz 的安装。</li>
 </ol>
 <h3 id="miktex">MiKTeX</h3>
-<p>MiKTeX is used to create LaTeX binaries and Windows style sheets.</p>
-<p><strong>IMPORTANT:</strong> Install MiKTeX ONLY if you need to produce a PDF version of an API document.</p>
+<p>MiKTeX 用于创建 LaTeX 二进制代码和 Windows 风格的表格。</p>
+<p><strong>重要:</strong> 仅在您需要生成 PDF 版本的 API 文档时需要安装 MiKTeX。</p>
 <ol>
-<li>Open a browser and navigate to http://www.miktex.org/2.8/setup.</li>
-<li>From the MiKTeX web page, under <strong>Installing a basic MiKTeX system</strong>, click <strong>Download</strong>.</li>
-<li>Click <strong>Run</strong>. The Copying Conditions appear.</li>
-<li>Click <strong>I accept the MiKTeX copying conditions</strong> and click <strong>Next</strong>.</li>
-<li>Proceed through the install steps to complete the MiKTeX installation.</li>
+<li>打开浏览器并导航至 http://www.miktex.org/2.8/setup。</li>
+<li>在 MiKTeX 网页中，<strong>Installing a basic MiKTeX system</strong> 字样下方，点击 <strong>Download</strong>。</li>
+<li>点击 <strong>Run</strong>。出现复制条款。</li>
+<li>点击 <strong>I accept the MiKTeX copying conditions</strong> 并且点击 <strong>Next</strong>。</li>
+<li>按照安装向导的流程完成 MiKTeX 的安装。</li>
 </ol>
 <h3 id="java-development-kit-jdk">Java Development Kit (JDK)</h3>
-<p>The JDK is required to build Java bindings. Building the Java 
-bindings is optional, but if you want to build them, you need the JDK.</p>
+<p>需要使用 JDK 建立 Java 绑定。建立 Java 绑定是可选的，但如果您想要建立，您需要 JDK。</p>
 <h4 id="jdk-se6">JDK SE6</h4>
 <ol>
-<li>Open a browser and navigate to
-http://www.oracle.com/technetwork/java/javase/downloads/jdk6downloads-1902814.html.</li>
-<li>Download JDK 6u43 for your version of Windows.</li>
+<li>打开浏览器并导航至 http://www.oracle.com/technetwork/java/javase/downloads/jdk6downloads-1902814.html。</li>
+<li>下载针对您 Windows 版本的 JDK 6u43。</li>
 </ol>
 <h4 id="jdk-se5">JDK SE5</h4>
 <ol>
-<li>Open a browser and navigate to
-http://www.oracle.com/technetwork/java/javase/downloads/index-jdk5-jsp-142662.html.</li>
-<li>Find <strong>JDK5.0 update 22</strong> and click <strong>Download</strong>.</li>
-<li>Download the JDK installer for your version of Windows.</li>
+<li>打开浏览器并导航至 http://www.oracle.com/technetwork/java/javase/downloads/index-jdk5-jsp-142662.html。</li>
+<li>找到 <strong>JDK5.0 update 22</strong> 并且点击 <strong>Download</strong>。</li>
+<li>下载针对您 Windows 版本的 JDK 安装程序。</li>
 </ol>
 <h4 id="junit">junit</h4>
-<p>Required to build Java bindings.</p>
+<p>需要它建立 Java 绑定。</p>
 <ol>
-<li>Open a browser and navigate to
-https://github.com/junit-team/junit/wiki/Download-and-Install.</li>
-<li>Download the Plain-old JAR (<code>junit.jar</code>) v4.11.</li>
-<li>Place the jar file in a known location (e.g., <code>C:\junit\junit-4.11.jar</code>).</li>
+<li>打开浏览器并导航至 https://github.com/junit-team/junit/wiki/Download-and-Install。</li>
+<li>下载 Plain-old JAR (<code>junit.jar</code>)。</li>
+<li>在已知位置存储此 jar 文件。(如 <code>C:\junit\junit-4.11.jar</code>)</li>
 </ol>
 <h3 id="googletest">googletest</h3>
-<p>Google Test is Google's framework for writing C++ tests. 
-Google Test is an xUnit testing architecture used to test 
-the native AllJoyn framework C++ APIs. Google Test is optional, 
-but is required for building the C++ unit tests.</p>
+<p>Google Test 是 Google 编写 C++ 测试的一种架构。
+Google Test 是一种用于测试本地 AllJoyn 架构 C++ API 的一种 xUnit 测试结构。Google Test 是可选的，但它是建立 C++ 单元测试所必需的。</p>
 <ol>
-<li>Open a browser and navigate to http://code.google.com/p/googletest/downloads/list.</li>
-<li>From the googletest download page download <code>gtest-1.7.0.zip</code>.</li>
-<li>Unzip the contents of <code>gtest-1.7.0.zip</code> to a known location 
-(e.g., <code>C:\gtest\gtest-1.7.0</code>).</li>
+<li>打开浏览器并导航至 http://code.google.com/p/googletest/downloads/list。</li>
+<li>在 googletest 下载页面中下载 <code>gtest-1.7.0.zip</code>。</li>
+<li>解压缩 <code>gtest-1.7.0.zip</code> 的内容到已知位置（如 <code>C:\gtest\gtest-1.7.0</code>）</li>
 </ol>
 <h3 id="apache-ant">Apache Ant</h3>
-<p>Apache Ant is a Java library and command line tool for 
-building software. This tool is optional, but is required 
-for running junit tests.</p>
+<p>Apache Ant 是一个 Java 库，也是一个用于构建软件的命令行工具。这个工具是可选的，但它是运行 junit 测试所必需的。</p>
 <ol>
-<li>Open a browser and navigate to http://ant.apache.org/bindownload.cgi.</li>
-<li>From the Apache Ant web page, download <code>apache-ant-1.9.0-bin.zip</code>.</li>
-<li>Unzip the contents of <code>apache-ant-1.9.0-bin.zip</code> to a 
-known location (e.g., <code>C:\apache-ant-1.9.0</code>).</li>
+<li>打开浏览器并导航至 http://ant.apache.org/bindownload.cgi。</li>
+<li>在 Apache Ant 页面中，下载 <code>apache-ant-1.9.0-bin.zip</code>。</li>
+<li>解压缩 <code>apache-ant-1.9.0-bin.zip</code> 的内容到已知位置（如 <code>C:\apache-ant-1.9.0</code>）</li>
 </ol>
-<h3 id="adding-environment-variables">Adding environment variables</h3>
+<h3 id="_1">加入环境变量</h3>
 <ol>
-<li>Click <strong>Start</strong>.</li>
-<li>Right-click <strong>Computer</strong>.</li>
-<li>Select <strong>Properties</strong>.</li>
-<li>Select <strong>Advanced system settings</strong> from the left pane (Windows 7).</li>
-<li>Select the <strong>Advanced</strong> tab.</li>
-<li>Click <strong>Environment Variables</strong>.</li>
-<li>Under the User variables, search for 'PATH'.</li>
+<li>点击 <strong>Start</strong>。</li>
+<li>右击 <strong>Computer</strong>。</li>
+<li>选择  <strong>Properties</strong>。</li>
+<li>从左窗格中选择 <strong>Advanced system settings</strong> （Windows 7）</li>
+<li>选择 <strong>Advanced</strong> 标签</li>
+<li>点击 <strong>Environment Variables</strong></li>
+<li>在 User 变量中，搜索 'PATH'。</li>
 </ol>
-<p><strong>NOTE:</strong> There is a 'Path' variable under System variables, 
-   which you could add to; however, it is considered good 
-   practice to add new variables to User variables.</p>
+<p><strong>注意:</strong> 您可以向 System 变量 'Path' 中加入变量，但我们还是建议您向 User 变量中加入新变量。</p>
 <ol>
 <li>
-<p>If there is no 'PATH' under User variables, click <strong>New</strong>. </p>
+<p>如果在 User 变量下没有 'PATH'，点击 <strong>New</strong>。</p>
 <ol>
-<li>Enter PATH as the variable name.</li>
-<li>Append the following to the %PATH% variable, separated 
-  by a semicolon (adjust the path of each item, as necessary, 
-  to account for the install location):</li>
+<li>键入 PATH 作为变量名。</li>
+<li>将下列路径加入 %PATH% 变量，使用分号隔开（根据需求，加入每一个项目的路径，以交代安装位置）</li>
 </ol>
 <p><code>bat
   C:\Python27;C:\Python27\Scripts;C:\Program Files\doxygen\bin;
   C:\Program Files\Git\cmd;C:\uncrustify-0.61-win32</code></p>
 </li>
 <li>
-<p>If there is a 'PATH' under User variables, select it, and click <strong>Edit</strong>.</p>
-<p>Append the following to the %PATH% variable, separated by a 
-  semicolon (adjust the path of each item, as necessary, 
-  to account for the install location):</p>
+<p>如果在 User 变量下有一个 'PATH'，选择它，并点击 <strong>Edit</strong>。</p>
+<p>将下列路径加入 %PATH% 变量，使用分号隔开（根据需求，加入每一个项目的路径，以交代安装位置）</p>
 <p><code>bat
   C:\Python27;C:\Python27\Scripts;C:\Program Files\doxygen\bin;
   C:\Program Files\Git\cmd;C:\uncrustify-0.61-win32</code></p>
 </li>
 <li>
-<p>If you are generating the API documentation using Doxygen:</p>
+<p>如果您使用 Doxygen 生成 API 文档。</p>
 </li>
-<li>Add a 'New...' User variable DOXYGEN_HOME. </li>
-<li>Set <code>DOXYGEN_HOME=C:\PROGRA~1\doxygen</code>.</li>
-<li>Add a 'New...' User variable GRAPHVIZ_HOME.</li>
-<li>Set <code>GRAPHVIZ_HOME=C:\PROGRA~1\Graphviz 2.30.1</code>.</li>
-<li>If you are building the AllJoyn Java bindings:</li>
-<li>Add a 'New...' User variable JAVA_HOME.</li>
-<li>Set <code>JAVA_HOME=C:\PROGRA~1\Java\jdk1.6.0_43</code>. </li>
-<li>Add a 'New...' User Variable CLASSPATH.</li>
-<li>Set <code>CLASSPATH=C:\junit\junit-4.11.jar</code>.</li>
-<li>If you are using Apache Ant, use your personal install 
-directories:</li>
-<li>Add a 'New' User variable ANT_HOME.</li>
-<li>Set <code>ANT_HOME=C:\apache-ant-1.9.0</code>.</li>
+<li>加入一个 'New...' User 变量 DOXYGEN_HOME。</li>
+<li>设置 <code>DOXYGEN_HOME=C:\PROGRA~1\doxygen</code></li>
+<li>加入一个 'New...' User 变量 GRAPHVIZ_HOME。</li>
+<li>设置 <code>GRAPHVIZ_HOME=C:\PROGRA~1\Graphviz 2.30.1</code>。</li>
+<li>如果您建立 AllJoyn Java 绑定。</li>
+<li>加入一个 'New...' User 变量 JAVA_HOME。</li>
+<li>设置 <code>JAVA_HOME=C:\PROGRA~1\Java\jdk1.6.0_43</code>。</li>
+<li>加入一个 'New...' User 变量 CLASSPATH。</li>
+<li>设置 <code>CLASSPATH=C:\junit\junit-4.11.jar</code>。</li>
+<li>如果您使用 Apache Ant，使用您的个人安装目录：</li>
+<li>加入一个 'New' 变量 ANT_HOME。</li>
+<li>设置 <code>ANT_HOME=C:\apache-ant-1.9.0</code>。</li>
 <li>
-<p>Add the following to the %PATH% variable:</p>
+<p>将下列代码加入 %PATH% 变量。</p>
 <p><code>bat
   %ANT_HOME%\bin</code></p>
 </li>
 </ol>
-<h3 id="verify-installation">Verify installation</h3>
-<p>Open the command window, and check that you can run the 
-following commands:</p>
+<h3 id="_2">验证安装</h3>
+<p>打开一个命令窗口，运行以下命令检查：</p>
 <pre><code class="bat">C:\&gt;python --version
 Python 2.7.10
 
@@ -2323,10 +2294,10 @@ C:\&gt;uncrustify -v
 uncrustify 0.61
 </code></pre>
 
-<h3 id="obtaining-alljoyn-source-code-from-the-git-repository">Obtaining AllJoyn source code from the Git repository</h3>
-<p>Obtain a copy of each repository using the <code>git clone</code> command.</p>
+<h3 id="git-alljoyn">从 Git 库中获得 AllJoyn 源代码。</h3>
+<p>使用 <code>git clone</code> 命令获得每个库的拷贝。</p>
 <ol>
-<li>Create a workspace for the AllJoyn project.</li>
+<li>为 AllJoyn 工程建立一个 workspace。</li>
 </ol>
 <p>```bat
    C:>mkdir allseen
@@ -2337,254 +2308,178 @@ uncrustify 0.61
    C:>cd alljoyn
    ```</p>
 <ol>
-<li>Make a clone of the Git repository associated with the AllJoyn project.</li>
+<li>做一个与 AllJoyn 工程相关的 Git 库的克隆。</li>
 </ol>
 <p><code>bat
-   c:\allseen\core\alljoyn&gt; git clone 
+   c:\allseen\core\alljoyn&gt; git clone
    https://git.allseenalliance.org/gerrit/core/alljoyn.git</code></p>
-<h3 id="crlf-issues-when-using-msysgit">CRLF issues when using msysgit</h3>
-<p>If you have just checked out the repository, msysgit sees issues 
-that deal with the end-of-line symbol. This is an issue from going 
-back and forth between Linux and Windows, where the expected 
-line-feed in Windows is CRLF, and in Linux it is simply CR. 
-msysgit reports that a freshly checked out file has been 
-modified and does not let you pull from the repository, 
-check the files, or even merge changes. The current solution 
-is to tell git to ignore the CRLF issues using the following command:</p>
+<h3 id="msysgit-crlf">使用 msysgit 时遇到的 CRLF 问题。</h3>
+<p>如果您检查了库，mysysgit 会发现关于行尾标志的问题。这个从 Linux 和 Windows 之间不断反复造成的问题，因为 Windows 中的换行符是 CRSL，而 Linux 中的仅仅是 CR。Mysysgit 回报告一个刚被检查完成的文件再次被修改，并不允许您从库中提取，检查甚至融合文件。目前的解决办法是让 git 忽略 CRLF 问题，使用以下命令：</p>
 <pre><code class="bat">git config core.autocrlf false
 </code></pre>
 
-<h2 id="build-the-alljoyn-framework">Build the AllJoyn Framework</h2>
-<p>Use the following instructions to build the AllJoyn project.</p>
+<h2 id="alljoyn">建立 AllJoyn 架构</h2>
+<p>遵循以下指导建立 AllJoyn 工程。</p>
 <ol>
-<li>From the command line, go to the AllJoyn allseen folder. 
-The path used here is just an example.</li>
+<li>在命令行中，进入 AllJoyn allseen 文件夹。示例如下：</li>
 </ol>
 <p><code>bat
    cd c:\allseen\core\alljoyn</code></p>
 <ol>
-<li>Run the appropriate command from the list below to build 
-the AllJoyn framework for Windows. Use 'scons -h' for some 
-basic settings. In the examples below, any of the scons 
-variables default values can be set as environment variables.</li>
+<li>从以下列表选择合适的命令，建立 Windows 平台的 AllJoyn 架构。使用 'scons -h' 命令进行一些基础设置。在以下示例中，任何 scons 变量的默认值都能被设定为环境变量。</li>
 </ol>
-<h4 id="building-for-windows-7">Building for Windows 7</h4>
-<p>For 32-bit x86 target using Visual Studio 2013:</p>
+<h3 id="windows-7">Windows 7 的建立方式</h3>
+<p>在 32 位 x86 系统上使用 Visual Studio 2013:</p>
 <pre><code class="bat">C:\&gt;cd allseen\core\alljoyn
 C:\allseen\core\alljoyn&gt;scons OS=win7 CPU=x86 MSVC_VERSION=12.0 BINDINGS=cpp
 </code></pre>
 
-<p>For 64-bit x86-64 target: using Visual Studio 2013</p>
+<p>在 64 位 x86-64 系统上使用 Visual Studio 2013:</p>
 <pre><code class="bat">C:\&gt;cd allseen\core\alljoyn
 C:\allseen\core\alljoyn&gt;scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 BINDINGS=cpp
 </code></pre>
 
-<p><strong>NOTE:</strong> If you are using Windows 7, you may need to run SCons as administrator.</p>
-<h3 id="build-variants">Build variants</h3>
-<p>Building in "release mode" removes all symbol information 
-and enables code optimization. To build in release mode, 
-add the VARIANT build option to your scons command line. 
-The values are:</p>
+<p><strong>注意:</strong> 如果您使用 Windows 7，可能需要以管理员身份运行 SCons。</p>
+<h3 id="_3">建立变量</h3>
+<p>使用 "release mode" 建立，移除了所有标志信息并且支持代码优化。把 VARIANT 建设选项加入您的 scons 命令行以使用 release mode。</p>
 <ul>
-<li>debug - (default value) Build the debug variant with all 
-symbol information and improved logging features for the 
-AllJoyn framework.</li>
-<li>release - Build the release variant of the code. This will 
-be optimized for code size. It will not include symbol 
-information and will only log critical errors associated 
-with the AllJoyn framework.</li>
+<li>debug -（默认值）针对 AllJoyn 架构，使用所有标志信息和改进的日志功能建立 debug 变量。</li>
+<li>release - 生成 release 变量的代码。这将优化代码的大小。它将不会包含标志信息，并且只包含关于 AllJoyn 架构的关键性错误日志。</li>
 </ul>
-<p>Example:</p>
+<p>示例：</p>
 <pre><code class="bat">scons OS=win7 CPU=x86 VARIANT=release MSVC_VERSION=12.0 BINDINGS=cpp
 </code></pre>
 
 <h3 id="alljoyn_java">alljoyn_java</h3>
-<p>When building the Java code for the AllJoyn framework, use 
-the same command as building the AllJoyn core for Windows. 
-The only difference is it must be done from the root <code>allseen\core\alljoyn</code> 
-folder or the <code>alljoyn_java</code> folder, not the <code>alljoyn_core</code> folder. 
-To build the Java code, SCons needs to know where the Java 
-tools and junit are located.</p>
-<p>Set an environment variable to tell scons the location of the build tools:</p>
+<p>当使用 Java 代码建立 AllJoyn 架构时，使用在 Windows 上建立 AllJoyn 核心的相同命令。唯一的区别在于必须，根目录为 <code>allseen\core\alljoyn</code> 或 <code>alljoyn_java</code> 文件夹，不是 <code>alljoyn_core</code> 文件夹。建立 Java 代码之前，需要知道 Java 工具和 junit 所在的位置。</p>
+<p>设定一个环境变量，告诉 scons 生成工具的位置。</p>
 <pre><code class="bat">set JAVA_HOME=&quot;C:\Program Files\Java\jdk1.6.0_43&quot;
 </code></pre>
 
-<p>Here is the path used on a development setup:</p>
+<p>这是用于开发安装的路径：</p>
 <pre><code class="bat">set CLASSPATH=&quot;C:\junit\junit-4.11.jar&quot;
 </code></pre>
 
-<p><strong>NOTE:</strong> These environment variables are already set if you 
-followed the instructions in [Adding environment variables][adding-environment-variables].</p>
-<p>As noted, to build Java code, use the same commands as were 
-used to make AllJoyn core for Windows; e.g., a Java for Windows 
-release variant. For example:</p>
+<p><strong>注意:</strong> 如果您遵循 [Adding environment variables][adding-environment-variables] 的指导，这些环境变量已经被设定完毕。</p>
+<p>如上文所述，使用 Windows 平台上建立 AllJoyn 核心相同的代码建立 Java 代码。举一个 Windows release 变量的 Java 版本：</p>
 <pre><code class="bat">scons OS=win7 CPU=x86_64 VARIANT=release MSVC_VERSION=12.0 BINDINGS=core,java
 </code></pre>
 
-<h3 id="whitespace-options">Whitespace options</h3>
-<p>The AllJoyn build environment uses uncrustify and a python 
-script that are automatically run each time the AllJoyn 
-framework is built.</p>
-<p>If source code is found that does not match the AllJoyn coding
-guidelines and whitespace checking is enabled, the build will fail
-when it runs the whitespace script. The WS option controls the
-behavior of the whitespace checker.</p>
-<p>The values of the WS option are:</p>
+<h3 id="_4">空白选项</h3>
+<p>AllJoyn 生成环境使用 uncrustify 和 python 脚本。它们会在 AllJoyn 架构建设完毕后自动运行。</p>
+<p>如果发现源代码没有匹配 AllJoyn 编程规则，并且空白检查已开启，当它运行空白脚本时，生成将失败。WS 选项控制着空白检查器的行为。</p>
+<p>Ws 选项的值为：</p>
 <ul>
-<li>off - (Default) Don't check the code for adherence to the 
-AllJoyn whitespace policy. Example:</li>
-<li>check - This option will check the code 
-to see if it adheres to the AllJoyn white space policy.</li>
-<li>detail - Display what changes are needed to make the 
-code adhere to the AllJoyn white space policy.</li>
-<li>fix - Modify the code to use the AllJoyn white space 
-policy. This will automatically apply the changes that 
-are shown when using the detail option.</li>
+<li>off - （默认）不检查代码是否符合 AllJoyn 空白规则。</li>
+<li>check - 该选项将检查代码是否符合 AllJoyn 空白规则。</li>
+<li>detail - 列出如何使代码符合 AllJoyn 空白规则的修改意见。</li>
+<li>fix - 使用 AllJoyn 空白修改规则修改代码。它会将 detail 选项中列出的修改意见自动执行。</li>
 </ul>
-<p>Example:
+<p>示例：
   <code>bat
   scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 WS=off BINDINGS=cpp,java</code></p>
-<h3 id="generating-api-documentation">Generating API documentation</h3>
-<p>By default the Java API documentation will always build 
-when building the Java bindings; this is not the default 
-behavior for the C++ API documentation. Since the documentation 
-for the C++ API requires Doxygen and Graphviz to be installed 
-on your system, it is not built by default. Use the DOCS option 
-to generate the C++ API documentation.</p>
-<p>The values are:</p>
+<h3 id="api">生成 API 文档</h3>
+<p>默认情况下，Java API 文档会随着 Java 绑定的生成而生成；但这样的情况不适用于 C++ API 文档。由于 C++ API 文档的生成需要系统中 Doxygen 和 Graphviz 的支持，所以它不会被默认建立。使用 DOCS 选项生成 C++ API 文档。</p>
+<p>值如下：</p>
 <ul>
-<li>none - (default option) Do not generate the API documentation.</li>
-<li>html - (recommended option if documentation is desired ) 
-Produce an HTML version of the API documentation. This is what 
-is published to www.allseenalliance.org. The output can be 
-found in <code>&lt;allseen\core\alljoyn&gt;\alljoyn_core\docs\html\index.html</code>.</li>
-<li>pdf - Produce a PDF form of the document. If you are unable 
-to build the HTML form of the documentation the PDF form will 
-not build. The resulting document can be found in 
-<code>&lt;allseen\core\alljoyn&gt;\alljoyn_core\docs\html\refman.pdf</code>.</li>
-<li>dev - Produce HTML documentation for the entire AllJoyn 
-codebase, not just the public APIs. When Doxygen runs using 
-this command, it produces a lot of warnings and will generate 
-documentation for methods and functions that should only be 
-used inside AllJoyn code and not in any other projects. 
-This option is for people developing AllJoyn code, not for 
-people using the AllJoyn framework to develop other applications. 
-The output will override the output from the HTML option.</li>
+<li>none - （默认值）不生成 API 文档。</li>
+<li>html - (建议选项，如果需要文档)
+生成 HTML 版本的 API 文档。这是 www.allseenalliance.org 采用的方式。可以在 <code>&lt;allseen\core\alljoyn&gt;\alljoyn_core\docs\html\index.html</code> 找到生成文档。</li>
+<li>pdf- 生成 PDF 格式的文档。如果您未能生成 HTML 格式的文档，PDF 格式也不能生成。可以在 <code>&lt;allseen\core\alljoyn&gt;\alljoyn_core\docs\html\refman.pdf</code> 找到生成文档。</li>
+<li>dev - 为这个那个 AllJoyn 代码库生成 HTMl 代码，不仅仅是 public APIs。当 Doxygen 运行该命令，它将生成许多警告，并且会生成仅能在 AllJoyn 代码内部生成（不在任何其它工程中）的方法和功能。此选项针对开发 AllJoyn 代码的人，并不适用于基于 AllJoyn 架构开发应用的人。生成文档将会覆盖 HTML 选项生成的文档。</li>
 </ul>
-<p>Example:</p>
+<p>示例：</p>
 <pre><code class="bat">scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 DOCS=html BINDINGS=cpp,java
 </code></pre>
 
-<h3 id="specifying-the-microsoft-visual-c-version">Specifying the Microsoft Visual C++ version</h3>
-<p>To build in Windows, you are required to have at least one 
-version of Microsoft Visual C++ installed on your system. 
-At this time, only Microsoft compilers can be used to build 
-AllJoyn applications. Use the MSVC_VERSION to specify what 
-version of Microsoft Visual C++ you are using.</p>
-<p>The values are:</p>
+<h3 id="microsoft-visual-c">指定 Microsoft Visual C++ 的版本</h3>
+<p>在 Windows 中搭建，您至少需要其中安装至少一个本的 Microsoft Visual C++。此时，只有 Microsoft 编译器能用来构建 AllJoyn 应用程序。使用 MSVC_VERSION 指定您使用的 Microsoft Visual C++ 的版本。</p>
+<p>值如下：</p>
 <ul>
-<li>11.0 - Use Microsoft Visual C++ 2012</li>
-<li>11.0Exp - Use Microsoft Visual C++ 2012 Express Edition</li>
-<li>12.0 - (Default) Use Microsoft Visual C++ 2013</li>
-<li>12.0Exp - Use Microsoft Visual C++ 2013 Express Edition</li>
-<li>14.0 - Use Microsoft Visual C++ 2015</li>
-<li>14.0Exp - Use Microsoft Visual C++ 2015 Express Edition</li>
+<li>11.0 - 使用 Microsoft Visual C++ 2012</li>
+<li>11.0Exp - 使用 Microsoft Visual C++ 2012 Express Edition</li>
+<li>12.0 - (默认) 使用 Microsoft Visual C++ 2013</li>
+<li>12.0Exp - 使用 Microsoft Visual C++ 2013 Express Edition</li>
+<li>14.0 - 使用 Microsoft Visual C++ 2015</li>
+<li>14.0Exp - 使用 Microsoft Visual C++ 2015 Express Edition</li>
 </ul>
-<h3 id="build-c-unit-tests">Build C++ unit tests</h3>
-<p>The AllJoyn framework now includes a basic set of unit tests 
-that are built using the Google Test code. To build the unit 
-test, you must specify the location of the Google Test 
-source code that was obtained in googletest. Use the <code>GTEST_DIR</code> 
-option to specify the location of Google Test source code.</p>
-<p>Example:</p>
+<h3 id="c">建立 C++ 单元测试</h3>
+<p>AllJoyn 架构内建了一套使用 Google test 代码构建的基本的单元测试。为了构建测试单元，您必须指定 googletest 中 Google Test 源代码的位置。使用 <code>GTEST_DIR</code> 选项指定 Google Test 源代码的位置。</p>
+<p>示例：</p>
 <pre><code class="bat">scons OS=win7 CPU=x86_64 MSVC_VERSION=12.0 GTEST_DIR=c:\gtest\gtest-1.7.0
 BINDINGS=cpp
 </code></pre>
 
-<h3 id="verify-that-the-alljoyn-project-is-built-properly">Verify that the AllJoyn project is built properly</h3>
+<h3 id="alljoyn_1">验证 AllJoyn 工程被正确建立</h3>
 <ol>
-<li>From the command line, navigate to:</li>
+<li>在命令行中，导航至：</li>
 </ol>
 <p><code>bat
    &lt;allseen\core\alljoyn&gt;\build{OS}{CPU}{VARIANT}\dist\cpp\bin\samples</code></p>
 <ol>
-<li>Run <code>basic_service.exe</code> on one command line.</li>
-<li>Run <code>basic_client.exe</code> on another command line.</li>
+<li>在一个命令行中运行 <code>basic_service.exe</code>。</li>
+<li>在另一个命令行中运行 <code>basic_client.exe</code>。</li>
 </ol>
-<p>When the client runs, the following will display: 
-   (Output may vary slightly from what is shown)</p>
+<p>当客户端运行时，会出现以下提示（可能会略有不同）：</p>
 <p><code>AllJoyn Library version: v3.2.0
    AllJoyn Library build info: Alljoyn Library v3.2.0 (Built Fri Jan 18 16:50:19 UTC
    2013)
-   Interface Created. BusAttachment started. 
-   Initialized winsock 
+   Interface Created. BusAttachment started.
+   Initialized winsock
    Using BundledRouter
-   AllJoyn Daemon GUID = e467f6278e751dda9ebe877c612e66a0 (adsdErTQ) 
+   AllJoyn Daemon GUID = e467f6278e751dda9ebe877c612e66a0 (adsdErTQ)
    BusAttchement connected to tcp:addr=127.0.0.1,port=9956
    BusListener Registered.
-   FoundAdvertisedName(name=org.alljoyn.Bus.sample, prefix=org.alljoyn.Bus.sample) 
-   NameOwnerChanged: name=org.alljoyn.Bus.sample, oldOwner=&lt;none&gt;, 
+   FoundAdvertisedName(name=org.alljoyn.Bus.sample, prefix=org.alljoyn.Bus.sample)
+   NameOwnerChanged: name=org.alljoyn.Bus.sample, oldOwner=&lt;none&gt;,
    newOwner=:5xRgxpvD.2
    JoinSession SUCCESS (Session id=500568462)
    org.alljoyn.Bus.sample.cat ( path=/sample) returned "Hello World!"</code></p>
-<h2 id="running-unit-tests">Running Unit Tests</h2>
-<h3 id="running-c-unit-tests">Running C++ unit tests</h3>
-<p>If the <code>GTEST_DIR</code> option was specified when building the code, 
-the C++ unit test will automatically be built and placed in 
-the following location: <code>build\{OS}\{CPU}\{VARIANT}\test\cpp\bin</code>. 
-There will be two executable files there: <code>cmtest</code> and <code>ajtest</code>.</p>
-<p>For all paths, replace <code>{OS}</code>, <code>{CPU}</code>, and <code>{VARIANT}</code> with the 
-actual value used when the code was built (i.e., use the 
-same <code>OS</code>, <code>CPU</code>, and <code>VARIANT</code> option specified when running SCons).</p>
+<h2 id="_5">运行单元测试</h2>
+<h3 id="c_1">运行 C++ 单元测试</h3>
+<p>如果在生成代码时指定了 <code>GTEST_DIR</code> 选项，C++ 单元测试将被自动建立并存放在以下位置：<code>build\{OS}\{CPU}\{VARIANT}\test\cpp\bin</code>。其中有两个可执行文件 <code>cmtest</code> 和 <code>ajtest</code>。</p>
+<p>对于所有路径，根据代码生成的环境更改 <code>{OS}</code>、<code>{CPU}</code> 和 <code>{VARIANT}</code> 的值。（如，使用与运行 SCons 时相同的<code>{OS}</code>、<code>{CPU}</code> 和 <code>{VARIANT}</code>）</p>
 <h3 id="cmtest">cmtest</h3>
-<p>The cmtest executable, tests the code from the common project 
-and does not require the AllJoyn router to be running. 
-Run cmtest as follows: </p>
+<p>可执行文件 cmtest, 测试通用工程代码，不需要运行 AllJoyn 路由。
+执行以下代码运行 cmtest：</p>
 <pre><code class="bat">build\{OS}\{CPU}\{VARIANT}\test\cpp\bin\cmtest.exe
 </code></pre>
 
 <h3 id="ajtest">ajtest</h3>
-<p>The ajtest executable tests the code found in alljoyn_core. 
-For the tests to run successfully, an AllJoyn router must 
-also be running. Currently <code>ajtest</code> is limited, it cannot 
-test bus-to-bus (i.e., device-to-device) communication. </p>
-<p>Run ajtest as follows:</p>
+<p>Ajtest 可执行文件测试 alljoyn_core 中的代码。为了测试的顺利运行，必须运行 AllJoyn 路由。目前，<code>ajtest</code> 功能有限。它不能测试总线与总线之间的通信（如 设备到设备）</p>
+<p>执行以下代码运行 ajtest：</p>
 <pre><code class="bat">build\{OS}\{CPU}\{VARIANT}\test\cpp\bin\ajtest.exe
 </code></pre>
 
-<h3 id="running-the-java-junit-tests">Running the Java junit tests</h3>
-<p>The junit tests are always built the same time as the Java bindings. 
-The junit tests are specifically designed to test the Java bindings.</p>
+<h3 id="java-junit">运行 Java junit 测试</h3>
+<p>junit test 总是和 Java 绑定同时建立。
+junit test 专为测试 Java 绑定而设计。</p>
 <ol>
-<li>Copy and rename from <code>alljoyn_java\ build.xml.top</code> to the 
-top <code>build.xml</code> folder.</li>
+<li>把 <code>alljoyn_java\ build.xml.top</code> 拷贝至顶部文件夹，并重命名为 <code>build.xml</code>。</li>
 </ol>
 <p><code>bat
    copy alljoyn_java\build.xml.top build.xml</code></p>
 <ol>
-<li>From the top build folder use ant to start the test.</li>
+<li>在顶部文件夹中使用 ant 开启测试。</li>
 </ol>
 <p><code>bat
    ant test -DOS={OS} -DCPU={CPU} -DVARIANT={VARIANT}</code></p>
 <ol>
-<li>html version of the results can be found in this location:</li>
+<li>html 版本的结果存储在以下路径：</li>
 </ol>
 <p><code>bat
    build\{OS}\{CPU}\{VARIANT}\test\java\reports\junit\</code></p>
-<p>For all paths and commands, replace {OS}, {CPU}, and {VARIANT} 
-with the actual value used when the code was built 
-(i.e., use the same OS, CPU, and VARIANT option specified 
-when running SCons).</p></div>
+<p>对于所有路径和命令，根据代码生成的环境更改 <code>{OS}</code>、<code>{CPU}</code> 和 <code>{VARIANT}</code> 的值。（如，使用与运行 SCons 时相同的<code>{OS}</code>、<code>{CPU}</code> 和 <code>{VARIANT}</code>）</p></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
       <li class="main active"><a href="#building-from-source-on-windows">Building from Source on Windows</a></li>
       
-        <li><a href="#configuring-a-windows-specific-environment">Configuring a Windows-Specific Environment</a></li>
+        <li><a href="#windows">配置 Windows 指定环境</a></li>
       
-        <li><a href="#build-the-alljoyn-framework">Build the AllJoyn Framework</a></li>
+        <li><a href="#alljoyn">建立 AllJoyn 架构</a></li>
       
-        <li><a href="#running-unit-tests">Running Unit Tests</a></li>
+        <li><a href="#_5">运行单元测试</a></li>
       
     
   </ul>

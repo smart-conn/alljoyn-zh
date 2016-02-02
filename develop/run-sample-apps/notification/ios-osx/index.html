@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2126,80 +2126,60 @@
 </div></div>
     <div class="col-md-8" role="main">
 
-<h1 id="run-the-notification-sample-app-ios">Run the Notification Sample App - iOS</h1>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>Follow steps in the <a href="../../../../develop/building/ios-osx">Building - iOS OS X section</a>
-to build and install the Notification sample app on an iOS device.</p>
-<p>You can use the Notification service sample app to act as a
-Notification Producer, a Notification Consumer, or both a
-Producer and Consumer, simultaneously. If you run the app
-as both a producer and consumer simultaneously, you will be
-able to send and receive notifications on a single iOS device.</p>
-<p>Alternately, you can run the app as a Producer on one device,
-and as a Consumer on another device.</p>
-<p><strong>NOTE:</strong> Both devices must be on the same Wi-Fi network.</p>
-<h2 id="run-the-notification-sample-app-as-a-producer">Run the Notification Sample App as a Producer</h2>
+<h1 id="-ios">运行提醒应用程序样例 - iOS</h1>
+<h2 id="_1">前提条件</h2>
+<p>按照 <a href="../../../../develop/building/ios-osx">Building - iOS OS X section</a> 中的说明在 iOS 设备上搭建并安装控制面板样例应用程序。</p>
+<p>你可以使用 Notification 服务框架样例应用程序来作为一个 Notification Producer，一个 Notification Consumer，或者同时作为 Notification Producer 和 Notification Consumer. 如果你的应用程序作为 Producer 和 Consumer 同时运行，你将可以通过运行在你应用程序中的 Notification Producer 和 同运行在你的应用程序中的 Notification Consumer 交互。</p>
+<p>除此之外，还可以在一设备上运行应用程序作为 Producer，在另一设备上运行应用程序作为 Consumer.</p>
+<p><strong>NOTE:</strong> 两设备需处于同一个 Wi-Fi 网络中。</p>
+<h2 id="notification-producer">运行 Notification 样例应用程序作为 Producer</h2>
 <ol>
-<li>Launch the Notification sample app on your iOS device.</li>
+<li>在 iOS 设备上运行 Notification 样例应用程序。</li>
 </ol>
 <p><img alt="producer-1" src="../../../../files/develop/run-sample-apps/ios-notification-sample/producer-1.png" /></p>
 <ol>
-<li>In the Application Name field, enter a name to be used as
-the application name by the Notification producer, for example, TestApp.</li>
-<li>Click <strong>Producer</strong> to run in Producer mode.</li>
+<li>在应用程序名字段中键入一个用于作 producer 方应用程序名的名字，例如 TestApp.  </li>
+<li>点击 <strong>Producer</strong> ，以 Producer 模式运行。</li>
 </ol>
 <p><img alt="producer-2" src="../../../../files/develop/run-sample-apps/ios-notification-sample/producer-2.png" /></p>
 <ol>
-<li>In the first text field, enter the message you want to send in a notification.</li>
-<li>Optionally, enter the message in another language in the
-second text field. You can use the selector to the right of
-the text field to choose the second language.</li>
-<li>Use the standard TTL, or enter a new one if desired.</li>
-<li>Optionally, toggle on the Audio and Icon URL fields.</li>
-<li>Next to the Message type label, use the selector to choose
-a message type of INFO, WARNING, or EMERGENCY.</li>
-<li>Press the <strong>Send</strong> button to send the notification.</li>
+<li>在第一个字段中键入将被作为 Notification 消息的文本。</li>
+<li>可选地，你还可以在第二个字段用另一种语言输入消息。在文本框右侧的 seelctor 可用来选择第二种语言。</li>
+<li>可使用标准 TTL，也支持自定义。</li>
+<li>可选地, 可以打开 Audio and Icon URL 字段。</li>
+<li>Message type 标签旁边, 可以用 selector 选择 INFO, WARNING, 或者 EMERGENCY 中的一种作为消息类型。</li>
+<li>按下 <strong>Send</strong> 按钮，发送提醒。</li>
 </ol>
 <p><img alt="producer-3" src="../../../../files/develop/run-sample-apps/ios-notification-sample/producer-3.png" />
   <img alt="producer-4" src="../../../../files/develop/run-sample-apps/ios-notification-sample/producer-4.png" /></p>
-<p><strong>NOTE:</strong> To receive and view the notification you sent, either
-run the Notification service sample app as a Consumer
-on the same device or on a different device.</p>
-<h2 id="run-the-notification-sample-app-as-a-consumer">Run the Notification Sample App as a Consumer</h2>
+<p><strong>NOTE:</strong> 若要接收并观看已发送的提醒，可以在同一设备或另一设备上运行一个作为 Consumer 的 提醒服务样例应用程序。</p>
+<h2 id="consumer">运行作为 Consumer 的 提醒服务样例应用程序</h2>
 <ol>
-<li>Launch the Notification sample app on your iOS device.</li>
+<li>在你的 iOS 设备上运行提醒服务样例应用程序。</li>
 </ol>
 <p><img alt="producer-1" src="../../../../files/develop/run-sample-apps/ios-notification-sample/producer-1.png" /></p>
 <ol>
-<li>Do one of the following in the Application Name field:</li>
-<li>Enter a name to be used as the application name. In this case,
-  the application filters out any notifications that it receives
-  where the app name in the notification does not match the app
-  name in the Application Name field. This feature is to facilitate
-  testing sending and receiving notifications between multiple
-  different applications simultaneously on the same network.</li>
-<li>Leave the field blank. In this case, the application will
-  display all notifications that it receives, regardless of
-  which application produced them.</li>
-<li>Click <strong>Consumer</strong> to run in Consumer mode.</li>
+<li>在 Application Name 字段中，选择下列一种操作执行：</li>
+<li>键入一个将被用于应用程序名的名字。若如此做，应用程序会过滤掉任何与 Application Name 字段中指定的名字不匹配提醒。此供能旨在帮助测试在同
+一网络中的多个应用程序之间同时发送并接收提醒的场景。</li>
+<li>保留空白。若如此做，应用程序将会显示接收自所有 Producer 的提醒。</li>
+<li>点击 <strong>Consumer</strong> 以 Consumer 模式运行。</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-notification-sample/consumer-1.png" /></p>
-<p>The application will now receive notifications.</p>
+<p>应用程序将会接收提醒。</p>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-notification-sample/consumer-2.png" /></p>
-<p><strong>NOTE:</strong> To receive notifications in the app, either run the
-Notification service sample app as a Producer on the same
-device or on a different device, as detailed in
+<p><strong>NOTE:</strong> 若要在应用程序内接收提醒，需要在本设备或其他设备上将提醒服务应用程序样例以 Producer 模式运行。详情请参见
 <a href="#run-the-notification-sample-app-as-a-producer">Run the Notification sample app as a Producer</a>.</p></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
-      <li class="main active"><a href="#run-the-notification-sample-app-ios">Run the Notification Sample App - iOS</a></li>
+      <li class="main active"><a href="#-ios">运行提醒应用程序样例 - iOS</a></li>
       
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#_1">前提条件</a></li>
       
-        <li><a href="#run-the-notification-sample-app-as-a-producer">Run the Notification Sample App as a Producer</a></li>
+        <li><a href="#notification-producer">运行 Notification 样例应用程序作为 Producer</a></li>
       
-        <li><a href="#run-the-notification-sample-app-as-a-consumer">Run the Notification Sample App as a Consumer</a></li>
+        <li><a href="#consumer">运行作为 Consumer 的 提醒服务样例应用程序</a></li>
       
     
   </ul>

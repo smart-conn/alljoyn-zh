@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2126,20 +2126,13 @@
 </div></div>
     <div class="col-md-8" role="main">
 
-<h1 id="running-the-notification-samples">Running The Notification Samples</h1>
-<p>There are two types of Notification sample applications, 
-a Producer and a Consumer. The power of the <a href="../../../learn/base-services/notification">Notification service framework</a> 
-is its simplicity and ability to allow devices to "talk" 
-to end users to provide meaningful information.</p>
-<p>The Notification Producer side of an application is responsible 
-for sending a <a href="../../../learn/core#sessionless-signal">sessionless signal</a> that contains 
-a small amount of text with some optional values.  This text is 
-intended to be rendered on any device that contains the Consumer 
-side of the Notification service.</p>
-<p>The Notification Consumer side of an application is responsible 
-for registering to receive the <a href="../../../learn/core#sessionless-signal">sessionless signal</a> 
-from any application that supports the Producer side of the Notification service.</p>
-<p>The Notification interface is defined as follows:</p>
+<h1 id="_1">运行提醒实例</h1>
+<p>此处有两种提醒应用程序用例，Producer 和 Consumer. <a href="../../../learn/base-services/notification">Notification service framework</a> 的强大之处就在于他的简洁性以及允许设备与终
+端用户沟通、获取有价值的信息。</p>
+<p>Provider 应用程序一方负责发送包含带有可选值的少量文本的 <a href="../../../learn/core#sessionless-signal">非会话信号</a>. 此文本将试图被任何带有提醒服务 Consumer 端的设备
+渲染。</p>
+<p>Consumer 应用程序一方负责注册并接收来此任何支持提醒服务 Producer 端的设备发出的 <a href="../../../learn/core#sessionless-signal">非会话信号</a> 。</p>
+<p>提醒接口的定义如下所示：</p>
 <pre><code class="xml">&lt;node&gt;
     &lt;interface name=&quot;org.alljoyn.Notification&quot;&gt;
         &lt;property name=&quot;Version&quot; type=&quot;q&quot; access=&quot;read&quot;/&gt;
@@ -2159,7 +2152,7 @@ from any application that supports the Producer side of the Notification service
 &lt;/node&gt;
 </code></pre>
 
-<p>The samples can be run on the following platforms:
+<p>此样例可在如下平台上运行：
 - <a href="../../../develop/run-sample-apps/notification/android">Android</a>
 - <a href="../../../develop/run-sample-apps/notification/linux">Linux</a>
 - <a href="../../../develop/run-sample-apps/notification/ios-osx">iOS/OSX</a>
@@ -2167,7 +2160,7 @@ from any application that supports the Producer side of the Notification service
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
-      <li class="main active"><a href="#running-the-notification-samples">Running The Notification Samples</a></li>
+      <li class="main active"><a href="#_1">运行提醒实例</a></li>
       
     
   </ul>

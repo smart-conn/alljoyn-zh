@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,96 +2127,96 @@
     <div class="col-md-8" role="main">
 
 <h1 id="building-on-windows">Building on Windows</h1>
-<h2 id="setup">Setup</h2>
+<h2 id="set-up">设置 （Set Up）</h2>
 <ol>
-<li>Install Visual Studio 2012, 2013, or 2015.</li>
-<li>Ensure that the correct version of the SDK was downloaded that matches the Visual Studio and CPU.</li>
-<li>Set up environment variable, ALLJOYN_SDK_HOME to point to the AllJoyn SDK root folder.<ol>
-<li>Click on the Start menu.</li>
-<li>In the <strong>Search programs and files</strong> field, type: "edit environment".</li>
-<li>Select <strong>Edit environment variables for your account</strong>.</li>
-<li>Click the <strong>New...</strong> button.</li>
-<li>Type "ALLJOYN_SDK_HOME" for the "Variable name" box.</li>
-<li>Enter location of the AllJoyn&trade; SDK in the "Variable value" box.</li>
-<li>Click <strong>OK</strong>.</li>
+<li>安装 Visual Studio 2012, 2013, 或者 2015.</li>
+<li>下载确保与 Visual Studio 和 CPU 相匹配的正确版本的 SDK. </li>
+<li>设置环境变量, ALLJOYN_SDK_HOME 指向 AllJoyn SDK 根目录。<ol>
+<li>点击开始彩电。</li>
+<li>在 <strong>Search programs and files</strong> 一栏, 输入: "edit environment".</li>
+<li>选择 <strong>Edit environment variables for your account</strong>.</li>
+<li>点击 <strong>New...</strong> 按钮.</li>
+<li>在 "Variable name" 信箱中输入 "ALLJOYN_SDK_HOME". </li>
+<li>输入 AllJoyn&amp;trade 的位置； SDK 在 "Variable value" 盒子中。</li>
+<li>点击 <strong>OK</strong>.</li>
 </ol>
 </li>
 </ol>
-<h2 id="build-the-samples">Build the samples</h2>
+<h2 id="_1">搭建用例</h2>
 <h3 id="c">C++</h3>
 <ol>
-<li>Inside the compiled SDK exists visual studio projects.</li>
-<li>Navigate to the cpp/sample folder and pick a sample application you wish to run.</li>
-<li>Open up the Visual Studio project contained.</li>
-<li>Change the build settings to match the target SDK (Release/Debug) and CPU (Win32/x64).</li>
+<li>在编译过的 SDK 中存在着 visual studio 项目。</li>
+<li>切换到 cpp/sample 文件夹，选择一个你想运行的应用程序。</li>
+<li>打开内含的 Visual Studio 项目。</li>
+<li>将搭建选项改变为符合目标 SDK (Release/Debug) 和 CPU (Win32/x64)。</li>
 </ol>
-<p><strong>NOTE:</strong> These must match or you will receive build errors.</p>
+<p><strong>NOTE:</strong> 这些必须一致，否则将收到 build errors. </p>
 <ol>
-<li>Click the menu option <strong>Build</strong>&gt;<strong>Rebuild</strong>.
-When the build is complete, open the (CPU)/(SDK Version) folder to find the .exe files contained.</li>
+<li>点击菜单选项 <strong>Build</strong>&gt;<strong>Rebuild</strong>.
+搭建完成后，打开 (CPU)/(SDK Version) 文件夹，找到内含的 .exe 文件。</li>
 </ol>
 <pre><code>e.g. cpp/samples/basic/VC2008Win7/x64/Release
 </code></pre>
 
-<p>Double-click the applications to open them. A command prompt appears that contains logging information.</p>
-<h2 id="adding-to-a-newexisting-project">Adding to a new/existing project</h2>
-<h3 id="visual-studio-2012-2013-or-2015">Visual Studio 2012, 2013, or 2015</h3>
+<p>双击此应用程序以打开。 会弹出一个带有登入信息的命令行。</p>
+<h2 id="_2">添加一个新的/现存的项目</h2>
+<h3 id="visual-studio-2012-2013-2015">Visual Studio 2012, 2013, 或者 2015</h3>
 <ol>
 <li>
-<p>Open <strong>Project</strong>&gt;<strong>Properties</strong>.</p>
+<p>打开 <strong>Project</strong>&gt;<strong>Properties</strong>.</p>
 </li>
 <li>
-<p>Click on <strong>C/C++</strong>.</p>
+<p>点击  <strong>C/C++</strong>.</p>
 </li>
 <li>
-<p>Edit <em>Additional Include Directories</em> and add $(ALLJOYN_SDK_HOME)\inc.</p>
+<p>编辑 <em>Additional Include Directories</em> 并添加 $(ALLJOYN_SDK_HOME)\inc.</p>
 </li>
 </ol>
-<p><strong>NOTE:</strong> ALLJOYN_SDK_HOME setup in Set up step 3 above.</p>
+<p><strong>NOTE:</strong> ALLJOYN_SDK_HOME 设置在前面的 Set up 步骤 3 中有描述。</p>
 <ol>
 <li>
-<p>Select <strong>Preprocessor</strong> under C/C++.</p>
+<p>选择 C/C++ 下面的 <strong>Preprocessor</strong> .</p>
 </li>
 <li>
-<p>Edit <strong>Preprocessor Definitions</strong> and add QCC_OS_GROUP_WINDOWS and UNICODE.</p>
+<p>编辑 <strong>Preprocessor Definitions</strong> 并添加 QCC_OS_GROUP_WINDOWS and UNICODE.</p>
 </li>
 <li>
-<p>Click on <strong>Linker</strong>.</p>
+<p>点击 <strong>Linker</strong>.</p>
 </li>
 <li>
-<p>Edit <strong>Additional Library Directories</strong> and add $(ALLJOYN_SDK_HOME)\lib.</p>
+<p>编辑 <strong>Additional Library Directories</strong> 并添加 $(ALLJOYN_SDK_HOME)\lib.</p>
 </li>
 <li>
-<p>Click on <strong>Input</strong> found under the "Linker" section.</p>
+<p>点击 <strong>Input</strong> ，在 "Linker" 部分下面。</p>
 </li>
 <li>
-<p>Enter the following libraries: "alljoyn.lib;ajrouter.lib;ws2_32.lib;Secur32.lib;crypt32.lib;Bcrypt.lib;Ncrypt.lib;iphlpapi.lib".</p>
+<p>输入以下库: "alljoyn.lib;ajrouter.lib;ws2_32.lib;Secur32.lib;crypt32.lib;Bcrypt.lib;Ncrypt.lib;iphlpapi.lib".</p>
 </li>
 <li>
-<p>Click <strong>OK</strong>.  You are now ready to start using the AllJoyn APIs.</p>
+<p>点击 <strong>OK</strong>.  现在您可以开始使用 AllJoyn APIs 了。</p>
 </li>
 </ol>
 <h3 id="makefile">Makefile</h3>
-<p>Perform the following steps at a high level. Changes may be needed due to how the existing Makefile is structured.</p>
+<p>执行以下步骤。根据现存 Makefile 的规划方式，下面的操作可能需要一些改变。</p>
 <ol>
-<li>Open your Makefile.</li>
+<li>打开 Makefile.</li>
 <li>
-<p>Create a new variable named ALLJOYN_DIST to point to the AllJoyn SDK.</p>
+<p>创建一个新变量，命名为 ALLJOYN_DIST，指向 AllJoyn SDK.</p>
 <p><code>ALLJOYN_DIST := &lt;path_to_dist&gt;</code></p>
 </li>
 <li>
-<p>Create a new variable named ALLJOYN_LIB to point to the AllJoyn library.</p>
+<p>创建一个新变量，命名为 ALLJOYN_LIB，指向 AllJoyn library.</p>
 <p><code>ALLJOYN_LIBS := -l$(ALLJOYN_DIST)/cpp/lib/alljoyn.lib -l$(ALLJOYN_DIST)/cpp/lib/ajrouter.lib -l$(ALLJOYN_DIST)/cpp/lib/BundledRouter.obj</code>
 <code>ALLJOYN_REQUIRED_LIBS := -lws2_32.lib -lSecur32.lib -lcrypt32.lib -lBcrypt.lib, -lNcrypt.lib -liphlpapi.lib</code></p>
 </li>
 <li>
-<p>Modify CXXFLAGS if present, or add to compile command: <code>-DQCC_OS_GROUP_WINDOWS</code></p>
+<p>如果出现则修改 CXXFLAGS, 或者加入到编译命令: <code>-DQCC_OS_GROUP_WINDOWS</code></p>
 </li>
 <li>
-<p>Modify the include section to add: <code>-I$(ALLJOYN_DIST)/cpp/inc</code></p>
+<p>修改 include 部分，添加 <code>-I$(ALLJOYN_DIST)/cpp/inc</code></p>
 </li>
 <li>
-<p>Add <code>$(ALLJOYN_LIB) $(ALLJOYN_REQUIRED_LIBS)</code> to the Linker command:</p>
+<p>添加 <code>$(ALLJOYN_LIB) $(ALLJOYN_REQUIRED_LIBS)</code> 到 Linker 命令:</p>
 </li>
 </ol></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
@@ -2224,11 +2224,11 @@ When the build is complete, open the (CPU)/(SDK Version) folder to find the .exe
     
       <li class="main active"><a href="#building-on-windows">Building on Windows</a></li>
       
-        <li><a href="#setup">Setup</a></li>
+        <li><a href="#set-up">设置 （Set Up）</a></li>
       
-        <li><a href="#build-the-samples">Build the samples</a></li>
+        <li><a href="#_1">搭建用例</a></li>
       
-        <li><a href="#adding-to-a-newexisting-project">Adding to a new/existing project</a></li>
+        <li><a href="#_2">添加一个新的/现存的项目</a></li>
       
     
   </ul>

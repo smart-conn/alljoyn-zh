@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2126,72 +2126,67 @@
 </div></div>
     <div class="col-md-8" role="main">
 
-<h1 id="running-chat-sample-ios">Running Chat Sample - iOS</h1>
-<h2 id="prerequisites">Prerequisites</h2>
+<h1 id="-ios">运行聊天样例 - iOS</h1>
+<h2 id="_1">前提条件</h2>
 <ul>
-<li><a href="../../../../develop/building/ios-osx">Build the sample</a></li>
-<li>Install the Chat sample app on two iOS devices.</li>
-<li>Both iOS devices must be connected to the same Wi-Fi network.</li>
+<li><a href="../../../../develop/building/ios-osx">Build samples</a> </li>
+<li>在两个 iOS 设备上安装 Basic Client 和 Basic Service sample 应用程序。 </li>
+<li>两个 iOS 设备必须连接到同一个 Wi-Fi 网络中。</li>
 </ul>
-<h2 id="run-alljoyn-chat">Run AllJoyn&trade; Chat</h2>
-<p>Launch the AllJoyn Chat app on two iOS devices.</p>
-<p>The AllJoyn Chat should now now be running on both iOS devices. The initial screen should look like this:
+<h2 id="alljoyn">运行 AllJoyn&trade; 聊天</h2>
+<p>在两个设备上运行 AllJoyn 聊天应用程序。</p>
+<p>现在两个 iOS 设备上都应该运行着 AllJoyn 聊天应用程序。初始界面应是如下图所示：
   <img alt="" src="../../../../files/develop/run-sample-apps/ios-chat-sample/setup-screen.png" /></p>
-<p><strong>Figure:</strong> Chat startup screen</p>
-<h3 id="chat-using-a-session">Chat using a session</h3>
+<p><strong>Figure:</strong> 聊天初始化界面</p>
+<h3 id="_2">使用会话的聊天</h3>
 <ol>
 <li>
-<p>On both devices, ensure that the <strong>Use a session</strong> option is toggled to <em>ON</em>.</p>
+<p>确保两个设备上的 <strong>Use a session</strong> 选项都被放置在 <em>ON</em> 状态上。</p>
 </li>
 <li>
-<p>On one device, select the <strong>Host</strong> button, then press <strong>Start</strong>.
-On the second device, select the <strong>Join</strong> button, then press
-<strong>Start</strong>. The screen on both apps should look like this:</p>
+<p>在一方设备上，选中 <strong>Host</strong> 按钮，然后按下 <strong>Start</strong>. 在另一设备上，选中 <strong>Join</strong> 按钮，然后按下 <strong>Start</strong>.两方的应用程序界面都应如下图
+所示：</p>
 </li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-chat-sample/chat-screen.png" /></p>
-<p><strong>Figure:</strong> Initial message screen</p>
+<p><strong>Figure:</strong> 初始化消息界面</p>
 <ol>
-<li>On one device, enter a message and press <strong>Send</strong>. The message
-appears on the device it was entered on, and also on the second
-device. Example screenshots:</li>
+<li>在一方设备上，键入一条消息并按下 <strong>Send</strong>. 此消息出现在发送端的设备上，同时也出现在另一方设备上。截图如下：</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-chat-sample/chat-device1-1.png" /></p>
-<p><strong>Figure:</strong> Device 1 sends "hello"</p>
+<p><strong>Figure:</strong> 设备1发送 "hello"</p>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-chat-sample/chat-device2-1.png" /></p>
-<p><strong>Figure:</strong> Device 2 receives "hello" from device 1</p>
+<p><strong>Figure:</strong> 设备2收到设备1发送的 "hello"</p>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-chat-sample/chat-device1-2.png" /></p>
-<p><strong>Figure:</strong> Device 2 responds with  "hi"</p>
+<p><strong>Figure:</strong> 设备2回复  "hi"</p>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-chat-sample/chat-device2-2.png" /></p>
-<p><strong>Figure:</strong> Device 1 receives "hi" from device 2</p>
-<h3 id="chat-using-sessionless-signals">Chat using sessionless signals</h3>
+<p><strong>Figure:</strong> 设备1收到设备2回复的 "hi" </p>
+<h3 id="_3">使用非会话信号的聊天</h3>
 <ol>
-<li>On both devices, ensure that the <strong>Use a session</strong> option is toggled to <em>OFF</em>.</li>
+<li>确保两个设备上的 <strong>Use a session</strong> 选项都被放置在 <em>OFF</em> 状态上。</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-chat-sample/sls-setup-screen.png" /></p>
-<p><strong>Figure:</strong> Chat startup screen</p>
+<p><strong>Figure:</strong> 初始化聊天界面</p>
 <ol>
-<li>On both devices, press <strong>Start</strong>. The screen on both apps should look like this:</li>
+<li>在两设备上按下 <strong>Start</strong>. 两方的应用程序界面都应如下图所示：</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-chat-sample/sls-chat-screen.png" /></p>
-<p><strong>Figure:</strong> Initial message screen</p>
+<p><strong>Figure:</strong> 初始消息界面</p>
 <ol>
-<li>On one device, enter a message and press <strong>Send</strong>. The message
-appears on the device it was entered on, and also on the second device.
-Example screenshots:</li>
+<li>在一方设备上，键入一条消息并按下 <strong>Send</strong>. 此消息出现在发送端的设备上，同时也出现在另一方设备上。截图如下：</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-chat-sample/sls-chat-device1-1.png" /></p>
-<p><strong>Figure:</strong> Device 1 user types "hi"</p>
+<p><strong>Figure:</strong> 设备1键入 "hi"</p>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/ios-chat-sample/sls-chat-device1-2.png" /></p>
-<p><strong>Figure:</strong> Device 1 receives "hey" response from Device 2</p></div>
+<p><strong>Figure:</strong> 设备1 收到设备2回复的 "hey" </p></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
-      <li class="main active"><a href="#running-chat-sample-ios">Running Chat Sample - iOS</a></li>
+      <li class="main active"><a href="#-ios">运行聊天样例 - iOS</a></li>
       
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#_1">前提条件</a></li>
       
-        <li><a href="#run-alljoyn-chat">Run AllJoyn&trade; Chat</a></li>
+        <li><a href="#alljoyn">运行 AllJoyn&trade; 聊天</a></li>
       
     
   </ul>

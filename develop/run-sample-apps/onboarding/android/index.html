@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2126,87 +2126,71 @@
 </div></div>
     <div class="col-md-8" role="main">
 
-<h1 id="android-onboarding-sample-apps">Android - Onboarding Sample Apps</h1>
-<h2 id="running-android-sample-onboardingserver">Running Android Sample OnboardingServer</h2>
-<p>The Android OnboardingServer provides a sample Android 
-implementation of an app that uses the Onboarding server, 
-to allow the device to be onboarded by another device's app 
-using the Onboarding client.</p>
+<h1 id="android-onboarding">Android - Onboarding 样例应用程序</h1>
+<h2 id="android-onboardingserver">运行 Android OnboardingServer 样例</h2>
+<p>Android OnboardingServer 提供了使用 Onboarding 服务的一个 Android 样例实现应用程序。设备可以被另一个使用 Onboarding 客户端的设备所载入。</p>
 <ol>
-<li>On the device to be onboarded, first set up your Wi-Fi hotspot settings. 
-Under <strong>Settings</strong> &gt; <strong>Wireless &amp; networks</strong>, select <strong>Tethering &amp; portable hotspot</strong>. 
-By default on some devices, this will be an open AP named "AndroidAP".</li>
+<li>在需要被载入的设备上, 首先设置好 Wi-Fi hotspot.  在 <strong>Settings</strong> &gt; <strong>Wireless &amp; networks</strong> 中, 选择 <strong>Tethering &amp; portable hotspot</strong>. 
+在一些设备上, 此项会默认是一个名为 "AndroidAP" 的开放式 AP.</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingserver-sample/1.TetheringAndPortableHotspot.png" /></p>
 <ol>
-<li>Configure your Wi-Fi hotspot settings.</li>
+<li>配置你的 Wi-Fi hotspot 设置。</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingserver-sample/2.SetUpWiFiHotspot.png" /></p>
 <ol>
-<li>Load AboutConfOnbServer.apk, and start app <code>Onboarding Server</code>. 
-You should see Wi-Fi hotspot notification bar icon pop up along 
-with the text "Tethering or hotspot active". This device is now 
-ready to be onboarded.</li>
+<li>载入 AboutConfOnbServer.apk, 随后启动 <code>Onboarding Server</code>应用程序。你会看到 Wi-Fi hotspot 通知栏图标弹出带有 "Tethering or hotspot active" 字样的通知。此设备已准备好被载入。</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingserver-sample/3.StartAppEnableHotspot.png" /></p>
-<h2 id="running-android-sample-onboardingclient">Running Android Sample OnboardingClient</h2>
-<p>The Android OnboardingClient provides a sample Android 
-implementation of an app that uses the Onboarding client, 
-to allow the app to onboard another device.</p>
+<h2 id="android-onboardingclient-onboardingclient-onboarding-android-onboarding">运行 Android OnboardingClient 样例应用程序。 OnboardingClient 提供了使用 Onboarding 服务的一个 Android 样例实现应用程序。设备可以使用 Onboarding 客户端将另一个设备载入。</h2>
 <ol>
-<li>Load OnboardingSampleClient.apk, and start app <code>Onboarding Client</code>.</li>
+<li>运行 OnboardingSampleClient.apk, 然后启动 <code>Onboarding Client</code> 应用程序。</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/1.StartScreen.png" /></p>
 <ol>
-<li>Press <code>Scan WIFI networks</code>.</li>
+<li>按下 <code>Scan WIFI networks</code>.</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/2.ScanNetworks.png" />
   <img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/3.NetworkList.png" /></p>
 <ol>
-<li>Select the Wi-Fi hotspot you configured on the device running 
-the <code>Onboarding Server</code>, and enter a password if needed, then press <strong>OK</strong>.</li>
+<li>选择在运行<code>Onboarding Server</code> 的设备上配置好的 Wi-Fi hotspot，如果需要可以键入密码，然后按下 <strong>OK</strong>. </li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/4.EnterAccessPointPasswordIfNeeded.png" /></p>
 <ol>
-<li>Press the <strong>Connect to AllJoyn</strong> button, then press <strong>OK</strong> in 
-the popup dialog - 'realm name' here is not important.</li>
+<li>按下 <strong>Connect to AllJoyn</strong> 按钮, 然后在弹出的对话框中按下 <strong>OK</strong> ，此处的'realm name' 无关紧要。</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/5.ChooseNetwork.png" />
   <img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/6.PressedConnectToAllJoyn.png" /></p>
 <ol>
-<li>A list of AllJoyn apps will be displayed. Long press on the <code>Hello</code> app, 
-and select the <strong>Onboarding</strong> option.</li>
+<li>然后会显示一个 AllJoyn 应用程序列表。长按 <code>Hello</code> 应用程序，并选择 <strong>Onboarding</strong> 选项。</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/7.DeviceList.png" />
   <img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/8.LongPressOnDevice.png" /></p>
 <ol>
-<li>Enter the access point info for the network that is being onboarded to.</li>
+<li>输入正在被载入到的网络接入点信息。</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/9.SelectOnboarding.png" />
   <img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/10.EnterAccessPointInfoToOnboardTo.png" /></p>
 <ol>
-<li>Press <strong>Configure</strong> to configure the device with the access point info.</li>
+<li>按下 <strong>Configure</strong> ，确认设备和接入点信息。</li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/11.PressConfigure.png" /></p>
 <ol>
-<li>Press <strong>Connect</strong> to have the device connect with the configured AP information.</li>
+<li>按下 <strong>Connect</strong> ，使设备与配置好的 AP 信息连接。 </li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingclient-sample/12.PressConnect.png" /></p>
 <ol>
-<li>If properly configured, the <strong>other</strong> device running the 
-<code>Onboarding Server</code> will be onboarded to the AP, after which 
-the Wi-Fi hotspot notification bar icon disappears and the Wi-Fi 
-icon appears in the notification bar.</li>
-</ol>
-<p><img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingserver-sample/4.OnboardedSuccessfully.png" /></p></div>
+<li>如果设置正确,  <strong>other</strong> 在 <code>Onboarding Server</code> 上运行的应用程序将会被载入到 AP, 在这之后，相应图标会出现在通知栏里。
+  <img alt="" src="../../../../files/develop/run-sample-apps/android-onboardingserver-sample/4.OnboardedSuccessfully.png" /></li>
+</ol></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
-      <li class="main active"><a href="#android-onboarding-sample-apps">Android - Onboarding Sample Apps</a></li>
+      <li class="main active"><a href="#android-onboarding">Android - Onboarding 样例应用程序</a></li>
       
-        <li><a href="#running-android-sample-onboardingserver">Running Android Sample OnboardingServer</a></li>
+        <li><a href="#android-onboardingserver">运行 Android OnboardingServer 样例</a></li>
       
-        <li><a href="#running-android-sample-onboardingclient">Running Android Sample OnboardingClient</a></li>
+        <li><a href="#android-onboardingclient-onboardingclient-onboarding-android-onboarding">运行 Android OnboardingClient 样例应用程序。 OnboardingClient 提供了使用 Onboarding 服务的一个 Android 样例实现应用程序。设备可以使用 Onboarding 客户端将另一个设备载入。</a></li>
       
     
   </ul>

@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,13 +2127,10 @@
     <div class="col-md-8" role="main">
 
 <h1 id="running-the-basic-sample">Running the Basic Sample</h1>
-<p>The Basic sample application provides the ability to execute a concatenate method - cat.</p>
-<p>The Service application is designed to advertise a well-known name: "org.alljoyn.Bus.sample".
-It will accept sessions on the session port 25.</p>
-<p>The Client application is designed to discover the well-known name: "org.alljoyn.Bus.sample".
-It will then join a session on the session port 25.  Depending on the platform, 
-the experience is slightly different, but each Client implementation will call the "cat" Bus Method.</p>
-<p>The Basic application interface is as follows:</p>
+<p>Basic sample 应用程序提供了执行相连方法的功能 - cat.</p>
+<p>服务器应用程序可以推广一个 well-known name: "org.alljoyn.Bus.sample". 这将能接受25号会话端口中的会话。</p>
+<p>客户端应用程序可以发现一个 well-known name："org.alljoyn.Bus.sample". 他将接入在25号会话端口中的会话。对于不同的平台，体验会有所不同，但是每一个 Client 端实现都会调用 'cat' 总线方法。</p>
+<p>基本的应用程序接口如下所示：</p>
 <pre><code class="xml">&lt;node name=&quot;/sample&quot;&gt;
     &lt;interface name=&quot;org.alljoyn.Bus.sample&quot;&gt;
         &lt;method name=&quot;cat&quot;&gt;
@@ -2145,7 +2142,7 @@ the experience is slightly different, but each Client implementation will call t
 &lt;/node&gt;
 </code></pre>
 
-<p>The sample can be run on the following platforms:
+<p>此实例可以在以下操作系统中运行。
 <em> <a href="../../../develop/run-sample-apps/basic/android">Android</a>
 </em> <a href="../../../develop/run-sample-apps/basic/linux">Linux</a>
 <em> <a href="../../../develop/run-sample-apps/basic/ios-osx">iOS/OSX</a>

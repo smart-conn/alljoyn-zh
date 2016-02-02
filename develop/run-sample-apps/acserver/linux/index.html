@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,11 +2127,11 @@
     <div class="col-md-8" role="main">
 
 <h1 id="linux-running-ac-server-sample-app">Linux - Running AC Server Sample App</h1>
-<h2 id="running-acserversample">Running ACServerSample</h2>
-<h3 id="prerequisites">Prerequisites</h3>
+<h2 id="acserversample">运行 ACServerSample</h2>
+<h3 id="_1">前提条件</h3>
 <ol>
-<li>Open a terminal window.</li>
-<li>Navigate to the AllJoyn root dir, then:</li>
+<li>打开一个命令行。
+2.切换到 AllJoyn 根目录 （root dir）, 然后:</li>
 </ol>
 <pre><code class="sh">export AJ_ROOT=`pwd`
 
@@ -2141,8 +2141,8 @@ export TARGET_CPU=x86
 export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/cpp/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/about/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/controlpanel/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/notification/lib:$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/services_common/lib:$LD_LIBRARY_PATH
 </code></pre>
 
-<h3 id="run-the-ac-server-sample-app">Run the AC Server Sample App</h3>
-<p>In one of the terminal windows, run <code>ACServerSample</code>:</p>
+<h3 id="ac">运行 AC 服务器示例应用程序。</h3>
+<p>在其中一个命令行窗口中运行 <code>ACServerSample</code>:</p>
 <pre><code class="sh">$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/sample_apps/bin/ACServerSample --config-file=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/sample_apps/bin/ACServerSample.conf
 </code></pre></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
@@ -2150,7 +2150,7 @@ export LD_LIBRARY_PATH=$AJ_ROOT/core/alljoyn/build/linux/$TARGET_CPU/debug/dist/
     
       <li class="main active"><a href="#linux-running-ac-server-sample-app">Linux - Running AC Server Sample App</a></li>
       
-        <li><a href="#running-acserversample">Running ACServerSample</a></li>
+        <li><a href="#acserversample">运行 ACServerSample</a></li>
       
     
   </ul>

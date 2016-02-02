@@ -1828,6 +1828,8 @@
     
       
     
+      
+    
     <ul>
       <div>
         
@@ -1847,6 +1849,14 @@
   
     <li class="">
       <a href="../../../../learn/core/standard-core/">Standard core</a>
+    </li>
+  
+
+        
+          
+  
+    <li class="">
+      <a href="../../../../learn/core/system-descriptionalljoyn-transport/">System descriptionalljoyn transport</a>
     </li>
   
 
@@ -1960,8 +1970,6 @@
       
     
       
-    
-      
         <a href="../../../../learn/core/system-description/">System description</a>
       
     
@@ -1994,14 +2002,6 @@
   
     <li class="">
       <a href="../../../../learn/core/system-description/alljoyn-session/">Alljoyn session</a>
-    </li>
-  
-
-        
-          
-  
-    <li class="">
-      <a href="../../../../learn/core/system-description/alljoyn-transport/">Alljoyn transport</a>
     </li>
   
 
@@ -2127,96 +2127,66 @@
     <div class="col-md-8" role="main">
 
 <h1 id="android-core-sample-apps">Android - Core Sample Apps</h1>
-<h2 id="running-android-simpleclient-simpleservice-apps">Running Android SimpleClient, SimpleService Apps</h2>
-<p>The Android SimpleClient and SimpleService provide a simple 
-example of how a client app and a service app could be implemented. 
-The SimpleService listens for connections, the SimpleClient joins 
-the SimpleService session, and text sent from the SimpleClient to 
-the SimpleService via a BusMethod invoked on a SimpleService 
-BusObject is displayed in both apps.</p>
+<h2 id="android-simpleclient-simpleservice">运行 Android SimpleClient, SimpleService 应用程序</h2>
+<p>Android SimpleClient 和 SimpleService 为解释客户端和服务器端应用程序的实现原理提供了一个简单的例子。SimpleService 监听连接，SimpleClient 加入 SimpleService 发起的会话，通过被 SimpleService 调用的 BusMethod 文本可以从 SimpleClient 被发送到 SimpleService. 两方应用程序中都会显示 BusObjects.</p>
 <ol>
 <li>
-<p>Connect device A and device B to the same network.</p>
+<p>将设备 A 与设备 B 连接到同一个网络中。</p>
 </li>
 <li>
-<p>Load SimpleClient.apk onto device A, and start app "Simple Client".</p>
+<p>在设备 A 中载入 SimpleClient.apk，并启动 "Simple Client" 应用程序。 </p>
 </li>
 </ol>
 <p><img alt="" src="../../../../files/develop/run-sample-apps/android-simple-sample/1.SimpleClientWaitingForSimpleService.png" /></p>
 <ol>
+<li>在设备 B 中载入 SimpleService.apk，并启动 "Simple Service" 应用程序。 "Simple Service" 在启动时会呈现一个空白屏幕。</li>
 <li>
-<p>Load SimpleService.apk onto device B, and start app "Simple Service". 
-A blank screen appears when the "Simple Service" is started.</p>
+<p>SimpleClient 会加入 SimpleService 发起的会话, 在这之后 SimpleClient 会有如下显示：
+  <img alt="" src="../../../../files/develop/run-sample-apps/android-simple-sample/2.SimpleClientConnected.png" /></p>
 </li>
 <li>
-<p>The SimpleClient joins the session of the SimpleService, after 
-which the following screen appears on the SimpleClient.</p>
+<p>在 "Simple Client" 中键入文本并按下 Enter，文本会被发送到 "Simple Service" 并获得返回值，下图展示了两个应用程序的界面。
+  <img alt="" src="../../../../files/develop/run-sample-apps/android-simple-sample/3.SimpleClientSentAndReceivedMessage.png" /></p>
 </li>
 </ol>
-<p><img alt="" src="../../../../files/develop/run-sample-apps/android-simple-sample/2.SimpleClientConnected.png" /></p>
+<h2 id="android">运行 Android 聊天应用程序</h2>
+<p>Android 聊天应用程序展示了如何使用 AllJoyn&trade; 框架实现聊天室功能。在此场景中，一应用程序首先创建并加入一个会话，之后会有更多的应用程序
+加入此会话。</p>
 <ol>
-<li>Enter text in the "Simple Client" and hit Enter to have the text 
-sent and returned by the "Simple Service", and displayed on-screen for both apps.</li>
-</ol>
-<p><img alt="" src="../../../../files/develop/run-sample-apps/android-simple-sample/3.SimpleClientSentAndReceivedMessage.png" /></p>
-<h2 id="running-android-chat-app">Running Android Chat App</h2>
-<p>The Android Chat app shows how a chat room can be implemented 
-using the AllJoyn&trade; framework, where an app first creates a
-nd joins a session, after which one or more other apps later join the same session.</p>
-<ol>
-<li>
-<p>Connect all devices to the same network.</p>
-</li>
-<li>
-<p>Load Chat.apk onto devices, and start app "AllJoyn Chat Sample for Android".</p>
-</li>
-<li>
-<p>Create and start a channel on the first device.</p>
-<ul>
-<li>Select the right tab (with a "+" on it).</li>
+<li>将所有设备连接到同一个网络中。</li>
+<li>将 Chat.apk 载入到各设备，随后启动 "AllJoyn Chat Sample for Android" 应用程序。</li>
+<li>在第一个设备上创建并开始一个信道。<ul>
+<li>选择正确的标签 (带有 "+" 符号的那一个).
+  <img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/1.SetUpChannel.png" /></li>
+<li>通过 <strong>Set Channel Name</strong> 按钮创建信道 - 在有提醒时输入一个信道名。
+  <img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/2.SetChannelName.png" /></li>
+<li>按下 <strong>Start Channel</strong> 按钮。
+  <img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/3.StartChannel.png" /></li>
 </ul>
 </li>
-</ol>
-<p><img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/1.SetUpChannel.png" /></p>
-<pre><code>  * Create a channel via the **Set Channel Name** button - enter a channel name when prompted.
-</code></pre>
-<p><img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/2.SetChannelName.png" /></p>
-<pre><code>  * Press the "Start Channel" button.
-</code></pre>
-<p><img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/3.StartChannel.png" /></p>
-<ol>
-<li>Join the channel on the first device.<ul>
-<li>Press the left tab.</li>
-<li>Press the <strong>Join Channel</strong> button, and choose the channel that was created above.</li>
+<li>加入第一个设备所在的信道。<ul>
+<li>点击左边的标签。</li>
+<li>按下 <strong>Join Channel</strong> 按钮，选择那个刚刚被创建的信道。
+  <img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/4.ChooseChannelToJoin.png" />
+  <img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/5.ChannelJoined.png" /></li>
 </ul>
 </li>
-</ol>
-<p><img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/4.ChooseChannelToJoin.png" />
-  <img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/5.ChannelJoined.png" /></p>
-<ol>
-<li>
-<p>Join the channel on other device(s).</p>
-<ul>
-<li>Press the left tab.</li>
-<li>Press the <strong>Join Channel</strong> button, and choose the channel that was created above.</li>
+<li>加入在其他设备上信道。<ul>
+<li>点击左边的标签。</li>
+<li>按下 <strong>Join Channel</strong> 按钮， 选择上面刚刚创建的那个信道。</li>
 </ul>
 </li>
-<li>
-<p>Enter text in the "Enter message here" text box, and hit enter 
-to chat between devices.  In the message history, the Bus Attachment's 
-Unique name will be displayed alongside text from the "other" device(s), 
-or "Me" will displayed alongside text from "this" device.</p>
-</li>
-</ol>
-<p><img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/6.SendMessages.png" /></p></div>
+<li>在 "Enter message here" 文本框中输入字符，然后按下 enter 键与其他人聊天。在消息历史中，从"其他“设备发来的消息的左边栏会显示对应总线附件 的唯一识别符，来自本设备的消息则会显示 “Me”.
+  <img alt="" src="../../../../files/develop/run-sample-apps/android-chat-sample/6.SendMessages.png" /></li>
+</ol></div>
     <div class="col-md-1"><div class="bs-sidebar hidden-print affix well" role="complementary">
   <ul class="nav bs-sidenav">
     
       <li class="main active"><a href="#android-core-sample-apps">Android - Core Sample Apps</a></li>
       
-        <li><a href="#running-android-simpleclient-simpleservice-apps">Running Android SimpleClient, SimpleService Apps</a></li>
+        <li><a href="#android-simpleclient-simpleservice">运行 Android SimpleClient, SimpleService 应用程序</a></li>
       
-        <li><a href="#running-android-chat-app">Running Android Chat App</a></li>
+        <li><a href="#android">运行 Android 聊天应用程序</a></li>
       
     
   </ul>
