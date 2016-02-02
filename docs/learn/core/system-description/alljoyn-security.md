@@ -277,130 +277,83 @@ AllJoyn 框架实现了 D-Bus SASL 交换协议 [D-Bus Specification](http://dbu
 
 ### ALLJOYN_SRP_LOGON
 
-The following figure shows the message flow for the ALLJOYN_SRP_LOGON
-auth mechanism. This auth mechanism is designed for client-server use
-cases where server maintains username and password, and the client
-uses this information for authentication. This mechanism is quite
-similar to the AllJoyn_SRP_KEYX auth mechanism with the following differences:
+下图展示了 ALLJOYN_SRP_LOGON auth 机制的消息流。此 auth 机制被设计用于 client-server 用例中：服务器端维护用户名与密码，客户端使用这些信息来
+验证。此机制与 AllJoyn_SRP_KEYX auth 机制十分类似，下面列出了他们的区别：
 
-* The consumer app invokes the AuthListener callback up front
-to request the username and password from the application.
-The consumer app then passes the username in the first AuthChallenge
-message sent to the provider app.
-* The provider app uses the received username to request for
-password from the AuthListener.
+* 在应用程序请求用户名和密码之前，使用方应用程序调用 AuthListener callback. 使用方应用程序随后在发送给提供方应用程序的第一条 AuthChallenge 消息中将用户名传输过去。
+* 提供方应用程序使用收到的用户名从 AuthListener 处申请密码。
 
 ![alljoyn-srp-logon-auth-mechanism][alljoyn-srp-logon-auth-mechanism]
 
-**Figure:** ALLJOYN_SRP_LOGON auth mechanism
+**Figure:** ALLJOYN_SRP_LOGON auth 机制
 
-### ECDHE key exchanges
+### ECDHE 密钥交换
 
-In the 14.06 release, new Elliptic Curve Diffie-Hellman Ephemeral
-(ECDHE) based auth mechanism were added. For details on ECDHE-based
-auth mechanisms, see the latest version of the [Security HLD](https://wiki.allseenalliance.org/core/security_enhancements#high-level-design-documents).
+在14.06版本中加入了新的基于 Elliptic Curve Diffie-Hellman Ephemeral (ECDHE) 的认证机制。关于基于 ECDHE 认证机制的细节请参见 [Security HLD](https://wiki.allseenalliance.org/core/security_enhancements#high-level-design-documents) 的最新版本。
 
-## Generation of the session key
-The follwing figure shows the message flow for the generation
-of session keys between peer applications.
+
+## 会话密钥的生成
+下图展示了两个对等应用程序之间生成会话密钥的消息流。
 
 ![session-key-generation-between-peer-apps][session-key-generation-between-peer-apps]
 
-**Figure:** Session key generation between peer applications
+**Figure:** 两个对等应用程序之间生成会话密钥
 
-The message flow steps are described below.
-1. The consumer app generates a 28 bytes client nonce string c_nonce.
-2. The consumer app generates a GenSessionKey METHOD_CALL
-message and sends it to the provider app via the AllJoyn router.
-This message includes local auth GUID corresponding to the
-consumer app, a remote auth GUID corresponding to the provider app, and c_nonce.
-3. The provider app generates a 28 bytes server nonce string s_nonce.
-4. The provider app generates a session key and a verifier
-based on the master secret, c_nonce, and s_nonce using the
-algorithm described in section 6.3 of [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt).
-The "session key" label is used to generate the key.
-5. The provider app stores the session key in the peer state
-table for the auth GUID associated with the consumer app.
-6. The provider app generates a 128 bit group key if no group
-key exists for the provider app, and stores in the peer state table.
-7. The provider app generates a GenSessionKey METHOD_RETURN
-message and sends it to the consumer app via the AllJoyn router.
-This message includes s_nonce and verifier.
-8. The consumer app generates a session key and a verifier
-based on the master secret, c_nonce, and s_nonce using the
-same algorithm as the provider app as per section 6.3 of [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt).
-The "session key" label is used for generate the key.  
-9. The consumer app verifies that the computed verifier is
-the same as the received verifier.
-10. The consumer app stores the session key in the peer state
-table for the auth GUID associated with the provider app.
-11. The consumer app generates a 128 bit group key if no group
-key exists for the consumer app, and stores in the peer state table.
+消息流的描述如下：
+1. 使用方生成一个28字节长的 c_nonce 字符串。
+2. 使用方应用程序生成一个 GenSessionKey METHOD_CALL 消息，并通过 AllJoyn 路由发送到提供方应用程序上。此消息包括对应使用方应用程序的本地 auth GUID，一个对应提供方应用程序的远程 auth GUID 以及 c_nonce.
+3. 提供方生成一个28字节长的 s_nonce 字符串。
+4. 提供方根据主密钥， c_nonce, 和 s_nonce，以及 [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt) 6.3部分的算法生成一个会话密钥和一个 verifier. "session key" 标签用于生成密钥。
+5. 提供方应用程序为使用方应用程序以及相关的 auth GUID 将会话密钥储存在对等状态表中。
+6. 如果提供方应用程序不存在组密钥，提供方应用程序生成一个128比特的组密钥，并将其储存在对等状态表中。
+7. 提供方应用程序生成一个 GenSessionKey METHOD_RETURN 消息，并通过 AllJoyn 路由发送到使用方应用程序中。此消息包含 s_nonce 以及 verifier.
+8. 使用方应用程序根据主密钥，c_nonce，s_nonce 以及与提供方应用程序同样的生成算法（[RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt) 6.3部分）生成一个会话密钥和 verifier.  "session key" 标签被用于生成密钥。
+9. 使用方应用程序验证计算出的 verifier 是否与收到的 verifier 相同。
+10. 使用方应用程序为提供方应用程序以及相关的 auth GUID 将会话密钥储存在对等状态表中。
+11. 如果没有组密钥存在，使用方应用程序会生成一个128比特的组密钥，并储存在对等状态表中。
 
-The peer apps now have a common session key that can be used to
-exchange encrypted messages.
+对等应用程序现在有了可用于交换加密消息的一种通用的会话密钥。
 
-## Exchange of group keys
+## 组密钥交换
 
-The following figure shows the message flow for the exchange
-of group keys between peer applications. This is achieved via
-the ExchangeGroupKeys method call which is the first encrypted
-message sent between peer applications after the session key is established.
+下图展示了对等应用程序之间交换组密钥时的消息流。此交换是通过调用 ExchangeGroupKeys 方法实现的，ExchangeGroupKeys 方法是对等应用程序建立会话密钥之后发送的第一个加密消息。
 
 ![group-keys-exchange][group-keys-exchange]
 
-**Figure:** Exchange of group keys
+**Figure:** 交换组密钥
 
-The message flow steps are described below.
+消息流的步骤如下所述：
 
-1. The consumer app generates an ExchangeGroupKeys METHOD_CALL
-message. This message includes the group key of the consumer app.
-The consumer app sets the encryption flag to true for this message.
-2. The consumer app encrypts the message and generates an 8 bytes
-MAC (Message Authentication Code) using the session key for the
-remote peer app. Message encryption is done using AES CCM algorithm.
-3. The consumer app appends the MAC to the encrypted message body
-and updates the message length to reflect the MAC.
-4. The consumer app sends the encrypted ExchangeGroupKeys METHOD_CALL
-message to the provider app via the AllJoyn router.
-5. The provider app verifies the MAC and decrypts the message using the
-session key stored for the consumer app.
-6. The provider app stores the received group key for the remote peer
-(consumer app) in the peer state table.
-7. The provider app generates an ExchangeGroupKeys METHOD_RETURN message. This message includes the group key of the provider app. The provider app sets the encryption flag to true for this message.
-8. The provider app encrypts the message and generates an
-8 bytes MAC using the session key for the remote peer app.
-Message encryption is done using AES CCM algorithm.
-9. The provider app appends the MAC to the encrypted message
-body and updates the message length to reflect the MAC.
-10. The provider app sends the encrypted ExchangeGroupKeys
-METHOD_RETURN message to the provider app via the AllJoyn router.
-11. The consumer app verifies the MAC and decrypts the reply
-message using session key stored for the provider app.
-12. The consumer app stores the received group key for the
-remote peer (provider app) in the peer state table.
+1. 使用方应用程序生成一个 ExchangeGroupKeys METHOD_CALL 消息。此消息包含使用方应用程序的组密钥。使用方应用程序将此消息的加密标识设置为 true.
+2. 使用方应用程序将消息加密并使用远端对等应用程序的会话密钥生成一个8字节的 MAC MAC (Message Authentication Code,消息认证码)。消息加密使用 AES CCM  算法完成。
+3. 使用方应用程序将 MAC 附在加密的消息正文中，并更新消息长度。
+4. 使用方应用程序将加密的 ExchangeGroupKeys METHOD_CALL 消息通过 AllJoyn 路由发送到提供方应用程序上。
+5. 提供方应用程序验证 MAC 并使用为使用方应用程序存储的会话密钥解密消息。
+6. 提供方应用程序将收到的组密钥为远端对等应用程序（使用方应用程序）存储在对等状态表中。
+7. 提供方应用程序生成一个 ExchangeGroupKeys METHOD_RETURN  消息。此消息包含提供方应用程序的组密钥。提供方应用程序将此消息的加密标识设置为 true.
+8. 提供方应用程序将消息加密并使用为远端对等应用程序的会话密钥生成一个8字节的 MAC. 消息的加密使用了 AES CCM 算法。
+9. 提供方应用程序将 MAC 附在加密的消息正文中，并更新消息长度。
+10. 提供方应用程序通过 AllJoyn 路由发送向提供方应用程序发送 ExchangeGroupKeys
+METHOD_RETURN 消息。
+11. 使用方应用程序验证 MAC 并使用为提供方应用程序存储的会话密钥解密消息。
+12. 使用方应用程序将收到的组密钥为远端对等应用程序（提供方应用程序）存储到对等状态表中。
 
-Now the two apps have group key for each other which can be
-used to decrypt broadcast signal messages received from the peer application.
+应用程序现在有了可用于解密从对等应用程序接收到的广播信号的组密钥。
 
-## Exchange of encrypted messages
 
-Once encryption credentials are established between applications,
-they can exchange encrypted methods and signals. These use cases
-are captured below.
+## 加密消息的交换
 
-### Encrypted method call
+一旦应用程序之间建立了加密凭证，他们就可以互相传输加密方法和信号。下面描述了这两种情景：
 
-The following figure shows the message flow for exchange of
-encrypted method call/reply between the consumer and provider
-applications. The reply message to an encrypted method call
-is also sent encrypted.
+### 加密地方法调用
+
+下图展示了使用方与提供方应用程序之间交换加密的方法调用/回复的消息流。对加密方法调用的回复消息也是加密发送的。
 
 ![encrypted-method-call-reply][encrypted-method-call-reply]
 
-**Figure:** Encrypted method call/reply
+**Figure:** 加密的方法调用/回复
 
-The message flow steps are described below.
+消息流的步骤如下所述：
 
 1. The consumer app generates a METHOD_CALL message for the
 secure method and sets the encryption flag to true for this message.
@@ -430,8 +383,9 @@ message using session key stored for the provider app.
 12. The consumer app's AllJoyn core library sends the plaintext
 reply message to the application.
 
-### Encrypted signal
+### 加密的信号
 
+下图展示了从提供方向使用方应用程序发送一个基于会话的加密信号的流程图。
 The following figure shows the message flow for sending an
 encrypted session based signal from provider application
 to consumer applications. The signal can be sent to a destination
