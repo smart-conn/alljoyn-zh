@@ -231,11 +231,10 @@ AllJoyn 框架实现了 D-Bus SASL 交换协议 [D-Bus Specification](http://dbu
 | CANCEL | 使用方->提供方 | 取消验证。 |
 | BEGIN | <ul><li>使用方->提供方</li><li>提供方->使用方</li></ul> | <ul><li>在使用方一边，确认使用方已经收到一个来自提供方的 OK 命令, 并且
 消息流即将开始。</li><li>在提供方一边，由提供方作为对使用方 BEGIN 命令的回应被发送出。</li></ul> |
-| DATA | <ul><li>使用方->提供方</li><li>Provider->Consumer</li></ul> | On the consumer or provider side, contains a hex-encoded block of data to be interpreted according to the auth mechanism in use. |
-| OK | 使用方->提供方  | The client has been authenticated. |
-| REJECTED | 使用方->提供方 | On the consumer side, indicates that the current authentication exchange has failed, and further exchange of DATA is inappropriate. The consumer tries another mechanism, or tries providing different responses to challenges. |
-| ERROR | <ul><li>使用方->提供方</li><li>Provider->Consumer</li></ul> | On the consumer or provider side, either the provider or consumer did not know a command, does not accept the given command in the current context, or did not understand the arguments to the command. | 
-
+| DATA | <ul><li>使用方->提供方</li><li>提供方->使用方</li></ul> | 在使用方一边，包含一个等待被根据使用的 auth 机制翻译的十六进制编码的数据 块。 |
+| OK | 使用方->提供方  | 客户端已被认证。 |
+| REJECTED | 使用方->提供方 | 在使用方一边，指出目前的认证交换已失败，DATA 的进一步交换是不当的。使用方尝试另一种机制，或者尝试提供另一种对 challenges 的响应。 |
+| ERROR | <ul><li>使用方->提供方</li><li>Provider->Consumer</li></ul> | 在使用方一边，提供方或使用方不知道一个命令，没有接收到目前环境中的 给定命令，或者没有明白命令中的参数。
 ### ALLJOYN_SRP_KEYX
 
 下图展示了 ALLJOYN_SRP_KEYX auth 机制的消息流。此 auth 机制主要被设计用于两方生成一次性使用的密码的场景中。
@@ -247,84 +246,34 @@ AllJoyn 框架实现了 D-Bus SASL 交换协议 [D-Bus Specification](http://dbu
 下面描述了消息流的步骤。
 
 1. 使用方应用程序生成一个 28 bytes 的客户端随机字符创 c_rand.
-2. The consumer (client) app generates an AuthChallenge METHOD_CALL
-message and passes "AUTH ALLJOYN_SRP_KEYX &lt;c_rand&gt;" as parameter
-in that message. The consumer app sends the method call to the
-provider (server) app via the AllJoyn router.
-3. The provider app invokes the AuthListener callback registered
-by the application to request for a password. The AuthListener
-returns the password. A username of "anonymous" is used in this case.
-4. The provider app computes the server's public value B as
-per the algorithm in section 2.5.3 of [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt).
-5. The provider app generates an AuthChallenge METHOD_RETURN
-message to send a server key exchange message to the client.
-The provider app passes "DATA &lt;N:g:s:B&gt;" as parameter to that
-message. Refer to section 2.5.3 of [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt).
-The 's' is a 40 bytes random salt value. The provider app
-sends method reply to the consumer app via the AllJoyn router.
-6. The consumer app validates the values of N, g, s and B per
-section 2.5.3 of [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt).
-7. The consumer app computes the client's public value A per
-section 2.5.4 of [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt).
-8. The consumer (client) app generates an AuthChallenge METHOD_CALL
-message and passes "DATA &lt;A&gt;" as parameter in that message.
-The consumer app sends the method call to the provider (server)
-app via the AllJoyn router.
-9. The provider app generates a 28 bytes server random string s_rand.
-10. The provider app computes a premaster secret using the
-algorithm in section 2.6 of [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt).
-The premaster secret is based on the client's public value (A),
-the server's public value (B), and password among other parameters.
-11. The provider app computes a master secret based on
-the premaster secret, c_rand, and s_rand as per the algorithm
-in section 8.1 of [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt).
-12. The provider app computes a "server finish" s_verifier as
-per the algorithm in section 7.4.9 of [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt).  
-The s_verifier is generated based on master secret, hash of
-handshake messages, and "server finish" label.
-13. The provider app generates an AuthChallenge METHOD_RETURN
-message and passes "DATA &lt;s_rand:s_verfier&gt;" as parameter
-to that message. The provider app sends the method reply
-to the consumer app via the AllJoyn router.
-14. The consumer app invokes the AuthListener callback
-registered by the application to request for a password.
-The AuthListener returns the password. A username of "anonymous"
-is used in this case.
-15. The consumer app computes a premaster secret using the
-algorithm in section 2.6 of [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt).
-The premaster secret is based on the client's public value (A),
-the server's public value (B), and the password among other parameters.
-16. The consumer app computes a master secret based on the
-premaster secret, c_rand, and s_rand as per the algorithm
-in section 8.1 of [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt).
-17. The consumer app generates the "server finish" verifier
-using the same algorithm as the provider app and verifies
-that the computed value is same as the received s_verifier.
-18. The consumer app computes a "client finish" c_verifier
-as per the algorithm in section 7.4.9 of [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt).
-The c_verifier is generated based on the master secret,
-hash of handshake messages, and "client finish" label.
-19. The consumer app generates an AuthChallenge METHOD_CALL
-message to send the c_verifier to the server. The consumer app
-passes "DATA &lt;c_verifier&gt;" as parameter to the method call.
-The consumer app sends the method call to the provider (server)
-app via the AllJoyn router.
-20. The provider app generates the "client finish" verifier
-using the same algorithm as the consumer app and verifies
-that the computed value is same as the received c_verifier.
-   At this point, the client and server have authenticated with each other.
-21. The provider app generates an AuthChallenge METHOD_RETURN
-message indicating that authentication is complete. The provider
-app passes "OK &lt;s_GUID&gt;" as parameter in that message, where s_GUID
-is the auth GUID of the provider app. The provider app sends
-the method reply to the consumer app via the AllJoyn router.
-22. The consumer app sends an AuthChallenge METHOD_CALL to t
-he provider app specifying "BEGIN &lt;c_GUID&gt;" as parameter.
-This indicates to the provider that the client has received
-the OK message, and the stream of data messages is about to begin.
-The c_GUID is auth GUID of the consumer app.
-23. The provider app sends an AuthChallenge METHOD_RETURN
-message, specifying "BEGIN" as parameter.
+2. 使用方（客户端）应用程序生成一个 AuthChallenge METHOD_CALL 并使用 "AUTH ALLJOYN_SRP_KEYX &lt;c_rand&gt;" 作为参数将其发送。使用方应用程
+序通过 AllJoyn 路由向提供方发送消息调用请求。
+3. 提供方应用程序调用由应用程序注册的 AuthListener 回应来申请一个密码。此 AuthListener 将返回密码。此用例中使用 “anonymous” 作用户名。
+4. 提供方应用程序根据 [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt) 2.5.3 部分描述的算法计算服务器的公共值 B.
+5. 提供方应用程序生成一个 AuthChallenge METHOD_RETURN 消息，以向客户端发送服务器密钥交换消息。提供方应用程序将 "DATA &lt;N:g:s:B&gt;" 置入
+此消息。具体参见 [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt) 2.5.3 部分。这是一个40字节场的随机盐值。提供方应用程序通过 AllJoyn 
+路由向使用方应用程序发送方法回复。
+6. 使用方应用程序根据 [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt) 2.5.3部分,验证 N, g, s 与 B 的值。
+7. 使用方应用程序根据 [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt) 2.5.3部分,计算客户端的公共值 A.
+8. 使用方（客户端）应用程序生成一个 AuthChallenge METHOD_CALL 消息，并将"DATA &lt;A&gt;"作为参数传入。使用方应用程序通过 AllJoyn 路由向提供方应用程序发送方法调用。
+9. 提供方应用程序生成一个28字节的服务器随机字符串 s_rand.
+10. 提供方应用程序使用 [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt) 2.6部分的算法计算一个 premaster secret.
+11. 提供方应用程序根据 premaster secret, c_rand, 以及 s_rand 等参数，和  [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt) 8.1 部分的算
+法，计算出主密钥。
+12. 提供方应用程序根据 [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt). 7.4.9 部分的算法计算出一个 "服务器结束" s_verifier. s_verifier 根据主密钥，握手消息的 hash 值以及 ‘server finish’ 标签生成。
+13. 提供方应用程序生成一个 AuthChallenge METHOD_RETURN 消息，并将 "DATA &lt;s_rand:s_verfier&gt;" 作为参数传入。提供方应用程序通过 AllJoyn 路由向使用方发送方法回复。
+14. 使用方应用程序调用又应用程序注册的 AuthListener callback 请求密码。AuthListener 返回密码。在此例中，用户名使用了 "anonymous".
+15. 使用方应用程序根据 [RFC 5054](http://www.rfc-editor.org/rfc/rfc5054.txt) 2.6 部分的算法计算一个 premaster secret. 此 premaster secret 根据客户端的公共值（A），服务端的公共值（B）以及密码和其他参数得出。
+16. 使用方应用程序根据 premaster secret, c_rand, s_rand 等参数以及 [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt) 8.1 部分的算法计算 出。
+17. 使用方应用程序使用与提供方应用程序使用的相同算法生成 "服务器结束" verifier，验证此计算值是否与收到的 s_verifier 相同。
+18. 使用方应用程序根据 [RFC 5246](http://www.rfc-base.org/txt/rfc-5246.txt) 7.4.9 部分的算法计算一个 "客户端结束" c_verifier. c_verifier 根据 主密钥，握手消息的hash 值以及 "client finish" 标签生成。
+19. 使用方应用程序生成一个用来向服务方发送 c_verifier 的 AuthChallenge METHOD_CALL. 使用方应用程序将 "DATA &lt;c_verifier&gt;"  作为参数传入方法调用。使用方应用程序将方法调用通过 AllJoyn 路由发送到提供方（服务方）应用程序。
+20. 提供方应用程序使用与使用方应用程序同样的算法生成 "客户端结束" verifier，计算出的值应与接收到的 c_verifier 相同。
+此时，客户端与服务端已经完成互相认证。
+21. 提供方应用程序生成一个指示着认证已经完成的 AuthChallenge METHOD_RETURN
+消息。提供方将"OK &lt;s_GUID&gt;" 作为消息的参数传入，s_GUID 代表提供方的 GUID。提供方通过 AllJoyn 路由向使用方应用程序发送消息回复。
+22. 使用方应用程序向提供方应用程序发送一个 AuthChallenge METHOD_CALL，并将 "BEGIN &lt;c_GUID&gt;" 声明为参数。这指示着客户端已经收到 OK 消息，数据流即将开始。
+23. 提供方应用程序发送一个 AuthChallenge METHOD_RETURN 消息，将 "BEGIN"  声明为参数。
 
 ### ALLJOYN_SRP_LOGON
 
@@ -605,3 +554,4 @@ The following table summarizes members from org.alljoyn.Bus.Peer.Authentication 
 [encrypted-signal]: /files/learn/system-desc/encrypted-signal.png
 [key-selection-signal-encryption-provider-app]: /files/learn/system-desc/key-selection-signal-encryption-provider-app.png
 [key-selection-signal-decryption-consumer-app]: /files/learn/system-desc/key-selection-signal-decryption-consumer-app.png
+   
