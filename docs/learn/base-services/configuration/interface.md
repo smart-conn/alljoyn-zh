@@ -13,228 +13,190 @@
 
 ## 定义概览
 
-此配置服务框架暴露指定设备的方法，例如重启和恢复出厂设置，设备密码，指定设备的可固化的属性，例如友好名称和默认语言。推荐的做法是 设备的 OEM 接管这项服务框架，并绑定到一个单独的应用程序（系统应用程序）。 配置服务框架的单例实例的执行必须使用由向 OEM 以及 应用程序开发者提供的明确指导
-The Configuration service framework exposes device-specific 
-methods such as restart and factory reset, device passcode, 
-and device-specific settable attributes such as friendly name 
-and default language. It is expected that OEM of the device 
-would take this service framework and bundle it with a single 
-application (system app). The enforcement of singleton instance 
-of the Configuration service framework must be performed using 
-explicit guidelines provided to OEMs and application developers 
-regarding the usage of the Configuration service framework.
+此配置服务框架暴露指定设备的方法，例如重启和恢复出厂设置，设备密码，指定设备的可固化的属性，例如友好名称和默认语言。推荐的做法是 设备的 OEM 接管这项服务框架，并绑定到一个单独的应用程序（系统应用程序）。配置服务框架的单例实例的执行必须根据对配置服务框架的具体 使用，根据向 OEM 以及 应用程序开发者提供的明确指导来操作。
 
-The following figure  illustrates the relationship between 
-software stack on the device hosting the AllJoyn&trade; service 
-framework and the device hosting the AllJoyn client application.
+下图展示了设备主办的 AllJoyn&trade; 服务框架以及设备主办的 AllJoyn 客户端应用程序之间软件堆栈的关系。
 
 ![config-arch][config-arch]
 
-**Figure:** Configuration service framework architecture within the AllJoyn framework
+**Figure:** AllJoyn 框架内的配置服务框架结构。
 
-The figure describes the scope of Configuration service 
-framework and About feature in a multiple applications-per-device 
-scenario. The following system behavior should be noted:
+下图描述了配置服务框架以及在一设备包含多应用程序的场景中的 About 功能的功能范围。需要强调下列系统属性：
 
-* The system application bundles the Configuration service 
-framework and provides a remote mechanism to invoke device-specific 
-configuration.
-* It could be that OEMs provide equivalent (as exposed by the 
-Configuration service framework) functionality via the local 
-user interface.
+* 系统应用程序将配置服务框架绑定，并提供一个调用指定设备配置的远端机制。
+* 一种可能的情况是，OEM 通过本地用户接口提供相同的（与配置服务框架暴露的功能相同的）功能。
 
-**NOTE:** All methods and signals are considered mandatory to support 
-the AllSeen Alliance Compliance and Certification program. 
+**NOTE:** 所有的方法与信号都被认为强制支持 AllSeen Alliance Compliance and Certification 程序。
 
-## Typical Call Flows
+## 典型的呼叫流程
 
-This section highlights call flows that involve the Configuration 
-service framework. The system app on the AllJoyn service framework 
-device is involved in these call flows.
+此章节着重描述了包含配置服务框架的呼叫流程。这些流程涉及了 AllJoyn 服务框架设备上的系统应用程序。
 
-### Device configuration change
+### 设备配置的改变
 
-The following figure illustrates a sample call flow where an Alljoyn 
-app executing on an AllJoyn client device discovers the Configuration 
-service framework via announcement and subsequently performs methods 
-as specified in the Config interface to retrieve and update configuration 
-data. See [Config Interface][config-interface] for complete details.
+下图描述了一个呼叫流程的例子，在这里一个执行在 AllJoyn 客户端设备上的 AllJoyn 应用程序通过 announcement 发现配置服务框架，并进一步
+执行了 Config 接口中声明的方法，以接收并更新配置数据。详细信息参见 [Config Interface][config-interface].
 
 ![config-device-config][config-device-config]
 
-**Figure:** Device configuration change call flow
+**Figure:** 设备配置改变的呼叫流程
 
-### Factory reset
+### 恢复出厂设置
 
-The following figure illustrates a sample call flow where an Alljoyn 
-app executing on an AllJoyn client device discovers the Configuration 
-service framework via announcement, and subsequently performs methods 
-as specified in the Config interface to retrieve the configuration 
-data and perform factory reset action if needed. See [Config Interface][config-interface] 
-for complete details.
-
+下图描述了一个呼叫流程的例子，在这里一个执行在 AllJoyn 客户端设备上的 AllJoyn 应用程序通过 announcement 发现配置服务框架，并
 ![config-device-factory-reset][config-device-factory-reset]
 
-**Figure:** Device factory reset call flow
+**Figure:** 设备恢复出厂设置的呼叫流程
 
-### Error handling
+### 错误处理
 
-The method calls in the Config interface use the AllJoyn error 
-message handling feature (ER_BUS_REPLY_IS_ERROR_MESSAGE) to set 
-the error name and error message.
+Config 接口中的方法调用使用 AllJoyn 错误消息处理功能 (ER_BUS_REPLY_IS_ERROR_MESSAGE) 设置错误名和错误消息。
 
-| Error name | Error message |
+| 错误名 | 错误消息 |
 |---|---|
-| `org.alljoyn.Error.InvalidValue` | Invalid value |
-| `org.alljoyn.Error.FeatureNotAvailable` | Feature not available |
-| `org.alljoyn.Error.LanguageNotSupported` | The language specified is not supported |
+| `org.alljoyn.Error.InvalidValue` | 无效值 |
+| `org.alljoyn.Error.FeatureNotAvailable` | 不可用的功能 |
+| `org.alljoyn.Error.LanguageNotSupported` | 不支持指定的语言 |
 
-## Config Interface
+## Config 接口
 
-### Interface name
+### 接口名
 
-| Interface name | Version | Secured | Object path |
+| 接口名| 版本 | 安全性 | 对象路径 |
 |---|:---:|:---:|---|
 | `org.alljoyn.Config` | 1 | yes | `/Config` |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值列表 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
+| Version | `q` | 正整数 | 只读 | 接口的版本号 |
 
-### Methods
+### 方法
 
-The following methods are exposed by the object that implements 
-the `org.alljoyn.Config` interface.
+以下方法由实现了`org.alljoyn.Config`接口的对象暴露。
 
 #### `FactoryReset`
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
+知道设备与个人 AP 断开连接，清除之前的所有配置数据，并开启 softAP 模式。 
 Directs the device to disconnect from the personal AP, clear all 
 previously configured data, and start the softAP mode.
 
-**Error reply**
+**错误回复**
 
-| Error | Description |
+| 错误 | 描述 |
 |---|---|
-| `org.alljoyn.Error.FeatureNotAvailable` | Returned in the AllJoyn response if the device does not support this feature. |
+| `org.alljoyn.Error.FeatureNotAvailable` | 设备不支持此功能时 AllJoyn 回复将返回此消息。 |
 
 #### `SetPasscode('say')`
 
 **Message arguments**
 
-| Argument | Parameter name| Signature | List of values | Description |
+| 参数 | 参数名| 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `daemonRealm` | `s` | N/A | Identifies the daemon's identity for secure access. This parameter is currently ignored by the Configuration service framework. |
-| 1 | `newPasscode` | `ay` | N/A | Passphrase that will be utilized for the secure Config interface. |
+| 0 | `daemonRealm` | `s` | N/A | 用于安全访问，标识着守护进程 daemon 的身份，目前的配置服务框架忽略此参数。|
+| 1 | `newPasscode` | `ay` | N/A | 安全的 Config 接口将要使用的密码。|
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Updates the passcode to be used for the `org.alljoyn.Config` interface 
-which is secure. The default passcode is 000000 until it is overwritten 
-by `SetPasscode`.
+更新被用于安全的 `org.alljoyn.Config` 接口的密码。在被 `SetPasscode` 重写前，默认密码是000000.
 
 #### `a{sv} GetConfigurations('s')`
 
-**Message arguments**
+**消息参数**
 
-| Argument | Parameter name| Signature | List of values | Description |
+| 参数 | 参数名| 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `languageTag` | `s` | IETF language tags specified by RFC 5646. | Language tag used to retrieve Config fields. |
+| 0 | `languageTag` | `s` | 由 RFC 5646 指定的 IETF 语言标签。| 用于接收 Config 字段的语言标签。|
 
-**Reply arguments**
+**回复参数**
 
-| Argument | Parameter name| Return signature | List of values | Description |
+| 参数 | 参数名| 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `configData` | `a{sv}` | N/A | Returns configuration fields in the form of dictionary. See [Configuration map fields][config-map-fields] for the default set of Configuration map fields. |
+| 0 | `configData` | `a{sv}` | N/A | 以字典的形式返回配置字段。关于默认的配置地图字段的细节，参阅 [Configuration map fields][config-map-fields] |
 
-**Description**
+**描述**
 
-Returns all the configurable fields specified within the scope of 
-the Config interface. If language tag is not specified (i.e., ""), 
-configuration fields based on the device's default language are returned.
+返回所有在 Config 接口范围内声明的可配置的字段。如果未声明语言标签 (例如, ""), 则将会根据设备的默认语言返回配置字段。
 
-##Error reply**
+##错误回复**
 
-| Error | Description |
+| 错误 | 描述 |
 |---|---|
-| `org.alljoyn.Error.LanguageNotSupported` | Returned if a language tag is not supported by the device. |
+| `org.alljoyn.Error.LanguageNotSupported` | 在语言标签不被设备支持时返回。 |
 
 #### `UpdateConfigurations('sa{sv}')`
 
-**Message arguments**
+**消息参数**
 
-| Argument | Parameter name | Signature | List of values | Description |
+| 参数 | 参数名| 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `languageTag` | `s` | IETF language tags specified by RFC 5646. | Identifies the language tag. |
-| 1 | `configMap` | `a{sv}` | See [Configuration map fields][config-map-fields] | Set of configuration fields being updated. |
+| 0 | `languageTag` | `s` | 由 RFC 5646 声明的 IETF 语言标签。 | 指示语言标签。 |
+| 1 | `configMap` | `a{sv}` | 参见 [Configuration map fields][config-map-fields] | 被更新的配置集。|
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Provides a mechanism to update the configuration fields.
+提供一个用于更新配置字段的机制。
 
-**Error reply**
+**错误回复**
 
-| Error | Description |
+| 错误 | 描述 |
 |---|---|
-| `org.alljoyn.Error.InvalidValue` | Returned whenever there is an error in updating the value for a specific field in the configMap. The error message will contain the field name of the invalid field. |
-| `org.alljoyn.Error.LanguageNotSupported` | Returned if a language tag is not supported by the device. |
+| `org.alljoyn.Error.InvalidValue` | 任意时间，在更新 configMap 中指定字段的值发生错误时返回。错误消息包含无效字段的字段名称。|
+| `org.alljoyn.Error.LanguageNotSupported` | 设备不支持语言标签时返回。 |
 
 #### `ResetConfigurations('sas')`
 
-**Message arguments**
+**消息参数s**
 
-| Argument | Parameter name| Signature | List of values | Description |
+| 参数 | 参数名| 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `languageTag` | `s` | IETF language tags specified by RFC 5646. | Identifies the language tag. |
-| 1 | `fieldList` | `as` | N/A | List of fields or configuration items that are being reset. |
+| 0 | `languageTag` | `s` | 由 RFC 5646 声明的 IETF 语言标签。 | 指示语言标签。|
+| 1 | `fieldList` | `as` | N/A | 被重新发送的字段或者配置项目的列表。 |
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Provides a mechanism to reset (i.e., value is restored to factory 
-default but the field itself is retained) values of configuration fields.
+提供用于重置配置字段的值的机制（例如，值将被恢复为出厂默认值，但字段本身会被保留）。
 
-**Error reply**
+**错误回复**
 
-| Error | Description |
+| 错误 | 描述 |
 |---|---|
-| `org.alljoyn.Error.InvalidValue` | Returned whenever there is an error related to fieldList. The error message will contain the field name of the invalid field. |
-| `org.alljoyn.Error.LanguageNotSupported` | Returned if a language tag is not supported by the device. |
+| `org.alljoyn.Error.InvalidValue` | 任何时间，当有与 fieldList相关的错误时返回此消息。包含无效字段的字段名。 |
+| `org.alljoyn.Error.LanguageNotSupported` | 设备不支持语言标签时返回。 |
 
-#### Configuration map fields 
+#### 配置 map 字段
 
-The following table lists the known configuration fields that 
-are part of the configMap parameter fields. The OEM or 
-application developer can add additional fields.
+下表列出了作为 configMap 参数字段一部分的已知的配置字段。OEN 或应用程序开发者可以添加额外字段。
 
-| Field name| Mandatory | Localized | Signature | Description |
+| 字段名| 是否强制 | 是否本地化 | 签名 | 描述 |
 |---|:---:|:---:|:---:|---|
-| DefaultLanguage | yes | no | `s` | <p>Default language supported by the device. IETF language tags specified by RFC 5646.</p><ul><li>If the parameter is not set as per the RFC, the error `org.alljoyn.Error.InvalidValue` is returned.</li><li>If a language tag is not supported by the device, the error `org.alljoyn.Error.LanguageNotSupported` is returned.</li></ul><p>In this case, the default language on the device is unchanged.</p> |
-| DeviceName | no | yes | `s` | Device name assigned by the user. The device name appears on the UI as the friendly name of the device.|
+| DefaultLanguage | yes | no | `s` | <p>设备支持的默认语言。由 RFC 5646 声明的 IETF 语言标签。</p><ul><li>如该参数未按照 RFC 设置，则会返回 `org.alljoyn.Error.InvalidValue` 错误。</li><li>如果设备不支持一个语言标签，则会返回 `org.alljoyn.Error.LanguageNotSupported` 错误。</li></ul><p>在此情景中，设备的默认语言不会改变流。</p> |
+| DeviceName | no | yes | `s` | 用户分配的设备名。设备名会作为设备的友好名称出现在 UI 上。|
 
-## Introspection XML
+## 内省 XML
 
 ```xml
 <node name="/Config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
