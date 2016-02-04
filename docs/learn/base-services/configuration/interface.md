@@ -1,18 +1,19 @@
-# Configuration Interface Definition
+# 配置接口定义
 
-## Release History
+## 版本历史
 
-To access a previous version of this document, click the release version link below.
+若要查看此文档的历史版本，请点击下面的链接。
 
-|Release version | Date | What changed |
+|版本号 | 日期 | 修改 |
 |---|---|---|
-| [14.02][config-14.02] | 2/28/2014 | Config interface version 1 was added. |
-| 14.06 | 6/30/2014 | No updates |
-| 14.06 Update 1 | 9/29/2014 | <ul><li>Updated the document title and Overview chapter title (changed from Specification to Definition).</li><li>Added the release version number to the document title for version tracking.</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.</li><li>Added configData output parameter information to the GetConfigurations method.</li></ul> |
-| 14.12 | 12/17/2014 | Cleanup to make requirements for methods and signals more clear. |
+| [14.02][config-14.02] | 2/28/2014 | 加入了 Config 接口第一版。|
+| 14.06 | 6/30/2014 | 无更新 |
+| 14.06 Update 1 | 9/29/2014 | <ul><li>更新了文档名与概览章节的标题 (将 Specification 改为 Definition)。</li><li>向文档标题添加了版本号，以便追踪版本。</li><li>在定义概览（Definition Overview）章节加入了针对 AllSeen Alliance Compliance and Certification 程序的 note.</li><li>为支持 AllSeen Alliance Compliance and Certification 程序而添加了一个方法与信号的强制列。</li><li>在 GetConfigurations 方法中添加了 configData 输出参数信息。</li></ul> |
+| 14.12 | 12/17/2014 |作出整理工作，使方法和信号的要求更加清晰。 |
 
-## Definition Overview
+## 定义概览
 
+此配置服务框架暴露指定设备的方法，例如重启和恢复出厂设置，设备密码，指定设备的可固化的属性，例如友好名称和默认语言。推荐的做法是 设备的 OEM 接管这项服务框架，并绑定到一个单独的应用程序（系统应用程序）。 配置服务框架的单例实例的执行必须使用由向 OEM 以及 应用程序开发者提供的明确指导
 The Configuration service framework exposes device-specific 
 methods such as restart and factory reset, device passcode, 
 and device-specific settable attributes such as friendly name 
