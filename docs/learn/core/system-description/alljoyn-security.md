@@ -355,144 +355,107 @@ METHOD_RETURN 消息。
 
 消息流的步骤如下所述：
 
-1. The consumer app generates a METHOD_CALL message for the
-secure method and sets the encryption flag to true for this message.
-2. The consumer app encrypts the message and generates an
-8 bytes MAC using the session key for the destination app.
-Message encryption is done using AES CCM algorithm.
-3. The consumer app appends the MAC to the encrypted message
-body and updates the message length to reflect the MAC.
-4. The consumer app sends the encrypted METHOD_CALL message
-to the provider app via the AllJoyn router.
-5. The provider app verifies the MAC and decrypts the message
-using session key stored for the consumer app.
-6. The provider app's AllJoyn core library invokes the MethodCall
-handler, which invokes the method call on the service object
-interface and receives a reply.
-7. The provider app generates a METHOD_RETURN message for
-the reply and sets the encryption flag to true for this message.
-8. The provider app encrypts the message and generates an
-8 bytes MAC using the session key for the consumer app.
-Message encryption is done using AES CCM algorithm.
-9. The provider app appends the MAC to the encrypted message
-body and updates the message length to reflect the MAC.
-10. The provider app sends the encrypted METHOD_RETURN message
-to the consumer app via the AllJoyn router.
-11. The consumer app verifies the MAC and decrypts the reply
-message using session key stored for the provider app.
-12. The consumer app's AllJoyn core library sends the plaintext
-reply message to the application.
+1. 使用方应用程序为安全方法生成一个 METHOD_CALL 消息，并将加密标识设置为 true.
+2. 使用方应用程序将消息加密，并使用会话密钥为目的地应用程序生成一个8字节的 MAC. 消息加密使用了 AES CCM 算法。
+3. 使用方应用程序将 MAC 附在加密消息体上，并将消息长度更新。
+4. 使用方应用程序将加密的 METHOD_CALL 消息通过 AllJoyn 路由发送到提供方应用程序。
+5. 提供方应用程序验证此 MAC，并使用为使用方应用程序存储的会话密钥解密该消息。
+6. 提供方应用程序的 AllJoyn 核心库调用 MethodCall 处理器，这将会在服务对象接口上调用方法并接收一个回复。
+7. 提供方应用程序为回复生成一个 METHOD_RETURN 消息，并将此消息的加密标识设置为 true.
+8. 提供方应用程序将消息加密并使用为使用方应用程序提供的会话密钥生成一个8字节的 MAC. 消息加密使用了 AES CCM 算法。
+9. 提供方应用程序将 MAC 附在加密消息正文上，并更新消息长度。
+10. 提供方应用程序通过 AllJoyn 路由将加密的 METHOD_RETURN 消息发送到使用方应用程序上。
+11. 使用方应用程序验证 MAC，并使用为提供方应用程序储存的会话密钥。
+12. 使用方应用程序的 AllJoyn 核心库向应用程序发送纯文本的回复消息。
 
 ### 加密的信号
 
-下图展示了从提供方向使用方应用程序发送一个基于会话的加密信号的流程图。
-The following figure shows the message flow for sending an
-encrypted session based signal from provider application
-to consumer applications. The signal can be sent to a destination
-(unicast signal) or to multiple endpoints as multicast/broadcast signals.
+下图展示了从提供方向使用方应用程序发送一个基于会话的加密信号的流程图。信号可以被发送到一个目的地（单播信号），或使用多播/广播信号
+发送到多个端点。
 
-**NOTE:** Sessionless signals are not sent encrypted in current
-AllJoyn system. In future, implementation can be enhanced to
-encrypt sessionless signals as well.
+**NOTE:** 在目前的 AllJoyn 系统中，非会话信号不会被加密发送。后续版本中会增加对加密非会话信号的支持。
 
 ![encrypted-signal][encrypted-signal]
 
-**Figure:** Encrypted method call/reply
+**Figure:** 加密的方法调用/回复
 
-The message flow steps are described below.
+消息流如下所示。
 
-1. The consumer and provider apps have already authenticated
-and established encryption keys with each other.
-2. The provider app has some signal data to send. It invokes
-the BusObject Signal() call which generates a SIGNAL message.
-3. The provider app sets the encryption flag to true for the
-SIGNAL message if the signal is defined as part of a secure interface.
-4. The provider app encrypts the SIGNAL message and generates
-an 8 bytes MAC using either the group key or session key as
-per the logic in the following key selection logic (provider app) figure.
-Message encryption is done using AES CCM algorithm.
-5. The provider app appends the MAC to the encrypted SIGNAL
-message body and updates the message length to reflect the MAC.
-6. The provider app sends the encrypted SIGNAL message to
-the consumer app via the AllJoyn router.
-7. The consumer app verifies the MAC and decrypts the SIGNAL
-message using either the session key or group key as per the
-logic in the following key selection logic (consumer app) figure.
-8. The consumer app's AllJoyn core library sends the plaintext
-signal message to the application.
+1. 使用方与提供方应用程序已完成验证，互相建立了加密的密钥。
+2. 提供方应用程序有一些信号数据需要发送。他调用可生成一个 SIGNAL 消息的 BusObject Signal().
+3. 如果此 SIGNAL 被定义为安全接口的一部分，提供方应用程序将此 SIGNAL 消息的加密标识设为 true.
+4. 提供方应用程序将 SIGNAL 信号加密，并根据提供方应用程序的密钥选择逻辑使用组密钥或者会话密钥生成一个8字节的 MAC. 消息加密使用了 AES CCM 算法。
+5. 提供方应用程序将 MAC 附在加密的 SIGNAL 消息正文中，并将消息长度更新。
+6. 提供方应用程序通过 AllJoyn 路由将加密的 SIGNAL 消息发送到使用方应用程序。
+7. 使用方应用程序验证 MAC， 并根据使用方应用程序的密钥选择逻辑使用组密钥或者会话密钥解密此 SIGNAL 消息。
+8. 使用方应用程序的 AllJoyn 核心库向应用程序发送纯文本的信号消息。
+9. 
+#### 密钥选择逻辑
 
-#### Key selection logic
+在提供方应用程序一方，单播信号使用会话密钥加密，多播/广播信号使用组密钥加密。下图展示了加密信号时的密钥选择逻辑。
 
-On the provider application side, unicast signals get encrypted
-using the session key and multicast/broadcast signals get
-encrypted using group key. The following figure shows the key selection
-logic for encrypting signals.
 
 ![key-selection-signal-encryption-provider-app][key-selection-signal-encryption-provider-app]
 
-**Figure:** Key selection for signal encryption (on the provider app)
+**Figure:** 信号加密时的密钥选择 (在提供方应用程序上)
 
-On the consumer side, a reverse logic is applied for selecting
-key for decrypting received signals messages as shown in the following figure.
+在使用方一边，选择解密接收到的消息所使用的密钥遵循相反的逻辑，如下所示：
 
 ![key-selection-signal-decryption-consumer-app][key-selection-signal-decryption-consumer-app]
 
-**Figure:** Key selection for signal decryption (on the consumer app)
+**Figure:** 信号解密时的密钥选择 (在使用方应用程序上)
 
 ## org.alljoyn.Bus.Peer.Authentication interface
 
-The org.alljoyn.Bus.Peer.Authentication interface is the AllJoyn
-interface between two AllJoyn core libraries that support the
-application layer security within AllJoyn.
+org.alljoyn.Bus.Peer.Authentication 接口是位于支持 AllJoyn 内应用层安全机制的两个 AllJoyn 核心库之间的一个 AllJoyn 接口。 
 
-The following table summarizes members from org.alljoyn.Bus.Peer.Authentication interface.
+下表总结了 org.alljoyn.Bus.Peer.Authentication 接口中的所有成员。
 
-#### org.alljoyn.Bus.Peer.Authentication interface methods
+#### org.alljoyn.Bus.Peer.Authentication 接口方法
 
-| Method | Description |
+| 方法 | 描述 |
 |---|---|
-| ExchangeGuids | Method for an application to exchange its auth GUID and authentication protocol version with a remote peer application. |
-| AuthChallenge | Method for an application to initiate authentication and exchange authentication data with a remote peer application. |
-| GenSessionKey | Method for an application to generate a session key with a remote peer application. |
-| ExchangeGroupKeys | Method for an application to exchange group key with a remote peer application. |
+| ExchangeGuids | 应用程序与远端对等应用程序交换 auth GUID 以及认证协议版本的方法。|
+| AuthChallenge | 应用程序初始化认证并与远端对等应用程序交换认证数据的方法。|
+| GenSessionKey | 应用程序生成一个与远端对等应用程序的会话密钥的方法。|
+| ExchangeGroupKeys | 应用程序与远端对等应用程序交换组密钥的方法。|
 
-#### org.alljoyn.Bus.Peer.Authentication.ExchangeGuids parameters
+#### org.alljoyn.Bus.Peer.Authentication.ExchangeGuids 参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| localGuid | in | Auth GUID for the initiator application. |
-| localVersion | in | Auth version for the initiator application. |
-| remoteGuid | out | Auth GUID for the remote peer application. |
-| remoteVersion | out | Auth version for the remote peer application. |
+| localGuid | in | 初始化一方应用程序的 auth GUID. |
+| localVersion | in | 初始化应用程序一方的 auth 版本。|
+| remoteGuid | out | 远端对等应用程序的 auth GUID. |
+| remoteVersion | out | 远端对等应用程序的 auth 版本。|
 
-#### org.alljoyn.Bus.Peer.Authentication.AuthChallenge parameters
+#### org.alljoyn.Bus.Peer.Authentication.AuthChallenge 参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| challenge | in | Auth data provided by the initiator app. |
-| response | out | Auth data returned by the provider app. |
+| challenge | in | 初始化一方应用程序提供的 auth 数据。|
+| response | out | 提供方应用程序返回的 auth 数据。|
 
-#### org.alljoyn.Bus.Peer.Authentication.GenSessionKey parameters
+#### org.alljoyn.Bus.Peer.Authentication.GenSessionKey 参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| localGuid | in | Auth GUID for the initiator application. |
-| remoteGuid | out | Auth GUID for the remote peer application. |
-| localNonce | in | Nonce generated by the initiator app. |
-| remoteNonce | out | Nonce generated by the remote peer app. |
-| verifier | out | Verifier generated by the remote peer app. |
+| localGuid | in | 初始化一方应用程序的 auth GUID. |
+| remoteGuid | out | 远端对等应用程序的 auth GUID. |
+| localNonce | in | 初始化一方应用程序生成的 nonce. |
+| remoteNonce | out | 远端对等应用程序生成的 nonce. |
+| verifier | out | 远端对等应用程序生成的 verifier. |
 
-#### org.alljoyn.Bus.Peer.Authentication.ExchangeGroupKeys parameters
+#### org.alljoyn.Bus.Peer.Authentication.ExchangeGroupKeys 参数
 
-| Parameter name | Direction | Description |
+| 参数名 | 方向 | 描述 |
 |---|---|---|
-| localKeyMatter | in | Group key of the initiator app. |
-| remoteKeyMatter | out | Group key of the remote peer app. |
+| localKeyMatter | in | 初始化一方应用程序的组密钥。|
+| remoteKeyMatter | out | 远端对等应用程序的组密钥。 |
 
 
 
 [list-of-subjects]: /learn/core/system-description/
-
 
 [alljoyn-security-arch]: /files/learn/system-desc/alljoyn-security-arch.png
 [e2e-security-flow-two-unauth-apps]: /files/learn/system-desc/e2e-security-flow-two-unauth-apps.png
