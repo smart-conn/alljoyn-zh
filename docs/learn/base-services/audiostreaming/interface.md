@@ -99,8 +99,6 @@ Stream 接口负责创建并通过一个 stream 的管理对其进行控制。
 
 ##方法
 以下方法由实现了org.alljoyn.Stream 接口的 BusObject 暴露。
-The following methods are exposed by a BusObject that implements 
-the `org.alljoyn.Stream` interface.
 
 #### `Open`
 
@@ -121,97 +119,85 @@ the `org.alljoyn.Stream` interface.
 #### `Close`
 
 
-Returns an error if not implemented or called more than once.
+如果未实现或被调用多于一次，将返回错误。
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Close the stream.
+关闭 stream.
 
-## Stream.Port Interface
+## Stream.Port 接口
 
-The Stream.Port interface is responsible for control over an 
-elementary stream. A port object implements this interface 
-together with a media-specific port interface such as Stream.Port.AudioSource 
-or Stream.Port.AudioSink.
+此接口负责通过一个基本流进行控制。一个端口对象与一个指定媒体的端口接口（如 Stream.Port.AudioSource，或者 Stream.Port.AudioSink）共同实现此接口。
 
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 安全性 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.Stream.Port` | 1 | no | Child node of node implementing the Stream interface. |
+| `org.alljoyn.Stream.Port` | 1 | no | 实现 Stream 接口的节点的子节点。|
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值列表 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
-| Direction | `y` | <ul><li>0 - sink</li><li>1 - source</li></ul> | Read-only | <p>Indicates if this port is a source or sink port.</p><p>Source ports send elementary streams, sink ports receive them.</p> |
-| Capabilities | `a(sa{sv})` | See [Media Types][media-types] for more information. | Read-only | <p>Defines the supported capabilities of this port.</p><p>The capabilities of unknown media types should be ignored.</p> |
+| Version | `q` | 正整数 | 只读 | 接口的版本号 |
+| Direction | `y` | <ul><li>0 - sink</li><li>1 - source</li></ul> | 只读 | <p>指示端口是一个 source 端口或一个 sink 端口。</p><p>Source 端口发送基本流，sink 端口接收。</p> |
+| Capabilities | `a(sa{sv})` | 详情参见 [Media Types][media-types]. | 只读 | <p>定义此端口支持的功能。</p><p>未知媒体类型的功能将会被忽略。</p> |
 
-### Methods
-
-The following methods are exposed by a BusObject that implements 
-the `org.alljoyn.Stream.Port` interface.
+### 方法
+以下方法由实现了`org.alljoyn.Stream.Port` 接口的 BusObject 暴露。
 
 #### `Connect('so(sa{sv})')`
 
-**Message arguments**
+**消息参数**
 
-| Argument | Parameter name | Signature | List of values | Description |
+| 参数 | 参数名 | 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `host` | `s` | AllJoyn name | The AllJoyn&trade; name of the remote stream port host to connect to. |
-| 1 | `path` | `o` | Object path | The AllJoyn object path of the remote port on the host to connect to. |
-| 2 | `configuration` | `(sa{sv})` | See [Media Types][media-types] | A media type and the values to configure its parameters with. |
+| 0 | `host` | `s` | AllJoyn name |  AllJoyn&trade; 将连接的远端 stream 主机端口的名字。 |
+| 1 | `path` | `o` | Object path | 将连接的远端主机端口的对象路径。|
+| 2 | `configuration` | `(sa{sv})` | 参见 [Media Types][media-types] | 一种媒体类型以及他的参数的配置值。|
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Connects this port to a remote port and configures the ports to 
-send or receive an elementary stream.
+将此端口连接到一个远程端口，并配置此端口发送或接收一个基本流。
 
-If the configuration is not compatible with the capabilities, 
-this method should return an error.
+如果配置与功能不匹配，此方法会返回一个错误。
 
-If this port is already connected to the remote port, this 
-method should return an error. To reconfigure a connected port, 
-first close the stream, then open and connect with the new configuration.
+如果此端口已经连接到远程端口，该方法会返回一个错误。若要重新配置一个已连接的端口，首先关闭 stream，然后打开并使用新配置连接。
 
-### Signals
+### 信号
 
-The following signals are emitted by a BusObject that implements 
-the `org.alljoyn.Stream.Port` interface.
+下列信号由实现 `org.alljoyn.Stream.Port`接口的 BusObject 发出。
 
 #### `OwnershipLost('s')`
 
-OwnershipLost signal is not a Sessionless signal.
+OwnershipLost 信号不是一个非会话信号。
 
-**Message arguments**
+**消息参数**
 
-| Argument | Parameter name | Signature | List of values | Description |
+| 参数 | 参数名 | 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `newOwner` | `s` | A String | AllJoyn name of the new remote port. |
+| 0 | `newOwner` | `s` | 一个字符串 | 新远程端口的 AllJoyn 名称。|
 
-**Description**
+**描述**
 
-The port emits this signal to the currently connected remote 
-port when it connects to a new remote port.
+在此端口连接到一个新的远程端口时，此端口向目前连接上的远程端口发射该信号。
 
-## Stream.Port.Audio Interfaces
+## Stream.Port.Audio 接口
 
-The Stream.Port.AudioSource and Stream.Port.AudioSink interfaces 
-define the data format for audio/* media. The interfaces are 
-implemented by port objects that support audio/* capabilities.
+Stream.Port.AudioSource 和 Stream.Port.AudioSink 接口为所有的音频媒体定义数据格式。该接口由支持所有的音频功能的端口对象实现。 
 
-### FIFO control
+### FIFO 控制
+
 
 An audio sink exposes a FIFO to receive streamed data from an 
 audio source. Control of the FIFO is implemented as a state machine. 
@@ -338,25 +324,25 @@ PlayStateChanged is not a Sessionless signal.
 | 0 | oldState | `y` | positive | Previous PlayState value. |
 | 1 | newState | `y` | positive | Current PlayState value. |
 
-**Description**
+**描述**
 
 Emitted when the PlayState property changes.
 
 ## Stream/Port.AudioSource Interface
  
-### Interface name
+### 接口名
  
 | Interface name | Version | Secured | Object path |
 |---|:---:|:---:|---|
 | `org.alljoyn.Stream.Port.Audio` | 1 | no | Child node of node implementing the Stream interface. |
 
-### Properties
+### 属性
 
 |Property name | Signature | List of values | Read/Write | Description |
 |---|:---:|---|---|---|
 | Version | `q` | Positive integers | Read-only | Interface version number |
 
-### Methods
+### 方法
 
 No methods are exposed by this interface.
 
