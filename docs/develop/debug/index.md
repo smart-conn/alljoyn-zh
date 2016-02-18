@@ -1,6 +1,6 @@
 Debug
 =====
 
-* [Common Issues][common-issues]
+* [常见问题][common-issues]
 
 [common-issues]: /develop/debug/common-issues
