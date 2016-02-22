@@ -1,236 +1,203 @@
-# Audio Interface Definition
+# 音频接口定义
 
-## Release History
+## 版本历史
 
-| Release version | Date | What changed |
+| 版本号 | 日期 | 新增功能 |
 |---|---|---|
-| Pre-14.06 | N/A | <p>The following interfaces were added:</p><ul><li>Stream interface version 1</li><li>Stream.Port interface version 1</li><li>Stream.Port.AudioSource interface version 1</li><li>Stream.Port.AudioSink interface version 1</li><li>Stream.Port.ImageSource interface version 1</li><li>Stream.Port.ImageSink interface version 1</li><li>Stream.Port.Application.MetadataSource interface version 1</li><li>Stream.Port.Application.MetadataSink interface version 1</li><li>Stream.Clock interface version 1</li></ul> |
-| 14.06 | 6/30/2014 | No updates |
-| 14.06 Update 1 | 9/29/2014 | <ul><li>Updated the document title and Overview chapter title (changed Specification to Definition).</li><li>Added the release version number to the document title for version tracking.</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.</li><li>Included the object path for each interface.</li><li>Added the Close method to the Stream interface.</li></ul><p>Updated the following data points:</p><ul><li>Connect method's path parameter signature (o)</li><li>Pause method's parameter name (timeNanos)</li><li>Flush method's input parameter name and specified output parameter name (numBytesFlushed)</li><li>Data signal's parameter name (bytes) for the AudioSource and ImageSource interfaces</li><li>Data signal's parameter name (dictionary) for the MetadataSource interface</li><li>AdjustTime method parameter name (adjustNanos)</li></ul><p>Separated the following interfaces to address the information unique to the relevant Sink and Source interfaces:</p><ul><li>Stream.Port.Audio</li><li>Stream.Port.Image</li><li>Stream.Port.ApplicationMetadata</li></ul><p<Added the Control.Volume interface.</p><p>Updated the Introspection XML to reflect the Control.Volume output.</p> |
-| 14.12 | 12/17/2014 | Cleanup to make requirements for methods and signals more clear. |
+| Pre-14.06 | N/A | <p>添加了下列接口:</p><ul><li>第一版 Stream 接口</li><li>第一版 Stream.Port 接口</li><li>第一版 Stream.Port.AudioSource 接口</li><li>第一版 Stream.Port.AudioSink 接口</li><li>第一版 Stream.Port.ImageSource 接口</li><li>第一版 Stream.Port.ImageSink 接口</li><li>第一版 Stream.Port.Application.MetadataSource 接口</li><li>第一版 Stream.Port.Application.MetadataSink 接口</li><li>第一版 Stream.Clock 接口</li></ul> |
+| 14.06 | 6/30/2014 | 无更新 |
+| 14.06 更新1 | 9/29/2014 | <ul><li>更新了文档名与概览章节的标题 (将 Specification 改为 Definition)。</li><li>向文档标题添加了版本号，以便追踪版本。</li><li>在定义概览（Definition Overview）章节加入了针对 AllSeen Alliance Compliance and Certification 程序的 note.</li><li>为支持 AllSeen Alliance Compliance and Certification 程序而添加了一个方法与信号的强制列。</li><li>添加了每一个接口的对象路径。</li><li>对 Stream 接口添加了 Close 方法。</li></ul><p>更新了下列数据点:</p><ul><li>连接方法的路径参数签名。(o)</li><li>Pause 方法的参数名 (timeNanos)</li><li>Flush 方法的输入参数名以及声明的输出参数名 (numBytesFlushed)</li><li>AudioSource 和 ImageSourceData 接口的信号参数名（bytes）</li><li>MetadataSource 接口数据信号的参数名 (dictionary) </li><li>AdjustTime 方法的参数名 (adjustNanos) </li></ul><p>将下列接口分割，以便强调只与 Sink 和 Source 接口相关的信息:</p><ul><li>Stream.Port.Audio</li><li>Stream.Port.Image</li><li>Stream.Port.ApplicationMetadata</li></ul><p<添加了 Control.Volume 接口。</p><p>更新了内省 XML，以便反映 Control.Volume 的输出。</p> |
+| 14.12 | 12/17/2014 | 作出整理工作，使方法和信号的要求更加清晰。 |
 
-## Definition Overview
+## 定义概览
 
-A stream consists of one or more elementary streams; an 
-elementary stream consists of one type of media (audio, 
-image, or metadata).
+一条 stream 是由一个或多个基本流组成的，一个基本流是由一种类型的媒体（音频，图像或元数据）。
 
-**NOTE:** All methods and signals are considered mandatory to 
-support the AllSeen Alliance Compliance and Certification 
-program. 
+**NOTE:** 所有的方法与信号都被认为强制支持 AllSeen Alliance Compliance and Certification 程序。
 
-## Stream Object
+## Stream 对象
 
-A stream object is a BusObject implementing the `org.alljoyn.Stream` 
-interface. It has one child port object for each elementary stream. 
-A port object is a BusObject implementing the `org.alljoyn.Stream.Port` 
-interface and one of the media type-specific port interfaces 
-(`org.alljoyn.Stream.Port.AudioSink`, etc.). Port objects send or 
-receive elementary streams.
+Stream 对象是一个实现 `org.alljoyn.Stream` 接口的 BusObject. 没个基本流只包含一个子端口对象。端口对象是一个实现 `org.alljoyn.Stream.Port`  对象的 BusObject，并且是一个指定媒体类型的端口接口（`org.alljoyn.Stream.Port.AudioSink` 等等）。端口对
+象发送或接收基本流。
 
-### Example objects and interfaces used by a speaker
+### 扬声器使用的对象和接口实例
 
-* /Speaker/In is a stream object
-* /Speaker/In/Audio, /Speaker/In/Image, and /Speaker/In/Metadata 
-are child port objects.
+* /Speaker/In 是一个 stream 对象
+* /Speaker/In/Audio, /Speaker/In/Image, 和 /Speaker/In/Metadata 是子端口对象。
 
-| Object path | Interfaces implemented |
+| 对象路径 | 实现的接口 |
 |---|---|
 | /Speaker/In | `org.alljoyn.Stream` |
 | /Speaker/In/Audio | <ul><li>`org.alljoyn.Stream.Port`</li><li>`org.alljoyn.Stream.Port.AudioSink`</li></ul> |
 | /Speaker/In/Image | <ul><li>`org.alljoyn.Stream.Port`</li><li>`org.alljoyn.Stream.Port.ImageSink`</li></ul> |
 | /Speaker/In/Metadata | <ul><li>`org.alljoyn.Stream.Port`</li><li>`org.alljoyn.Stream.Port.Application.MetadataSink`</li></ul> |
 
-### Example objects and interfaces used by a media player
+### 媒体播放器使用的对象和接口实例
 
-| Object path | Interfaces implemented |
+| 对象路径 | 实现的接口 |
 |---|---|
 | /Player/Out | `org.alljoyn.Stream` |
 | /Player/Out/Audio | <ul><li>`org.alljoyn.Stream.Port`</li><li>`org.alljoyn.Stream.Port.AudioSource`</li></ul> |
 | /Player/Out/Image | <ul><li>`org.alljoyn.Stream.Port`</li><li>`org.alljoyn.Stream.Port.ImageSource`</li></ul> |
 | /Player/Out/Metadata | <ul><li>`org.alljoyn.Stream.Port`</li><li>`org.alljoyn.Stream.Port.Application.MetadataSource`</li></ul> |
 
-The following figure illustrates how source ports are connect 
-to sink ports to enable streaming.
+下图展示了源端口是怎样连接到 sink 端口以实现 streaming 功能的。
 
 ![audio-connected-media-player-speaker][audio-connected-media-player-speaker]
 
-**Figure:** Connected media player and speaker
+**Figure:** 已连接的媒体播放器和扬声器。
 
-## Typical Stream Flows
+## 典型的 stream 流程
 
-### One source and one sink
+### 一个源端口对应一个 sink.
 
-The following figure illustrates a typical call flow for one 
-source and one sink.
+下图展示了一个源端口对应一个 sink 的典型呼叫流程。
 
 ![audio-one-source-sink][audio-one-source-sink]
 
-**Figure:** Typical call flow for one source and one sink
+**Figure:** 一个源端口对应一个 sink 的典型呼叫流程。
 
-### One source and two sinks
+### 一个源端口对应两个 sinks.
 
-The following figure illustrates the typical call flow for one 
-source and two sinks.
+下图展示了一个源端口对应两个 sink 的典型呼叫流程。
 
 ![audio-one-source-two-sinks][audio-one-source-two-sinks]
 
-**Figure:** Typical call flow for one source and two sinks
+**Figure:** 一个源端口对应两个 sink 的典型呼叫流程。
 
-## Discovery
+## 发现
 
-To be discovered by interested client applications on other 
-devices, an audio implementation advertises its existence 
-using the About feature. See the [About Feature Interface 
-Definition][about-interface-definition] for more information.
+若要被位于设备上的有兴趣的客户端应用程序发现，音频实现需要使用 About 功能将自己的存在推广。详情参见[About Feature Interface 
+Definition][about-interface-definition].
 
-### BusObject paths
+### BusObject 路径
 
-Implementations of audio should publish the object paths of the 
-BusObjects that implement `org.alljoyn.Stream` and the object paths 
-of BusObjects that implement the `org.alljoyn.Stream.Port` interfaces 
-using the `org.alljoyn.About` interface. See [Example objects and interfaces used by a speaker][table-1] 
-and [Example objects and interfaces used by a media player][table-2] 
-for examples of published BusObjects.
+音频的实现应公布实现 `org.alljoyn.Stream` 以及使用 `org.alljoyn.About` 接口实现 `org.alljoyn.Stream.Port` 接口的 BusObject 的对象
+路径。参见 [Example objects and interfaces used by a speaker][table-1] 和 [Example objects and interfaces used by a media player][table-2].
+和 [Example objects and interfaces used by a media player][table-2].
 
-### Session port value
+### 会话端口值
 
-In addition to the object paths, the implementation should also 
-publish the session port value that the service uses to listen 
-for incoming client connections. Use this port value in the "port" 
-parameter of the `org.alljoyn.About.Announce` signal.
+不止是对象路径，此实现还应公布服务端用来监听即将到来的客户端连接的会话端口值。在 `org.alljoyn.About.Announce` 信号中的 “port” 参数
+需要使用此端口值。
 
-## Stream Interface
+## Stream 接口
 
-The Stream interface is responsible for stream creation and 
-control over a stream's ports.
+Stream 接口负责创建并通过一个 stream 的管理对其进行控制。
 
-### Interface name
+### 接口名
 
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 安全性 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.Stream` | 1 | no | Any object path |
+| `org.alljoyn.Stream` | 1 | no | 任何对象路径 |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值列表 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-Only | Interface version number |
+| Version | `q` | Positive integers | Read-Only | 接口的版本号 |
 
-##Methods
-
-The following methods are exposed by a BusObject that implements 
-the `org.alljoyn.Stream` interface.
+##方法
+以下方法由实现了org.alljoyn.Stream 接口的 BusObject 暴露。
 
 #### `Open`
 
-Returns an error if not implemented or called more than once.
+如果未实现或被调用多于一次，将返回错误。
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Open the stream.
+打开 stream.
 
 #### `Close`
 
-Returns an error if not implemented or called more than once.
 
-**Message arguments**
+如果未实现或被调用多于一次，将返回错误。
 
-None.
+**消息参数**
 
-**Reply arguments**
+无。
 
-None.
+**回复参数**
 
-**Description**
+无。
 
-Close the stream.
+**描述**
 
-## Stream.Port Interface
+关闭 stream.
 
-The Stream.Port interface is responsible for control over an 
-elementary stream. A port object implements this interface 
-together with a media-specific port interface such as Stream.Port.AudioSource 
-or Stream.Port.AudioSink.
+## Stream.Port 接口
 
-| Interface name | Version | Secured | Object path |
+此接口负责通过一个基本流进行控制。一个端口对象与一个指定媒体的端口接口（如 Stream.Port.AudioSource，或者 Stream.Port.AudioSink）共同实现此接口。
+
+| 接口名 | 版本 | 安全性 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.Stream.Port` | 1 | no | Child node of node implementing the Stream interface. |
+| `org.alljoyn.Stream.Port` | 1 | no | 实现 Stream 接口的节点的子节点。|
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值列表 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
-| Direction | `y` | <ul><li>0 - sink</li><li>1 - source</li></ul> | Read-only | <p>Indicates if this port is a source or sink port.</p><p>Source ports send elementary streams, sink ports receive them.</p> |
-| Capabilities | `a(sa{sv})` | See [Media Types][media-types] for more information. | Read-only | <p>Defines the supported capabilities of this port.</p><p>The capabilities of unknown media types should be ignored.</p> |
+| Version | `q` | 正整数 | 只读 | 接口的版本号 |
+| Direction | `y` | <ul><li>0 - sink</li><li>1 - source</li></ul> | 只读 | <p>指示端口是一个 source 端口或一个 sink 端口。</p><p>Source 端口发送基本流，sink 端口接收。</p> |
+| Capabilities | `a(sa{sv})` | 详情参见 [Media Types][media-types]. | 只读 | <p>定义此端口支持的功能。</p><p>未知媒体类型的功能将会被忽略。</p> |
 
-### Methods
-
-The following methods are exposed by a BusObject that implements 
-the `org.alljoyn.Stream.Port` interface.
+### 方法
+以下方法由实现了`org.alljoyn.Stream.Port` 接口的 BusObject 暴露。
 
 #### `Connect('so(sa{sv})')`
 
-**Message arguments**
+**消息参数**
 
-| Argument | Parameter name | Signature | List of values | Description |
+| 参数 | 参数名 | 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `host` | `s` | AllJoyn name | The AllJoyn&trade; name of the remote stream port host to connect to. |
-| 1 | `path` | `o` | Object path | The AllJoyn object path of the remote port on the host to connect to. |
-| 2 | `configuration` | `(sa{sv})` | See [Media Types][media-types] | A media type and the values to configure its parameters with. |
+| 0 | `host` | `s` | AllJoyn name |  AllJoyn&trade; 将连接的远端 stream 主机端口的名字。 |
+| 1 | `path` | `o` | Object path | 将连接的远端主机端口的对象路径。|
+| 2 | `configuration` | `(sa{sv})` | 参见 [Media Types][media-types] | 一种媒体类型以及他的参数的配置值。|
 
-**Reply arguments**
+**回复参数**
 
-None.
+无。
 
-**Description**
+**描述**
 
-Connects this port to a remote port and configures the ports to 
-send or receive an elementary stream.
+将此端口连接到一个远程端口，并配置此端口发送或接收一个基本流。
 
-If the configuration is not compatible with the capabilities, 
-this method should return an error.
+如果配置与功能不匹配，此方法会返回一个错误。
 
-If this port is already connected to the remote port, this 
-method should return an error. To reconfigure a connected port, 
-first close the stream, then open and connect with the new configuration.
+如果此端口已经连接到远程端口，该方法会返回一个错误。若要重新配置一个已连接的端口，首先关闭 stream，然后打开并使用新配置连接。
 
-### Signals
+### 信号
 
-The following signals are emitted by a BusObject that implements 
-the `org.alljoyn.Stream.Port` interface.
+下列信号由实现 `org.alljoyn.Stream.Port`接口的 BusObject 发出。
 
 #### `OwnershipLost('s')`
 
-OwnershipLost signal is not a Sessionless signal.
+OwnershipLost 信号不是一个非会话信号。
 
-**Message arguments**
+**消息参数**
 
-| Argument | Parameter name | Signature | List of values | Description |
+| 参数 | 参数名 | 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `newOwner` | `s` | A String | AllJoyn name of the new remote port. |
+| 0 | `newOwner` | `s` | 一个字符串 | 新远程端口的 AllJoyn 名称。|
 
-**Description**
+**描述**
 
-The port emits this signal to the currently connected remote 
-port when it connects to a new remote port.
+在此端口连接到一个新的远程端口时，此端口向目前连接上的远程端口发射该信号。
 
-## Stream.Port.Audio Interfaces
+## Stream.Port.Audio 接口
 
-The Stream.Port.AudioSource and Stream.Port.AudioSink interfaces 
-define the data format for audio/* media. The interfaces are 
-implemented by port objects that support audio/* capabilities.
+Stream.Port.AudioSource 和 Stream.Port.AudioSink 接口为所有的音频媒体定义数据格式。该接口由支持所有的音频功能的端口对象实现。 
 
-### FIFO control
+### FIFO 控制
+
 
 An audio sink exposes a FIFO to receive streamed data from an 
 audio source. Control of the FIFO is implemented as a state machine. 
@@ -357,25 +324,25 @@ PlayStateChanged is not a Sessionless signal.
 | 0 | oldState | `y` | positive | Previous PlayState value. |
 | 1 | newState | `y` | positive | Current PlayState value. |
 
-**Description**
+**描述**
 
 Emitted when the PlayState property changes.
 
 ## Stream/Port.AudioSource Interface
  
-### Interface name
+### 接口名
  
 | Interface name | Version | Secured | Object path |
 |---|:---:|:---:|---|
 | `org.alljoyn.Stream.Port.Audio` | 1 | no | Child node of node implementing the Stream interface. |
 
-### Properties
+### 属性
 
 |Property name | Signature | List of values | Read/Write | Description |
 |---|:---:|---|---|---|
 | Version | `q` | Positive integers | Read-only | Interface version number |
 
-### Methods
+### 方法
 
 No methods are exposed by this interface.
 

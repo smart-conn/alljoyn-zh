@@ -1,191 +1,172 @@
-# Onboarding Interface Definition
+# Onboarding 接口定义
 
-## Release History
+## 发布历史
 
-To access a previous version of this document, click the release version link below.
+若要查看此文档的历史版本，请点击下面的链接。
 
-|Release version | Date | What changed |
+|版本号 | 日期 | 修改 |
 |---|---|---|
-| [14.02][onboarding-14.02] | 2/28/2014 | Onboarding interface version 1 was added. |
-| 14.06 | 6/30/2014 | No updates |
-|14.06 Update 1 | 9/29/2014 | <ul><li>Updated the document title and Overview chapter title (changed from Specification to Definition)</li><li>Added the release version number to the document title for version tracking.</li><li>Added a note in the Definition Overview chapter to address the AllSeen Alliance Compliance and Certification program.</li><li>Added a Mandatory column for method and signal parameters to support the AllSeen Alliance Compliance and Certification program.</li></ul> |
-| 14.12 | 12/17/2014 | Cleanup to make requirements for methods and signals more clear. |
+| [14.02][onboarding-14.02] | 2/28/2014 | 加入了 Onboarding 接口第一版。|
+| 14.06 | 6/30/2014 | 无更新 |
+|14.06 Update 1 | 9/29/2014 | <ul><li>更新了文档名与概览章节的标题 (将 Specification 改为 Definition)</li><li>向文档标题添加了版本号，以便追踪版本。</li><li>在定义概览（Definition Overview） 章节加入了针对 AllSeen Alliance Compliance and Certification 程序的 note.</li><li>为支持 AllSeen Alliance Compliance and Certification 程序而添加了一个方法与信号的强制列。</li></ul> |
+| 14.12 | 12/17/2014 | 作出整理工作，使方法和信号的要求更加清晰。|
 
-## Definition Overview
+## 定义概览
 
-The Onboarding interface is implemented by an application on
-a target device, referred to as an onboardee. A typical
-onboardee is an AllJoyn&trade; thin client device. This
-interface allows the onboarder to send the Wi-Fi credentials
-to the onboardee to allow it to join the personal access point.
+Onboarding 接口是通过一个应用程序在目标设备上实现的，目标设备被称为一个 onboardee. 典型的 onboardee 是 AllJoyn&trade; 精简客户端设
+备。此接口允许 onboarder 向 onboardee 发送 Wi-Fi 证书，允许其加入个人接入点。
 
 ![onboarding-arch][onboarding-arch]
 
-**Figure:** Onboarding service framework architecture within the AllJoyn framework
+**Figure:** AllJoyn 框架内的 Onboarding 服务框架结构
 
-**NOTE:** All methods and signals are considered mandatory to
-support the AllSeen Alliance Compliance and Certification program.
+**NOTE:** 所有的方法与信号都被认为强制支持 AllSeen Alliance Compliance and Certification 程序。
 
-## Onboarding Call Flows
+## Onboarding 呼叫流程
 
-### Onboarding call flow using an Android onboarder
+### 使用 Android onboarder 的 Onboarding 呼叫流程
 
-The following figure illustrates a call flow for onboarding
-an onboardee using an Android onboarder.
+下图展示了一个使用 Android 进行 onboarding 的流程图。
 
 ![onboarding-android-onboarder][onboarding-android-onboarder]
 
-**Figure:** Onboarding a device using an Android onboarder
+**Figure:** 使用 Android 设备进行 onboarding 
 
-### Onboarding call flow using an iOS onboarder
+### 使用 iOS onboarder 的 Onboarding 呼叫流程
 
-The following figure illustrates a call flow for onboarding
-an onboardee using an iOS onboarder.
+下图展示了一个使用 iOS onboarder 进行 onboarding 的流程图。
+
 
 ![onboarding-ios-onboarder][onboarding-ios-onboarder]
 
-**Figure:** Onboarding a device using an iOS onboarder
+**Figure:** 使用 iOS 设备进行 onboarding 
 
-## Error Handling
+## 错误处理
 
-The method calls in the Onboarding interface use the AllJoyn
-error message handling feature (ER_BUS_REPLY_IS_ERROR_MESSAGE)
-to set the error name and error message.
+在 Onboarding 接口中的方法调用使用了 AllJoyn 错误消息处理功能（ER_BUS_REPLY_IS_ERROR_MESSAGE）来设置错误名与错误消息。
 
-| Error name | Error message |
+| 错误名 | 错误消息 |
 |---|---|
-| `org.alljoyn.Error.OutOfRange` | Value out of range |
-| `org.alljoyn.Error.InvalidValue` | Invalid value |
-| `org.alljoyn.Error.FeatureNotAvailable` | Feature not available |
+| `org.alljoyn.Error.OutOfRange` | 值超出范围 |
+| `org.alljoyn.Error.InvalidValue` | 无效值 |
+| `org.alljoyn.Error.FeatureNotAvailable` | 不可用的功能 |
 
-## Onboarding Interface
+## Onboarding 接口
 
-### Interface name
+### 接口名
 
-| Interface name | Version | Secured | Object path |
+| 接口名 | 版本 | 安全性 | 对象路径 |
 |---|:---:|:---:|---|
-| `org.alljoyn.Onboarding` | 1 | yes | `/Onboarding` |
+| `org.alljoyn.Onboarding` | 1 | 安全 | `/Onboarding` |
 
-### Properties
+### 属性
 
-|Property name | Signature | List of values | Read/Write | Description |
+|属性名 | 签名 | 值列表 | 可读/可写 | 描述 |
 |---|:---:|---|---|---|
-| Version | `q` | Positive integers | Read-only | Interface version number |
-| State | `n` | <ul><li>0 - Personal AP Not Configured</li><li>1 - Personal AP Configured/Not Validated</li><li>2 - Personal AP Configured/Validating</li><li>3 - Personal AP Configured/Validated</li><li>4 - Personal AP Configured/Error</li><li>5 - Personal AP Configured/Retry</li><ul> | Read-only | The configuration state |
-|LastError| `ns` | <ul><li>0 - Validated</li><li>1 - Unreachable</li><li>2 - Unsupported_protocol</li><li>3 - Unauthorized</li><li>4 - Error_message</li></ul> | Read-only | The last error code and error message. Error_message is the error message received from the underlying Wi-Fi layer. |
+| 版本 | `q` | 正整数 | 只读 | 接口版本号 |
+| 状态 | `n` | <ul><li>0 - 个人 AP 未配置</li><li>1 - 个人 AP 已配置/无效</li><li>2 - 个人 AP 已配置/正在验证</li><li>3 - 个人 AP 已配置/有效</li><li>4 - 个人 AP 已配置/有错误</li><li>5 - 个人 AP 已配置/重试</li><ul> | 只读 | 配置状态 |
+|LastError| `ns` | <ul><li>0 - 有效</li><li>1 - 不可达</li><li>2 - Unsupported_protocol</li><li>3 - 未验证</li><li>4 - Error_message</li></ul> | 只读 | 最后一个错误代码和错误消息。 Error_message 是从底层 Wi-Fi 层接收到的错误消息。|
 
-### Methods
+### 方法
 
-The following methods are exposed by a BusObject that
-implements the Onboarding interface.
+下列方法由一个实现 Onboarding 接口的 BusObject 暴露。
 
 #### `n ConfigWifi('ssn')`
 
 **Message arguments**
 
-| Argument | Parameter name| Signature | List of values | Description |
+| 参数 | 参数名| 签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|---|
-| 0 | `SSID` | `s` | N/A | Access point SSID |
-| 1 | `passphrase` | `s` | N/A | Access point passphrase  in hex format |
-| 2 | `authType` | `n` | <ul><li>-3 - WPA2_AUTO</li><li>-2 - WPA_AUTO</li><li>-1 - Any</li><li>0 - Open</li><li>1 - WEP</li><li>2 - WPA_TKIP</li><li>3 - WPA_CCMP</li><li>4 - WPA2_TKIP</li><li>5 - WPA2_CCMP</li><li>6 - WPS</li></ul> | <p>Authentication type.</p><ul><li>When it is equal to any, the onboardee must attempt all possible authentication types it supports to connect to the AP.</li><li>When it is equal to -3 or -2 (WPA2_AUTO or WPA_AUTO), the onboardee attempts to connect to the AP with TKIP cipher and then AES-CCMP cipher.</li><li>WPA_TKIP indicates WPA with TKIP cipher.</li><li>WPA2_CCMP indicates WPA2 with AES-CCMP cipher.</li><li>If the value is invalid, the AllJoyn error `org.alljoyn.Error.OutOfRange` will be returned.</li></ul> |
+| 0 | `SSID` | `s` | N/A | 接入点的 SSID |
+| 1 | `passphrase` | `s` | N/A | 十六进制的接入点密码 |
+| 2 | `authType` | `n` | <ul><li>-3 - WPA2_AUTO</li><li>-2 - WPA_AUTO</li><li>-1 - Any</li><li>0 - Open</li><li>1 - WEP</li><li>2 - WPA_TKIP</li><li>3 - WPA_CCMP</li><li>4 - WPA2_TKIP</li><li>5 - WPA2_CCMP</li><li>6 - WPS</li></ul> | <p>验证类型</p><ul><li>当设置为 any 时, onboardee 必须尝试使用自己支持的所有验证类型连接到 AP.</li><li>当设置为 -3 或 -2 时 (WPA2_AUTO 或 WPA_AUTO), onboardee 使用 TKIP 暗语，AES-CCMP 暗语连接到 AP.</li><li>WPA_TKIP 指应用 TKIP 暗语的 WPA.</li><li>WPA2_CCMP 指应用 AES-CCMP 暗语的 WPA2.</li><li>如果此值无效，AllJoyn 错误 `org.alljoyn.Error.OutOfRange` 将会被返回。 </li></ul> |
 
-**Reply arguments**
+**回复参数**
 
-| Argument | Parameter name| Return signature | List of values | Description |
+| 参数 | 参数名 | 返回签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `status` | `n` | <p>The possible values for the connection result status are:</p><ul><li>1 - Current SoftAP mode will be disabled upon receipt of Connect. In this case, the Onboarder application must wait for the device to connect on the personal AP and query the State and LastError properties.</li><li>2 - Concurrent step used to validate the personal AP connection. In this case, the Onboarder application must wait for the ConnectionResult signal to arrive over the AllJoyn session established over the SoftAP link.</li></ul>|
+| 0 | `status` | `n` | <p>连接结果状态的可能值为：</p><ul><li>1 - 现存的 SoftAP 模式将在收到 Connect 后被禁用。在这种情况下，Onboarder 应用程序必须等待设备连接到个人 AP，并请求 State and LastError 属性.</li><li>2 - 用于验证个人 AP 连接的并行步骤。 在这种情况下，Onboarder 应用程序必须等待通过 SoftAP 链路建立的 AllJoyn 会话传送来的 ConnectionResult 信号的到来。</li></ul>|
 
-**Description**
+**描述**
 
-Sends the personal AP information to the onboardee. When the
-authType is equal to -1 (any), the onboardee must try out
-all the possible authentication types it supports to connect to the personal AP.
+向 onboardee 发送个人 AP 的信息。当 authType = -1 (any) 时，onboardee 必须尝试自己支持的所有认证类型，以连接到个人 AP.
 
-**Error reply**
+**错误回复**
 
-| Error | Description |
+| 错误 | 描述 |
 |---|---|
-| `org.alljoyn.Error.OutOfRange` | Returned in the AllJoyn method call reply if authType parameter is invalid. |
+| `org.alljoyn.Error.OutOfRange` | 在 AllJoyn 方法调用中， authType 参数无效时返回。|
 
 #### `Connect`
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**回复参数**
 
-This method does not have any reply message. It's a fire-and-forget
-method call.
+此方法没有任何回复消息。是一个 fire-and-forget 的方法调用。
 
-**Description**
+**描述**
 
-Tells the onboardee to connect to the personal AP. It is
-recommended that the onboardee use the concurrency feature,
-if it is available.
+通知 onboardee 连接到个人 AP. 如果可用，推荐 onboardee 使用并发性功能。
 
 #### `Offboard`
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
 **Reply arguments**
 
-This method does not have any reply message. It's a fire-and-forget
-method call.
+此方法不含任何回复消息。是一个 fire-and-forget 的方法调用。
 
-**Description**
+**描述**
 
-Tells the onboardee to disconnect from the personal AP, clear
-the personal AP configuration fields, and start the soft AP mode.
+通知 onboardee 断开与从个人 AP 的连接，清除个人 AP 的配置字段，并开启 soft AP 模式。 
 
 #### `qa(sn) GetScanInfo`
 
-**Message arguments**
+**消息参数**
 
-None.
+无。
 
-**Reply arguments**
+**回复参数**
 
-| Argument | Parameter name | Return signature | List of values | Description |
+| 参数 | 参数名 | 返回签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | `age` | `q` | positive number | <p>Age of the scan information in minutes. Reflects how long ago the scan procedure was performed by the device.</p> |
-| 1 | `scanList` | `a(sn)` | <p>The SSID string and one of the following values:</p><ul><li>0 - Open</li><li>1 - WEP</li><li>2 - WPA_TKIP</li><li>3 - WPA_CCMP</li><li>4 - WPA2_TKIP</li><li>5 - WPA2_CCMP</li><li>6 - WPS</li></ul> | <p>Array of records containing the SSID and authType.</p><ul><li>WPA_TKIP indicates WPA with TKIP cipher.</li><li>WPA2_CCMP indicates WPA2 with AES-CCMP cipher.</li><li>If the value is invalid, the AllJoyn error `org.alljoyn.Error.OutOfRange` will be returned.</li></ul> |
+| 0 | `age` | `q` | 正数 | <p>扫描信息的存在时间（以分钟计）。指示设备多久之前执行过扫描操作。</p> |
+| 1 | `scanList` | `a(sn)` | <p>SSID 字符串以及下列值中的一个:</p><ul><li>0 - Open</li><li>1 - WEP</li><li>2 - WPA_TKIP</li><li>3 - WPA_CCMP</li><li>4 - WPA2_TKIP</li><li>5 - WPA2_CCMP</li><li>6 - WPS</li></ul> | <p>包含 SSID 和 authType 的数组。</p><ul><li>WPA_TKIP 指使用 TKIP 暗语的 WPA.</li><li>WPA2_CCMP 指使用 AES-CCMP 暗语的 WPA2.</li><li>如果此值无效，AllJoyn 错误 `org.alljoyn.Error.OutOfRange` 将会被返回。</li></ul> |
 
-**Description**
+**描述**
 
-Scans all the Wi-Fi access points in the onboardee's proximity.
+扫描在 onboardee 邻域网络内的所有 Wi-Fi 接入点。
 
-**Error reply**
+**错误回复**
 
-| Error | Description |
+| 错误 | 描述 |
 |---|---|
-| `org.alljoyn.Error.FeatureNotAvailable` | Returned in the AllJoyn response if the device does not support this feature. |
+| `org.alljoyn.Error.FeatureNotAvailable` | 设备不支持此功能时 AllJoyn 回复将返回此消息。|
 
-### Signals
+### 信号
 
 #### `ConnectionResult(ns)`
 
-ConnectionResult signal is not a Sessionless signal.
+ConnectionResult 信号不是 Sessionless 信号。
 
-**Message arguments**
-
-| Argument | Parameter name | Return signature | List of values | Description |
+**消息参数**
+| 参数 | 参数名| 返回签名 | 值列表 | 描述 |
 |:---:|---|:---:|---|---|
-| 0 | resultCode | n | <ul><li>0 - Validated</li><li>1 - Unreachable</li><li>2 - Unsupported_protocol</li><li>3 - Unauthorized</li><li>4 - Error_message</li</ul> | Connection result code. |
-| 1 | resultMessage | s | string | Text that describes the connection result. |
+| 0 | resultCode | n | <ul><li>0 - 有效</li><li>1 - 不可达</li><li>2 - 不支持的协议</li><li>3 - 未授权</li><li>4 - 错误消息</li</ul> | 连接结果的代码 |
+| 1 | resultMessage | s | 字符串 | 描述连接结果的文本。|
 
-**Description**
+**描述**
 
-This signal is emitted when the connection attempt against
-the personal AP is completed. The signal is sent over the
-AllJoyn session established over the SoftAP link.
+当到个人 AP 的连接尝试完成时，此信号会被发出。此信号经通过 SoftAP 链路建立的 AllJoyn 会话发送。
 
-This signal will be received only if the concurrency feature
-is supported by the onboardee.
+仅当 onboardee 支持并发性功能时，此信号才会被接收。
 
-##Introspect XML
+##内省 XML
 
 ```xml
 <node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
