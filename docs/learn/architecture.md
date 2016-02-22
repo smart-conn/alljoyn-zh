@@ -94,7 +94,7 @@ AllJoyn 架构提供了两种变种：
 
 应用程序可以同时使用服务架构与核心 API。
 
-[了解关于事件和动作（Events and Actions）的更多信息][events-and-actions]》。
+[了解关于事件和动作（Events and Actions）的更多信息][events-and-actions]。
 
 [apps-and-routers]: /files/learn/apps-and-routers.png
 
