@@ -1,5 +1,8 @@
 # alljoyn-zh
 
+参考文案排版：
+https://github.com/sparanoid/chinese-copywriting-guidelines
+
 # 0122 待审阅文章
 
 * [ ] [docs/learn/core/system-description/advertisement-discovery.md](docs/learn/core/system-description/advertisement-discovery.md)
