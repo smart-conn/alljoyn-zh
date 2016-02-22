@@ -144,8 +144,8 @@ https://github.com/sparanoid/chinese-copywriting-guidelines
 
 ## 1216 待审阅文章
 
-* [ ] [docs/learn/index.md](docs/learn/index.md)
-* [ ] [docs/learn/architecture.md](docs/learn/architecture.md)
+* [x] [docs/learn/index.md](docs/learn/index.md)
+* [x] [docs/learn/architecture.md](docs/learn/architecture.md)
 * [ ] [docs/learn/core/thin-core.md](docs/learn/core/thin-core.md)
 * [ ] [docs/learn/core/about-announcement/index.md](docs/learn/core/about-announcement/index.md)
 * [ ] [docs/learn/core/about-announcement/interface.md](docs/learn/core/about-announcement/interface.md)
