@@ -82,7 +82,7 @@ AllJoyn 服务架构实现了一套通用服务，例如新设备管理、通知
 AllJoyn 架构提供了两种变种：
 
 * 标准版。适用于非嵌入式设备，如 Android、iOS、Linux。
-* 精简版。适用于资源受限的嵌入式设备，如 Arduino、ThreadX、内存受限的Linux。
+* 精简版。适用于资源受限的嵌入式设备，如 Arduino、ThreadX、内存受限的 Linux。
 
 ![alljoyn-standard-and-thin][alljoyn-standard-and-thin]
 
