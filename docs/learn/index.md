@@ -1,4 +1,4 @@
-# 学习AllJoyn
+# 学习 AllJoyn
 
 AllJoyn&trade; 是一个协作开源软件架构，它使得开发者可以容易地开发出应用程序来发现附近设备并与设备直接地沟通，而所有的这些均不受设备品牌，种类以及操作系统的限制，也不需用到云端。正是因为 AllJoyn 架构在多功能的同时具有极大的灵活性，它必将有助于人们实现对物联网的种种构想。
 
@@ -8,12 +8,12 @@ AllJoyn 架构可以处理发现附近设备，建立设备间的会话，进行
 
 ## 灵活性
 
-AllJoyn 固有的灵活性是其最具识别度的特性。 AllJoyn 被设计成可运行于多种平台：从小型嵌入式实时操作系统（RTOS）到全功能操作系统。它支持多种编程语言绑定和传输。由于 AllJoyn 架构的开源特性，其灵活性可在未来被继续扩展以支持更多的传输，绑定和功能。
+AllJoyn 固有的灵活性是其最具识别度的特性。AllJoyn 被设计成可运行于多种平台：从小型嵌入式实时操作系统（RTOS）到全功能操作系统。它支持多种编程语言绑定和传输。由于 AllJoyn 架构的开源特性，其灵活性可在未来被继续扩展以支持更多的传输，绑定和功能。
 
-* 传输层: Wi-Fi, Ethernet, Serial, Power Line (PLC)
-* 编程语言绑定: C, C++, Obj-C, Java
-* 操作系统平台: RTOS, Arduino, Linux, Android, iOS, Windows, Mac
-* 安全机制: 点到点加密 (AES128)和验证(PSK, ECDSA)
+* 传输层：Wi-Fi、Ethernet、Serial、Power Line（PLC）
+* 编程语言绑定：C、C++、Obj-C、Java
+* 操作系统平台：RTOS、Arduino、Linux、Android、iOS、Windows、Mac
+* 安全机制：点到点加密（AES128）和验证（PSK、ECDSA）
 
 ## 物联网通用语言
 
@@ -21,7 +21,7 @@ AllJoyn 固有的灵活性是其最具识别度的特性。 AllJoyn 被设计成
 
 AllSeen Alliance与开源社区一起协作，正在定义并实现通用服务和针对某些特定用途的 [接口][interfaces]，例如 [接入新设备][onboarding], [发送提醒][notifs], 和 [设备控制][controlpanel]。 开发者可选择将以上功能集成到他们的产品中，且不用担心与其他在AllJoyn生态圈中的设备与应用程序的兼容问题。
 
-除通用服务与接口外，应用程序或设备也可实现私有接口。这样一来，应用程序既可调用通用服务与接口从而加入到AllJoyn大生态圈，也可通过AllJoyn架构与其他应用程序和设备进行私有会话。AllJoyn架构使这种灵活性成为可能。
+除通用服务与接口外，应用程序或设备也可实现私有接口。这样一来，应用程序既可调用通用服务与接口从而加入到 AllJoyn 大生态圈，也可通过 AllJoyn 架构与其他应用程序和设备进行私有会话。AllJoyn 架构使这种灵活性成为可能。
 
 ## 可选的云
 
