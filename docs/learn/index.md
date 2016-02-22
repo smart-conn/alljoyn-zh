@@ -33,7 +33,7 @@ AllJoyn 架构运行在本地网络，其运行并不需要云。应用程序和
 
 ## 下一步
 
-了解更多关于 [应用实例][use-cases] 的知识。然后转到关于总体 [结构][arch]，[核心架构][core]，以及 [基础服务][services] 方面的介绍。
+了解更多关于 [应用实例][use-cases] 的知识。然后转到关于总体 [结构][arch]、[核心架构][core] 以及 [基础服务][services] 方面的介绍。
 
 [interfaces]: /learn/core#busobject
 [onboarding]: /learn/base-services/onboarding
