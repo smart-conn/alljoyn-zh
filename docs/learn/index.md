@@ -19,9 +19,9 @@ AllJoyn固有的灵活性是其最具识别度的特性。 AllJoyn被设计成�
 
 为了圆满实现物联网构想，设备和应用程序之间需要一种通用的方式或语言来互动和交流。我们相信这种通用语言会是AllJoyn架构：它能使不同公司的运行在不同操作系统和使用不同编程语言的设备粘合在一起，相互之间可以无缝交流和协同工作。
 
-AllSeen Alliance与开源社区一起协作，正在定义并实现通用服务和针对某些特定用途的[接口][interfaces]，例如[首次接入新设备][onboarding], [发送提醒][notifs], 和[设备控制][controlpanel]. 开发者可选择将以上功能集成到他们的产品中，且不用担心与其他在AllJoyn生态圈中的设备与应用程序的兼容问题。
+AllSeen Alliance与开源社区一起协作，正在定义并实现通用服务和针对某些特定用途的[接口][interfaces]，例如[接入新设备][onboarding], [发送提醒][notifs], 和[设备控制][controlpanel]. 开发者可选择将以上功能集成到他们的产品中，且不用担心与其他在AllJoyn生态圈中的设备与应用程序的兼容问题。
 
-除通用服务与接口外，应用程序或设备也可实现私密接口。这样一来，应用程序既可调用通用服务与接口从而加入到AllJoyn大生态圈，也可通过AllJoyn架构与其他应用程序和设备进行私密会话。AllJoyn架构使这种灵活性成为可能。
+除通用服务与接口外，应用程序或设备也可实现私有接口。这样一来，应用程序既可调用通用服务与接口从而加入到AllJoyn大生态圈，也可通过AllJoyn架构与其他应用程序和设备进行私有会话。AllJoyn架构使这种灵活性成为可能。
 
 ## 可选的云
 
@@ -35,13 +35,13 @@ AllJoyn架构运行在本地网络，其运行并不需要云。应用程序和�
 
 了解更多关于[应用实例][use-cases]的知识。 然后转到关于总体[结构][arch], [核心架构][core], 以及 [基础服务][services]方面的介绍.
 
-[接口][interfaces]: /learn/core#busobject
-[接入新设备][onboarding]: /learn/base-services/onboarding
-[通知][notifs]: /learn/base-services/notification
-[控制面板][controlpanel]: /learn/base-services/controlpanel
-[网管代理][gateway-agent]: https://wiki.allseenalliance.org/gateway/gatewayagent
+[interfaces]: /learn/core#busobject
+[onboarding]: /learn/base-services/onboarding
+[notifs]: /learn/base-services/notification
+[controlpanel]: /learn/base-services/controlpanel
+[gateway-agent]: https://wiki.allseenalliance.org/gateway/gatewayagent
 
-[应用实例][use-cases]: /learn/use-cases
-[结构][arch]: /learn/architecture
-[核心架构][core]: /learn/core
-[基础服务][services]: /learn/base-services
+[use-cases]: /learn/use-cases
+[arch]: /learn/architecture
+[core]: /learn/core
+[services]: /learn/base-services
