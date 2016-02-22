@@ -26,9 +26,9 @@ AllJoyn 架构在本地网络上运行。目前它支持 Wi-Fi、Ethernet、seri
 
 ##  软件结构
 
-AllJoyn架构包含了Alljoyn应用和AllJoyn路由。
+AllJoyn 架构包含了 Alljoyn 应用和 AllJoyn 路由。
 
-一个AllJoyn应用包含了以下组件：
+一个 AllJoyn 应用包含了以下组件：
 * [AllJoyn 应用程序][app-code]
 * [AllJoyn 服务架构库][services]
 * [AllJoyn 核心库][core]
