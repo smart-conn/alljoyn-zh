@@ -52,7 +52,7 @@ AllJoyn 核心资源库提供了与 AllJoyn 网络互动的最低级别的应用
 
 开发人员使用这些应用程序接口（API）来实现 AllJoyn 服务架构或私有接口。
 
-[了解关于 AllJoyn 核心架构的更多信息][learn-core].
+[了解关于 AllJoyn 核心架构的更多信息][learn-core]。
 
 ### AllJoyn 服务架构库
 
