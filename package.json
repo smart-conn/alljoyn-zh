@@ -1,0 +1,31 @@
+{
+  "name": "alljoyn-zh",
+  "version": "1.0.0",
+  "description": "# 0122 待审阅文章",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smart-conn/alljoyn-zh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smart-conn/alljoyn-zh/issues"
+  },
+  "homepage": "https://github.com/smart-conn/alljoyn-zh#readme",
+  "dependencies": {
+    "bluebird": "^3.3.1",
+    "cheerio": "^0.20.0",
+    "glob": "^7.0.0",
+    "pangu": "^3.0.0",
+    "request": "^2.69.0",
+    "rx": "^4.0.8"
+  }
+}
